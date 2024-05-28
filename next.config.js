@@ -27,4 +27,5 @@ module.exports = {
     },
   },
   swcMinify: true,
+  pageExtensions: ['index.js'],
 };
