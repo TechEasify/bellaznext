@@ -1,6 +1,7 @@
 import { getWordPressProps, WordPressTemplate } from '@faustwp/core';
 
 export default function Page(props) {
+  console.log(props, "page props");
   return <WordPressTemplate {...props} />;
 }
 

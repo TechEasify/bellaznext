@@ -281,7 +281,7 @@ const Nav = (props) => {
         >
           <span className="text-white font-medium">JEWISH NEWS</span>
         </div>
-      ) : router.pathname === "/breaking_news" ? (
+      ) : router.pathname === "/breaking-news" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#ce3a42" }}
@@ -304,7 +304,7 @@ const Nav = (props) => {
       {isDropdownOpen && (
         <div className="w-full bg-white font-medium inline-flex items-center md:ml-28">
           <Link
-            href="/breaking_news"
+            href="/breaking-news"
             className="px-4 text-gray-800 hover:bg-gray-100"
           >
             Breaking News

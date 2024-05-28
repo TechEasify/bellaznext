@@ -6,8 +6,23 @@ import Screenshot2024 from "../../public/images/Screenshot2024.svg";
 import Frame from "../../public/images/Frame.svg";
 import ExportedImage from "next-image-export-optimizer";
 import News from "../../components/News/News";
+import { gql, useQuery } from "@apollo/client"
+
+
+const GET_POST = gql`
+query get {
+  posts {
+    nodes {
+      slug
+      title
+    }
+  }
+}
+`
 
 function Index() {
+  const data = useQuery(GET_POST)
+  console.log(data, "data");
   return (
     <>
       <Nav />
