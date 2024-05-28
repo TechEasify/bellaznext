@@ -26,6 +26,5 @@ module.exports = {
           : "https://manipal.iihtsrt.com/",
     },
   },
-  swcMinify: true,
-  pageExtensions: ['index.js'],
+  swcMinify: true
 };
