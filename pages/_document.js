@@ -20,7 +20,7 @@ class MyDocument extends Document {
         <Head>
           {/* Favicons, Google site verification and other common meta tags across the site. */}
           <link rel='preconnect' href='https://fonts.gstatic.com' />
-          <script
+          {/* <script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-VGJ09RD0RZ'
           ></script>
@@ -32,7 +32,7 @@ class MyDocument extends Document {
               Date),gtag("config","G-VGJ09RD0RZ"),gtag("config","AW-875271460")
             `,
             }}
-          ></script>
+          ></script> */}
         </Head>
         <body>
           <Main />

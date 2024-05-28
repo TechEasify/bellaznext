@@ -10,12 +10,12 @@ const App = ({ Component, pageProps }) => {
   const router = useRouter();
 
   useEffect(() => {
-    ga.pageview(window.location);
+    // ga.pageview(window.location);
   }, []);
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      ga.pageview(url);
+      // ga.pageview(url);
     };
     //When the component is mounted, subscribe to router changes
     //and log those page views
