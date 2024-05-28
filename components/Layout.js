@@ -32,8 +32,8 @@ const Layout = ({ children, ...customMeta }) => {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" key="favicon" />
-        <link rel="canonical" href={`${url}${asPath}`} key="canonical" />
+        {/* <link rel="icon" href="/favicon.ico" key="favicon" />
+        <link rel="canonical" href={`${url}${asPath}`} key="canonical" /> */}
 
         {/* Twitter */}
         <meta
