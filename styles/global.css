@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Write custom base/ component/ utility styles with `@layer` directive */
+
+@layer base {
+  [type="text"],
+  [type="email"],
+  [type="url"],
+  [type="password"],
+  [type="number"],
+  [type="date"],
+  [type="datetime-local"],
+  [type="month"],
+  [type="search"],
+  [type="tel"],
+  [type="time"],
+  [type="week"],
+  [multiple],
+  textarea,
+  select {
+    @apply border-gray-300 focus:border-blue-500 focus:ring-blue-500 rounded-lg shadow-sm;
+  }
+
+  [type="checkbox"],
+  [type="radio"] {
+    @apply border-gray-300 focus:ring-blue-500 h-5 text-blue-600 w-5;
+  }
+
+  [type="checkbox"] {
+    @apply rounded;
+  }
+
+  [type="radio"] {
+    @apply rounded-full;
+  }
+}
+
+@layer components {
+  .prose :where(code):not(:where([class~="not-prose"] *)) {
+    @apply bg-gray-200 dark:bg-gray-800 dark:text-white font-normal px-1 py-0.5 rounded-md text-sm;
+  }
+
+  .prose :where(code):not(:where([class~="not-prose"] *))::before {
+    content: "";
+  }
+
+  .prose :where(code):not(:where([class~="not-prose"] *))::after {
+    content: "";
+  }
+}
+
+.button-stroke {
+  display: block;
+  width: calc(100% - 40px);
+  height: 20px;
+  stroke: transparent;
+  position: absolute;
+  left: 20px;
+  bottom: -20px;
+  stroke-width: 5;
+}
+.button-stroke {
+  stroke-dasharray: 650px;
+  stroke-dashoffset: 650px;
+  stroke: #f9a825;
+  stroke-width: 5;
+  /* transition: stroke-dashoffset 800ms ease-in-out; */
+  animation: dash 1.5s ease 2s infinite alternate;
+  /* animation-delay: 1000ms; */
+}
+
+.bg-form-gradient {
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+}
+
+@media screen and (max-width: 800px) {
+  .button-stroke {
+    display: none;
+  }
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 650;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.call-number {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-weight: 600;
+  color: #535353;
+  letter-spacing: 1px;
+}
+
+.hidden.lg\:flex.lg\:flex-1.lg\:justify-end {
+  align-items: center;
+}
+
+.banner-form.px-4.py-16.mx-auto.sm\:max-w-xl.md\:max-w-full.lg\:max-w-screen-xl.md\:px-24.lg\:py-20 {
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* .banner-label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+.banner-label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.bg-header {
+  background-color: #002d73;
+}
+
+button.inline-flex.items-center.justify-center.w-full.h-12.px-6.font-medium.tracking-wide.text-white.transition.duration-200.rounded.shadow-md.md\:w-auto.bg-gradient-to-r.focus\:outline-none {
+  background: #ce3a42;
+}
+
+.footer {
+  background: #002D73;
+}
+
+button.viewmore.w-full.py-2.text-center.justify-center.mt-5.flex.mr-2.text-white.font-semibold.items-center:hover {
+  background: #40A6FB;
+  color: #fff;
+}
+
+button.viewmore.w-full.py-2.text-center.justify-center.mt-5.flex.mr-2.text-white.font-semibold.items-center {
+  color: #40A6FB;
+}
+
+button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md\:w-auto.focus\:outline-none:hover {
+  background: #002D73;
+  color: #fff !important;
+}
