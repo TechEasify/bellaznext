@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "generate": "faust generatePossibleTypes",
     "export": "next build && next export && next-image-export-optimizer"
