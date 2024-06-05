@@ -38,7 +38,7 @@ export default function Component(props) {
 
       <main>
         {
-          router.asPath === "/category/breaking-news" ?
+          router.asPath === "/category/breaking-news" && nodeByUri !== undefined ?
           <Breakingnews nodeByUri={nodeByUri} loading={props.loading}/>
           :
           console.log("false")
