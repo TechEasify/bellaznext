@@ -25,10 +25,10 @@ import Fame216 from "../../public/images/Fame216.svg";
 import jeuol4a_prince1 from "../../public/images/jeuol4a_prince1.svg";
 import Musicpage from "../../components/Music/Musicpage";
 
-function Index() {
+function Music() {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_900px] gap-6">
           <div className="w-full max-w-3xl mx-auto">
@@ -355,9 +355,9 @@ function Index() {
         </div>
       </div>
       <Musicpage />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
 
-export default Index;
+export default Music;

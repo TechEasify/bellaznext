@@ -6,9 +6,136 @@ import Frame256 from "../public/images/Frame256.svg";
 import Frame257 from "../public/images/Frame257.svg";
 import download6 from "../public/images/download6.svg";
 import spotifydeal from "../public/images/spotifydeal.svg";
+import { gql, useQuery } from "@apollo/client";
+
+const GET_MUSIC_SECTION = gql`
+  query ($id: ID = "3080") {
+    page(id: $id, idType: DATABASE_ID) {
+      music {
+        pageTitleBackgroundColor {
+          backgroundColor
+        }
+        heroPostCategory {
+          nodes {
+            ... on Category {
+              posts {
+                nodes {
+                  featuredImage {
+                    node {
+                      altText
+                      srcSet
+                      slug
+                    }
+                  }
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  title
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                  content
+                }
+              }
+            }
+          }
+        }
+        trending
+        trendingBottomLineColor
+        heroPostSidebar {
+          nodes {
+            ... on Category {
+              posts {
+                nodes {
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  featuredImage {
+                    node {
+                      altText
+                      srcSet
+                      slug
+                    }
+                  }
+                  title
+                }
+              }
+            }
+          }
+        }
+        heroSiderbarAd
+        siderbarPosts {
+          nodes {
+            ... on Category {
+              posts {
+                nodes {
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  featuredImage {
+                    node {
+                      altText
+                      srcSet
+                      slug
+                    }
+                  }
+                  title
+                }
+              }
+              name
+            }
+          }
+        }
+        adversitement
+        allCategories {
+          nodes {
+            ... on Category {
+              name
+              posts {
+                nodes {
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  featuredImage {
+                    node {
+                      altText
+                      srcSet
+                      slug
+                    }
+                  }
+                  title
+                  content
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        sidebarAd
+      }
+    }
+  }
+`;
 
 const Music = () => {
+  const { loading, error, data } = useQuery(GET_MUSIC_SECTION)
+  console.log(data, "data music");
   const { openDialog } = useDialog();
+
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">

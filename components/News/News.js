@@ -1,5 +1,5 @@
 import ExportedImage from "next-image-export-optimizer";
-import React from "react";
+import React, { useEffect } from "react";
 import Screenshot1 from "../../public/images/Screenshot1.svg";
 import ferrari from "../../public/images/ferrari.svg";
 import Rectangle367 from "../../public/images/Rectangle367.svg";
@@ -17,11 +17,14 @@ const News = () => {
     <>
       <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
         <ExportedImage
-          style={{ margin: "0 auto" }}
-          priority={true}
-          src={Screenshot1}
-          alt="PR_01CFA"
-        />
+            style={{ margin: "0 auto" }}
+            priority={true}
+            src={Screenshot1}
+            alt={Screenshot1}
+            width={550}
+            height={157}
+            placeholder='blur'
+          />
       </div>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
@@ -89,7 +92,9 @@ const News = () => {
                 />
               </div>
               <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <p className="text-[12px] text-base font-bold text-red-800">POLITICS</p>
+                <p className="text-[12px] text-base font-bold text-red-800">
+                  POLITICS
+                </p>
                 <h5 className="text-[20px] text-black-900 font-bold">
                   Ferrari F1 boss makes savage Mercedes dig after constructors'
                   setback.
@@ -133,7 +138,9 @@ const News = () => {
                 />
               </div>
               <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <p className="text-[12px] text-base font-bold text-red-800">POLITICS</p>
+                <p className="text-[12px] text-base font-bold text-red-800">
+                  POLITICS
+                </p>
                 <h5 className="text-[20px] text-black-900 font-bold">
                   Ferrari F1 boss makes savage Mercedes dig after constructors'
                   setback.
@@ -173,7 +180,9 @@ const News = () => {
                 <ExportedImage priority={true} src={andreas} alt="andreas" />
               </div>
               <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <p className="text-[12px] text-base font-bold text-red-800">POLITICS</p>
+                <p className="text-[12px] text-base font-bold text-red-800">
+                  POLITICS
+                </p>
                 <h5 className="text-[20px] text-black-900 font-bold">
                   Ferrari F1 boss makes savage Mercedes dig after constructors'
                   setback.
@@ -218,6 +227,8 @@ const News = () => {
               priority={true}
               src={Rectangle367}
               alt="Rectangle367"
+              width={297}
+              height={503}
               style={{ width: "100%", height: "auto", maxHeight: "500px" }}
             />
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>

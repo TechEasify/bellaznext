@@ -16,10 +16,10 @@ import andreasm1 from "../../public/images/andreasm1.svg";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 
-const Musicpage = () => {
+const Insight = () => {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
@@ -349,9 +349,9 @@ const Musicpage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
 
-export default Musicpage;
+export default Insight;

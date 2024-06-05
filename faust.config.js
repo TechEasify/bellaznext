@@ -1,5 +1,5 @@
 import { setConfig } from "@faustwp/core";
-import templates from "./pages/index";
+import templates from "./wp-templates";
 import possibleTypes from "./possibleTypes.json";
 
 // uncomment to add support for Get requests and/or persisted queries

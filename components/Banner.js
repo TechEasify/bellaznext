@@ -16,9 +16,62 @@ import location from "../public/images/location.svg";
 import sun from "../public/images/sun.svg";
 import ExportedImage from "next-image-export-optimizer";
 import { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
 
-const Banner = () => {
-  const { openDialog} = useDialog();
+const SkeletonLoader = () => (
+  <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+      <div className="w-full max-w-5xl mx-auto">
+        <div className="flex flex-col justify-center">
+          <div className="h-4 bg-gray-300 rounded w-1/4 mb-4"></div>
+          <div className="h-8 bg-gray-300 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
+          <div className="h-4 bg-gray-300 rounded w-2/3 mb-4"></div>
+        </div>
+        <div className="h-64 bg-gray-300 rounded w-full"></div>
+      </div>
+      <div className="w-full max-w-3xl mx-auto">
+        <div className="h-10 bg-gray-300 rounded w-full mb-4"></div>
+        <div className="h-40 bg-gray-300 rounded w-full mb-4"></div>
+        <div className="flex mt-5">
+          <div className="mr-2">
+            <div className="h-4 bg-gray-300 rounded w-1/4 mb-2"></div>
+            <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+          </div>
+          <div className="h-16 bg-gray-300 rounded w-16"></div>
+        </div>
+        <hr />
+        <div className="flex mt-5">
+          <div className="mr-2">
+            <div className="h-4 bg-gray-300 rounded w-1/4 mb-2"></div>
+            <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+          </div>
+          <div className="h-16 bg-gray-300 rounded w-16"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const Banner = ({ data }) => {
+  // const { openDialog } = useDialog();
+  console.log(data, "data props");
+  const sortedPosts = data.page.homePage.heroSection.heroPostCategory.nodes
+    .flatMap((item) => item.posts.nodes)
+    .filter((post) =>
+      post.categories.nodes.some(
+        (category) => category.name === "Breaking News"
+      )
+    )
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const sortedPostss = data.page.homePage.heroSection.heroSidebarPosts.nodes
+    .flatMap((item) => item.posts.nodes)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  console.log(sortedPostss, "sortedPostss");
+
+  console.log(sortedPosts, "sortedPosts");
 
   return (
     <>
@@ -26,7 +79,37 @@ const Banner = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
-              <p className="text-base font-bold text-red-800">POLITICS</p>
+              {sortedPosts.map((post) => (
+                <div key={post.id}>
+                  <p className="text-base font-bold text-red-800">
+                    {post.categories.nodes[0]?.name}
+                  </p>
+                  <h1 className="text-[30px] text-black-900 font-bold">
+                    {post.title}
+                  </h1>
+                  <p
+                    className="text-[15px] text-base font-bold text-gray-800 mb-3"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  />
+                  {
+                    post.featuredImage?.node?.srcSet && (
+                      <ExportedImage
+                        priority={true}
+                        src={post.featuredImage.node.srcSet}
+                        alt={post.featuredImage.node.altText || "Featured Image"}
+                        width={150}
+                        height={150}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          maxHeight: "500px",
+                        }}
+                      />
+                    )
+                  }
+                </div>
+              ))}
+              {/* <p className="text-base font-bold text-red-800">POLITICS</p>
               <h1 className="text-[30px] text-black-900 font-bold">
                 Who will become america's last hope
               </h1>
@@ -34,7 +117,7 @@ const Banner = () => {
                 Speaking after the race, Vasseur praised Leclerc's tactical
                 thinking in the closing stages of the race before jokingly
                 pointing the finger at Mercedes.
-              </p>
+              </p> */}
               <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
                 <span
                   className="text-[25px] font-extrabold mr-1"
@@ -58,12 +141,6 @@ const Banner = () => {
                 6 MIN READ
               </p>
             </div>
-            <ExportedImage
-              priority={true}
-              src={vladimirputin}
-              alt="vladimirputin"
-              style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-            />
           </div>
           <div className="w-full max-w-3xl mx-auto">
             <input
@@ -202,22 +279,38 @@ const Banner = () => {
               </div>
             </div>
 
-            <div className="flex mt-5">
-              <div className="mr-2">
-                <p className="text-[12px] font-bold text-red-800">POLITICS</p>
-                <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                  Our DeSantis and Haley Reporters switched places Her’s What
-                  They Found.
-                </p>
-              </div>
-              <ExportedImage
-                src={ana_flavia}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mr-2"
-              />
-            </div>
+            {sortedPostss.map(
+              (item) => (
+                console.log(item.featuredImage.node.srcSet, "item"),
+                (
+                  <>
+                    <div className="flex mt-5 justify-between">
+                      <div className="mr-2">
+                        <p className="text-[12px] font-bold text-red-800">
+                          {item.categories.nodes[0].name}
+                        </p>
+                        <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                          {item.title}
+                        </p>
+                      </div>
+                      {
+                        item.featuredImage?.node?.srcSet && (
+                          <ExportedImage
+                            src={item.featuredImage.node.srcSet}
+                            alt={item.featuredImage.node.srcSet}
+                            className="h-13 w-13 mr-2 object-contain"
+                            width={90}
+                            height={87}
+                          />
+                        )
+                      }
+                    </div>
+                  </>
+                )
+              )
+            )}
             <hr />
-            <div className="flex mt-5">
+            {/* <div className="flex mt-5">
               <div className="mr-2">
                 <p className="text-[12px] font-bold text-red-800">EUROPE</p>
                 <p className="text-[15px] font-semibold text-gray-800 mb-3">
@@ -230,7 +323,7 @@ const Banner = () => {
                 alt="Partly Cloudy"
                 className="h-13 w-13 mr-2"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

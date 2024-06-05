@@ -16,21 +16,172 @@ import closewhite from "../public/images/closewhite.svg";
 import BELAAZICON from "../public/images/BELAAZICON.svg";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
-import { gql } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 
-const Nav = (props) => {
-  console.log(props, "props");
-  const { openDialog } = useDialog();
+const GET_NAV_SECTION = gql`
+  query ($id: ID = "230") {
+    menu(id: $id, idType: DATABASE_ID) {
+      header {
+        topFirst
+        topFirstLinks {
+          url
+        }
+        topSecond
+        topSecondLinks {
+          url
+        }
+        topThird
+        topThirdLinks {
+          url
+        }
+        topFore
+        topForeLinks {
+          url
+        }
+      }
+    }
+  }
+`;
+
+const GET_MENU_SECTION = gql`
+  query ($id: ID = "230") {
+    menu(id: $id, idType: DATABASE_ID) {
+      header {
+        headerBackgroundColor
+        mainMenuFirst
+        mainMenuFirstLink {
+          url
+        }
+        mainMenuSecond
+        mainMenuSecondLink {
+          url
+        }
+        mainMenuThird
+        mainMenuThirdLink {
+          url
+        }
+        subFirst
+        subFirstLink {
+          url
+        }
+        subSecond
+        subSecondLink {
+          url
+        }
+        subThird
+        subThirdLink {
+          url
+        }
+      }
+    }
+  }
+`;
+
+const GET_SUBMENU_SECTION = gql`
+  query ($id: ID = "230") {
+    menu(id: $id, idType: DATABASE_ID) {
+      header {
+        foreSquareFirst
+        foreSquareFirstLink {
+          url
+        }
+        foreSquareSecond
+        foreSquareSecondLink {
+          url
+        }
+        foreSquareThird
+        foreSquareThirdLink {
+          url
+        }
+        headerButton {
+          link
+          text
+        }
+      }
+    }
+  }
+`;
+
+const GET_ICON_SECTION = gql`
+  query ($id: ID = "230") {
+    menu(id: $id, idType: DATABASE_ID) {
+      socialIcons {
+        facebookIcon {
+          node {
+            altText
+            srcSet
+          }
+        }
+        facebookLink
+        instagramIcon {
+          node {
+            altText
+            srcSet
+          }
+        }
+        instagramLink
+        twiterIcon {
+          node {
+            altText
+            srcSet
+          }
+        }
+        twiterLink
+        whatsappIcon {
+          node {
+            altText
+            srcSet
+          }
+        }
+        whatsappLink
+        youtubeIcon {
+          node {
+            altText
+            srcSet
+          }
+        }
+        youtubeLink
+      }
+    }
+  }
+`;
+
+const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
+  const {
+    loading: loadingNav,
+    error: errorNav,
+    data: dataNav,
+  } = useQuery(GET_NAV_SECTION);
+  const {
+    loading: loadingMenu,
+    error: errorMenu,
+    data: dataMenu,
+  } = useQuery(GET_MENU_SECTION);
+  const {
+    loading: loadingsubMenu,
+    error: errorsubMenu,
+    data: datasubMenu,
+  } = useQuery(GET_SUBMENU_SECTION);
+  const {
+    loading: loadingIcon,
+    error: errorIcon,
+    data: dataIcon,
+  } = useQuery(GET_ICON_SECTION);
+
+  console.log(dataNav, "data nav");
+  console.log(dataMenu, "menu");
+  console.log(datasubMenu, "datasubMenu");
+  console.log(dataIcon, "dataIcon");
+
   const router = useRouter();
-  console.log(router.pathname, "router");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownSearch, setIsDropdownSearch] = useState(false);
   const [isContactHeaderVisible, setContactHeaderVisible] = useState(false);
   const [subscribe, setSubscribe] = useState(false);
 
   useEffect(() => {
-    setSubscribe(router.pathname)
-  }, [subscribe])
+    setSubscribe(router.pathname);
+  }, [subscribe]);
 
   console.log(subscribe, "subscribe");
 
@@ -57,13 +208,61 @@ const Nav = (props) => {
 
     router.push({
       pathname: "/subscribe",
-      query: { subscribe: subscribe }
+      query: { subscribe: subscribe },
     });
-  }
+  };
 
   return (
     <>
-      {router.pathname === "/contact_us" ? (
+      {router.pathname === "/contact-us" ? (
+        <header className="bg-header">
+          <nav
+            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            aria-label="Global"
+          >
+            <div className="flex justify-between items-center">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">BELAAZ</span>
+                <ExportedImage
+                  priority={true}
+                  className="h-12 w-auto md:h-14 mr-5"
+                  src={BELAAZICON}
+                  alt="BELAAZICON"
+                />
+              </Link>
+              <button
+                onClick={() => router.push("/")}
+                className="flex text-white font-bold"
+              >
+                Home
+              </button>
+            </div>
+
+            <div className="flex lg:flex-1 justify-end">
+              <button
+                onClick={toggleContactHeader}
+                className="flex mr-2 text-white font-bold items-center"
+              >
+                {isContactHeaderVisible ? (
+                  <ExportedImage
+                    priority={true}
+                    className="h-5 w-5 mx-2"
+                    src={closewhite}
+                    alt="close Icon"
+                  />
+                ) : (
+                  <ExportedImage
+                    priority={true}
+                    className="h-5 w-5 mx-2"
+                    src={Frame283}
+                    alt="Contact Toggle Icon"
+                  />
+                )}
+              </button>
+            </div>
+          </nav>
+        </header>
+      ) : router.pathname === "/about" ? (
         <header className="bg-header">
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
@@ -161,8 +360,53 @@ const Nav = (props) => {
         </header>
       ) : (
         <header className="bg-header">
+          {/* Breadcrumb */}
           <nav
-            className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
+            aria-label="Breadcrumb"
+            className="flex justify-center p-4 lg:px-6"
+          >
+            <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+              <li>
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                  >
+                    {dataNav !== undefined && dataNav.menu.header.topFirst}
+                  </button>
+                </div>
+              </li>
+              <span className="text-gray-400">|</span>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                  >
+                    {dataNav !== undefined && dataNav.menu.header.topSecond}
+                  </button>
+                </div>
+              </li>
+              <span className="text-gray-400">|</span>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                  >
+                    {dataNav !== undefined && dataNav.menu.header.topThird}
+                  </button>
+                </div>
+              </li>
+            </ol>
+          </nav>
+
+          {/* Main Navigation */}
+          <nav
+            className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
             aria-label="Global"
           >
             <div className="flex flex-1 justify-between lg:justify-start items-center">
@@ -181,7 +425,8 @@ const Nav = (props) => {
                     onClick={toggleDropdown}
                     className="flex text-white font-bold items-center"
                   >
-                    News
+                    {dataMenu !== undefined &&
+                      dataMenu.menu.header.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -191,10 +436,11 @@ const Nav = (props) => {
                   </button>
                 </div>
                 <button
-                  onClick={() => router.push("/insights")}
+                  onClick={() => router.push("/category/insights")}
                   className="flex mr-2 text-white font-bold items-center"
                 >
-                  Insights
+                  {dataMenu !== undefined &&
+                    dataMenu.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -203,10 +449,10 @@ const Nav = (props) => {
                   />
                 </button>
                 <button
-                  onClick={() => router.push("/music")}
+                  onClick={() => router.push("/category/music")}
                   className="flex mr-2 text-white font-bold items-center"
                 >
-                  Music
+                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -248,7 +494,7 @@ const Nav = (props) => {
               </div>
             </div>
 
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
               <button
                 onClick={handleSub}
                 className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
@@ -260,40 +506,50 @@ const Nav = (props) => {
         </header>
       )}
 
-      {router.pathname === "/music" ? (
+      {name === "music" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#25AC7D" }}
         >
-          <span className="text-white font-medium">MUSIC</span>
+          <span className="text-white font-medium">
+            {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+          </span>
         </div>
-      ) : router.pathname === "/insights" ? (
+      ) : name === "Insights" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#1662D4" }}
         >
-          <span className="text-white font-medium">INSIGHTS</span>
+          <span className="text-white font-medium">
+            {dataMenu !== undefined && dataMenu.menu.header.mainMenuSecond}
+          </span>
         </div>
-      ) : router.pathname === "/jewish_news" ? (
+      ) : name === "Jewish News" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#57A0EE" }}
         >
-          <span className="text-white font-medium">JEWISH NEWS</span>
+          <span className="text-white font-medium">
+            {dataMenu !== undefined && dataMenu.menu.header.subThird}
+          </span>
         </div>
-      ) : router.pathname === "/breaking-news" ? (
+      ) : name === "Breaking News" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#ce3a42" }}
         >
-          <span className="text-white font-medium">BREAKING NEWS</span>
+          <span className="text-white font-medium">
+            {dataMenu !== undefined && dataMenu.menu.header.subFirst}
+          </span>
         </div>
-      ) : router.pathname === "/politics" ? (
+      ) : name === "Politics" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#FFA500" }}
         >
-          <span className="text-white font-medium">POLITICS</span>
+          <span className="text-white font-medium">
+            {dataMenu !== undefined && dataMenu.menu.header.subSecond}
+          </span>
         </div>
       ) : (
         <div>
@@ -304,22 +560,22 @@ const Nav = (props) => {
       {isDropdownOpen && (
         <div className="w-full bg-white font-medium inline-flex items-center md:ml-28">
           <Link
-            href="/breaking-news"
+            href="/category/breaking-news"
             className="px-4 text-gray-800 hover:bg-gray-100"
           >
-            Breaking News
+            {dataMenu !== undefined && dataMenu.menu.header.subFirst}
           </Link>
           <Link
-            href="/politics"
+            href="/category/politics"
             className="px-4 text-gray-800 hover:bg-gray-100"
           >
-            Politics
+            {dataMenu !== undefined && dataMenu.menu.header.subSecond}
           </Link>
           <Link
-            href="/jewish_news"
+            href="/category/jewish_news"
             className="px-4 text-gray-800 hover:bg-gray-100"
           >
-            Jewish News
+            {dataMenu !== undefined && dataMenu.menu.header.subThird}
           </Link>
           <button
             onClick={closeDropdown}
@@ -386,7 +642,7 @@ const Nav = (props) => {
           style={{
             position: "absolute",
             zIndex: "9999999999",
-            top: "87px",
+            top: "114px",
             left: "0px",
             background: "black",
             width: "100%",
@@ -402,31 +658,32 @@ const Nav = (props) => {
                   onClick={() => router.push("/breaking_news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Breaking News
+                  {dataMenu !== undefined && dataMenu.menu.header.subFirst}
                 </button>
                 <button
                   onClick={() => router.push("/politics")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Politics
+                  {dataMenu !== undefined && dataMenu.menu.header.subSecond}
                 </button>
                 <button
                   onClick={() => router.push("/jewish_news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Jewish News
+                  {dataMenu !== undefined && dataMenu.menu.header.subThird}
                 </button>
                 <button
                   onClick={() => router.push("/insights")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Insights
+                  {dataMenu !== undefined &&
+                    dataMenu.menu.header.mainMenuSecond}
                 </button>
                 <button
                   onClick={() => router.push("/music")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Music
+                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
                 </button>
               </div>
               <div className="flex flex-col lg:flex-col lg:items-center">
@@ -434,25 +691,111 @@ const Nav = (props) => {
                   onClick={() => router.push("/contact_us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Contact
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareFirst}
                 </button>
                 <button
                   onClick={() => router.push("/contact_us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Submit News
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareSecond}
                 </button>
                 <button
                   onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Advertise
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareThird}
                 </button>
               </div>
             </div>
             <div
               className="hidden lg:flex lg:justify-end items-end"
               style={{ height: "230px" }}
+            >
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group}
+                  alt="Whatsapp Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group1}
+                  alt="Facebook Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group2}
+                  alt="Instagram Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group3}
+                  alt="Twitter Icon"
+                />
+              </button>
+            </div>
+          </nav>
+        </header>
+      ) : router.pathname === "/about" ? (
+        <header
+          className={`bg-header transition-all duration-500 ${
+            isContactHeaderVisible
+              ? "max-h-64 opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+          style={{
+            position: "absolute",
+            zIndex: "9999999999",
+            top: "85px",
+            left: "0px",
+            width: "100%",
+          }}
+        >
+          <nav
+            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            aria-label="Global"
+          >
+            <div className="items-center">
+              <div className="flex flex-col lg:flex-col">
+                <button
+                  onClick={() => router.push("/contact_us")}
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareFirst}
+                </button>
+                <button
+                  onClick={() => router.push("/contact_us")}
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareSecond}
+                </button>
+                <button
+                  onClick={() => router.push("/advertise")}
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareThird}
+                </button>
+              </div>
+            </div>
+            <div
+              className="hidden lg:flex lg:justify-end items-end"
+              style={{ height: "150px" }}
             >
               <button onClick={closeDropdown} className="px-4 py-2">
                 <ExportedImage
@@ -499,7 +842,7 @@ const Nav = (props) => {
           style={{
             position: "absolute",
             zIndex: "9999999999",
-            top: "87px",
+            top: "140px",
             left: "0px",
             width: "100%",
           }}
@@ -514,19 +857,22 @@ const Nav = (props) => {
                   onClick={() => router.push("/contact_us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Contact
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareFirst}
                 </button>
                 <button
-                 onClick={() => router.push("/contact_us")}
+                  onClick={() => router.push("/contact_us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Submit News
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareSecond}
                 </button>
                 <button
                   onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  Advertise
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareThird}
                 </button>
               </div>
             </div>
@@ -601,4 +947,3 @@ Nav.fragments = {
 };
 
 export default Nav;
-
