@@ -19,7 +19,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           {/* Favicons, Google site verification and other common meta tags across the site. */}
-          <link rel='preconnect' href='https://fonts.gstatic.com' />
+          <link rel="icon" href="/belaazicon.ico"/>
           {/* <script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-VGJ09RD0RZ'
