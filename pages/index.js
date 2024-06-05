@@ -13,6 +13,7 @@ import Footer from "../components/Footer";
 import Excusivenews from "../components/Excusivenews";
 import Cardnews from "../components/Cardnews";
 import Nav from "../components/Nav";
+import { useRouter } from "next/router";
 
 const { publicRuntimeConfig } = getConfig();
 const { name } = publicRuntimeConfig.site;
@@ -286,13 +287,15 @@ const SkeletonLoader = () => (
 );
 
 const Home = () => {
-  const uri = "/"; // Define your URI here. This is an example for the home page.
+  const router = useRouter()
+
+  const uri = router.asPath; // Define your URI here. This is an example for the home page.
 
   const { loading, error, data } = useQuery(GET_HOME_PAGE, {
     variables: { uri }, // Pass the URI variable here
   });
 
-  console.log(data, "data home page");
+  console.log(data, "data home");
 
   if (loading) return <SkeletonLoader />;
   if (error) return <p>Error loading data: {error.message}</p>;
