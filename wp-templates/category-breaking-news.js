@@ -21,8 +21,6 @@ export default function Component(props) {
   // const htmlTitle = `${archiveType}: ${name} - ${siteTitle}`;
   const { nodeByUri, pages } = props.data;
   const router = useRouter();
-  console.log(router.asPath, "router");
-  console.log(nodeByUri, "nodeByUri");
 
   return (
     <>

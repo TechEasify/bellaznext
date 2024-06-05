@@ -46,7 +46,7 @@ function Breakingnews({ nodeByUri, loading }) {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center border-r pr-0 md:pr-5">
-              {nodeByUri.posts.nodes.length > 0 && (
+              {nodeByUri !== undefined && nodeByUri.posts.nodes.length > 0 && (
                 <>
                   <ExportedImage
                     className="mb-2"
@@ -62,10 +62,10 @@ function Breakingnews({ nodeByUri, loading }) {
                     }}
                   />
                   <p className="text-base font-bold text-red-800">
-                    {nodeByUri.name}
+                    {nodeByUri !== undefined && nodeByUri.name}
                   </p>
                   <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold">
-                    {nodeByUri.posts.nodes[0].title}
+                    {nodeByUri !== undefined && nodeByUri.posts.nodes[0].title}
                   </h1>
                   <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
                     <span
@@ -79,7 +79,7 @@ function Breakingnews({ nodeByUri, loading }) {
                       className="font-extrabold ml-1"
                       style={{ color: "#40A6FB" }}
                     >
-                      {nodeByUri.posts.nodes[0].author.node.name}
+                      {nodeByUri !== undefined && nodeByUri.posts.nodes[0].author.node.name}
                       <span
                         className="text-[20px] md:text-[25px] font-extrabold mx-1"
                         style={{ color: "#40A6FB" }}
@@ -92,7 +92,7 @@ function Breakingnews({ nodeByUri, loading }) {
                   <p
                     className="text-[13px] md:text-[15px] text-base font-normal text-gray-600 mb-3"
                     dangerouslySetInnerHTML={{
-                      __html: nodeByUri.posts.nodes[0].content,
+                      __html: nodeByUri !== undefined && nodeByUri.posts.nodes[0].content,
                     }}
                   />
                 </>
@@ -113,7 +113,7 @@ function Breakingnews({ nodeByUri, loading }) {
               UKRAINE - RUSSIA WAR
             </p>
             <h5 className="text-[13px] md:text-[15px] text-black-900 font-bold">
-              {nodeByUri.posts.nodes[1].title}
+              {nodeByUri !== undefined && nodeByUri.posts.nodes[1].title}
             </h5>
             <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
               <span
@@ -127,7 +127,7 @@ function Breakingnews({ nodeByUri, loading }) {
                 className="font-extrabold ml-1"
                 style={{ color: "#40A6FB" }}
               >
-                {nodeByUri.posts.nodes[1].author.node.name}
+                {nodeByUri !== undefined && nodeByUri.posts.nodes[1].author.node.name}
                 <span
                   className="text-[20px] md:text-[25px] font-extrabold mx-1"
                   style={{ color: "#40A6FB" }}
@@ -140,7 +140,7 @@ function Breakingnews({ nodeByUri, loading }) {
             <p
               className="text-[13px] md:text-[15px] text-base font-normal text-gray-600 mb-3"
               dangerouslySetInnerHTML={{
-                __html: nodeByUri.posts.nodes[1].content,
+                __html: nodeByUri !== undefined && nodeByUri.posts.nodes[1].content,
               }}
             />
           </div>

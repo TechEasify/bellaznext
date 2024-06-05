@@ -655,32 +655,32 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             <div className="items-center flex">
               <div className="flex flex-col lg:flex-col mr-5">
                 <button
-                  onClick={() => router.push("/breaking_news")}
+                  onClick={() => router.push("/category/breaking-news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subFirst}
                 </button>
                 <button
-                  onClick={() => router.push("/politics")}
+                  onClick={() => router.push("/category/politics")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subSecond}
                 </button>
                 <button
-                  onClick={() => router.push("/jewish_news")}
+                  onClick={() => router.push("/category/jewish_news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subThird}
                 </button>
                 <button
-                  onClick={() => router.push("/insights")}
+                  onClick={() => router.push("/category/insights")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined &&
                     dataMenu.menu.header.mainMenuSecond}
                 </button>
                 <button
-                  onClick={() => router.push("/music")}
+                  onClick={() => router.push("/category/music")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
@@ -688,14 +688,14 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
               </div>
               <div className="flex flex-col lg:flex-col lg:items-center">
                 <button
-                  onClick={() => router.push("/contact_us")}
+                  onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareFirst}
                 </button>
                 <button
-                  onClick={() => router.push("/contact_us")}
+                  onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
@@ -771,14 +771,14 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
                 <button
-                  onClick={() => router.push("/contact_us")}
+                  onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareFirst}
                 </button>
                 <button
-                  onClick={() => router.push("/contact_us")}
+                  onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
@@ -854,14 +854,14 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
                 <button
-                  onClick={() => router.push("/contact_us")}
+                  onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareFirst}
                 </button>
                 <button
-                  onClick={() => router.push("/contact_us")}
+                  onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
