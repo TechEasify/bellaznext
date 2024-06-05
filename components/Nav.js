@@ -168,11 +168,6 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
     data: dataIcon,
   } = useQuery(GET_ICON_SECTION);
 
-  console.log(dataNav, "data nav");
-  console.log(dataMenu, "menu");
-  console.log(datasubMenu, "datasubMenu");
-  console.log(dataIcon, "dataIcon");
-
   const router = useRouter();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownSearch, setIsDropdownSearch] = useState(false);
