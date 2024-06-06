@@ -19,7 +19,7 @@ import Footer from "../../components/Footer";
 const Insight = () => {
   return (
     <>
-      {/* <Nav /> */}
+      <Nav />
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
@@ -349,7 +349,7 @@ const Insight = () => {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };

@@ -142,12 +142,5 @@ Component.query = gql`
         }
       }
     }
-    pages {
-      nodes {
-        id
-        title
-        uri
-      }
-    }
   }
 `;

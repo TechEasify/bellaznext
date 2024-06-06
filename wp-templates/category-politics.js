@@ -5,11 +5,7 @@ import { useEffect } from "react";
 import EntryHeader from "../components/entry-header";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Breakingnews from "../pages/breaking-news";
-import Insight from "../pages/insights";
-import Jewishnews from "../pages/jewish-news";
 import Politics from "../pages/politics";
-import Music from "../pages/music";
 import { useRouter } from "next/router";
 
 export default function Component(props) {

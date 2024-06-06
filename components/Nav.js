@@ -169,6 +169,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
   } = useQuery(GET_ICON_SECTION);
 
   const router = useRouter();
+  console.log(router.asPath, "router");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownSearch, setIsDropdownSearch] = useState(false);
   const [isContactHeaderVisible, setContactHeaderVisible] = useState(false);
@@ -510,7 +511,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
           </span>
         </div>
-      ) : name === "Insights" ? (
+      ) : name === "Insights" || router.asPath === "/insights/" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#1662D4" }}
@@ -519,7 +520,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.mainMenuSecond}
           </span>
         </div>
-      ) : name === "Jewish News" ? (
+      ) : name === "Jewish News" || router.asPath === "/jewish-news/" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#57A0EE" }}
@@ -528,7 +529,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.subThird}
           </span>
         </div>
-      ) : name === "Breaking News" ? (
+      ) : name === "Breaking News" || router.asPath === "/breaking-news/" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#ce3a42" }}
@@ -537,7 +538,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.subFirst}
           </span>
         </div>
-      ) : name === "Politics" ? (
+      ) : name === "Politics" || router.asPath === "/politics/" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#FFA500" }}

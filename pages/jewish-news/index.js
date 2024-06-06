@@ -10,7 +10,7 @@ import News from "../../components/News/News";
 function Jewishnews() {
   return (
     <>
-      {/* <Nav /> */}
+      <Nav />
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
@@ -108,7 +108,7 @@ function Jewishnews() {
         </div>
       </div>
       <News />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

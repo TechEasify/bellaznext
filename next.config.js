@@ -1,4 +1,5 @@
 module.exports = {
+  output: 'export',
   images: {
     loader: "custom",
     // imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -28,5 +29,4 @@ module.exports = {
   },
   swcMinify: true,
   trailingSlash: true,
-  skipTrailingSlashRedirect: true,
 };
