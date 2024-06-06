@@ -338,7 +338,7 @@ function Index() {
                 color: "transparent",
                 height: "auto",
                 position: "absolute",
-                top: "18%",
+                top: "21%",
               }}
             />
           </div>

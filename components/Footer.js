@@ -168,15 +168,15 @@ const Footer = () => {
                     <li className="mb-4">
                       <Link href="/advertise" className="hover:underline">
                         {dataCompany !== undefined &&
-                          dataCompany.menu.footer.companySecond}
+                          dataCompany.menu.footer.companyThird}
                       </Link>
                     </li>
-                    <li className="mb-4">
+                    {/* <li className="mb-4">
                       <Link href="/contact-us" className="hover:underline">
                         {dataCompany !== undefined &&
                           dataCompany.menu.footer.companyThird}
                       </Link>
-                    </li>
+                    </li> */}
                     <li className="mb-4">
                       <a href="#" className="hover:underline">
                         {dataCompany !== undefined &&

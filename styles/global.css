@@ -160,3 +160,11 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md
   background: #002D73;
   color: #fff !important;
 }
+
+.bg-change {
+border-color: rgb(255, 165, 0) !important;
+}
+
+.bg-change1 {
+  border-color: rgb(87, 160, 238) !important;
+  }
