@@ -561,49 +561,69 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
       )}
 
       {isDropdownOpen && (
-       <div className="w-full bg-white font-medium inline-flex items-center md:ml-28">
-       <div className="flex flex-col items-center">
-         <Link
-           href="/breaking-news"
-           className={`px-4 text-gray-800 hover:bg-gray-100 ${activeLink === "/breaking-news" ? "border-b-2 border-red-600" : ""}`}
-           onClick={() => handleLinkClick("/breaking-news")}
-         >
-           {dataMenu !== undefined && dataMenu.menu.header.subFirst}
-         </Link>
-         {activeLink === "/breaking-news" && <hr className="w-full border-red-600" />}
-       </div>
-       <div className="flex flex-col items-center">
-         <Link
-           href="/politics"
-           className={`px-4 text-gray-800 hover:bg-gray-100 ${activeLink === "/politics" ? `border-b-2 bg-change` : ""}`}
-           onClick={() => handleLinkClick("/politics")}
-         >
-           {dataMenu !== undefined && dataMenu.menu.header.subSecond}
-         </Link>
-         {activeLink === "/politics" && <hr className="w-full" style={{ background: "rgb(255, 165, 0)" }} />}
-       </div>
-       <div className="flex flex-col items-center">
-         <Link
-           href="/jewish-news"
-           className={`px-4 text-gray-800 hover:bg-gray-100 ${activeLink === "/jewish-news" ? "border-b-2 bg-change1" : ""}`}
-           onClick={() => handleLinkClick("/jewish-news")}
-         >
-           {dataMenu !== undefined && dataMenu.menu.header.subThird}
-         </Link>
-         {activeLink === "/jewish-news" && <hr className="w-full" style={{ background: "rgb(87, 160, 238)" }} />}
-       </div>
-       <button
-         onClick={() => setActiveLink(null)}
-         className="px-4 py-2 text-gray-800 hover:bg-gray-100"
-       >
-         <ExportedImage
-           priority={true}
-           className="h-4 w-4 mx-2"
-           src={Closeicon}
-           alt="Close Icon"
-         />
-       </button>
-     </div>
+        <div className="w-full bg-white font-medium inline-flex items-center md:ml-28">
+          <div className="flex flex-col items-center">
+            <Link
+              href="/breaking-news"
+              className={`px-4 text-gray-800 hover:bg-gray-100 ${
+                activeLink === "/breaking-news"
+                  ? "border-b-2 border-red-600"
+                  : ""
+              }`}
+              onClick={() => handleLinkClick("/breaking-news")}
+            >
+              {dataMenu !== undefined && dataMenu.menu.header.subFirst}
+            </Link>
+            {activeLink === "/breaking-news" && (
+              <hr className="w-full border-red-600" />
+            )}
+          </div>
+          <div className="flex flex-col items-center">
+            <Link
+              href="/politics"
+              className={`px-4 text-gray-800 hover:bg-gray-100 ${
+                activeLink === "/politics" || router.asPath === "/politics"
+                  ? `border-b-2 bg-change`
+                  : ""
+              }`}
+              onClick={() => handleLinkClick("/politics")}
+            >
+              {dataMenu !== undefined && dataMenu.menu.header.subSecond}
+            </Link>
+            {activeLink === "/politics" && router.asPath === "/politics" && (
+              <hr className="w-full bg-change" />
+            )}
+          </div>
+          <div className="flex flex-col items-center">
+            <Link
+              href="/jewish-news"
+              className={`px-4 text-gray-800 hover:bg-gray-100 ${
+                activeLink === "/jewish-news" ||
+                router.asPath === "/jewish-news"
+                  ? "border-b-2 bg-change1"
+                  : ""
+              }`}
+              onClick={() => handleLinkClick("/jewish-news")}
+            >
+              {dataMenu !== undefined && dataMenu.menu.header.subThird}
+            </Link>
+            {activeLink === "/jewish-news" &&
+              router.asPath === "/jewish-news" && (
+                <hr className="w-full bg-change1" />
+              )}
+          </div>
+          <button
+            onClick={() => setDropdownOpen(false)}
+            className="px-4 py-2 text-gray-800 hover:bg-gray-100"
+          >
+            <ExportedImage
+              priority={true}
+              className="h-4 w-4 mx-2"
+              src={Closeicon}
+              alt="Close Icon"
+            />
+          </button>
+        </div>
       )}
 
       {isDropdownSearch && (
