@@ -18,6 +18,122 @@ import { useRouter } from "next/router";
 const { publicRuntimeConfig } = getConfig();
 const { name } = publicRuntimeConfig.site;
 
+// const GET_HOME_PAGE = gql`
+//   query GetNodeByUriAndHomePage($uri: String!, $id: ID = "745") {
+//     node: nodeByUri(uri: $uri) {
+//       ...NodeByUri
+//     }
+//     page(id: $id, idType: DATABASE_ID) {
+//       homePage {
+//         heroSection {
+//           heroPostCategory {
+//             nodes {
+//               ... on Category {
+//                 posts {
+//                   nodes {
+//                     categories {
+//                       nodes {
+//                         name
+//                       }
+//                     }
+//                     title
+//                     content
+//                     author {
+//                       node {
+//                         name
+//                       }
+//                     }
+//                     featuredImage {
+//                       node {
+//                         altText
+//                         srcSet
+//                         slug
+//                       }
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           heroSidebarPosts {
+//             nodes {
+//               ... on Category {
+//                 name
+//                 posts {
+//                   nodes {
+//                     categories {
+//                       nodes {
+//                         name
+//                       }
+//                     }
+//                     featuredImage {
+//                       node {
+//                         srcSet
+//                         slug
+//                       }
+//                     }
+//                     title
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+//   fragment NodeByUri on UniformResourceIdentifiable {
+//     __typename
+//     uri
+//     id
+//     ...DatabaseIdentifier
+//     ...ContentType
+//     ...User
+//     ...TermNode
+//     ...ContentNode
+//     ...MediaItem
+//     ...Page
+//   }
+//   fragment DatabaseIdentifier on DatabaseIdentifier {
+//     databaseId
+//   }
+//   fragment MediaItem on MediaItem {
+//     id
+//     mimeType
+//   }
+//   fragment ContentType on ContentType {
+//     name
+//     isFrontPage
+//     isPostsPage
+//   }
+//   fragment Page on Page {
+//     isFrontPage
+//     isPostsPage
+//   }
+//   fragment TermNode on TermNode {
+//     isTermNode
+//     slug
+//     taxonomyName
+//   }
+//   fragment ContentNode on ContentNode {
+//     isContentNode
+//     slug
+//     contentType {
+//       node {
+//         name
+//       }
+//     }
+//     template {
+//       templateName
+//     }
+//   }
+//   fragment User on User {
+//     name
+//     userId
+//     databaseId
+//   }
+// `;
+
 const GET_HOME_PAGE = gql`
 query GetNodeByUriAndHomePage($id: ID = "745") {
   page(id: $id, idType: DATABASE_ID) {
@@ -31,37 +147,26 @@ query GetNodeByUriAndHomePage($id: ID = "745") {
                   categories {
                     nodes {
                       name
-                      __typename
                     }
-                    __typename
                   }
                   title
                   content
                   author {
                     node {
                       name
-                      __typename
                     }
-                    __typename
                   }
                   featuredImage {
                     node {
                       altText
                       srcSet
                       slug
-                      __typename
                     }
-                    __typename
                   }
-                  __typename
                 }
-                __typename
               }
-              __typename
             }
-            __typename
           }
-          __typename
         }
         heroSidebarPosts {
           nodes {
@@ -72,34 +177,22 @@ query GetNodeByUriAndHomePage($id: ID = "745") {
                   categories {
                     nodes {
                       name
-                      __typename
                     }
-                    __typename
                   }
                   featuredImage {
                     node {
                       srcSet
                       slug
-                      __typename
                     }
-                    __typename
                   }
                   title
-                  __typename
                 }
-                __typename
               }
-              __typename
             }
-            __typename
           }
-          __typename
         }
-        __typename
       }
-      __typename
     }
-    __typename
   }
 }
 `;
@@ -259,11 +352,9 @@ const SkeletonLoader = () => (
 const Home = () => {
   const router = useRouter()
 
-  const uri = router.asPath; // Define your URI here. This is an example for the home page.
+  // const uri = router.asPath; // Define your URI here. This is an example for the home page.
 
-  const { loading, error, data } = useQuery(GET_HOME_PAGE, {
-    variables: { uri }, // Pass the URI variable here
-  });
+  const { loading, error, data } = useQuery(GET_HOME_PAGE);
 
   console.log(data, "data home");
 

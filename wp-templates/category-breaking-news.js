@@ -13,13 +13,15 @@ import Music from "../pages/music";
 import { useRouter } from "next/router";
 
 export default function Component(props) {
-  console.log(props, "props");
+  console.log(props, "props breaking news");
   // const { title: siteTitle, description: siteDescription } =
   //   props.data.generalSettings;
   // const menuItems = props.data.primaryMenuItems.nodes;
   const { archiveType, name, posts } = props.data.nodeByUri;
+  console.log(posts, "posts");
   // const htmlTitle = `${archiveType}: ${name} - ${siteTitle}`;
-  const { nodeByUri, pages } = props.data;
+  const { nodeByUri, pages } = props.data || {};
+  console.log(pages, "pages");
   const router = useRouter();
 
   return (
@@ -37,33 +39,20 @@ export default function Component(props) {
       />
 
       <main>
-        {
-          router.asPath === "/category/breaking-news" && nodeByUri !== undefined ?
-          <Breakingnews nodeByUri={nodeByUri} loading={props.loading}/>
-          :
-          console.log("false")
-        }
-        {/* {name === "Breaking News" ? (
-          <Breakingnews posts={posts} pages={pages} />
-        ) : name === "Insights" ? (
-          <Insight />
-        ) : name === "Jewish News" ? (
-          <Jewishnews />
-        ) : name === "Music" ? (
-          <Music />
-        ) : name === "Politics" ? (
-          <Politics />
+        {router.asPath === "/category/breaking-news" &&
+        nodeByUri !== undefined ? (
+          <Breakingnews nodeByUri={nodeByUri} loading={props.loading} />
         ) : (
-          <></>
-        )} */}
+          console.log("false")
+        )}
         <ul>
-          {/* {posts.nodes.map((post) =>
-            post.uri ? (
+          {posts.nodes.map((post) =>
+            post.link ? (
               <li key={post.id}>
-                <Link href={post.uri}>{post.title}</Link>
+                <Link href={post.link}>{post.title}</Link>
               </li>
             ) : null
-          )} */}
+          )}
         </ul>
       </main>
 
@@ -73,6 +62,7 @@ export default function Component(props) {
 }
 
 Component.variables = (seedQuery, ctx) => {
+  console.log(seedQuery, "seedQuery");
   return {
     uri: seedQuery.uri,
   };
@@ -100,6 +90,9 @@ Component.query = gql`
               }
             }
             excerpt
+            link
+            slug
+            id
           }
         }
         categoryTamplate {
@@ -146,6 +139,13 @@ Component.query = gql`
             uri
           }
         }
+      }
+    }
+    pages {
+      nodes {
+        id
+        title
+        uri
       }
     }
   }
