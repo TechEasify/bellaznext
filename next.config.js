@@ -22,8 +22,8 @@ module.exports = {
       name: "Next.js + Tailwind CSS template",
       url:
         process.env.NODE_ENV === "development"
-          ? "http://localhost:3001"
-          : "https://manipal.iihtsrt.com/",
+          ? "http://localhost:3000"
+          : "https://bellaznews.netlify.app/",
     },
   },
   swcMinify: true
