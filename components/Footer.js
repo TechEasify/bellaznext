@@ -100,9 +100,9 @@ const Footer = () => {
     data: dataSocial,
   } = useQuery(GET_SOCIALLINK_PAGE);
 
-  console.log(dataSocial, "dataSocial");
-  console.log(dataCompany, "dataCompany");
-  console.log(dataFooter, "data footer");
+  console.log(dataSocial === undefined ? loadingSocial : dataSocial, "dataSocial");
+  console.log(dataCompany === undefined ? loadingCompany : dataCompany, "dataCompany");
+  console.log(dataFooter === undefined ? loadingFooter : dataFooter, "data footer");
   return (
     <div className="footer bg-gray-800 text-white">
       <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">

@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 
 export default function Component(props) {
   console.log(props, "props breaking news");
+  console.log(props.__TEMPLATE_VARIABLES__.uri);
   // const { title: siteTitle, description: siteDescription } =
   //   props.data.generalSettings;
   // const menuItems = props.data.primaryMenuItems.nodes;
@@ -39,8 +40,8 @@ export default function Component(props) {
       />
 
       <main>
-        {router.asPath === "/category/breaking-news" &&
-        nodeByUri !== undefined ? (
+        {props.__TEMPLATE_VARIABLES__.uri === "/category/breaking-news/" &&
+        nodeByUri === undefined ? <p>...Loading</p> : nodeByUri !== undefined ? (
           <Breakingnews nodeByUri={nodeByUri} loading={props.loading} />
         ) : (
           console.log("false")
