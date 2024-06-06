@@ -827,6 +827,89 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             </div>
           </nav>
         </header>
+      ) : router.pathname === "/contact-us" ? (
+        <header
+          className={`bg-header transition-all duration-500 ${
+            isContactHeaderVisible
+              ? "max-h-64 opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+          style={{
+            position: "absolute",
+            zIndex: "9999999999",
+            top: "85px",
+            left: "0px",
+            width: "100%",
+          }}
+        >
+          <nav
+            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            aria-label="Global"
+          >
+            <div className="items-center">
+              <div className="flex flex-col lg:flex-col">
+                <button
+                  onClick={() => router.push("/contact-us")}
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareFirst}
+                </button>
+                <button
+                  onClick={() => router.push("/contact-us")}
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareSecond}
+                </button>
+                <button
+                  onClick={() => router.push("/advertise")}
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu.menu.header.foreSquareThird}
+                </button>
+              </div>
+            </div>
+            <div
+              className="hidden lg:flex lg:justify-end items-end"
+              style={{ height: "150px" }}
+            >
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group}
+                  alt="Whatsapp Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group1}
+                  alt="Facebook Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group2}
+                  alt="Instagram Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group3}
+                  alt="Twitter Icon"
+                />
+              </button>
+            </div>
+          </nav>
+        </header>
       ) : (
         <header
           className={`bg-header transition-all duration-500 ${
