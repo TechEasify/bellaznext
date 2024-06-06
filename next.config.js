@@ -26,5 +26,7 @@ module.exports = {
           : "https://bellaznews.netlify.app/",
     },
   },
-  swcMinify: true
+  swcMinify: true,
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
 };
