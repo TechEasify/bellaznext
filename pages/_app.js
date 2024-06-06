@@ -7,6 +7,7 @@ import * as ga from "../lib/ga/index";
 import { FaustProvider } from "@faustwp/core";
 
 const App = ({ Component, pageProps }) => {
+  console.log(pageProps, "pageProps");
   const router = useRouter();
 
   useEffect(() => {
