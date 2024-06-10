@@ -12,19 +12,26 @@ import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
 import Newscard from "./Newscard";
 
-const News = () => {
+const News = ({ categoryTamplate }) => {
+  console.log(categoryTamplate.simpleTamplate, "categoryTamplate");
   return (
     <>
       <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
         <ExportedImage
-            style={{ margin: "0 auto" }}
-            priority={true}
-            src={Screenshot1}
-            alt={Screenshot1}
-            width={550}
-            height={157}
-            placeholder='blur'
-          />
+          style={{ margin: "0 auto" }}
+          priority={true}
+          src={
+            categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+              ?.simpleAdImage?.node?.srcSet || ""
+          }
+          alt={
+            categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+              ?.simpleAdImage?.node?.srcSet || ""
+          }
+          width={550}
+          height={157}
+          placeholder="blur"
+        />
       </div>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
@@ -225,8 +232,14 @@ const News = () => {
             <ExportedImage
               className="mb-2 w-full h-auto max-h-96"
               priority={true}
-              src={Rectangle367}
-              alt="Rectangle367"
+              src={
+                categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
+                  ?.allSidebarAdImage?.node?.srcSet || ""
+              }
+              alt={
+                categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
+                  ?.allSidebarAdImage?.node?.srcSet || ""
+              }
               width={297}
               height={503}
               style={{ width: "100%", height: "auto", maxHeight: "500px" }}

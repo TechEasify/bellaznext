@@ -146,28 +146,35 @@ const GET_ICON_SECTION = gql`
   }
 `;
 
-const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) => {
+const Nav = ({
+  siteTitle,
+  siteDescription,
+  menuItems,
+  archiveType,
+  name,
+  uri,
+}) => {
   const {
     loading: loadingNav,
     error: errorNav,
     data: dataNav,
-  } = useQuery(GET_NAV_SECTION, { fetchPolicy: 'cache-first' });
+  } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
   console.log(dataNav);
   const {
     loading: loadingMenu,
     error: errorMenu,
     data: dataMenu,
-  } = useQuery(GET_MENU_SECTION, { fetchPolicy: 'cache-first' });
+  } = useQuery(GET_MENU_SECTION, { fetchPolicy: "cache-first" });
   const {
     loading: loadingsubMenu,
     error: errorsubMenu,
     data: datasubMenu,
-  } = useQuery(GET_SUBMENU_SECTION, { fetchPolicy: 'cache-first' });
+  } = useQuery(GET_SUBMENU_SECTION, { fetchPolicy: "cache-first" });
   const {
     loading: loadingIcon,
     error: errorIcon,
     data: dataIcon,
-  } = useQuery(GET_ICON_SECTION, { fetchPolicy: 'cache-first' });
+  } = useQuery(GET_ICON_SECTION, { fetchPolicy: "cache-first" });
 
   const router = useRouter();
   console.log(router.asPath, "router");
@@ -281,12 +288,9 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
                   alt="BELAAZICON"
                 />
               </Link>
-              <button
-                onClick={() => router.push("/")}
-                className="flex text-white font-bold"
-              >
+              <Link href="/" className="flex text-white font-bold">
                 Home
-              </button>
+              </Link>
             </div>
 
             <div className="flex lg:flex-1 justify-end">
@@ -438,8 +442,9 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
                     />
                   </button>
                 </div>
-                <button
-                  onClick={() => router.push("/category/insights")}
+                <Link
+                  href="/category/insights"
+                  // onClick={() => router.push("/category/insights")}
                   className="flex mr-2 text-white font-bold items-center"
                 >
                   {dataMenu !== undefined &&
@@ -450,9 +455,10 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
                     src={Vector}
                     alt="Dropdown Icon"
                   />
-                </button>
-                <button
-                  onClick={() => router.push("/category/music")}
+                </Link>
+                <Link
+                href="/category/music"
+                  // onClick={() => router.push("/category/music")}
                   className="flex mr-2 text-white font-bold items-center"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
@@ -462,7 +468,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
                     src={Vector2}
                     alt="Dropdown Icon"
                   />
-                </button>
+                </Link>
                 <button
                   onClick={toggleContactHeader}
                   className="flex mr-2 text-white font-bold items-center"
@@ -527,7 +533,8 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
             {dataMenu !== undefined && dataMenu.menu.header.mainMenuSecond}
           </span>
         </div>
-      ) : name === "Jewish News" || router.asPath === "/category/jewish-news" ? (
+      ) : name === "Jewish News" ||
+        router.asPath === "/category/jewish-news" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#57A0EE" }}
@@ -536,7 +543,8 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
             {dataMenu !== undefined && dataMenu.menu.header.subThird}
           </span>
         </div>
-      ) : name === "Breaking News" || router.asPath === "/category/breaking-news" ? (
+      ) : name === "Breaking News" ||
+        router.asPath === "/category/breaking-news" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#ce3a42" }}
@@ -582,7 +590,8 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
             <Link
               href="/category/politics"
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === "/category/politics" || router.asPath === "/category/politics"
+                activeLink === "/category/politics" ||
+                router.asPath === "/category/politics"
                   ? `border-b-2 bg-change`
                   : ""
               }`}
@@ -590,9 +599,10 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
             >
               {dataMenu !== undefined && dataMenu.menu.header.subSecond}
             </Link>
-            {activeLink === "/category/politics" && router.asPath === "/category/politics" && (
-              <hr className="w-full bg-change" />
-            )}
+            {activeLink === "/category/politics" &&
+              router.asPath === "/category/politics" && (
+                <hr className="w-full bg-change" />
+              )}
           </div>
           <div className="flex flex-col items-center">
             <Link
@@ -689,60 +699,68 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
           >
             <div className="items-center flex">
               <div className="flex flex-col lg:flex-col mr-5">
-                <button
-                  onClick={() => router.push("/category/breaking-news")}
+                <Link
+                href="/category/breaking-news"
+                  // onClick={() => router.push("/category/breaking-news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subFirst}
-                </button>
-                <button
-                  onClick={() => router.push("/category/politics")}
+                </Link>
+                <Link
+                href="/category/politics"
+                  // onClick={() => router.push("/category/politics")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subSecond}
-                </button>
-                <button
-                  onClick={() => router.push("/category/jewish_news")}
+                </Link>
+                <Link
+                href="/category/jewish_news"
+                  // onClick={() => router.push("/category/jewish_news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subThird}
-                </button>
-                <button
-                  onClick={() => router.push("/category/insights")}
+                </Link>
+                <Link
+                href="/category/insights"
+                  // onClick={() => router.push("/category/insights")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined &&
                     dataMenu.menu.header.mainMenuSecond}
-                </button>
-                <button
-                  onClick={() => router.push("/category/music")}
+                </Link>
+                <Link
+                href="/category/music"
+                  // onClick={() => router.push("/category/music")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
-                </button>
+                </Link>
               </div>
               <div className="flex flex-col lg:flex-col lg:items-center">
-                <button
-                  onClick={() => router.push("/contact-us")}
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareFirst}
-                </button>
-                <button
-                  onClick={() => router.push("/contact-us")}
+                </Link>
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareSecond}
-                </button>
-                <button
-                  onClick={() => router.push("/advertise")}
+                </Link>
+                <Link
+                href="/advertise"
+                  // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareThird}
-                </button>
+                </Link>
               </div>
             </div>
             <div
@@ -805,27 +823,30 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
           >
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
-                <button
-                  onClick={() => router.push("/contact-us")}
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareFirst}
-                </button>
-                <button
-                  onClick={() => router.push("/contact-us")}
+                </Link>
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareSecond}
-                </button>
-                <button
-                  onClick={() => router.push("/advertise")}
+                </Link>
+                <Link
+                href="/advertise"
+                  // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareThird}
-                </button>
+                </Link>
               </div>
             </div>
             <div
@@ -888,27 +909,30 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
           >
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
-                <button
-                  onClick={() => router.push("/contact-us")}
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareFirst}
-                </button>
-                <button
-                  onClick={() => router.push("/contact-us")}
+                </Link>
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareSecond}
-                </button>
-                <button
-                  onClick={() => router.push("/advertise")}
+                </Link>
+                <Link
+                href="/advertise"
+                  // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareThird}
-                </button>
+                </Link>
               </div>
             </div>
             <div
@@ -971,27 +995,30 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
           >
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
-                <button
-                  onClick={() => router.push("/contact-us")}
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareFirst}
-                </button>
-                <button
-                  onClick={() => router.push("/contact-us")}
+                </Link>
+                <Link
+                href="/contact-us"
+                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareSecond}
-                </button>
-                <button
-                  onClick={() => router.push("/advertise")}
+                </Link>
+                <Link
+                href="/advertise"
+                  // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu.menu.header.foreSquareThird}
-                </button>
+                </Link>
               </div>
             </div>
             <div
