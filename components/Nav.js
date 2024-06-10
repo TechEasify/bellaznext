@@ -439,7 +439,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
                   </button>
                 </div>
                 <button
-                  onClick={() => router.push("/insights")}
+                  onClick={() => router.push("/category/insights")}
                   className="flex mr-2 text-white font-bold items-center"
                 >
                   {dataMenu !== undefined &&
@@ -452,7 +452,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) 
                   />
                 </button>
                 <button
-                  onClick={() => router.push("/music")}
+                  onClick={() => router.push("/category/music")}
                   className="flex mr-2 text-white font-bold items-center"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
