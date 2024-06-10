@@ -1,34 +1,34 @@
 import React from "react";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
-import Screenshot2024 from "../../public/images/Screenshot2024.svg";
-import vladimir from "../../public/images/221109vladimir.svg";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import Screenshot2024 from "../public/images/Screenshot2024.svg";
+import vladimir from "../public/images/221109vladimir.svg";
 import ExportedImage from "next-image-export-optimizer";
-import News from "../../components/News/News";
-import colinlloyd from "../../public/images/colinlloyd.svg";
-import anaflavia from "../../public/images/anaflavia.svg";
-import Frame220 from "../../public/images/Frame220.svg";
-import anaflavia2 from "../../public/images/anaflavia2.svg";
-import sidepost from "../../public/images/sidepost.svg";
-import Group from "../../public/images/Group.svg";
-import Group1 from "../../public/images/Group (1).svg";
-import Group2 from "../../public/images/Group (2).svg";
-import Group3 from "../../public/images/Group (3).svg";
-import Group4 from "../../public/images/Group4.svg";
-import Frame208 from "../../public/images/Frame208.svg";
-import Frame209 from "../../public/images/Frame209.svg";
-import mikevon1 from "../../public/images/mikevon1.svg";
-import iphone from "../../public/images/iphone.svg";
-import threeByTwoSmall from "../../public/images/threeByTwoSmall.svg";
-import GettyImages1 from "../../public/images/GettyImages1.svg";
-import Fame216 from "../../public/images/Fame216.svg";
-import jeuol4a_prince1 from "../../public/images/jeuol4a_prince1.svg";
-import Musicpage from "../../components/Music/Musicpage";
+import News from "./News/News";
+import colinlloyd from "../public/images/colinlloyd.svg";
+import anaflavia from "../public/images/anaflavia.svg";
+import Frame220 from "../public/images/Frame220.svg";
+import anaflavia2 from "../public/images/anaflavia2.svg";
+import sidepost from "../public/images/sidepost.svg";
+import Group from "../public/images/Group.svg";
+import Group1 from "../public/images/Group (1).svg";
+import Group2 from "../public/images/Group (2).svg";
+import Group3 from "../public/images/Group (3).svg";
+import Group4 from "../public/images/Group4.svg";
+import Frame208 from "../public/images/Frame208.svg";
+import Frame209 from "../public/images/Frame209.svg";
+import mikevon1 from "../public/images/mikevon1.svg";
+import iphone from "../public/images/iphone.svg";
+import threeByTwoSmall from "../public/images/threeByTwoSmall.svg";
+import GettyImages1 from "../public/images/GettyImages1.svg";
+import Fame216 from "../public/images/Fame216.svg";
+import jeuol4a_prince1 from "../public/images/jeuol4a_prince1.svg";
+import Musicpage from "./Music/Musicpage";
 
 function Music() {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_900px] gap-6">
           <div className="w-full max-w-3xl mx-auto">
@@ -355,7 +355,7 @@ function Music() {
         </div>
       </div>
       <Musicpage />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

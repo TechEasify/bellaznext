@@ -9,6 +9,7 @@ import Link from "next/link";
 import Insight from "../../components/Insight";
 import Jewishnews from "../../components/jewish-news";
 import Politics from "../../components/politics";
+import Music from "../../components/categoryMusic";
 
 // Define your CATEGORY_QUERY here
 const CATEGORY_QUERY = gql`
@@ -73,6 +74,8 @@ const CategoryPage = () => {
             <Jewishnews nodeByUri={nodeByUri} loading={loading} />
           ) : router.asPath === "/category/politics" && nodeByUri !== undefined ? (
             <Politics nodeByUri={nodeByUri} loading={loading} />
+          ) : router.asPath === "/category/music" && nodeByUri !== undefined ? (
+            <Music nodeByUri={nodeByUri} loading={loading} />
           ) : (
           <ul>
             {nodeByUri.posts.nodes.map((post) =>

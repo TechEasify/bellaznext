@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import EntryHeader from "../components/entry-header";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Music from "../pages/music";
 import { useRouter } from "next/router";
+import Music from "../components/categoryMusic";
 
 export default function Component(props) {
   console.log(props, "props");
@@ -34,24 +34,11 @@ export default function Component(props) {
 
       <main>
         {
-          router.asPath === "/category/music" ?
-          <Music nodeByUri={nodeByUri} loading={props.loading}/>
+          router.asPath === "/category/music" && props.data.nodeByUri ?
+          console.log("true")
           :
           console.log("false")
         }
-        {/* {name === "Breaking News" ? (
-          <Breakingnews posts={posts} pages={pages} />
-        ) : name === "Insights" ? (
-          <Insight />
-        ) : name === "Jewish News" ? (
-          <Jewishnews />
-        ) : name === "Music" ? (
-          <Music />
-        ) : name === "Politics" ? (
-          <Politics />
-        ) : (
-          <></>
-        )} */}
         <ul>
           {/* {posts.nodes.map((post) =>
             post.uri ? (
