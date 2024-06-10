@@ -1,16 +1,16 @@
 import React from "react";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
-import pexels_cottonbro_studio from "../../public/images/pexels_cottonbro_studio.svg";
-import Screenshot2024 from "../../public/images/Screenshot2024.svg";
-import clay_banks from "../../public/images/clay_banks.svg";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import pexels_cottonbro_studio from "../public/images/pexels_cottonbro_studio.svg";
+import Screenshot2024 from "../public/images/Screenshot2024.svg";
+import clay_banks from "../public/images/clay_banks.svg";
 import ExportedImage from "next-image-export-optimizer";
-import News from "../../components/News/News";
+import News from "./News/News";
 
 function Jewishnews() {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
@@ -108,7 +108,7 @@ function Jewishnews() {
         </div>
       </div>
       <News />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -5,8 +5,9 @@ import { useEffect } from "react";
 import EntryHeader from "../components/entry-header";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Jewishnews from "../pages/jewish-news";
 import { useRouter } from "next/router";
+import { CATEGORY_QUERY } from "../lib/ga/queries";
+import Jewishnews from "../components/jewish-news";
 
 export default function Component(props) {
   console.log(props, "props");
@@ -33,25 +34,19 @@ export default function Component(props) {
       />
 
       <main>
-        {
-          router.asPath === "/category/jewish-news" ?
-          <Jewishnews />
-          :
-          console.log("false")
-        }
-        {/* {name === "Breaking News" ? (
-          <Breakingnews posts={posts} pages={pages} />
-        ) : name === "Insights" ? (
-          <Insight />
-        ) : name === "Jewish News" ? (
-          <Jewishnews />
-        ) : name === "Music" ? (
-          <Music />
-        ) : name === "Politics" ? (
-          <Politics />
+        {router.asPath === "/category/jewish-news" && props.data.nodeByUri ? (
+          <Jewishnews nodeByUri={nodeByUri} loading={props.loading} />
         ) : (
-          <></>
-        )} */}
+          <ul>
+            {posts.nodes.map((post) =>
+              post.link ? (
+                <li key={post.id}>
+                  <Link href={post.link}>{post.title}</Link>
+                </li>
+              ) : null
+            )}
+          </ul>
+        )}
         <ul>
           {/* {posts.nodes.map((post) =>
             post.uri ? (
@@ -74,55 +69,4 @@ Component.variables = (seedQuery, ctx) => {
   };
 };
 
-Component.query = gql`
-  query GetArchive($uri: String!) {
-    nodeByUri(uri: $uri) {
-      archiveType: __typename
-      ... on Category {
-        name
-        posts {
-          nodes {
-            featuredImage {
-              node {
-                altText
-                srcSet
-              }
-            }
-            title
-            content
-            author {
-              node {
-                name
-              }
-            }
-            excerpt
-          }
-        }
-        categoryTamplate {
-          insightTamplate {
-            insightTitleBackgroundColor
-            insightSidebarAdvertisementImage {
-              sidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                }
-              }
-              sidebarAdCode
-            }
-          }
-        }
-      }
-      ... on Tag {
-        name
-        posts {
-          nodes {
-            id
-            title
-            uri
-          }
-        }
-      }
-    }
-  }
-`;
+Component.query = CATEGORY_QUERY;

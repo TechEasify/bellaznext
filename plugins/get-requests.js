@@ -1,7 +1,7 @@
 import {HttpLink} from "@apollo/client";
 import {getGraphqlEndpoint} from "@faustwp/core/dist/mjs/lib/getGraphqlEndpoint";
 
-const httpGetLink = new HttpLink({ uri: getGraphqlEndpoint(), useGETForQueries: true });
+const httpGetLink = new HttpLink({ uri: getGraphqlEndpoint(), useGETForQueries: false });
 
 export default class GetRequests {
     apply({ addFilter }) {

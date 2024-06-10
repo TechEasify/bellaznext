@@ -5,8 +5,9 @@ import { useEffect } from "react";
 import EntryHeader from "../components/entry-header";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Insight from "../pages/insights";
 import { useRouter } from "next/router";
+import Insight from "../components/Insight";
+import { CATEGORY_QUERY } from "../lib/ga/queries";
 
 export default function Component(props) {
   console.log(props, "props");
@@ -34,25 +35,11 @@ export default function Component(props) {
       />
 
       <main>
-        {
-          router.asPath === "/category/insights" ?
+        {router.asPath === "/category/insights" && props.data.nodeByUri ?
           <Insight nodeByUri={nodeByUri} loading={props.loading}/>
           :
           console.log("false")
         }
-        {/* {name === "Breaking News" ? (
-          <Breakingnews posts={posts} pages={pages} />
-        ) : name === "Insights" ? (
-          <Insight />
-        ) : name === "Jewish News" ? (
-          <Jewishnews />
-        ) : name === "Music" ? (
-          <Music />
-        ) : name === "Politics" ? (
-          <Politics />
-        ) : (
-          <></>
-        )} */}
         <ul>
           {/* {posts.nodes.map((post) =>
             post.uri ? (
@@ -75,55 +62,57 @@ Component.variables = (seedQuery, ctx) => {
   };
 };
 
-Component.query = gql`
-  query GetArchive($uri: String!) {
-    nodeByUri(uri: $uri) {
-      archiveType: __typename
-      ... on Category {
-        name
-        posts {
-          nodes {
-            featuredImage {
-              node {
-                altText
-                srcSet
-              }
-            }
-            title
-            content
-            author {
-              node {
-                name
-              }
-            }
-            excerpt
-          }
-        }
-        categoryTamplate {
-          insightTamplate {
-            insightTitleBackgroundColor
-            insightSidebarAdvertisementImage {
-              sidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                }
-              }
-              sidebarAdCode
-            }
-          }
-        }
-      }
-      ... on Tag {
-        name
-        posts {
-          nodes {
-            id
-            title
-            uri
-          }
-        }
-      }
-    }
-  }
-`;
+Component.query = CATEGORY_QUERY;
+
+// Component.query = gql`
+//   query GetArchive($uri: String!) {
+//     nodeByUri(uri: $uri) {
+//       archiveType: __typename
+//       ... on Category {
+//         name
+//         posts {
+//           nodes {
+//             featuredImage {
+//               node {
+//                 altText
+//                 srcSet
+//               }
+//             }
+//             title
+//             content
+//             author {
+//               node {
+//                 name
+//               }
+//             }
+//             excerpt
+//           }
+//         }
+//         categoryTamplate {
+//           insightTamplate {
+//             insightTitleBackgroundColor
+//             insightSidebarAdvertisementImage {
+//               sidebarAdImage {
+//                 node {
+//                   altText
+//                   srcSet
+//                 }
+//               }
+//               sidebarAdCode
+//             }
+//           }
+//         }
+//       }
+//       ... on Tag {
+//         name
+//         posts {
+//           nodes {
+//             id
+//             title
+//             uri
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;

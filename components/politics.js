@@ -1,16 +1,16 @@
 import React from "react";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
-import download312 from "../../public/images/download312.svg";
-import Screenshot2024 from "../../public/images/Screenshot2024.svg";
-import GettyImages12 from "../../public/images/GettyImages12.svg";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import download312 from "../public/images/download312.svg";
+import Screenshot2024 from "../public/images/Screenshot2024.svg";
+import GettyImages12 from "../public/images/GettyImages12.svg";
 import ExportedImage from "next-image-export-optimizer";
-import News from "../../components/News/News";
+import News from "./News/News";
 
 function Politics() {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
@@ -108,7 +108,7 @@ function Politics() {
         </div>
       </div>
       <News />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -146,28 +146,28 @@ const GET_ICON_SECTION = gql`
   }
 `;
 
-const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
+const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name, uri }) => {
   const {
     loading: loadingNav,
     error: errorNav,
     data: dataNav,
-  } = useQuery(GET_NAV_SECTION);
+  } = useQuery(GET_NAV_SECTION, { fetchPolicy: 'cache-first' });
   console.log(dataNav);
   const {
     loading: loadingMenu,
     error: errorMenu,
     data: dataMenu,
-  } = useQuery(GET_MENU_SECTION);
+  } = useQuery(GET_MENU_SECTION, { fetchPolicy: 'cache-first' });
   const {
     loading: loadingsubMenu,
     error: errorsubMenu,
     data: datasubMenu,
-  } = useQuery(GET_SUBMENU_SECTION);
+  } = useQuery(GET_SUBMENU_SECTION, { fetchPolicy: 'cache-first' });
   const {
     loading: loadingIcon,
     error: errorIcon,
     data: dataIcon,
-  } = useQuery(GET_ICON_SECTION);
+  } = useQuery(GET_ICON_SECTION, { fetchPolicy: 'cache-first' });
 
   const router = useRouter();
   console.log(router.asPath, "router");
@@ -518,7 +518,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
           </span>
         </div>
-      ) : name === "Insights" || router.asPath === "/insights/" ? (
+      ) : name === "Insights" || router.asPath === "/category/insights" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#1662D4" }}
@@ -527,7 +527,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.mainMenuSecond}
           </span>
         </div>
-      ) : name === "Jewish News" || router.asPath === "/jewish-news/" ? (
+      ) : name === "Jewish News" || router.asPath === "/category/jewish-news" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#57A0EE" }}
@@ -536,7 +536,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.subThird}
           </span>
         </div>
-      ) : name === "Breaking News" || router.asPath === "/breaking-news/" ? (
+      ) : name === "Breaking News" || router.asPath === "/category/breaking-news" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#ce3a42" }}
@@ -545,7 +545,7 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
             {dataMenu !== undefined && dataMenu.menu.header.subFirst}
           </span>
         </div>
-      ) : name === "Politics" || router.asPath === "/politics/" ? (
+      ) : name === "Politics" || router.asPath === "/category/politics" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#FFA500" }}
@@ -564,51 +564,51 @@ const Nav = ({ siteTitle, siteDescription, menuItems, archiveType, name }) => {
         <div className="w-full bg-white font-medium inline-flex items-center md:ml-28">
           <div className="flex flex-col items-center">
             <Link
-              href="/breaking-news"
+              href="/category/breaking-news"
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === "/breaking-news"
+                activeLink === "/category/breaking-news"
                   ? "border-b-2 border-red-600"
                   : ""
               }`}
-              onClick={() => handleLinkClick("/breaking-news")}
+              onClick={() => handleLinkClick("/category/breaking-news")}
             >
               {dataMenu !== undefined && dataMenu.menu.header.subFirst}
             </Link>
-            {activeLink === "/breaking-news" && (
+            {activeLink === "/category/breaking-news" && (
               <hr className="w-full border-red-600" />
             )}
           </div>
           <div className="flex flex-col items-center">
             <Link
-              href="/politics"
+              href="/category/politics"
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === "/politics" || router.asPath === "/politics"
+                activeLink === "/category/politics" || router.asPath === "/category/politics"
                   ? `border-b-2 bg-change`
                   : ""
               }`}
-              onClick={() => handleLinkClick("/politics")}
+              onClick={() => handleLinkClick("/category/politics")}
             >
               {dataMenu !== undefined && dataMenu.menu.header.subSecond}
             </Link>
-            {activeLink === "/politics" && router.asPath === "/politics" && (
+            {activeLink === "/category/politics" && router.asPath === "/category/politics" && (
               <hr className="w-full bg-change" />
             )}
           </div>
           <div className="flex flex-col items-center">
             <Link
-              href="/jewish-news"
+              href="/category/jewish-news"
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === "/jewish-news" ||
-                router.asPath === "/jewish-news"
+                activeLink === "/category/jewish-news" ||
+                router.asPath === "/category/jewish-news"
                   ? "border-b-2 bg-change1"
                   : ""
               }`}
-              onClick={() => handleLinkClick("/jewish-news")}
+              onClick={() => handleLinkClick("/category/jewish-news")}
             >
               {dataMenu !== undefined && dataMenu.menu.header.subThird}
             </Link>
-            {activeLink === "/jewish-news" &&
-              router.asPath === "/jewish-news" && (
+            {activeLink === "/category/jewish-news" &&
+              router.asPath === "/category/jewish-news" && (
                 <hr className="w-full bg-change1" />
               )}
           </div>

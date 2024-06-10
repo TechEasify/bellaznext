@@ -1,4 +1,12 @@
 module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: '/:categoryslug',
+        destination: '/category/:categoryslug',
+      }
+    ];
+  },
   output: 'export',
   images: {
     loader: "custom",
@@ -29,4 +37,5 @@ module.exports = {
   },
   swcMinify: true,
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
 };

@@ -199,7 +199,7 @@ const GET_HOME_PAGE = gql`
 
 const SkeletonLoader = () => (
   <>
-    <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse">
+    {/* <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
         <div className="w-full max-w-5xl mx-auto">
           <div className="flex flex-col justify-center">
@@ -280,7 +280,209 @@ const SkeletonLoader = () => (
           <div className="flex mt-5 mb-8"></div>
         </div>
       </div>
+    </div> */}
+     <div className="px-4 py-8 mx-auto max-w-screen-xl">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+        <div className="w-full max-w-5xl mx-auto">
+          <div className="flex flex-col justify-center">
+            {[...Array(3)].map((_, index) => (
+              <div key={index} className="mb-6">
+                <div className="h-4 bg-red-800 rounded w-32 mb-2 animate-pulse"></div>
+                <div className="h-8 bg-black-900 rounded w-2/3 mb-2 animate-pulse"></div>
+                <div className="h-16 bg-gray-800 rounded mb-3 animate-pulse"></div>
+                <div className="h-64 bg-gray-300 rounded mb-3 animate-pulse"></div>
+              </div>
+            ))}
+            <div className="flex items-center mb-4">
+              <div className="h-6 w-1 bg-blue-500 rounded-l animate-pulse"></div>
+              <div className="h-6 bg-blue-500 rounded-r w-24 ml-1 animate-pulse"></div>
+              <div className="h-6 bg-blue-500 rounded-full w-6 mx-1 animate-pulse"></div>
+              <div className="h-6 bg-blue-500 rounded w-20 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full max-w-3xl mx-auto">
+          <div className="h-10 bg-gray-200 rounded mb-4 animate-pulse"></div>
+          <div
+            className="block max-w-sm p-6 rounded-lg shadow animate-pulse"
+            style={{
+              background:
+                'linear-gradient(to bottom right, #002D73, #40A6FB)',
+              padding: '10px',
+              borderRadius: '10px',
+            }}
+          >
+            <div className="flex items-center justify-between mb-1">
+              <div>
+                <div className="h-4 bg-white rounded w-24 mb-1 animate-pulse"></div>
+                <div className="h-6 bg-white rounded w-32 animate-pulse"></div>
+              </div>
+              <div className="h-16 w-16 bg-white rounded-full animate-pulse"></div>
+            </div>
+            <div className="flex items-center mb-2">
+              <div className="h-4 w-4 bg-white rounded-full mr-2 animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-48 animate-pulse"></div>
+            </div>
+            <div className="flex justify-around items-center mb-6">
+              <div className="h-8 bg-white rounded w-12 animate-pulse"></div>
+              <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-8 animate-pulse"></div>
+              <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-8 animate-pulse"></div>
+              <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-16 animate-pulse"></div>
+            </div>
+            <div className="flex justify-between items-center mb-8">
+              <div className="h-4 bg-white rounded w-32 animate-pulse"></div>
+              <div className="h-6 w-6 bg-white rounded-full animate-pulse"></div>
+            </div>
+            <div className="flex justify-between items-center text-center">
+              {[...Array(5)].map((_, index) => (
+                <div key={index}>
+                  <div className="h-4 bg-white rounded w-12 mb-1 animate-pulse"></div>
+                  <div className="h-8 w-8 bg-white rounded-full animate-pulse mx-auto mb-1"></div>
+                  <div className="h-4 bg-white rounded w-12 animate-pulse"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {[...Array(3)].map((_, index) => (
+            <div key={index} className="flex mt-5 justify-between">
+              <div className="mr-2">
+                <div className="h-4 bg-red-800 rounded w-20 mb-1 animate-pulse"></div>
+                <div className="h-6 bg-gray-800 rounded w-32 animate-pulse"></div>
+              </div>
+              <div className="h-16 w-16 bg-gray-300 rounded object-contain animate-pulse"></div>
+            </div>
+          ))}
+          <hr className="my-6" />
+        </div>
+      </div>
     </div>
+    {/* <div className="px-4 py-8 mx-auto max-w-screen-xl">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+        <div className="w-full max-w-5xl mx-auto md:border-r">
+          <div className="flex flex-col justify-center mx-auto md:mx-0">
+            <h1 className="text-[25px] font-bold text-black-900 italic">
+              TOP HEADLINES
+            </h1>
+            <hr className="text-red-800 mr-5" style={{ height: "7px", background: "#CE3A42" }} />
+            <br />
+          </div>
+
+          <div className="flex flex-wrap justify-around">
+            <div className="max-w-md bg-white mb-6 p-4 border border-gray-200 shadow-sm">
+              <div className="h-48 bg-gray-300 animate-pulse"></div>
+              <p className="text-base font-bold text-red-800 mt-2 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white bg-gray-300 h-8 w-full animate-pulse"></h5>
+              <p className="text-[15px] text-base font-bold text-gray-800 mb-4 bg-gray-300 h-6 w-32 animate-pulse"></p>
+            </div>
+            <div className="max-w-md bg-white mb-6 p-4 border border-gray-200 shadow-sm">
+              <div className="h-48 bg-gray-300 animate-pulse"></div>
+              <p className="text-base font-bold text-red-800 mt-2 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white bg-gray-300 h-8 w-full animate-pulse"></h5>
+              <p className="text-[15px] text-base font-bold text-gray-800 mb-4 bg-gray-300 h-6 w-32 animate-pulse"></p>
+            </div>
+          </div>
+
+          <hr className="mx-6 mb-8" />
+
+          <div className="flex flex-wrap justify-around">
+            <div className="max-w-md bg-white mb-6 p-4 border border-gray-200 shadow-sm">
+              <div className="h-48 bg-gray-300 animate-pulse"></div>
+              <p className="text-base font-bold text-red-800 mt-2 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white bg-gray-300 h-8 w-full animate-pulse"></h5>
+              <p className="text-[15px] text-base font-bold text-gray-800 mb-4 bg-gray-300 h-6 w-32 animate-pulse"></p>
+            </div>
+            <div className="max-w-md bg-white mb-6 p-4 border border-gray-200 shadow-sm">
+              <div className="h-48 bg-gray-300 animate-pulse"></div>
+              <p className="text-base font-bold text-red-800 mt-2 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white bg-gray-300 h-8 w-full animate-pulse"></h5>
+              <p className="text-[15px] text-base font-bold text-gray-800 mb-4 bg-gray-300 h-6 w-32 animate-pulse"></p>
+            </div>
+          </div>
+
+          <hr className="mx-6 mb-8" />
+
+          <div className="flex flex-wrap justify-around">
+            <div className="max-w-md bg-white mb-6 p-4 border border-gray-200 shadow-sm">
+              <div className="h-48 bg-gray-300 animate-pulse"></div>
+              <p className="text-base font-bold text-red-800 mt-2 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white bg-gray-300 h-8 w-full animate-pulse"></h5>
+              <p className="text-[15px] text-base font-bold text-gray-800 mb-4 bg-gray-300 h-6 w-32 animate-pulse"></p>
+            </div>
+            <div className="max-w-md bg-white mb-6 p-4 border border-gray-200 shadow-sm">
+              <div className="h-48 bg-gray-300 animate-pulse"></div>
+              <p className="text-base font-bold text-red-800 mt-2 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white bg-gray-300 h-8 w-full animate-pulse"></h5>
+              <p className="text-[15px] text-base font-bold text-gray-800 mb-4 bg-gray-300 h-6 w-32 animate-pulse"></p>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full max-w-3xl mx-auto">
+          <p className="text-[15px] font-bold text-black-900 italic">
+            SPOTLIGHT
+          </p>
+          <hr className="text-red-800" style={{ height: "7px", background: "#CE3A42" }} />
+
+          <div className="flex mt-5">
+            <div className="mr-2">
+              <p className="text-[12px] font-bold text-red-800 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <p className="text-[15px] font-semibold text-gray-800 mb-3 bg-gray-300 h-6 w-full animate-pulse"></p>
+            </div>
+            <div className="h-13 w-13 bg-gray-300 animate-pulse"></div>
+          </div>
+          <hr />
+          <div className="flex mt-5">
+            <div className="mr-2">
+              <p className="text-[12px] font-bold text-red-800 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <p className="text-[15px] font-semibold text-gray-800 mb-3 bg-gray-300 h-6 w-full animate-pulse"></p>
+            </div>
+            <div className="h-13 w-13 bg-gray-300 animate-pulse"></div>
+          </div>
+          <hr />
+          <div className="flex mt-5">
+            <div className="w-full h-48 bg-gray-300 animate-pulse"></div>
+          </div>
+          <hr />
+          <div className="flex mt-5">
+            <div className="mr-2">
+              <p className="text-[12px] font-bold text-red-800 bg-gray-300 h-6 w-24 animate-pulse"></p>
+              <p className="text-[15px] font-semibold text-gray-800 mb-3 bg-gray-300 h-6 w-full animate-pulse"></p>
+            </div>
+            <div className="h-13 w-13 bg-gray-300 animate-pulse"></div>
+          </div>
+
+          <div className="flex mb-5 mt-10">
+            <div className="w-full h-48 bg-gray-300 animate-pulse"></div>
+          </div>
+
+          <p className="text-[15px] font-bold text-black-900 italic">
+            FOLLOW US
+          </p>
+          <hr className="text-red-800" style={{ height: "7px", background: "#CE3A42" }} />
+
+          <div className="flex mt-5 mb-8">
+            <div className="h-13 w-13 bg-gray-300 mx-2 animate-pulse"></div>
+            <div className="h-13 w-13 bg-gray-300 mx-2 animate-pulse"></div>
+            <div className="h-13 w-13 bg-gray-300 mx-2 animate-pulse"></div>
+            <div className="h-13 w-13 bg-gray-300 mx-2 animate-pulse"></div>
+            <div className="h-13 w-13 bg-gray-300 mx-2 animate-pulse"></div>
+          </div>
+
+          <p className="text-[15px] font-bold text-black-900 italic">
+            FOLLOW BELAAZ ON WhatsApp
+          </p>
+          <hr className="text-red-800" style={{ height: "7px", background: "#CE3A42" }} />
+
+          <div className="flex mt-5 mb-8">
+            <div className="h-13 w-13 bg-gray-300 mx-2 animate-pulse"></div>
+            <div className="h-13 w-13 bg-gray-300 mx-2 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+    </div> */}
   </>
 );
 

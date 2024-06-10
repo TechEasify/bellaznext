@@ -3,7 +3,7 @@ import templates from "./wp-templates";
 import possibleTypes from "./possibleTypes.json";
 
 // uncomment to add support for Get requests and/or persisted queries
-// import GetRequests from "./plugins/get-requests";
+import GetRequests from "./plugins/get-requests";
 
 // uncomment to add support for persisted queries
 // import PersistedQueriesPlugin from "./plugins/persisted-queries";
@@ -14,7 +14,7 @@ import possibleTypes from "./possibleTypes.json";
 export default setConfig({
   templates,
   experimentalPlugins: [
-      // new GetRequests(),
+      new GetRequests(),
       // new PersistedQueriesPlugin(),
   ],
   possibleTypes,

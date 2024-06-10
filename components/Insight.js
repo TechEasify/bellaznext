@@ -1,25 +1,26 @@
 import ExportedImage from "next-image-export-optimizer";
 import React from "react";
-import Screenshot1 from "../../public/images/Screenshot1.svg";
-import ferrari4 from "../../public/images/ferrari4.svg";
-import Rectangle367 from "../../public/images/Rectangle367.svg";
-import Group from "../../public/images/Group.svg";
-import Group1 from "../../public/images/Group (1).svg";
-import Group2 from "../../public/images/Group (2).svg";
-import Group3 from "../../public/images/Group (3).svg";
-import pexels_tarawinstead from "../../public/images/pexels_tarawinstead.svg";
-import jeuol4a_princeharry from "../../public/images/jeuol4a_princeharry.svg";
-import andreasm from "../../public/images/andreasm.svg";
-import pexels_tarawinstead1 from "../../public/images/pexels_tarawinstead1.svg";
-import harry_afp from "../../public/images/harry_afp.svg";
-import andreasm1 from "../../public/images/andreasm1.svg";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
+import Screenshot1 from "../public/images/Screenshot1.svg";
+import ferrari4 from "../public/images/ferrari4.svg";
+import Rectangle367 from "../public/images/Rectangle367.svg";
+import Group from "../public/images/Group.svg";
+import Group1 from "../public/images/Group (1).svg";
+import Group2 from "../public/images/Group (2).svg";
+import Group3 from "../public/images/Group (3).svg";
+import pexels_tarawinstead from "../public/images/pexels_tarawinstead.svg";
+import jeuol4a_princeharry from "../public/images/jeuol4a_princeharry.svg";
+import andreasm from "../public/images/andreasm.svg";
+import pexels_tarawinstead1 from "../public/images/pexels_tarawinstead1.svg";
+import harry_afp from "../public/images/harry_afp.svg";
+import andreasm1 from "../public/images/andreasm1.svg";
+import Nav from "./Nav";
+import Footer from "./Footer";
 
-const Insight = () => {
+const Insight = (props) => {
+  console.log(props, "props");
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
@@ -349,7 +350,7 @@ const Insight = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
