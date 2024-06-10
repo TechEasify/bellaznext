@@ -146,6 +146,83 @@ const GET_ICON_SECTION = gql`
   }
 `;
 
+const SkeletonLoader = () => (
+  <header className="bg-header">
+    {/* Breadcrumb Skeleton */}
+    <nav aria-label="Breadcrumb" className="flex justify-center p-4 lg:px-6">
+      <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+        <li>
+          <div className="flex items-center">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse">
+              &nbsp;
+            </div>
+          </div>
+        </li>
+        <span className="text-gray-400">|</span>
+        <li aria-current="page">
+          <div className="flex items-center">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse">
+              &nbsp;
+            </div>
+          </div>
+        </li>
+        <span className="text-gray-400">|</span>
+        <li aria-current="page">
+          <div className="flex items-center">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse">
+              &nbsp;
+            </div>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    {/* Main Navigation Skeleton */}
+    <nav
+      className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
+      aria-label="Global"
+    >
+      <div className="flex flex-1 justify-between lg:justify-start items-center">
+        <div className="-m-1.5 p-1.5">
+          <div className="sr-only">BELAAZ</div>
+          <div className="h-12 w-auto md:h-14 bg-gray-200 animate-pulse"></div>
+        </div>
+        <div className="flex flex-1 justify-center lg:justify-start items-center">
+          {/* Main Menu First Skeleton */}
+          <div className="relative mx-2 md:mx-5">
+            <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse">
+              &nbsp;
+            </div>
+          </div>
+          {/* Main Menu Second Skeleton */}
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+            &nbsp;
+          </div>
+          {/* Main Menu Third Skeleton */}
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+            &nbsp;
+          </div>
+          {/* Contact Header Toggle Skeleton */}
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+            &nbsp;
+          </div>
+          {/* Search Toggle Skeleton */}
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+            &nbsp;
+          </div>
+        </div>
+      </div>
+
+      <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
+        {/* Subscribe Button Skeleton */}
+        <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r bg-gray-200 animate-pulse">
+          &nbsp;
+        </div>
+      </div>
+    </nav>
+  </header>
+);
+
 const Nav = ({
   siteTitle,
   siteDescription,
@@ -183,15 +260,26 @@ const Nav = ({
   const [isContactHeaderVisible, setContactHeaderVisible] = useState(false);
   const [subscribe, setSubscribe] = useState(false);
   const [activeLink, setActiveLink] = useState("");
+  const [navData, setNavData] = useState(null);
+
+  useEffect(() => {
+    if (datasubMenu && dataMenu && dataNav) {
+      setNavData(datasubMenu, dataMenu, dataNav);
+    }
+  }, [datasubMenu, dataMenu, dataNav]);
+
+  useEffect(() => {
+    setSubscribe(router.pathname);
+  }, [subscribe]);
+
+  if (loadingNav || loadingMenu || loadingsubMenu || !navData) {
+    return <SkeletonLoader />;
+  }
 
   const handleLinkClick = (link) => {
     console.log(link, "link");
     setActiveLink(link);
   };
-
-  useEffect(() => {
-    setSubscribe(router.pathname);
-  }, [subscribe]);
 
   console.log(subscribe, "subscribe");
 
@@ -457,7 +545,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                href="/category/music"
+                  href="/category/music"
                   // onClick={() => router.push("/category/music")}
                   className="flex mr-2 text-white font-bold items-center"
                 >
@@ -700,28 +788,28 @@ const Nav = ({
             <div className="items-center flex">
               <div className="flex flex-col lg:flex-col mr-5">
                 <Link
-                href="/category/breaking-news"
+                  href="/category/breaking-news"
                   // onClick={() => router.push("/category/breaking-news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subFirst}
                 </Link>
                 <Link
-                href="/category/politics"
+                  href="/category/politics"
                   // onClick={() => router.push("/category/politics")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subSecond}
                 </Link>
                 <Link
-                href="/category/jewish_news"
+                  href="/category/jewish_news"
                   // onClick={() => router.push("/category/jewish_news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.subThird}
                 </Link>
                 <Link
-                href="/category/insights"
+                  href="/category/insights"
                   // onClick={() => router.push("/category/insights")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -729,7 +817,7 @@ const Nav = ({
                     dataMenu.menu.header.mainMenuSecond}
                 </Link>
                 <Link
-                href="/category/music"
+                  href="/category/music"
                   // onClick={() => router.push("/category/music")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -738,7 +826,7 @@ const Nav = ({
               </div>
               <div className="flex flex-col lg:flex-col lg:items-center">
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -746,7 +834,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareFirst}
                 </Link>
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -754,7 +842,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareSecond}
                 </Link>
                 <Link
-                href="/advertise"
+                  href="/advertise"
                   // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -824,7 +912,7 @@ const Nav = ({
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -832,7 +920,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareFirst}
                 </Link>
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -840,7 +928,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareSecond}
                 </Link>
                 <Link
-                href="/advertise"
+                  href="/advertise"
                   // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -910,7 +998,7 @@ const Nav = ({
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -918,7 +1006,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareFirst}
                 </Link>
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -926,7 +1014,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareSecond}
                 </Link>
                 <Link
-                href="/advertise"
+                  href="/advertise"
                   // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -996,7 +1084,7 @@ const Nav = ({
             <div className="items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -1004,7 +1092,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareFirst}
                 </Link>
                 <Link
-                href="/contact-us"
+                  href="/contact-us"
                   // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
@@ -1012,7 +1100,7 @@ const Nav = ({
                     datasubMenu.menu.header.foreSquareSecond}
                 </Link>
                 <Link
-                href="/advertise"
+                  href="/advertise"
                   // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >

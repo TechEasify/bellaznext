@@ -17,6 +17,7 @@ import sun from "../public/images/sun.svg";
 import ExportedImage from "next-image-export-optimizer";
 import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
+import axios from "axios";
 
 const SkeletonLoader = () => (
   <div className="px-4 py-8 mx-auto max-w-screen-xl">
@@ -101,6 +102,7 @@ const SkeletonLoader = () => (
 const Banner = ({ data }) => {
   // const { openDialog } = useDialog();
   console.log(data, "data props");
+  
   const sortedPosts = data.page.homePage.heroSection.heroPostCategory.nodes
     .flatMap((item) => item.posts.nodes)
     .filter((post) =>

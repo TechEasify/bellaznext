@@ -47,7 +47,7 @@ function Breakingnews({ nodeByUri, loading, uri }) {
 
   return (
     <>
-    <Nav uri={uri}/>
+    {/* <Nav uri={uri}/> */}
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
         <div className="w-full max-w-5xl mx-auto">
