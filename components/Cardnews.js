@@ -55,7 +55,7 @@ const Cardnews = () => {
   console.log(data, "data card");
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
-      <div className="w-full mx-auto">
+      <div className="w-full mx-auto flex flex-wrap justify-between">
         {data?.page?.homePage?.allCategories?.nodes.slice(0, 6).map(
           (item) => (
             console.log(item, "item"),
@@ -69,80 +69,81 @@ const Cardnews = () => {
                         className="flex flex-wrap justify-around"
                         key={post.id}
                       >
-                        <div>
-                          {post.categories.nodes.map(
-                            (category) => (
-                              console.log(category, "category"),
-                              (
-                                <div
-                                  className="max-w-xs bg-white mb-6 mr-4 items-center"
-                                  key={category.id}
-                                >
-                                  <div className="mr-2 mb-20">
-                                    <h5 className="text-[15px] font-bold text-black-900">
-                                      {category.name}
-                                    </h5>
-                                    <hr
-                                      className="text-red-800 mb-3"
-                                      style={{
-                                        height: "7px",
-                                        background: "#FFA500",
-                                        width: "20%",
-                                      }}
-                                    />
-                                    <ExportedImage
-                                      src={post.featuredImage.node.sourceUrl}
-                                      alt="vladimirputin"
-                                      className="h-13 w-13 mr-2 mb-2"
-                                      width={397}
-                                      height={210}
-                                      style={{
-                                        width: "397px",
-                                        height: "210px",
-                                      }}
-                                    />
-                                    <p
-                                      className="text-[15px] font-semibold text-gray-800 mb-2"
-                                       dangerouslySetInnerHTML={{ __html: post.content || 'No content available' }}
-                                    />
-                                  </div>
-
-                                  <div className="mr-2">
-                                    <h5 className="text-[15px] font-bold text-black-900">
+                        {post.categories.nodes.map(
+                          (category) => (
+                            console.log(category, "category"),
+                            (
+                              <div
+                                className="max-w-xs bg-white mb-6 mr-4 items-center"
+                                key={category.id}
+                              >
+                                <div className="mr-2 mb-20">
+                                  <h5 className="text-[15px] font-bold text-black-900">
                                     {category.name}
-                                    </h5>
-                                    <hr
-                                      className="text-red-800 mb-3"
-                                      style={{
-                                        height: "7px",
-                                        background: "#CE3A42",
-                                        width: "23%",
-                                      }}
-                                    />
-                                    <ExportedImage
-                                      src={post.featuredImage.node.sourceUrl}
-                                      alt="vladimirputin"
-                                      className="h-13 w-13 mr-2 mb-2"
-                                      width={397}
-                                      height={210}
-                                      style={{
-                                        width: "397px",
-                                        height: "210px",
-                                      }}
-                                    />
-                                    <p
-                                      className="text-[15px] font-semibold text-gray-800 mb-2"
-                                      dangerouslySetInnerHTML={{
-                                        __html: post.content,
-                                      }}
-                                    />
-                                  </div>
+                                  </h5>
+                                  <hr
+                                    className="text-red-800 mb-3"
+                                    style={{
+                                      height: "7px",
+                                      background: "#FFA500",
+                                      width: "20%",
+                                    }}
+                                  />
+                                  <ExportedImage
+                                    src={post.featuredImage.node.sourceUrl}
+                                    alt="vladimirputin"
+                                    className="h-13 w-13 mr-2 mb-2"
+                                    width={397}
+                                    height={210}
+                                    style={{
+                                      width: "397px",
+                                      height: "210px",
+                                    }}
+                                  />
+                                  <p
+                                    className="text-[15px] font-semibold text-gray-800 mb-2"
+                                    dangerouslySetInnerHTML={{
+                                      __html:
+                                        post.content || "No content available",
+                                    }}
+                                  />
                                 </div>
-                              )
+
+                                <div className="mr-2">
+                                  <h5 className="text-[15px] font-bold text-black-900">
+                                    {category.name}
+                                  </h5>
+                                  <hr
+                                    className="text-red-800 mb-3"
+                                    style={{
+                                      height: "7px",
+                                      background: "#CE3A42",
+                                      width: "23%",
+                                    }}
+                                  />
+                                  <ExportedImage
+                                    src={post.featuredImage.node.sourceUrl}
+                                    alt="vladimirputin"
+                                    className="h-13 w-13 mr-2 mb-2"
+                                    width={397}
+                                    height={210}
+                                    style={{
+                                      width: "397px",
+                                      height: "210px",
+                                    }}
+                                  />
+                                  <p
+                                    className="text-[15px] font-semibold text-gray-800 mb-2"
+                                    dangerouslySetInnerHTML={{
+                                      __html: post.content,
+                                    }}
+                                  />
+                                </div>
+                              </div>
                             )
-                          )}
-                        </div>
-                        <div
+                          )
+                        )}
+                        {/* <div
                           className="max-w-md bg-white mb-6 mx-auto"
                           key={`${post.id}-second`}
                         >
@@ -270,7 +271,7 @@ const Cardnews = () => {
                               value of mystic
                             </p>
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     )
                   )
