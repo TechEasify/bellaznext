@@ -8,9 +8,9 @@ import Breakingnews from "../../components/breaking-news";
 import Link from "next/link";
 import Insight from "../../components/Insight";
 import Jewishnews from "../../components/jewish-news";
-import Politics from "../../components/Politics";
 import Music from "../../components/categoryMusic";
 import { useEffect, useState } from "react";
+import PoliticsCategory from "../../components/PoliticsCategory";
 
 // Define your CATEGORY_QUERY here
 const CATEGORY_BREAKING_QUERY = gql`
@@ -212,7 +212,7 @@ const CategoryPage = () => {
           <Jewishnews nodeByUri={nodeByUri} loading={loading} />
         ) : router.asPath === "/category/politics" &&
           nodeByUri !== undefined ? (
-          <Politics nodeByUri={nodeByUri} loading={loading} />
+          <PoliticsCategory nodeByUri={nodeByUri} loading={loading} />
         ) : router.asPath === "/category/music" && nodeByUri !== undefined ? (
           <Music nodeByUri={nodeByUri} loading={loading} />
         ) : (

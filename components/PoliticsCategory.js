@@ -7,7 +7,7 @@ import GettyImages12 from "../public/images/GettyImages12.svg";
 import ExportedImage from "next-image-export-optimizer";
 import NewsPolitics from "./News/NewsPolitics";
 
-function Politics({nodeByUri}) {
+function PoliticsCategory({nodeByUri}) {
   return (
     <>
       {/* <Nav /> */}
@@ -114,4 +114,4 @@ function Politics({nodeByUri}) {
   );
 }
 
-export default Politics;
+export default PoliticsCategory;
