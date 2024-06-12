@@ -6,8 +6,9 @@ import Screenshot2024 from "../public/images/Screenshot2024.svg";
 import clay_banks from "../public/images/clay_banks.svg";
 import ExportedImage from "next-image-export-optimizer";
 import News from "./News/News";
+import CategoryjewishNews from "./News/jewishNews";
 
-function Jewishnews() {
+function Jewishnews({nodeByUri}) {
   return (
     <>
       {/* <Nav /> */}
@@ -107,7 +108,8 @@ function Jewishnews() {
           </div>
         </div>
       </div>
-      <News />
+      {/* <News nodeByUri={nodeByUri} categoryTamplate={nodeByUri.categoryTamplate}/> */}
+      <CategoryjewishNews nodeByUri={nodeByUri} categoryTamplate={nodeByUri.categoryTamplate}/>
       {/* <Footer /> */}
     </>
   );

@@ -5,9 +5,9 @@ import download312 from "../public/images/download312.svg";
 import Screenshot2024 from "../public/images/Screenshot2024.svg";
 import GettyImages12 from "../public/images/GettyImages12.svg";
 import ExportedImage from "next-image-export-optimizer";
-import News from "./News/News";
+import NewsPolitics from "./News/NewsPolitics";
 
-function Politics() {
+function Politics({nodeByUri}) {
   return (
     <>
       {/* <Nav /> */}
@@ -107,7 +107,8 @@ function Politics() {
           </div>
         </div>
       </div>
-      <News />
+      <NewsPolitics nodeByUri={nodeByUri}/>
+      {/* <News /> */}
       {/* <Footer /> */}
     </>
   );

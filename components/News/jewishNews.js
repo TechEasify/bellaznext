@@ -10,10 +10,9 @@ import Group3 from "../../public/images/Group (3).svg";
 import pexelstara1 from "../../public/images/pexelstara1.svg";
 import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
-import PR_01CFA from "../../public/images/PR_01CFA.svg";
+import Newscard from "./Newscard";
 
-const Musicpage = ({nodeByUri}) => {
-  console.log(nodeByUri.categoryTamplate.musicTamplate.musicAdervtiseImage, "nodeByUri news");
+const CategoryjewishNews = ({ nodeByUri }) => {
   const [numToShow, setNumToShow] = useState(1);
 
   const handleViewMore = () => {
@@ -21,23 +20,18 @@ const Musicpage = ({nodeByUri}) => {
   };
   return (
     <>
-      <div className="px-4 py-16 mx-auto max-w-screen-xl">
-      <div className="relative flex items-center mb-3">
-        <div className="flex-grow border-t border-gray-300"></div>
-        <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
-        <div className="flex-grow border-t border-gray-300"></div>
+      <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
+        <ExportedImage
+          style={{ margin: "0 auto" }}
+          priority={true}
+          src={Screenshot1}
+          alt="PR_01CFA"
+        />
       </div>
-      <ExportedImage
-        style={{ margin: "0 auto" }}
-        priority={true}
-        src={PR_01CFA}
-        alt="PR_01CFA"
-      />
-    </div>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
-          {nodeByUri?.posts?.nodes?.slice(0, numToShow).map(
+            {nodeByUri?.posts?.nodes?.slice(0, numToShow).map(
               (item) => (
                 console.log(item.featuredImage.node.sourceUrl, "item Insights"),
                 (
@@ -57,7 +51,7 @@ const Musicpage = ({nodeByUri}) => {
                         <p
                           className="text-base font-bold text-red-800"
                           style={{
-                            background: "#25AC7D",
+                            background: "rgb(87, 160, 238)",
                             // background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
                             color: "#fff",
                             padding: "0 10px",
@@ -277,8 +271,9 @@ const Musicpage = ({nodeByUri}) => {
           </div>
         </div>
       </div>
+      <Newscard />
     </>
   );
 };
 
-export default Musicpage;
+export default CategoryjewishNews;

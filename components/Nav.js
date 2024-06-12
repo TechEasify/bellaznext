@@ -603,7 +603,7 @@ const Nav = ({
         </header>
       )}
 
-      {name === "music" ? (
+      {name === "music" || router.asPath === "/category/music" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: "#25AC7D" }}

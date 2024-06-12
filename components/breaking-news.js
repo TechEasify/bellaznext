@@ -151,7 +151,7 @@ function Breakingnews({ nodeByUri, loading, uri }) {
           />
         </div>
       </div>
-      <News categoryTamplate={nodeByUri.categoryTamplate}/>
+      <News nodeByUri={nodeByUri} categoryTamplate={nodeByUri.categoryTamplate}/>
     </div>    
     </>
   );

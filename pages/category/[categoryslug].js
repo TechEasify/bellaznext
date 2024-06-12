@@ -8,7 +8,7 @@ import Breakingnews from "../../components/breaking-news";
 import Link from "next/link";
 import Insight from "../../components/Insight";
 import Jewishnews from "../../components/jewish-news";
-import Politics from "../../components/politics";
+import Politics from "../../components/Politics";
 import Music from "../../components/categoryMusic";
 import { useEffect, useState } from "react";
 
@@ -24,6 +24,7 @@ const CATEGORY_BREAKING_QUERY = gql`
               node {
                 altText
                 srcSet
+                sourceUrl
               }
             }
             title
@@ -48,6 +49,7 @@ const CATEGORY_BREAKING_QUERY = gql`
                 node {
                   altText
                   srcSet
+                  sourceUrl
                 }
               }
               heroSidebarAdCode
@@ -57,6 +59,7 @@ const CATEGORY_BREAKING_QUERY = gql`
                 node {
                   altText
                   srcSet
+                  sourceUrl
                 }
               }
               simpleAdCode
@@ -67,6 +70,7 @@ const CATEGORY_BREAKING_QUERY = gql`
                 node {
                   altText
                   srcSet
+                  sourceUrl
                 }
               }
             }
@@ -74,6 +78,41 @@ const CATEGORY_BREAKING_QUERY = gql`
           insightTamplate {
             insightTitleBackgroundColor
             insightSidebarAdvertisementImage {
+              sidebarAdImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              sidebarAdCode
+            }
+          }
+          musicTamplate {
+            musicTitleBackgroundColor
+            musicHeroSection {
+              heroSidebarTitle
+              heroSidebarTitleLineColor
+              musicHeroSidebarAds {
+                musicSidebarAdImage {
+                  node {
+                    altText
+                    srcSet
+                  }
+                }
+                musicSidebarAdCode
+              }
+            }
+            musicAdervtiseImage {
+              adImage {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              adCode
+            }
+            musicAllPostsSidebarAds {
               sidebarAdImage {
                 node {
                   altText

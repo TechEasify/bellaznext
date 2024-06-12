@@ -90,15 +90,25 @@ const Music = () => {
         <div className="flex flex-wrap justify-around">
           {data?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
             (item) => (
-              console.log(item, "item"),
-              (
-                <>
-                  {item.posts.nodes.slice(0, 1).map((post) => (
-                    console.log(post, "post"),
-                    <>
+              console.log(item, "item music"),
+              item.posts?.nodes.slice(0, 1).map(
+                (post) => (
+                  console.log(post, "post"),
+                  (
+                    <React.Fragment key={post.id}>
                       <div>
                         <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                           <div className="mr-2">
+                            {/* {item.featuredImage?.node?.sourceUrl && (
+                              <ExportedImage
+                                src={item.featuredImage.node.sourceUrl}
+                                alt="vladimirputin"
+                                className="h-13 w-13 mr-2 mb-2"
+                                width={317}
+                                height={194}
+                                style={{ width: "317px", height: "194px" }}
+                              />
+                            )} */}
                             <ExportedImage
                               src={Frame256}
                               alt="vladimirputin"
@@ -111,7 +121,7 @@ const Music = () => {
                               {data?.page?.homePage?.musicTitle}
                             </p>
                             <p className="text-[15px] font-semibold text-gray-800">
-                            {post.title}
+                              {post.title}
                             </p>
                             <p className="text-[10px] text-base font-bold text-gray-800">
                               <span
@@ -125,7 +135,7 @@ const Music = () => {
                                 className="font-extrabold mx-1"
                                 style={{ color: "#40A6FB" }}
                               >
-                                {post.author.node.name}
+                                {post.author?.node?.name}
                                 <span
                                   className="text-[36px] font-extrabold mx-1"
                                   style={{ color: "#40A6FB" }}
@@ -140,16 +150,18 @@ const Music = () => {
                         <div className="flex max-w-xs bg-white mr-4 items-center">
                           <div className="mr-2">
                             <p className="text-[12px] font-bold text-red-800">
-                            {data?.page?.homePage?.musicTitle}
+                              {data?.page?.homePage?.musicTitle}
                             </p>
                             <p className="text-[15px] font-semibold text-gray-800">
-                            {post.title}
+                              {post.title}
                             </p>
                           </div>
                           <ExportedImage
                             src={anaflavia_kR5VQr3}
                             alt="Partly Cloudy"
                             className="h-13 w-13 mr-2"
+                            width={120}
+                            height={97}
                           />
                         </div>
                         <p className="text-[10px] text-base font-bold text-gray-800">
@@ -164,7 +176,7 @@ const Music = () => {
                             className="font-extrabold mx-1"
                             style={{ color: "#40A6FB" }}
                           >
-                            {post.author.node.name}
+                            {post.author?.node?.name}
                             <span
                               className="text-[36px] font-extrabold mx-1"
                               style={{ color: "#40A6FB" }}
@@ -183,15 +195,19 @@ const Music = () => {
                             alt="vladimirputin"
                             width={593}
                             height={395}
-                            style={{ width: "593px", height: "395px", objectFit: "cover" }}
+                            style={{
+                              width: "593px",
+                              height: "395px",
+                              objectFit: "cover",
+                            }}
                           />
                         </a>
                         <p className="text-base font-bold text-red-800 mt-2">
-                        {data?.page?.homePage?.musicTitle}
+                          {data?.page?.homePage?.musicTitle}
                         </p>
                         <a href="#">
                           <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                          {post.title}
+                            {post.title}
                           </h5>
                         </a>
                         <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
@@ -206,7 +222,7 @@ const Music = () => {
                             className="font-extrabold mx-1"
                             style={{ color: "#40A6FB" }}
                           >
-                            {post.author.node.name}
+                            {post.author?.node?.name}
                             <span
                               className="text-[36px] font-extrabold mx-1"
                               style={{ color: "#40A6FB" }}
@@ -216,7 +232,10 @@ const Music = () => {
                           </span>
                           6 MIN READ
                         </p>
-                        <p className="text-[12px] font-normal text-gray-800 mt-2"  dangerouslySetInnerHTML={{ __html: post.content }}/>
+                        <p
+                          className="text-[12px] font-normal text-gray-800 mt-2"
+                          dangerouslySetInnerHTML={{ __html: post.content }}
+                        />
                       </div>
                       <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                         <div className="mr-2">
@@ -224,12 +243,14 @@ const Music = () => {
                             src={Frame257}
                             alt="vladimirputin"
                             className="h-13 w-13 mr-2 mb-2"
+                            width={317}
+                            height={194}
                           />
                           <p className="text-[12px] font-bold text-red-800">
-                          {data?.page?.homePage?.musicTitle}
+                            {data?.page?.homePage?.musicTitle}
                           </p>
                           <p className="text-[15px] font-semibold text-gray-800">
-                          {post.title}
+                            {post.title}
                           </p>
                           <p className="text-[10px] text-base font-bold text-gray-800">
                             <span
@@ -243,7 +264,7 @@ const Music = () => {
                               className="font-extrabold mx-1"
                               style={{ color: "#40A6FB" }}
                             >
-                              {post.author.node.name}
+                              {post.author?.node?.name}
                               <span
                                 className="text-[36px] font-extrabold mx-1"
                                 style={{ color: "#40A6FB" }}
@@ -255,19 +276,29 @@ const Music = () => {
                           </p>
                         </div>
                         <div className="flex max-w-xs bg-white mr-4 items-center">
-                          <ExportedImage
-                            src={data?.page?.homePage?.musicBottomAd?.musicBottomAdImage?.node?.sourceUrl}
-                            alt="Partly Cloudy"
-                            className="h-13 w-13 mr-2"
-                            width={317}
-                            height={214}
-                            style={{ width: "317px", height: "214px", objectFit: "cover" }}
-                          />
+                          {data?.page?.homePage?.musicBottomAd
+                            ?.musicBottomAdImage?.node?.sourceUrl && (
+                            <ExportedImage
+                              src={
+                                data.page.homePage.musicBottomAd
+                                  .musicBottomAdImage.node.sourceUrl
+                              }
+                              alt="Partly Cloudy"
+                              className="h-13 w-13 mr-2"
+                              width={317}
+                              height={214}
+                              style={{
+                                width: "317px",
+                                height: "214px",
+                                objectFit: "cover",
+                              }}
+                            />
+                          )}
                         </div>
                       </div>
-                    </>
-                  ))}
-                </>
+                    </React.Fragment>
+                  )
+                )
               )
             )
           )}

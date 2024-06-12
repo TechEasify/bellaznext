@@ -25,7 +25,8 @@ import Fame216 from "../public/images/Fame216.svg";
 import jeuol4a_prince1 from "../public/images/jeuol4a_prince1.svg";
 import Musicpage from "./Music/Musicpage";
 
-function Music() {
+function Music({nodeByUri}) {
+  console.log(nodeByUri, "nodeByUri music area");
   return (
     <>
       {/* <Nav /> */}
@@ -354,7 +355,7 @@ function Music() {
           </div>
         </div>
       </div>
-      <Musicpage />
+      <Musicpage nodeByUri={nodeByUri}/>
       {/* <Footer /> */}
     </>
   );

@@ -1,5 +1,5 @@
 import ExportedImage from "next-image-export-optimizer";
-import React from "react";
+import React, { useState } from "react";
 import Screenshot1 from "../public/images/Screenshot1.svg";
 import ferrari4 from "../public/images/ferrari4.svg";
 import Rectangle367 from "../public/images/Rectangle367.svg";
@@ -16,69 +16,86 @@ import andreasm1 from "../public/images/andreasm1.svg";
 import Nav from "./Nav";
 import Footer from "./Footer";
 
-const Insight = ({nodeByUri}) => {
+const Insight = ({ nodeByUri }) => {
   console.log(nodeByUri, "nodeByUri");
+  const [numToShow, setNumToShow] = useState(1);
+
+  const handleViewMore = () => {
+    setNumToShow(nodeByUri.posts.nodes.length);
+  };
   return (
     <>
       {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
-            <div className="flex flex-col md:flex-row mb-5">
-              <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                <ExportedImage priority={true} src={ferrari4} alt="ferrari4" />
-              </div>
-              <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <p
-                  className="text-base font-bold text-red-800"
-                  style={{
-                    background: "rgb(198 40 40 / var(--tw-text-opacity))",
-                    color: "#fff",
-                    padding: "0 10px",
-                    width: "100px",
-                    clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
-                    fontSize: "12px",
-                    fontWeight: 500,
-                    letterSpacing: "2px",
-                  }}
-                >
-                  BREAKING
-                </p>
-                <h5 className="text-[20px] text-black-900 font-bold">
-                  Ferrari F1 boss makes savage Mercedes dig after constructors'
-                  setback.
-                </h5>
-                <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                  <span
-                    className="text-[12px] font-extrabold mr-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    |
-                  </span>
-                  By
-                  <span
-                    className="font-extrabold ml-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    Linah Absteen
-                    <span
-                      className="text-[25px] font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      .
-                    </span>
-                  </span>
-                  6 MIN READ
-                </p>
-                <p className="text-[15px] text-base font-normal text-gray-600 mb-3">
-                  President Vladimir Putin said Wednesday that Russia is ready
-                  to use nuclear weapons if its sovereignty or independence is
-                  threatened, issuing another blunt warning to the West
-                </p>
-              </div>
-            </div>
-            <hr className="my-5" />
-            <div className="flex flex-col md:flex-row mb-5">
+            {nodeByUri.posts.nodes.slice(0, numToShow).map(
+              (item) => (
+                console.log(item.featuredImage.node.sourceUrl, "item Insights"),
+                (
+                  <>
+                  <div className="flex flex-col md:flex-row mb-5">
+                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                      <ExportedImage
+                        priority={true}
+                        src={item?.featuredImage?.node?.sourceUrl}
+                        alt="ferrari4"
+                        width={357}
+                        height={261}
+                        style={{ width: "357px", height: "261px" }}
+                      />
+                    </div>
+                    <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                      <p
+                        className="text-base font-bold text-red-800"
+                        style={{
+                          // background: "rgb(198 40 40 / var(--tw-text-opacity))",
+                          background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
+                          color: "#fff",
+                          padding: "0 10px",
+                          width: "100px",
+                          clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                          fontSize: "12px",
+                          fontWeight: 500,
+                          letterSpacing: "2px",
+                        }}
+                      >
+                        {nodeByUri.name}
+                      </p>
+                      <h5 className="text-[20px] text-black-900 font-bold">
+                        {item.title}
+                      </h5>
+                      <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[12px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold ml-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {item.author.node.name}
+                          <span
+                            className="text-[25px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        6 MIN READ
+                      </p>
+                      <p className="text-[15px] text-base font-normal text-gray-600 mb-3" dangerouslySetInnerHTML={{ __html: item.content }} />
+                    </div>
+                  </div>
+                  <hr className="my-5" />
+                  </>
+                )
+              )
+            )}
+            {/* <div className="flex flex-col md:flex-row mb-5">
               <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
                 <ExportedImage
                   priority={true}
@@ -172,11 +189,7 @@ const Insight = ({nodeByUri}) => {
             <hr className="my-5" />
             <div className="text-[12px] flex flex-col md:flex-row mb-5">
               <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                <ExportedImage
-                  priority={true}
-                  src={andreasm}
-                  alt="andreas"
-                />
+                <ExportedImage priority={true} src={andreasm} alt="andreas" />
               </div>
               <div className="ml-0 md:ml-5 w-full md:w-3/5">
                 <p className="text-[12px] text-base font-bold text-red-800">
@@ -264,11 +277,7 @@ const Insight = ({nodeByUri}) => {
             <hr className="my-5" />
             <div className="text-[12px] flex flex-col md:flex-row mb-5">
               <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                <ExportedImage
-                  priority={true}
-                  src={harry_afp}
-                  alt="andreas"
-                />
+                <ExportedImage priority={true} src={harry_afp} alt="andreas" />
               </div>
               <div className="ml-0 md:ml-5 w-full md:w-3/5">
                 <p className="text-[12px] text-base font-bold text-red-800">
@@ -306,8 +315,8 @@ const Insight = ({nodeByUri}) => {
                   threatened, issuing another blunt warning to the West
                 </p>
               </div>
-            </div>
-            <button className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700">
+            </div> */}
+            <button className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700" onClick={handleViewMore}>
               VIEW MORE
             </button>
           </div>
@@ -316,8 +325,14 @@ const Insight = ({nodeByUri}) => {
             <ExportedImage
               className="mb-2 w-full h-auto max-h-96"
               priority={true}
-              src={Rectangle367}
+              src={
+                nodeByUri.categoryTamplate.insightTamplate
+                  .insightSidebarAdvertisementImage.sidebarAdImage.node
+                  .sourceUrl
+              }
               alt="Rectangle367"
+              width={297}
+              height={503}
               style={{ width: "100%", height: "auto", maxHeight: "500px" }}
             />
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>

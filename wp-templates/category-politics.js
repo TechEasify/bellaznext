@@ -7,7 +7,6 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { CATEGORY_QUERY } from "../lib/ga/queries";
-import Politics from "../components/politics";
 
 export default function Component(props) {
   console.log(props, "props");
