@@ -16,8 +16,8 @@ import andreasm1 from "../public/images/andreasm1.svg";
 import Nav from "./Nav";
 import Footer from "./Footer";
 
-const Insight = (props) => {
-  console.log(props, "props");
+const Insight = ({nodeByUri}) => {
+  console.log(nodeByUri, "nodeByUri");
   return (
     <>
       {/* <Nav /> */}

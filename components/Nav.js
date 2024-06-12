@@ -153,7 +153,7 @@ const SkeletonLoader = () => (
       <ol className="inline-flex items-center space-x-2 lg:space-x-4">
         <li>
           <div className="flex items-center">
-            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-40">
               &nbsp;
             </div>
           </div>
@@ -161,7 +161,7 @@ const SkeletonLoader = () => (
         <span className="text-gray-400">|</span>
         <li aria-current="page">
           <div className="flex items-center">
-            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-40">
               &nbsp;
             </div>
           </div>
@@ -169,7 +169,7 @@ const SkeletonLoader = () => (
         <span className="text-gray-400">|</span>
         <li aria-current="page">
           <div className="flex items-center">
-            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-40">
               &nbsp;
             </div>
           </div>
@@ -190,24 +190,24 @@ const SkeletonLoader = () => (
         <div className="flex flex-1 justify-center lg:justify-start items-center">
           {/* Main Menu First Skeleton */}
           <div className="relative mx-2 md:mx-5">
-            <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse">
+            <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-40">
               &nbsp;
             </div>
           </div>
           {/* Main Menu Second Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
             &nbsp;
           </div>
           {/* Main Menu Third Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
             &nbsp;
           </div>
           {/* Contact Header Toggle Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
             &nbsp;
           </div>
           {/* Search Toggle Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse">
+          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
             &nbsp;
           </div>
         </div>
@@ -215,7 +215,7 @@ const SkeletonLoader = () => (
 
       <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
         {/* Subscribe Button Skeleton */}
-        <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r bg-gray-200 animate-pulse">
+        <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-30 bg-gradient-to-r bg-gray-200 animate-pulse w-60">
           &nbsp;
         </div>
       </div>
@@ -1072,7 +1072,7 @@ const Nav = ({
           style={{
             position: "absolute",
             zIndex: "9999999999",
-            top: "140px",
+            top: "156px",
             left: "0px",
             width: "100%",
           }}

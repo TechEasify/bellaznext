@@ -9,13 +9,12 @@ import spotifydeal from "../public/images/spotifydeal.svg";
 import { gql, useQuery } from "@apollo/client";
 
 const GET_MUSIC_SECTION = gql`
-  query ($id: ID = "3080") {
+  query HomePage($id: ID = "745") {
     page(id: $id, idType: DATABASE_ID) {
-      music {
-        pageTitleBackgroundColor {
-          backgroundColor
-        }
-        heroPostCategory {
+      homePage {
+        musicTitle
+        musicBottomLineColor
+        musicPosts {
           nodes {
             ... on Category {
               posts {
@@ -24,7 +23,7 @@ const GET_MUSIC_SECTION = gql`
                     node {
                       altText
                       srcSet
-                      slug
+                      sourceUrl
                     }
                   }
                   categories {
@@ -44,95 +43,33 @@ const GET_MUSIC_SECTION = gql`
             }
           }
         }
-        trending
-        trendingBottomLineColor
-        heroPostSidebar {
-          nodes {
-            ... on Category {
-              posts {
-                nodes {
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                    }
-                  }
-                  title
-                }
-              }
+        musicAd {
+          musicAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
             }
           }
+          musicAdCode
         }
-        heroSiderbarAd
-        siderbarPosts {
-          nodes {
-            ... on Category {
-              posts {
-                nodes {
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                    }
-                  }
-                  title
-                }
-              }
-              name
+        musicBottomAd {
+          musicBottomAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
             }
           }
+          musicBottomAdCode
         }
-        adversitement
-        allCategories {
-          nodes {
-            ... on Category {
-              name
-              posts {
-                nodes {
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                    }
-                  }
-                  title
-                  content
-                  author {
-                    node {
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        sidebarAd
       }
     }
   }
 `;
 
 const Music = () => {
-  const { loading, error, data } = useQuery(GET_MUSIC_SECTION)
+  const { loading, error, data } = useQuery(GET_MUSIC_SECTION);
   console.log(data, "data music");
   const { openDialog } = useDialog();
 
@@ -140,7 +77,9 @@ const Music = () => {
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">
         <div className="flex flex-col justify-center mx-auto md:mx-0">
-          <h1 className="text-[25px] font-bold text-black-900 italic">MUSIC</h1>
+          <h1 className="text-[25px] font-bold text-black-900 italic">
+            {data?.page?.homePage?.musicTitle}
+          </h1>
           <hr
             className="text-red-800 mr-5"
             style={{ height: "7px", background: "#25AC7D" }}
@@ -149,165 +88,189 @@ const Music = () => {
         </div>
 
         <div className="flex flex-wrap justify-around">
-          <div>
-            <div className="max-w-xs bg-white mb-6 mr-4 items-center">
-              <div className="mr-2">
-                <ExportedImage
-                  src={Frame256}
-                  alt="vladimirputin"
-                  className="h-13 w-13 mr-2 mb-2"
-                />
-                <p className="text-[12px] font-bold text-red-800">OSCARS</p>
-                <p className="text-[15px] font-semibold text-gray-800">
-                  Our DeSantis and Haley Reporters switched places Her’s What
-                  They Found.
-                </p>
-                <p className="text-[10px] text-base font-bold text-gray-800">
-                  <span
-                    className="text-[10px] font-extrabold mr-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    |
-                  </span>
-                  By
-                  <span
-                    className="font-extrabold mx-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    Linah Absteen
-                    <span
-                      className="text-[36px] font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      .
-                    </span>
-                  </span>
-                  6 MIN READ
-                </p>
-              </div>
-            </div>
-            <div className="flex max-w-xs bg-white mr-4 items-center">
-              <div className="mr-2">
-                <p className="text-[12px] font-bold text-red-800">MUSIC</p>
-                <p className="text-[15px] font-semibold text-gray-800">
-                  Our DeSantis and Haley Reporters switched places Her’s What
-                  They Found.
-                </p>
-              </div>
-              <ExportedImage
-                src={anaflavia_kR5VQr3}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mr-2"
-              />
-            </div>
-            <p className="text-[10px] text-base font-bold text-gray-800">
-              <span
-                className="text-[10px] font-extrabold mr-1"
-                style={{ color: "#40A6FB" }}
-              >
-                |
-              </span>
-              By
-              <span
-                className="font-extrabold mx-1"
-                style={{ color: "#40A6FB" }}
-              >
-                Linah Absteen
-                <span
-                  className="text-[36px] font-extrabold mx-1"
-                  style={{ color: "#40A6FB" }}
-                >
-                  .
-                </span>
-              </span>
-              6 MIN READ
-            </p>
-          </div>
-          <div className="max-w-md bg-white mb-6 mx-auto">
-            <a href="#">
-              <ExportedImage
-                priority={true}
-                src={download6}
-                alt="vladimirputin"
-              />
-            </a>
-            <p className="text-base font-bold text-red-800 mt-2">HOLLYWOOD</p>
-            <a href="#">
-              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                ‘We have to get this done’: A top House Republican pushes for
-                Ukraine aid
-              </h5>
-            </a>
-            <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-              <span
-                className="text-[10px] font-extrabold mr-1"
-                style={{ color: "#40A6FB" }}
-              >
-                |
-              </span>
-              By
-              <span
-                className="font-extrabold mx-1"
-                style={{ color: "#40A6FB" }}
-              >
-                Linah Absteen
-                <span
-                  className="text-[36px] font-extrabold mx-1"
-                  style={{ color: "#40A6FB" }}
-                >
-                  .
-                </span>
-              </span>
-              6 MIN READ
-            </p>
-            <p className="text-[12px] font-normal text-gray-800 mt-2">
-              Intel Chair Mike Turner says he’s confident Speaker Mike Johnson
-              will allow a vote sending new funding to Kyiv.
-            </p>
-          </div>
-          <div className="max-w-xs bg-white mb-6 mr-4 items-center">
-            <div className="mr-2">
-              <ExportedImage
-                src={Frame257}
-                alt="vladimirputin"
-                className="h-13 w-13 mr-2 mb-2"
-              />
-              <p className="text-[12px] font-bold text-red-800">MUSIC</p>
-              <p className="text-[15px] font-semibold text-gray-800">
-                Our DeSantis and Haley Reporters switched places Her’s What They
-                Found.
-              </p>
-              <p className="text-[10px] text-base font-bold text-gray-800">
-                <span
-                  className="text-[10px] font-extrabold mr-1"
-                  style={{ color: "#40A6FB" }}
-                >
-                  |
-                </span>
-                By
-                <span
-                  className="font-extrabold mx-1"
-                  style={{ color: "#40A6FB" }}
-                >
-                  Linah Absteen
-                  <span
-                    className="text-[36px] font-extrabold mx-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    .
-                  </span>
-                </span>
-                6 MIN READ
-              </p>
-            </div>
-            <div className="flex max-w-xs bg-white mr-4 items-center">
-              <ExportedImage
-                src={spotifydeal}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mr-2"
-              />
-            </div>
-          </div>
+          {data?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
+            (item) => (
+              console.log(item, "item"),
+              (
+                <>
+                  {item.posts.nodes.slice(0, 1).map((post) => (
+                    console.log(post, "post"),
+                    <>
+                      <div>
+                        <div className="max-w-xs bg-white mb-6 mr-4 items-center">
+                          <div className="mr-2">
+                            <ExportedImage
+                              src={Frame256}
+                              alt="vladimirputin"
+                              className="h-13 w-13 mr-2 mb-2"
+                              width={317}
+                              height={194}
+                              style={{ width: "317px", height: "194px" }}
+                            />
+                            <p className="text-[12px] font-bold text-red-800">
+                              {data?.page?.homePage?.musicTitle}
+                            </p>
+                            <p className="text-[15px] font-semibold text-gray-800">
+                            {post.title}
+                            </p>
+                            <p className="text-[10px] text-base font-bold text-gray-800">
+                              <span
+                                className="text-[10px] font-extrabold mr-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                |
+                              </span>
+                              By
+                              <span
+                                className="font-extrabold mx-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                {post.author.node.name}
+                                <span
+                                  className="text-[36px] font-extrabold mx-1"
+                                  style={{ color: "#40A6FB" }}
+                                >
+                                  .
+                                </span>
+                              </span>
+                              6 MIN READ
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex max-w-xs bg-white mr-4 items-center">
+                          <div className="mr-2">
+                            <p className="text-[12px] font-bold text-red-800">
+                            {data?.page?.homePage?.musicTitle}
+                            </p>
+                            <p className="text-[15px] font-semibold text-gray-800">
+                            {post.title}
+                            </p>
+                          </div>
+                          <ExportedImage
+                            src={anaflavia_kR5VQr3}
+                            alt="Partly Cloudy"
+                            className="h-13 w-13 mr-2"
+                          />
+                        </div>
+                        <p className="text-[10px] text-base font-bold text-gray-800">
+                          <span
+                            className="text-[10px] font-extrabold mr-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            |
+                          </span>
+                          By
+                          <span
+                            className="font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            {post.author.node.name}
+                            <span
+                              className="text-[36px] font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              .
+                            </span>
+                          </span>
+                          6 MIN READ
+                        </p>
+                      </div>
+                      <div className="max-w-md bg-white mb-6 mx-auto">
+                        <a href="#">
+                          <ExportedImage
+                            priority={true}
+                            src={download6}
+                            alt="vladimirputin"
+                            width={593}
+                            height={395}
+                            style={{ width: "593px", height: "395px", objectFit: "cover" }}
+                          />
+                        </a>
+                        <p className="text-base font-bold text-red-800 mt-2">
+                        {data?.page?.homePage?.musicTitle}
+                        </p>
+                        <a href="#">
+                          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                          {post.title}
+                          </h5>
+                        </a>
+                        <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                          <span
+                            className="text-[10px] font-extrabold mr-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            |
+                          </span>
+                          By
+                          <span
+                            className="font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            {post.author.node.name}
+                            <span
+                              className="text-[36px] font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              .
+                            </span>
+                          </span>
+                          6 MIN READ
+                        </p>
+                        <p className="text-[12px] font-normal text-gray-800 mt-2"  dangerouslySetInnerHTML={{ __html: post.content }}/>
+                      </div>
+                      <div className="max-w-xs bg-white mb-6 mr-4 items-center">
+                        <div className="mr-2">
+                          <ExportedImage
+                            src={Frame257}
+                            alt="vladimirputin"
+                            className="h-13 w-13 mr-2 mb-2"
+                          />
+                          <p className="text-[12px] font-bold text-red-800">
+                          {data?.page?.homePage?.musicTitle}
+                          </p>
+                          <p className="text-[15px] font-semibold text-gray-800">
+                          {post.title}
+                          </p>
+                          <p className="text-[10px] text-base font-bold text-gray-800">
+                            <span
+                              className="text-[10px] font-extrabold mr-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              |
+                            </span>
+                            By
+                            <span
+                              className="font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              {post.author.node.name}
+                              <span
+                                className="text-[36px] font-extrabold mx-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                .
+                              </span>
+                            </span>
+                            6 MIN READ
+                          </p>
+                        </div>
+                        <div className="flex max-w-xs bg-white mr-4 items-center">
+                          <ExportedImage
+                            src={data?.page?.homePage?.musicBottomAd?.musicBottomAdImage?.node?.sourceUrl}
+                            alt="Partly Cloudy"
+                            className="h-13 w-13 mr-2"
+                            width={317}
+                            height={214}
+                            style={{ width: "317px", height: "214px", objectFit: "cover" }}
+                          />
+                        </div>
+                      </div>
+                    </>
+                  ))}
+                </>
+              )
+            )
+          )}
         </div>
       </div>
     </div>

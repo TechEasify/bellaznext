@@ -25,6 +25,7 @@ const GET_INSIGHTS_SECTION = gql`
                       altText
                       slug
                       srcSet
+                      sourceUrl
                     }
                   }
                   title
@@ -204,7 +205,7 @@ const SkeletonLoader = () => (
 const Insights = () => {
   const { openDialog } = useDialog();
   const { loading, error, data } = useQuery(GET_INSIGHTS_SECTION);
-  console.log(data, "data");
+  console.log(data, "data insights");
   if (loading) return <SkeletonLoader />;
 
   const insightsPost = data.page.homePage.insightsPost.nodes;
@@ -214,11 +215,11 @@ const Insights = () => {
       <div className="w-full mx-auto">
         <div className="flex flex-col justify-center mx-auto md:mx-0">
           <h1 className="text-[25px] font-bold text-black-900 italic">
-            INSIGHTS
+            {data.page.homePage.insightsTitle}
           </h1>
           <hr
             className="text-red-800 mr-5"
-            style={{ height: "7px", background: "#1877F2" }}
+            style={{ height: "7px", background: `${data.page.homePage.insightsTitleBottomLineColor}` }}
           />
           <br />
         </div>
@@ -228,17 +229,17 @@ const Insights = () => {
           <>
             {item.name === "Insights" && (
               <div className="flex flex-wrap justify-around items-stretch">
-                {item.posts.nodes.map(
+                {item.posts.nodes.slice(0, 1).map(
                   (node) => (
-                    console.log(node, "node"),
+                    console.log(node, "node insights"),
                     (
                       <>
                         <div className="flex flex-col">
                           <div className="max-w-xs bg-white mb-6 items-center">
                             <div className="mr-2 mb-2">
                               <ExportedImage
-                                src={node.featuredImage?.node?.srcSet || ""}
-                                alt={node.featuredImage?.node?.srcSet || ""}
+                                src={node.featuredImage?.node?.sourceUrl || ""}
+                                alt={node.featuredImage?.node?.sourceUrl || ""}
                                 className="h-13 w-13 mr-2 mb-2"
                                 width={317}
                                 height={194}
@@ -282,8 +283,8 @@ const Insights = () => {
                                 </p>
                               </div>
                               <ExportedImage
-                                src={node.featuredImage.node.srcSet !== null && node.featuredImage.node.srcSet}
-                                alt={node.featuredImage.node.srcSet !== null && node.featuredImage.node.srcSet}
+                                src={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
+                                alt={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
                                 className="h-13 w-13 mr-2"
                                 width={90}
                                 height={87}
@@ -317,10 +318,11 @@ const Insights = () => {
                           <a href="#">
                             <ExportedImage
                               priority={true}
-                              src={node.featuredImage.node.srcSet !== null && node.featuredImage.node.srcSet}
-                              alt={node.featuredImage.node.srcSet !== null && node.featuredImage.node.srcSet}
+                              src={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
+                              alt={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
                               width={593}
                               height={395}
+                              style={{ width: "593px", height: "395px", objectFit: "cover" }}
                             />
                           </a>
                           <p className="text-base font-bold text-red-800 mt-2">
@@ -328,8 +330,7 @@ const Insights = () => {
                           </p>
                           <a href="#">
                             <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                              ‘We have to get this done’: A top House Republican
-                              pushes for Ukraine aid
+                              {node.title}
                             </h5>
                           </a>
                           <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
@@ -344,7 +345,7 @@ const Insights = () => {
                               className="font-extrabold mx-1"
                               style={{ color: "#40A6FB" }}
                             >
-                              Linah Absteen
+                              {node.author.node.name}
                               <span
                                 className="text-[36px] font-extrabold mx-1"
                                 style={{ color: "#40A6FB" }}
@@ -354,11 +355,7 @@ const Insights = () => {
                             </span>
                             6 MIN READ
                           </p>
-                          <p className="text-[12px] font-normal text-gray-800 mt-2">
-                            Intel Chair Mike Turner says he’s confident Speaker
-                            Mike Johnson will allow a vote sending new funding
-                            to Kyiv.
-                          </p>
+                          <p className="text-[12px] font-normal text-gray-800 mt-2" dangerouslySetInnerHTML={{ __html: node.content }}/>
                         </div>
                         <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                           <div className="mr-2">
@@ -366,6 +363,9 @@ const Insights = () => {
                               src={Frame214}
                               alt="vladimirputin"
                               className="h-13 w-13 mr-2 mb-2"
+                              width={317}
+                              height={194}
+                              style={{ width: "317px", height: "194px", objectFit: "cover"}}
                             />
                             <p className="text-[12px] font-bold text-red-800">
                               HEALTH
@@ -374,7 +374,7 @@ const Insights = () => {
                               Our DeSantis and Haley Reporters switched places
                               Here's What They Found.
                             </p>
-                            <p className="text-[10px] text-base font-bold text-gray-800">
+                            <p className="text-[10px] text-base font-bold text-gray-800 mb-3">
                               <span
                                 className="text-[10px] font-extrabold mr-1"
                                 style={{ color: "#40A6FB" }}
