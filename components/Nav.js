@@ -148,76 +148,91 @@ const GET_ICON_SECTION = gql`
 
 const SkeletonLoader = () => (
   <header className="bg-header">
-    {/* Breadcrumb Skeleton */}
-    <nav aria-label="Breadcrumb" className="flex justify-center p-4 lg:px-6">
-      <ol className="inline-flex items-center space-x-2 lg:space-x-4">
-        <li>
-          <div className="flex items-center">
-            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-40">
-              &nbsp;
-            </div>
+  {/* Breadcrumb Skeleton */}
+  <nav aria-label="Breadcrumb" className="flex justify-center p-4 lg:px-6">
+    <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+      <li>
+        <div className="flex items-center">
+          <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
+            &nbsp;
           </div>
-        </li>
-        <span className="text-gray-400">|</span>
-        <li aria-current="page">
-          <div className="flex items-center">
-            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-40">
-              &nbsp;
-            </div>
+        </div>
+      </li>
+      <span className="text-gray-400">|</span>
+      <li aria-current="page">
+        <div className="flex items-center">
+          <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
+            &nbsp;
           </div>
-        </li>
-        <span className="text-gray-400">|</span>
-        <li aria-current="page">
-          <div className="flex items-center">
-            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-40">
-              &nbsp;
-            </div>
+        </div>
+      </li>
+      <span className="text-gray-400">|</span>
+      <li aria-current="page">
+        <div className="flex items-center">
+          <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
+            &nbsp;
           </div>
-        </li>
-      </ol>
-    </nav>
+        </div>
+      </li>
+    </ol>
+  </nav>
 
-    {/* Main Navigation Skeleton */}
+  {/* Main Navigation Skeleton */}
+  <nav className="mx-auto flex flex-col lg:flex-row items-center justify-between p-4 lg:px-6">
+    <div className="flex flex-1 justify-between lg:justify-start items-center">
+      <div className="-m-1.5 p-1.5">
+        <div className="sr-only">BELAAZ</div>
+        <div className="h-12 w-auto md:h-14 bg-gray-200 animate-pulse"></div>
+      </div>
+      <div className="flex flex-1 justify-center lg:justify-start items-center space-x-2 md:space-x-5">
+        {/* Main Menu First Skeleton */}
+        <div className="relative mx-2 md:mx-5">
+          <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+            &nbsp;
+          </div>
+        </div>
+        {/* Main Menu Second Skeleton */}
+        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+          &nbsp;
+        </div>
+        {/* Main Menu Third Skeleton */}
+        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+          &nbsp;
+        </div>
+        {/* Contact Header Toggle Skeleton */}
+        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+          &nbsp;
+        </div>
+        {/* Search Toggle Skeleton */}
+        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+          &nbsp;
+        </div>
+      </div>
+    </div>
+
+    <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
+      {/* Subscribe Button Skeleton */}
+      <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-200 animate-pulse w-40 md:w-60">
+        &nbsp;
+      </div>
+    </div>
+  </nav>
+</header>
+);
+
+const SkeletonArticleLoader = () => (
+  <header className="bg-black">
     <nav
-      className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
+      className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
       aria-label="Global"
     >
       <div className="flex flex-1 justify-between lg:justify-start items-center">
-        <div className="-m-1.5 p-1.5">
-          <div className="sr-only">BELAAZ</div>
-          <div className="h-12 w-auto md:h-14 bg-gray-200 animate-pulse"></div>
-        </div>
-        <div className="flex flex-1 justify-center lg:justify-start items-center">
-          {/* Main Menu First Skeleton */}
-          <div className="relative mx-2 md:mx-5">
-            <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-40">
-              &nbsp;
-            </div>
-          </div>
-          {/* Main Menu Second Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
-            &nbsp;
-          </div>
-          {/* Main Menu Third Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
-            &nbsp;
-          </div>
-          {/* Contact Header Toggle Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
-            &nbsp;
-          </div>
-          {/* Search Toggle Skeleton */}
-          <div className="flex mr-2 text-white font-bold items-center bg-gray-200 animate-pulse w-40">
-            &nbsp;
-          </div>
-        </div>
+        <div className="h-12 w-36 bg-gray-700 animate-pulse md:h-14"></div>
       </div>
 
-      <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
-        {/* Subscribe Button Skeleton */}
-        <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-30 bg-gradient-to-r bg-gray-200 animate-pulse w-60">
-          &nbsp;
-        </div>
+      <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center space-x-4">
+        <div className="inline-flex items-center justify-center w-32 h-12 bg-gray-700 animate-pulse rounded shadow-md md:w-40"></div>
+        <div className="h-5 w-5 bg-gray-700 animate-pulse rounded-full"></div>
       </div>
     </nav>
   </header>
@@ -263,17 +278,21 @@ const Nav = ({
   const [navData, setNavData] = useState(null);
 
   useEffect(() => {
-    if (datasubMenu && dataMenu && dataNav) {
-      setNavData(datasubMenu, dataMenu, dataNav);
+    if (dataNav && dataMenu && datasubMenu && dataIcon) {
+      setNavData({ dataNav, dataMenu, datasubMenu, dataIcon });
     }
-  }, [datasubMenu, dataMenu, dataNav]);
+  }, [dataNav, dataMenu, datasubMenu, dataIcon]);
 
   useEffect(() => {
     setSubscribe(router.pathname);
   }, [subscribe]);
 
   if (loadingNav || loadingMenu || loadingsubMenu || !navData) {
-    return <SkeletonLoader />;
+    if (router.asPath === "/article") {
+      return <SkeletonArticleLoader />;
+    } else {
+      return <SkeletonLoader />;
+    }
   }
 
   const handleLinkClick = (link) => {
@@ -725,43 +744,45 @@ const Nav = ({
       )}
 
       {isDropdownSearch && (
-        <div className="w-full bg-white font-medium inline-flex items-center md:ml-10 py-2">
+        <div className="w-full bg-white font-medium inline-flex flex-col items-center md:flex-row md:ml-10 py-2">
           <label htmlFor="simple-search" className="sr-only">
             Search
           </label>
-          <div className="relative">
+          <div className="relative mb-2 md:mb-0">
             <input
               type="text"
               id="simple-search"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Type to Search"
-              style={{ width: "500px", marginRight: "10px" }}
               required
+              style={{ width: "166px" }} // Set width 166px for mobile view
             />
           </div>
-          <button
-            type="submit"
-            className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            style={{
-              paddingLeft: "20px",
-              paddingRight: "20px",
-              borderRadius: "20px",
-              background: "#ce3a42",
-            }}
-          >
-            Search
-          </button>
-          <button
-            onClick={closeSearch}
-            className="px-4 py-2 text-gray-800 hover:bg-gray-100 ml-2"
-          >
-            <ExportedImage
-              priority={true}
-              className="h-4 w-4 mx-2"
-              src={Closeicon}
-              alt="Close Icon"
-            />
-          </button>
+          <div className="flex md:ml-2">
+            <button
+              type="submit"
+              className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              style={{
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                borderRadius: "20px",
+                background: "#ce3a42",
+              }}
+            >
+              Search
+            </button>
+            <button
+              onClick={closeSearch}
+              className="px-4 py-2 text-gray-800 hover:bg-gray-100 ml-2"
+            >
+              <ExportedImage
+                priority={true}
+                className="h-4 w-4 mx-2"
+                src={Closeicon}
+                alt="Close Icon"
+              />
+            </button>
+          </div>
         </div>
       )}
 

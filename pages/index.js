@@ -281,7 +281,7 @@ const SkeletonLoader = () => (
         </div>
       </div>
     </div> */}
-     <div className="px-4 py-8 mx-auto max-w-screen-xl">
+     <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
         <div className="w-full max-w-5xl mx-auto">
           <div className="flex flex-col justify-center">

@@ -19,90 +19,38 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import axios from "axios";
 
-const SkeletonLoader = () => (
-  <div className="px-4 py-8 mx-auto max-w-screen-xl">
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
-      <div className="w-full max-w-5xl mx-auto">
-        <div className="flex flex-col justify-center">
-          {[...Array(3)].map((_, index) => (
-            <div key={index} className="mb-6">
-              <div className="h-4 bg-red-800 rounded w-32 mb-2 animate-pulse"></div>
-              <div className="h-8 bg-black-900 rounded w-2/3 mb-2 animate-pulse"></div>
-              <div className="h-16 bg-gray-800 rounded mb-3 animate-pulse"></div>
-              <div className="h-64 bg-gray-300 rounded mb-3 animate-pulse"></div>
-            </div>
-          ))}
-          <div className="flex items-center mb-4">
-            <div className="h-6 w-1 bg-blue-500 rounded-l animate-pulse"></div>
-            <div className="h-6 bg-blue-500 rounded-r w-24 ml-1 animate-pulse"></div>
-            <div className="h-6 bg-blue-500 rounded-full w-6 mx-1 animate-pulse"></div>
-            <div className="h-6 bg-blue-500 rounded w-20 animate-pulse"></div>
-          </div>
-        </div>
-      </div>
-      <div className="w-full max-w-3xl mx-auto">
-        <div className="h-10 bg-gray-200 rounded mb-4 animate-pulse"></div>
-        <div
-          className="block max-w-sm p-6 rounded-lg shadow animate-pulse"
-          style={{
-            background: "linear-gradient(to bottom right, #002D73, #40A6FB)",
-            padding: "10px",
-            borderRadius: "10px",
-          }}
-        >
-          <div className="flex items-center justify-between mb-1">
-            <div>
-              <div className="h-4 bg-white rounded w-24 mb-1 animate-pulse"></div>
-              <div className="h-6 bg-white rounded w-32 animate-pulse"></div>
-            </div>
-            <div className="h-16 w-16 bg-white rounded-full animate-pulse"></div>
-          </div>
-          <div className="flex items-center mb-2">
-            <div className="h-4 w-4 bg-white rounded-full mr-2 animate-pulse"></div>
-            <div className="h-4 bg-white rounded w-48 animate-pulse"></div>
-          </div>
-          <div className="flex justify-around items-center mb-6">
-            <div className="h-8 bg-white rounded w-12 animate-pulse"></div>
-            <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
-            <div className="h-4 bg-white rounded w-8 animate-pulse"></div>
-            <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
-            <div className="h-4 bg-white rounded w-8 animate-pulse"></div>
-            <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
-            <div className="h-4 bg-white rounded w-16 animate-pulse"></div>
-          </div>
-          <div className="flex justify-between items-center mb-8">
-            <div className="h-4 bg-white rounded w-32 animate-pulse"></div>
-            <div className="h-6 w-6 bg-white rounded-full animate-pulse"></div>
-          </div>
-          <div className="flex justify-between items-center text-center">
-            {[...Array(5)].map((_, index) => (
-              <div key={index}>
-                <div className="h-4 bg-white rounded w-12 mb-1 animate-pulse"></div>
-                <div className="h-8 w-8 bg-white rounded-full animate-pulse mx-auto mb-1"></div>
-                <div className="h-4 bg-white rounded w-12 animate-pulse"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {[...Array(3)].map((_, index) => (
-          <div key={index} className="flex mt-5 justify-between">
-            <div className="mr-2">
-              <div className="h-4 bg-red-800 rounded w-20 mb-1 animate-pulse"></div>
-              <div className="h-6 bg-gray-800 rounded w-32 animate-pulse"></div>
-            </div>
-            <div className="h-16 w-16 bg-gray-300 rounded object-contain animate-pulse"></div>
-          </div>
-        ))}
-        <hr className="my-6" />
-      </div>
-    </div>
-  </div>
-);
-
 const Banner = ({ data }) => {
   // const { openDialog } = useDialog();
   console.log(data, "data props");
-  
+  const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const fetchWeatherData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         // `https://api.openweathermap.org/data/2.5/forecast?lat={LATITUDE}&lon={LONGITUDE}&appid={YOUR_API_KEY}&units=imperial`
+  //         `https://api.openweathermap.org/data/2.5/forecast?lat=38.9072&lon=-77.0369&appid=YOUR_DUMMY_API_KEY&units=imperial`
+  //       );
+  //       setWeatherData(response.data);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error("Error fetching the weather data", error);
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchWeatherData();
+  // }, []);
+
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
+
+  // if (!weatherData) {
+  //   return <p>Failed to fetch weather data</p>;
+  // }
+
   const sortedPosts = data.page.homePage.heroSection.heroPostCategory.nodes
     .flatMap((item) => item.posts.nodes)
     .filter((post) =>
@@ -119,6 +67,8 @@ const Banner = ({ data }) => {
   console.log(sortedPostss, "sortedPostss");
 
   console.log(sortedPosts, "sortedPosts");
+
+  // const hourlyForecast = weatherData.list.slice(0, 6);
 
   return (
     <>
@@ -194,6 +144,109 @@ const Banner = ({ data }) => {
               type="text"
               placeholder="Search"
             />
+            {/* <div
+              className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              style={{
+                background:
+                  "linear-gradient(to bottom right, #002D73, #40A6FB)",
+                padding: "10px",
+                borderRadius: "10px",
+              }}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <div>
+                  <p className="text-xs tracking-tight text-white">
+                    Chance of rain {hourlyForecast[0].pop * 100}%
+                  </p>
+                  <h5 className="text-xl text-white font-medium">
+                    {hourlyForecast[0].weather[0].description}
+                  </h5>
+                </div>
+                <ExportedImage
+                  src={`/icons/${hourlyForecast[0].weather[0].icon}.png`}
+                  alt={hourlyForecast[0].weather[0].description}
+                  className="h-13 w-13 mr-2"
+                />
+              </div>
+              <div className="flex items-center">
+                <ExportedImage
+                  src="/icons/location.png"
+                  alt="Location"
+                  className="h-5 w-5 mr-2"
+                />
+                <p className="text-normal tracking-tight text-white">
+                  {weatherData.city.name}, {weatherData.city.country}
+                </p>
+              </div>
+              <div
+                className="flex items-center mt-2"
+                style={{
+                  justifyContent: "space-around",
+                  marginBottom: "20px",
+                }}
+              >
+                <p className="font-bold text-white mr-px" mr-1>
+                  {Math.round(hourlyForecast[0].main.temp)}°F
+                </p>
+                <ExportedImage
+                  src="/icons/mdi_weather.png"
+                  alt="Cloud"
+                  className="h-4 w-4"
+                />
+                <p className="font-xs text-white">
+                  {hourlyForecast[0].clouds.all}%
+                </p>
+                <ExportedImage
+                  src="/icons/typcn_weather.png"
+                  alt="Cloud"
+                  className="h-4 w-4"
+                />
+                <p className="font-xs text-white">
+                  {hourlyForecast[0].main.humidity}%
+                </p>
+                <ExportedImage
+                  src="/icons/wind_weather.png"
+                  alt="Wind"
+                  className="h-4 w-4"
+                />
+                <p className="font-xs text-white">
+                  {Math.round(hourlyForecast[0].wind.speed)} mph
+                </p>
+              </div>
+              <div
+                className="flex justify-between items-center"
+                style={{ marginBottom: "30px" }}
+              >
+                <p className="text-white mt-4 font-medium">
+                  {new Date(hourlyForecast[0].dt_txt).toLocaleDateString()}
+                </p>
+                <ExportedImage
+                  src="/icons/jam_menu.png"
+                  alt="Toggle"
+                  className="h-6 w-6"
+                />
+              </div>
+              <div className="mt-4">
+                <div className="flex justify-between items-center text-center">
+                  {hourlyForecast.map((forecast, index) => (
+                    <div key={index}>
+                      <p className="text-sm text-white mr-2 mb-1">
+                        {new Date(forecast.dt_txt).getHours()} pm
+                      </p>
+                      <ExportedImage
+                        src={`/icons/${forecast.weather[0].icon}.png`}
+                        alt={forecast.weather[0].description}
+                        style={{ margin: "0 auto" }}
+                        className="h-7 w-7"
+                      />
+                      <p className="text-sm text-white mt-1">
+                        {Math.round(forecast.main.temp)}°F
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div> */}
             <div
               className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               style={{

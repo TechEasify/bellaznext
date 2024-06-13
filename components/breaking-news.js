@@ -43,7 +43,7 @@ function Breakingnews({ nodeByUri, loading, uri }) {
     setIsClient(true);
   }, []);
 
-  if (loading || !isClient) return <SkeletonLoader />;
+  if (!isClient) return <SkeletonLoader />;
 
   return (
     <>
