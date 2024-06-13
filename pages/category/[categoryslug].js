@@ -129,7 +129,7 @@ const CATEGORY_BREAKING_QUERY = gql`
 `;
 
 const SkeletonLoader = () => (
-  <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800">
+  <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800" style={{ background: "#002d73" }}>
   <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
     <div className="w-full max-w-5xl mx-auto">
       <div className="bg-white p-4 rounded-md animate-pulse">

@@ -51,7 +51,7 @@ function Index() {
   if (loading)
     return (
       <>
-      <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse bg-gray-300">
+      <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse bg-gray-800" style={{ background: "#002d73" }}>
         <nav className="flex animate-pulse bg-gray-300" aria-label="Breadcrumb">
           <ol className="inline-flex items-center mb-3 sm:mb-0 animate-pulse bg-gray-300">
             <li>
@@ -81,7 +81,7 @@ function Index() {
         </h1>
       </div>
       <div
-        className="px-4 py-8 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-300"
+        className="px-4 py-8 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-800"
       >
         <div
           id="accordion-color"
@@ -92,7 +92,7 @@ function Index() {
           <h2 id="accordion-color-heading-1">
             <button
               type="button"
-              className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 animate-pulse bg-gray-300"
+              className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 animate-pulse bg-gray-300"
             >
               <span className="animate-pulse bg-gray-300">
               </span>
@@ -100,7 +100,7 @@ function Index() {
           </h2>
           <div
             id="accordion-color-body-1"
-            className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900 animate-pulse bg-gray-300"
+            className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900 animate-pulse bg-gray-500"
             aria-labelledby="accordion-color-heading-1"
           >
             <p className="mb-2 font-normal animate-pulse bg-gray-300">
@@ -122,7 +122,7 @@ function Index() {
           </h2>
           <div
             id="accordion-color-body-2"
-            className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 animate-pulse bg-gray-300"
+            className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 animate-pulse bg-gray-500"
             aria-labelledby="accordion-color-heading-2"
           >
             <p className="mb-2 font-normal animate-pulse bg-gray-300"></p>
@@ -144,7 +144,7 @@ function Index() {
           </h2>
           <div
             id="accordion-color-body-3"
-            className="p-5 border border-t-0 border-gray-200 dark:border-gray-700 animate-pulse bg-gray-300"
+            className="p-5 border border-t-0 border-gray-200 dark:border-gray-700 animate-pulse bg-gray-500"
           >
             <p className="mb-2 font-normal animate-pulse bg-gray-300">
             </p>
@@ -209,7 +209,7 @@ function Index() {
           <h2 id="accordion-color-heading-1">
             <button
               type="button"
-              className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 rounded-t-xl dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
+              className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
                 openAccordion === 1 ? "bg-blue-100 dark:bg-gray-800" : ""
               }`}
               onClick={() => toggleAccordion(1)}
