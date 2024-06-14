@@ -19,7 +19,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           {/* Favicons, Google site verification and other common meta tags across the site. */}
-          <link rel="icon" href="/belaazicon.ico"/>
+          <link rel="icon" href="/belaazicon.ico" />
           {/* <script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-VGJ09RD0RZ'
@@ -33,6 +33,11 @@ class MyDocument extends Document {
             `,
             }}
           ></script> */}
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3209848804552918"
+            crossorigin="anonymous"
+          ></script>
         </Head>
         <body>
           <Main />

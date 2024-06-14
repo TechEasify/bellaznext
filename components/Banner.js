@@ -112,12 +112,10 @@ const Banner = ({ data }) => {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        // Fetching user's current location using Geolocation API
         navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords;
-          // Fetch weather data based on obtained latitude and longitude
           const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=6d64723f2d00cfff7a2a1cad961b65f1`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_FORCAST_KEY}`
           );
           setWeatherData(response.data);
           setLoading(false);
@@ -187,7 +185,7 @@ const Banner = ({ data }) => {
   return (
     <>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
               {sortedPosts.map(

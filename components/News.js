@@ -10,15 +10,16 @@ import anaflavia from "../public/images/anaflavia.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
+import Ads from "./googleAds/Ads";
 
-function News({nodeByUri}) {
+function News({ nodeByUri }) {
   console.log(nodeByUri, "nodeByUri");
   const router = useRouter();
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     console.log(date, "date");
-    return format(date, 'MMMM d, yyyy');
+    return format(date, "MMMM d, yyyy");
   };
 
   return (
@@ -37,7 +38,9 @@ function News({nodeByUri}) {
         <div className="flex flex-wrap justify-center items-center gap-6">
           <div className="flex flex-col max-w-2xl text-white">
             <div className="bg-black py-8 px-8">
-              <p className="text-base font-bold text-red-800">{nodeByUri.categories.nodes[0].name}</p>
+              <p className="text-base font-bold text-red-800">
+                {nodeByUri.categories.nodes[0].name}
+              </p>
               <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold">
                 {nodeByUri.title}
               </h1>
@@ -71,7 +74,7 @@ function News({nodeByUri}) {
                 <span className="text-[10px] md:text-[12px] font-extrabold mr-1">
                   |
                 </span>
-                Updated {format(nodeByUri.dateGmt, 'MMM. d, yyyy, h:mm a')} ET
+                Updated {format(nodeByUri.dateGmt, "MMM. d, yyyy, h:mm a")} ET
               </p>
             </div>
             <ExportedImage
@@ -83,7 +86,11 @@ function News({nodeByUri}) {
               height={499}
               style={{ width: "760px", height: "499px", objectFit: "cover" }}
             />
-            <p className="font-semibold mb-5" style={{ color: "#2B2B2B" }} dangerouslySetInnerHTML={{ __html: nodeByUri.content}}/>
+            <p
+              className="font-semibold mb-5"
+              style={{ color: "#2B2B2B" }}
+              dangerouslySetInnerHTML={{ __html: nodeByUri.content }}
+            />
 
             {/* <p className="text-black mb-5">
               Bellu died at the age of 5 in 2016. Belli followed years later in
@@ -243,7 +250,7 @@ function News({nodeByUri}) {
             <div className="w-full max-w-2xl mx-auto mt-10 mb-20">
               <div className="flex items-center">
                 <p className="text-[20px] font-bold text-black italic mr-3">
-                MOST READ
+                  MOST READ
                 </p>
               </div>
               <hr
@@ -339,7 +346,7 @@ function News({nodeByUri}) {
             </div>
           </div>
           <div className="flex max-w-2xl">
-            <ExportedImage
+            {/* <ExportedImage
               className="mb-2"
               priority={true}
               src={Screenshot202}
@@ -350,6 +357,12 @@ function News({nodeByUri}) {
                 position: "absolute",
                 top: "21%",
               }}
+            /> */}
+            <Ads
+              className=""
+              style={{ display: "block", width: "100%", height: "90px" }}
+              adClient="ca-pub-3209848804552918"
+              adSlot="9293720177" // Replace with your actual ad slot ID
             />
           </div>
         </div>

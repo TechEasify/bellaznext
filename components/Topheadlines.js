@@ -153,7 +153,7 @@ const Topheadlines = () => {
   console.log(data?.page?.homePage, "headline data");
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-7">
         <div className="w-full max-w-5xl mx-auto md:border-r">
           <div className="flex flex-col justify-center mx-auto md:mx-0">
             <h1 className="text-[25px] font-bold text-black-900 italic">
@@ -169,7 +169,7 @@ const Topheadlines = () => {
             <br />
           </div>
 
-          <div className="flex flex-wrap justify-around">
+          <div className="flex flex-wrap justify-around px-2">
             {data?.page?.homePage?.topHeadlinesPost?.nodes.slice(0, 6).map(
               (item) => (
                 console.log(item, "item item topheadline"),
@@ -264,7 +264,7 @@ const Topheadlines = () => {
                           console.log(itemdata, "itemdata"),
                           (
                             <>
-                              <div className="mr-2 w-44 mb-2">
+                              <div className="mr-2 w-48 mb-2">
                                 <p className="text-[12px] font-bold text-red-800">
                                   {side.name}
                                 </p>
