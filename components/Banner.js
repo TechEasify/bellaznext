@@ -18,6 +18,90 @@ import ExportedImage from "next-image-export-optimizer";
 import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import axios from "axios";
+import Link from "next/link";
+
+const SkeletonLoader = () => (
+  <>
+     <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800" style={{ background: "#002d73" }}>
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+        <div className="w-full max-w-5xl mx-auto">
+          <div className="flex flex-col justify-center">
+            {[...Array(1)].map((_, index) => (
+              <div key={index} className="mb-6">
+                <div className="h-4 bg-red-800 rounded w-32 mb-2 animate-pulse"></div>
+                <div className="h-8 bg-black-900 rounded w-2/3 mb-2 animate-pulse"></div>
+                <div className="h-16 bg-gray-800 rounded mb-3 animate-pulse"></div>
+                <div className="h-64 bg-gray-300 rounded mb-3 animate-pulse"></div>
+              </div>
+            ))}
+            <div className="flex items-center mb-4">
+              <div className="h-6 w-1 bg-blue-500 rounded-l animate-pulse"></div>
+              <div className="h-6 bg-blue-500 rounded-r w-24 ml-1 animate-pulse"></div>
+              <div className="h-6 bg-blue-500 rounded-full w-6 mx-1 animate-pulse"></div>
+              <div className="h-6 bg-blue-500 rounded w-20 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full max-w-3xl mx-auto">
+          <div className="h-10 bg-gray-200 rounded mb-4 animate-pulse"></div>
+          <div
+            className="block max-w-sm p-6 rounded-lg shadow animate-pulse"
+            style={{
+              background:
+                'linear-gradient(to bottom right, #002D73, #40A6FB)',
+              padding: '10px',
+              borderRadius: '10px',
+            }}
+          >
+            <div className="flex items-center justify-between mb-1">
+              <div>
+                <div className="h-4 bg-white rounded w-24 mb-1 animate-pulse"></div>
+                <div className="h-6 bg-white rounded w-32 animate-pulse"></div>
+              </div>
+              <div className="h-16 w-16 bg-white rounded-full animate-pulse"></div>
+            </div>
+            <div className="flex items-center mb-2">
+              <div className="h-4 w-4 bg-white rounded-full mr-2 animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-48 animate-pulse"></div>
+            </div>
+            <div className="flex justify-around items-center mb-6">
+              <div className="h-8 bg-white rounded w-12 animate-pulse"></div>
+              <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-8 animate-pulse"></div>
+              <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-8 animate-pulse"></div>
+              <div className="h-4 w-4 bg-white rounded-full animate-pulse"></div>
+              <div className="h-4 bg-white rounded w-16 animate-pulse"></div>
+            </div>
+            <div className="flex justify-between items-center mb-8">
+              <div className="h-4 bg-white rounded w-32 animate-pulse"></div>
+              <div className="h-6 w-6 bg-white rounded-full animate-pulse"></div>
+            </div>
+            <div className="flex justify-between items-center text-center">
+              {[...Array(5)].map((_, index) => (
+                <div key={index}>
+                  <div className="h-4 bg-white rounded w-12 mb-1 animate-pulse"></div>
+                  <div className="h-8 w-8 bg-white rounded-full animate-pulse mx-auto mb-1"></div>
+                  <div className="h-4 bg-white rounded w-12 animate-pulse"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+          {[...Array(3)].map((_, index) => (
+            <div key={index} className="flex mt-5 justify-between">
+              <div className="mr-2">
+                <div className="h-4 bg-red-800 rounded w-20 mb-1 animate-pulse"></div>
+                <div className="h-6 bg-gray-800 rounded w-32 animate-pulse"></div>
+              </div>
+              <div className="h-16 w-16 bg-gray-300 rounded object-contain animate-pulse"></div>
+            </div>
+          ))}
+          <hr className="my-6" />
+        </div>
+      </div>
+    </div>
+  </>
+);
 
 const Banner = ({ data }) => {
   // const { openDialog } = useDialog();
@@ -25,31 +109,63 @@ const Banner = ({ data }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchWeatherData = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         // `https://api.openweathermap.org/data/2.5/forecast?lat={LATITUDE}&lon={LONGITUDE}&appid={YOUR_API_KEY}&units=imperial`
-  //         `https://api.openweathermap.org/data/2.5/forecast?lat=38.9072&lon=-77.0369&appid=YOUR_DUMMY_API_KEY&units=imperial`
-  //       );
-  //       setWeatherData(response.data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error("Error fetching the weather data", error);
-  //       setLoading(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        // Fetching user's current location using Geolocation API
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const { latitude, longitude } = position.coords;
+          // Fetch weather data based on obtained latitude and longitude
+          const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=6d64723f2d00cfff7a2a1cad961b65f1`
+          );
+          setWeatherData(response.data);
+          setLoading(false);
+        });
+      } catch (error) {
+        console.error(
+          "Error fetching the weather data",
+          error.response ? error.response.data : error.message
+        );
+        setLoading(false);
+      }
+    };
 
-  //   fetchWeatherData();
-  // }, []);
+    fetchWeatherData();
+  }, []);
 
-  // if (loading) {
-  //   return <p>Loading...</p>;
-  // }
+  console.log(weatherData, "weatherData");
 
-  // if (!weatherData) {
-  //   return <p>Failed to fetch weather data</p>;
-  // }
+  if (loading) {
+    return <SkeletonLoader/>;
+  }
+
+  if (!weatherData) {
+    return <p>Failed to fetch weather data</p>;
+  }
+
+  const kelvinToFahrenheit = (kelvin) =>
+    (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
+
+  const { main, weather, wind, name, sys, clouds } = weatherData;
+  const { description } = weather[0];
+  const tempF = kelvinToFahrenheit(main.temp);
+
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options).replace(/(\d+)(, \d+)/, '$1th$2');
+  };
+
+  const date = formatDate(weatherData.dt);
+
+  const timeSlots = [
+    { time: '2 pm', temp: 72, image: image_sun },
+    { time: '3 pm', temp: 70, image: image_sun1 },
+    { time: '4 pm', temp: 69, image: image_sun2 },
+    { time: '5 pm', temp: 75, image: image_sun3 },
+    { time: '6 pm', temp: 76, image: image_sun4 },
+  ];
 
   const sortedPosts = data.page.homePage.heroSection.heroPostCategory.nodes
     .flatMap((item) => item.posts.nodes)
@@ -68,64 +184,83 @@ const Banner = ({ data }) => {
 
   console.log(sortedPosts, "sortedPosts");
 
-  // const hourlyForecast = weatherData.list.slice(0, 6);
-
   return (
     <>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
-              {sortedPosts.map((post) => (
-                <div key={post.id}>
-                  <p className="text-base font-bold text-red-800">
-                    {post.categories.nodes[0]?.name}
-                  </p>
-                  <h1 className="text-[30px] text-black-900 font-bold">
-                    {post.title}
-                  </h1>
-                  <p
-                    className="text-[15px] text-base font-bold text-gray-800 mb-3"
-                    dangerouslySetInnerHTML={{ __html: post.content }}
-                  />
-                  <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
-                    <span
-                      className="text-[25px] font-extrabold mr-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      |
-                    </span>
-                    By
-                    <span
-                      className="font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      Linah Absteen
-                      <span
-                        className="text-[36px] font-extrabold mx-1"
-                        style={{ color: "#40A6FB" }}
+              {sortedPosts.map(
+                (post) => (
+                  console.log(post.slug, "post"),
+                  (
+                    <div key={post.id}>
+                      <p className="text-base font-bold text-red-800">
+                        {post.categories.nodes[0]?.name}
+                      </p>
+                      <Link
+                        href={{
+                          pathname: `/news/${post.slug}`,
+                        }}
+                        passHref
                       >
-                        .
-                      </span>
-                    </span>
-                    6 MIN READ
-                  </p>
-                  {post.featuredImage?.node?.srcSet && (
-                    <ExportedImage
-                      priority={true}
-                      src={post.featuredImage.node.srcSet}
-                      alt={post.featuredImage.node.altText || "Featured Image"}
-                      width={150}
-                      height={150}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        maxHeight: "500px",
-                      }}
-                    />
-                  )}
-                </div>
-              ))}
+                        <h1 className="text-[30px] text-b.lack-900 font-bold">
+                          {post.title}
+                        </h1>
+                      </Link>
+                      <Link
+                        href={{
+                          pathname: `/news/${post.slug}`,
+                        }}
+                        passHref
+                      >
+                        <p
+                          className="text-[15px] text-base font-bold text-gray-800 mb-3 cursor-pointer"
+                          dangerouslySetInnerHTML={{ __html: post.content }}
+                        />
+                      </Link>
+                      <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[25px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          Linah Absteen
+                          <span
+                            className="text-[36px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        6 MIN READ
+                      </p>
+                      {post.featuredImage?.node?.srcSet && (
+                        <ExportedImage
+                          priority={true}
+                          src={post.featuredImage.node.srcSet}
+                          alt={
+                            post.featuredImage.node.altText || "Featured Image"
+                          }
+                          width={150}
+                          height={150}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            maxHeight: "500px",
+                          }}
+                        />
+                      )}
+                    </div>
+                  )
+                )
+              )}
               {/* <p className="text-base font-bold text-red-800">POLITICS</p>
               <h1 className="text-[30px] text-black-900 font-bold">
                 Who will become america's last hope
@@ -144,109 +279,6 @@ const Banner = ({ data }) => {
               type="text"
               placeholder="Search"
             />
-            {/* <div
-              className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-              style={{
-                background:
-                  "linear-gradient(to bottom right, #002D73, #40A6FB)",
-                padding: "10px",
-                borderRadius: "10px",
-              }}
-            >
-              <div className="flex items-center justify-between mb-1">
-                <div>
-                  <p className="text-xs tracking-tight text-white">
-                    Chance of rain {hourlyForecast[0].pop * 100}%
-                  </p>
-                  <h5 className="text-xl text-white font-medium">
-                    {hourlyForecast[0].weather[0].description}
-                  </h5>
-                </div>
-                <ExportedImage
-                  src={`/icons/${hourlyForecast[0].weather[0].icon}.png`}
-                  alt={hourlyForecast[0].weather[0].description}
-                  className="h-13 w-13 mr-2"
-                />
-              </div>
-              <div className="flex items-center">
-                <ExportedImage
-                  src="/icons/location.png"
-                  alt="Location"
-                  className="h-5 w-5 mr-2"
-                />
-                <p className="text-normal tracking-tight text-white">
-                  {weatherData.city.name}, {weatherData.city.country}
-                </p>
-              </div>
-              <div
-                className="flex items-center mt-2"
-                style={{
-                  justifyContent: "space-around",
-                  marginBottom: "20px",
-                }}
-              >
-                <p className="font-bold text-white mr-px" mr-1>
-                  {Math.round(hourlyForecast[0].main.temp)}°F
-                </p>
-                <ExportedImage
-                  src="/icons/mdi_weather.png"
-                  alt="Cloud"
-                  className="h-4 w-4"
-                />
-                <p className="font-xs text-white">
-                  {hourlyForecast[0].clouds.all}%
-                </p>
-                <ExportedImage
-                  src="/icons/typcn_weather.png"
-                  alt="Cloud"
-                  className="h-4 w-4"
-                />
-                <p className="font-xs text-white">
-                  {hourlyForecast[0].main.humidity}%
-                </p>
-                <ExportedImage
-                  src="/icons/wind_weather.png"
-                  alt="Wind"
-                  className="h-4 w-4"
-                />
-                <p className="font-xs text-white">
-                  {Math.round(hourlyForecast[0].wind.speed)} mph
-                </p>
-              </div>
-              <div
-                className="flex justify-between items-center"
-                style={{ marginBottom: "30px" }}
-              >
-                <p className="text-white mt-4 font-medium">
-                  {new Date(hourlyForecast[0].dt_txt).toLocaleDateString()}
-                </p>
-                <ExportedImage
-                  src="/icons/jam_menu.png"
-                  alt="Toggle"
-                  className="h-6 w-6"
-                />
-              </div>
-              <div className="mt-4">
-                <div className="flex justify-between items-center text-center">
-                  {hourlyForecast.map((forecast, index) => (
-                    <div key={index}>
-                      <p className="text-sm text-white mr-2 mb-1">
-                        {new Date(forecast.dt_txt).getHours()} pm
-                      </p>
-                      <ExportedImage
-                        src={`/icons/${forecast.weather[0].icon}.png`}
-                        alt={forecast.weather[0].description}
-                        style={{ margin: "0 auto" }}
-                        className="h-7 w-7"
-                      />
-                      <p className="text-sm text-white mt-1">
-                        {Math.round(forecast.main.temp)}°F
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div> */}
             <div
               className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               style={{
@@ -259,10 +291,10 @@ const Banner = ({ data }) => {
               <div className="flex items-center justify-between mb-1">
                 <div>
                   <p className="text-xs tracking-tight text-white">
-                    Chance of rain 60%
+                    Chance of rain {main.humidity}%
                   </p>
                   <h5 className="text-xl text-white font-medium">
-                    Partly Cloudy
+                    {description.charAt(0).toUpperCase() + description.slice(1)}
                   </h5>
                 </div>
                 <ExportedImage
@@ -278,7 +310,7 @@ const Banner = ({ data }) => {
                   className="h-5 w-5 mr-2"
                 />
                 <p className="text-normal tracking-tight text-white">
-                  Washington DC, USA
+                  {name}, {sys.country}
                 </p>
               </div>
               <div
@@ -288,33 +320,33 @@ const Banner = ({ data }) => {
                   marginBottom: "20px",
                 }}
               >
-                <p className="font-bold text-white mr-px" mr-1>
-                  72°F
-                </p>
+                <p className="font-bold text-white mr-px">{tempF}°F</p>
                 <ExportedImage
                   src={mdi_weather}
                   alt="Cloud"
                   className="h-4 w-4"
                 />
-                <p className="font-xs text-white">10%</p>
+                <p className="font-xs text-white">{clouds.all}%</p>
                 <ExportedImage
                   src={typcn_weather}
                   alt="Cloud"
                   className="h-4 w-4"
                 />
-                <p className="font-xs text-white">0.5</p>
+                <p className="font-xs text-white">
+                  {(main.feels_like - 273.15).toFixed(1)}°C
+                </p>
                 <ExportedImage
                   src={wind_weather}
-                  alt="Sun"
+                  alt="Wind"
                   className="h-4 w-4"
                 />
-                <p className="font-xs text-white">124 mp/h</p>
+                <p className="font-xs text-white">{wind.speed} mp/h</p>
               </div>
               <div
                 className="flex justify-between items-center"
                 style={{ marginBottom: "30px" }}
               >
-                <p className="text-white mt-4 font-medium">August, 10th 2020</p>
+                <p className="text-white mt-4 font-medium">{date}</p>
                 <ExportedImage
                   src={jam_menu}
                   alt="Toggle"
@@ -323,63 +355,27 @@ const Banner = ({ data }) => {
               </div>
               <div className="mt-4">
                 <div className="flex justify-between items-center text-center">
-                  <div>
-                    <p className="text-sm text-white mr-2 mb-1">2 pm</p>
-                    <ExportedImage
-                      src={image_sun}
-                      alt="Sun"
-                      style={{ margin: "0 auto" }}
-                      className="h-7 w-7"
-                    />
-                    <p className="text-sm text-white mt-1">72°F</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-white mr-2 mb-1">3 pm</p>
-                    <ExportedImage
-                      src={image_sun1}
-                      alt="Sun"
-                      style={{ margin: "0 auto" }}
-                      className="h-7 w-7"
-                    />
-                    <p className="text-sm text-white mt-1">70°F</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-white mr-2 mb-1">4 pm</p>
-                    <ExportedImage
-                      src={image_sun2}
-                      alt="Sun"
-                      style={{ margin: "0 auto" }}
-                      className="h-7 w-7"
-                    />
-                    <p className="text-sm text-white mt-1">69°F</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-white mr-2 mb-1">5 pm</p>
-                    <ExportedImage
-                      src={image_sun3}
-                      alt="Sun"
-                      style={{ margin: "0 auto" }}
-                      className="h-7 w-7"
-                    />
-                    <p className="text-sm text-white mt-1">75°F</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-white mr-2 mb-1">6 pm</p>
-                    <ExportedImage
-                      src={image_sun4}
-                      alt="Sun"
-                      style={{ margin: "0 auto" }}
-                      className="h-7 w-7"
-                    />
-                    <p className="text-sm text-white mt-1">76°F</p>
-                  </div>
+                  {timeSlots.map((slot, index) => (
+                    <div key={index}>
+                      <p className="text-sm text-white mr-2 mb-1">
+                        {slot.time}
+                      </p>
+                      <ExportedImage
+                        src={slot.image}
+                        alt="Sun"
+                        style={{ margin: "0 auto" }}
+                        className="h-7 w-7"
+                      />
+                      <p className="text-sm text-white mt-1">{slot.temp}°F</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
             {sortedPostss.slice(0, 2).map(
               (item) => (
-                console.log(item.featuredImage.node.srcSet, "item"),
+                console.log(item, "item banner"),
                 (
                   <>
                     <div className="flex mt-5 justify-between">
@@ -387,9 +383,16 @@ const Banner = ({ data }) => {
                         <p className="text-[12px] font-bold text-red-800">
                           {item.categories.nodes[0].name}
                         </p>
-                        <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                          {item.title}
-                        </p>
+                        <Link
+                          href={{
+                            pathname: `/news/${item.slug}`,
+                          }}
+                          passHref
+                        >
+                          <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                            {item.title}
+                          </p>
+                        </Link>
                       </div>
                       {item.featuredImage?.node?.srcSet && (
                         <ExportedImage

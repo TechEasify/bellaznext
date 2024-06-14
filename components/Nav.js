@@ -277,6 +277,8 @@ const Nav = ({
   const [activeLink, setActiveLink] = useState("");
   const [navData, setNavData] = useState(null);
 
+  console.log(`/news${uri}`, "uri");
+
   useEffect(() => {
     if (dataNav && dataMenu && datasubMenu && dataIcon) {
       setNavData({ dataNav, dataMenu, datasubMenu, dataIcon });
@@ -288,7 +290,7 @@ const Nav = ({
   }, [subscribe]);
 
   if (loadingNav || loadingMenu || loadingsubMenu || !navData) {
-    if (router.asPath === "/article") {
+    if (router.asPath === `/news${uri}`) {
       return <SkeletonArticleLoader />;
     } else {
       return <SkeletonLoader />;
@@ -424,7 +426,7 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : router.pathname === "/article" ? (
+      ) : router.asPath === `/news${uri}` ? (
         <header className="bg-black">
           <nav
             className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
@@ -744,7 +746,7 @@ const Nav = ({
       )}
 
       {isDropdownSearch && (
-        <div className="w-full bg-white font-medium inline-flex flex-col items-center md:flex-row md:ml-10 py-2">
+        <div className="bg-white font-medium inline-flex flex-col items-center md:flex-row md:ml-10 py-2">
           <label htmlFor="simple-search" className="sr-only">
             Search
           </label>
@@ -786,7 +788,7 @@ const Nav = ({
         </div>
       )}
 
-      {router.pathname === "/article" ? (
+      {router.asPath === `/news${uri}` ? (
         <header
           className={`bg-header transition-all duration-500 ${
             isContactHeaderVisible

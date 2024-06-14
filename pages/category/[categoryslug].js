@@ -256,6 +256,7 @@ const CategoryPage = () => {
           <ul>
             {nodeByUri.posts.nodes.map((post) =>
               post.link ? (
+                console.log(post, "post"),
                 <li key={post.id}>
                   <Link href={post.link}>{post.title}</Link>
                 </li>

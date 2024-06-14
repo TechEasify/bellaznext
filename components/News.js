@@ -1,18 +1,29 @@
 import React from "react";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
-import article from "../../public/images/article.svg";
-import vladimirputin from "../../public/images/vladimir-putin.svg";
-import Screenshot202 from "../../public/images/Screenshot202.svg";
+import Nav from "./Nav";
+import Footer from "./Footer";
+import article from "../public/images/article.svg";
+import vladimirputin from "../public/images/vladimir-putin.svg";
+import Screenshot202 from "../public/images/Screenshot202.svg";
 import ExportedImage from "next-image-export-optimizer";
-import colinlloyd from "../../public/images/colinlloyd.svg";
-import anaflavia from "../../public/images/anaflavia.svg";
+import colinlloyd from "../public/images/colinlloyd.svg";
+import anaflavia from "../public/images/anaflavia.svg";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { format } from "date-fns";
 
-function Index() {
+function News({nodeByUri}) {
+  console.log(nodeByUri, "nodeByUri");
+  const router = useRouter();
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    console.log(date, "date");
+    return format(date, 'MMMM d, yyyy');
+  };
+
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <hr />
       <div className="px-4 mx-auto flex bg-black items-center justify-center">
         <p className="text-base font-normal text-white">Ukraine & Russia War</p>
@@ -26,10 +37,9 @@ function Index() {
         <div className="flex flex-wrap justify-center items-center gap-6">
           <div className="flex flex-col max-w-2xl text-white">
             <div className="bg-black py-8 px-8">
-              <p className="text-base font-bold text-red-800">BREAKING NEWS</p>
+              <p className="text-base font-bold text-red-800">{nodeByUri.categories.nodes[0].name}</p>
               <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold">
-                Zelensky calls for Russian billions seized by world banks to be
-                sent to rebuild Ukraine.
+                {nodeByUri.title}
               </h1>
               <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
                 <span
@@ -43,7 +53,7 @@ function Index() {
                   className="font-extrabold ml-1"
                   style={{ color: "#40A6FB" }}
                 >
-                  Linah Absteen
+                  {nodeByUri.author.node.name}
                   <span
                     className="text-[20px] md:text-[25px] font-extrabold mx-1"
                     style={{ color: "#40A6FB" }}
@@ -56,26 +66,26 @@ function Index() {
 
               <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
                 <span className="font-extrabold ml-1 mr-1">
-                  Published Jan. 29, 2024
+                  Published {formatDate(nodeByUri.date)}
                 </span>
                 <span className="text-[10px] md:text-[12px] font-extrabold mr-1">
                   |
                 </span>
-                Updated Jan. 29, 2024, 9:03 a.m. ET
+                Updated {format(nodeByUri.dateGmt, 'MMM. d, yyyy, h:mm a')} ET
               </p>
             </div>
             <ExportedImage
               className="mb-2"
               priority={true}
-              src={article}
+              src={nodeByUri?.featuredImage?.node?.sourceUrl}
               alt="article"
+              width={760}
+              height={499}
+              style={{ width: "760px", height: "499px", objectFit: "cover" }}
             />
-            <p className="font-semibold mb-5" style={{ color: "#2B2B2B" }}>
-              President Zelensky has called for some of the Russian billions
-              seized by world banks to be sent to rebuild Ukraine.
-            </p>
+            <p className="font-semibold mb-5" style={{ color: "#2B2B2B" }} dangerouslySetInnerHTML={{ __html: nodeByUri.content}}/>
 
-            <p className="text-black mb-5">
+            {/* <p className="text-black mb-5">
               Bellu died at the age of 5 in 2016. Belli followed years later in
               2019, at the age of 12. In the wild, the average life expectancy
               of beluga whales is between 35 and 50 years.
@@ -140,7 +150,7 @@ function Index() {
               stress behavior following the deaths of her companions in their
               tank, Jo said. Videos sent to CNN showed her spinning around in
               small circles and floating listlessly near the water’s surface.
-            </p>
+            </p> */}
 
             <div className="w-full max-w-2xl mx-auto mt-10">
               <div className="flex items-center">
@@ -344,9 +354,9 @@ function Index() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
 
-export default Index;
+export default News;

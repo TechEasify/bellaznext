@@ -19,6 +19,7 @@ import Group4 from "../public/images/Group4.svg";
 import Frame208 from "../public/images/Frame208.svg";
 import Frame209 from "../public/images/Frame209.svg";
 import { gql, useQuery } from "@apollo/client";
+import Link from "next/link";
 
 const GET_TOPHEADLINE_PAGE = gql`
   query HomePage($id: ID = "745") {
@@ -30,8 +31,10 @@ const GET_TOPHEADLINE_PAGE = gql`
           nodes {
             ... on Category {
               name
+              slug
               posts {
                 nodes {
+                  slug
                   featuredImage {
                     node {
                       altText
@@ -62,8 +65,10 @@ const GET_TOPHEADLINE_PAGE = gql`
             ... on Category {
               id
               name
+              slug
               posts {
                 nodes {
+                  slug
                   categories {
                     nodes {
                       name
@@ -85,6 +90,7 @@ const GET_TOPHEADLINE_PAGE = gql`
         topHeadlineSidebarFirstAd {
           topHeadlineFirstAd {
             node {
+              slug
               altText
               srcSet
             }
@@ -95,8 +101,10 @@ const GET_TOPHEADLINE_PAGE = gql`
           nodes {
             ... on Category {
               name
+              slug
               posts {
                 nodes {
+                  slug
                   categories {
                     nodes {
                       name
@@ -120,6 +128,7 @@ const GET_TOPHEADLINE_PAGE = gql`
             node {
               altText
               srcSet
+              slug
             }
           }
           topHeadlineSecondAdCode
@@ -129,6 +138,7 @@ const GET_TOPHEADLINE_PAGE = gql`
             node {
               altText
               srcSet
+              slug
             }
           }
           topHeadlineBottomAdCode
@@ -160,62 +170,66 @@ const Topheadlines = () => {
           </div>
 
           <div className="flex flex-wrap justify-around">
-  {data?.page?.homePage?.topHeadlinesPost?.nodes.slice(0, 6).map((item) => (
-    <div key={item.id}>
-      {item?.posts?.nodes.slice(0, 1).map((post) => (
-        post?.featuredImage?.node?.srcSet ? (
-          <div className="max-w-md bg-white mb-6" key={post.id}>
-            <a href="#">
-              <ExportedImage
-                priority={true}
-                src={post?.featuredImage?.node?.srcSet}
-                alt="vladimirputin"
-                width={432}
-                height={293}
-                style={{
-                  width: "432px",
-                  height: "293px",
-                  objectFit: "cover",
-                }}
-              />
-            </a>
-            <p className="text-base font-bold text-red-800 mt-2">
-              {item.name}
-            </p>
-            <a href="#">
-              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {post?.title}
-              </h5>
-            </a>
-            <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
-              <span
-                className="text-[25px] font-extrabold mr-1"
-                style={{ color: "#40A6FB" }}
-              >
-                |
-              </span>
-              By
-              <span
-                className="font-extrabold mx-1"
-                style={{ color: "#40A6FB" }}
-              >
-                {post?.author?.node?.name || ""}
-                <span
-                  className="text-[36px] font-extrabold mx-1"
-                  style={{ color: "#40A6FB" }}
-                >
-                  .
-                </span>
-              </span>
-              6 MIN READ
-            </p>
+            {data?.page?.homePage?.topHeadlinesPost?.nodes.slice(0, 6).map(
+              (item) => (
+                console.log(item, "item item topheadline"),
+                (
+                  <div key={item.id}>
+                    {item?.posts?.nodes.slice(0, 1).map((post) =>
+                      post?.featuredImage?.node?.srcSet ? (
+                        <div className="max-w-md bg-white mb-6" key={post.id}>
+                          <Link href={`/news/${post.slug}`}>
+                            <ExportedImage
+                              priority={true}
+                              src={post?.featuredImage?.node?.srcSet}
+                              alt="vladimirputin"
+                              width={432}
+                              height={293}
+                              style={{
+                                width: "432px",
+                                height: "293px",
+                                objectFit: "cover",
+                              }}
+                            />
+                          </Link>
+                          <p className="text-base font-bold text-red-800 mt-2">
+                            {item.name}
+                          </p>
+                          <Link href={`/news/${post.slug}`}>
+                            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                              {post?.title}
+                            </h5>
+                          </Link>
+                          <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                            <span
+                              className="text-[25px] font-extrabold mr-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              |
+                            </span>
+                            By
+                            <span
+                              className="font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              {post?.author?.node?.name || ""}
+                              <span
+                                className="text-[36px] font-extrabold mx-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                .
+                              </span>
+                            </span>
+                            6 MIN READ
+                          </p>
+                        </div>
+                      ) : null
+                    )}
+                  </div>
+                )
+              )
+            )}
           </div>
-        ) : null
-      ))}
-    </div>
-  ))}
-</div>
-
 
           <hr className="mx-6 mb-8" />
         </div>
@@ -232,53 +246,65 @@ const Topheadlines = () => {
             }}
           />
 
-          {data?.page?.homePage?.topHeadlineSidebarPosts?.nodes.slice().sort((a, b) => (a.title < b.title ? 1 : -1)).slice(0, 2).map(
-            (side) => (
-              console.log(side, "side"),
-              (
-                <div className="flex mt-5 mb-5">
-                  {side.posts.nodes.slice().sort((a, b) => (a.title < b.title ? 1 : -1)).slice(0, 2).map(
-                    (itemdata) => (
-                      console.log(
-                        itemdata.featuredImage?.node?.srcSet,
-                        "itemdata"
-                      ),
-                      (
-                        <>
-                          <div className="mr-2">
-                            <p className="text-[12px] font-bold text-red-800">
-                              {side.name}
-                            </p>
-                            <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                              {itemdata.title}
-                            </p>
-                          </div>
-                          {itemdata?.featuredImage?.node?.srcSet ? (
-                            <ExportedImage
-                              src={itemdata.featuredImage.node.srcSet}
-                              alt={itemdata.title}
-                              className="h-13 w-13 mr-2"
-                              width={90}
-                              height={87}
-                              style={{
-                                width: "90px",
-                                height: "87px",
-                                objectFit: "cover",
-                              }}
-                            />
-                          ) : (
-                            <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
-                              No Image
-                            </div>
-                          )}
-                        </>
-                      )
-                    )
-                  )}
-                </div>
+          {data?.page?.homePage?.topHeadlineSidebarPosts?.nodes
+            .slice()
+            .sort((a, b) => (a.title < b.title ? 1 : -1))
+            .slice(0, 2)
+            .map(
+              (side) => (
+                console.log(side, "side"),
+                (
+                  <div className="flex flex-wrap mt-5 mb-5">
+                    {side.posts.nodes
+                      .slice()
+                      .sort((a, b) => (a.title < b.title ? 1 : -1))
+                      .slice(0, 2)
+                      .map(
+                        (itemdata) => (
+                          console.log(itemdata, "itemdata"),
+                          (
+                            <>
+                              <div className="mr-2 w-44 mb-2">
+                                <p className="text-[12px] font-bold text-red-800">
+                                  {side.name}
+                                </p>
+                                <Link
+                                  href={{
+                                    pathname: `/news/${itemdata.slug}`,
+                                  }}
+                                  passHref
+                                >
+                                  <p className="text-[15px] font-semibold text-gray-800">
+                                    {itemdata.title}
+                                  </p>
+                                </Link>
+                              </div>
+                              {itemdata?.featuredImage?.node?.srcSet ? (
+                                <ExportedImage
+                                  src={itemdata.featuredImage.node.srcSet}
+                                  alt={itemdata.title}
+                                  className="h-13 w-13 mr-2"
+                                  width={90}
+                                  height={87}
+                                  style={{
+                                    width: "90px",
+                                    height: "87px",
+                                    objectFit: "cover",
+                                  }}
+                                />
+                              ) : (
+                                <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                  No Image
+                                </div>
+                              )}
+                            </>
+                          )
+                        )
+                      )}
+                  </div>
+                )
               )
-            )
-          )}
+            )}
           <hr />
           <div className="flex mt-5">
             {data?.page?.homePage?.topHeadlineSidebarFirstAd?.topHeadlineFirstAd
@@ -304,8 +330,8 @@ const Topheadlines = () => {
           <hr />
 
           {data?.page?.homePage?.topHeadlineSidebarSinglePosts?.nodes
-          .slice()
-          .sort((a, b) => (a.title < b.title ? 1 : -1))
+            .slice()
+            .sort((a, b) => (a.title < b.title ? 1 : -1))
             .slice(0, 1)
             .map(
               (side) => (
@@ -313,7 +339,7 @@ const Topheadlines = () => {
                 (
                   <div className="flex mt-5 mb-5">
                     {side.posts.nodes
-                    .slice()
+                      .slice()
                       .sort((a, b) => (a.title < b.title ? 1 : -1)) // Sorting in descending order based on the title (or any other property)
                       .slice(0, 1) // Limiting to only one item
                       .map(

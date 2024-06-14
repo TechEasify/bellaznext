@@ -144,6 +144,7 @@ const GET_HOME_PAGE = gql`
               ... on Category {
                 posts {
                   nodes {
+                  slug
                     categories {
                       nodes {
                         name
@@ -172,8 +173,10 @@ const GET_HOME_PAGE = gql`
             nodes {
               ... on Category {
                 name
+                slug
                 posts {
                   nodes {
+                    slug
                     categories {
                       nodes {
                         name
