@@ -360,7 +360,10 @@ function News({ nodeByUri }) {
             /> */}
             <Ads
               className=""
-              style={{ display: "block", width: "100%", height: "90px" }}
+              style={{ display: "block", width: "251px", height: "496px",color: "transparent",
+                height: "auto",
+                position: "absolute",
+                top: "21%", }}
               adClient="ca-pub-3209848804552918"
               adSlot="9293720177" // Replace with your actual ad slot ID
             />

@@ -1,27 +1,26 @@
-// components/Ad.js
+// components/Ads.js
 import { useEffect } from 'react';
 
 const Ads = ({ className, style, adClient, adSlot }) => {
-    console.log(className, style, adClient, adSlot, "className, style, adClient, adSlot");
   useEffect(() => {
     const loadAds = () => {
       try {
-        if (window.adsbygoogle && window.adsbygoogle.loaded) {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+        console.log('Ads loaded successfully');
       } catch (e) {
         console.error('Error loading Google Ads:', e);
       }
     };
 
-    if (typeof window !== 'undefined') {
+    const checkAdsbygoogle = () => {
       if (window.adsbygoogle) {
         loadAds();
       } else {
-        window.addEventListener('load', loadAds);
-        return () => window.removeEventListener('load', loadAds);
+        setTimeout(checkAdsbygoogle, 300); // Check every 300ms until adsbygoogle is defined
       }
-    }
+    };
+
+    checkAdsbygoogle();
   }, []);
 
   return (
@@ -32,7 +31,7 @@ const Ads = ({ className, style, adClient, adSlot }) => {
       data-ad-slot={adSlot}
       data-ad-format="auto"
       data-full-width-responsive="true"
-    />
+    ></ins>
   );
 };
 

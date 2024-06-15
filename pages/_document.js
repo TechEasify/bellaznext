@@ -33,11 +33,15 @@ class MyDocument extends Document {
             `,
             }}
           ></script> */}
-          <script
-            async
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3209848804552918"
-            crossorigin="anonymous"
-          ></script>
+          {
+            process.env.NODE_ENV == "production" && (
+              <Script
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3209848804552918"
+                crossorigin="anonymous"
+              ></Script>
+            )
+          }
         </Head>
         <body>
           <Main />
