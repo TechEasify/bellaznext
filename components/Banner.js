@@ -22,7 +22,10 @@ import Link from "next/link";
 
 const SkeletonLoader = () => (
   <>
-     <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800" style={{ background: "#002d73" }}>
+    <div
+      className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800"
+      style={{ background: "#002d73" }}
+    >
       <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
         <div className="w-full max-w-5xl mx-auto">
           <div className="flex flex-col justify-center">
@@ -47,10 +50,9 @@ const SkeletonLoader = () => (
           <div
             className="block max-w-sm p-6 rounded-lg shadow animate-pulse"
             style={{
-              background:
-                'linear-gradient(to bottom right, #002D73, #40A6FB)',
-              padding: '10px',
-              borderRadius: '10px',
+              background: "linear-gradient(to bottom right, #002D73, #40A6FB)",
+              padding: "10px",
+              borderRadius: "10px",
             }}
           >
             <div className="flex items-center justify-between mb-1">
@@ -107,6 +109,7 @@ const Banner = ({ data }) => {
   // const { openDialog } = useDialog();
   console.log(data, "data props");
   const [weatherData, setWeatherData] = useState(null);
+  const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -114,10 +117,31 @@ const Banner = ({ data }) => {
       try {
         navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords;
-          const response = await axios.get(
+          const weatherResponse = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_FORCAST_KEY}`
           );
-          setWeatherData(response.data);
+          const forecastResponse = await axios.get(
+            `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_FORCAST_KEY}`
+          );
+
+          setWeatherData(weatherResponse.data);
+
+          // Extract the next 5 time slots from the forecast data
+          const hourlyData = forecastResponse.data.list
+            .slice(0, 5)
+            .map((slot) => {
+              console.log(slot, "slot");
+              return {
+                time: new Date(slot.dt * 1000).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+                temp: (((slot.main.temp - 273.15) * 9) / 5 + 32).toFixed(2), // convert Kelvin to Fahrenheit
+                image: getWeatherImage(slot.weather[0].icon),
+              };
+            });
+
+          setHourlyForecast(hourlyData);
           setLoading(false);
         });
       } catch (error) {
@@ -132,10 +156,25 @@ const Banner = ({ data }) => {
     fetchWeatherData();
   }, []);
 
+  const getWeatherImage = (icon) => {
+    switch (icon) {
+      case "01d":
+        return image_sun;
+      case "01n":
+        return image_sun1;
+      case "02d":
+        return image_sun2;
+      case "02n":
+        return image_sun3;
+      default:
+        return image_sun4;
+    }
+  };
+
   console.log(weatherData, "weatherData");
 
   if (loading) {
-    return <SkeletonLoader/>;
+    return <SkeletonLoader />;
   }
 
   if (!weatherData) {
@@ -151,18 +190,20 @@ const Banner = ({ data }) => {
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp * 1000);
-    const options = { month: 'long', day: 'numeric', year: 'numeric' };
-    return date.toLocaleDateString('en-US', options).replace(/(\d+)(, \d+)/, '$1th$2');
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    return date
+      .toLocaleDateString("en-US", options)
+      .replace(/(\d+)(, \d+)/, "$1th$2");
   };
 
   const date = formatDate(weatherData.dt);
 
   const timeSlots = [
-    { time: '2 pm', temp: 72, image: image_sun },
-    { time: '3 pm', temp: 70, image: image_sun1 },
-    { time: '4 pm', temp: 69, image: image_sun2 },
-    { time: '5 pm', temp: 75, image: image_sun3 },
-    { time: '6 pm', temp: 76, image: image_sun4 },
+    { time: "2 pm", temp: 72, image: image_sun },
+    { time: "3 pm", temp: 70, image: image_sun1 },
+    { time: "4 pm", temp: 69, image: image_sun2 },
+    { time: "5 pm", temp: 75, image: image_sun3 },
+    { time: "6 pm", temp: 76, image: image_sun4 },
   ];
 
   const sortedPosts = data.page.homePage.heroSection.heroPostCategory.nodes
@@ -353,9 +394,16 @@ const Banner = ({ data }) => {
               </div>
               <div className="mt-4">
                 <div className="flex justify-between items-center text-center">
-                  {timeSlots.map((slot, index) => (
-                    <div key={index}>
-                      <p className="text-sm text-white mr-2 mb-1">
+                  {hourlyForecast.map((slot, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        margin: "0 auto",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <p className="text-xs text-white mr-2 mb-1">
                         {slot.time}
                       </p>
                       <ExportedImage
@@ -364,7 +412,7 @@ const Banner = ({ data }) => {
                         style={{ margin: "0 auto" }}
                         className="h-7 w-7"
                       />
-                      <p className="text-sm text-white mt-1">{slot.temp}°F</p>
+                      <p className="text-xs text-white mt-1">{slot.temp}°F</p>
                     </div>
                   ))}
                 </div>

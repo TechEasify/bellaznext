@@ -361,7 +361,6 @@ function News({ nodeByUri }) {
             <Ads
               className=""
               style={{ display: "block", width: "251px", height: "496px",color: "transparent",
-                height: "auto",
                 position: "absolute",
                 top: "21%", }}
               adClient="ca-pub-3209848804552918"

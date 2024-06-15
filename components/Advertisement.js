@@ -2,6 +2,7 @@ import React from "react";
 import ExportedImage from "next-image-export-optimizer";
 import barcode from "../public/images/barcode.svg";
 import { gql, useQuery } from "@apollo/client";
+import Ads from "./googleAds/Ads";
 
 const GET_ADVERTISE_PAGE = gql`
   query HomePage($id: ID = "745") {
@@ -87,6 +88,16 @@ const Advertisement = () => {
           height={169}
         />
       )}
+      <Ads
+        className=""
+        style={{
+          display: "block",
+          width: "1134px",
+          height: "169px"
+        }}
+        adClient="ca-pub-3209848804552918"
+        adSlot="9293720177"
+      />
     </div>
   );
 };
