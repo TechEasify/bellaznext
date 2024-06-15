@@ -88,7 +88,7 @@ const Advertisement = () => {
           height={169}
         />
       )}
-      <Ads
+      {/* <Ads
         className=""
         style={{
           display: "block",
@@ -97,7 +97,7 @@ const Advertisement = () => {
         }}
         adClient="ca-pub-3209848804552918"
         adSlot="9293720177"
-      />
+      /> */}
     </div>
   );
 };
