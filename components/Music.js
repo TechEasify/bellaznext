@@ -7,6 +7,7 @@ import Frame257 from "../public/images/Frame257.svg";
 import download6 from "../public/images/download6.svg";
 import spotifydeal from "../public/images/spotifydeal.svg";
 import { gql, useQuery } from "@apollo/client";
+import Link from "next/link";
 
 const GET_MUSIC_SECTION = gql`
   query HomePage($id: ID = "745") {
@@ -19,6 +20,7 @@ const GET_MUSIC_SECTION = gql`
             ... on Category {
               posts {
                 nodes {
+                  slug
                   featuredImage {
                     node {
                       altText
@@ -110,7 +112,7 @@ const Music = () => {
                               />
                             )} */}
                             <ExportedImage
-                              src={Frame256}
+                              src={post?.featuredImage?.node?.sourceUrl}
                               alt="vladimirputin"
                               className="h-13 w-13 mr-2 mb-2"
                               width={317}
@@ -120,9 +122,16 @@ const Music = () => {
                             <p className="text-[12px] font-bold text-red-800">
                               {data?.page?.homePage?.musicTitle}
                             </p>
-                            <p className="text-[15px] font-semibold text-gray-800">
-                              {post.title}
-                            </p>
+                            <Link
+                              href={{
+                                pathname: `/news/${post.slug}`,
+                              }}
+                              passHref
+                            >
+                              <p className="text-[15px] font-semibold text-gray-800">
+                                {post.title}
+                              </p>
+                            </Link>
                             <p className="text-[10px] text-base font-bold text-gray-800">
                               <span
                                 className="text-[10px] font-extrabold mr-1"
@@ -152,16 +161,28 @@ const Music = () => {
                             <p className="text-[12px] font-bold text-red-800">
                               {data?.page?.homePage?.musicTitle}
                             </p>
-                            <p className="text-[15px] font-semibold text-gray-800">
-                              {post.title}
-                            </p>
+                            <Link
+                              href={{
+                                pathname: `/news/${post.slug}`,
+                              }}
+                              passHref
+                            >
+                              <p className="text-[15px] font-semibold text-gray-800">
+                                {post.title}
+                              </p>
+                            </Link>
                           </div>
                           <ExportedImage
-                            src={anaflavia_kR5VQr3}
+                            src={post?.featuredImage?.node?.sourceUrl}
                             alt="Partly Cloudy"
                             className="h-13 w-13 mr-2"
                             width={120}
                             height={97}
+                            style={{
+                              width: "120px",
+                              height: "97px",
+                              objectFit: "cover",
+                            }}
                           />
                         </div>
                         <p className="text-[10px] text-base font-bold text-gray-800">
@@ -188,10 +209,15 @@ const Music = () => {
                         </p>
                       </div>
                       <div className="max-w-md bg-white mb-6 mx-auto">
-                        <a href="#">
+                        <Link
+                          href={{
+                            pathname: `/news/${post.slug}`,
+                          }}
+                          passHref
+                        >
                           <ExportedImage
                             priority={true}
-                            src={download6}
+                            src={post?.featuredImage?.node?.sourceUrl}
                             alt="vladimirputin"
                             width={593}
                             height={395}
@@ -201,15 +227,20 @@ const Music = () => {
                               objectFit: "cover",
                             }}
                           />
-                        </a>
+                        </Link>
                         <p className="text-base font-bold text-red-800 mt-2">
                           {data?.page?.homePage?.musicTitle}
                         </p>
-                        <a href="#">
+                        <Link
+                          href={{
+                            pathname: `/news/${post.slug}`,
+                          }}
+                          passHref
+                        >
                           <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {post.title}
                           </h5>
-                        </a>
+                        </Link>
                         <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
                           <span
                             className="text-[10px] font-extrabold mr-1"
@@ -240,18 +271,30 @@ const Music = () => {
                       <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                         <div className="mr-2">
                           <ExportedImage
-                            src={Frame257}
+                            src={post?.featuredImage?.node?.sourceUrl}
                             alt="vladimirputin"
                             className="h-13 w-13 mr-2 mb-2"
                             width={317}
                             height={194}
+                            style={{
+                              width: "317px",
+                              height: "194px",
+                              objectFit: "cover",
+                            }}
                           />
                           <p className="text-[12px] font-bold text-red-800">
                             {data?.page?.homePage?.musicTitle}
                           </p>
-                          <p className="text-[15px] font-semibold text-gray-800">
-                            {post.title}
-                          </p>
+                          <Link
+                            href={{
+                              pathname: `/news/${post.slug}`,
+                            }}
+                            passHref
+                          >
+                            <p className="text-[15px] font-semibold text-gray-800">
+                              {post.title}
+                            </p>
+                          </Link>
                           <p className="text-[10px] text-base font-bold text-gray-800">
                             <span
                               className="text-[10px] font-extrabold mr-1"

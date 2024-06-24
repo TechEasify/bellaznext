@@ -1,5 +1,5 @@
 import ExportedImage from "next-image-export-optimizer";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Screenshot1 from "../../public/images/Screenshot1.svg";
 import ferrari from "../../public/images/ferrari.svg";
 import Rectangle367 from "../../public/images/Rectangle367.svg";
@@ -11,47 +11,88 @@ import pexelstara1 from "../../public/images/pexelstara1.svg";
 import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
 import PR_01CFA from "../../public/images/PR_01CFA.svg";
+import Link from "next/link";
 
-const Musicpage = ({nodeByUri}) => {
-  console.log(nodeByUri.categoryTamplate.musicTamplate.musicAdervtiseImage, "nodeByUri news");
-  const [numToShow, setNumToShow] = useState(1);
+const Musicpage = ({ nodeByUri, fetchMore, loading }) => {
+  console.log(
+    nodeByUri.categoryTamplate.musicTamplate.musicAdervtiseImage,
+    "nodeByUri news"
+  );
+  const [posts, setPosts] = useState([]);
+  const [cursor, setCursor] = useState(null);
+  const [hasNextPage, setHasNextPage] = useState(true);
 
+   // Effect to initialize posts when data changes
+   useEffect(() => {
+    if (nodeByUri && nodeByUri.posts) {
+      setPosts(nodeByUri.posts.nodes);
+      setCursor(nodeByUri.posts.pageInfo.endCursor);
+      setHasNextPage(nodeByUri.posts.pageInfo.hasNextPage);
+    }
+  }, [nodeByUri]);
+
+  // Function to handle "View More" button click
   const handleViewMore = () => {
-    setNumToShow(nodeByUri.posts.nodes.length);
+    if (hasNextPage && !loading) {
+      fetchMore({
+        variables: {
+          after: cursor,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return previousResult;
+          const newPosts = fetchMoreResult.posts.nodes;
+          return {
+            posts: {
+              __typename: previousResult.posts.__typename,
+              nodes: [...previousResult.posts.nodes, ...newPosts],
+              pageInfo: fetchMoreResult.posts.pageInfo,
+            },
+          };
+        },
+      });
+    }
   };
+  
   return (
     <>
       <div className="px-4 py-16 mx-auto max-w-screen-xl">
-      <div className="relative flex items-center mb-3">
-        <div className="flex-grow border-t border-gray-300"></div>
-        <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
-        <div className="flex-grow border-t border-gray-300"></div>
+        <div className="relative flex items-center mb-3">
+          <div className="flex-grow border-t border-gray-300"></div>
+          <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
+          <div className="flex-grow border-t border-gray-300"></div>
+        </div>
+        <ExportedImage
+          style={{ margin: "0 auto" }}
+          priority={true}
+          src={PR_01CFA}
+          alt="PR_01CFA"
+        />
       </div>
-      <ExportedImage
-        style={{ margin: "0 auto" }}
-        priority={true}
-        src={PR_01CFA}
-        alt="PR_01CFA"
-      />
-    </div>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
-          {nodeByUri?.posts?.nodes?.slice(0, numToShow).map(
+            {posts.map(
               (item) => (
                 console.log(item.featuredImage.node.sourceUrl, "item Insights"),
                 (
                   <>
                     <div className="flex flex-col md:flex-row mb-5">
                       <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                        <ExportedImage
-                          priority={true}
-                          src={item?.featuredImage?.node?.sourceUrl}
-                          alt="ferrari4"
-                          width={357}
-                          height={261}
-                          style={{ width: "357px", height: "261px" }}
-                        />
+                        <Link
+                          href={{
+                            pathname: `/news/${item.slug}`,
+                          }}
+                          passHref
+                        >
+                          <ExportedImage
+                            priority={true}
+                            src={item?.featuredImage?.node?.sourceUrl}
+                            alt="ferrari4"
+                            width={357}
+                            height={261}
+                            style={{ width: "357px", height: "261px" }}
+                          />
+                        </Link>
                       </div>
                       <div className="ml-0 md:ml-5 w-full md:w-3/5">
                         <p
@@ -70,9 +111,16 @@ const Musicpage = ({nodeByUri}) => {
                         >
                           {nodeByUri.name}
                         </p>
-                        <h5 className="text-[20px] text-black-900 font-bold">
-                          {item.title}
-                        </h5>
+                        <Link
+                          href={{
+                            pathname: `/news/${item.slug}`,
+                          }}
+                          passHref
+                        >
+                          <h5 className="text-[20px] text-black-900 font-bold">
+                            {item.title}
+                          </h5>
+                        </Link>
                         <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
                           <span
                             className="text-[12px] font-extrabold mr-1"
@@ -234,9 +282,15 @@ const Musicpage = ({nodeByUri}) => {
                 </p>
               </div>
             </div> */}
-            <button className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center" onClick={handleViewMore}>
-              VIEW MORE
-            </button>
+            <div className="flex justify-between">
+              <button
+                className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
+                onClick={handleViewMore}
+                disabled={!hasNextPage || loading}
+              >
+                {hasNextPage ? "VIEW MORE" : "NO MORE POSTS"}
+              </button>
+            </div>
           </div>
 
           <div className="w-full max-w-4xl mx-auto">

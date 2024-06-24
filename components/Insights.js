@@ -7,6 +7,7 @@ import Frame214 from "../public/images/Frame214.svg";
 import download3 from "../public/images/download3.svg";
 import addpost from "../public/images/addpost.svg";
 import { gql, useQuery } from "@apollo/client";
+import Link from "next/link";
 
 const GET_INSIGHTS_SECTION = gql`
   query HomePage($id: ID = "745") {
@@ -18,6 +19,7 @@ const GET_INSIGHTS_SECTION = gql`
           nodes {
             ... on Category {
               name
+              slug
               posts {
                 nodes {
                   featuredImage {
@@ -29,6 +31,7 @@ const GET_INSIGHTS_SECTION = gql`
                     }
                   }
                   title
+                  slug
                   categories {
                     nodes {
                       name
@@ -219,38 +222,172 @@ const Insights = () => {
           </h1>
           <hr
             className="text-red-800 mr-5"
-            style={{ height: "7px", background: `${data.page.homePage.insightsTitleBottomLineColor}` }}
+            style={{
+              height: "7px",
+              background: `${data.page.homePage.insightsTitleBottomLineColor}`,
+            }}
           />
           <br />
         </div>
 
-        {insightsPost.map((item) => (
-          // console.log(item, "item"),
-          <>
-            {item.name === "Insights" && (
-              <div className="flex flex-wrap justify-around items-stretch">
-                {item.posts.nodes.slice(0, 1).map(
-                  (node) => (
-                    console.log(node, "node insights"),
-                    (
-                      <>
-                        <div className="flex flex-col">
-                          <div className="max-w-xs bg-white mb-6 items-center">
-                            <div className="mr-2 mb-2">
-                              <ExportedImage
-                                src={node.featuredImage?.node?.sourceUrl || ""}
-                                alt={node.featuredImage?.node?.sourceUrl || ""}
-                                className="h-13 w-13 mr-2 mb-2"
-                                width={317}
-                                height={194}
-                              />
-                              <p className="text-[12px] font-bold text-red-800">
+        {insightsPost.map(
+          (item) => (
+            console.log(item, "item"),
+            (
+              <>
+                {item.name === "Insights" && (
+                  <div className="flex flex-wrap justify-around items-stretch">
+                    {item.posts.nodes.slice(0, 1).map(
+                      (node) => (
+                        console.log(node.slug, "node insights"),
+                        (
+                          <>
+                            <div className="flex flex-col">
+                              <div className="max-w-xs bg-white mb-6 items-center">
+                                <div className="mr-2 mb-2">
+                                  <ExportedImage
+                                    src={
+                                      node.featuredImage?.node?.sourceUrl || ""
+                                    }
+                                    alt={
+                                      node.featuredImage?.node?.sourceUrl || ""
+                                    }
+                                    className="h-13 w-13 mr-2 mb-2"
+                                    width={317}
+                                    height={194}
+                                  />
+                                  <p className="text-[12px] font-bold text-red-800">
+                                    {item.name}
+                                  </p>
+                                  <Link
+                                    href={{
+                                      pathname: `/news/${node.slug}`,
+                                    }}
+                                    passHref
+                                  >
+                                    <p className="text-[15px] font-semibold text-gray-800">
+                                      {node.title}
+                                    </p>
+                                  </Link>
+                                  <p className="text-[10px] text-base font-bold text-gray-800">
+                                    <span
+                                      className="text-[10px] font-extrabold mr-1"
+                                      style={{ color: "#40A6FB" }}
+                                    >
+                                      |
+                                    </span>
+                                    By
+                                    <span
+                                      className="font-extrabold mx-1"
+                                      style={{ color: "#40A6FB" }}
+                                    >
+                                      {node.author.node.name}
+                                      <span
+                                        className="text-[36px] font-extrabold mx-1"
+                                        style={{ color: "#40A6FB" }}
+                                      >
+                                        .
+                                      </span>
+                                    </span>
+                                    6 MIN READ
+                                  </p>
+                                </div>
+                                <div className="flex max-w-xs bg-white mr-4 items-center justify-between">
+                                  <div className="mr-2">
+                                    <p className="text-[12px] font-bold text-red-800">
+                                      {item.name}
+                                    </p>
+                                    <Link
+                                      href={{
+                                        pathname: `/news/${node.slug}`,
+                                      }}
+                                      passHref
+                                    >
+                                      <p className="text-[15px] font-semibold text-gray-800">
+                                        {node.title}
+                                      </p>
+                                    </Link>
+                                  </div>
+                                  <ExportedImage
+                                    src={
+                                      node.featuredImage.node.sourceUrl !==
+                                        null &&
+                                      node.featuredImage.node.sourceUrl
+                                    }
+                                    alt={
+                                      node.featuredImage.node.sourceUrl !==
+                                        null &&
+                                      node.featuredImage.node.sourceUrl
+                                    }
+                                    className="h-13 w-13 mr-2"
+                                    width={90}
+                                    height={87}
+                                  />
+                                </div>
+                                <p className="text-[10px] text-base font-bold text-gray-800">
+                                  <span
+                                    className="text-[10px] font-extrabold mr-1"
+                                    style={{ color: "#40A6FB" }}
+                                  >
+                                    |
+                                  </span>
+                                  By
+                                  <span
+                                    className="font-extrabold mx-1"
+                                    style={{ color: "#40A6FB" }}
+                                  >
+                                    {node.author.node.name}
+                                    <span
+                                      className="text-[36px] font-extrabold mx-1"
+                                      style={{ color: "#40A6FB" }}
+                                    >
+                                      .
+                                    </span>
+                                  </span>
+                                  6 MIN READ
+                                </p>
+                              </div>
+                            </div>
+                            <div className="max-w-md bg-white mb-6 mx-auto">
+                              <Link
+                                href={{
+                                  pathname: `/news/${node.slug}`,
+                                }}
+                                passHref
+                              >
+                                <ExportedImage
+                                  priority={true}
+                                  src={
+                                    node.featuredImage.node.sourceUrl !==
+                                      null && node.featuredImage.node.sourceUrl
+                                  }
+                                  alt={
+                                    node.featuredImage.node.sourceUrl !==
+                                      null && node.featuredImage.node.sourceUrl
+                                  }
+                                  width={593}
+                                  height={395}
+                                  style={{
+                                    width: "593px",
+                                    height: "395px",
+                                    objectFit: "cover",
+                                  }}
+                                />
+                              </Link>
+                              <p className="text-base font-bold text-red-800 mt-2">
                                 {item.name}
                               </p>
-                              <p className="text-[15px] font-semibold text-gray-800">
-                                {node.title}
-                              </p>
-                              <p className="text-[10px] text-base font-bold text-gray-800">
+                              <Link
+                                href={{
+                                  pathname: `/news/${node.slug}`,
+                                }}
+                                passHref
+                              >
+                                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                  {node.title}
+                                </h5>
+                              </Link>
+                              <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
                                 <span
                                   className="text-[10px] font-extrabold mr-1"
                                   style={{ color: "#40A6FB" }}
@@ -272,147 +409,87 @@ const Insights = () => {
                                 </span>
                                 6 MIN READ
                               </p>
+                              <p
+                                className="text-[12px] font-normal text-gray-800 mt-2"
+                                dangerouslySetInnerHTML={{
+                                  __html: node.content,
+                                }}
+                              />
                             </div>
-                            <div className="flex max-w-xs bg-white mr-4 items-center justify-between">
+                            <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                               <div className="mr-2">
+                                <ExportedImage
+                                  src={
+                                    node.featuredImage?.node?.sourceUrl || ""
+                                  }
+                                  alt={
+                                    node.featuredImage?.node?.sourceUrl || ""
+                                  }
+                                  className="h-13 w-13 mr-2 mb-2"
+                                  width={317}
+                                  height={194}
+                                />
                                 <p className="text-[12px] font-bold text-red-800">
                                   {item.name}
                                 </p>
-                                <p className="text-[15px] font-semibold text-gray-800">
-                                  {node.title}
+                                <Link
+                                  href={{
+                                    pathname: `/news/${node.slug}`,
+                                  }}
+                                  passHref
+                                >
+                                  <p className="text-[15px] font-semibold text-gray-800">
+                                    {node.title}
+                                  </p>
+                                </Link>
+                                <p className="text-[10px] text-base font-bold text-gray-800 mb-3">
+                                  <span
+                                    className="text-[10px] font-extrabold mr-1"
+                                    style={{ color: "#40A6FB" }}
+                                  >
+                                    |
+                                  </span>
+                                  By
+                                  <span
+                                    className="font-extrabold mx-1"
+                                    style={{ color: "#40A6FB" }}
+                                  >
+                                    {node.author.node.name}
+                                    <span
+                                      className="text-[36px] font-extrabold mx-1"
+                                      style={{ color: "#40A6FB" }}
+                                    >
+                                      .
+                                    </span>
+                                  </span>
+                                  6 MIN READ
                                 </p>
                               </div>
-                              <ExportedImage
-                                src={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
-                                alt={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
-                                className="h-13 w-13 mr-2"
-                                width={90}
-                                height={87}
-                              />
+                              <div className="flex max-w-xs bg-white mr-4 items-center">
+                                <ExportedImage
+                                  src={addpost}
+                                  alt="Partly Cloudy"
+                                  className="h-13 w-13 mr-2"
+                                  width={317}
+                                  height={214}
+                                  style={{
+                                    width: "317px",
+                                    height: "214px",
+                                    objectFit: "cover",
+                                  }}
+                                />
+                              </div>
                             </div>
-                            <p className="text-[10px] text-base font-bold text-gray-800">
-                              <span
-                                className="text-[10px] font-extrabold mr-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                |
-                              </span>
-                              By
-                              <span
-                                className="font-extrabold mx-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                {node.author.node.name}
-                                <span
-                                  className="text-[36px] font-extrabold mx-1"
-                                  style={{ color: "#40A6FB" }}
-                                >
-                                  .
-                                </span>
-                              </span>
-                              6 MIN READ
-                            </p>
-                          </div>
-                        </div>
-                        <div className="max-w-md bg-white mb-6 mx-auto">
-                          <a href="#">
-                            <ExportedImage
-                              priority={true}
-                              src={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
-                              alt={node.featuredImage.node.sourceUrl !== null && node.featuredImage.node.sourceUrl}
-                              width={593}
-                              height={395}
-                              style={{ width: "593px", height: "395px", objectFit: "cover" }}
-                            />
-                          </a>
-                          <p className="text-base font-bold text-red-800 mt-2">
-                            {item.name}
-                          </p>
-                          <a href="#">
-                            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                              {node.title}
-                            </h5>
-                          </a>
-                          <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                            <span
-                              className="text-[10px] font-extrabold mr-1"
-                              style={{ color: "#40A6FB" }}
-                            >
-                              |
-                            </span>
-                            By
-                            <span
-                              className="font-extrabold mx-1"
-                              style={{ color: "#40A6FB" }}
-                            >
-                              {node.author.node.name}
-                              <span
-                                className="text-[36px] font-extrabold mx-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                .
-                              </span>
-                            </span>
-                            6 MIN READ
-                          </p>
-                          <p className="text-[12px] font-normal text-gray-800 mt-2" dangerouslySetInnerHTML={{ __html: node.content }}/>
-                        </div>
-                        <div className="max-w-xs bg-white mb-6 mr-4 items-center">
-                          <div className="mr-2">
-                            <ExportedImage
-                              src={Frame214}
-                              alt="vladimirputin"
-                              className="h-13 w-13 mr-2 mb-2"
-                              width={317}
-                              height={194}
-                              style={{ width: "317px", height: "194px", objectFit: "cover"}}
-                            />
-                            <p className="text-[12px] font-bold text-red-800">
-                              HEALTH
-                            </p>
-                            <p className="text-[15px] font-semibold text-gray-800">
-                              Our DeSantis and Haley Reporters switched places
-                              Here's What They Found.
-                            </p>
-                            <p className="text-[10px] text-base font-bold text-gray-800 mb-3">
-                              <span
-                                className="text-[10px] font-extrabold mr-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                |
-                              </span>
-                              By
-                              <span
-                                className="font-extrabold mx-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                Linah Absteen
-                                <span
-                                  className="text-[36px] font-extrabold mx-1"
-                                  style={{ color: "#40A6FB" }}
-                                >
-                                  .
-                                </span>
-                              </span>
-                              6 MIN READ
-                            </p>
-                          </div>
-                          <div className="flex max-w-xs bg-white mr-4 items-center">
-                            <ExportedImage
-                              src={addpost}
-                              alt="Partly Cloudy"
-                              className="h-13 w-13 mr-2"
-                            />
-                          </div>
-                        </div>
-                      </>
-                    )
-                  )
+                          </>
+                        )
+                      )
+                    )}
+                  </div>
                 )}
-              </div>
-            )}
-          </>
-        ))}
+              </>
+            )
+          )
+        )}
 
         {/* <div className="flex flex-wrap justify-around">
           <div className="max-w-xs bg-white mb-6 mr-4 items-center">

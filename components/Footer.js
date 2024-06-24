@@ -117,31 +117,31 @@ const Footer = () => {
                   </h2>
                   <ul className="text-white font-medium">
                     <li className="mb-4">
-                      <Link href="/breaking-news" className="hover:underline">
+                      <Link href="/category/breaking-news" className="hover:underline">
                         {dataFooter !== undefined &&
                           dataFooter.menu.footer.newsFirst}
                       </Link>
                     </li>
                     <li className="mb-4">
-                      <Link href="/politics" className="hover:underline">
+                      <Link href="/category/politics" className="hover:underline">
                         {dataFooter !== undefined &&
                           dataFooter.menu.footer.newsSecond}
                       </Link>
                     </li>
                     <li className="mb-4">
-                      <Link href="/jewish-news" className="hover:underline">
+                      <Link href="/category/jewish-news" className="hover:underline">
                         {dataFooter !== undefined &&
                           dataFooter.menu.footer.newsThird}
                       </Link>
                     </li>
                     <li className="mb-4">
-                      <Link href="/insights" className="hover:underline">
+                      <Link href="/category/insights" className="hover:underline">
                         {dataFooter !== undefined &&
                           dataFooter.menu.footer.newsFore}
                       </Link>
                     </li>
                     <li className="mb-4">
-                      <Link href="/music" className="hover:underline">
+                      <Link href="/category/music" className="hover:underline">
                         {dataFooter !== undefined &&
                           dataFooter.menu.footer.newsFive}
                       </Link>

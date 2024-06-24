@@ -1,14 +1,43 @@
 import { useDialog } from "./DialogContext";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ExportedImage from "next-image-export-optimizer";
 import imageTwitter from "../public/images/imageTwitter.svg";
 import Group3 from "../public/images/Group (3).svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
+
+const ACCESS_TOKEN =
+  "AAAAAAAAAAAAAAAAAAAAANYiuQEAAAAAotltTVwd1XSr4N5DScaaJCoqFK0%3D7qzGDbLbL6GvLZjZoMagoPmTeBJRJUVk3TxH68ezEGJGHXZKt5";
 
 const Sliders = () => {
   const { openDialog } = useDialog();
+  const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    const fetchTweets = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.twitter.com/2/tweets?ids=28910294",
+          {
+            headers: {
+              Authorization: `Bearer ${ACCESS_TOKEN}`,
+              "Access-Control-Allow-Headers": "*",
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "*",
+            },
+          }
+        );
+        console.log(response, "response");
+        setTweets(response.data.data); // Assuming Twitter API response is an array of tweets
+      } catch (error) {
+        console.error("Error fetching tweets:", error);
+      }
+    };
+
+    fetchTweets();
+  }, []);
 
   // Sample data for the carousel
   const carouselData = [

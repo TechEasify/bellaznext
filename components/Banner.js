@@ -359,19 +359,19 @@ const Banner = ({ data }) => {
                   marginBottom: "20px",
                 }}
               >
-                <p className="font-bold text-white mr-px">{tempF}°F</p>
+                <p className="font-bold text-white mr-px text-base">{tempF}°F</p>
                 <ExportedImage
                   src={mdi_weather}
                   alt="Cloud"
                   className="h-4 w-4"
                 />
-                <p className="font-xs text-white">{clouds.all}%</p>
+                <p className="font-xs text-white text-sm">{clouds.all}%</p>
                 <ExportedImage
                   src={typcn_weather}
                   alt="Cloud"
                   className="h-4 w-4"
                 />
-                <p className="font-xs text-white">
+                <p className="font-xs text-white text-sm">
                   {(main.feels_like - 273.15).toFixed(1)}°C
                 </p>
                 <ExportedImage
@@ -379,7 +379,7 @@ const Banner = ({ data }) => {
                   alt="Wind"
                   className="h-4 w-4"
                 />
-                <p className="font-xs text-white">{wind.speed} mp/h</p>
+                <p className="font-xs text-white text-sm">{wind.speed} mp/h</p>
               </div>
               <div
                 className="flex justify-between items-center"

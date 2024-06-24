@@ -1,6 +1,7 @@
 import ExportedImage from "next-image-export-optimizer";
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
+import Ads from "./googleAds/Ads";
 
 const GET_MUSICPOST_SECTION = gql`
   query HomePage($id: ID = "745") {
@@ -38,7 +39,12 @@ const PlacementPartners = () => {
       </div>
       {imageUrl ? (
         <ExportedImage
-          style={{ margin: "0 auto", width: "1134px", height: "169px", objectFit: "fill" }}
+          style={{
+            margin: "0 auto",
+            width: "1134px",
+            height: "169px",
+            objectFit: "fill",
+          }}
           priority={true}
           src={imageUrl}
           alt="PR_01CFA"
@@ -46,7 +52,17 @@ const PlacementPartners = () => {
           height={169}
         />
       ) : (
-        <p>No image available</p>
+        <Ads
+          className=""
+          style={{
+            display: "block",
+            width: "1134px",
+            height: "169px",
+            margin: "0 auto",
+          }}
+          adClient="ca-pub-3209848804552918"
+          adSlot="9293720177"
+        />
       )}
     </div>
   );

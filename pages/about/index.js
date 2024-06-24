@@ -112,7 +112,7 @@ function Index() {
 
   if (loading)
     return (
-      <div className="px-4 py-20 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-300">
+      <div className="px-4 py-20 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-300" style={{ background: "#002d73", height: "100vh" }}>
         <hr className="border-gray-300 mb-5" />
         <div>
           <div className="bg-white animate-pulse bg-gray-300 w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">
@@ -124,7 +124,7 @@ function Index() {
             </div>
           </div>
           <hr className="border-gray-300 mt-5 mb-8 animate-pulse bg-gray-300" />
-          <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">
+          <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8" style={{ height: "150px" }}>
             <div className="w-full md:w-1/3 mb-5 md:mb-0 animate-pulse bg-gray-300">
               <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold animate-pulse bg-gray-300">
               </h5>

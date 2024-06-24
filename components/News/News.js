@@ -11,33 +11,80 @@ import pexelstara1 from "../../public/images/pexelstara1.svg";
 import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
 import Newscard from "./Newscard";
+import Ads from "../googleAds/Ads";
+import Link from "next/link";
 
-const News = ({ categoryTamplate, nodeByUri }) => {
+const News = ({ categoryTamplate, nodeByUri, fetchMore, loading }) => {
   console.log(nodeByUri, "nodeByUri");
-  const [numToShow, setNumToShow] = useState(1);
+  const [posts, setPosts] = useState([]);
+  const [cursor, setCursor] = useState(null);
+  const [hasNextPage, setHasNextPage] = useState(true);
 
+   // Effect to initialize posts when data changes
+   useEffect(() => {
+    if (nodeByUri && nodeByUri.posts) {
+      setPosts(nodeByUri.posts.nodes);
+      setCursor(nodeByUri.posts.pageInfo.endCursor);
+      setHasNextPage(nodeByUri.posts.pageInfo.hasNextPage);
+    }
+  }, [nodeByUri]);
+
+  // Function to handle "View More" button click
   const handleViewMore = () => {
-    setNumToShow(nodeByUri.posts.nodes.length);
+    if (hasNextPage && !loading) {
+      fetchMore({
+        variables: {
+          after: cursor,
+        },
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return previousResult;
+          const newPosts = fetchMoreResult.posts.nodes;
+          return {
+            posts: {
+              __typename: previousResult.posts.__typename,
+              nodes: [...previousResult.posts.nodes, ...newPosts],
+              pageInfo: fetchMoreResult.posts.pageInfo,
+            },
+          };
+        },
+      });
+    }
   };
+
   return (
     <>
       <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
-        <ExportedImage
-          style={{ margin: "0 auto" }}
-          priority={true}
-          src={
-            categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
-              ?.simpleAdImage?.node?.sourceUrl || ""
-          }
-          alt={
-            categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
-              ?.simpleAdImage?.node?.sourceUrl || ""
-          }
-          width={550}
-          height={157}
-          placeholder="blur"
-          unoptimized={false}
-        />
+        {categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+          ?.simpleAdImage?.node?.sourceUrl ? (
+          <ExportedImage
+            style={{ margin: "0 auto" }}
+            priority={true}
+            src={
+              categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+                ?.simpleAdImage?.node?.sourceUrl || ""
+            }
+            alt={
+              categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+                ?.simpleAdImage?.node?.sourceUrl || ""
+            }
+            width={550}
+            height={157}
+            placeholder="blur"
+            unoptimized={false}
+          />
+        ) : (
+          <Ads
+            className=""
+            style={{
+              display: "block",
+              width: "550px",
+              height: "157px",
+              margin: "0 auto",
+            }}
+            adClient="ca-pub-3209848804552918"
+            adSlot="9293720177"
+          />
+        )}
       </div>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
@@ -95,21 +142,28 @@ const News = ({ categoryTamplate, nodeByUri }) => {
                 </p>
               </div>
             </div> */}
-            {nodeByUri?.posts?.nodes?.slice(0, numToShow).map(
+            {posts.map(
               (item) => (
-                console.log(item.featuredImage.node.sourceUrl, "item Insights"),
+                console.log(item, "item Insights"),
                 (
                   <>
                     <div className="flex flex-col md:flex-row mb-5">
                       <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                        <ExportedImage
-                          priority={true}
-                          src={item?.featuredImage?.node?.sourceUrl}
-                          alt="ferrari4"
-                          width={357}
-                          height={261}
-                          style={{ width: "357px", height: "261px" }}
-                        />
+                        <Link
+                          href={{
+                            pathname: `/news/${item.slug}`,
+                          }}
+                          passHref
+                        >
+                          <ExportedImage
+                            priority={true}
+                            src={item?.featuredImage?.node?.sourceUrl}
+                            alt="ferrari4"
+                            width={357}
+                            height={261}
+                            style={{ width: "357px", height: "261px" }}
+                          />
+                        </Link>
                       </div>
                       <div className="ml-0 md:ml-5 w-full md:w-3/5">
                         <p
@@ -129,9 +183,16 @@ const News = ({ categoryTamplate, nodeByUri }) => {
                         >
                           {nodeByUri.name}
                         </p>
-                        <h5 className="text-[20px] text-black-900 font-bold">
-                          {item.title}
-                        </h5>
+                        <Link
+                          href={{
+                            pathname: `/news/${item.slug}`,
+                          }}
+                          passHref
+                        >
+                          <h5 className="text-[20px] text-black-900 font-bold">
+                            {item.title}
+                          </h5>
+                        </Link>
                         <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
                           <span
                             className="text-[12px] font-extrabold mr-1"
@@ -299,30 +360,48 @@ const News = ({ categoryTamplate, nodeByUri }) => {
                 </p>
               </div>
             </div> */}
-            <button
-              className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center"
-              onClick={handleViewMore}
-            >
-              VIEW MORE
-            </button>
+            <div className="flex justify-between">
+              <button
+                className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
+                onClick={handleViewMore}
+                disabled={!hasNextPage || loading}
+              >
+                {hasNextPage ? "VIEW MORE" : "NO MORE POSTS"}
+              </button>
+            </div>
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            <ExportedImage
-              className="mb-2 w-full h-auto max-h-96"
-              priority={true}
-              src={
-                categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
-                  ?.allSidebarAdImage?.node?.srcSet || ""
-              }
-              alt={
-                categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
-                  ?.allSidebarAdImage?.node?.srcSet || ""
-              }
-              width={297}
-              height={503}
-              style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-            />
+            {categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
+              ?.allSidebarAdImage?.node?.srcSet ? (
+              <ExportedImage
+                className="mb-2 w-full h-auto max-h-96"
+                priority={true}
+                src={
+                  categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
+                    ?.allSidebarAdImage?.node?.srcSet || ""
+                }
+                alt={
+                  categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
+                    ?.allSidebarAdImage?.node?.srcSet || ""
+                }
+                width={297}
+                height={503}
+                style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+              />
+            ) : (
+              <Ads
+                className=""
+                style={{
+                  display: "block",
+                  width: "297px",
+                  height: "503px",
+                  margin: "0 auto",
+                }}
+                adClient="ca-pub-3209848804552918"
+                adSlot="9293720177"
+              />
+            )}
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
               className="text-red-800 my-3"
@@ -353,7 +432,7 @@ const News = ({ categoryTamplate, nodeByUri }) => {
           </div>
         </div>
       </div>
-      <Newscard />
+      <Newscard nodeByUri={nodeByUri} />
     </>
   );
 };

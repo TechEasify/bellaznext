@@ -81,7 +81,7 @@ function Index() {
         </h1>
       </div>
       <div
-        className="px-4 py-8 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-800"
+        className="px-4 py-8 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-800" style={{ background: "#002d73", height: "100vh" }}
       >
         <div
           id="accordion-color"

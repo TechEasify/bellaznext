@@ -923,7 +923,7 @@ const Nav = ({
           style={{
             position: "absolute",
             zIndex: "9999999999",
-            top: "85px",
+            top: "80px",
             left: "0px",
             width: "100%",
           }}
@@ -1009,7 +1009,7 @@ const Nav = ({
           style={{
             position: "absolute",
             zIndex: "9999999999",
-            top: "85px",
+            top: "80px",
             left: "0px",
             width: "100%",
           }}

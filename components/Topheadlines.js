@@ -20,6 +20,7 @@ import Frame208 from "../public/images/Frame208.svg";
 import Frame209 from "../public/images/Frame209.svg";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
+import Ads from "./googleAds/Ads";
 
 const GET_TOPHEADLINE_PAGE = gql`
   query HomePage($id: ID = "745") {
@@ -321,9 +322,17 @@ const Topheadlines = () => {
                 style={{ width: "318px", height: "107px", objectFit: "cover" }}
               />
             ) : (
-              <div className="w-full mr-2 bg-gray-200 flex items-center justify-center">
-                No Image
-              </div>
+              <Ads
+                className=""
+                style={{
+                  display: "block",
+                  width: "318px",
+                  height: "107px",
+                  margin: "0 auto",
+                }}
+                adClient="ca-pub-3209848804552918"
+                adSlot="9293720177"
+              />
             )}
           </div>
 
@@ -354,9 +363,16 @@ const Topheadlines = () => {
                                 <p className="text-[12px] font-bold text-red-800">
                                   {side.name}
                                 </p>
-                                <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                                  {itemdata.title}
-                                </p>
+                                <Link
+                                  href={{
+                                    pathname: `/news/${itemdata.slug}`,
+                                  }}
+                                  passHref
+                                >
+                                  <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                                    {itemdata.title}
+                                  </p>
+                                </Link>
                               </div>
                               {itemdata?.featuredImage?.node?.srcSet ? (
                                 <ExportedImage
@@ -411,11 +427,20 @@ const Topheadlines = () => {
                 className="w-full mr-2"
                 width={314}
                 height={441}
+                style={{ width: "314px", height: "441px", objectFit: "cover" }}
               />
             ) : (
-              <div className="w-full mr-2 bg-gray-200 flex items-center justify-center">
-                No Image
-              </div>
+              <Ads
+                className=""
+                style={{
+                  display: "block",
+                  width: "314px",
+                  height: "441px",
+                  margin: "0 auto",
+                }}
+                adClient="ca-pub-3209848804552918"
+                adSlot="9293720177"
+              />
             )}
           </div>
 

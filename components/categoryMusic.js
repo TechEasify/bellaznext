@@ -25,7 +25,7 @@ import Fame216 from "../public/images/Fame216.svg";
 import jeuol4a_prince1 from "../public/images/jeuol4a_prince1.svg";
 import Musicpage from "./Music/Musicpage";
 
-function Music({ nodeByUri }) {
+function Music({ nodeByUri, fetchMore, loading }) {
   console.log(nodeByUri, "nodeByUri music area");
   return (
     <>
@@ -697,7 +697,7 @@ function Music({ nodeByUri }) {
           </div>
         </div>
       </div> */}
-      <Musicpage nodeByUri={nodeByUri} />
+      <Musicpage nodeByUri={nodeByUri} fetchMore={fetchMore} loading={loading}/>
       {/* <Footer /> */}
     </>
   );

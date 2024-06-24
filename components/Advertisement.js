@@ -70,7 +70,7 @@ const Advertisement = () => {
       </>
       }         */}
       {data?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
-        ?.srcSet && (
+        ?.srcSet ? (
         <ExportedImage
           style={{
             width: "1134px",
@@ -87,17 +87,20 @@ const Advertisement = () => {
           width={1134}
           height={169}
         />
-      )}
-      {/* <Ads
+      )
+      :
+      <Ads
         className=""
         style={{
           display: "block",
           width: "1134px",
-          height: "169px"
+          height: "169px",
+          margin: "0 auto"
         }}
         adClient="ca-pub-3209848804552918"
         adSlot="9293720177"
-      /> */}
+      />
+    }
     </div>
   );
 };
