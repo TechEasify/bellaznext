@@ -14,40 +14,55 @@ import PoliticsCategory from "../../components/PoliticsCategory";
 import News from "../../components/News";
 
 const GET_NEWS_SECTION = gql`
- query MyQuery2($uri: String!) {
-  nodeByUri(uri: $uri) {
-    id
-    ... on Post {
+  query MyQuery2($uri: String!) {
+    nodeByUri(uri: $uri) {
       id
-      link
-      excerpt
-      slug
-      content
-      featuredImage {
-        node {
-          altText
-          slug
-          sourceUrl
-          srcSet
-          title
+      ... on Post {
+        id
+        link
+        excerpt
+        slug
+        content
+        featuredImage {
+          node {
+            altText
+            slug
+            sourceUrl
+            srcSet
+            title
+          }
         }
-      }
-      author {
-        node {
-          name
+        author {
+          node {
+            name
+          }
         }
-      }
-      categories {
-        nodes {
-          name
+        categories {
+          nodes {
+            name
+            posts {
+              nodes {
+                title
+                slug
+                featuredImage {
+                  node {
+                    altText
+                    slug
+                    sourceUrl
+                    srcSet
+                    title
+                  }
+                }
+              }
+            }
+          }
         }
+        date
+        dateGmt
+        title
       }
-      date
-      dateGmt
-      title
     }
   }
-}
 `;
 
 const SkeletonLoader = () => (

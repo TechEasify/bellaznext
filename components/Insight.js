@@ -230,6 +230,11 @@ const IIHT_DATA = gql`
         slug
         title
         uri
+        author{
+        node {
+        name
+        }
+        }
         featuredImage {
           node {
             altText
@@ -365,6 +370,7 @@ console.log(nodeByUri, "nodeByUri");
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             {posts.map((item) => (
+              console.log(item, "item"),
               <div key={item.slug}>
                 <div className="flex flex-col md:flex-row mb-5">
                   <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">

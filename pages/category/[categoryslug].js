@@ -224,10 +224,13 @@ const CategoryPage = () => {
   console.log("categoryslug:", categoryslug);
   console.log("uri:", uri);
 
-  const { data, loading, error, fetchMore } = useQuery(CATEGORY_BREAKING_QUERY, {
-    variables: { uri },
-    fetchPolicy: "cache-first",
-  });
+  const { data, loading, error, fetchMore } = useQuery(
+    CATEGORY_BREAKING_QUERY,
+    {
+      variables: { uri },
+      fetchPolicy: "cache-first",
+    }
+  );
 
   // const { data, loading, error } = useQuery(CATEGORY_QUERY);
 
@@ -262,18 +265,43 @@ const CategoryPage = () => {
       <main>
         {router.asPath === "/category/breaking-news" &&
         nodeByUri !== undefined ? (
-          <Breakingnews nodeByUri={nodeByUri} loading={loading} fetchMore={fetchMore} />
+          <Breakingnews
+            nodeByUri={nodeByUri}
+            loading={loading}
+            navData={navData}
+            fetchMore={fetchMore}
+          />
         ) : router.asPath === "/category/insights" &&
           nodeByUri !== undefined ? (
-          <Insight nodeByUri={nodeByUri} loading={loading} fetchMore={fetchMore} />
+          <Insight
+            nodeByUri={nodeByUri}
+            loading={loading}
+            navData={navData}
+            fetchMore={fetchMore}
+          />
         ) : router.asPath === "/category/jewish-news" &&
           nodeByUri !== undefined ? (
-          <Jewishnews nodeByUri={nodeByUri} loading={loading} fetchMore={fetchMore}/>
+          <Jewishnews
+            nodeByUri={nodeByUri}
+            loading={loading}
+            navData={navData}
+            fetchMore={fetchMore}
+          />
         ) : router.asPath === "/category/politics" &&
           nodeByUri !== undefined ? (
-          <PoliticsCategory nodeByUri={nodeByUri} loading={loading} fetchMore={fetchMore}/>
+          <PoliticsCategory
+            nodeByUri={nodeByUri}
+            loading={loading}
+            navData={navData}
+            fetchMore={fetchMore}
+          />
         ) : router.asPath === "/category/music" && nodeByUri !== undefined ? (
-          <Music nodeByUri={nodeByUri} loading={loading} fetchMore={fetchMore}/>
+          <Music
+            nodeByUri={nodeByUri}
+            loading={loading}
+            navData={navData}
+            fetchMore={fetchMore}
+          />
         ) : (
           <ul>
             {nodeByUri.posts.nodes.map((post) =>

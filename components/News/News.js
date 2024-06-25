@@ -14,7 +14,7 @@ import Newscard from "./Newscard";
 import Ads from "../googleAds/Ads";
 import Link from "next/link";
 
-const News = ({ categoryTamplate, nodeByUri, fetchMore, loading }) => {
+const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
   console.log(nodeByUri, "nodeByUri");
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
@@ -152,6 +152,9 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading }) => {
                         <Link
                           href={{
                             pathname: `/news/${item.slug}`,
+                            query: {
+                              state: JSON.stringify(navData)
+                            }
                           }}
                           passHref
                         >
@@ -186,6 +189,9 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading }) => {
                         <Link
                           href={{
                             pathname: `/news/${item.slug}`,
+                            query: {
+                              state: JSON.stringify(navData)
+                            }
                           }}
                           passHref
                         >

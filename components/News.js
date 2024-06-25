@@ -11,10 +11,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import Ads from "./googleAds/Ads";
+import { gql, useQuery } from "@apollo/client";
 
 function News({ nodeByUri }) {
-  console.log(nodeByUri, "nodeByUri");
+  console.log(nodeByUri, "nodeByUri News Detail");
   const router = useRouter();
+  const { slug, state } = router.query;
+  // const dataJson = JSON.parse(state);
+  // console.log(dataJson, "state");
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -91,74 +95,6 @@ function News({ nodeByUri }) {
               style={{ color: "#2B2B2B" }}
               dangerouslySetInnerHTML={{ __html: nodeByUri.content }}
             />
-
-            {/* <p className="text-black mb-5">
-              Bellu died at the age of 5 in 2016. Belli followed years later in
-              2019, at the age of 12. In the wild, the average life expectancy
-              of beluga whales is between 35 and 50 years.
-            </p>
-
-            <p className="text-black mb-5">
-              Their deaths ignited a firestorm of criticism from South Korean
-              animal rights activists, which prompted the company to act. In
-              2019, Lotte pledged that it would release Bella.
-            </p>
-
-            <p className="text-black mb-5">
-              But there is still no cause for celebration, activists say: it’s
-              nearly 2024, more than four years later, and Bella remains on
-              display. “Lotte says they are taking measures but we do not
-              actually know,” Jo Yak-gol, co-founder of the South Korean marine
-              life group Hot Pink Dolphins, told CNN.
-            </p>
-
-            <p className="text-black mb-5">
-              “The exhibit is still open and no release date has been made
-              public.” The whale also continues to show signs of “stereotypical”
-              stress behavior following the deaths of her companions in their
-              tank, Jo said. Videos sent to CNN showed her spinning around in
-              small circles and floating listlessly near the water’s surface.
-            </p>
-
-            <ExportedImage
-              className="mb-2"
-              priority={true}
-              src={vladimirputin}
-              alt="vladimirputin"
-            />
-            <p className="font-semibold mb-5" style={{ color: "#2B2B2B" }}>
-              President Zelensky has called for some of the Russian billions
-              seized by world banks to be sent to rebuild Ukraine.
-            </p>
-
-            <p className="text-black mb-5">
-              Bellu died at the age of 5 in 2016. Belli followed years later in
-              2019, at the age of 12. In the wild, the average life expectancy
-              of beluga whales is between 35 and 50 years.
-            </p>
-
-            <p className="text-black mb-5">
-              Their deaths ignited a firestorm of criticism from South Korean
-              animal rights activists, which prompted the company to act. In
-              2019, Lotte pledged that it would release Bella.
-            </p>
-
-            <p className="text-black mb-5">
-              But there is still no cause for celebration, activists say: it’s
-              nearly 2024, more than four years later, and Bella remains on
-              display. “Lotte says they are taking measures but we do not
-              actually know,” Jo Yak-gol, co-founder of the South Korean marine
-              life group Hot Pink Dolphins, told CNN.
-            </p>
-
-            <p className="text-black mb-5">
-              “The exhibit is still open and no release date has been made
-              public.” The whale also continues to show signs of “stereotypical”
-              stress behavior following the deaths of her companions in their
-              tank, Jo said. Videos sent to CNN showed her spinning around in
-              small circles and floating listlessly near the water’s surface.
-            </p> */}
-
             <div className="w-full max-w-2xl mx-auto mt-10">
               <div className="flex items-center">
                 <p className="text-[20px] font-bold text-black italic mr-3">
@@ -176,42 +112,118 @@ function News({ nodeByUri }) {
                 style={{ height: "7px", background: "#CE3A42" }}
               />
 
-              <div className="flex">
-                <div className="flex mt-5 mr-5">
-                  <div className="mr-2 flex-1">
-                    <p className="text-[12px] font-bold text-red-800">MUSIC</p>
-                    <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                      Our DeSantis and Haley Reporters switched places Her’s
-                      What They Found.
-                    </p>
-                  </div>
-                  <ExportedImage
-                    src={colinlloyd}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mr-2"
-                  />
-                </div>
-                <hr />
-                <div className="flex mt-5">
-                  <div className="mr-2 flex-1">
-                    <p className="text-[12px] font-bold text-red-800">
-                      HOLLYWOOD
-                    </p>
-                    <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                      Our DeSantis and Haley Reporters switched places Her’s
-                      What They Found.
-                    </p>
-                  </div>
-                  <ExportedImage
-                    src={anaflavia}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mr-2"
-                  />
-                </div>
-                <hr />
+              {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                {nodeByUri.categories.nodes.map(
+                  (item, index) => (
+                    console.log(item, "item"),
+                    (
+                      <div key={index} className="flex items-center w-full">
+                        {item.posts.nodes.map(
+                          (post) => (
+                            console.log(post, "post"),
+                            (
+                              <div className="flex w-full">
+                                <div className="mr-2 flex-1">
+                                  <p className="text-[12px] font-bold text-red-800">
+                                    {item.name}
+                                  </p>
+                                  {post.slug && (
+                                    <Link
+                                      href={{
+                                        pathname: `/news/${post.slug}`,
+                                      }}
+                                    >
+                                      <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                                        {post.title}
+                                      </p>
+                                    </Link>
+                                  )}
+                                </div>
+                                {post.slug && (
+                                  <Link
+                                    href={{
+                                      pathname: `/news/${post.featuredImage.node.slug}`,
+                                    }}
+                                  >
+                                    {post.featuredImage?.node?.sourceUrl && (
+                                      <ExportedImage
+                                        src={post.featuredImage.node.sourceUrl}
+                                        alt="Partly Cloudy"
+                                        className="h-13 w-13 mr-2"
+                                        width={90}
+                                        height={87}
+                                        style={{
+                                          width: "90px",
+                                          height: "87px",
+                                          objectFit: "cover",
+                                        }}
+                                      />
+                                    )}
+                                  </Link>
+                                )}
+                              </div>
+                            )
+                          )
+                        )}
+                        <hr />
+                      </div>
+                    )
+                  )
+                )}
+              </div> */}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                {nodeByUri.categories?.nodes
+                  ?.flatMap((item) =>
+                    item.posts?.nodes?.map((post) => ({
+                      ...post,
+                      categoryName: item.name,
+                    }))
+                  )
+                  ?.map((post, index) => (
+                    <div key={index} className="flex items-center w-full">
+                      <div className="flex w-full">
+                        <div className="mr-2 flex-1">
+                          <p className="text-[12px] font-bold text-red-800">
+                            {post.categoryName}
+                          </p>
+                          <Link
+                            href={{
+                              pathname: `/news/${post.slug}`,
+                            }}
+                          >
+                            <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                              {post.title}
+                            </p>
+                          </Link>
+                        </div>
+                        {post.featuredImage?.node?.sourceUrl && (
+                          <Link
+                            href={{
+                              pathname: `/news/${post.slug}`,
+                            }}
+                          >
+                            <ExportedImage
+                              src={post.featuredImage.node.sourceUrl}
+                              alt="Partly Cloudy"
+                              className="h-13 w-13 mr-2"
+                              width={90}
+                              height={87}
+                              style={{
+                                width: "90px",
+                                height: "87px",
+                                objectFit: "cover",
+                              }}
+                            />
+                          </Link>
+                        )}
+                      </div>
+                      {(index + 1) % 2 === 0 && <hr />}
+                    </div>
+                  ))}
               </div>
 
-              <div className="flex">
+              {/* <div className="flex">
                 <div className="flex mt-5 mr-5">
                   <div className="mr-2 flex-1">
                     <p className="text-[12px] font-bold text-red-800">MUSIC</p>
@@ -244,7 +256,7 @@ function News({ nodeByUri }) {
                   />
                 </div>
                 <hr />
-              </div>
+              </div> */}
             </div>
 
             <div className="w-full max-w-2xl mx-auto mt-10 mb-20">
@@ -273,7 +285,7 @@ function News({ nodeByUri }) {
                     className="h-13 w-13 mr-2"
                   />
                 </div>
-                <hr />
+                <hr className="mt-5" />
                 <div className="flex mt-5">
                   <div className="mr-2 flex-1">
                     <p className="text-[12px] font-bold text-red-800">
@@ -290,7 +302,7 @@ function News({ nodeByUri }) {
                     className="h-13 w-13 mr-2"
                   />
                 </div>
-                <hr />
+                <hr className="mt-5" />
               </div>
 
               <div>
@@ -360,9 +372,14 @@ function News({ nodeByUri }) {
             /> */}
             <Ads
               className=""
-              style={{ display: "block", width: "251px", height: "496px",color: "transparent",
+              style={{
+                display: "block",
+                width: "251px",
+                height: "496px",
+                color: "transparent",
                 position: "absolute",
-                top: "21%", }}
+                top: "21%",
+              }}
               adClient="ca-pub-3209848804552918"
               adSlot="9293720177" // Replace with your actual ad slot ID
             />

@@ -13,7 +13,7 @@ import andreas from "../../public/images/andreas.svg";
 import PR_01CFA from "../../public/images/PR_01CFA.svg";
 import Link from "next/link";
 
-const Musicpage = ({ nodeByUri, fetchMore, loading }) => {
+const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   console.log(
     nodeByUri.categoryTamplate.musicTamplate.musicAdervtiseImage,
     "nodeByUri news"
@@ -81,6 +81,9 @@ const Musicpage = ({ nodeByUri, fetchMore, loading }) => {
                         <Link
                           href={{
                             pathname: `/news/${item.slug}`,
+                            query: {
+                              state: JSON.stringify(navData)
+                            }
                           }}
                           passHref
                         >
@@ -114,6 +117,9 @@ const Musicpage = ({ nodeByUri, fetchMore, loading }) => {
                         <Link
                           href={{
                             pathname: `/news/${item.slug}`,
+                            query: {
+                              state: JSON.stringify(navData)
+                            }
                           }}
                           passHref
                         >
