@@ -41,6 +41,7 @@ const GET_TOPHEADLINE_PAGE = gql`
                       altText
                       slug
                       srcSet
+                      sourceUrl
                     }
                   }
                   categories {
@@ -81,6 +82,7 @@ const GET_TOPHEADLINE_PAGE = gql`
                       altText
                       srcSet
                       slug
+                      sourceUrl
                     }
                   }
                 }
@@ -94,6 +96,7 @@ const GET_TOPHEADLINE_PAGE = gql`
               slug
               altText
               srcSet
+              sourceUrl
             }
           }
           topHeadlineFirstAdCode
@@ -117,6 +120,7 @@ const GET_TOPHEADLINE_PAGE = gql`
                       altText
                       srcSet
                       slug
+                      sourceUrl
                     }
                   }
                 }
@@ -130,6 +134,7 @@ const GET_TOPHEADLINE_PAGE = gql`
               altText
               srcSet
               slug
+              sourceUrl
             }
           }
           topHeadlineSecondAdCode
@@ -140,6 +145,7 @@ const GET_TOPHEADLINE_PAGE = gql`
               altText
               srcSet
               slug
+              sourceUrl
             }
           }
           topHeadlineBottomAdCode
@@ -177,13 +183,13 @@ const Topheadlines = () => {
                 (
                   <div key={item.id}>
                     {item?.posts?.nodes.slice(0, 1).map((post) =>
-                      post?.featuredImage?.node?.srcSet ? (
+                      post?.featuredImage?.node?.sourceUrl ? (
                         <div className="max-w-md bg-white mb-6" key={post.id}>
                           <Link href={`/news/${post.slug}`}>
                             <ExportedImage
                               priority={true}
-                              src={post?.featuredImage?.node?.srcSet}
-                              alt="vladimirputin"
+                              src={post?.featuredImage?.node?.sourceUrl}
+                              alt={post?.featuredImage?.node?.sourceUrl || ""}
                               width={432}
                               height={293}
                               style={{
@@ -280,9 +286,9 @@ const Topheadlines = () => {
                                   </p>
                                 </Link>
                               </div>
-                              {itemdata?.featuredImage?.node?.srcSet ? (
+                              {itemdata?.featuredImage?.node?.sourceUrl ? (
                                 <ExportedImage
-                                  src={itemdata.featuredImage.node.srcSet}
+                                  src={itemdata.featuredImage.node.sourceUrl}
                                   alt={itemdata.title}
                                   className="h-13 w-13 mr-2"
                                   width={90}
@@ -309,11 +315,11 @@ const Topheadlines = () => {
           <hr />
           <div className="flex mt-5">
             {data?.page?.homePage?.topHeadlineSidebarFirstAd?.topHeadlineFirstAd
-              ?.node?.srcSet ? (
+              ?.node?.sourceUrl ? (
               <ExportedImage
                 src={
                   data.page.homePage.topHeadlineSidebarFirstAd
-                    .topHeadlineFirstAd.node.srcSet
+                    .topHeadlineFirstAd.node.sourceUrl
                 }
                 alt="Partly Cloudy"
                 className="w-full mr-2"
@@ -374,9 +380,9 @@ const Topheadlines = () => {
                                   </p>
                                 </Link>
                               </div>
-                              {itemdata?.featuredImage?.node?.srcSet ? (
+                              {itemdata?.featuredImage?.node?.sourceUrl ? (
                                 <ExportedImage
-                                  src={itemdata.featuredImage.node.srcSet}
+                                  src={itemdata.featuredImage.node.sourceUrl}
                                   alt={itemdata.title}
                                   className="h-13 w-13 mr-2"
                                   width={90}
@@ -417,11 +423,11 @@ const Topheadlines = () => {
 
           <div className="flex mb-5 mt-10">
             {data?.page?.homePage?.topHeadlineSidebarSecondAd
-              ?.topHeadlineSecondAdImage?.node?.srcSet ? (
+              ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
               <ExportedImage
                 src={
                   data?.page?.homePage?.topHeadlineSidebarSecondAd
-                    ?.topHeadlineSecondAdImage?.node?.srcSet
+                    ?.topHeadlineSecondAdImage?.node?.sourceUrl
                 }
                 alt="Partly Cloudy"
                 className="w-full mr-2"

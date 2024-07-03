@@ -13,6 +13,7 @@ const GET_ADVERTISE_PAGE = gql`
             node {
               altText
               srcSet
+              sourceUrl
             }
           }
           topHeadlineBottomAdCode
@@ -70,7 +71,7 @@ const Advertisement = () => {
       </>
       }         */}
       {data?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
-        ?.srcSet ? (
+        ?.sourceUrl ? (
         <ExportedImage
           style={{
             width: "1134px",
@@ -81,7 +82,7 @@ const Advertisement = () => {
           priority={true}
           src={
             data.page.homePage.topHeadlineBottomAd.topHeadlineBottomAdImage.node
-              .srcSet
+              .sourceUrl
           }
           alt="barcode"
           width={1134}

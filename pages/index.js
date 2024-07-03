@@ -162,6 +162,7 @@ const GET_HOME_PAGE = gql`
                         altText
                         srcSet
                         slug
+                        sourceUrl
                       }
                     }
                   }
@@ -186,6 +187,7 @@ const GET_HOME_PAGE = gql`
                       node {
                         srcSet
                         slug
+                        sourceUrl
                       }
                     }
                     title

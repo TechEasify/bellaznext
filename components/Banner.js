@@ -231,7 +231,7 @@ const Banner = ({ data }) => {
             <div className="flex flex-col justify-center">
               {sortedPosts.map(
                 (post) => (
-                  console.log(post.slug, "post"),
+                  console.log(post, "post"),
                   (
                     <div key={post.id}>
                       <p className="text-base font-bold text-red-800">
@@ -280,12 +280,12 @@ const Banner = ({ data }) => {
                         </span>
                         6 MIN READ
                       </p>
-                      {post.featuredImage?.node?.srcSet && (
+                      {post.featuredImage?.node?.sourceUrl && (
                         <ExportedImage
                           priority={true}
-                          src={post.featuredImage.node.srcSet}
+                          src={post?.featuredImage?.node?.sourceUrl}
                           alt={
-                            post.featuredImage.node.altText || "Featured Image"
+                            post?.featuredImage?.node?.altText
                           }
                           width={150}
                           height={150}
@@ -440,10 +440,10 @@ const Banner = ({ data }) => {
                           </p>
                         </Link>
                       </div>
-                      {item.featuredImage?.node?.srcSet && (
+                      {item.featuredImage?.node?.sourceUrl && (
                         <ExportedImage
-                          src={item.featuredImage.node.srcSet}
-                          alt={item.featuredImage.node.srcSet}
+                          src={item.featuredImage.node.sourceUrl}
+                          alt={item.featuredImage.node.sourceUrl}
                           className="h-13 w-13 mr-2 object-contain"
                           width={90}
                           height={87}
