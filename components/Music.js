@@ -128,7 +128,7 @@ const Music = () => {
                               }}
                               passHref
                             >
-                              <p className="text-[15px] font-semibold text-gray-800">
+                              <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
                                 {post.title}
                               </p>
                             </Link>
@@ -167,7 +167,7 @@ const Music = () => {
                               }}
                               passHref
                             >
-                              <p className="text-[15px] font-semibold text-gray-800">
+                              <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
                                 {post.title}
                               </p>
                             </Link>
@@ -237,7 +237,7 @@ const Music = () => {
                           }}
                           passHref
                         >
-                          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
                             {post.title}
                           </h5>
                         </Link>
@@ -291,7 +291,7 @@ const Music = () => {
                             }}
                             passHref
                           >
-                            <p className="text-[15px] font-semibold text-gray-800">
+                            <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
                               {post.title}
                             </p>
                           </Link>

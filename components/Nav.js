@@ -28,9 +28,13 @@ const useIsMobile = () => {
       setIsMobile(window.innerWidth < 1024);
     };
 
+    // Initial check on mount
     updateIsMobile();
+
+    // Listener for window resize
     window.addEventListener("resize", updateIsMobile);
 
+    // Clean-up on component unmount
     return () => window.removeEventListener("resize", updateIsMobile);
   }, []);
 
@@ -824,6 +828,43 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
+                <div className="block lg:hidden flex">
+                  <label htmlFor="simple-search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="relative mb-2 md:mb-0 mr-2">
+                    <input
+                      type="text"
+                      id="simple-search"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Type to Search"
+                      required
+                      style={{ width: "166px" }} // Set width 166px for mobile view
+                    />
+                  </div>
+                  <div className="flex md:ml-2 flex-col">
+                    <button
+                      type="submit"
+                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      style={{
+                        paddingLeft: "20px",
+                        paddingRight: "20px",
+                        borderRadius: "20px",
+                        background: "#ce3a42",
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+                <div className="flex justify-center mb-3">
+                  <button
+                    onClick={handleSub}
+                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                  >
+                    Subscribe
+                  </button>
+                </div>
                 <div className="relative">
                   <button
                     onClick={toggleDropdownMobile}
@@ -932,6 +973,40 @@ const Nav = ({
                   </Link>
                 </div>
               </div>
+              <div className="flex justify-end items-end mt-4">
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </button>
+              </div>
             </div>
 
             {/* Desktop/Tablet View */}
@@ -961,7 +1036,7 @@ const Nav = ({
               </div>
             </div>
             <div
-              className="hidden lg:flex lg:justify-end items-end"
+              className="hidden lg:flex lg:justify-end lg:items-end"
               style={{ height: "150px" }}
             >
               <button onClick={closeDropdown} className="px-4 py-2">
@@ -1018,8 +1093,46 @@ const Nav = ({
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
           >
+            {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
+                <div className="block lg:hidden flex">
+                  <label htmlFor="simple-search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="relative mb-2 md:mb-0 mr-2">
+                    <input
+                      type="text"
+                      id="simple-search"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Type to Search"
+                      required
+                      style={{ width: "166px" }} // Set width 166px for mobile view
+                    />
+                  </div>
+                  <div className="flex md:ml-2 flex-col">
+                    <button
+                      type="submit"
+                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      style={{
+                        paddingLeft: "20px",
+                        paddingRight: "20px",
+                        borderRadius: "20px",
+                        background: "#ce3a42",
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+                <div className="flex justify-center mb-3">
+                  <button
+                    onClick={handleSub}
+                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                  >
+                    Subscribe
+                  </button>
+                </div>
                 <div className="relative">
                   <button
                     onClick={toggleDropdownMobile}
@@ -1128,7 +1241,43 @@ const Nav = ({
                   </Link>
                 </div>
               </div>
+              <div className="flex justify-end items-end mt-4">
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </button>
+              </div>
             </div>
+
+            {/* Desktop/Tablet View */}
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
@@ -1155,7 +1304,7 @@ const Nav = ({
               </div>
             </div>
             <div
-              className="hidden lg:flex lg:justify-end items-end"
+              className="hidden lg:flex lg:justify-end lg:items-end"
               style={{ height: "150px" }}
             >
               <button onClick={closeDropdown} className="px-4 py-2">
@@ -1215,6 +1364,43 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
+                <div className="block lg:hidden flex">
+                  <label htmlFor="simple-search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="relative mb-2 md:mb-0 mr-2">
+                    <input
+                      type="text"
+                      id="simple-search"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Type to Search"
+                      required
+                      style={{ width: "166px" }} // Set width 166px for mobile view
+                    />
+                  </div>
+                  <div className="flex md:ml-2 flex-col">
+                    <button
+                      type="submit"
+                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      style={{
+                        paddingLeft: "20px",
+                        paddingRight: "20px",
+                        borderRadius: "20px",
+                        background: "#ce3a42",
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+                <div className="flex justify-center mb-3">
+                  <button
+                    onClick={handleSub}
+                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                  >
+                    Subscribe
+                  </button>
+                </div>
                 <div className="relative">
                   <button
                     onClick={toggleDropdownMobile}
@@ -1323,6 +1509,40 @@ const Nav = ({
                   </Link>
                 </div>
               </div>
+              <div className="flex justify-end items-end mt-4">
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </button>
+              </div>
             </div>
 
             {/* Desktop/Tablet View */}
@@ -1352,7 +1572,7 @@ const Nav = ({
               </div>
             </div>
             <div
-              className="hidden lg:flex lg:justify-end items-end"
+              className="hidden lg:flex lg:justify-end lg:items-end"
               style={{ height: "150px" }}
             >
               <button onClick={closeDropdown} className="px-4 py-2">
@@ -1400,7 +1620,7 @@ const Nav = ({
           style={{
             position: "absolute",
             zIndex: "9999999999",
-            top: isMobile ? "80px" : "156px",
+            top: isMobile ? "75px" : "156px",
             left: "0px",
             width: "100%",
           }}
@@ -1412,6 +1632,43 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
+                <div className="block lg:hidden flex">
+                  <label htmlFor="simple-search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="relative mb-2 md:mb-0 mr-2">
+                    <input
+                      type="text"
+                      id="simple-search"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Type to Search"
+                      required
+                      style={{ width: "166px" }} // Set width 166px for mobile view
+                    />
+                  </div>
+                  <div className="flex md:ml-2 flex-col">
+                    <button
+                      type="submit"
+                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      style={{
+                        paddingLeft: "20px",
+                        paddingRight: "20px",
+                        borderRadius: "20px",
+                        background: "#ce3a42",
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+                <div className="flex justify-center mb-3">
+                  <button
+                    onClick={handleSub}
+                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                  >
+                    Subscribe
+                  </button>
+                </div>
                 <div className="relative">
                   <button
                     onClick={toggleDropdownMobile}
@@ -1520,6 +1777,40 @@ const Nav = ({
                   </Link>
                 </div>
               </div>
+              <div className="flex justify-end items-end mt-4">
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </button>
+                <button onClick={closeDropdown} className="px-4 py-2">
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </button>
+              </div>
             </div>
 
             {/* Desktop/Tablet View */}
@@ -1549,7 +1840,7 @@ const Nav = ({
               </div>
             </div>
             <div
-              className="hidden lg:flex lg:justify-end items-end"
+              className="hidden lg:flex lg:justify-end lg:items-end"
               style={{ height: "150px" }}
             >
               <button onClick={closeDropdown} className="px-4 py-2">

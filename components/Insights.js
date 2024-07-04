@@ -265,7 +265,7 @@ const Insights = () => {
                                     }}
                                     passHref
                                   >
-                                    <p className="text-[15px] font-semibold text-gray-800">
+                                    <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
                                       {node.title}
                                     </p>
                                   </Link>
@@ -303,7 +303,7 @@ const Insights = () => {
                                       }}
                                       passHref
                                     >
-                                      <p className="text-[15px] font-semibold text-gray-800">
+                                      <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
                                         {node.title}
                                       </p>
                                     </Link>
@@ -383,7 +383,7 @@ const Insights = () => {
                                 }}
                                 passHref
                               >
-                                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
                                   {node.title}
                                 </h5>
                               </Link>
@@ -438,7 +438,7 @@ const Insights = () => {
                                   }}
                                   passHref
                                 >
-                                  <p className="text-[15px] font-semibold text-gray-800">
+                                  <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
                                     {node.title}
                                   </p>
                                 </Link>
