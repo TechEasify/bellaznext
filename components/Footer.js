@@ -132,7 +132,7 @@ const Footer = () => {
       <div className="footer bg-gray-800 text-white">
         <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="flex justify-center md:hidden">
-            <div className="mr-2 p-4">
+            <div className="mr-2">
               <button
                 className="px-5 py-1 rounded flex items-center"
                 style={{ border: "1px solid #25D366" }}
@@ -146,7 +146,7 @@ const Footer = () => {
                 />
               </button>
             </div>
-            <div className="p-4">
+            <div className="">
               <button
                 className="px-5 py-1 rounded flex items-center"
                 style={{ border: "1px solid #25D366" }}
@@ -164,7 +164,7 @@ const Footer = () => {
           <div className="flex justify-center">
             <div className="lg:col-span-12">
               <div className="mx-auto w-full max-w-screen-xl">
-                <div className="grid grid-cols-2 gap-12 px-4 py-6 lg:py-8 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
                   {/* First Column */}
                   <div className="mb-8 md:mb-0">
                     <h2 className="mb-6 text-[20px] font-semibold text-white">
