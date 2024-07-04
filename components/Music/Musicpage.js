@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   console.log(
-    nodeByUri.categoryTamplate.musicTamplate.musicAdervtiseImage,
+    nodeByUri?.categoryTamplate?.musicTamplate?.musicAdervtiseImage,
     "nodeByUri news"
   );
   const [posts, setPosts] = useState([]);

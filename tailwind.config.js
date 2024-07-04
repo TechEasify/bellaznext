@@ -10,6 +10,7 @@ module.exports = {
         sans: ["Montserrat"],
       },
       colors: {
+        skyBlue: '#1662D4',
         red: {
           50: "#ffebee",
           100: "#ffcdd2",
@@ -304,6 +305,11 @@ module.exports = {
           700: "#5d4037",
           800: "#4e342e",
           900: "#3e2723",
+        },
+      },
+      variants: {
+        extend: {
+          textColor: ['hover'],
         },
       },
       spacing: {

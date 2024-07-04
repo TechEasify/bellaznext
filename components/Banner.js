@@ -243,7 +243,7 @@ const Banner = ({ data }) => {
                         }}
                         passHref
                       >
-                        <h1 className="text-[30px] text-b.lack-900 font-bold">
+                        <h1 className="text-[30px] text-b.lack-900 font-bold hover:text-skyBlue">
                           {post.title}
                         </h1>
                       </Link>
@@ -435,7 +435,7 @@ const Banner = ({ data }) => {
                           }}
                           passHref
                         >
-                          <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                          <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
                             {item.title}
                           </p>
                         </Link>

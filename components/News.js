@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import { format } from "date-fns";
 import Ads from "./googleAds/Ads";
 import { gql, useQuery } from "@apollo/client";
+import Responsivevoice from "./Responsivevoice";
 
 function News({ nodeByUri }) {
   console.log(nodeByUri, "nodeByUri News Detail");
@@ -25,6 +26,20 @@ function News({ nodeByUri }) {
     console.log(date, "date");
     return format(date, "MMMM d, yyyy");
   };
+
+  const posts =
+    nodeByUri.categories?.nodes?.flatMap((item) =>
+      item.posts?.nodes?.map((post) => ({
+        ...post,
+        categoryName: item.name,
+        categoryViews: post.postView.view,
+      }))
+    ) || [];
+
+  // Sorting posts by category view count in descending order
+  posts.sort((a, b) => console.log(b.categoryViews - a.categoryViews, "b.categoryViews - a.categoryViews"));
+
+  console.log(posts, "postspostspostsposts");
 
   return (
     <>
@@ -90,11 +105,13 @@ function News({ nodeByUri }) {
               height={499}
               style={{ width: "760px", height: "499px", objectFit: "cover" }}
             />
+              <Responsivevoice nodeByUri={nodeByUri}/>
             <p
               className="font-semibold mb-5"
               style={{ color: "#2B2B2B" }}
               dangerouslySetInnerHTML={{ __html: nodeByUri.content }}
             />
+          
             <div className="w-full max-w-2xl mx-auto mt-10">
               <div className="flex items-center">
                 <p className="text-[20px] font-bold text-black italic mr-3">
@@ -269,43 +286,35 @@ function News({ nodeByUri }) {
                 className="text-red-800"
                 style={{ height: "7px", background: "#CE3A42" }}
               />
-
-              <div>
-                <div className="flex mt-5">
-                  <div className="mr-2 flex-1">
-                    <p className="text-[12px] font-bold text-red-800">MUSIC</p>
-                    <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                      Our DeSantis and Haley Reporters switched places Her’s
-                      What They Found.
-                    </p>
+              {posts.map((post, index) => (
+                <div key={index}>
+                  <div className="flex mt-5">
+                    <div className="mr-2 flex-1">
+                      <p className="text-[12px] font-bold text-red-800">
+                        {post.categoryName}
+                      </p>
+                      <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                        {post.title}
+                      </p>
+                    </div>
+                    <ExportedImage
+                      src={post.featuredImage.node.sourceUrl}
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mr-2"
+                      width={90}
+                      height={87}
+                      style={{
+                        width: "90px",
+                        height: "87px",
+                        objectFit: "cover",
+                      }}
+                    />
                   </div>
-                  <ExportedImage
-                    src={colinlloyd}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mr-2"
-                  />
+                  <hr className="mt-5" />
                 </div>
-                <hr className="mt-5" />
-                <div className="flex mt-5">
-                  <div className="mr-2 flex-1">
-                    <p className="text-[12px] font-bold text-red-800">
-                      HOLLYWOOD
-                    </p>
-                    <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                      Our DeSantis and Haley Reporters switched places Her’s
-                      What They Found.
-                    </p>
-                  </div>
-                  <ExportedImage
-                    src={anaflavia}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mr-2"
-                  />
-                </div>
-                <hr className="mt-5" />
-              </div>
+              ))}
 
-              <div>
+              {/* <div>
                 <div className="flex mt-5">
                   <div className="mr-2 flex-1">
                     <p className="text-[12px] font-bold text-red-800">MUSIC</p>
@@ -354,7 +363,7 @@ function News({ nodeByUri }) {
                   />
                 </div>
                 <hr />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="flex max-w-2xl">

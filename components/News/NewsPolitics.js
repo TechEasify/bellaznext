@@ -52,14 +52,14 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
 
   return (
     <>
-      <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
+      {/* <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
         <ExportedImage
           style={{ margin: "0 auto" }}
           priority={true}
           src={Screenshot1}
           alt="PR_01CFA"
         />
-      </div>
+      </div> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
@@ -105,7 +105,7 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
                       }}
                       passHref
                     >
-                      <h5 className="text-[20px] text-black-900 font-bold">
+                      <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
                         {item.title}
                       </h5>
                     </Link>

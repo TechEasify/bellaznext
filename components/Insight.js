@@ -18,6 +18,8 @@ import Footer from "./Footer";
 import Link from "next/link";
 import Ads from "./googleAds/Ads";
 import { gql, useQuery } from "@apollo/client";
+import { INSIGHTS_DATA } from "./queries/categoryQueries";
+import { useDialog } from "./DialogContext";
 
 // const IIHT_DATA = gql`
 // query NewQuery($first: Int = 50, $after: String = "", $before: String = "") {
@@ -216,44 +218,6 @@ import { gql, useQuery } from "@apollo/client";
 
 // export default Insight;
 
-const IIHT_DATA = gql`
-  query NewQuery(
-    $first: Int = 10
-    $after: String
-    $last: Int
-    $before: String
-  ) {
-    posts(first: $first, after: $after, last: $last, before: $before) {
-      nodes {
-        excerpt
-        link
-        slug
-        title
-        uri
-        author{
-        node {
-        name
-        }
-        }
-        featuredImage {
-          node {
-            altText
-            srcSet
-            sourceUrl
-          }
-          cursor
-        }
-      }
-      pageInfo {
-        endCursor
-        startCursor
-        hasNextPage
-        hasPreviousPage
-      }
-    }
-  }
-`;
-
 const SkeletonLoader = () => (
   <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800" style={{ background: "#002d73" }}>
   <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
@@ -320,11 +284,11 @@ const SkeletonLoader = () => (
 );
 
 const Insight = ({ nodeByUri }) => {
-  const { data, loading, error, fetchMore } = useQuery(IIHT_DATA);
-
-console.log(nodeByUri, "nodeByUri");
-  const [posts, setPosts] = useState([]);
-  const [cursor, setCursor] = useState(null);
+  const { setCursor, cursor, setPosts, posts } = useDialog();
+  console.log(nodeByUri, "nodeByUri insights");
+  const { data, loading, error, fetchMore } = useQuery(INSIGHTS_DATA);
+// const [posts, setPosts] = useState([]);
+//   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
 
    // Effect to initialize posts when data changes
@@ -394,7 +358,7 @@ console.log(nodeByUri, "nodeByUri");
                     <p
                       className="text-base font-bold text-red-800"
                       style={{
-                        background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
+                        background: `${nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate?.insightTitleBackgroundColor}`,
                         color: "#fff",
                         padding: "0 10px",
                         width: "100px",
@@ -404,7 +368,7 @@ console.log(nodeByUri, "nodeByUri");
                         letterSpacing: "2px",
                       }}
                     >
-                      {nodeByUri.name}
+                      {nodeByUri?.nodeByUri?.name}
                     </p>
                     <Link
                       href={{
@@ -459,14 +423,14 @@ console.log(nodeByUri, "nodeByUri");
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            {nodeByUri.categoryTamplate.insightTamplate
-              .insightSidebarAdvertisementImage.sidebarAdImage.node
+            {nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate
+              ?.insightSidebarAdvertisementImage?.sidebarAdImage?.node
               .sourceUrl ? (
               <ExportedImage
                 className="mb-2 w-full h-auto max-h-96"
                 priority={true}
                 src={
-                  nodeByUri.categoryTamplate.insightTamplate
+                  nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate
                     .insightSidebarAdvertisementImage.sidebarAdImage.node
                     .sourceUrl
                 }

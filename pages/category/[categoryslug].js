@@ -11,135 +11,8 @@ import Jewishnews from "../../components/jewish-news";
 import Music from "../../components/categoryMusic";
 import { useEffect, useState } from "react";
 import PoliticsCategory from "../../components/PoliticsCategory";
-
-// Define your CATEGORY_QUERY here
-const CATEGORY_BREAKING_QUERY = gql`
-  query GetArchive(
-    $uri: String!
-    $first: Int = 10
-    $after: String
-    $last: Int
-    $before: String
-  ) {
-    nodeByUri(uri: $uri) {
-      ... on Category {
-        name
-        posts(first: $first, after: $after, last: $last, before: $before) {
-          nodes {
-            featuredImage {
-              node {
-                altText
-                srcSet
-                sourceUrl
-              }
-              cursor
-            }
-            title
-            content
-            author {
-              node {
-                name
-                slug
-              }
-            }
-            excerpt
-            link
-            slug
-            id
-          }
-          pageInfo {
-            endCursor
-            startCursor
-            hasNextPage
-            hasPreviousPage
-          }
-        }
-        categoryTamplate {
-          simpleTamplate {
-            simpleTitleBackgroundColor
-            simpleHeroSection {
-              heroSidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                  sourceUrl
-                }
-              }
-              heroSidebarAdCode
-            }
-            simpleAdvertisementImage {
-              simpleAdImage {
-                node {
-                  altText
-                  srcSet
-                  sourceUrl
-                }
-              }
-              simpleAdCode
-            }
-            simpleAllPostsSidebarAds {
-              allSidebarAdCode
-              allSidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                  sourceUrl
-                }
-              }
-            }
-          }
-          insightTamplate {
-            insightTitleBackgroundColor
-            insightSidebarAdvertisementImage {
-              sidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                  sourceUrl
-                }
-              }
-              sidebarAdCode
-            }
-          }
-          musicTamplate {
-            musicTitleBackgroundColor
-            musicHeroSection {
-              heroSidebarTitle
-              heroSidebarTitleLineColor
-              musicHeroSidebarAds {
-                musicSidebarAdImage {
-                  node {
-                    altText
-                    srcSet
-                  }
-                }
-                musicSidebarAdCode
-              }
-            }
-            musicAdervtiseImage {
-              adImage {
-                node {
-                  altText
-                  srcSet
-                }
-              }
-              adCode
-            }
-            musicAllPostsSidebarAds {
-              sidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                }
-              }
-              sidebarAdCode
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { useDialog } from "../../components/DialogContext";
+import { CATEGORY_BREAKING_QUERY } from "../../components/queries/categoryQueries";
 
 const SkeletonLoader = () => (
   <div
@@ -217,94 +90,88 @@ const SkeletonLoader = () => (
 
 const CategoryPage = () => {
   const router = useRouter();
+  const { navData, setNavData, setNodeByUri, nodeByUri, uri, loadingCategory, fetchMore } = useDialog()
   const { categoryslug } = router.query;
-  const [navData, setNavData] = useState(null);
-  const uri = `/category/${categoryslug}`;
+  console.log(nodeByUri, "nodeByUri");
+  // const [navData, setNavData] = useState(null);
 
-  console.log("categoryslug:", categoryslug);
-  console.log("uri:", uri);
-
-  const { data, loading, error, fetchMore } = useQuery(
-    CATEGORY_BREAKING_QUERY,
-    {
-      variables: { uri },
-      fetchPolicy: "cache-first",
-    }
-  );
+  // console.log("categoryslug:", categoryslug);
+  // console.log("uri:", uri);
 
   // const { data, loading, error } = useQuery(CATEGORY_QUERY);
 
-  useEffect(() => {
-    if (data) {
-      setNavData(data);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setNavData(data);
+  //     setNodeByUri(data.nodeByUri)
+  //   }
+  // }, [data]);
 
-  if (!categoryslug) {
+  // if (!categoryslug) {
+  //   return <SkeletonLoader />;
+  // }
+
+  if (loadingCategory) {
     return <SkeletonLoader />;
   }
 
-  if (loading || !navData) {
-    return <SkeletonLoader />;
-  }
+  // if (error) {
+  //   return <p>Category not found</p>;
+  // }
 
-  if (error || !data.nodeByUri) {
-    return <p>Category not found</p>;
-  }
+  // const { nodeByUri } = data;
 
-  const { nodeByUri } = data;
-
-  console.log(nodeByUri, "nodeByUri");
+  // console.log(data, "datadatadatadatadatadatadatadata");
 
   return (
     <>
       <Head>
-        <title>{nodeByUri.name} - News</title>
+        <title>{nodeByUri !== null && nodeByUri.name} - News</title>
       </Head>
       <Nav uri={uri} />
       <main>
         {router.asPath === "/category/breaking-news" &&
-        nodeByUri !== undefined ? (
+        nodeByUri !== undefined && nodeByUri !== null ? (
           <Breakingnews
             nodeByUri={nodeByUri}
-            loading={loading}
+            loading={loadingCategory}
             navData={navData}
             fetchMore={fetchMore}
           />
         ) : router.asPath === "/category/insights" &&
-          nodeByUri !== undefined ? (
+          nodeByUri !== undefined && nodeByUri !== null ? (
           <Insight
             nodeByUri={nodeByUri}
-            loading={loading}
+            loading={loadingCategory}
             navData={navData}
             fetchMore={fetchMore}
           />
         ) : router.asPath === "/category/jewish-news" &&
-          nodeByUri !== undefined ? (
+          nodeByUri !== undefined && nodeByUri !== null ? (
           <Jewishnews
             nodeByUri={nodeByUri}
-            loading={loading}
+            loading={loadingCategory}
             navData={navData}
             fetchMore={fetchMore}
           />
         ) : router.asPath === "/category/politics" &&
-          nodeByUri !== undefined ? (
+          nodeByUri !== undefined && nodeByUri !== null ? (
           <PoliticsCategory
             nodeByUri={nodeByUri}
-            loading={loading}
+            loading={loadingCategory}
             navData={navData}
             fetchMore={fetchMore}
           />
-        ) : router.asPath === "/category/music" && nodeByUri !== undefined ? (
+        ) : router.asPath === "/category/music" && nodeByUri !== undefined && nodeByUri !== null ? (
           <Music
             nodeByUri={nodeByUri}
-            loading={loading}
+            loading={loadingCategory}
             navData={navData}
             fetchMore={fetchMore}
           />
         ) : (
           <ul>
-            {nodeByUri.posts.nodes.map((post) =>
+            {nodeByUri !== null && nodeByUri.posts.nodes.map((post) =>
               post.link
                 ? (console.log(post, "post"),
                   (

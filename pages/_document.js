@@ -20,6 +20,19 @@ class MyDocument extends Document {
         <Head>
           {/* Favicons, Google site verification and other common meta tags across the site. */}
           <link rel="icon" href="/belaazicon.ico" />
+
+          <script
+          async
+          defer
+          src="https://proxy.beyondwords.io/npm/@beyondwords/player@latest/dist/umd.js"
+        ></script>
+
+           {/* text to speech vocie */}
+           {/* <script src="https://code.responsivevoice.org/responsivevoice.js?key=ynt9eohG"></script> */}
+           {/* <script src="https://code.responsivevoice.org/responsivevoice.js?key=kM8Dgkjj"></script> */}
+          {/* <script type="module" src="https://cdn.jsdelivr.net/npm/media-chrome@3/+esm"></script> */}
+
+
           {/* <script
             async
             src='https://www.googletagmanager.com/gtag/js?id=G-VGJ09RD0RZ'

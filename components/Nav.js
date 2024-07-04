@@ -14,210 +14,101 @@ import Group2 from "../public/images/Group (2).svg";
 import Group3 from "../public/images/Group (3).svg";
 import closewhite from "../public/images/closewhite.svg";
 import BELAAZICON from "../public/images/BELAAZICON.svg";
+import Vector_red from "../public/images/Vector_red.svg";
+import Vector_yellow from "../public/images/Vector_yellow.svg";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 
-const GET_NAV_SECTION = gql`
-  query ($id: ID = "230") {
-    menu(id: $id, idType: DATABASE_ID) {
-      header {
-        topFirst
-        topFirstLinks {
-          url
-        }
-        topSecond
-        topSecondLinks {
-          url
-        }
-        topThird
-        topThirdLinks {
-          url
-        }
-        topFore
-        topForeLinks {
-          url
-        }
-      }
-    }
-  }
-`;
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
 
-const GET_MENU_SECTION = gql`
-  query ($id: ID = "230") {
-    menu(id: $id, idType: DATABASE_ID) {
-      header {
-        headerBackgroundColor
-        mainMenuFirst
-        mainMenuFirstLink {
-          url
-        }
-        mainMenuSecond
-        mainMenuSecondLink {
-          url
-        }
-        mainMenuThird
-        mainMenuThirdLink {
-          url
-        }
-        subFirst
-        subFirstLink {
-          url
-        }
-        subSecond
-        subSecondLink {
-          url
-        }
-        subThird
-        subThirdLink {
-          url
-        }
-      }
-    }
-  }
-`;
+  useEffect(() => {
+    const updateIsMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
 
-const GET_SUBMENU_SECTION = gql`
-  query ($id: ID = "230") {
-    menu(id: $id, idType: DATABASE_ID) {
-      header {
-        foreSquareFirst
-        foreSquareFirstLink {
-          url
-        }
-        foreSquareSecond
-        foreSquareSecondLink {
-          url
-        }
-        foreSquareThird
-        foreSquareThirdLink {
-          url
-        }
-        headerButton {
-          link
-          text
-        }
-      }
-    }
-  }
-`;
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
 
-const GET_ICON_SECTION = gql`
-  query ($id: ID = "230") {
-    menu(id: $id, idType: DATABASE_ID) {
-      socialIcons {
-        facebookIcon {
-          node {
-            altText
-            srcSet
-          }
-        }
-        facebookLink
-        instagramIcon {
-          node {
-            altText
-            srcSet
-          }
-        }
-        instagramLink
-        twiterIcon {
-          node {
-            altText
-            srcSet
-          }
-        }
-        twiterLink
-        whatsappIcon {
-          node {
-            altText
-            srcSet
-          }
-        }
-        whatsappLink
-        youtubeIcon {
-          node {
-            altText
-            srcSet
-          }
-        }
-        youtubeLink
-      }
-    }
-  }
-`;
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
+
+  return isMobile;
+};
 
 const SkeletonLoader = () => (
   <header className="bg-header">
-  {/* Breadcrumb Skeleton */}
-  <nav aria-label="Breadcrumb" className="flex justify-center p-4 lg:px-6">
-    <ol className="inline-flex items-center space-x-2 lg:space-x-4">
-      <li>
-        <div className="flex items-center">
-          <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
-            &nbsp;
+    {/* Breadcrumb Skeleton */}
+    <nav aria-label="Breadcrumb" className="flex justify-center p-4 lg:px-6">
+      <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+        <li>
+          <div className="flex items-center">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
+              &nbsp;
+            </div>
           </div>
-        </div>
-      </li>
-      <span className="text-gray-400">|</span>
-      <li aria-current="page">
-        <div className="flex items-center">
-          <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
-            &nbsp;
+        </li>
+        <span className="text-gray-400">|</span>
+        <li aria-current="page">
+          <div className="flex items-center">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
+              &nbsp;
+            </div>
           </div>
-        </div>
-      </li>
-      <span className="text-gray-400">|</span>
-      <li aria-current="page">
-        <div className="flex items-center">
-          <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
-            &nbsp;
+        </li>
+        <span className="text-gray-400">|</span>
+        <li aria-current="page">
+          <div className="flex items-center">
+            <div className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white bg-gray-200 animate-pulse w-20 md:w-32">
+              &nbsp;
+            </div>
           </div>
-        </div>
-      </li>
-    </ol>
-  </nav>
+        </li>
+      </ol>
+    </nav>
 
-  {/* Main Navigation Skeleton */}
-  <nav className="mx-auto flex flex-col lg:flex-row items-center justify-between p-4 lg:px-6">
-    <div className="flex flex-1 justify-between lg:justify-start items-center">
-      <div className="-m-1.5 p-1.5">
-        <div className="sr-only">BELAAZ</div>
-        <div className="h-12 w-auto md:h-14 bg-gray-200 animate-pulse"></div>
-      </div>
-      <div className="flex flex-1 justify-center lg:justify-start items-center space-x-2 md:space-x-5">
-        {/* Main Menu First Skeleton */}
-        <div className="relative mx-2 md:mx-5">
+    {/* Main Navigation Skeleton */}
+    <nav className="mx-auto flex flex-col lg:flex-row items-center justify-between p-4 lg:px-6">
+      <div className="flex flex-1 justify-between lg:justify-start items-center">
+        <div className="-m-1.5 p-1.5">
+          <div className="sr-only">BELAAZ</div>
+          <div className="h-12 w-auto md:h-14 bg-gray-200 animate-pulse"></div>
+        </div>
+        <div className="flex flex-1 justify-center lg:justify-start items-center space-x-2 md:space-x-5">
+          {/* Main Menu First Skeleton */}
+          <div className="relative mx-2 md:mx-5">
+            <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+              &nbsp;
+            </div>
+          </div>
+          {/* Main Menu Second Skeleton */}
+          <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+            &nbsp;
+          </div>
+          {/* Main Menu Third Skeleton */}
+          <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+            &nbsp;
+          </div>
+          {/* Contact Header Toggle Skeleton */}
+          <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
+            &nbsp;
+          </div>
+          {/* Search Toggle Skeleton */}
           <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
             &nbsp;
           </div>
         </div>
-        {/* Main Menu Second Skeleton */}
-        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
-          &nbsp;
-        </div>
-        {/* Main Menu Third Skeleton */}
-        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
-          &nbsp;
-        </div>
-        {/* Contact Header Toggle Skeleton */}
-        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
-          &nbsp;
-        </div>
-        {/* Search Toggle Skeleton */}
-        <div className="flex text-white font-bold items-center bg-gray-200 animate-pulse w-20 md:w-32">
-          &nbsp;
-        </div>
       </div>
-    </div>
 
-    <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
-      {/* Subscribe Button Skeleton */}
-      <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-200 animate-pulse w-40 md:w-60">
-        &nbsp;
+      <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
+        {/* Subscribe Button Skeleton */}
+        <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gray-200 animate-pulse w-40 md:w-60">
+          &nbsp;
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
 );
 
 const SkeletonArticleLoader = () => (
@@ -247,27 +138,17 @@ const Nav = ({
   uri,
 }) => {
   const {
-    loading: loadingNav,
-    error: errorNav,
-    data: dataNav,
-  } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
-  console.log(dataNav);
-  const {
-    loading: loadingMenu,
-    error: errorMenu,
-    data: dataMenu,
-  } = useQuery(GET_MENU_SECTION, { fetchPolicy: "cache-first" });
-  const {
-    loading: loadingsubMenu,
-    error: errorsubMenu,
-    data: datasubMenu,
-  } = useQuery(GET_SUBMENU_SECTION, { fetchPolicy: "cache-first" });
-  const {
-    loading: loadingIcon,
-    error: errorIcon,
-    data: dataIcon,
-  } = useQuery(GET_ICON_SECTION, { fetchPolicy: "cache-first" });
-
+    navData,
+    setNavData,
+    loadingNav,
+    loadingMenu,
+    loadingsubMenu,
+    loadingIcon,
+    dataNav,
+    dataMenu,
+    datasubMenu,
+    dataIcon,
+  } = useDialog();
   const router = useRouter();
   console.log(router.asPath, "router");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -275,9 +156,8 @@ const Nav = ({
   const [isContactHeaderVisible, setContactHeaderVisible] = useState(false);
   const [subscribe, setSubscribe] = useState(false);
   const [activeLink, setActiveLink] = useState("");
-  const [navData, setNavData] = useState(null);
-
-  console.log(`/news${uri}`, "uri");
+  const [toggleDropdown1, setToggleDropdown1] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (dataNav && dataMenu && datasubMenu && dataIcon) {
@@ -309,6 +189,10 @@ const Nav = ({
     setIsDropdownSearch(false);
   };
 
+  const toggleDropdownMobile = () => {
+    setToggleDropdown1(!toggleDropdown1);
+  };
+
   const closeDropdown = () => setDropdownOpen(false);
 
   const toggleDropdownSearch = () => {
@@ -330,6 +214,8 @@ const Nav = ({
       query: { subscribe: subscribe },
     });
   };
+
+  console.log(dataNav, "navDataResultnavDataResultnavDataResultnavDataResult");
 
   return (
     <>
@@ -477,48 +363,50 @@ const Nav = ({
       ) : (
         <header className="bg-header">
           {/* Breadcrumb */}
-          <nav
-            aria-label="Breadcrumb"
-            className="flex justify-center p-4 lg:px-6"
-          >
-            <ol className="inline-flex items-center space-x-2 lg:space-x-4">
-              <li>
-                <div className="flex items-center">
-                  <button
-                    id="dropdownDatabase"
-                    data-dropdown-toggle="dropdown-database"
-                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
-                  >
-                    {dataNav !== undefined && dataNav.menu.header.topFirst}
-                  </button>
-                </div>
-              </li>
-              <span className="text-gray-400">|</span>
-              <li aria-current="page">
-                <div className="flex items-center">
-                  <button
-                    id="dropdownDatabase"
-                    data-dropdown-toggle="dropdown-database"
-                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
-                  >
-                    {dataNav !== undefined && dataNav.menu.header.topSecond}
-                  </button>
-                </div>
-              </li>
-              <span className="text-gray-400">|</span>
-              <li aria-current="page">
-                <div className="flex items-center">
-                  <button
-                    id="dropdownDatabase"
-                    data-dropdown-toggle="dropdown-database"
-                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
-                  >
-                    {dataNav !== undefined && dataNav.menu.header.topThird}
-                  </button>
-                </div>
-              </li>
-            </ol>
-          </nav>
+          {router.pathname === "/" && (
+            <nav
+              aria-label="Breadcrumb"
+              className="hidden lg:flex justify-center p-4 lg:px-6"
+            >
+              <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+                <li>
+                  <div className="flex items-center">
+                    <button
+                      id="dropdownDatabase"
+                      data-dropdown-toggle="dropdown-database"
+                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                    >
+                      {dataNav !== undefined && dataNav.menu.header.topFirst}
+                    </button>
+                  </div>
+                </li>
+                <span className="text-gray-400">|</span>
+                <li aria-current="page">
+                  <div className="flex items-center">
+                    <button
+                      id="dropdownDatabase"
+                      data-dropdown-toggle="dropdown-database"
+                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                    >
+                      {dataNav !== undefined && dataNav.menu.header.topSecond}
+                    </button>
+                  </div>
+                </li>
+                <span className="text-gray-400">|</span>
+                <li aria-current="page">
+                  <div className="flex items-center">
+                    <button
+                      id="dropdownDatabase"
+                      data-dropdown-toggle="dropdown-database"
+                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                    >
+                      {dataNav !== undefined && dataNav.menu.header.topThird}
+                    </button>
+                  </div>
+                </li>
+              </ol>
+            </nav>
+          )}
 
           {/* Main Navigation */}
           <nav
@@ -536,13 +424,13 @@ const Nav = ({
                 />
               </Link>
               <div className="flex flex-1 justify-center lg:justify-start items-center">
-                <div className="relative mx-2 md:mx-5">
+                <div className="relative mx-2 md:mx-5 hidden lg:block">
                   <button
                     onClick={toggleDropdown}
                     className="flex text-white font-bold items-center"
                   >
                     {dataMenu !== undefined &&
-                      dataMenu.menu.header.mainMenuFirst}
+                      dataMenu?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -554,7 +442,7 @@ const Nav = ({
                 <Link
                   href="/category/insights"
                   // onClick={() => router.push("/category/insights")}
-                  className="flex mr-2 text-white font-bold items-center"
+                  className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataMenu !== undefined &&
                     dataMenu.menu.header.mainMenuSecond}
@@ -568,7 +456,7 @@ const Nav = ({
                 <Link
                   href="/category/music"
                   // onClick={() => router.push("/category/music")}
-                  className="flex mr-2 text-white font-bold items-center"
+                  className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
                   <ExportedImage
@@ -580,7 +468,7 @@ const Nav = ({
                 </Link>
                 <button
                   onClick={toggleContactHeader}
-                  className="flex mr-2 text-white font-bold items-center"
+                  className="flex mr-2 text-white font-bold items-center ml-2"
                 >
                   {isContactHeaderVisible ? (
                     <ExportedImage
@@ -600,7 +488,7 @@ const Nav = ({
                 </button>
                 <button
                   onClick={toggleDropdownSearch}
-                  className="flex mr-2 text-white font-bold items-center"
+                  className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   <ExportedImage
                     priority={true}
@@ -815,21 +703,21 @@ const Nav = ({
                   // onClick={() => router.push("/category/breaking-news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.subFirst}
+                  {dataMenu !== undefined && dataMenu?.menu?.header?.subFirst}
                 </Link>
                 <Link
                   href="/category/politics"
                   // onClick={() => router.push("/category/politics")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.subSecond}
+                  {dataMenu !== undefined && dataMenu?.menu?.header?.subSecond}
                 </Link>
                 <Link
                   href="/category/jewish_news"
                   // onClick={() => router.push("/category/jewish_news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.subThird}
+                  {dataMenu !== undefined && dataMenu?.menu?.header?.subThird}
                 </Link>
                 <Link
                   href="/category/insights"
@@ -837,14 +725,15 @@ const Nav = ({
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                    dataMenu?.menu?.header?.mainMenuSecond}
                 </Link>
                 <Link
                   href="/category/music"
                   // onClick={() => router.push("/category/music")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataMenu !== undefined &&
+                    dataMenu?.menu?.header?.mainMenuThird}
                 </Link>
               </div>
               <div className="flex flex-col lg:flex-col lg:items-center">
@@ -854,7 +743,7 @@ const Nav = ({
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareFirst}
+                    datasubMenu?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
@@ -862,7 +751,7 @@ const Nav = ({
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareSecond}
+                    datasubMenu?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
@@ -870,7 +759,7 @@ const Nav = ({
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareThird}
+                    datasubMenu?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -929,34 +818,145 @@ const Nav = ({
           }}
         >
           <nav
-            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
           >
-            <div className="items-center">
+            {/* Mobile View */}
+            <div className="block lg:hidden items-center">
+              <div className="flex flex-col">
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdownMobile}
+                    className="flex text-white font-bold items-center mb-3"
+                  >
+                    {dataMenu !== undefined &&
+                      dataMenu?.menu?.header?.mainMenuFirst}
+                    <ExportedImage
+                      priority={true}
+                      className="h-3 w-3 ml-2"
+                      src={Vector1}
+                      alt="Dropdown Icon"
+                    />
+                  </button>
+                  {toggleDropdown1 && (
+                    <>
+                      <Link
+                        href="/category/breaking-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subFirst}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_red}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/politics"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subSecond}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_yellow}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/jewish-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subThird}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                    </>
+                  )}
+                </div>
+                <Link
+                  href="/category/insights"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined &&
+                    dataMenu.menu.header.mainMenuSecond}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <Link
+                  href="/category/music"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector2}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <hr className="my-2" />
+                <div className="flex flex-col">
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareFirst}
+                  </Link>
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareSecond}
+                  </Link>
+                  <Link
+                    href="/advertise"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareThird}
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop/Tablet View */}
+            <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareFirst}
+                    datasubMenu?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareSecond}
+                    datasubMenu?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
-                  // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareThird}
+                    datasubMenu?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -1015,34 +1015,339 @@ const Nav = ({
           }}
         >
           <nav
-            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
           >
-            <div className="items-center">
+            <div className="block lg:hidden items-center">
+              <div className="flex flex-col">
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdownMobile}
+                    className="flex text-white font-bold items-center mb-3"
+                  >
+                    {dataMenu !== undefined &&
+                      dataMenu?.menu?.header?.mainMenuFirst}
+                    <ExportedImage
+                      priority={true}
+                      className="h-3 w-3 ml-2"
+                      src={Vector1}
+                      alt="Dropdown Icon"
+                    />
+                  </button>
+                  {toggleDropdown1 && (
+                    <>
+                      <Link
+                        href="/category/breaking-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subFirst}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_red}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/politics"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subSecond}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_yellow}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/jewish-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subThird}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                    </>
+                  )}
+                </div>
+                <Link
+                  href="/category/insights"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined &&
+                    dataMenu.menu.header.mainMenuSecond}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <Link
+                  href="/category/music"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector2}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <hr className="my-2" />
+                <div className="flex flex-col">
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareFirst}
+                  </Link>
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareSecond}
+                  </Link>
+                  <Link
+                    href="/advertise"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareThird}
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareFirst}
+                    datasubMenu?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareSecond}
+                    datasubMenu?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
-                  // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareThird}
+                    datasubMenu?.menu?.header?.foreSquareThird}
+                </Link>
+              </div>
+            </div>
+            <div
+              className="hidden lg:flex lg:justify-end items-end"
+              style={{ height: "150px" }}
+            >
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group}
+                  alt="Whatsapp Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group1}
+                  alt="Facebook Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group2}
+                  alt="Instagram Icon"
+                />
+              </button>
+              <button onClick={closeDropdown} className="px-4 py-2">
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group3}
+                  alt="Twitter Icon"
+                />
+              </button>
+            </div>
+          </nav>
+        </header>
+      ) : router.pathname === "/advertise" ? (
+        <header
+          className={`bg-header transition-all duration-500 ${
+            isContactHeaderVisible
+              ? "max-h-64 opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+          style={{
+            position: "absolute",
+            zIndex: "9999999999",
+            top: "80px",
+            left: "0px",
+            width: "100%",
+          }}
+        >
+          <nav
+            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            aria-label="Global"
+          >
+            {/* Mobile View */}
+            <div className="block lg:hidden items-center">
+              <div className="flex flex-col">
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdownMobile}
+                    className="flex text-white font-bold items-center mb-3"
+                  >
+                    {dataMenu !== undefined &&
+                      dataMenu?.menu?.header?.mainMenuFirst}
+                    <ExportedImage
+                      priority={true}
+                      className="h-3 w-3 ml-2"
+                      src={Vector1}
+                      alt="Dropdown Icon"
+                    />
+                  </button>
+                  {toggleDropdown1 && (
+                    <>
+                      <Link
+                        href="/category/breaking-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subFirst}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_red}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/politics"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subSecond}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_yellow}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/jewish-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subThird}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                    </>
+                  )}
+                </div>
+                <Link
+                  href="/category/insights"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined &&
+                    dataMenu.menu.header.mainMenuSecond}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <Link
+                  href="/category/music"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector2}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <hr className="my-2" />
+                <div className="flex flex-col">
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareFirst}
+                  </Link>
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareSecond}
+                  </Link>
+                  <Link
+                    href="/advertise"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareThird}
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop/Tablet View */}
+            <div className="hidden lg:block items-center">
+              <div className="flex flex-col lg:flex-col">
+                <Link
+                  href="/contact-us"
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu?.menu?.header?.foreSquareFirst}
+                </Link>
+                <Link
+                  href="/contact-us"
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu?.menu?.header?.foreSquareSecond}
+                </Link>
+                <Link
+                  href="/advertise"
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -1095,40 +1400,151 @@ const Nav = ({
           style={{
             position: "absolute",
             zIndex: "9999999999",
-            top: "156px",
+            top: isMobile ? "80px" : "156px",
             left: "0px",
             width: "100%",
           }}
         >
           <nav
-            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
           >
-            <div className="items-center">
+            {/* Mobile View */}
+            <div className="block lg:hidden items-center">
+              <div className="flex flex-col">
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdownMobile}
+                    className="flex text-white font-bold items-center mb-3"
+                  >
+                    {dataMenu !== undefined &&
+                      dataMenu?.menu?.header?.mainMenuFirst}
+                    <ExportedImage
+                      priority={true}
+                      className="h-3 w-3 ml-2"
+                      src={Vector1}
+                      alt="Dropdown Icon"
+                    />
+                  </button>
+                  {toggleDropdown1 && (
+                    <>
+                      <Link
+                        href="/category/breaking-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subFirst}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_red}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/politics"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subSecond}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_yellow}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/jewish-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subThird}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                    </>
+                  )}
+                </div>
+                <Link
+                  href="/category/insights"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined &&
+                    dataMenu.menu.header.mainMenuSecond}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <Link
+                  href="/category/music"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector2}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <hr className="my-2" />
+                <div className="flex flex-col">
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareFirst}
+                  </Link>
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareSecond}
+                  </Link>
+                  <Link
+                    href="/advertise"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareThird}
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop/Tablet View */}
+            <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareFirst}
+                    datasubMenu?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareSecond}
+                    datasubMenu?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
-                  // onClick={() => router.push("/advertise")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {datasubMenu !== undefined &&
-                    datasubMenu.menu.header.foreSquareThird}
+                    datasubMenu?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>

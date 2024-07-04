@@ -36,6 +36,7 @@ const SkeletonLoader = () => (
 );
 
 function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
+  console.log(nodeByUri.nodeByUri, "nodeByuri breaking news");
   const [isClient, setIsClient] = useState(false);
 
   console.log(nodeByUri, "nodeByUri");
@@ -50,14 +51,14 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
     <>
       {/* <Nav uri={uri}/> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+        {/* <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center border-r pr-0 md:pr-5">
-              {nodeByUri?.posts?.nodes?.length > 0 && (
+              {nodeByUri.nodeByUri !== null && nodeByUri?.nodeByUri?.posts?.nodes?.length > 0 && (
                 <>
                   <Link
                     href={{
-                      pathname: `/news/${nodeByUri.posts.nodes[0].slug}`,
+                      pathname: `/news/${nodeByUri !== null && nodeByUri.nodeByUri.posts.nodes[0].slug}`,
                     }}
                     passHref
                   >
@@ -65,7 +66,7 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
                       className="mb-2"
                       priority={true}
                       src={
-                        nodeByUri.posts.nodes[0].featuredImage.node.sourceUrl
+                        nodeByUri.nodeByUri.posts.nodes[0].featuredImage.node.sourceUrl
                       }
                       alt="vladimirputin"
                       width={907}
@@ -82,12 +83,12 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
                   </p>
                   <Link
                     href={{
-                      pathname: `/news/${nodeByUri.posts.nodes[0].slug}`,
+                      pathname: `/news/${nodeByUri !== null && nodeByUri.nodeByUri.posts.nodes[0].slug}`,
                     }}
                     passHref
                   >
                     <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold">
-                      {nodeByUri?.posts?.nodes[0]?.title}
+                      {nodeByUri?.nodeByUri?.posts?.nodes[0]?.title}
                     </h1>
                   </Link>
                   <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
@@ -102,7 +103,7 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
                       className="font-extrabold ml-1"
                       style={{ color: "#40A6FB" }}
                     >
-                      {nodeByUri?.posts?.nodes[0]?.author?.node?.name}
+                      {nodeByUri?.nodeByUri?.posts?.nodes[0]?.author?.node?.name}
                       <span
                         className="text-[20px] md:text-[25px] font-extrabold mx-1"
                         style={{ color: "#40A6FB" }}
@@ -115,7 +116,7 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
                   <p
                     className="text-[13px] md:text-[15px] text-base font-normal text-gray-600 mb-3"
                     dangerouslySetInnerHTML={{
-                      __html: nodeByUri?.posts?.nodes[0]?.content,
+                      __html: nodeByUri?.nodeByUri?.posts?.nodes[0]?.content,
                     }}
                   />
                 </>
@@ -125,17 +126,17 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
           <div className="w-full max-w-4xl mx-auto">
             <Link
               href={{
-                pathname: `/news/${nodeByUri.posts.nodes[0].slug}`,
+                pathname: `/news/${nodeByUri !== null && nodeByUri?.nodeByUri?.posts?.nodes[0]?.slug}`,
               }}
               passHref
             >
               <ExportedImage
                 className="mb-2"
                 priority={true}
-                src={Frame}
-                // src={
-                //   nodeByUri.posts.nodes[0].featuredImage.node.sourceUrl
-                // }
+                // src={Frame}
+                src={
+                  nodeByUri?.nodeByUri?.posts?.nodes[0]?.featuredImage?.node?.sourceUrl
+                }
                 alt="Frame"
                 width={432}
                 height={293}
@@ -143,16 +144,16 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
               />
             </Link>
             <p className="text-[10px] md:text-[12px] text-base font-bold text-red-800">
-              {nodeByUri.name}
+              {nodeByUri?.nodeByUri?.name}
             </p>
             <Link
               href={{
-                pathname: `/news/${nodeByUri?.posts?.nodes[1]?.slug}`,
+                pathname: `/news/${nodeByUri !== null && nodeByUri?.nodeByUri?.posts?.nodes[1]?.slug}`,
               }}
               passHref
             >
               <h5 className="text-[13px] md:text-[15px] text-black-900 font-bold">
-                {nodeByUri?.posts?.nodes[1]?.title}
+                {nodeByUri?.nodeByUri?.posts?.nodes[1]?.title}
               </h5>
             </Link>
             <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
@@ -167,7 +168,7 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
                 className="font-extrabold ml-1"
                 style={{ color: "#40A6FB" }}
               >
-                {nodeByUri?.posts?.nodes[0]?.author?.node?.name}
+                {nodeByUri?.nodeByUri?.posts?.nodes[0]?.author?.node?.name}
                 <span
                   className="text-[20px] md:text-[25px] font-extrabold mx-1"
                   style={{ color: "#40A6FB" }}
@@ -180,14 +181,14 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
             <p
               className="text-[13px] md:text-[15px] text-base font-normal text-gray-600 mb-3"
               dangerouslySetInnerHTML={{
-                __html: nodeByUri?.posts?.nodes[0]?.content,
+                __html: nodeByUri?.nodeByUri?.posts?.nodes[0]?.content,
               }}
             />
           </div>
-        </div>
+        </div> */}
         <News
-          nodeByUri={nodeByUri}
-          categoryTamplate={nodeByUri.categoryTamplate}
+          nodeByUri={nodeByUri.nodeByUri}
+          categoryTamplate={nodeByUri.nodeByUri.categoryTamplate}
           fetchMore={fetchMore}
           loading={loading}
         />

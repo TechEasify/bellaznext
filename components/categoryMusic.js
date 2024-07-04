@@ -697,7 +697,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
           </div>
         </div>
       </div> */}
-      <Musicpage nodeByUri={nodeByUri} fetchMore={fetchMore} loading={loading}/>
+      <Musicpage nodeByUri={nodeByUri.nodeByUri} fetchMore={fetchMore} loading={loading}/>
       {/* <Footer /> */}
     </>
   );
