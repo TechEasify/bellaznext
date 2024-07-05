@@ -167,7 +167,7 @@ function Index() {
               </div>
             </div>
             <hr className="border-gray-300 mt-5 mb-8" />
-            <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">
+            <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-20">
               <div className="w-full md:w-1/3 mb-5 md:mb-0">
                 <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold">
                   {data.page.about.ourTeamTitle}

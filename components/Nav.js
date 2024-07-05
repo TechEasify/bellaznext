@@ -857,10 +857,10 @@ const Nav = ({
                     </button>
                   </div>
                 </div>
-                <div className="flex justify-center mb-3">
+                <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -1125,10 +1125,10 @@ const Nav = ({
                     </button>
                   </div>
                 </div>
-                <div className="flex justify-center mb-3">
+                <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -1393,10 +1393,10 @@ const Nav = ({
                     </button>
                   </div>
                 </div>
-                <div className="flex justify-center mb-3">
+                <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -1661,10 +1661,10 @@ const Nav = ({
                     </button>
                   </div>
                 </div>
-                <div className="flex justify-center mb-3">
+                <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>

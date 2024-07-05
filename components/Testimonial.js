@@ -44,7 +44,7 @@ function Testimonial() {
             Testimonials from Our Advertising Partners
           </h2>
           {/* <!-- Slider controls --> */}
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-8 hidden sm:flex">
             <button
               className="group flex justify-center items-center border border-solid border-indigo-600 transition-all duration-500 p-1.5 font-semibold"
               style={{ color: "#002D73" }}
