@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
+import Testimonial from "../../components/Testimonial";
 
 const GET_ABOUT_PAGE = gql`
 query ($id: ID = "3082") {
@@ -206,6 +207,7 @@ function Index() {
             </div>
           </div>
         )}
+        <Testimonial/>
       </div>
       <Footer />
     </>

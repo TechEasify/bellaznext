@@ -3,12 +3,13 @@ import Primarylogo from "../../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
 import { useRouter } from "next/router";
 
-function index() {
-    const router = useRouter();
-    console.log(router.query.subscribe, "router");
-    const handleClose = () => {
-        router.push(router.query.subscribe);
-      };
+function Index() {
+  const router = useRouter();
+
+  const handleClose = () => {
+    router.push(router.query.subscribe);
+  };
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#002D73" }}>
       <div className="flex justify-between items-center p-4">
@@ -20,7 +21,7 @@ function index() {
         />
         <button
           type="button"
-          className="text-base w-7 h-7 text-gray-800 rounded-full hidden md:block"
+          className="text-base w-7 h-7 text-gray-800 rounded-full block md:hidden"
           onClick={handleClose}
         >
           <svg
@@ -41,7 +42,7 @@ function index() {
       </div>
 
       <div className="flex flex-col items-center p-5 md:p-10 lg:p-20 flex-grow">
-        <p className="text-[20px] md:text-[25px] text-white font-semibold text-center mb-5">
+        <p className="text-lg md:text-2xl text-white font-semibold text-center mb-5">
           Get the latest Jewish and breaking <br className="hidden md:block" />{" "}
           news delivered straight to your inbox.{" "}
           <br className="hidden md:block" /> Subscribe now!
@@ -70,4 +71,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

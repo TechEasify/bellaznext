@@ -144,27 +144,35 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-6.font-medium.trac
 }
 
 .footer {
-  background: #002D73;
+  background: #002d73;
 }
 
 button.viewmore.w-full.py-2.text-center.justify-center.mt-5.flex.mr-2.text-white.font-semibold.items-center:hover {
-  background: #40A6FB;
+  background: #40a6fb;
   color: #fff;
 }
 
 button.viewmore.w-full.py-2.text-center.justify-center.mt-5.flex.mr-2.text-white.font-semibold.items-center {
-  color: #40A6FB;
+  color: #40a6fb;
 }
 
 button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md\:w-auto.focus\:outline-none:hover {
-  background: #002D73;
+  background: #002d73;
   color: #fff !important;
 }
 
 .bg-change {
-border-color: rgb(255, 165, 0) !important;
+  border-color: rgb(255, 165, 0) !important;
 }
 
 .bg-change1 {
   border-color: rgb(87, 160, 238) !important;
-  }
+}
+
+button.slick-arrow.slick-next {
+  display: none !important;
+}
+
+button.slick-arrow.slick-prev {
+  display: none !important;
+}
