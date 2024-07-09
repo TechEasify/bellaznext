@@ -12,15 +12,17 @@ import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
 import Newscard from "./Newscard";
 import Link from "next/link";
+import { useDialog } from "../DialogContext";
 
 const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
   console.log(nodeByUri, "nodeByUri politics");
+  const { iconDataResult } = useDialog();
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
 
-   // Effect to initialize posts when data changes
-   useEffect(() => {
+  // Effect to initialize posts when data changes
+  useEffect(() => {
     if (nodeByUri && nodeByUri.posts) {
       setPosts(nodeByUri.posts.nodes);
       setCursor(nodeByUri.posts.pageInfo.endCursor);
@@ -63,7 +65,7 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
-          {posts.map((item) => (
+            {posts.map((item) => (
               <div key={item.slug}>
                 <div className="flex flex-col md:flex-row mb-5">
                   <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
@@ -87,7 +89,10 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
                     <p
                       className="text-base font-bold text-red-800"
                       style={{
-                        background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor || "rgb(255, 165, 0)"}`,
+                        background: `${
+                          nodeByUri.categoryTamplate.insightTamplate
+                            .insightTitleBackgroundColor || "rgb(255, 165, 0)"
+                        }`,
                         color: "#fff",
                         padding: "0 10px",
                         width: "100px",
@@ -167,26 +172,34 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <ExportedImage
-                src={Group}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group1}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group2}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group3}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+              <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
+                <ExportedImage
+                  src={Group}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.facebookLink}>
+                <ExportedImage
+                  src={Group1}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.instagramLink}>
+                <ExportedImage
+                  src={Group2}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.twiterLink}>
+                <ExportedImage
+                  src={Group3}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ function Index() {
         />
         <button
           type="button"
-          className="text-base w-7 h-7 text-gray-800 rounded-full block md:hidden"
+          className="text-base w-7 h-7 text-gray-800 rounded-full block"
           onClick={handleClose}
         >
           <svg

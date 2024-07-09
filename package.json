@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
-    "@beyondwords/player": "^0.2.12",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@faustjs/next": "^0.15.14",

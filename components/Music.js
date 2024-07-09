@@ -9,78 +9,15 @@ import spotifydeal from "../public/images/spotifydeal.svg";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 
-const GET_MUSIC_SECTION = gql`
-  query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        musicTitle
-        musicBottomLineColor
-        musicPosts {
-          nodes {
-            ... on Category {
-              posts {
-                nodes {
-                  slug
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      sourceUrl
-                    }
-                  }
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  author {
-                    node {
-                      name
-                    }
-                  }
-                  content
-                }
-              }
-            }
-          }
-        }
-        musicAd {
-          musicAdImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
-            }
-          }
-          musicAdCode
-        }
-        musicBottomAd {
-          musicBottomAdImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
-            }
-          }
-          musicBottomAdCode
-        }
-      }
-    }
-  }
-`;
-
 const Music = () => {
-  const { loading, error, data } = useQuery(GET_MUSIC_SECTION);
-  console.log(data, "data music");
-  const { openDialog } = useDialog();
+  const { openDialog, musicQuery, musicError, musicLoading  } = useDialog();
 
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">
         <div className="flex flex-col justify-center mx-auto md:mx-0">
           <h1 className="text-[25px] font-bold text-black-900 italic">
-            {data?.page?.homePage?.musicTitle}
+            {musicQuery?.page?.homePage?.musicTitle}
           </h1>
           <hr
             className="text-red-800 mr-5"
@@ -90,7 +27,7 @@ const Music = () => {
         </div>
 
         <div className="flex flex-wrap justify-around">
-          {data?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
+          {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
             (item) => (
               console.log(item, "item music"),
               item.posts?.nodes.slice(0, 1).map(
@@ -120,7 +57,7 @@ const Music = () => {
                               style={{ width: "317px", height: "194px" }}
                             />
                             <p className="text-[12px] font-bold text-red-800">
-                              {data?.page?.homePage?.musicTitle}
+                              {musicQuery?.page?.homePage?.musicTitle}
                             </p>
                             <Link
                               href={{
@@ -159,7 +96,7 @@ const Music = () => {
                         <div className="flex max-w-xs bg-white mr-4 items-center">
                           <div className="mr-2">
                             <p className="text-[12px] font-bold text-red-800">
-                              {data?.page?.homePage?.musicTitle}
+                              {musicQuery?.page?.homePage?.musicTitle}
                             </p>
                             <Link
                               href={{
@@ -229,7 +166,7 @@ const Music = () => {
                           />
                         </Link>
                         <p className="text-base font-bold text-red-800 mt-2">
-                          {data?.page?.homePage?.musicTitle}
+                          {musicQuery?.page?.homePage?.musicTitle}
                         </p>
                         <Link
                           href={{
@@ -283,7 +220,7 @@ const Music = () => {
                             }}
                           />
                           <p className="text-[12px] font-bold text-red-800">
-                            {data?.page?.homePage?.musicTitle}
+                            {musicQuery?.page?.homePage?.musicTitle}
                           </p>
                           <Link
                             href={{
@@ -319,11 +256,11 @@ const Music = () => {
                           </p>
                         </div>
                         <div className="flex max-w-xs bg-white mr-4 items-center">
-                          {data?.page?.homePage?.musicBottomAd
+                          {musicQuery?.page?.homePage?.musicBottomAd
                             ?.musicBottomAdImage?.node?.sourceUrl && (
                             <ExportedImage
                               src={
-                                data.page.homePage.musicBottomAd
+                                musicQuery.page.homePage.musicBottomAd
                                   .musicBottomAdImage.node.sourceUrl
                               }
                               alt="Partly Cloudy"

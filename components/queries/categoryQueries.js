@@ -217,11 +217,6 @@ export const GET_NEWS_SECTION = gql`
       date
       dateGmt
       title
-      beyondwords {
-        contentId
-        podcastId
-        projectId
-      }
     }
   }
 }

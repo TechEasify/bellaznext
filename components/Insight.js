@@ -219,80 +219,89 @@ import { useDialog } from "./DialogContext";
 // export default Insight;
 
 const SkeletonLoader = () => (
-  <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800" style={{ background: "#002d73" }}>
-  <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
-    <div className="w-full max-w-5xl mx-auto">
-      <div className="bg-white p-4 rounded-md animate-pulse">
-        <div className="mb-2 rounded-md bg-gray-500 h-60"></div>
-        <div className="h-4 bg-gray-500 w-3/4 mb-2"></div>
-        <div className="h-6 bg-gray-500 w-full mb-2"></div>
-        <div className="h-4 bg-gray-500 w-1/2 mb-2"></div>
-        <div className="h-3 bg-gray-500 w-3/4 mb-2"></div>
-        <div className="h-4 bg-gray-500 w-2/3"></div>
-      </div>
-    </div>
-    <div className="w-full max-w-4xl mx-auto mb-5">
-      <div className="bg-white p-4 rounded-md animate-pulse">
-        <div className="mb-2 rounded-md bg-gray-500 h-60"></div>
-        <div className="h-4 bg-gray-500 w-3/4 mb-2"></div>
-        <div className="h-6 bg-gray-500 w-full mb-2"></div>
-        <div className="h-4 bg-gray-500 w-1/2 mb-2"></div>
-        <div className="h-3 bg-gray-500 w-3/4 mb-2"></div>
-        <div className="h-4 bg-gray-500 w-2/3"></div>
-      </div>
-    </div>
-  </div>
-
-  <div className="w-full h-40 bg-gray-300 animate-pulse mx-auto mb-8"></div>
-  <div className="px-4 py-8 mx-auto max-w-screen-xl">
+  <div
+    className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800"
+    style={{ background: "#002d73" }}
+  >
     <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
       <div className="w-full max-w-5xl mx-auto">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <div key={index}>
-            <div className="flex flex-col md:flex-row mb-5 animate-pulse">
-              <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                <div className="w-72 h-52 bg-gray-300"></div>
-              </div>
-              <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <div className="bg-red-800 w-36 h-5 mb-3"></div>
-                <div className="bg-gray-300 w-3/4 h-8 mb-3"></div>
-                <div className="bg-gray-300 w-1/2 h-4 mb-4"></div>
-                <div className="bg-gray-300 w-full h-6 mb-3"></div>
-              </div>
-            </div>
-            <hr className="my-5" />
-          </div>
-        ))}
-        <button className="w-full py-2 mt-5 text-center text-white bg-gray-300 font-semibold animate-pulse">
-          VIEW MORE
-        </button>
+        <div className="bg-white p-4 rounded-md animate-pulse">
+          <div className="mb-2 rounded-md bg-gray-500 h-60"></div>
+          <div className="h-4 bg-gray-500 w-3/4 mb-2"></div>
+          <div className="h-6 bg-gray-500 w-full mb-2"></div>
+          <div className="h-4 bg-gray-500 w-1/2 mb-2"></div>
+          <div className="h-3 bg-gray-500 w-3/4 mb-2"></div>
+          <div className="h-4 bg-gray-500 w-2/3"></div>
+        </div>
       </div>
+      <div className="w-full max-w-4xl mx-auto mb-5">
+        <div className="bg-white p-4 rounded-md animate-pulse">
+          <div className="mb-2 rounded-md bg-gray-500 h-60"></div>
+          <div className="h-4 bg-gray-500 w-3/4 mb-2"></div>
+          <div className="h-6 bg-gray-500 w-full mb-2"></div>
+          <div className="h-4 bg-gray-500 w-1/2 mb-2"></div>
+          <div className="h-3 bg-gray-500 w-3/4 mb-2"></div>
+          <div className="h-4 bg-gray-500 w-2/3"></div>
+        </div>
+      </div>
+    </div>
 
-      <div className="w-full max-w-4xl mx-auto">
-        <div className="mb-2 w-full h-64 bg-gray-300 animate-pulse"></div>
-        <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
-        <hr className="text-red-800 my-3" style={{ height: "3px", background: "black" }} />
-        <div className="flex justify-around mt-5 mb-8">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <div key={index} className="w-16 h-16 bg-gray-300 animate-pulse rounded-full"></div>
+    <div className="w-full h-40 bg-gray-300 animate-pulse mx-auto mb-8"></div>
+    <div className="px-4 py-8 mx-auto max-w-screen-xl">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
+        <div className="w-full max-w-5xl mx-auto">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <div key={index}>
+              <div className="flex flex-col md:flex-row mb-5 animate-pulse">
+                <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                  <div className="w-72 h-52 bg-gray-300"></div>
+                </div>
+                <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                  <div className="bg-red-800 w-36 h-5 mb-3"></div>
+                  <div className="bg-gray-300 w-3/4 h-8 mb-3"></div>
+                  <div className="bg-gray-300 w-1/2 h-4 mb-4"></div>
+                  <div className="bg-gray-300 w-full h-6 mb-3"></div>
+                </div>
+              </div>
+              <hr className="my-5" />
+            </div>
           ))}
+          <button className="w-full py-2 mt-5 text-center text-white bg-gray-300 font-semibold animate-pulse">
+            VIEW MORE
+          </button>
+        </div>
+
+        <div className="w-full max-w-4xl mx-auto">
+          <div className="mb-2 w-full h-64 bg-gray-300 animate-pulse"></div>
+          <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
+          <hr
+            className="text-red-800 my-3"
+            style={{ height: "3px", background: "black" }}
+          />
+          <div className="flex justify-around mt-5 mb-8">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <div
+                key={index}
+                className="w-16 h-16 bg-gray-300 animate-pulse rounded-full"
+              ></div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 );
 
 const Insight = ({ nodeByUri }) => {
-  const { setCursor, cursor, setPosts, posts } = useDialog();
+  const { setCursor, cursor, setPosts, posts, iconDataResult } = useDialog();
   console.log(nodeByUri, "nodeByUri insights");
   const { data, loading, error, fetchMore } = useQuery(INSIGHTS_DATA);
-// const [posts, setPosts] = useState([]);
-//   const [cursor, setCursor] = useState(null);
+  // const [posts, setPosts] = useState([]);
+  //   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
 
-   // Effect to initialize posts when data changes
-   useEffect(() => {
+  // Effect to initialize posts when data changes
+  useEffect(() => {
     if (data && data.posts) {
       setPosts(data.posts.nodes);
       setCursor(data.posts.pageInfo.endCursor);
@@ -323,7 +332,7 @@ const Insight = ({ nodeByUri }) => {
   };
 
   // Render loading state
-  if (loading && posts.length === 0) return <SkeletonLoader/>;
+  if (loading && posts.length === 0) return <SkeletonLoader />;
 
   // Render error state
   if (error) return <p>Error: {error.message}</p>;
@@ -333,84 +342,88 @@ const Insight = ({ nodeByUri }) => {
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
-            {posts.map((item) => (
-              console.log(item, "item"),
-              <div key={item.slug}>
-                <div className="flex flex-col md:flex-row mb-5">
-                  <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                    <Link
-                      href={{
-                        pathname: `/news/${item.slug}`,
-                      }}
-                      passHref
-                    >
-                      <ExportedImage
-                        priority={true}
-                        src={item?.featuredImage?.node?.sourceUrl}
-                        alt="ferrari4"
-                        width={357}
-                        height={261}
-                        style={{ width: "357px", height: "261px" }}
-                      />
-                    </Link>
-                  </div>
-                  <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                    <p
-                      className="text-base font-bold text-red-800"
-                      style={{
-                        background: `${nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate?.insightTitleBackgroundColor}`,
-                        color: "#fff",
-                        padding: "0 10px",
-                        width: "100px",
-                        clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
-                        fontSize: "12px",
-                        fontWeight: 500,
-                        letterSpacing: "2px",
-                      }}
-                    >
-                      {nodeByUri?.nodeByUri?.name}
-                    </p>
-                    <Link
-                      href={{
-                        pathname: `/news/${item.slug}`,
-                      }}
-                      passHref
-                    >
-                      <h5 className="text-[20px] text-black-900 font-bold">
-                        {item.title}
-                      </h5>
-                    </Link>
-                    <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                      <span
-                        className="text-[12px] font-extrabold mr-1"
-                        style={{ color: "#40A6FB" }}
-                      >
-                        |
-                      </span>
-                      By
-                      <span
-                        className="font-extrabold ml-1"
-                        style={{ color: "#40A6FB" }}
-                      >
-                        {item?.author?.node?.name}
-                        <span
-                          className="text-[25px] font-extrabold mx-1"
-                          style={{ color: "#40A6FB" }}
+            {posts.map(
+              (item) => (
+                console.log(item, "item"),
+                (
+                  <div key={item.slug}>
+                    <div className="flex flex-col md:flex-row mb-5">
+                      <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                        <Link
+                          href={{
+                            pathname: `/news/${item.slug}`,
+                          }}
+                          passHref
                         >
-                          .
-                        </span>
-                      </span>
-                      6 MIN READ
-                    </p>
-                    <p
-                      className="text-[15px] text-base font-normal text-gray-600 mb-3"
-                      dangerouslySetInnerHTML={{ __html: item.content }}
-                    />
+                          <ExportedImage
+                            priority={true}
+                            src={item?.featuredImage?.node?.sourceUrl}
+                            alt="ferrari4"
+                            width={357}
+                            height={261}
+                            style={{ width: "357px", height: "261px" }}
+                          />
+                        </Link>
+                      </div>
+                      <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                        <p
+                          className="text-base font-bold text-red-800"
+                          style={{
+                            background: `${nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate?.insightTitleBackgroundColor}`,
+                            color: "#fff",
+                            padding: "0 10px",
+                            width: "100px",
+                            clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                            fontSize: "12px",
+                            fontWeight: 500,
+                            letterSpacing: "2px",
+                          }}
+                        >
+                          {nodeByUri?.nodeByUri?.name}
+                        </p>
+                        <Link
+                          href={{
+                            pathname: `/news/${item.slug}`,
+                          }}
+                          passHref
+                        >
+                          <h5 className="text-[20px] text-black-900 font-bold">
+                            {item.title}
+                          </h5>
+                        </Link>
+                        <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                          <span
+                            className="text-[12px] font-extrabold mr-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            |
+                          </span>
+                          By
+                          <span
+                            className="font-extrabold ml-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            {item?.author?.node?.name}
+                            <span
+                              className="text-[25px] font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              .
+                            </span>
+                          </span>
+                          6 MIN READ
+                        </p>
+                        <p
+                          className="text-[15px] text-base font-normal text-gray-600 mb-3"
+                          dangerouslySetInnerHTML={{ __html: item.content }}
+                        />
+                      </div>
+                    </div>
+                    <hr className="my-5" />
                   </div>
-                </div>
-                <hr className="my-5" />
-              </div>
-            ))}
+                )
+              )
+            )}
             <div className="flex justify-between">
               <button
                 className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
@@ -458,26 +471,34 @@ const Insight = ({ nodeByUri }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <ExportedImage
-                src={Group}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group1}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group2}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group3}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+              <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
+                <ExportedImage
+                  src={Group}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.facebookLink}>
+                <ExportedImage
+                  src={Group1}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.instagramLink}>
+                <ExportedImage
+                  src={Group2}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.twiterLink}>
+                <ExportedImage
+                  src={Group3}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
             </div>
           </div>
         </div>

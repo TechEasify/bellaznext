@@ -105,9 +105,8 @@ const SkeletonLoader = () => (
   </>
 );
 
-const Banner = ({ data }) => {
-  // const { openDialog } = useDialog();
-  console.log(data, "data props");
+const Banner = () => {
+  const { openDialog, bannerData } = useDialog();
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -115,8 +114,11 @@ const Banner = ({ data }) => {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        navigator.geolocation.getCurrentPosition(async (position) => {
-          const { latitude, longitude } = position.coords;
+        let latitude, longitude;
+
+        const successCallback = async (position) => {
+          latitude = position.coords.latitude;
+          longitude = position.coords.longitude;
           const weatherResponse = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_FORCAST_KEY}`
           );
@@ -129,21 +131,44 @@ const Banner = ({ data }) => {
           // Extract the next 5 time slots from the forecast data
           const hourlyData = forecastResponse.data.list
             .slice(0, 5)
-            .map((slot) => {
-              console.log(slot, "slot");
-              return {
-                time: new Date(slot.dt * 1000).toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                }),
-                temp: (((slot.main.temp - 273.15) * 9) / 5 + 32).toFixed(2), // convert Kelvin to Fahrenheit
-                image: getWeatherImage(slot.weather[0].icon),
-              };
-            });
+            .map((slot) => ({
+              time: new Date(slot.dt * 1000).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              }),
+              temp: (((slot.main.temp - 273.15) * 9) / 5 + 32).toFixed(2),
+              image: getWeatherImage(slot.weather[0].icon),
+            }));
 
           setHourlyForecast(hourlyData);
           setLoading(false);
-        });
+        };
+
+        const errorCallback = (error) => {
+          console.error("Error fetching location:", error.message);
+          // If location access is denied or error occurs, default to New York coordinates
+          latitude = 40.7128; // New York latitude
+          longitude = -74.006; // New York longitude
+
+          axios
+            .get(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_FORCAST_KEY}`
+            )
+            .then((weatherResponse) => {
+              console.log(weatherResponse, "weatherResponse");
+              setWeatherData(weatherResponse.data);
+              setLoading(false);
+            })
+            .catch((error) => {
+              console.error("Error fetching weather data:", error.message);
+              setLoading(false);
+            });
+        };
+
+        navigator.geolocation.getCurrentPosition(
+          successCallback,
+          errorCallback
+        );
       } catch (error) {
         console.error(
           "Error fetching the weather data",
@@ -206,7 +231,7 @@ const Banner = ({ data }) => {
     { time: "6 pm", temp: 76, image: image_sun4 },
   ];
 
-  const sortedPosts = data.page.homePage.heroSection.heroPostCategory.nodes
+  const sortedPosts = bannerData?.page?.homePage?.heroSection?.heroPostCategory?.nodes
     .flatMap((item) => item.posts.nodes)
     .filter((post) =>
       post.categories.nodes.some(
@@ -215,7 +240,7 @@ const Banner = ({ data }) => {
     )
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const sortedPostss = data.page.homePage.heroSection.heroSidebarPosts.nodes
+  const sortedPostss = bannerData?.page?.homePage?.heroSection?.heroSidebarPosts?.nodes
     .flatMap((item) => item.posts.nodes)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -229,7 +254,7 @@ const Banner = ({ data }) => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
-              {sortedPosts.map(
+              {sortedPosts?.map(
                 (post) => (
                   console.log(post, "post"),
                   (
@@ -284,9 +309,7 @@ const Banner = ({ data }) => {
                         <ExportedImage
                           priority={true}
                           src={post?.featuredImage?.node?.sourceUrl}
-                          alt={
-                            post?.featuredImage?.node?.altText
-                          }
+                          alt={post?.featuredImage?.node?.altText}
                           width={150}
                           height={150}
                           style={{
@@ -359,7 +382,9 @@ const Banner = ({ data }) => {
                   marginBottom: "20px",
                 }}
               >
-                <p className="font-bold text-white mr-px text-base">{tempF}°F</p>
+                <p className="font-bold text-white mr-px text-base">
+                  {tempF}°F
+                </p>
                 <ExportedImage
                   src={mdi_weather}
                   alt="Cloud"
@@ -419,7 +444,7 @@ const Banner = ({ data }) => {
               </div>
             </div>
 
-            {sortedPostss.slice(0, 2).map(
+            {sortedPostss?.slice(0, 2).map(
               (item) => (
                 console.log(item, "item banner"),
                 (

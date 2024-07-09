@@ -127,3 +127,309 @@ export const GET_ICON_SECTION = gql`
     }
   }
 `;
+
+export const GET_HOME_PAGE = gql`
+  query GetNodeByUriAndHomePage($id: ID = "745") {
+    page(id: $id, idType: DATABASE_ID) {
+      homePage {
+        heroSection {
+          heroPostCategory {
+            nodes {
+              ... on Category {
+                posts {
+                  nodes {
+                  slug
+                    categories {
+                      nodes {
+                        name
+                      }
+                    }
+                    title
+                    content
+                    author {
+                      node {
+                        name
+                      }
+                    }
+                    featuredImage {
+                      node {
+                        altText
+                        srcSet
+                        slug
+                        sourceUrl
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          heroSidebarPosts {
+            nodes {
+              ... on Category {
+                name
+                slug
+                posts {
+                  nodes {
+                    slug
+                    categories {
+                      nodes {
+                        name
+                      }
+                    }
+                    featuredImage {
+                      node {
+                        srcSet
+                        slug
+                        sourceUrl
+                      }
+                    }
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_TOPHEADLINE_PAGE = gql`
+  query HomePage($id: ID = "745") {
+    page(id: $id, idType: DATABASE_ID) {
+      homePage {
+        topHeadlinesTitle
+        topHeadlineTitleLineColor
+        topHeadlinesPost {
+          nodes {
+            ... on Category {
+              name
+              slug
+              posts {
+                nodes {
+                  slug
+                  featuredImage {
+                    node {
+                      altText
+                      slug
+                      srcSet
+                      sourceUrl
+                    }
+                  }
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  title
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        topHeadlineSidebarTitle
+        topHeadlineSidebarTitleLineColor
+        topHeadlineSidebarPosts {
+          nodes {
+            ... on Category {
+              id
+              name
+              slug
+              posts {
+                nodes {
+                  slug
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  title
+                  featuredImage {
+                    node {
+                      altText
+                      srcSet
+                      slug
+                      sourceUrl
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        topHeadlineSidebarFirstAd {
+          topHeadlineFirstAd {
+            node {
+              slug
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          topHeadlineFirstAdCode
+        }
+        topHeadlineSidebarSinglePosts {
+          nodes {
+            ... on Category {
+              name
+              slug
+              posts {
+                nodes {
+                  slug
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  title
+                  featuredImage {
+                    node {
+                      altText
+                      srcSet
+                      slug
+                      sourceUrl
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        topHeadlineSidebarSecondAd {
+          topHeadlineSecondAdImage {
+            node {
+              altText
+              srcSet
+              slug
+              sourceUrl
+            }
+          }
+          topHeadlineSecondAdCode
+        }
+        topHeadlineBottomAd {
+          topHeadlineBottomAdImage {
+            node {
+              altText
+              srcSet
+              slug
+              sourceUrl
+            }
+          }
+          topHeadlineBottomAdCode
+        }
+      }
+    }
+  }
+`;
+
+export const GET_INSIGHTS_SECTION = gql`
+  query HomePage($id: ID = "745") {
+    page(id: $id, idType: DATABASE_ID) {
+      homePage {
+        insightsTitle
+        insightsTitleBottomLineColor
+        insightsPost {
+          nodes {
+            ... on Category {
+              name
+              slug
+              posts {
+                nodes {
+                  featuredImage {
+                    node {
+                      altText
+                      slug
+                      srcSet
+                      sourceUrl
+                    }
+                  }
+                  title
+                  slug
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                  content
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_MUSIC_SECTION = gql`
+  query HomePage($id: ID = "745") {
+    page(id: $id, idType: DATABASE_ID) {
+      homePage {
+        musicTitle
+        musicBottomLineColor
+        musicPosts {
+          nodes {
+            ... on Category {
+              posts {
+                nodes {
+                  slug
+                  featuredImage {
+                    node {
+                      altText
+                      srcSet
+                      sourceUrl
+                    }
+                  }
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  title
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                  content
+                }
+              }
+            }
+          }
+        }
+        musicAd {
+          musicAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          musicAdCode
+        }
+        musicBottomAd {
+          musicBottomAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          musicBottomAdCode
+        }
+      }
+    }
+  }
+`;

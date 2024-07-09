@@ -9,6 +9,7 @@ import Group3 from "../public/images/Group (3).svg";
 import imgbin_whatsapp from "../public/images/imgbin_whatsapp.svg";
 import { gql, useQuery } from "@apollo/client";
 import Script from "next/script";
+import { useDialog } from "./DialogContext";
 
 const GET_COMPANY_PAGE = gql`
   query footer($id: ID = "229") {
@@ -102,6 +103,8 @@ const Footer = () => {
     data: dataSocial,
   } = useQuery(GET_SOCIALLINK_PAGE);
 
+  const { iconDataResult } = useDialog();
+
   console.log(
     dataSocial === undefined ? loadingSocial : dataSocial,
     "dataSocial"
@@ -114,6 +117,7 @@ const Footer = () => {
     dataFooter === undefined ? loadingFooter : dataFooter,
     "data footer"
   );
+
   return (
     <>
       {/* <script src="https://wordpress-484386-3840570.cloudwaysapps.com/wp-content/plugins/text-to-audio/admin/js/build/text-to-audio-button.min.js?ver=1.6.22"></script> */}
@@ -173,7 +177,9 @@ const Footer = () => {
                     <ul className="text-white font-medium">
                       <li className="mb-4">
                         <Link
-                          href="/category/breaking-news"
+                          href={
+                            dataFooter?.menu?.footer?.newsFirstLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsFirst}
@@ -181,7 +187,10 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/politics"
+                          href={
+                            dataFooter?.menu?.footer?.newsSecondLinks?.url ??
+                            "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsSecond}
@@ -189,7 +198,9 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/jewish-news"
+                          href={
+                            dataFooter?.menu?.footer?.newsThirdLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsThird}
@@ -197,7 +208,9 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/insights"
+                          href={
+                            dataFooter?.menu?.footer?.newsForeLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsFore}
@@ -205,7 +218,9 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/music"
+                          href={
+                            dataFooter?.menu?.footer?.newsFiveLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsFive}
@@ -220,7 +235,13 @@ const Footer = () => {
                     </h2>
                     <ul className="text-white font-medium">
                       <li className="mb-4">
-                        <Link href="/contact-us" className="hover:underline">
+                        <Link
+                          href={
+                            dataCompany?.menu?.footer?.companyFirstLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataCompany?.menu?.footer?.companyFirst}
                         </Link>
                       </li>
@@ -230,14 +251,26 @@ const Footer = () => {
                         </Link>
                       </li>
                       <li className="mb-4">
-                        <Link href="/advertise" className="hover:underline">
+                        <Link
+                          href={
+                            dataCompany?.menu?.footer?.companyThirdLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataCompany?.menu?.footer?.companyThird}
                         </Link>
                       </li>
                       <li className="mb-4">
-                        <a href="#" className="hover:underline">
+                        <Link
+                          href={
+                            dataCompany?.menu?.footer?.companyForeLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataCompany?.menu?.footer?.companyFore}
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -248,19 +281,34 @@ const Footer = () => {
                     </h2>
                     <ul className="text-white font-medium">
                       <li className="mb-4">
-                        <a href="#" className="hover:underline">
+                        <Link
+                          href={
+                            dataSocial?.menu?.footer?.belaazTwitterLink ?? "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataSocial?.menu?.footer?.belaazTwitter}
-                        </a>
+                        </Link>
                       </li>
                       <li className="mb-4">
-                        <a href="#" className="hover:underline">
+                        <Link
+                          href={
+                            dataSocial?.menu?.footer?.belaazFacebookLink ?? "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataSocial?.menu?.footer?.belaazFacebook}
-                        </a>
+                        </Link>
                       </li>
                       <li className="mb-4">
-                        <a href="#" className="hover:underline">
+                        <Link
+                          href={
+                            dataSocial?.menu?.footer?.belaazInstagramLink ?? "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataSocial?.menu?.footer?.belaazInstagram}
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -284,30 +332,46 @@ const Footer = () => {
             {/* Social Icons and Copyright Section */}
             <div className="text-center">
               <div className="flex justify-center mb-3 space-x-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
               <p className="text-sm text-white font-semibold">
                 {dataSocial?.menu?.footer?.copyrightText}
@@ -316,7 +380,10 @@ const Footer = () => {
             {/* Contact Us Button Section */}
             <div className="text-center hidden md:block">
               <div className="flex justify-center mb-3 space-x-2">
-                <button style={{ border: "1px solid", padding: "5px" }}>
+                <button
+                  className="contactus"
+                  style={{ border: "1px solid", padding: "5px" }}
+                >
                   Contact us
                 </button>
               </div>

@@ -13,9 +13,11 @@ import andreas from "../../public/images/andreas.svg";
 import Newscard from "./Newscard";
 import Ads from "../googleAds/Ads";
 import Link from "next/link";
+import { useDialog } from "../DialogContext";
 
 const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
   console.log(nodeByUri, "nodeByUri");
+  const { iconDataResult } = useDialog();
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -414,26 +416,34 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
+              <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
               <ExportedImage
                 src={Group}
                 alt="Partly Cloudy"
                 className="h-13 w-13"
               />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.facebookLink}>
               <ExportedImage
                 src={Group1}
                 alt="Partly Cloudy"
                 className="h-13 w-13"
               />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.instagramLink}>
               <ExportedImage
                 src={Group2}
                 alt="Partly Cloudy"
                 className="h-13 w-13"
               />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.twiterLink}>
               <ExportedImage
                 src={Group3}
                 alt="Partly Cloudy"
                 className="h-13 w-13"
               />
+              </Link>
             </div>
           </div>
         </div>

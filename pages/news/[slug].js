@@ -65,6 +65,8 @@ const NewsPage = () => {
     fetchPolicy: "cache-first",
   });
 
+  console.log(data, "news data");
+
   useEffect(() => {
     if (data) {
       setNavData(data);

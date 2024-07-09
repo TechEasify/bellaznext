@@ -9,50 +9,6 @@ import addpost from "../public/images/addpost.svg";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 
-const GET_INSIGHTS_SECTION = gql`
-  query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        insightsTitle
-        insightsTitleBottomLineColor
-        insightsPost {
-          nodes {
-            ... on Category {
-              name
-              slug
-              posts {
-                nodes {
-                  featuredImage {
-                    node {
-                      altText
-                      slug
-                      srcSet
-                      sourceUrl
-                    }
-                  }
-                  title
-                  slug
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  author {
-                    node {
-                      name
-                    }
-                  }
-                  content
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
 const SkeletonLoader = () => (
   <>
     <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse">
@@ -206,31 +162,31 @@ const SkeletonLoader = () => (
 );
 
 const Insights = () => {
-  const { openDialog } = useDialog();
-  const { loading, error, data } = useQuery(GET_INSIGHTS_SECTION);
-  console.log(data, "data insights");
-  if (loading) return <SkeletonLoader />;
+  const { openDialog, insightsQuery, insightsLoading, insightsError } =
+    useDialog();
+  if (insightsLoading) return <SkeletonLoader />;
+  if (insightsError) return <p>fetch data error.</p>;
 
-  const insightsPost = data.page.homePage.insightsPost.nodes;
+  const insightsPost = insightsQuery?.page?.homePage?.insightsPost?.nodes;
 
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">
         <div className="flex flex-col justify-center mx-auto md:mx-0">
           <h1 className="text-[25px] font-bold text-black-900 italic">
-            {data.page.homePage.insightsTitle}
+            {insightsQuery?.page?.homePage?.insightsTitle}
           </h1>
           <hr
             className="text-red-800 mr-5"
             style={{
               height: "7px",
-              background: `${data.page.homePage.insightsTitleBottomLineColor}`,
+              background: `${insightsQuery?.page?.homePage?.insightsTitleBottomLineColor}`,
             }}
           />
           <br />
         </div>
 
-        {insightsPost.map(
+        {insightsPost?.map(
           (item) => (
             console.log(item, "item"),
             (

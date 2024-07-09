@@ -21,11 +21,11 @@ class MyDocument extends Document {
           {/* Favicons, Google site verification and other common meta tags across the site. */}
           <link rel="icon" href="/belaazicon.ico" />
 
-          <script
+          {/* <script
             async
             defer
             src="https://proxy.beyondwords.io/npm/@beyondwords/player@latest/dist/umd.js"
-          ></script>
+          ></script> */}
 
           <link
             rel="stylesheet"

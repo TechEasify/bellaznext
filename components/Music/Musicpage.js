@@ -12,6 +12,7 @@ import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
 import PR_01CFA from "../../public/images/PR_01CFA.svg";
 import Link from "next/link";
+import { useDialog } from "../DialogContext";
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   console.log(
@@ -21,9 +22,10 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
+  const { iconDataResult } = useDialog();
 
-   // Effect to initialize posts when data changes
-   useEffect(() => {
+  // Effect to initialize posts when data changes
+  useEffect(() => {
     if (nodeByUri && nodeByUri.posts) {
       setPosts(nodeByUri.posts.nodes);
       setCursor(nodeByUri.posts.pageInfo.endCursor);
@@ -52,7 +54,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
       });
     }
   };
-  
+
   return (
     <>
       <div className="px-4 py-16 mx-auto max-w-screen-xl">
@@ -82,8 +84,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                           href={{
                             pathname: `/news/${item.slug}`,
                             query: {
-                              state: JSON.stringify(navData)
-                            }
+                              state: JSON.stringify(navData),
+                            },
                           }}
                           passHref
                         >
@@ -118,8 +120,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                           href={{
                             pathname: `/news/${item.slug}`,
                             query: {
-                              state: JSON.stringify(navData)
-                            }
+                              state: JSON.stringify(navData),
+                            },
                           }}
                           passHref
                         >
@@ -313,26 +315,34 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <ExportedImage
-                src={Group}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group1}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group2}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
-              <ExportedImage
-                src={Group3}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+              <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
+                <ExportedImage
+                  src={Group}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.facebookLink}>
+                <ExportedImage
+                  src={Group1}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.instagramLink}>
+                <ExportedImage
+                  src={Group2}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
+              <Link href={iconDataResult.menu.socialIcons.twiterLink}>
+                <ExportedImage
+                  src={Group3}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
+              </Link>
             </div>
           </div>
         </div>
