@@ -24,8 +24,8 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
 
-   // Effect to initialize posts when data changes
-   useEffect(() => {
+  // Effect to initialize posts when data changes
+  useEffect(() => {
     if (nodeByUri && nodeByUri.posts) {
       setPosts(nodeByUri.posts.nodes);
       setCursor(nodeByUri.posts.pageInfo.endCursor);
@@ -157,8 +157,8 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                           href={{
                             pathname: `/news/${item.slug}`,
                             query: {
-                              state: JSON.stringify(navData)
-                            }
+                              state: JSON.stringify(navData),
+                            },
                           }}
                           passHref
                         >
@@ -194,8 +194,8 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                           href={{
                             pathname: `/news/${item.slug}`,
                             query: {
-                              state: JSON.stringify(navData)
-                            }
+                              state: JSON.stringify(navData),
+                            },
                           }}
                           passHref
                         >
@@ -419,32 +419,32 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
             />
             <div className="flex justify-around mt-5 mb-8">
               <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
-              <ExportedImage
-                src={Group}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
               <Link href={iconDataResult.menu.socialIcons.facebookLink}>
-              <ExportedImage
-                src={Group1}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group1}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
               <Link href={iconDataResult.menu.socialIcons.instagramLink}>
-              <ExportedImage
-                src={Group2}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group2}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
               <Link href={iconDataResult.menu.socialIcons.twiterLink}>
-              <ExportedImage
-                src={Group3}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group3}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
             </div>
             <p className="text-[15px] font-bold text-black-900 italic">

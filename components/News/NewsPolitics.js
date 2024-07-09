@@ -174,28 +174,28 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
+              <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
                 <ExportedImage
                   src={Group}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult.menu.socialIcons.facebookLink}>
+              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
                 <ExportedImage
                   src={Group1}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult.menu.socialIcons.instagramLink}>
+              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
                 <ExportedImage
                   src={Group2}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult.menu.socialIcons.twiterLink}>
+              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                 <ExportedImage
                   src={Group3}
                   alt="Partly Cloudy"

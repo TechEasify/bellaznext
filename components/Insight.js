@@ -389,7 +389,7 @@ const Insight = ({ nodeByUri }) => {
                           }}
                           passHref
                         >
-                          <h5 className="text-[20px] text-black-900 font-bold">
+                          <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
                             {item.title}
                           </h5>
                         </Link>
