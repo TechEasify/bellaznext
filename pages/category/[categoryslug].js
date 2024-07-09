@@ -171,7 +171,7 @@ const CategoryPage = () => {
           />
         ) : (
           <ul>
-            {nodeByUri !== null && nodeByUri.posts.nodes.map((post) =>
+            {nodeByUri !== null && nodeByUri?.posts?.nodes.map((post) =>
               post.link
                 ? (console.log(post, "post"),
                   (
