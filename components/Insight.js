@@ -7,6 +7,7 @@ import Group from "../public/images/Group.svg";
 import Group1 from "../public/images/Group (1).svg";
 import Group2 from "../public/images/Group (2).svg";
 import Group3 from "../public/images/Group (3).svg";
+import Group4 from "../public/images/Group4.svg";
 import Frame208 from "../public/images/Frame208.svg";
 import Frame209 from "../public/images/Frame209.svg";
 import pexels_tarawinstead from "../public/images/pexels_tarawinstead.svg";
@@ -295,25 +296,34 @@ const SkeletonLoader = () => (
 );
 
 const Insight = ({ nodeByUri }) => {
-  const { setCursor, cursor, setPosts, posts, iconDataResult } = useDialog();
+  const {
+    setCursor,
+    cursor,
+    setPosts,
+    posts,
+    iconDataResult,
+    categoryError,
+    categoryInsightData,
+    categoryLoading,
+  } = useDialog();
   console.log(nodeByUri, "nodeByUri insights");
-  const { data, loading, error, fetchMore } = useQuery(INSIGHTS_DATA);
+  // const { data, loading, error, fetchMore } = useQuery(INSIGHTS_DATA);
   // const [posts, setPosts] = useState([]);
   //   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
 
   // Effect to initialize posts when data changes
   useEffect(() => {
-    if (data && data.posts) {
-      setPosts(data.posts.nodes);
-      setCursor(data.posts.pageInfo.endCursor);
-      setHasNextPage(data.posts.pageInfo.hasNextPage);
+    if (categoryInsightData && categoryInsightData.posts) {
+      setPosts(categoryInsightData.posts.nodes);
+      setCursor(categoryInsightData.posts.pageInfo.endCursor);
+      setHasNextPage(categoryInsightData.posts.pageInfo.hasNextPage);
     }
-  }, [data]);
+  }, [categoryInsightData]);
 
   // Function to handle "View More" button click
   const handleViewMore = () => {
-    if (hasNextPage && !loading) {
+    if (hasNextPage && !categoryLoading) {
       fetchMore({
         variables: {
           after: cursor,
@@ -334,10 +344,10 @@ const Insight = ({ nodeByUri }) => {
   };
 
   // Render loading state
-  if (loading && posts.length === 0) return <SkeletonLoader />;
+  if (categoryLoading && posts.length === 0) return <SkeletonLoader />;
 
   // Render error state
-  if (error) return <p>Error: {error.message}</p>;
+  if (categoryError) return <p>Error: {error.message}</p>;
 
   return (
     <>
@@ -430,7 +440,7 @@ const Insight = ({ nodeByUri }) => {
               <button
                 className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
                 onClick={handleViewMore}
-                disabled={!hasNextPage || loading}
+                disabled={!hasNextPage || categoryLoading}
               >
                 {hasNextPage ? "VIEW MORE" : "NO MORE POSTS"}
               </button>
@@ -473,32 +483,47 @@ const Insight = ({ nodeByUri }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult.menu.socialIcons.facebookLink}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group1}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult.menu.socialIcons.instagramLink}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group2}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult.menu.socialIcons.twiterLink}>
+              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                 <ExportedImage
                   src={Group3}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
+                />
+              </Link>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+              >
+                <ExportedImage
+                  src={Group4}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13 mx-2"
                 />
               </Link>
             </div>

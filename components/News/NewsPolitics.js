@@ -7,6 +7,7 @@ import Group from "../../public/images/Group.svg";
 import Group1 from "../../public/images/Group (1).svg";
 import Group2 from "../../public/images/Group (2).svg";
 import Group3 from "../../public/images/Group (3).svg";
+import Group4 from "../../public/images/Group4.svg";
 import Frame208 from "../../public/images/Frame208.svg";
 import Frame209 from "../../public/images/Frame209.svg";
 import pexelstara1 from "../../public/images/pexelstara1.svg";
@@ -200,6 +201,15 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
                   src={Group3}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
+                />
+              </Link>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+              >
+                <ExportedImage
+                  src={Group4}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13 mx-2"
                 />
               </Link>
             </div>

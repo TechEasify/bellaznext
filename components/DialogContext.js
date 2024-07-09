@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery, useLazyQuery } from "@apollo/client";
 import {
   GET_HOME_PAGE,
   GET_ICON_SECTION,
@@ -13,6 +13,7 @@ import {
 import {
   CATEGORY_BREAKING_QUERY,
   GET_NEWS_SECTION,
+  INSIGHTS_DATA,
 } from "./queries/categoryQueries";
 import { useRouter } from "next/router";
 
@@ -40,7 +41,8 @@ export const DialogProvider = ({ children }) => {
   const [bannerData, setBannerData] = useState(null);
   const [topheadData, setTopheadData] = useState(null);
   const [insightsQuery, setInsightsQuery] = useState(null);
-  const [musicQuery, setMusicQuery] = useState(null)
+  const [musicQuery, setMusicQuery] = useState(null);
+  const [categoryInsightData, setCategoryInsightData] = useState(null);
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -59,21 +61,25 @@ export const DialogProvider = ({ children }) => {
     error: errorNav,
     data: navDataResult,
   } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
+  
   const {
     loading: loadingMenu,
     error: errorMenu,
     data: menuDataResult,
   } = useQuery(GET_MENU_SECTION, { fetchPolicy: "cache-first" });
+  
   const {
     loading: loadingSubMenu,
     error: errorSubMenu,
     data: subMenuDataResult,
   } = useQuery(GET_SUBMENU_SECTION, { fetchPolicy: "cache-first" });
+  
   const {
     loading: loadingIcon,
     error: errorIcon,
     data: iconDataResult,
   } = useQuery(GET_ICON_SECTION, { fetchPolicy: "cache-first" });
+
   const {
     data: categoryData,
     loading: loadingCategory,
@@ -88,19 +94,31 @@ export const DialogProvider = ({ children }) => {
     loading: bannerLoading,
     error: bannerError,
     data: Data,
-  } = useQuery(GET_HOME_PAGE);
+  } = useQuery(GET_HOME_PAGE, { fetchPolicy: "cache-first" });
+
   const {
     data: topheadlineData,
     loading: topheadlineLoading,
     error: topheadlineError,
-  } = useQuery(GET_TOPHEADLINE_PAGE);
+  } = useQuery(GET_TOPHEADLINE_PAGE, { fetchPolicy: "cache-first" });
+
   const {
     loading: insightsLoading,
     error: insightsError,
     data: insightsData,
-  } = useQuery(GET_INSIGHTS_SECTION);
+  } = useQuery(GET_INSIGHTS_SECTION, { fetchPolicy: "cache-first" });
+
   const {
-     loading: musicLoading, error: musicError, data: musicData } = useQuery(GET_MUSIC_SECTION);
+    loading: musicLoading,
+    error: musicError,
+    data: musicData,
+  } = useQuery(GET_MUSIC_SECTION, { fetchPolicy: "cache-first" });
+
+  const {
+    data: categoryInsight,
+    loading: categoryLoading,
+    error: categoryError,
+  } = useQuery(INSIGHTS_DATA, { fetchPolicy: "cache-first" });
 
   useEffect(() => {
     if (navDataResult) setDataNav(navDataResult);
@@ -111,7 +129,8 @@ export const DialogProvider = ({ children }) => {
     if (Data) setBannerData(Data);
     if (topheadlineData) setTopheadData(topheadlineData);
     if (insightsData) setInsightsQuery(insightsData);
-    if (musicData) setMusicQuery(musicData)
+    if (musicData) setMusicQuery(musicData);
+    if (categoryInsight) setCategoryInsightData(categoryInsight);
   }, [
     navDataResult,
     menuDataResult,
@@ -161,7 +180,10 @@ export const DialogProvider = ({ children }) => {
         musicLoading,
         musicError,
         iconDataResult,
-        errorIcon
+        errorIcon,
+        categoryInsightData,
+        categoryLoading,
+        categoryError,
       }}
     >
       {children}

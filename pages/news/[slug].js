@@ -56,8 +56,9 @@ const SkeletonLoader = () => (
 
 const NewsPage = () => {
   const router = useRouter();
+  console.log(router, "routerrouterrouter");
   const { navData, setNavData, nodeByUri, setNodeByUri } = useDialog();
-  const { news, slug } = router.query;
+  const { slug } = router.query;
   const uri = `/${slug}`;
 
   const { data, loading, error } = useQuery(GET_NEWS_SECTION, {
@@ -66,6 +67,7 @@ const NewsPage = () => {
   });
 
   console.log(data, "news data");
+  console.log(router.asPath === `/news${uri}`, "router.asPath === `/news/${uri}`");
 
   useEffect(() => {
     if (data) {
@@ -74,7 +76,7 @@ const NewsPage = () => {
     }
   }, [data]);
 
-  if (loading || !navData || !nodeByUri) {
+  if (loading) {
     return <SkeletonLoader />;
   }
 
@@ -85,11 +87,11 @@ const NewsPage = () => {
   return (
     <>
       <Head>
-        <title>{nodeByUri.title} - News</title>
+        <title>{nodeByUri?.title} - News</title>
       </Head>
       <Nav uri={uri} />
       <main>
-        {nodeByUri.__typename === "Post" && <News nodeByUri={nodeByUri} />}
+        {nodeByUri && nodeByUri.__typename === "Post" && router.asPath === `/news${uri}` && <News nodeByUri={nodeByUri} />}
       </main>
       <Footer />
     </>

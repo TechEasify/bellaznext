@@ -157,6 +157,7 @@ const GET_TOPHEADLINE_PAGE = gql`
 `;
 
 function News({ nodeByUri }) {
+  console.log(nodeByUri, "nodeByUrinodeByUrinodeByUri");
   const { data, loading, error } = useQuery(GET_TOPHEADLINE_PAGE);
   const { iconDataResult } = useDialog();
   console.log(nodeByUri, "nodeByUri News Detail");
@@ -172,7 +173,7 @@ function News({ nodeByUri }) {
   };
 
   const posts =
-    nodeByUri.categories?.nodes?.flatMap((item) =>
+    nodeByUri?.categories?.nodes?.flatMap((item) =>
       item.posts?.nodes?.map((post) => ({
         ...post,
         categoryName: item.name,
@@ -204,7 +205,7 @@ function News({ nodeByUri }) {
               <div className="py-8 px-8">
                 <div className="flex w-full justify-between items-center">
                   <p className="text-base font-bold text-red-800">
-                    {nodeByUri.categories.nodes[0].name}
+                    {nodeByUri?.categories?.nodes[0]?.name}
                   </p>
                   <button
                     class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
@@ -215,7 +216,7 @@ function News({ nodeByUri }) {
                   </button>
                 </div>
                 <h1 className="text-[24px] md:text-[40px] text-black font-bold">
-                  {nodeByUri.title}
+                  {nodeByUri?.title}
                 </h1>
                 <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
                   <span
@@ -229,7 +230,7 @@ function News({ nodeByUri }) {
                     className="font-extrabold ml-1"
                     style={{ color: "#40A6FB" }}
                   >
-                    {nodeByUri.author.node.name}
+                    {nodeByUri?.author?.node?.name}
                     <span
                       className="text-[20px] md:text-[25px] font-extrabold mx-1"
                       style={{ color: "#40A6FB" }}
@@ -242,12 +243,12 @@ function News({ nodeByUri }) {
 
                 <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
                   <span className="font-extrabold ml-1 mr-1">
-                    Published {formatDate(nodeByUri.date)}
+                    Published {formatDate(nodeByUri?.date)}
                   </span>
                   <span className="text-[10px] md:text-[12px] font-extrabold mr-1">
                     |
                   </span>
-                  Updated {format(nodeByUri.dateGmt, "MMM. d, yyyy, h:mm a")} ET
+                  Updated {format(nodeByUri?.dateGmt, "MMM. d, yyyy, h:mm a")} ET
                 </p>
               </div>
               <ExportedImage
@@ -263,7 +264,7 @@ function News({ nodeByUri }) {
               <p
                 className="font-semibold mb-5"
                 style={{ color: "#2B2B2B" }}
-                dangerouslySetInnerHTML={{ __html: nodeByUri.content }}
+                dangerouslySetInnerHTML={{ __html: nodeByUri?.content }}
               />
 
               <div className="w-full max-w-2xl mt-10">
@@ -283,7 +284,7 @@ function News({ nodeByUri }) {
                   style={{ height: "7px", background: "#CE3A42" }}
                 />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-                  {nodeByUri.categories?.nodes
+                  {nodeByUri?.categories?.nodes
                     ?.flatMap((item) =>
                       item.posts?.nodes?.map((post) => ({
                         ...post,
@@ -487,35 +488,35 @@ function News({ nodeByUri }) {
                 />
 
                 <div className="flex mt-5 mb-8">
-                  <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink}>
+                  <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
                     <ExportedImage
                       src={Group}
                       alt="Partly Cloudy"
                       className="h-13 w-13 mx-2"
                     />
                   </Link>
-                  <Link href={iconDataResult?.menu?.socialIcons?.facebookLink}>
+                  <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
                     <ExportedImage
                       src={Group1}
                       alt="Partly Cloudy"
                       className="h-13 w-13 mx-2"
                     />
                   </Link>
-                  <Link href={iconDataResult?.menu?.socialIcons?.instagramLink}>
+                  <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
                     <ExportedImage
                       src={Group2}
                       alt="Partly Cloudy"
                       className="h-13 w-13 mx-2"
                     />
                   </Link>
-                  <Link href={iconDataResult?.menu?.socialIcons?.twiterLink}>
+                  <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                     <ExportedImage
                       src={Group3}
                       alt="Partly Cloudy"
                       className="h-13 w-13 mx-2"
                     />
                   </Link>
-                  <Link href={iconDataResult?.menu?.socialIcons?.youtubeLink}>
+                  <Link href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}>
                     <ExportedImage
                       src={Group4}
                       alt="Partly Cloudy"
