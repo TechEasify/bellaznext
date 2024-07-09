@@ -343,40 +343,40 @@ const Topheadlines = () => {
           {console.log(iconDataResult, "iconDataResult")}
 
           <div className="flex mt-5 mb-8">
-            <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
+            <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
               <ExportedImage
                 src={Group}
                 alt="Partly Cloudy"
                 className="h-13 w-13 mx-2"
               />
             </Link>
-            <Link href={iconDataResult.menu.socialIcons.facebookLink}>
-            <ExportedImage
-              src={Group1}
-              alt="Partly Cloudy"
-              className="h-13 w-13 mx-2"
-            />
+            <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
+              <ExportedImage
+                src={Group1}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
             </Link>
-            <Link href={iconDataResult.menu.socialIcons.instagramLink}>
-            <ExportedImage
-              src={Group2}
-              alt="Partly Cloudy"
-              className="h-13 w-13 mx-2"
-            />
+            <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
+              <ExportedImage
+                src={Group2}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
             </Link>
-            <Link href={iconDataResult.menu.socialIcons.twiterLink}>
-            <ExportedImage
-              src={Group3}
-              alt="Partly Cloudy"
-              className="h-13 w-13 mx-2"
-            />
+            <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
+              <ExportedImage
+                src={Group3}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
             </Link>
-            <Link href={iconDataResult.menu.socialIcons.youtubeLink}>
-            <ExportedImage
-              src={Group4}
-              alt="Partly Cloudy"
-              className="h-13 w-13 mx-2"
-            />
+            <Link href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}>
+              <ExportedImage
+                src={Group4}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
             </Link>
           </div>
 

@@ -7,6 +7,8 @@ import Group from "../public/images/Group.svg";
 import Group1 from "../public/images/Group (1).svg";
 import Group2 from "../public/images/Group (2).svg";
 import Group3 from "../public/images/Group (3).svg";
+import Frame208 from "../public/images/Frame208.svg";
+import Frame209 from "../public/images/Frame209.svg";
 import pexels_tarawinstead from "../public/images/pexels_tarawinstead.svg";
 import jeuol4a_princeharry from "../public/images/jeuol4a_princeharry.svg";
 import andreasm from "../public/images/andreasm.svg";
@@ -499,6 +501,26 @@ const Insight = ({ nodeByUri }) => {
                   className="h-13 w-13"
                 />
               </Link>
+            </div>
+            <p className="text-[15px] font-bold text-black-900 italic">
+              FOLLOW BELAAZ ON WhatsApp
+            </p>
+            <hr
+              className="text-red-800"
+              style={{ height: "7px", background: "#CE3A42" }}
+            />
+
+            <div className="flex mt-5 mb-8">
+              <ExportedImage
+                src={Frame208}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
+              <ExportedImage
+                src={Frame209}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
             </div>
           </div>
         </div>

@@ -7,6 +7,8 @@ import Group from "../../public/images/Group.svg";
 import Group1 from "../../public/images/Group (1).svg";
 import Group2 from "../../public/images/Group (2).svg";
 import Group3 from "../../public/images/Group (3).svg";
+import Frame208 from "../../public/images/Frame208.svg";
+import Frame209 from "../../public/images/Frame209.svg";
 import pexelstara1 from "../../public/images/pexelstara1.svg";
 import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
@@ -16,7 +18,7 @@ import { useDialog } from "../DialogContext";
 
 const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
   console.log(nodeByUri, "nodeByUri jewish news");
-  const { iconDataResult } = useDialog()
+  const { iconDataResult } = useDialog();
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -89,7 +91,10 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                     <p
                       className="text-base font-bold text-red-800"
                       style={{
-                        background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor || "rgb(87, 160, 238)"}`,
+                        background: `${
+                          nodeByUri.categoryTamplate.insightTamplate
+                            .insightTitleBackgroundColor || "rgb(87, 160, 238)"
+                        }`,
                         color: "#fff",
                         padding: "0 10px",
                         width: "100px",
@@ -97,7 +102,7 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                         fontSize: "12px",
                         fontWeight: 500,
                         letterSpacing: "2px",
-                        width: "25%"
+                        width: "25%",
                       }}
                     >
                       {nodeByUri.name}
@@ -297,33 +302,53 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
             />
             <div className="flex justify-around mt-5 mb-8">
               <Link href={iconDataResult.menu.socialIcons.whatsappLink}>
-              <ExportedImage
-                src={Group}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
               <Link href={iconDataResult.menu.socialIcons.facebookLink}>
-              <ExportedImage
-                src={Group1}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group1}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
               <Link href={iconDataResult.menu.socialIcons.instagramLink}>
-              <ExportedImage
-                src={Group2}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group2}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
               <Link href={iconDataResult.menu.socialIcons.twiterLink}>
-              <ExportedImage
-                src={Group3}
-                alt="Partly Cloudy"
-                className="h-13 w-13"
-              />
+                <ExportedImage
+                  src={Group3}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13"
+                />
               </Link>
+            </div>
+            <p className="text-[15px] font-bold text-black-900 italic">
+              FOLLOW BELAAZ ON WhatsApp
+            </p>
+            <hr
+              className="text-red-800"
+              style={{ height: "7px", background: "#CE3A42" }}
+            />
+
+            <div className="flex mt-5 mb-8">
+              <ExportedImage
+                src={Frame208}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
+              <ExportedImage
+                src={Frame209}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
             </div>
           </div>
         </div>

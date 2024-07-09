@@ -21,6 +21,7 @@ import Frame208 from "../public/images/Frame208.svg";
 import Frame209 from "../public/images/Frame209.svg";
 import ShareIcon from "@mui/icons-material/Share";
 import share_variant from "../public/images/share-variant.svg";
+import { useDialog } from "./DialogContext";
 
 const GET_TOPHEADLINE_PAGE = gql`
   query HomePage($id: ID = "745") {
@@ -157,6 +158,7 @@ const GET_TOPHEADLINE_PAGE = gql`
 
 function News({ nodeByUri }) {
   const { data, loading, error } = useQuery(GET_TOPHEADLINE_PAGE);
+  const { iconDataResult } = useDialog();
   console.log(nodeByUri, "nodeByUri News Detail");
   const router = useRouter();
   const { slug, state } = router.query;
@@ -485,31 +487,41 @@ function News({ nodeByUri }) {
                 />
 
                 <div className="flex mt-5 mb-8">
-                  <ExportedImage
-                    src={Group}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2"
-                  />
-                  <ExportedImage
-                    src={Group1}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2"
-                  />
-                  <ExportedImage
-                    src={Group2}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2"
-                  />
-                  <ExportedImage
-                    src={Group3}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2"
-                  />
-                  <ExportedImage
-                    src={Group4}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2"
-                  />
+                  <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink}>
+                    <ExportedImage
+                      src={Group}
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2"
+                    />
+                  </Link>
+                  <Link href={iconDataResult?.menu?.socialIcons?.facebookLink}>
+                    <ExportedImage
+                      src={Group1}
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2"
+                    />
+                  </Link>
+                  <Link href={iconDataResult?.menu?.socialIcons?.instagramLink}>
+                    <ExportedImage
+                      src={Group2}
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2"
+                    />
+                  </Link>
+                  <Link href={iconDataResult?.menu?.socialIcons?.twiterLink}>
+                    <ExportedImage
+                      src={Group3}
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2"
+                    />
+                  </Link>
+                  <Link href={iconDataResult?.menu?.socialIcons?.youtubeLink}>
+                    <ExportedImage
+                      src={Group4}
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2"
+                    />
+                  </Link>
                 </div>
 
                 <p className="text-[15px] font-bold text-black-900 italic">

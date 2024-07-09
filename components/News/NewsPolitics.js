@@ -7,6 +7,8 @@ import Group from "../../public/images/Group.svg";
 import Group1 from "../../public/images/Group (1).svg";
 import Group2 from "../../public/images/Group (2).svg";
 import Group3 from "../../public/images/Group (3).svg";
+import Frame208 from "../../public/images/Frame208.svg";
+import Frame209 from "../../public/images/Frame209.svg";
 import pexelstara1 from "../../public/images/pexelstara1.svg";
 import jeuol4aprinceharry from "../../public/images/jeuol4aprinceharry.svg";
 import andreas from "../../public/images/andreas.svg";
@@ -200,6 +202,26 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
                   className="h-13 w-13"
                 />
               </Link>
+            </div>
+            <p className="text-[15px] font-bold text-black-900 italic">
+              FOLLOW BELAAZ ON WhatsApp
+            </p>
+            <hr
+              className="text-red-800"
+              style={{ height: "7px", background: "#CE3A42" }}
+            />
+
+            <div className="flex mt-5 mb-8">
+              <ExportedImage
+                src={Frame208}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
+              <ExportedImage
+                src={Frame209}
+                alt="Partly Cloudy"
+                className="h-13 w-13 mx-2"
+              />
             </div>
           </div>
         </div>
