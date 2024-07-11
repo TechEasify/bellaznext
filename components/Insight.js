@@ -305,11 +305,8 @@ const Insight = ({ nodeByUri }) => {
     categoryError,
     categoryInsightData,
     categoryLoading,
+    insightFetchMore,
   } = useDialog();
-  console.log(nodeByUri, "nodeByUri insights");
-  // const { data, loading, error, fetchMore } = useQuery(INSIGHTS_DATA);
-  // const [posts, setPosts] = useState([]);
-  //   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
 
   // Effect to initialize posts when data changes
@@ -322,24 +319,20 @@ const Insight = ({ nodeByUri }) => {
   }, [categoryInsightData]);
 
   // Function to handle "View More" button click
-  const handleViewMore = () => {
+  const handleViewMore = async () => {
     if (hasNextPage && !categoryLoading) {
-      fetchMore({
+      const { data } = await insightFetchMore({
         variables: {
           after: cursor,
         },
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult) return previousResult;
-          const newPosts = fetchMoreResult.posts.nodes;
-          return {
-            posts: {
-              __typename: previousResult.posts.__typename,
-              nodes: [...previousResult.posts.nodes, ...newPosts],
-              pageInfo: fetchMoreResult.posts.pageInfo,
-            },
-          };
-        },
       });
+
+      if (data) {
+        const newPosts = data.posts.nodes;
+        setPosts((prevPosts) => [...prevPosts, ...newPosts]);
+        setCursor(data.posts.pageInfo.endCursor);
+        setHasNextPage(data.posts.pageInfo.hasNextPage);
+      }
     }
   };
 
@@ -347,7 +340,7 @@ const Insight = ({ nodeByUri }) => {
   if (categoryLoading && posts.length === 0) return <SkeletonLoader />;
 
   // Render error state
-  if (categoryError) return <p>Error: {error.message}</p>;
+  if (categoryError) return <p>Error: {categoryError.message}</p>;
 
   return (
     <>

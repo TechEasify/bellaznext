@@ -118,6 +118,7 @@ export const DialogProvider = ({ children }) => {
     data: categoryInsight,
     loading: categoryLoading,
     error: categoryError,
+    fetchMore: insightFetchMore
   } = useQuery(INSIGHTS_DATA, { fetchPolicy: "cache-first" });
 
   useEffect(() => {
@@ -169,6 +170,7 @@ export const DialogProvider = ({ children }) => {
         uri,
         loadingCategory,
         fetchMore,
+        insightFetchMore,
         bannerData,
         bannerLoading,
         bannerError,
