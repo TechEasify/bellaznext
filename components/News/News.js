@@ -163,14 +163,16 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                           }}
                           passHref
                         >
-                          <ExportedImage
-                            priority={true}
-                            src={item?.featuredImage?.node?.sourceUrl}
-                            alt="ferrari4"
-                            width={357}
-                            height={261}
-                            style={{ width: "357px", height: "261px" }}
-                          />
+                          {item?.featuredImage?.node?.sourceUrl && (
+                            <ExportedImage
+                              priority={true}
+                              src={item?.featuredImage?.node?.sourceUrl}
+                              alt={item.title}
+                              width={357}
+                              height={261}
+                              style={{ width: "357px", height: "261px" }}
+                            />
+                          )}
                         </Link>
                       </div>
                       <div className="ml-0 md:ml-5 w-full md:w-3/5">

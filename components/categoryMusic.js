@@ -24,8 +24,12 @@ import GettyImages1 from "../public/images/GettyImages1.svg";
 import Fame216 from "../public/images/Fame216.svg";
 import jeuol4a_prince1 from "../public/images/jeuol4a_prince1.svg";
 import Musicpage from "./Music/Musicpage";
+import { gql, useQuery } from "@apollo/client";
+import { Music_Query } from "./queries/categoryQueries";
 
 function Music({ nodeByUri, fetchMore, loading }) {
+  const { data } = useQuery(Music_Query)
+  console.log(data, "data music");
   console.log(nodeByUri, "nodeByUri music area");
   return (
     <>

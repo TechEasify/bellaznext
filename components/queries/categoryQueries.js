@@ -46,6 +46,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
           simpleTamplate {
             simpleTitleBackgroundColor
             simpleHeroSection {
+              heroSidebarAdCode
               heroSidebarAdImage {
                 node {
                   altText
@@ -53,17 +54,16 @@ export const CATEGORY_BREAKING_QUERY = gql`
                   sourceUrl
                 }
               }
-              heroSidebarAdCode
             }
             simpleAdvertisementImage {
+              simpleAdCode
               simpleAdImage {
                 node {
                   altText
-                  srcSet
                   sourceUrl
+                  srcSet
                 }
               }
-              simpleAdCode
             }
             simpleAllPostsSidebarAds {
               allSidebarAdCode
@@ -79,6 +79,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
           insightTamplate {
             insightTitleBackgroundColor
             insightSidebarAdvertisementImage {
+              sidebarAdCode
               sidebarAdImage {
                 node {
                   altText
@@ -86,41 +87,97 @@ export const CATEGORY_BREAKING_QUERY = gql`
                   sourceUrl
                 }
               }
-              sidebarAdCode
             }
           }
           musicTamplate {
             musicTitleBackgroundColor
             musicHeroSection {
               heroSidebarTitle
+              selectCategory {
+                nodes {
+                  ... on Category {
+                    id
+                    name
+                    posts {
+                      nodes {
+                        link
+                        slug
+                        title
+                        featuredImage {
+                          node {
+                            altText
+                            srcSet
+                            sourceUrl
+                          }
+                        }
+                        author {
+                          node {
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               heroSidebarTitleLineColor
               musicHeroSidebarAds {
+                musicSidebarAdCode
                 musicSidebarAdImage {
                   node {
                     altText
+                    title
                     srcSet
+                    sourceUrl
                   }
                 }
-                musicSidebarAdCode
+              }
+            }
+            heroSectionBottomPosts {
+              nodes {
+                name
+                ... on Category {
+                  name
+                  posts {
+                    nodes {
+                      content
+                      author {
+                        node {
+                          name
+                        }
+                      }
+                      featuredImage {
+                        node {
+                          altText
+                          sourceUrl
+                          srcSet
+                        }
+                      }
+                      title
+                    }
+                  }
+                }
               }
             }
             musicAdervtiseImage {
+              adCode
               adImage {
                 node {
                   altText
+                  sourceUrl
                   srcSet
                 }
               }
-              adCode
             }
-            musicAllPostsSidebarAds {
+            musicAllPostsSidebar {
+              sidebarAdCode
               sidebarAdImage {
                 node {
                   altText
+                  sourceUrl
                   srcSet
                 }
               }
-              sidebarAdCode
             }
           }
         }
@@ -166,58 +223,158 @@ export const INSIGHTS_DATA = gql`
 // news detail category
 export const GET_NEWS_SECTION = gql`
   query MyQuery2($uri: String!) {
-  nodeByUri(uri: $uri) {
-    id
-    ... on Post {
+    nodeByUri(uri: $uri) {
       id
-      link
-      excerpt
-      slug
-      content
-      featuredImage {
-        node {
-          altText
-          slug
-          sourceUrl
-          srcSet
-          title
+      ... on Post {
+        id
+        link
+        excerpt
+        slug
+        content
+        featuredImage {
+          node {
+            altText
+            slug
+            sourceUrl
+            srcSet
+            title
+          }
         }
-      }
-      author {
-        node {
-          name
+        author {
+          node {
+            name
+          }
         }
-      }
-      categories {
-        nodes {
-          name
-          posts {
-            nodes {
-              title
-              slug
-              featuredImage {
-                node {
-                  altText
-                  slug
-                  sourceUrl
-                  srcSet
-                  title
+        categories {
+          nodes {
+            name
+            posts {
+              nodes {
+                title
+                slug
+                featuredImage {
+                  node {
+                    altText
+                    slug
+                    sourceUrl
+                    srcSet
+                    title
+                  }
+                }
+                postView {
+                  view
                 }
               }
-              postView {
-                view
+            }
+          }
+        }
+        postView {
+          view
+        }
+        date
+        dateGmt
+        title
+      }
+    }
+  }
+`;
+
+export const Music_Query = gql`
+  query MyQuery2 {
+    category(id: "246", idType: DATABASE_ID) {
+      categoryTamplate {
+        musicTamplate {
+          musicTitleBackgroundColor
+          musicHeroSection {
+            heroSidebarTitle
+            selectCategory {
+              nodes {
+                ... on Category {
+                  id
+                  name
+                  posts {
+                    nodes {
+                      link
+                      slug
+                      title
+                      featuredImage {
+                        node {
+                          altText
+                          srcSet
+                          sourceUrl
+                        }
+                      }
+                      author {
+                        node {
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            heroSidebarTitleLineColor
+            musicHeroSidebarAds {
+              musicSidebarAdCode
+              musicSidebarAdImage {
+                node {
+                  altText
+                  title
+                  srcSet
+                  sourceUrl
+                }
+              }
+            }
+          }
+          heroSectionBottomPosts {
+            nodes {
+              name
+              ... on Category {
+                name
+                posts {
+                  nodes {
+                    content
+                    author {
+                      node {
+                        name
+                      }
+                    }
+                    featuredImage {
+                      node {
+                        altText
+                        sourceUrl
+                        srcSet
+                      }
+                    }
+                    title
+                  }
+                }
+              }
+            }
+          }
+          musicAdervtiseImage {
+            adCode
+            adImage {
+              node {
+                altText
+                sourceUrl
+                srcSet
+              }
+            }
+          }
+          musicAllPostsSidebar {
+            sidebarAdCode
+            sidebarAdImage {
+              node {
+                altText
+                sourceUrl
+                srcSet
               }
             }
           }
         }
       }
-      postView {
-        view
-      }
-      date
-      dateGmt
-      title
     }
   }
-}
 `;

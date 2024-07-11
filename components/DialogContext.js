@@ -90,6 +90,8 @@ export const DialogProvider = ({ children }) => {
     fetchPolicy: "cache-first",
   });
 
+  console.log(categoryData, "categoryData");
+
   const {
     loading: bannerLoading,
     error: bannerError,

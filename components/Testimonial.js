@@ -28,6 +28,20 @@ function Testimonial() {
     ],
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768 && sliderRef.current) {
+        sliderRef.current.slickGoTo(0); // Close slider on mobile view
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize(); // Check initial screen size
+
+    return () => window.removeEventListener('resize', handleResize); // Cleanup on unmount
+  }, []);
+
   const next = () => {
     sliderRef.slickNext();
   };
