@@ -9,6 +9,7 @@ import Group3 from "../public/images/Group (3).svg";
 import imgbin_whatsapp from "../public/images/imgbin_whatsapp.svg";
 import { gql, useQuery } from "@apollo/client";
 import Script from "next/script";
+import { useDialog } from "./DialogContext";
 
 const GET_COMPANY_PAGE = gql`
   query footer($id: ID = "229") {
@@ -84,6 +85,7 @@ const GET_SOCIALLINK_PAGE = gql`
 `;
 
 const Footer = () => {
+  const {iconDataResult} = useDialog();
   const {
     loading: loadingFooter,
     error: errorFooter,
@@ -284,30 +286,38 @@ const Footer = () => {
             {/* Social Icons and Copyright Section */}
             <div className="text-center">
               <div className="flex justify-center mb-3 space-x-2">
+              <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
+              </Link>
+              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8"
                   src={Group1}
                   alt="Facebook Icon"
                 />
+              </Link>
+              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8"
                   src={Group2}
                   alt="Instagram Icon"
                 />
+              </Link>
+              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8"
                   src={Group3}
                   alt="Twitter Icon"
                 />
+              </Link>
               </div>
               <p className="text-sm text-white font-semibold">
                 {dataSocial?.menu?.footer?.copyrightText}
