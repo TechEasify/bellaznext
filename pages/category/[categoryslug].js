@@ -12,7 +12,7 @@ import Music from "../../components/categoryMusic";
 import { useEffect, useState } from "react";
 import PoliticsCategory from "../../components/PoliticsCategory";
 import { useDialog } from "../../components/DialogContext";
-import { CATEGORY_BREAKING_QUERY, Music_Query } from "../../components/queries/categoryQueries";
+import { CATEGORY_BREAKING_QUERY } from "../../components/queries/categoryQueries";
 
 const SkeletonLoader = () => (
   <div
@@ -90,8 +90,6 @@ const SkeletonLoader = () => (
 
 const CategoryPage = () => {
   const router = useRouter();
-  const { data, loading } = useQuery(Music_Query)
-  console.log(data, "datadatadatadatadatadatadatadata");
   const { navData, setNavData, setNodeByUri, nodeByUri, uri, loadingCategory, fetchMore } = useDialog()
   const { categoryslug } = router.query;
   console.log(nodeByUri, "nodeByUri");

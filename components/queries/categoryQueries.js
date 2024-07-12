@@ -154,6 +154,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
                         }
                       }
                       title
+                      slug
                     }
                   }
                 }

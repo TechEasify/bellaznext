@@ -16,6 +16,7 @@ import andreas from "../../public/images/andreas.svg";
 import PR_01CFA from "../../public/images/PR_01CFA.svg";
 import Link from "next/link";
 import { useDialog } from "../DialogContext";
+import Ads from "../googleAds/Ads";
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   console.log(
@@ -66,12 +67,32 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-        <ExportedImage
-          style={{ margin: "0 auto" }}
-          priority={true}
-          src={PR_01CFA}
-          alt="PR_01CFA"
-        />
+        {nodeByUri?.categoryTamplate?.musicTamplate
+          ?.musicAdervtiseImage?.adImage?.node?.sourceUrl ? (
+          <ExportedImage
+            style={{ width: "1134px", height: "169px", margin: "0 auto", objectFit: "cover" }}
+            width={1134}
+            height={169}
+            priority={true}
+            src={
+              nodeByUri?.categoryTamplate?.musicTamplate
+                ?.musicAdervtiseImage?.adImage?.node?.sourceUrl
+            }
+            alt="PR_01CFA"
+          />
+        ) : (
+          <Ads
+            className=""
+            style={{
+              display: "block",
+              width: "1134px",
+              height: "169px",
+              margin: "0 auto",
+            }}
+            adClient="ca-pub-3209848804552918"
+            adSlot="9293720177"
+          />
+        )}
       </div>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
@@ -318,21 +339,27 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group1}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group2}
                   alt="Partly Cloudy"

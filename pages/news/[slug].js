@@ -91,7 +91,7 @@ const NewsPage = () => {
       </Head>
       <Nav uri={uri} />
       <main>
-        {nodeByUri && nodeByUri.__typename === "Post" && router.asPath === `/news${uri}` && <News nodeByUri={nodeByUri} />}
+        <News />
       </main>
       <Footer />
     </>
