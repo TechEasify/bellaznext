@@ -143,13 +143,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         <ExportedImage
                           src={post.featuredImage.node.sourceUrl}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mr-2"
+                          className="h-13 w-13 mr-2 object-cover w-[90px] h-[87px]"
                           width={90}
                           height={87}
-                          style={{
-                            width: "90px",
-                            height: "87px",
-                          }}
                         />
                       )}
                     </div>
@@ -167,14 +163,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                       ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
                   }
                   alt="Partly Cloudy"
-                  className="w-full mr-2"
+                  className="w-full mr-2 object-cover w-[316px] h-[336px]"
                   width={316}
                   height={336}
-                  style={{
-                    width: "316px",
-                    height: "336px",
-                    objectFit: "cover",
-                  }}
                 />
               ) : (
                 <Ads
@@ -198,13 +189,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     <ExportedImage
                       src={post?.featuredImage?.node?.sourceUrl}
                       alt="vladimirputin"
-                      className="h-13 w-13 mr-2 mb-2"
+                      className="h-13 w-13 mr-2 mb-2 object-cover w-[317px] h-[194px]"
                       width={317}
                       height={194}
-                      style={{
-                        width: "317px",
-                        height: "194px",
-                      }}
                     />
                   )}
                   <p className="text-[12px] font-bold text-red-800">
@@ -259,13 +246,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     <ExportedImage
                       src={post?.featuredImage?.node?.sourceUrl}
                       alt="Partly Cloudy"
-                      className="h-13 w-13 mr-2"
+                      className="h-13 w-13 mr-2 object-cover w-[120px] h-[97px]"
                       width={120}
                       height={97}
-                      style={{
-                        width: "120px",
-                        height: "97px",
-                      }}
                     />
                   )}
                 </div>
@@ -280,17 +263,12 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 <div className="w-full max-w-5xl mx-auto relative">
                   {musicpost?.featuredImage?.node?.sourceUrl && (
                     <ExportedImage
-                      className="mb-2"
+                      className="mb-2 object-cover w-[910px] h-[554px]"
                       priority={true}
                       src={musicpost?.featuredImage?.node?.sourceUrl}
                       width={910}
                       height={554}
                       alt="vladimirputin"
-                      style={{
-                        width: "910px",
-                        height: "554px",
-                        objectFit: "cover",
-                      }}
                     />
                   )}
 
@@ -345,16 +323,12 @@ function Music({ nodeByUri, fetchMore, loading }) {
                                 <div className="max-w-md bg-white mb-6">
                                   {post?.featuredImage?.node?.sourceUrl && (
                                     <ExportedImage
+                                      className="object-cover w-[432px] h-[293px]"
                                       priority={true}
                                       src={post?.featuredImage?.node?.sourceUrl}
                                       alt="vladimirputin"
                                       width={432}
                                       height={293}
-                                      style={{
-                                        width: "432px",
-                                        height: "293px",
-                                        objectFit: "cover",
-                                      }}
                                     />
                                   )}
 

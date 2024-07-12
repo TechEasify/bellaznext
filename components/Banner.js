@@ -1,5 +1,4 @@
 import { useDialog } from "./DialogContext";
-import bannerImg from "../public/images/banner1.webp";
 import vladimirputin from "../public/images/vladimir-putin.svg";
 import mdi_weather from "../public/images/mdi_weather.svg";
 import typcn_weather from "../public/images/typcn_weather.svg";

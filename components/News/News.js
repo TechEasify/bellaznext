@@ -165,12 +165,12 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                         >
                           {item?.featuredImage?.node?.sourceUrl && (
                             <ExportedImage
+                              className="object-cover w-[357px] h-[261px]"
                               priority={true}
                               src={item?.featuredImage?.node?.sourceUrl}
                               alt={item.title}
                               width={357}
                               height={261}
-                              style={{ width: "357px", height: "261px" }}
                             />
                           )}
                         </Link>
@@ -388,7 +388,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
             {categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
               ?.allSidebarAdImage?.node?.sourceUrl ? (
               <ExportedImage
-                className="mb-2 w-full h-auto max-h-96"
+                className="mb-2 w-full h-auto max-h-96 object-cover w-[297px] h-[503px]"
                 priority={true}
                 src={
                   categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
@@ -400,7 +400,6 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 }
                 width={297}
                 height={503}
-                style={{ width: "100%", height: "auto", maxHeight: "500px" }}
               />
             ) : (
               <Ads
@@ -427,7 +426,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link
@@ -436,7 +435,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group1}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link
@@ -445,14 +444,14 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group2}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                 <ExportedImage
                   src={Group3}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link
@@ -461,7 +460,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group4}
                   alt="Partly Cloudy"
-                  className="h-13 w-13 mx-2"
+                  className="h-13 w-13 mx-2 object-cover"
                 />
               </Link>
             </div>
@@ -469,20 +468,20 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               FOLLOW BELAAZ ON WhatsApp
             </p>
             <hr
-              className="text-red-800"
-              style={{ height: "7px", background: "#CE3A42" }}
+              className="text-red-800 h-[7px]"
+              style={{background: "#CE3A42" }}
             />
 
             <div className="flex mt-5 mb-8">
               <ExportedImage
                 src={Frame208}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
               <ExportedImage
                 src={Frame209}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </div>
           </div>

@@ -8,58 +8,57 @@ import { gql, useQuery } from "@apollo/client";
 
 const GET_CARD_SECTION = gql`
   query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        allCategories {
-          nodes {
-            id
+  page(id: $id, idType: DATABASE_ID) {
+    homePage {
+      allCategories {
+        nodes {
+          id
+          ... on Category {
+            name
             posts {
               nodes {
-                id
-                slug
-                categories {
-                  nodes {
-                    id
-                    name
-                    slug
-                  }
-                }
+                content
                 featuredImage {
                   node {
                     altText
                     srcSet
-                    slug
                     sourceUrl
                   }
                 }
-                content
+                categories {
+                  nodes {
+                    name
+                  }
+                }
               }
             }
           }
         }
-        footerAdvertisementImage {
-          node {
-            altText
-            srcSet
-            sourceUrl
-          }
+      }
+      footerAdvertisementImage {
+        node {
+          altText
+          srcSet
+          sourceUrl
         }
-        footerAdvertisementCode
-        allCategoryBottomLineColor {
-          insights
-          jewishNews
-          music
-          politics
-          ukraineRussiaWar
-        }
+      }
+      footerAdvertisementCode
+      allCategoryBottomLineColor {
+        insights
+        jewishNews
+        music
+        politics
+        ukraineRussiaWar
       }
     }
   }
+}
 `;
 
 const Cardnews = () => {
   const { openDialog } = useDialog();
   const { loading, error, data } = useQuery(GET_CARD_SECTION);
+  console.log(data, "datadatadata")
   const displayedCategories = new Set();
 
   if (loading) return <p>Loading...</p>;
@@ -77,6 +76,7 @@ const Cardnews = () => {
         {data.page.homePage.allCategories.nodes.slice(0, 6).map((item) => (
           <React.Fragment key={item.id}>
             {item.posts.nodes.map((post) => (
+              console.log(post, "postpostpostpostpostpostpost"),
               <div
                 className="flex flex-wrap justify-around"
                 key={post.id}

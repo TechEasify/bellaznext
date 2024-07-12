@@ -84,7 +84,7 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                         alt="ferrari4"
                         width={357}
                         height={261}
-                        style={{ width: "357px", height: "261px" }}
+                        className="object-cover w-[357px] h-[261px]"
                       />
                     </Link>
                   </div>
@@ -294,7 +294,7 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
               priority={true}
               src={Rectangle367}
               alt="Rectangle367"
-              style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+              style={{ maxHeight: "500px" }}
             />
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
