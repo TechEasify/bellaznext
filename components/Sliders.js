@@ -82,11 +82,10 @@ const Sliders = () => {
             <span className="flex">
               ON{" "}
               <ExportedImage
-                style={{ marginLeft: "20px" }}
+                style={{ marginLeft: "20px", width: "50px" }}
                 priority={true}
                 src={Group3}
                 alt="vladimirputin"
-                className="object-cover w-[50px]"
               />
             </span>{" "}
           </h5>

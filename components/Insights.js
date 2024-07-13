@@ -208,7 +208,7 @@ const Insights = () => {
                                     alt={
                                       node.featuredImage?.node?.sourceUrl || ""
                                     }
-                                    className="h-[317px] w-[194px] mr-2 mb-2"
+                                    className="object-cover mr-2 mb-2"
                                     width={317}
                                     height={194}
                                   />
