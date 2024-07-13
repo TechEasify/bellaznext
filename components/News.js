@@ -178,7 +178,11 @@ function News() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("");
   const { data, loading, error } = useQuery(GET_TOPHEADLINE_PAGE);
-  const { data: newsData, loading: newsLoading, error: newsError } = useQuery(GET_NEWS_SECTION, {
+  const {
+    data: newsData,
+    loading: newsLoading,
+    error: newsError,
+  } = useQuery(GET_NEWS_SECTION, {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
@@ -207,7 +211,6 @@ function News() {
     }
   };
 
-
   console.log(currentUrl, "currentUrl");
 
   const toggleShareOptions = () => {
@@ -215,7 +218,7 @@ function News() {
   };
 
   const posts =
-  newsData?.nodeByUri?.categories?.nodes?.flatMap((item) =>
+    newsData?.nodeByUri?.categories?.nodes?.flatMap((item) =>
       item.posts?.nodes?.map((post) => ({
         ...post,
         categoryName: item.name,
@@ -249,14 +252,14 @@ function News() {
           <div className="mx-auto max-w-screen-xl">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_0px] gap-7">
               <div className="flex flex-col md:flex-row justify-center gap-6 px-3 ">
-                <div className="max-w-4xl text-white md:ml-64">
+                <div className="max-w-4xl text-white">
                   <div className="py-8 px-8">
                     <div className="flex w-full justify-between items-center">
                       <p className="text-base font-bold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
                       </p>
                       <button
-                        class="align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                        className="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 sm:w-10 md:w-12 lg:w-14 xl:w-16 h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16 max-w-[40px] max-h-[40px] rounded-lg text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                         type="button"
                         style={{ background: "#CE3A42" }}
                         onClick={toggleShareOptions}
@@ -265,23 +268,23 @@ function News() {
                       </button>
                     </div>
                     {isOpen && (
-                      <div className="flex justify-around mt-2 p-2 bg-white border rounded-lg shadow-lg">
-                        <FacebookShareButton url={currentUrl} className="mr-3">
-                          <FacebookIcon size={32} round />
-                        </FacebookShareButton>
-                        <TwitterShareButton url={currentUrl} className="mr-3">
-                          <TwitterIcon size={32} round />
-                        </TwitterShareButton>
-                        <WhatsappShareButton url={currentUrl} className="mr-3">
-                          <WhatsappIcon size={32} round />
-                        </WhatsappShareButton>
-                        <TelegramShareButton url={currentUrl} className="mr-3">
-                          <TelegramIcon size={32} round />
-                        </TelegramShareButton>
-                        <EmailShareButton url={currentUrl} className="mr-3">
-                          <EmailIcon size={32} round />
-                        </EmailShareButton>
-                      </div>
+                      <div className="absolute left-[50%] transform -translate-x-1/2 flex sm:flex-row justify-around mt-2 p-2 bg-white border rounded-lg shadow-lg sm:w-64 md:w-80 lg:w-96 xl:w-[30rem]">
+                      <FacebookShareButton url={currentUrl} className="mr-3">
+                        <FacebookIcon size={32} round />
+                      </FacebookShareButton>
+                      <TwitterShareButton url={currentUrl} className="mr-3">
+                        <TwitterIcon size={32} round />
+                      </TwitterShareButton>
+                      <WhatsappShareButton url={currentUrl} className="mr-3">
+                        <WhatsappIcon size={32} round />
+                      </WhatsappShareButton>
+                      <TelegramShareButton url={currentUrl} className="mr-3">
+                        <TelegramIcon size={32} round />
+                      </TelegramShareButton>
+                      <EmailShareButton url={currentUrl} className="mr-3">
+                        <EmailIcon size={32} round />
+                      </EmailShareButton>
+                    </div>
                     )}
                     <h1 className="text-[24px] md:text-[40px] text-black font-bold">
                       {newsData?.nodeByUri?.title}
@@ -317,27 +320,30 @@ function News() {
                         |
                       </span>
                       Updated{" "}
-                      {format(newsData?.nodeByUri?.dateGmt, "MMM. d, yyyy, h:mm a")} ET
+                      {format(
+                        newsData?.nodeByUri?.dateGmt,
+                        "MMM. d, yyyy, h:mm a"
+                      )}{" "}
+                      ET
                     </p>
                   </div>
-                  {
-                    newsData?.nodeByUri?.featuredImage?.node?.sourceUrl &&
-                    (
-                      <ExportedImage
-                        className="object-cover w-full h-[499px] mb-2"
-                        priority={true}
-                        src={newsData?.nodeByUri?.featuredImage?.node?.sourceUrl}
-                        alt="article"
-                        width={760}
-                        height={499}
-                      />
-                    )
-                  }
+                  {newsData?.nodeByUri?.featuredImage?.node?.sourceUrl && (
+                    <ExportedImage
+                      className="w-full mb-2"
+                      priority={true}
+                      src={newsData?.nodeByUri?.featuredImage?.node?.sourceUrl}
+                      alt="article"
+                      width={760}
+                      height={499}
+                    />
+                  )}
                   {/* <Responsivevoice nodeByUri={nodeByUri} /> */}
                   <p
                     className="font-semibold mb-5"
                     style={{ color: "#2B2B2B" }}
-                    dangerouslySetInnerHTML={{ __html: newsData?.nodeByUri?.content }}
+                    dangerouslySetInnerHTML={{
+                      __html: newsData?.nodeByUri?.content,
+                    }}
                   />
 
                   <div className="w-full max-w-2xl mt-10">
@@ -433,17 +439,15 @@ function News() {
                                   </p>
                                 </Link>
                               </div>
-                              {
-                                post?.featuredImage?.node?.sourceUrl && (
-                                  <ExportedImage
-                                    src={post?.featuredImage?.node?.sourceUrl}
-                                    alt="Partly Cloudy"
-                                    className="object-cover w-[90px] h-[87px] mr-2"
-                                    width={90}
-                                    height={87}
-                                  />
-                                )
-                              }
+                              {post?.featuredImage?.node?.sourceUrl && (
+                                <ExportedImage
+                                  src={post?.featuredImage?.node?.sourceUrl}
+                                  alt="Partly Cloudy"
+                                  className="object-cover w-[90px] h-[87px] mr-2"
+                                  width={90}
+                                  height={87}
+                                />
+                              )}
                             </div>
                             <hr className="mt-5" />
                           </div>

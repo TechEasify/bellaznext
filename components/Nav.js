@@ -719,7 +719,7 @@ const Nav = ({
                   {dataMenu !== undefined && dataMenu?.menu?.header?.subSecond}
                 </Link>
                 <Link
-                  href="/category/jewish_news"
+                  href="/category/jewish-news"
                   // onClick={() => router.push("/category/jewish_news")}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
