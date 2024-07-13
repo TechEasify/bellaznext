@@ -426,7 +426,7 @@ function Index() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
         {data.page.advertise.clientImages.imageI && (
           <ExportedImage
-            className="h-25 mx-auto"
+            className="object-cover w-[150px] h-[100px] mx-auto"
             priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageI.node.srcSet
@@ -438,7 +438,7 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageJ && (
           <ExportedImage
-            className="h-25 mx-auto"
+            className="object-cover w-[150px] h-[100px] mx-auto"
             priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageJ.node.srcSet
@@ -450,7 +450,7 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageK && (
           <ExportedImage
-            className="h-25 mx-auto"
+            className="object-cover w-[150px] h-[100px] mx-auto"
             priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageK.node.srcSet
@@ -462,7 +462,7 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageL && (
           <ExportedImage
-            className="h-25 mx-auto"
+            className="object-cover w-[150px] h-[100px] mx-auto"
             priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageL.node.srcSet

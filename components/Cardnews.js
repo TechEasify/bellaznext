@@ -76,7 +76,6 @@ const Cardnews = () => {
         {data.page.homePage.allCategories.nodes.slice(0, 6).map((item) => (
           <React.Fragment key={item.id}>
             {item.posts.nodes.map((post) => (
-              console.log(post, "postpostpostpostpostpostpost"),
               <div
                 className="flex flex-wrap justify-around"
                 key={post.id}
@@ -132,13 +131,9 @@ const Cardnews = () => {
                         <ExportedImage
                           src={post?.featuredImage?.node?.sourceUrl}
                           alt="vladimirputin"
-                          className="h-13 w-13 mr-2 mb-2"
+                          className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
                           width={397}
                           height={210}
-                          style={{
-                            width: "397px",
-                            height: "210px",
-                          }}
                         />
                         <p
                           className="text-[15px] font-semibold text-gray-800 mb-2"

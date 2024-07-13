@@ -74,9 +74,6 @@ const Advertisement = () => {
         ?.sourceUrl ? (
         <ExportedImage
           style={{
-            width: "1134px",
-            height: "169px",
-            objectFit: "fill",
             margin: "0 auto",
           }}
           priority={true}
@@ -85,6 +82,7 @@ const Advertisement = () => {
               .sourceUrl
           }
           alt="barcode"
+          className="object-fill w-[1134px] h-[169px]"
           width={1134}
           height={169}
         />

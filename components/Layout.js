@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import Nav from "./Nav";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import LeadForm from "./LeadForm";
 import { useDialog } from "./DialogContext";
 import Primarylogo from "../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
@@ -136,18 +135,6 @@ const Layout = ({ children, ...customMeta }) => {
                         />
                       </svg>
                     </button>
-                    <div
-                      className="p-4 sm:p-4 sm:pb-4"
-                      style={{ background: "#002D73" }}
-                    >
-                      <div className="sm:flex sm:items-start">
-                        <div className="mt-3 sm:mt-0 sm:text-left w-full">
-                          <div>
-                            <LeadForm />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </Dialog.Panel>
                 </Transition.Child>
               </div>

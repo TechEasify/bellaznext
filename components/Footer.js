@@ -10,6 +10,7 @@ import imgbin_whatsapp from "../public/images/imgbin_whatsapp.svg";
 import { gql, useQuery } from "@apollo/client";
 import Script from "next/script";
 import { useDialog } from "./DialogContext";
+import { useRouter } from "next/router";
 
 const GET_COMPANY_PAGE = gql`
   query footer($id: ID = "229") {
@@ -86,6 +87,7 @@ const GET_SOCIALLINK_PAGE = gql`
 
 const Footer = () => {
   const {iconDataResult} = useDialog();
+  const router = useRouter()
   const {
     loading: loadingFooter,
     error: errorFooter,
@@ -289,7 +291,7 @@ const Footer = () => {
               <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8"
+                  className="h-8 w-8 object-cover"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -297,7 +299,7 @@ const Footer = () => {
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8"
+                  className="h-8 w-8 object-cover"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -305,7 +307,7 @@ const Footer = () => {
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8"
+                  className="h-8 w-8 object-cover"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -313,7 +315,7 @@ const Footer = () => {
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8"
+                  className="h-8 w-8 object-cover"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -326,7 +328,7 @@ const Footer = () => {
             {/* Contact Us Button Section */}
             <div className="text-center hidden md:block">
               <div className="flex justify-center mb-3 space-x-2">
-                <button style={{ border: "1px solid", padding: "5px" }}>
+                <button style={{ border: "1px solid", padding: "5px" }} onClick={() => router.push("/contact-us")}>
                   Contact us
                 </button>
               </div>

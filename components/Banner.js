@@ -361,14 +361,14 @@ const Banner = () => {
                 <ExportedImage
                   src={sun}
                   alt="Partly Cloudy"
-                  className="h-13 w-13 mr-2"
+                  className="h-13 w-13 mr-2 object-cover"
                 />
               </div>
               <div className="flex items-center">
                 <ExportedImage
                   src={location}
                   alt="Location"
-                  className="h-5 w-5 mr-2"
+                  className="h-5 w-5 mr-2 object-cover"
                 />
                 <p className="text-normal tracking-tight text-white">
                   {name}, {sys.country}
@@ -387,13 +387,13 @@ const Banner = () => {
                 <ExportedImage
                   src={mdi_weather}
                   alt="Cloud"
-                  className="h-4 w-4"
+                  className="h-4 w-4 object-cover"
                 />
                 <p className="font-xs text-white text-sm">{clouds.all}%</p>
                 <ExportedImage
                   src={typcn_weather}
                   alt="Cloud"
-                  className="h-4 w-4"
+                  className="h-4 w-4 object-cover"
                 />
                 <p className="font-xs text-white text-sm">
                   {(main.feels_like - 273.15).toFixed(1)}°C

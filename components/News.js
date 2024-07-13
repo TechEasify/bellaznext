@@ -256,7 +256,7 @@ function News() {
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
                       </p>
                       <button
-                        class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                        class="align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                         type="button"
                         style={{ background: "#CE3A42" }}
                         onClick={toggleShareOptions}
@@ -265,7 +265,7 @@ function News() {
                       </button>
                     </div>
                     {isOpen && (
-                      <div className="absolute top-48 right-80 mt-2 p-2 bg-white border rounded-lg shadow-lg">
+                      <div className="flex justify-around mt-2 p-2 bg-white border rounded-lg shadow-lg">
                         <FacebookShareButton url={currentUrl} className="mr-3">
                           <FacebookIcon size={32} round />
                         </FacebookShareButton>
@@ -324,17 +324,12 @@ function News() {
                     newsData?.nodeByUri?.featuredImage?.node?.sourceUrl &&
                     (
                       <ExportedImage
-                        className="mb-2"
+                        className="object-cover w-full h-[499px] mb-2"
                         priority={true}
                         src={newsData?.nodeByUri?.featuredImage?.node?.sourceUrl}
                         alt="article"
                         width={760}
                         height={499}
-                        style={{
-                          width: "100%",
-                          height: "499px",
-                          objectFit: "cover",
-                        }}
                       />
                     )
                   }
@@ -395,14 +390,9 @@ function News() {
                                   <ExportedImage
                                     src={post.featuredImage.node.sourceUrl}
                                     alt="Partly Cloudy"
-                                    className="h-13 w-13 mr-2"
+                                    className="h-[87px] w-[90px] object-cover mr-2"
                                     width={90}
                                     height={87}
-                                    style={{
-                                      width: "90px",
-                                      height: "87px",
-                                      objectFit: "cover",
-                                    }}
                                   />
                                 </Link>
                               )}
@@ -448,14 +438,9 @@ function News() {
                                   <ExportedImage
                                     src={post?.featuredImage?.node?.sourceUrl}
                                     alt="Partly Cloudy"
-                                    className="h-13 w-13 mr-2"
+                                    className="object-cover w-[90px] h-[87px] mr-2"
                                     width={90}
                                     height={87}
-                                    style={{
-                                      width: "90px",
-                                      height: "87px",
-                                      objectFit: "cover",
-                                    }}
                                   />
                                 )
                               }
@@ -472,7 +457,7 @@ function News() {
                   style={{ maxWidth: "500px" }}
                 >
                   <ExportedImage
-                    className="mb-2"
+                    className="mb-2 object-cover"
                     priority={true}
                     src={Screenshot202}
                     alt="Screenshot202"
@@ -537,14 +522,9 @@ function News() {
                                                   .sourceUrl
                                               }
                                               alt={itemdata.title}
-                                              className="h-13 w-13 mr-2"
+                                              className="object-cover w-[90px] h-[87px] mr-2"
                                               width={90}
                                               height={87}
-                                              style={{
-                                                width: "90px",
-                                                height: "87px",
-                                                objectFit: "cover",
-                                              }}
                                             />
                                           ) : (
                                             <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
@@ -578,7 +558,7 @@ function News() {
                         <ExportedImage
                           src={Group}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2"
+                          className="h-13 w-13 mx-2 object-cover"
                         />
                       </Link>
                       <Link
@@ -589,7 +569,7 @@ function News() {
                         <ExportedImage
                           src={Group1}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2"
+                          className="h-13 w-13 mx-2 object-cover"
                         />
                       </Link>
                       <Link
@@ -601,7 +581,7 @@ function News() {
                         <ExportedImage
                           src={Group2}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2"
+                          className="h-13 w-13 mx-2 object-cover"
                         />
                       </Link>
                       <Link
@@ -612,7 +592,7 @@ function News() {
                         <ExportedImage
                           src={Group3}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2"
+                          className="h-13 w-13 mx-2 object-cover"
                         />
                       </Link>
                       <Link
@@ -623,7 +603,7 @@ function News() {
                         <ExportedImage
                           src={Group4}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2"
+                          className="h-13 w-13 mx-2 object-cover"
                         />
                       </Link>
                     </div>
@@ -640,12 +620,12 @@ function News() {
                       <ExportedImage
                         src={Frame208}
                         alt="Partly Cloudy"
-                        className="h-13 w-13 mx-2"
+                        className="h-13 w-13 mx-2 object-cover"
                       />
                       <ExportedImage
                         src={Frame209}
                         alt="Partly Cloudy"
-                        className="h-13 w-13 mx-2"
+                        className="h-13 w-13 mx-2 object-cover"
                       />
                     </div>
                   </div>

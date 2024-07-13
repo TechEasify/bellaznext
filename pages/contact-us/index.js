@@ -250,7 +250,7 @@ function Index() {
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
               <ExportedImage
                 priority={true}
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-2 object-cover"
                 src={emailoutline}
                 alt="emailoutline"
               />
@@ -266,7 +266,7 @@ function Index() {
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
               <ExportedImage
                 priority={true}
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-2 object-cover"
                 src={whatsapp1}
                 alt="whatsapp1"
               />
@@ -330,7 +330,7 @@ function Index() {
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
               <ExportedImage
                 priority={true}
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-2 object-cover"
                 src={emailoutline}
                 alt="emailoutline"
               />
@@ -346,7 +346,7 @@ function Index() {
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
               <ExportedImage
                 priority={true}
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-2 object-cover"
                 src={whatsapp1}
                 alt="whatsapp1"
               />
@@ -404,7 +404,7 @@ function Index() {
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
               <ExportedImage
                 priority={true}
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-2 object-cover"
                 src={emailoutline}
                 alt="emailoutline"
               />
@@ -420,7 +420,7 @@ function Index() {
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
               <ExportedImage
                 priority={true}
-                className="h-5 w-5 mr-2"
+                className="h-5 w-5 mr-2 object-cover"
                 src={whatsapp1}
                 alt="whatsapp1"
               />

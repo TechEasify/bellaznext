@@ -114,12 +114,12 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                           passHref
                         >
                           <ExportedImage
+                            className="object-cover w-[357px] h-[261px]"
                             priority={true}
                             src={item?.featuredImage?.node?.sourceUrl}
                             alt="ferrari4"
                             width={357}
                             height={261}
-                            style={{ width: "357px", height: "261px" }}
                           />
                         </Link>
                       </div>
@@ -345,7 +345,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link
@@ -354,7 +354,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group1}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link
@@ -363,14 +363,14 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group2}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                 <ExportedImage
                   src={Group3}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link
@@ -379,7 +379,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 <ExportedImage
                   src={Group4}
                   alt="Partly Cloudy"
-                  className="h-13 w-13 mx-2"
+                  className="h-13 w-13 mx-2 object-cover"
                 />
               </Link>
             </div>
@@ -395,12 +395,12 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               <ExportedImage
                 src={Frame208}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
               <ExportedImage
                 src={Frame209}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </div>
           </div>

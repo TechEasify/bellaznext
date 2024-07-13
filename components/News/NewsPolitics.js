@@ -79,12 +79,12 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
                       passHref
                     >
                       <ExportedImage
+                        className="object-cover w-[357px] h-[261px]"
                         priority={true}
                         src={item?.featuredImage?.node?.sourceUrl}
                         alt="ferrari4"
                         width={357}
                         height={261}
-                        style={{ width: "357px", height: "261px" }}
                       />
                     </Link>
                   </div>

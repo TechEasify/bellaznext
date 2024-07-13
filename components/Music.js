@@ -51,10 +51,9 @@ const Music = () => {
                             <ExportedImage
                               src={post?.featuredImage?.node?.sourceUrl}
                               alt="vladimirputin"
-                              className="h-13 w-13 mr-2 mb-2"
+                              className="object-cover w-[317px] h-[194px] mr-2 mb-2"
                               width={317}
                               height={194}
-                              style={{ width: "317px", height: "194px" }}
                             />
                             <p className="text-[12px] font-bold text-red-800">
                               {musicQuery?.page?.homePage?.musicTitle}
@@ -112,14 +111,9 @@ const Music = () => {
                           <ExportedImage
                             src={post?.featuredImage?.node?.sourceUrl}
                             alt="Partly Cloudy"
-                            className="h-13 w-13 mr-2"
+                            className="object-cover w-[120px] h-[97px] mr-2"
                             width={120}
                             height={97}
-                            style={{
-                              width: "120px",
-                              height: "97px",
-                              objectFit: "cover",
-                            }}
                           />
                         </div>
                         <p className="text-[10px] text-base font-bold text-gray-800">
@@ -154,15 +148,11 @@ const Music = () => {
                         >
                           <ExportedImage
                             priority={true}
+                            className="object-cover w-[593px] h-[395px]"
                             src={post?.featuredImage?.node?.sourceUrl}
                             alt="vladimirputin"
                             width={593}
                             height={395}
-                            style={{
-                              width: "593px",
-                              height: "395px",
-                              objectFit: "cover",
-                            }}
                           />
                         </Link>
                         <p className="text-base font-bold text-red-800 mt-2">
@@ -210,14 +200,9 @@ const Music = () => {
                           <ExportedImage
                             src={post?.featuredImage?.node?.sourceUrl}
                             alt="vladimirputin"
-                            className="h-13 w-13 mr-2 mb-2"
+                            className="object-cover w-[317px] h-[194px] mr-2 mb-2"
                             width={317}
                             height={194}
-                            style={{
-                              width: "317px",
-                              height: "194px",
-                              objectFit: "cover",
-                            }}
                           />
                           <p className="text-[12px] font-bold text-red-800">
                             {musicQuery?.page?.homePage?.musicTitle}
@@ -264,14 +249,9 @@ const Music = () => {
                                   .musicBottomAdImage.node.sourceUrl
                               }
                               alt="Partly Cloudy"
-                              className="h-13 w-13 mr-2"
+                              className="object-cover w-[317px] h-[214px] mr-2"
                               width={317}
                               height={214}
-                              style={{
-                                width: "317px",
-                                height: "214px",
-                                objectFit: "cover",
-                              }}
                             />
                           )}
                         </div>

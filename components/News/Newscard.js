@@ -119,13 +119,9 @@ const Newscard = ({ nodeByUri }) => {
                             <ExportedImage
                               src={post.featuredImage.node.sourceUrl}
                               alt={post.featuredImage.node.altText || "image"}
-                              className="h-13 w-13 mr-2 mb-2"
+                              className="object-cover w-[397px] h-[210px] mr-2 mb-2"
                               width={397}
                               height={210}
-                              style={{
-                                width: "397px",
-                                height: "210px",
-                              }}
                             />
                           )}
                           <p

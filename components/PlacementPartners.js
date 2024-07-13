@@ -41,13 +41,11 @@ const PlacementPartners = () => {
         <ExportedImage
           style={{
             margin: "0 auto",
-            width: "1134px",
-            height: "169px",
-            objectFit: "fill",
           }}
           priority={true}
           src={imageUrl}
           alt="PR_01CFA"
+          className="object-fill w-[1134px] h-[169px]"
           width={1134}
           height={169}
         />

@@ -208,7 +208,7 @@ const Insights = () => {
                                     alt={
                                       node.featuredImage?.node?.sourceUrl || ""
                                     }
-                                    className="h-13 w-13 mr-2 mb-2"
+                                    className="h-[317px] w-[194px] mr-2 mb-2"
                                     width={317}
                                     height={194}
                                   />
@@ -275,7 +275,7 @@ const Insights = () => {
                                         null &&
                                       node.featuredImage.node.sourceUrl
                                     }
-                                    className="h-13 w-13 mr-2"
+                                    className="h-[87px] w-13 mr-2"
                                     width={90}
                                     height={87}
                                   />
@@ -321,13 +321,9 @@ const Insights = () => {
                                     node.featuredImage.node.sourceUrl !==
                                       null && node.featuredImage.node.sourceUrl
                                   }
+                                  className="object-cover w-[593px] h-[395px]"
                                   width={593}
                                   height={395}
-                                  style={{
-                                    width: "593px",
-                                    height: "395px",
-                                    objectFit: "cover",
-                                  }}
                                 />
                               </Link>
                               <p className="text-base font-bold text-red-800 mt-2">
@@ -381,7 +377,7 @@ const Insights = () => {
                                   alt={
                                     node.featuredImage?.node?.sourceUrl || ""
                                   }
-                                  className="h-13 w-13 mr-2 mb-2"
+                                  className="object-cover w-[317px] h-[194px] mr-2 mb-2"
                                   width={317}
                                   height={194}
                                 />
@@ -425,14 +421,9 @@ const Insights = () => {
                                 <ExportedImage
                                   src={addpost}
                                   alt="Partly Cloudy"
-                                  className="h-13 w-13 mr-2"
+                                  className="object-cover w-[317px] h-[214px] mr-2"
                                   width={317}
                                   height={214}
-                                  style={{
-                                    width: "317px",
-                                    height: "214px",
-                                    objectFit: "cover",
-                                  }}
                                 />
                               </div>
                             </div>

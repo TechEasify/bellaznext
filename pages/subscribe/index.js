@@ -2,6 +2,7 @@ import React from "react";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 function Index() {
   const router = useRouter();
@@ -9,16 +10,22 @@ function Index() {
   const handleClose = () => {
     router.push(router.query.subscribe);
   };
+  console.log(router.query.subscribe, "router.query.subscribe");
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "#002D73" }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ background: "#002D73" }}
+    >
       <div className="flex justify-between items-center p-4">
-        <ExportedImage
-          src={Primarylogo}
-          loading="lazy"
-          alt="Primarylogo"
-          className="max-h-32 object-fill hidden md:block"
-        />
+        <Link href="/">
+          <ExportedImage
+            src={Primarylogo}
+            loading="lazy"
+            alt="Primarylogo"
+            className="max-h-32 object-fill hidden md:block"
+          />
+        </Link>
         <button
           type="button"
           className="text-base w-7 h-7 text-gray-800 rounded-full block"

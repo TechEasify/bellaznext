@@ -62,11 +62,7 @@ const Topheadlines = () => {
                                 alt={post?.featuredImage?.node?.sourceUrl || ""}
                                 width={432}
                                 height={293}
-                                style={{
-                                  width: "432px",
-                                  height: "293px",
-                                  objectFit: "cover",
-                                }}
+                                className="object-cover w-[432px] h-[293px]"
                               />
                             </Link>
                             <p className="text-base font-bold text-red-800 mt-2">
@@ -161,14 +157,9 @@ const Topheadlines = () => {
                                   <ExportedImage
                                     src={itemdata.featuredImage.node.sourceUrl}
                                     alt={itemdata.title}
-                                    className="h-13 w-13 mr-2"
+                                    className="object-cover w-[90px] h-[87px] mr-2"
                                     width={90}
                                     height={87}
-                                    style={{
-                                      width: "90px",
-                                      height: "87px",
-                                      objectFit: "cover",
-                                    }}
                                   />
                                 ) : (
                                   <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
@@ -194,10 +185,9 @@ const Topheadlines = () => {
                     .topHeadlineFirstAd.node.sourceUrl
                 }
                 alt="Partly Cloudy"
-                className="w-full mr-2"
+                className="object-cover w-[318px] h-[107px] mr-2"
                 width={318}
                 height={107}
-                style={{ width: "318px", height: "107px", objectFit: "cover" }}
               />
             ) : (
               <Ads
@@ -256,14 +246,9 @@ const Topheadlines = () => {
                                 <ExportedImage
                                   src={itemdata.featuredImage.node.sourceUrl}
                                   alt={itemdata.title}
-                                  className="h-13 w-13 mr-2"
+                                  className="object-cover w-[90px] h-[87px] mr-2"
                                   width={90}
                                   height={87}
-                                  style={{
-                                    width: "90px",
-                                    height: "87px",
-                                    objectFit: "cover",
-                                  }}
                                 />
                               ) : (
                                 <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
@@ -302,10 +287,9 @@ const Topheadlines = () => {
                     ?.topHeadlineSecondAdImage?.node?.sourceUrl
                 }
                 alt="Partly Cloudy"
-                className="w-full mr-2"
+                className="object-cover w-[314px] h-[441px] mr-2"
                 width={314}
                 height={441}
-                style={{ width: "314px", height: "441px", objectFit: "cover" }}
               />
             ) : (
               <Ads
@@ -347,35 +331,35 @@ const Topheadlines = () => {
               <ExportedImage
                 src={Group}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </Link>
             <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
               <ExportedImage
                 src={Group1}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </Link>
             <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
               <ExportedImage
                 src={Group2}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </Link>
             <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
               <ExportedImage
                 src={Group3}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </Link>
             <Link href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}>
               <ExportedImage
                 src={Group4}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </Link>
           </div>
@@ -392,12 +376,12 @@ const Topheadlines = () => {
             <ExportedImage
               src={Frame208}
               alt="Partly Cloudy"
-              className="h-13 w-13 mx-2"
+              className="h-13 w-13 mx-2 object-cover"
             />
             <ExportedImage
               src={Frame209}
               alt="Partly Cloudy"
-              className="h-13 w-13 mx-2"
+              className="h-13 w-13 mx-2 object-cover"
             />
           </div>
         </div>

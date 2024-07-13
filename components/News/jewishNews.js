@@ -306,28 +306,28 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                 <ExportedImage
                   src={Group}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
                 <ExportedImage
                   src={Group1}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
                 <ExportedImage
                   src={Group2}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
                 <ExportedImage
                   src={Group3}
                   alt="Partly Cloudy"
-                  className="h-13 w-13"
+                  className="h-13 w-13 object-cover"
                 />
               </Link>
               <Link
@@ -336,7 +336,7 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                 <ExportedImage
                   src={Group4}
                   alt="Partly Cloudy"
-                  className="h-13 w-13 mx-2"
+                  className="h-13 w-13 mx-2 object-cover"
                 />
               </Link>
             </div>
@@ -352,12 +352,12 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
               <ExportedImage
                 src={Frame208}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
               <ExportedImage
                 src={Frame209}
                 alt="Partly Cloudy"
-                className="h-13 w-13 mx-2"
+                className="h-13 w-13 mx-2 object-cover"
               />
             </div>
           </div>
