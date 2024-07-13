@@ -212,11 +212,11 @@ const Nav = ({
   };
 
   const handleSub = () => {
-    console.log("iafvgakfjvbkafafv");
-
+    // Store the current pathname in localStorage or state
+    localStorage.setItem('lastPathname', router.asPath);
+  
     router.push({
       pathname: "/subscribe",
-      query: { subscribe: subscribe },
     });
   };
 

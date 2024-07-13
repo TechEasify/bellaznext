@@ -6,13 +6,14 @@ import Link from "next/link";
 
 function Index() {
   const router = useRouter();
+  console.log(router, "router");
 
   const handleClose = () => {
-    const { categoryslug } = router.query;
-    if (categoryslug) {
-      router.push(`/category/${categoryslug}`);
+    // Retrieve the last visited pathname from localStorage or state
+    const lastPathname = localStorage.getItem("lastPathname");
+    if (lastPathname) {
+      router.push(lastPathname);
     } else {
-      // Handle the case where categoryslug is not available
       router.push("/");
     }
   };
