@@ -263,7 +263,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 <div className="w-full max-w-5xl mx-auto relative">
                   {musicpost?.featuredImage?.node?.sourceUrl && (
                     <ExportedImage
-                      className="mb-2 object-cover w-[910px] h-[554px]"
+                      className="mb-2 object-cover w-full sm:w-[640px] md:w-[768px] lg:w-[910px] h-auto"
                       priority={true}
                       src={musicpost?.featuredImage?.node?.sourceUrl}
                       width={910}
@@ -272,19 +272,19 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     />
                   )}
 
-                  <div className="absolute top-[27%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-[750px]">
+                  <div className="absolute top-[27%] left-[8%] bg-white p-4 sm:p-6 border border-[#25AC7D] shadow max-w-full sm:max-w-[600px] md:max-w-[700px] lg:max-w-[750px]">
                     <div>
-                      <p className="text-[12px] font-bold text-red-800">
+                      <p className="text-[10px] sm:text-[12px] font-bold text-red-800">
                         {nodeByUri?.nodeByUri?.name}
                       </p>
                       <Link href={`/news/${musicpost.slug}`}>
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                        <h5 className="mb-2 text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
                           {musicpost?.title}
                         </h5>
                       </Link>
-                      <p className="text-[10px] text-base font-bold text-gray-800 mb-2">
+                      <p className="text-[8px] sm:text-[10px] text-base font-bold text-gray-800 mb-2">
                         <span
-                          className="text-[10px] font-extrabold mr-1"
+                          className="text-[8px] sm:text-[10px] font-extrabold mr-1"
                           style={{ color: "#40A6FB" }}
                         >
                           |
@@ -296,7 +296,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         >
                           {musicpost?.author?.node?.name}
                           <span
-                            className="text-[36px] font-extrabold mx-1"
+                            className="text-[28px] sm:text-[36px] font-extrabold mx-1"
                             style={{ color: "#40A6FB" }}
                           >
                             .
@@ -311,7 +311,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap justify-around mt-24">
+                  <div className="flex flex-wrap justify-around mt-10 sm:mt-16 lg:mt-28">
                     {nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.heroSectionBottomPosts?.nodes.map(
                       (item) => (
                         console.log(item, "item"),
@@ -320,10 +320,10 @@ function Music({ nodeByUri, fetchMore, loading }) {
                             console.log(post, "postpost"),
                             (
                               <>
-                                <div className="max-w-md bg-white mb-6">
+                                <div className="max-w-full sm:max-w-md bg-white mb-6">
                                   {post?.featuredImage?.node?.sourceUrl && (
                                     <ExportedImage
-                                      className="object-cover w-[432px] h-[293px]"
+                                      className="object-cover w-full sm:w-[432px] h-auto"
                                       priority={true}
                                       src={post?.featuredImage?.node?.sourceUrl}
                                       alt="vladimirputin"
@@ -332,17 +332,17 @@ function Music({ nodeByUri, fetchMore, loading }) {
                                     />
                                   )}
 
-                                  <p className="text-base font-bold text-red-800 mt-2">
+                                  <p className="text-sm sm:text-base font-bold text-red-800 mt-2">
                                     {item.name}
                                   </p>
                                   <Link href={`/news/${post.slug}`}>
-                                    <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                                    <h5 className="mb-2 text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
                                       {post.title}
                                     </h5>
                                   </Link>
-                                  <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                                  <p className="text-[12px] sm:text-[15px] text-base font-bold text-gray-800 mb-4">
                                     <span
-                                      className="text-[25px] font-extrabold mr-1"
+                                      className="text-[18px] sm:text-[25px] font-extrabold mr-1"
                                       style={{ color: "#40A6FB" }}
                                     >
                                       |
@@ -354,7 +354,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                                     >
                                       {post.author.node.name}
                                       <span
-                                        className="text-[36px] font-extrabold mx-1"
+                                        className="text-[28px] sm:text-[36px] font-extrabold mx-1"
                                         style={{ color: "#40A6FB" }}
                                       >
                                         .

@@ -8,9 +8,16 @@ function Index() {
   const router = useRouter();
 
   const handleClose = () => {
-    router.push(router.query.subscribe);
+    const { categoryslug } = router.query;
+    if (categoryslug) {
+      router.push(`/category/${categoryslug}`);
+    } else {
+      // Handle the case where categoryslug is not available
+      router.push("/");
+    }
   };
-  console.log(router.query.subscribe, "router.query.subscribe");
+
+  console.log(router.query, "router.query");
 
   return (
     <div
