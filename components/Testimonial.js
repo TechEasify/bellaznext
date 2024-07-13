@@ -35,11 +35,8 @@ function Testimonial() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-
-    handleResize(); // Check initial screen size
-
-    return () => window.removeEventListener('resize', handleResize); // Cleanup on unmount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const next = () => {
@@ -112,7 +109,7 @@ function Testimonial() {
           {...settings}
         >
           <div key={1} className="p-3">
-            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full sm:w-96 hover:border-indigo-600 slide-active:border-indigo-600">
+            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
               <div class="flex items-center mb-3 sm:mb-9 gap-2 text-amber-500 transition-all duration-500 group-hover:text-indigo-600 swiper-slide-active:text-indigo-600">
                 <div className="flex w-full items-center justify-between">
                   <div>
@@ -199,7 +196,7 @@ function Testimonial() {
             </div>
           </div>
           <div key={2} className="p-3">
-            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full sm:w-96 hover:border-indigo-600 slide-active:border-indigo-600">
+            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
               <div class="flex items-center mb-3 sm:mb-9 gap-2 text-amber-500 transition-all duration-500 group-hover:text-indigo-600 swiper-slide-active:text-indigo-600">
                 <div className="flex w-full items-center justify-between">
                   <div>
@@ -286,7 +283,7 @@ function Testimonial() {
             </div>
           </div>
           <div key={3} className="p-3">
-            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full sm:w-96 hover:border-indigo-600 slide-active:border-indigo-600">
+            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
               <div class="flex items-center mb-3 sm:mb-9 gap-2 text-amber-500 transition-all duration-500 group-hover:text-indigo-600 swiper-slide-active:text-indigo-600">
                 <div className="flex w-full items-center justify-between">
                   <div>
@@ -373,7 +370,7 @@ function Testimonial() {
             </div>
           </div>
           <div key={4} className="p-3">
-            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full sm:w-96 hover:border-indigo-600 slide-active:border-indigo-600">
+            <div class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
               <div class="flex items-center mb-3 sm:mb-9 gap-2 text-amber-500 transition-all duration-500 group-hover:text-indigo-600 swiper-slide-active:text-indigo-600">
                 <div className="flex w-full items-center justify-between">
                   <div>

@@ -473,46 +473,34 @@ function Index() {
           />
         )}
       </div>
-      <hr className="border-gray-300 mb-20" />
+      <hr className="border-gray-300 my-10" />
       <div className="mb-96">
         <Testimonial />
       </div>
       <div className="px-4 py-20 mx-auto max-w-screen-xl relative">
         <div
-          className="px-4 py-4 mx-auto max-w-screen-xl"
+          className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 mx-auto max-w-screen-xl"
           style={{
             background: "#40A6FB",
-            position: "absolute",
-            top: "-70%",
-            left: "5%",
-            width: "90%",
           }}
         >
-          <div
-            className="flex flex-col md:flex-row justify-center items-center text-center md:text-left"
-            style={{
-              paddingRight: "90px",
-              paddingLeft: "90px",
-              paddingTop: "30px",
-              paddingBottom: "30px",
-            }}
-          >
+          <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left px-4 md:px-20 py-6">
             <h5
-              className="text-[24px] md:text-[36px] font-bold mb-6 md:mb-0 md:mr-10"
+              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-6 md:mb-0 md:mr-10"
               style={{ color: "#002D73" }}
             >
               {data.page.advertise.cta.leftSideTitle}
             </h5>
-            <div className="">
-              <div className="flex">
-                <span className="text-[24px] md:text-[36px] text-white font-bold mr-5">
-                  EMAIL:{" "}
+            <div>
+              <div className="flex flex-col md:flex-row items-center md:items-start">
+                <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
+                  EMAIL:
                 </span>
                 <Link href={`mailto:${data.page.advertise.cta.emailAddress}`}>
-                  <span className="flex flex-col md:flex-row items-center text-[24px] md:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
+                  <span className="flex flex-col md:flex-row items-center text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
                     {data.page.advertise.cta.emailAddress}
                     <ExportedImage
-                      className="h-10 ml-2"
+                      className="h-8 md:h-10 ml-2"
                       priority={true}
                       src={arrowtop_right_thick}
                       alt="arrowtop_right_thick"
@@ -520,14 +508,12 @@ function Index() {
                   </span>
                 </Link>
               </div>
-              <div className="flex">
-                <span className="text-[24px] md:text-[36px] text-white font-bold mr-5">
-                  CALL:{" "}
+              <div className="flex flex-col md:flex-row items-center md:items-start mt-4 md:mt-0">
+                <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
+                  CALL:
                 </span>
                 <Link href={`tel:${data.page.advertise.cta.phoneNumber}`}>
-                  <span
-                    className="text-[24px] md:text-[36px] font-bold"
-                  >
+                  <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold">
                     {data.page.advertise.cta.phoneNumber}
                   </span>
                 </Link>
@@ -536,6 +522,7 @@ function Index() {
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );

@@ -170,11 +170,11 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md
 }
 
 /* button.slick-arrow.slick-next {
-  display: none !important;
+  right: -25px !important
 }
 
 button.slick-arrow.slick-prev {
-  display: none !important;
+  left: -25px !important
 } */
 
 button.group.flex.justify-center.items-center.border.border-solid.border-indigo-600.transition-all.duration-500.p-1\.5.font-semibold:hover {

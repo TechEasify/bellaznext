@@ -6,6 +6,12 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      inset: {
+        '-20%': '-20%',
+        '-40%': '-40%',
+        '-60%': '-60%',
+        '-70%': '-70%',
+      },
       fontFamily: {
         sans: ["Montserrat"],
       },
