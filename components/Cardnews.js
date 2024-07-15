@@ -18,6 +18,7 @@ const GET_CARD_SECTION = gql`
             posts {
               nodes {
                 content
+                excerpt
                 featuredImage {
                   node {
                     altText
@@ -139,7 +140,7 @@ const Cardnews = () => {
                           className="text-[15px] font-semibold text-gray-800 mb-2"
                           dangerouslySetInnerHTML={{
                             __html:
-                              post.content ||
+                              post.excerpt ||
                               "The Mystery at the Heart of the OpenAI Chaos the heart at beach",
                           }}
                         />

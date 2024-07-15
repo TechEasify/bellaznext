@@ -253,7 +253,7 @@ const Banner = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
-              {sortedPosts?.map(
+              {sortedPosts?.slice(0, 1).map(
                 (post) => (
                   console.log(post, "post"),
                   (

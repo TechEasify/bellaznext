@@ -234,7 +234,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                         </p>
                         <p
                           className="text-[15px] text-base font-normal text-gray-600 mb-3"
-                          dangerouslySetInnerHTML={{ __html: item.content }}
+                          dangerouslySetInnerHTML={{ __html: item.excerpt }}
                         />
                       </div>
                     </div>
