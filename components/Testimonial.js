@@ -1,8 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
+import { useDialog } from "./DialogContext";
 
 function Testimonial() {
+  const { testimonialQuery } = useDialog();
+  const [testimonialData, setTestimonialData] = useState([]);
+  console.log(testimonialQuery?.page?.advertise, "testimonialQuery");
   let sliderRef = useRef(null);
+
+  useEffect(() => {
+    if (testimonialQuery) {
+      setTestimonialData(testimonialQuery?.page?.advertise)
+    }
+  }, [testimonialQuery])
 
   const settings = {
     dots: true,
@@ -46,6 +56,8 @@ function Testimonial() {
   const previous = () => {
     sliderRef.slickPrev();
   };
+
+  console.log(testimonialData, "testimonialDatatestimonialData");
 
   return (
     <>
@@ -101,7 +113,7 @@ function Testimonial() {
           </div>
         </div>
       </div>
-      <div className="slider-container mb-10">
+      <div className="slider-container mb-10" id="slider-testimonial">
         <Slider
           ref={(slider) => {
             sliderRef = slider;

@@ -43,31 +43,12 @@ export const CATEGORY_BREAKING_QUERY = gql`
           }
         }
         categoryTamplate {
+          selectYourTemplateType
           simpleTamplate {
             simpleTitleBackgroundColor
             simpleHeroSection {
               heroSidebarAdCode
               heroSidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                  sourceUrl
-                }
-              }
-            }
-            simpleAdvertisementImage {
-              simpleAdCode
-              simpleAdImage {
-                node {
-                  altText
-                  sourceUrl
-                  srcSet
-                }
-              }
-            }
-            simpleAllPostsSidebarAds {
-              allSidebarAdCode
-              allSidebarAdImage {
                 node {
                   altText
                   srcSet

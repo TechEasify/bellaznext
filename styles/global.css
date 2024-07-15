@@ -169,13 +169,13 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md
   border-color: rgb(87, 160, 238) !important;
 }
 
-/* button.slick-arrow.slick-next {
-  right: -25px !important
+#slider-testimonial button.slick-arrow.slick-next {
+  display: none !important
 }
 
-button.slick-arrow.slick-prev {
-  left: -25px !important
-} */
+#slider-testimonial button.slick-arrow.slick-prev {
+  display: none !important
+}
 
 button.group.flex.justify-center.items-center.border.border-solid.border-indigo-600.transition-all.duration-500.p-1\.5.font-semibold:hover {
   background: #40A6FB !important;

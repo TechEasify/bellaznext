@@ -26,6 +26,14 @@ import { useDialog } from "./DialogContext";
 const Topheadlines = () => {
   const { topheadData, iconDataResult } = useDialog();
   console.log(topheadData, "topheadDatatopheadData");
+  const sortedTopHeadlines =
+    topheadData?.page?.homePage?.topHeadlinesPost?.nodes
+      .slice(0, 6)
+      .flatMap((item) => item?.posts?.nodes)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      console.log(sortedTopHeadlines, "sortedTopHeadlinessortedTopHeadlinessortedTopHeadlines");
+
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-7">
@@ -44,64 +52,56 @@ const Topheadlines = () => {
             <br />
           </div>
 
-          <div className="flex flex-wrap justify-around px-2">
-            {topheadData?.page?.homePage?.topHeadlinesPost?.nodes
-              .slice(0, 6)
-              .map(
-                (item) => (
-                  console.log(item, "item item topheadline"),
-                  (
-                    <div key={item.id}>
-                      {item?.posts?.nodes.slice(0, 1).map((post) =>
-                        post?.featuredImage?.node?.sourceUrl ? (
-                          <div className="max-w-md bg-white mb-6" key={post.id}>
-                            <Link href={`/news/${post.slug}`}>
-                              <ExportedImage
-                                priority={true}
-                                src={post?.featuredImage?.node?.sourceUrl}
-                                alt={post?.featuredImage?.node?.sourceUrl || ""}
-                                width={432}
-                                height={293}
-                                className="object-cover w-[432px] h-[293px]"
-                              />
-                            </Link>
-                            <p className="text-base font-bold text-red-800 mt-2">
-                              {item.name}
-                            </p>
-                            <Link href={`/news/${post.slug}`}>
-                              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
-                                {post?.title}
-                              </h5>
-                            </Link>
-                            <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
-                              <span
-                                className="text-[25px] font-extrabold mr-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                |
-                              </span>
-                              By
-                              <span
-                                className="font-extrabold mx-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                {post?.author?.node?.name || ""}
-                                <span
-                                  className="text-[36px] font-extrabold mx-1"
-                                  style={{ color: "#40A6FB" }}
-                                >
-                                  .
-                                </span>
-                              </span>
-                              6 MIN READ
-                            </p>
-                          </div>
-                        ) : null
-                      )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-2">
+            {sortedTopHeadlines?.map((item) => (
+              console.log(item, "itemitemitemitemitem"),
+                <div key={item.id} className="max-w-md bg-white mb-6">
+                  {item.categories.nodes.slice(0, 6).map((category) => (
+                    <div key={category.id}>
+                      <Link href={`/news/${item.slug}`}>
+                        <ExportedImage
+                          priority={true}
+                          src={item?.featuredImage?.node?.sourceUrl}
+                          alt={item?.featuredImage?.node?.sourceUrl || ""}
+                          width={432}
+                          height={293}
+                          className="object-cover w-[432px] h-[293px]"
+                        />
+                      </Link>
+                      <p className="text-base font-bold text-red-800 mt-2">
+                        {category.name}
+                      </p>
+                      <Link href={`/news/${item.slug}`}>
+                        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                          {item?.title}
+                        </h5>
+                      </Link>
+                      <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[25px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {item?.author?.node?.name || ""}
+                          <span
+                            className="text-[36px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        6 MIN READ
+                      </p>
                     </div>
-                  )
-                )
-              )}
+                  ))}
+                </div>
+              ))}
           </div>
 
           <hr className="mx-6 mb-8" />
@@ -341,7 +341,9 @@ const Topheadlines = () => {
                 className="h-13 w-13 mx-2 object-cover"
               />
             </Link>
-            <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
+            <Link
+              href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+            >
               <ExportedImage
                 src={Group2}
                 alt="Partly Cloudy"

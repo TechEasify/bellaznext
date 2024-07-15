@@ -212,9 +212,7 @@ const Nav = ({
   };
 
   const handleSub = () => {
-    // Store the current pathname in localStorage or state
     localStorage.setItem('lastPathname', router.asPath);
-  
     router.push({
       pathname: "/subscribe",
     });
@@ -235,7 +233,7 @@ const Nav = ({
                 <span className="sr-only">BELAAZ</span>
                 <ExportedImage
                   priority={true}
-                  className="h-12 w-auto md:h-14 mr-5 object-cover"
+                  className="h-12 w-auto md:h-14 mr-5"
                   src={BELAAZICON}
                   alt="BELAAZICON"
                 />
@@ -438,7 +436,7 @@ const Nav = ({
                       dataMenu?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
-                      className="h-3 w-3 ml-2 object-cover"
+                      className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
                     />
@@ -453,7 +451,7 @@ const Nav = ({
                     dataMenu.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
-                    className="h-3 w-3 mx-2 object-cover"
+                    className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
                   />
@@ -466,7 +464,7 @@ const Nav = ({
                   {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
-                    className="h-3 w-3 mx-2 object-cover"
+                    className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
                   />
@@ -478,14 +476,14 @@ const Nav = ({
                   {isContactHeaderVisible ? (
                     <ExportedImage
                       priority={true}
-                      className="h-5 w-5 mx-2 object-cover"
+                      className="h-5 w-5 mx-2"
                       src={closewhite}
                       alt="close Icon"
                     />
                   ) : (
                     <ExportedImage
                       priority={true}
-                      className="h-5 w-5 mx-2 object-cover"
+                      className="h-5 w-5 mx-2"
                       src={Frame283}
                       alt="Contact Toggle Icon"
                     />
@@ -497,7 +495,7 @@ const Nav = ({
                 >
                   <ExportedImage
                     priority={true}
-                    className="h-6 w-6 mx-2 object-cover"
+                    className="h-6 w-6 mx-2"
                     src={magnify}
                     alt="Search Icon"
                   />
@@ -630,7 +628,7 @@ const Nav = ({
           >
             <ExportedImage
               priority={true}
-              className="h-4 w-4 mx-2 object-cover"
+              className="h-4 w-4 mx-2"
               src={Closeicon}
               alt="Close Icon"
             />
@@ -672,7 +670,7 @@ const Nav = ({
             >
               <ExportedImage
                 priority={true}
-                className="h-4 w-4 mx-2 object-cover"
+                className="h-4 w-4 mx-2"
                 src={Closeicon}
                 alt="Close Icon"
               />
@@ -779,7 +777,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -787,7 +785,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -795,7 +793,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -803,7 +801,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -879,7 +877,7 @@ const Nav = ({
                       dataMenu?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
-                      className="h-3 w-3 ml-2 object-cover"
+                      className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
                     />
@@ -894,7 +892,7 @@ const Nav = ({
                           dataMenu.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
-                          className="h-3 w-3 mx-2 object-cover"
+                          className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
                         />
@@ -907,7 +905,7 @@ const Nav = ({
                           dataMenu.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
-                          className="h-3 w-3 mx-2 object-cover"
+                          className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
                         />
@@ -920,7 +918,7 @@ const Nav = ({
                           dataMenu.menu.header.subThird}
                         <ExportedImage
                           priority={true}
-                          className="h-3 w-3 mx-2 object-cover"
+                          className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
                         />
@@ -936,7 +934,7 @@ const Nav = ({
                     dataMenu.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
-                    className="h-3 w-3 mx-2 object-cover"
+                    className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
                   />
@@ -948,7 +946,7 @@ const Nav = ({
                   {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
-                    className="h-3 w-3 mx-2 object-cover"
+                    className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
                   />
@@ -985,7 +983,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -993,7 +991,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1001,7 +999,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1009,7 +1007,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -1053,7 +1051,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -1061,7 +1059,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1069,7 +1067,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1077,7 +1075,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -1259,7 +1257,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -1267,7 +1265,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1275,7 +1273,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1283,7 +1281,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -1327,7 +1325,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -1335,7 +1333,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1343,7 +1341,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1351,7 +1349,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -1533,7 +1531,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -1541,7 +1539,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1549,7 +1547,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1557,7 +1555,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -1601,7 +1599,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -1609,7 +1607,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1617,7 +1615,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1625,7 +1623,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -1807,7 +1805,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -1815,7 +1813,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1823,7 +1821,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1831,7 +1829,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -1875,7 +1873,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -1883,7 +1881,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -1891,7 +1889,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -1899,7 +1897,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2081,7 +2079,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2089,7 +2087,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2097,7 +2095,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2105,7 +2103,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2149,7 +2147,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2157,7 +2155,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2165,7 +2163,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2173,7 +2171,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2355,7 +2353,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2363,7 +2361,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2371,7 +2369,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2379,7 +2377,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2423,7 +2421,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2431,7 +2429,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2439,7 +2437,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2447,7 +2445,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2629,7 +2627,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2637,7 +2635,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2645,7 +2643,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2653,7 +2651,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2697,7 +2695,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2705,7 +2703,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2713,7 +2711,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2721,7 +2719,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2903,7 +2901,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2911,7 +2909,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2919,7 +2917,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2927,7 +2925,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -2971,7 +2969,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -2979,7 +2977,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -2987,7 +2985,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -2995,7 +2993,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -3177,7 +3175,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -3185,7 +3183,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -3193,7 +3191,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -3201,7 +3199,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -3245,7 +3243,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -3253,7 +3251,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -3261,7 +3259,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -3269,7 +3267,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -3451,7 +3449,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -3459,7 +3457,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -3467,7 +3465,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -3475,7 +3473,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />
@@ -3519,7 +3517,7 @@ const Nav = ({
               >
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group}
                   alt="Whatsapp Icon"
                 />
@@ -3527,7 +3525,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group1}
                   alt="Facebook Icon"
                 />
@@ -3535,7 +3533,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group2}
                   alt="Instagram Icon"
                 />
@@ -3543,7 +3541,7 @@ const Nav = ({
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
                 <ExportedImage
                   priority={true}
-                  className="h-8 w-8 mx-1 object-cover"
+                  className="h-8 w-8 mx-1"
                   src={Group3}
                   alt="Twitter Icon"
                 />

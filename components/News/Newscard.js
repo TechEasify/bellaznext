@@ -118,7 +118,7 @@ const Newscard = ({ nodeByUri }) => {
                           {post?.featuredImage?.node?.sourceUrl && (
                             <ExportedImage
                               src={post.featuredImage.node.sourceUrl}
-                              alt={post.featuredImage.node.altText || "image"}
+                              alt={post.featuredImage.node.altText || ""}
                               className="object-cover w-[397px] h-[210px] mr-2 mb-2"
                               width={397}
                               height={210}

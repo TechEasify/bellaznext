@@ -184,7 +184,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
 
             {firstLayoutPosts.map((post, index) => (
               <React.Fragment key={index}>
-                <div className="mr-2">
+                <div className="mr-2 my-2">
                   {post?.featuredImage?.node?.sourceUrl && (
                     <ExportedImage
                       src={post?.featuredImage?.node?.sourceUrl}
@@ -225,13 +225,13 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     6 MIN READ
                   </p>
                 </div>
-                <hr />
+                <hr className="my-3"/>
               </React.Fragment>
             ))}
 
             {secondLayoutPosts.map((post, index) => (
               <React.Fragment key={index}>
-                <div className="flex mt-5">
+                <div className="flex my-5">
                   <div className="mr-2 flex-1">
                     <p className="text-[12px] font-bold text-red-800">
                       {post.categoryName}
@@ -261,75 +261,110 @@ function Music({ nodeByUri, fetchMore, loading }) {
               console.log(musicpost, "musicpost"),
               (
                 <div className="w-full max-w-5xl mx-auto relative">
-  {musicpost?.featuredImage?.node?.sourceUrl && (
-    <ExportedImage
-      className="mb-2 object-cover w-full md:w-[910px] h-[554px]"
-      priority={true}
-      src={musicpost?.featuredImage?.node?.sourceUrl}
-      width={910}
-      height={554}
-      alt="vladimirputin"
-    />
-  )}
+                  {musicpost?.featuredImage?.node?.sourceUrl && (
+                    <ExportedImage
+                      className="mb-2 object-cover w-full md:w-[910px] h-[554px]"
+                      priority={true}
+                      src={musicpost?.featuredImage?.node?.sourceUrl}
+                      width={910}
+                      height={554}
+                      alt="vladimirputin"
+                    />
+                  )}
 
-  <div className="absolute top-[27%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:w-[750px]">
-    <div>
-      <p className="text-[12px] font-bold text-red-800">
-        {nodeByUri?.nodeByUri?.name}
-      </p>
-      <Link href={`/news/${musicpost.slug}`}>
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
-          {musicpost?.title}
-        </h5>
-      </Link>
-      <p className="text-[10px] text-base font-bold text-gray-800 mb-2">
-        <span className="text-[10px] font-extrabold mr-1" style={{ color: "#40A6FB" }}>|</span>
-        By
-        <span className="font-extrabold mx-1" style={{ color: "#40A6FB" }}>
-          {musicpost?.author?.node?.name}
-          <span className="text-[36px] font-extrabold mx-1" style={{ color: "#40A6FB" }}>.</span>
-        </span>
-        6 MIN READ
-      </p>
-      <p className="font-normal text-gray-700 dark:text-gray-400" dangerouslySetInnerHTML={{ __html: musicpost?.content }} />
-    </div>
-  </div>
+                  <div className="absolute top-[27%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:w-[750px]">
+                    <div>
+                      <p className="text-[12px] font-bold text-red-800">
+                        {nodeByUri?.nodeByUri?.name}
+                      </p>
+                      <Link href={`/news/${musicpost.slug}`}>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                          {musicpost?.title}
+                        </h5>
+                      </Link>
+                      <p className="text-[10px] text-base font-bold text-gray-800 mb-2">
+                        <span
+                          className="text-[10px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {musicpost?.author?.node?.name}
+                          <span
+                            className="text-[36px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        6 MIN READ
+                      </p>
+                      <p
+                        className="font-normal text-gray-700 dark:text-gray-400"
+                        dangerouslySetInnerHTML={{ __html: musicpost?.content }}
+                      />
+                    </div>
+                  </div>
 
-  <div className="flex flex-wrap justify-around mt-28">
-    {nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.heroSectionBottomPosts?.nodes.map((item) => (
-      item.posts.nodes.map((post) => (
-        <div key={post.slug} className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2">
-          {post?.featuredImage?.node?.sourceUrl && (
-            <ExportedImage
-              className="object-cover w-full h-[293px]"
-              priority={true}
-              src={post?.featuredImage?.node?.sourceUrl}
-              alt="vladimirputin"
-              width={432}
-              height={293}
-            />
-          )}
+                  <div className="flex flex-wrap justify-around mt-28">
+                    {nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.heroSectionBottomPosts?.nodes.map(
+                      (item) =>
+                        item.posts.nodes.map((post) => (
+                          <div
+                            key={post.slug}
+                            className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2"
+                          >
+                            {post?.featuredImage?.node?.sourceUrl && (
+                              <ExportedImage
+                                className="object-cover w-full h-[293px]"
+                                priority={true}
+                                src={post?.featuredImage?.node?.sourceUrl}
+                                alt="vladimirputin"
+                                width={432}
+                                height={293}
+                              />
+                            )}
 
-          <p className="text-base font-bold text-red-800 mt-2">{item.name}</p>
-          <Link href={`/news/${post.slug}`}>
-            <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
-              {post.title}
-            </h5>
-          </Link>
-          <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
-            <span className="text-[25px] font-extrabold mr-1" style={{ color: "#40A6FB" }}>|</span>
-            By
-            <span className="font-extrabold mx-1" style={{ color: "#40A6FB" }}>
-              {post.author.node.name}
-              <span className="text-[36px] font-extrabold mx-1" style={{ color: "#40A6FB" }}>.</span>
-            </span>
-            6 MIN READ
-          </p>
-        </div>
-      ))
-    ))}
-  </div>
-</div>
+                            <p className="text-base font-bold text-red-800 mt-2">
+                              {item.name}
+                            </p>
+                            <Link href={`/news/${post.slug}`}>
+                              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                                {post.title}
+                              </h5>
+                            </Link>
+                            <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                              <span
+                                className="text-[25px] font-extrabold mr-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                |
+                              </span>
+                              By
+                              <span
+                                className="font-extrabold mx-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                {post.author.node.name}
+                                <span
+                                  className="text-[36px] font-extrabold mx-1"
+                                  style={{ color: "#40A6FB" }}
+                                >
+                                  .
+                                </span>
+                              </span>
+                              6 MIN READ
+                            </p>
+                          </div>
+                        ))
+                    )}
+                  </div>
+                </div>
               )
             )
           )}

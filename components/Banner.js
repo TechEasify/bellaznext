@@ -234,7 +234,7 @@ const Banner = () => {
     .flatMap((item) => item.posts.nodes)
     .filter((post) =>
       post.categories.nodes.some(
-        (category) => category.name === "Breaking News"
+        (category) => category.name
       )
     )
     .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -279,7 +279,7 @@ const Banner = () => {
                       >
                         <p
                           className="text-[15px] text-base font-bold text-gray-800 mb-3 cursor-pointer"
-                          dangerouslySetInnerHTML={{ __html: post.content }}
+                          dangerouslySetInnerHTML={{ __html: post.excerpt }}
                         />
                       </Link>
                       <p className="text-[15px] text-base font-bold text-gray-800 mb-4">

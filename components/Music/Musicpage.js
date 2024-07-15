@@ -19,10 +19,7 @@ import { useDialog } from "../DialogContext";
 import Ads from "../googleAds/Ads";
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
-  console.log(
-    nodeByUri?.categoryTamplate?.musicTamplate?.musicAdervtiseImage,
-    "nodeByUri news"
-  );
+  console.log(nodeByUri?.categoryTamplate, "nodeByUri news");
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -59,6 +56,11 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
     }
   };
 
+  console.log(
+    nodeByUri?.categoryTamplate?.selectYourTemplateType[0],
+    "nodeByUri?.categoryTamplate"
+  );
+
   return (
     <>
       <div className="px-4 py-16 mx-auto max-w-screen-xl">
@@ -67,16 +69,22 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-        {nodeByUri?.categoryTamplate?.musicTamplate
-          ?.musicAdervtiseImage?.adImage?.node?.sourceUrl ? (
+        {nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Simple" || nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Music" || nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Insight" &&
+        nodeByUri?.categoryTamplate?.musicTamplate?.musicAdervtiseImage?.adImage
+          ?.node?.sourceUrl ? (
           <ExportedImage
-            style={{ width: "1134px", height: "169px", margin: "0 auto", objectFit: "cover" }}
+            style={{
+              width: "1134px",
+              height: "169px",
+              margin: "0 auto",
+              objectFit: "cover",
+            }}
             width={1134}
             height={169}
             priority={true}
             src={
-              nodeByUri?.categoryTamplate?.musicTamplate
-                ?.musicAdervtiseImage?.adImage?.node?.sourceUrl
+              nodeByUri?.categoryTamplate?.musicTamplate?.musicAdervtiseImage
+                ?.adImage?.node?.sourceUrl
             }
             alt="PR_01CFA"
           />
@@ -326,13 +334,41 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            <ExportedImage
-              className="mb-2 w-full h-auto max-h-96"
-              priority={true}
-              src={Rectangle367}
-              alt="Rectangle367"
-              style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-            />
+            {(nodeByUri?.categoryTamplate?.selectYourTemplateType &&
+              ["Simple", "Music", "Insight"].includes(
+                nodeByUri.categoryTamplate.selectYourTemplateType[0]
+              )) ||
+            nodeByUri?.categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+              ?.sidebarAdImage?.node?.sourceUrl !== null ? (
+              nodeByUri?.categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+                ?.sidebarAdImage?.node?.sourceUrl ? (
+                <ExportedImage
+                  className="mb-2 w-full h-auto max-h-96"
+                  priority={true}
+                  src={
+                    nodeByUri?.categoryTamplate?.musicTamplate
+                      ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
+                  }
+                  width={297}
+                  height={503}
+                  alt="Rectangle367"
+                  style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+                />
+              ) : (
+                <Ads
+                  className=""
+                  style={{
+                    display: "block",
+                    width: "297px",
+                    height: "503px",
+                    margin: "0 auto",
+                  }}
+                  adClient="ca-pub-3209848804552918"
+                  adSlot="9293720177"
+                />
+              )
+            ) : null}
+
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
               className="text-red-800 my-3"

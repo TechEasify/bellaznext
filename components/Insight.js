@@ -296,6 +296,10 @@ const SkeletonLoader = () => (
 );
 
 const Insight = ({ nodeByUri }) => {
+  console.log(
+    nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTemplateType[0],
+    "nodeByUrinodeByUrinodeByUrinodeByUri"
+  );
   const {
     setCursor,
     cursor,
@@ -361,7 +365,7 @@ const Insight = ({ nodeByUri }) => {
                           passHref
                         >
                           <ExportedImage
-                          className="object-cover w-[357px] h-[261px]"
+                            className="object-cover w-[357px] h-[261px]"
                             priority={true}
                             src={item?.featuredImage?.node?.sourceUrl}
                             alt="ferrari4"
@@ -441,16 +445,21 @@ const Insight = ({ nodeByUri }) => {
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            {nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate
-              ?.insightSidebarAdvertisementImage?.sidebarAdImage?.node
-              .sourceUrl ? (
+            {(nodeByUri?.nodeByUri?.categoryTamplate
+              ?.selectYourTemplateType[0] === "Simple" ||
+              nodeByUri?.nodeByUri?.categoryTamplate
+                ?.selectYourTemplateType[0] === "Music" ||
+              nodeByUri?.nodeByUri?.categoryTamplate
+                ?.selectYourTemplateType[0] === "Insight") &&
+            nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate
+              ?.insightSidebarAdvertisementImage?.sidebarAdImage !== null ? (
               <ExportedImage
                 className="mb-2 w-full h-auto max-h-96"
                 priority={true}
                 src={
                   nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate
-                    .insightSidebarAdvertisementImage.sidebarAdImage.node
-                    .sourceUrl
+                    ?.insightSidebarAdvertisementImage?.sidebarAdImage?.node
+                    ?.sourceUrl
                 }
                 alt="Rectangle367"
                 width={297}
@@ -470,6 +479,7 @@ const Insight = ({ nodeByUri }) => {
                 adSlot="9293720177"
               />
             )}
+
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
               className="text-red-800 my-3"

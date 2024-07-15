@@ -9,7 +9,6 @@ function Index() {
   console.log(router, "router");
 
   const handleClose = () => {
-    // Retrieve the last visited pathname from localStorage or state
     const lastPathname = localStorage.getItem("lastPathname");
     if (lastPathname) {
       router.push(lastPathname);

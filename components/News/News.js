@@ -20,6 +20,10 @@ import { useDialog } from "../DialogContext";
 
 const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
   console.log(nodeByUri, "nodeByUri");
+  console.log(
+    categoryTamplate?.musicTamplate?.musicAllPostsSidebar?.sidebarAdImage,
+    "categoryTamplatecategoryTamplatecategoryTamplate"
+  );
   const { iconDataResult } = useDialog();
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
@@ -385,18 +389,22 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            {categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
+            {categoryTamplate?.selectYourTemplateType &&
+            ["Simple", "Music", "Insight"].includes(
+              categoryTamplate.selectYourTemplateType[0]
+            ) &&
+            categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
               ?.allSidebarAdImage?.node?.sourceUrl ? (
               <ExportedImage
                 className="mb-2 w-full h-auto max-h-96 object-cover w-[297px] h-[503px]"
                 priority={true}
                 src={
                   categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
-                    ?.allSidebarAdImage?.node?.sourceUrl || ""
+                    ?.allSidebarAdImage?.node?.sourceUrl
                 }
                 alt={
                   categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
-                    ?.allSidebarAdImage?.node?.sourceUrl || ""
+                    ?.allSidebarAdImage?.node?.sourceUrl
                 }
                 width={297}
                 height={503}
@@ -414,6 +422,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 adSlot="9293720177"
               />
             )}
+
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
               className="text-red-800 my-3"
@@ -469,7 +478,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
             </p>
             <hr
               className="text-red-800 h-[7px]"
-              style={{background: "#CE3A42" }}
+              style={{ background: "#CE3A42" }}
             />
 
             <div className="flex mt-5 mb-8">

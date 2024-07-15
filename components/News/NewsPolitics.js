@@ -16,6 +16,7 @@ import andreas from "../../public/images/andreas.svg";
 import Newscard from "./Newscard";
 import Link from "next/link";
 import { useDialog } from "../DialogContext";
+import Ads from "../googleAds/Ads";
 
 const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
   console.log(nodeByUri, "nodeByUri politics");
@@ -55,6 +56,9 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
     }
   };
 
+  console.log(nodeByUri?.categoryTamplate?.insightTamplate
+    ?.insightTitleBackgroundColor, "policts color");
+
   return (
     <>
       {/* <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
@@ -92,9 +96,7 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
                     <p
                       className="text-base font-bold text-red-800"
                       style={{
-                        background: `${
-                          nodeByUri.categoryTamplate.insightTamplate
-                            .insightTitleBackgroundColor || "rgb(255, 165, 0)"
+                        background: `${"rgb(255, 165, 0)"
                         }`,
                         color: "#fff",
                         padding: "0 10px",
@@ -160,36 +162,75 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            <ExportedImage
-              className="mb-2 w-full h-auto max-h-96"
-              priority={true}
-              src={Rectangle367}
-              alt="Rectangle367"
-              width={367}
-              height={262}
-              style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-            />
+            {nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
+              "Simple" ||
+            nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
+              "Music" ||
+            nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
+              "Insight" ||
+              nodeByUri?.categoryTamplate?.insightTamplate
+              ?.insightSidebarAdvertisementImage?.sidebarAdImage !== null ||
+              nodeByUri?.categoryTamplate?.musicTamplate
+              ?.musicAllPostsSidebar?.sidebarAdImage !== null ||
+            nodeByUri?.categoryTamplate?.simpleTamplate
+              ?.simpleAllPostsSidebarAds?.allSidebarAdImage !== null ? (
+              <ExportedImage
+                className="mb-2 w-full h-auto max-h-96"
+                priority={true}
+                src={
+                  nodeByUri?.categoryTamplate?.insightTamplate
+              ?.insightSidebarAdvertisementImage?.sidebarAdImage?.node?.sourceUrl ||
+              nodeByUri?.categoryTamplate?.musicTamplate
+              ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl ||
+                  nodeByUri?.categoryTamplate?.simpleTamplate
+                    ?.simpleAllPostsSidebarAds?.allSidebarAdImage?.node
+                    ?.sourceUrl
+                }
+                alt="Rectangle367"
+                width={367}
+                height={262}
+                style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+              />
+            ) : (
+              <Ads
+                className=""
+                style={{
+                  display: "block",
+                  width: "297px",
+                  height: "500px",
+                  margin: "0 auto",
+                }}
+                adClient="ca-pub-3209848804552918"
+                adSlot="9293720177"
+              />
+            )}
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
               className="text-red-800 my-3"
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group1}
                   alt="Partly Cloudy"
                   className="h-13 w-13"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+              >
                 <ExportedImage
                   src={Group2}
                   alt="Partly Cloudy"

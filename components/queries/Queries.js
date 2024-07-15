@@ -138,7 +138,7 @@ export const GET_HOME_PAGE = gql`
               ... on Category {
                 posts {
                   nodes {
-                  slug
+                    slug
                     categories {
                       nodes {
                         name
@@ -146,6 +146,7 @@ export const GET_HOME_PAGE = gql`
                     }
                     title
                     content
+                    excerpt
                     author {
                       node {
                         name
@@ -428,6 +429,135 @@ export const GET_MUSIC_SECTION = gql`
             }
           }
           musicBottomAdCode
+        }
+      }
+    }
+  }
+`;
+
+export const GET_TESTIMONIAL_SECTION = gql`
+  query MyQuery2 {
+    page(id: "3114", idType: DATABASE_ID) {
+      advertise {
+        testimonials1 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials2 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials3 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials4 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials5 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials6 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials7 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials8 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials9 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
+        }
+        testimonials10 {
+          authorName
+          message
+          authorImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          testimonialRating
         }
       }
     }

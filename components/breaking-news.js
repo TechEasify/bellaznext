@@ -188,7 +188,7 @@ function Breakingnews({ nodeByUri, loading, uri, fetchMore }) {
         </div> */}
         <News
           nodeByUri={nodeByUri.nodeByUri}
-          categoryTamplate={nodeByUri.nodeByUri.categoryTamplate}
+          categoryTamplate={nodeByUri?.nodeByUri?.categoryTamplate}
           fetchMore={fetchMore}
           loading={loading}
         />

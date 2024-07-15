@@ -8,6 +8,7 @@ import {
   GET_MUSIC_SECTION,
   GET_NAV_SECTION,
   GET_SUBMENU_SECTION,
+  GET_TESTIMONIAL_SECTION,
   GET_TOPHEADLINE_PAGE,
 } from "./queries/Queries";
 import {
@@ -43,6 +44,7 @@ export const DialogProvider = ({ children }) => {
   const [insightsQuery, setInsightsQuery] = useState(null);
   const [musicQuery, setMusicQuery] = useState(null);
   const [categoryInsightData, setCategoryInsightData] = useState(null);
+  const [testimonialQuery, setTestimonialQuery] = useState(null);
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -90,7 +92,7 @@ export const DialogProvider = ({ children }) => {
     fetchPolicy: "cache-first",
   });
 
-  console.log(categoryData, "categoryData");
+  console.log(categoryData, "categoryDatacategoryDatacategoryDatacategoryDatacategoryData");
 
   const {
     loading: bannerLoading,
@@ -123,6 +125,14 @@ export const DialogProvider = ({ children }) => {
     fetchMore: insightFetchMore
   } = useQuery(INSIGHTS_DATA, { fetchPolicy: "cache-first" });
 
+  const {
+    data: testimonialData,
+    loading: testimonialLoading,
+    error: testimonialError
+  } = useQuery(GET_TESTIMONIAL_SECTION, { fetchPolicy: "cache-first" })
+
+  console.log(testimonialData, "testimonialData");
+
   useEffect(() => {
     if (navDataResult) setDataNav(navDataResult);
     if (menuDataResult) setDataMenu(menuDataResult);
@@ -134,6 +144,7 @@ export const DialogProvider = ({ children }) => {
     if (insightsData) setInsightsQuery(insightsData);
     if (musicData) setMusicQuery(musicData);
     if (categoryInsight) setCategoryInsightData(categoryInsight);
+    if (testimonialData) setTestimonialQuery(testimonialData)
   }, [
     navDataResult,
     menuDataResult,
@@ -143,7 +154,12 @@ export const DialogProvider = ({ children }) => {
     Data,
     topheadlineData,
     insightsData,
+    testimonialData,
+    musicData,
+    categoryInsight
   ]);
+
+  console.log(nodeByUri, "nodeByUri");
 
   console.log(bannerData, "bannerData");
 
@@ -188,6 +204,7 @@ export const DialogProvider = ({ children }) => {
         categoryInsightData,
         categoryLoading,
         categoryError,
+        testimonialQuery
       }}
     >
       {children}
