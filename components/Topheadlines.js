@@ -53,8 +53,8 @@ const Topheadlines = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-2">
-            {sortedTopHeadlines?.map((item) => (
-              console.log(item, "itemitemitemitemitem"),
+            {sortedTopHeadlines?.slice(0, 6)?.map((item) => (
+              console.log(item, "itemitemitemitemitemTopheadline"),
                 <div key={item.id} className="max-w-md bg-white mb-6">
                   {item.categories.nodes.slice(0, 6).map((category) => (
                     <div key={category.id}>
