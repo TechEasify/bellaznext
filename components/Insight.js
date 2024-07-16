@@ -452,7 +452,7 @@ const Insight = () => {
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            {/* {(nodeByUri?.nodeByUri?.categoryTamplate
+            {(nodeByUri?.nodeByUri?.categoryTamplate
               ?.selectYourTemplateType[0] === "Simple" ||
               nodeByUri?.nodeByUri?.categoryTamplate
                 ?.selectYourTemplateType[0] === "Music") &&
@@ -464,7 +464,7 @@ const Insight = () => {
                 priority={true}
                 src={
                   nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
-                    ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
+                  ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
                 }
                 alt="Rectangle367"
                 width={297}
@@ -483,7 +483,7 @@ const Insight = () => {
                 adClient="ca-pub-3209848804552918"
                 adSlot="9293720177"
               />
-            )} */}
+            )}
 
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
