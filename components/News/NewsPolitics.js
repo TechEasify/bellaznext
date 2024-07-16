@@ -56,8 +56,10 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
     }
   };
 
-  console.log(nodeByUri?.categoryTamplate?.insightTamplate
-    ?.insightTitleBackgroundColor, "policts color");
+  console.log(
+    nodeByUri?.categoryTamplate,
+    "policts color"
+  );
 
   return (
     <>
@@ -96,8 +98,7 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
                     <p
                       className="text-base font-bold text-red-800"
                       style={{
-                        background: `${"rgb(255, 165, 0)"
-                        }`,
+                        background: `${"rgb(255, 165, 0)"}`,
                         color: "#fff",
                         padding: "0 10px",
                         width: "100px",
@@ -166,22 +167,16 @@ const NewsPolitics = ({ nodeByUri, fetchMore, loading }) => {
               "Simple" ||
             nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
               "Music" ||
-            nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
-              "Insight" ||
-              nodeByUri?.categoryTamplate?.insightTamplate
-              ?.insightSidebarAdvertisementImage?.sidebarAdImage !== null ||
-              nodeByUri?.categoryTamplate?.musicTamplate
-              ?.musicAllPostsSidebar?.sidebarAdImage !== null ||
+            nodeByUri?.categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+              ?.sidebarAdImage !== null ||
             nodeByUri?.categoryTamplate?.simpleTamplate
               ?.simpleAllPostsSidebarAds?.allSidebarAdImage !== null ? (
               <ExportedImage
                 className="mb-2 w-full h-auto max-h-96"
                 priority={true}
                 src={
-                  nodeByUri?.categoryTamplate?.insightTamplate
-              ?.insightSidebarAdvertisementImage?.sidebarAdImage?.node?.sourceUrl ||
-              nodeByUri?.categoryTamplate?.musicTamplate
-              ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl ||
+                  nodeByUri?.categoryTamplate?.musicTamplate
+                    ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl ||
                   nodeByUri?.categoryTamplate?.simpleTamplate
                     ?.simpleAllPostsSidebarAds?.allSidebarAdImage?.node
                     ?.sourceUrl

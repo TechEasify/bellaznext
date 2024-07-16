@@ -10,7 +10,7 @@ import CategoryjewishNews from "./News/jewishNews";
 import Link from "next/link";
 
 function Jewishnews({ nodeByUri, fetchMore, loading }) {
-  console.log(nodeByUri?.nodeByUri, "nodeByUri jewish news");
+  console.log(nodeByUri, "nodeByUri jewish news");
 
   // Check if nodeByUri is defined and has the expected structure
   const isDataReady =

@@ -437,129 +437,145 @@ export const GET_MUSIC_SECTION = gql`
 
 export const GET_TESTIMONIAL_SECTION = gql`
   query MyQuery2 {
-    page(id: "3114", idType: DATABASE_ID) {
-      advertise {
-        testimonials1 {
+  page(id: "3114", idType: DATABASE_ID) {
+    id
+    advertise {
+      testimonials {
+        testimonial {
           authorName
-          message
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials2 {
-          authorName
           message
+          rating
+        }
+        testimonial1 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials3 {
-          authorName
           message
+          rating
+        }
+        testimonial2 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials4 {
-          authorName
           message
+          rating
+        }
+        testimonial3 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials5 {
-          authorName
           message
+          rating
+        }
+        testimonial4 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials6 {
-          authorName
           message
+          rating
+        }
+        testimonial5 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials7 {
-          authorName
           message
+          rating
+        }
+        testimonial6 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials8 {
-          authorName
           message
+          rating
+        }
+        testimonial7 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials9 {
-          authorName
           message
+          rating
+        }
+        testimonial8 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
-        }
-        testimonials10 {
-          authorName
           message
+          rating
+        }
+        testimonial9 {
+          authorName
           authorImage {
             node {
               altText
-              sourceUrl
               srcSet
+              sourceUrl
             }
           }
-          testimonialRating
+          message
+          rating
         }
+        testimonial10 {
+          authorName
+          authorImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          message
+          rating
+        }
+        
       }
     }
   }
+}
 `;

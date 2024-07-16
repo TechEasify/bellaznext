@@ -184,3 +184,11 @@ button.group.flex.justify-center.items-center.border.border-solid.border-indigo-
 button.contactus:hover {
   background: #40A6FB !important;
 }
+
+.export {
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+}

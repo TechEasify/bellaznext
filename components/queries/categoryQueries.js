@@ -56,16 +56,30 @@ export const CATEGORY_BREAKING_QUERY = gql`
                 }
               }
             }
-          }
-          insightTamplate {
-            insightTitleBackgroundColor
-            insightSidebarAdvertisementImage {
-              sidebarAdCode
-              sidebarAdImage {
-                node {
-                  altText
-                  srcSet
-                  sourceUrl
+            selectCategoryForAllPost {
+              nodes {
+                ... on Category {
+                  id
+                  name
+                  posts {
+                    nodes {
+                      author {
+                        node {
+                          name
+                        }
+                      }
+                      content
+                      excerpt
+                      featuredImage {
+                        node {
+                          altText
+                          sourceUrl
+                          srcSet
+                        }
+                      }
+                      title
+                    }
+                  }
                 }
               }
             }
@@ -114,33 +128,6 @@ export const CATEGORY_BREAKING_QUERY = gql`
                 }
               }
             }
-            heroSectionBottomPosts {
-              nodes {
-                name
-                ... on Category {
-                  name
-                  posts {
-                    nodes {
-                      content
-                      author {
-                        node {
-                          name
-                        }
-                      }
-                      featuredImage {
-                        node {
-                          altText
-                          sourceUrl
-                          srcSet
-                        }
-                      }
-                      title
-                      slug
-                    }
-                  }
-                }
-              }
-            }
             musicAdervtiseImage {
               adCode
               adImage {
@@ -158,6 +145,32 @@ export const CATEGORY_BREAKING_QUERY = gql`
                   altText
                   sourceUrl
                   srcSet
+                }
+              }
+            }
+            selectCategoryForAllPost {
+              nodes {
+                ... on Category {
+                  name
+                  posts {
+                    nodes {
+                      author {
+                        node {
+                          name
+                        }
+                      }
+                      title
+                      content
+                      excerpt
+                      featuredImage {
+                        node {
+                          altText
+                          srcSet
+                          sourceUrl
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }

@@ -59,22 +59,23 @@ const shuffleArray = (array) => {
 };
 
 function Music({ nodeByUri, fetchMore, loading }) {
-  console.log(nodeByUri?.nodeByUri?.posts?.nodes, "nodeByUri music area");
   const posts = [];
   const [shuffledPost, setShuffledPosts] = useState([]);
 
   useEffect(() => {
     if (
       nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate
-        ?.heroSectionBottomPosts?.nodes
+        ?.selectCategoryForAllPost?.nodes
     ) {
       const posts =
-        nodeByUri.nodeByUri.categoryTamplate.musicTamplate.heroSectionBottomPosts.nodes.flatMap(
+        nodeByUri.nodeByUri.categoryTamplate.musicTamplate.selectCategoryForAllPost.nodes.flatMap(
           (item) => item.posts.nodes
-        ); // Flatten the array of posts
-      setShuffledPosts(shuffleArray(posts)); // Shuffle the posts and set state
+        );
+      setShuffledPosts(posts);
     }
   }, [nodeByUri]);
+
+  console.log(shuffledPost, "shuffledPost");
 
   nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.musicHeroSection?.selectCategory?.nodes.forEach(
     (item) => {
@@ -134,7 +135,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                           {post.categoryName}
                         </p>
                         <Link href={`/news/${post.slug}`}>
-                          <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                          <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue export">
                             {post.title}
                           </p>
                         </Link>
@@ -198,7 +199,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     {post.categoryName}
                   </p>
                   <Link href={`/news/${post.slug}`}>
-                    <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                    <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue export">
                       {post.title}
                     </p>
                   </Link>
@@ -225,7 +226,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     6 MIN READ
                   </p>
                 </div>
-                <hr className="my-3"/>
+                <hr className="my-3" />
               </React.Fragment>
             ))}
 
@@ -237,7 +238,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                       {post.categoryName}
                     </p>
                     <Link href={`/news/${post.slug}`}>
-                      <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                      <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue export">
                         {post.title}
                       </p>
                     </Link>
@@ -261,18 +262,18 @@ function Music({ nodeByUri, fetchMore, loading }) {
               console.log(musicpost, "musicpost"),
               (
                 <div className="w-full max-w-5xl mx-auto relative">
-                  {musicpost?.featuredImage?.node?.sourceUrl && (
+                  {shuffledPost[0]?.featuredImage?.node?.sourceUrl && (
                     <ExportedImage
-                      className="mb-2 object-cover w-full md:w-[910px] h-[554px]"
+                      className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
                       priority={true}
-                      src={musicpost?.featuredImage?.node?.sourceUrl}
+                      src={shuffledPost[0]?.featuredImage?.node?.sourceUrl}
                       width={910}
                       height={554}
                       alt="vladimirputin"
                     />
                   )}
 
-                  <div className="absolute top-[27%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:w-[750px]">
+                  <div className="absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:w-[750px] h-60">
                     <div>
                       <p className="text-[12px] font-bold text-red-800">
                         {nodeByUri?.nodeByUri?.name}
@@ -305,16 +306,16 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         6 MIN READ
                       </p>
                       <p
-                        className="font-normal text-gray-700 dark:text-gray-400"
-                        dangerouslySetInnerHTML={{ __html: musicpost?.content }}
+                        className="font-normal text-gray-700 dark:text-gray-400 export"
+                        dangerouslySetInnerHTML={{ __html: musicpost?.excerpt }}
                       />
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap justify-around mt-28">
-                    {nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.heroSectionBottomPosts?.nodes.map(
-                      (item) =>
-                        item.posts.nodes.map((post) => (
+                  <div className="flex flex-wrap justify-around mt-32">
+                    {nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.selectCategoryForAllPost?.nodes
+                      .map((item) =>
+                        item.posts.nodes.slice(1, 5).map((post) => (
                           <div
                             key={post.slug}
                             className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2"
@@ -362,7 +363,8 @@ function Music({ nodeByUri, fetchMore, loading }) {
                             </p>
                           </div>
                         ))
-                    )}
+                      )
+                      .slice(0, 4)}
                   </div>
                 </div>
               )
@@ -706,7 +708,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
         </div>
       </div> */}
       <Musicpage
-        nodeByUri={nodeByUri.nodeByUri}
+        nodeByUri={nodeByUri?.nodeByUri}
         fetchMore={fetchMore}
         loading={loading}
       />

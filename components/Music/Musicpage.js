@@ -69,7 +69,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-        {nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Simple" || nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Music" || nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Insight" &&
+        {nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Simple" || nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Music" &&
         nodeByUri?.categoryTamplate?.musicTamplate?.musicAdervtiseImage?.adImage
           ?.node?.sourceUrl ? (
           <ExportedImage
@@ -105,9 +105,9 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
-            {posts.map(
+            {posts.slice(5).map(
               (item) => (
-                console.log(item.featuredImage.node.sourceUrl, "item Insights"),
+                console.log(item, "item Insights"),
                 (
                   <>
                     <div className="flex flex-col md:flex-row mb-5">
@@ -184,8 +184,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                           6 MIN READ
                         </p>
                         <p
-                          className="text-[15px] text-base font-normal text-gray-600 mb-3"
-                          dangerouslySetInnerHTML={{ __html: item.content }}
+                          className="text-[15px] text-base font-normal text-gray-600 mb-3 export"
+                          dangerouslySetInnerHTML={{ __html: item.excerpt }}
                         />
                       </div>
                     </div>
@@ -335,7 +335,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
 
           <div className="w-full max-w-4xl mx-auto">
             {(nodeByUri?.categoryTamplate?.selectYourTemplateType &&
-              ["Simple", "Music", "Insight"].includes(
+              ["Simple", "Music"].includes(
                 nodeByUri.categoryTamplate.selectYourTemplateType[0]
               )) ||
             nodeByUri?.categoryTamplate?.musicTamplate?.musicAllPostsSidebar

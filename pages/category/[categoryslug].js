@@ -90,9 +90,17 @@ const SkeletonLoader = () => (
 
 const CategoryPage = () => {
   const router = useRouter();
-  const { navData, setNavData, setNodeByUri, nodeByUri, uri, loadingCategory, fetchMore } = useDialog()
+  const {
+    navData,
+    setNavData,
+    setNodeByUri,
+    nodeByUri,
+    uri,
+    loadingCategory,
+    fetchMore,
+  } = useDialog();
   const { categoryslug } = router.query;
-  console.log(nodeByUri, "nodeByUri");
+  console.log(nodeByUri, "nodeByUri category");
   // const [navData, setNavData] = useState(null);
 
   // console.log("categoryslug:", categoryslug);
@@ -129,49 +137,84 @@ const CategoryPage = () => {
         <title>{nodeByUri !== null && nodeByUri.name} - News</title>
       </Head>
       <Nav uri={uri} />
-      <main>
-        {router.asPath === "/category/breaking-news" &&
-        nodeByUri !== undefined && nodeByUri !== null ? (
-          <Breakingnews
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/insights" &&
-          nodeByUri !== undefined && nodeByUri !== null ? (
-          <Insight
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/jewish-news" &&
-          nodeByUri !== undefined && nodeByUri !== null ? (
-          <Jewishnews
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/politics" &&
-          nodeByUri !== undefined && nodeByUri !== null ? (
-          <PoliticsCategory
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/music" && nodeByUri !== undefined && nodeByUri !== null ? (
+      {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
+      "Simple" ? (
+        <main>
+          {router.asPath === "/category/breaking-news" &&
+          nodeByUri !== undefined &&
+          nodeByUri !== null ? (
+            <Breakingnews
+              nodeByUri={nodeByUri}
+              loading={loadingCategory}
+              navData={navData}
+              fetchMore={fetchMore}
+            />
+          ) : router.asPath === "/category/insights" &&
+            nodeByUri !== undefined &&
+            nodeByUri !== null ? (
+            <Insight
+              nodeByUri={nodeByUri}
+              loading={loadingCategory}
+              navData={navData}
+              fetchMore={fetchMore}
+            />
+          ) : router.asPath === "/category/jewish-news" &&
+            nodeByUri !== undefined &&
+            nodeByUri !== null ? (
+            <Jewishnews
+              nodeByUri={nodeByUri}
+              loading={loadingCategory}
+              navData={navData}
+              fetchMore={fetchMore}
+            />
+          ) : router.asPath === "/category/politics" &&
+            nodeByUri !== undefined &&
+            nodeByUri !== null ? (
+            <PoliticsCategory
+              nodeByUri={nodeByUri}
+              loading={loadingCategory}
+              navData={navData}
+              fetchMore={fetchMore}
+            />
+          ) : router.asPath === "/category/music" &&
+            nodeByUri !== undefined &&
+            nodeByUri !== null ? (
+            <Music
+              nodeByUri={nodeByUri}
+              loading={loadingCategory}
+              navData={navData}
+              fetchMore={fetchMore}
+            />
+          ) : (
+            <ul>
+              {nodeByUri !== null &&
+                nodeByUri?.posts?.nodes.map((post) =>
+                  post.link
+                    ? (console.log(post, "post"),
+                      (
+                        <li key={post.id}>
+                          <Link href={post.link}>{post.title}</Link>
+                        </li>
+                      ))
+                    : null
+                )}
+            </ul>
+          )}
+        </main>
+      ) : nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
+        "Music" ? (
+        <main>
           <Music
             nodeByUri={nodeByUri}
             loading={loadingCategory}
             navData={navData}
             fetchMore={fetchMore}
           />
-        ) : (
-          <ul>
-            {nodeByUri !== null && nodeByUri?.posts?.nodes.map((post) =>
+        </main>
+      ) : (
+        <ul>
+          {nodeByUri !== null &&
+            nodeByUri?.posts?.nodes.map((post) =>
               post.link
                 ? (console.log(post, "post"),
                   (
@@ -181,9 +224,9 @@ const CategoryPage = () => {
                   ))
                 : null
             )}
-          </ul>
-        )}
-      </main>
+        </ul>
+      )}
+
       <Footer />
     </>
   );

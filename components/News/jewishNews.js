@@ -19,7 +19,7 @@ import { useDialog } from "../DialogContext";
 import Ads from "../googleAds/Ads";
 
 const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
-  console.log(nodeByUri?.categoryTamplate, "nodeByUri jewish news");
+  console.log(nodeByUri, "nodeByUri jewish news");
   const { iconDataResult } = useDialog();
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
@@ -94,8 +94,8 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                       className="text-base font-bold text-red-800"
                       style={{
                         background: `${
-                          nodeByUri.categoryTamplate.insightTamplate
-                            .insightTitleBackgroundColor || "rgb(87, 160, 238)"
+                          nodeByUri.categoryTamplate.simpleTamplate
+                            .simpleTitleBackgroundColor || "rgb(87, 160, 238)"
                         }`,
                         color: "#fff",
                         padding: "0 10px",

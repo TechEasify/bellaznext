@@ -387,9 +387,13 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               </button>
             </div>
           </div>
-
+          {console.log(
+            categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+            ?.sidebarAdImage,
+            "categoryTamplate?.selectYourTemplateType[0]"
+          )}
           <div className="w-full max-w-4xl mx-auto">
-            {categoryTamplate?.selectYourTemplateType &&
+            {/* {categoryTamplate?.selectYourTemplateType &&
             ["Simple", "Music", "Insight"].includes(
               categoryTamplate.selectYourTemplateType[0]
             ) &&
@@ -408,6 +412,40 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 }
                 width={297}
                 height={503}
+              />
+            ) : (
+              <Ads
+                className=""
+                style={{
+                  display: "block",
+                  width: "297px",
+                  height: "503px",
+                  margin: "0 auto",
+                }}
+                adClient="ca-pub-3209848804552918"
+                adSlot="9293720177"
+              />
+            )} */}
+
+            {categoryTamplate?.selectYourTemplateType[0] === "Simple" ||
+            categoryTamplate?.selectYourTemplateType[0] === "Music" ||
+            categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+              ?.sidebarAdImage !== null ||
+            categoryTamplate?.simpleTamplate?.simpleHeroSection
+              ?.heroSidebarAdImage !== null ? (
+              <ExportedImage
+                className="mb-2 w-full h-auto max-h-96"
+                priority={true}
+                src={
+                  categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+                    ?.sidebarAdImage?.node?.sourceUrl ||
+                  categoryTamplate?.simpleTamplate?.simpleHeroSection
+                    ?.heroSidebarAdImage?.node?.sourceUrl
+                }
+                alt="Rectangle367"
+                width={297}
+                height={503}
+                style={{ width: "100%", height: "auto", maxHeight: "500px" }}
               />
             ) : (
               <Ads
