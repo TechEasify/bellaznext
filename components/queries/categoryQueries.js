@@ -61,8 +61,10 @@ export const CATEGORY_BREAKING_QUERY = gql`
                 ... on Category {
                   id
                   name
+                  slug
                   posts {
                     nodes {
+                      slug
                       author {
                         node {
                           name

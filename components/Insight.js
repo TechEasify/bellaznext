@@ -295,11 +295,7 @@ const SkeletonLoader = () => (
   </div>
 );
 
-const Insight = ({ nodeByUri }) => {
-  console.log(
-    nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTemplateType[0],
-    "nodeByUrinodeByUrinodeByUrinodeByUri"
-  );
+const Insight = () => {
   const {
     setCursor,
     cursor,
@@ -309,18 +305,27 @@ const Insight = ({ nodeByUri }) => {
     categoryError,
     categoryInsightData,
     categoryLoading,
+    nodeByUri,
     insightFetchMore,
   } = useDialog();
+  console.log(nodeByUri.nodeByUri, "nodeByUrinodeByUrinodeByUrinodeByUri");
   const [hasNextPage, setHasNextPage] = useState(true);
 
   // Effect to initialize posts when data changes
   useEffect(() => {
-    if (categoryInsightData && categoryInsightData.posts) {
-      setPosts(categoryInsightData.posts.nodes);
-      setCursor(categoryInsightData.posts.pageInfo.endCursor);
-      setHasNextPage(categoryInsightData.posts.pageInfo.hasNextPage);
+    if (
+      nodeByUri?.nodeByUri &&
+      nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
+        ?.selectCategoryForAllPost.nodes
+    ) {
+      setPosts(
+        nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
+          ?.selectCategoryForAllPost.nodes
+      );
+      setCursor(nodeByUri?.nodeByUri?.posts?.pageInfo?.endCursor);
+      setHasNextPage(nodeByUri?.nodeByUri?.posts?.pageInfo?.hasNextPage);
     }
-  }, [categoryInsightData]);
+  }, [nodeByUri?.nodeByUri]);
 
   // Function to handle "View More" button click
   const handleViewMore = async () => {
@@ -340,6 +345,8 @@ const Insight = ({ nodeByUri }) => {
     }
   };
 
+  console.log(posts, "posts");
+
   // Render loading state
   if (categoryLoading && posts.length === 0) return <SkeletonLoader />;
 
@@ -353,21 +360,21 @@ const Insight = ({ nodeByUri }) => {
           <div className="w-full max-w-5xl mx-auto">
             {posts.map(
               (item) => (
-                console.log(item, "item"),
-                (
-                  <div key={item.slug}>
+                console.log(item, "itemitemitemitemitemitemitemitemitem"),
+                item.posts.nodes.map((posts) => (
+                  <div key={posts.slug}>
                     <div className="flex flex-col md:flex-row mb-5">
                       <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
                         <Link
                           href={{
-                            pathname: `/news/${item.slug}`,
+                            pathname: `/news/${posts.slug}`,
                           }}
                           passHref
                         >
                           <ExportedImage
                             className="object-cover w-[357px] h-[261px]"
                             priority={true}
-                            src={item?.featuredImage?.node?.sourceUrl}
+                            src={posts?.featuredImage?.node?.sourceUrl}
                             alt="ferrari4"
                             width={357}
                             height={261}
@@ -378,7 +385,7 @@ const Insight = ({ nodeByUri }) => {
                         <p
                           className="text-base font-bold text-red-800"
                           style={{
-                            background: `${nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate?.insightTitleBackgroundColor}`,
+                            background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate?.simpleTitleBackgroundColor}`,
                             color: "#fff",
                             padding: "0 10px",
                             width: "100px",
@@ -392,12 +399,12 @@ const Insight = ({ nodeByUri }) => {
                         </p>
                         <Link
                           href={{
-                            pathname: `/news/${item.slug}`,
+                            pathname: `/news/${posts.slug}`,
                           }}
                           passHref
                         >
                           <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
-                            {item.title}
+                            {posts.title}
                           </h5>
                         </Link>
                         <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
@@ -412,7 +419,7 @@ const Insight = ({ nodeByUri }) => {
                             className="font-extrabold ml-1"
                             style={{ color: "#40A6FB" }}
                           >
-                            {item?.author?.node?.name}
+                            {posts?.author?.node?.name}
                             <span
                               className="text-[25px] font-extrabold mx-1"
                               style={{ color: "#40A6FB" }}
@@ -424,13 +431,13 @@ const Insight = ({ nodeByUri }) => {
                         </p>
                         <p
                           className="text-[15px] text-base font-normal text-gray-600 mb-3"
-                          dangerouslySetInnerHTML={{ __html: item.content }}
+                          dangerouslySetInnerHTML={{ __html: posts.excerpt }}
                         />
                       </div>
                     </div>
                     <hr className="my-5" />
                   </div>
-                )
+                ))
               )
             )}
             <div className="flex justify-between">
@@ -445,21 +452,19 @@ const Insight = ({ nodeByUri }) => {
           </div>
 
           <div className="w-full max-w-4xl mx-auto">
-            {(nodeByUri?.nodeByUri?.categoryTamplate
+            {/* {(nodeByUri?.nodeByUri?.categoryTamplate
               ?.selectYourTemplateType[0] === "Simple" ||
               nodeByUri?.nodeByUri?.categoryTamplate
-                ?.selectYourTemplateType[0] === "Music" ||
-              nodeByUri?.nodeByUri?.categoryTamplate
-                ?.selectYourTemplateType[0] === "Insight") &&
-            nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate
-              ?.insightSidebarAdvertisementImage?.sidebarAdImage !== null ? (
+                ?.selectYourTemplateType[0] === "Music") &&
+            nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
+              ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl !==
+              null ? (
               <ExportedImage
                 className="mb-2 w-full h-auto max-h-96"
                 priority={true}
                 src={
-                  nodeByUri?.nodeByUri?.categoryTamplate?.insightTamplate
-                    ?.insightSidebarAdvertisementImage?.sidebarAdImage?.node
-                    ?.sourceUrl
+                  nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
+                    ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
                 }
                 alt="Rectangle367"
                 width={297}
@@ -478,7 +483,7 @@ const Insight = ({ nodeByUri }) => {
                 adClient="ca-pub-3209848804552918"
                 adSlot="9293720177"
               />
-            )}
+            )} */}
 
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
