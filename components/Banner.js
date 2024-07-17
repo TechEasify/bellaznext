@@ -118,6 +118,7 @@ const Banner = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
+  const displayedCategories = new Set();
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -469,62 +470,55 @@ const Banner = () => {
                 .slice()
                 .sort((a, b) => (a.title < b.title ? 1 : -1))
                 .slice(0, 2)
-                .map(
-                  (side) => (
-                    console.log(side, "side"),
-                    (
-                      <div className="mt-5 mb-5">
-                        {side.posts.nodes
-                          .slice()
-                          .sort((a, b) => (a.title < b.title ? 1 : -1))
-                          .slice(0, 2)
-                          .map(
-                            (itemdata) => (
-                              console.log(itemdata, "itemdata"),
-                              (
-                                <>
-                                  <div className="flex">
-                                    <div className="mr-2 w-48 mb-2">
-                                      <p className="text-[12px] font-bold text-red-800">
-                                        {side.name}
-                                      </p>
-                                      <Link
-                                        href={{
-                                          pathname: `/news/${itemdata.slug}`,
-                                        }}
-                                        passHref
-                                      >
-                                        <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                                          {itemdata.title}
-                                        </p>
-                                      </Link>
-                                    </div>
-                                    {itemdata?.featuredImage?.node
-                                      ?.sourceUrl ? (
-                                      <ExportedImage
-                                        src={
-                                          itemdata.featuredImage.node.sourceUrl
-                                        }
-                                        alt={itemdata.title}
-                                        className="object-cover w-[90px] h-[87px] mr-2"
-                                        width={90}
-                                        height={87}
-                                      />
-                                    ) : (
-                                      <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
-                                        No Image
-                                      </div>
-                                    )}
-                                  </div>
-                                  <hr className="m-3"/>
-                                </>
-                              )
-                            )
-                          )}
-                      </div>
-                    )
-                  )
-                )}
+                .map((side) => {
+                  console.log(side, "sidesidesidesidesideside");
+                  if (displayedCategories.has(side.name)) return null; // Skip if already displayed
+                  displayedCategories.add(side.name); // Add category to set
+
+                  return (
+                    <div className="mt-5 mb-5" key={side.name}>
+                      {side.posts.nodes
+                        .slice()
+                        .sort((a, b) => (a.title < b.title ? 1 : -1))
+                        .slice(0, 2)
+                        .map((itemdata) => (
+                          <div key={itemdata.slug}>
+                            <div className="flex">
+                              <div className="mr-2 w-48 mb-2">
+                                <p className="text-[12px] font-bold text-red-800">
+                                  {side.name}
+                                </p>
+                                <Link
+                                  href={{
+                                    pathname: `/news/${itemdata.slug}`,
+                                  }}
+                                  passHref
+                                >
+                                  <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                                    {itemdata.title}
+                                  </p>
+                                </Link>
+                              </div>
+                              {itemdata?.featuredImage?.node?.sourceUrl ? (
+                                <ExportedImage
+                                  src={itemdata.featuredImage.node.sourceUrl}
+                                  alt={itemdata.title}
+                                  className="object-cover w-[90px] h-[87px] mr-2"
+                                  width={90}
+                                  height={87}
+                                />
+                              ) : (
+                                <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                  No Image
+                                </div>
+                              )}
+                            </div>
+                            <hr className="m-3" />
+                          </div>
+                        ))}
+                    </div>
+                  );
+                })}
               <div className="flex mt-5">
                 {bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
                   ?.topHeadlineFirstAd?.node?.sourceUrl ? (

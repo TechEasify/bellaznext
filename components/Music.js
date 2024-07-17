@@ -10,7 +10,7 @@ import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 
 const Music = () => {
-  const { openDialog, musicQuery, musicError, musicLoading  } = useDialog();
+  const { openDialog, musicQuery, musicError, musicLoading } = useDialog();
   console.log(musicQuery, "musicQuerymusicQuerymusicQuery");
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
@@ -27,27 +27,17 @@ const Music = () => {
         </div>
 
         <div className="flex flex-wrap justify-around">
-          {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
-            (item) => (
-              console.log(item, "item music"),
-              item.posts?.nodes.slice(0, 1).map(
-                (post) => (
-                  console.log(post, "post"),
-                  (
-                    <React.Fragment key={post.id}>
-                      <div>
+          <div>
+            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(1, 2).map(
+              (item) => (
+                console.log(item, "item music"),
+                item.posts?.nodes.slice(1, 2).map(
+                  (post) => (
+                    console.log(post, "post"),
+                    (
+                      <React.Fragment key={post.id}>
                         <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                           <div className="mr-2">
-                            {/* {item.featuredImage?.node?.sourceUrl && (
-                              <ExportedImage
-                                src={item.featuredImage.node.sourceUrl}
-                                alt="vladimirputin"
-                                className="h-13 w-13 mr-2 mb-2"
-                                width={317}
-                                height={194}
-                                style={{ width: "317px", height: "194px" }}
-                              />
-                            )} */}
                             <ExportedImage
                               src={post?.featuredImage?.node?.sourceUrl}
                               alt="vladimirputin"
@@ -138,8 +128,22 @@ const Music = () => {
                           </span>
                           6 MIN READ
                         </p>
-                      </div>
-                      <div className="max-w-md bg-white mb-6 mx-auto">
+                      </React.Fragment>
+                    )
+                  )
+                )
+              )
+            )}
+          </div>
+          <div className="max-w-md bg-white mb-6 mx-auto">
+            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
+              (item) => (
+                console.log(item, "item music"),
+                item.posts?.nodes.slice(0, 1).map(
+                  (post) => (
+                    console.log(post, "post"),
+                    (
+                      <React.Fragment key={post.id}>
                         <Link
                           href={{
                             pathname: `/news/${post.slug}`,
@@ -191,11 +195,25 @@ const Music = () => {
                           6 MIN READ
                         </p>
                         <p
-                          className="text-[12px] font-normal text-gray-800 mt-2"
+                          className="text-[12px] font-normal text-gray-800 mt-2 export"
                           dangerouslySetInnerHTML={{ __html: post.content }}
                         />
-                      </div>
-                      <div className="max-w-xs bg-white mb-6 mr-4 items-center">
+                      </React.Fragment>
+                    )
+                  )
+                )
+              )
+            )}
+          </div>
+          <div className="max-w-xs bg-white mb-6 mr-4 items-center">
+            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(2, 3).map(
+              (item) => (
+                console.log(item, "item music"),
+                item.posts?.nodes.slice(2, 3).map(
+                  (post) => (
+                    console.log(post, "post"),
+                    (
+                      <React.Fragment key={post.id}>
                         <div className="mr-2">
                           <ExportedImage
                             src={post?.featuredImage?.node?.sourceUrl}
@@ -241,12 +259,12 @@ const Music = () => {
                           </p>
                         </div>
                         <div className="flex max-w-xs bg-white mr-4 items-center">
-                          {musicQuery?.page?.homePage?.musicAd
-                            ?.musicAdImage?.node?.sourceUrl && (
+                          {musicQuery?.page?.homePage?.musicAd?.musicAdImage
+                            ?.node?.sourceUrl && (
                             <ExportedImage
                               src={
-                                musicQuery.page.homePage.musicAd
-                                .musicAdImage.node.sourceUrl
+                                musicQuery.page.homePage.musicAd.musicAdImage
+                                  .node.sourceUrl
                               }
                               alt="Partly Cloudy"
                               className="object-cover w-[317px] h-[214px] mr-2"
@@ -255,13 +273,13 @@ const Music = () => {
                             />
                           )}
                         </div>
-                      </div>
-                    </React.Fragment>
+                      </React.Fragment>
+                    )
                   )
                 )
               )
-            )
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -192,7 +192,7 @@ export const GET_HOME_PAGE = gql`
             }
           }
         }
-          topHeadlinesTitle
+        topHeadlinesTitle
         topHeadlineTitleLineColor
         topHeadlinesPost {
           nodes {
@@ -316,6 +316,14 @@ export const GET_HOME_PAGE = gql`
           }
           topHeadlineBottomAdCode
         }
+        twitterEmbedCodes {
+          twitterEmbedCode1
+          twitterEmbedCode2
+          twitterEmbedCode3
+          twitterEmbedCode4
+          twitterEmbedCode5
+          twitterEmbedCode6
+        }
       }
     }
   }
@@ -325,7 +333,7 @@ export const GET_HOME_PAGE = gql`
 //   query HomePage($id: ID = "745") {
 //     page(id: $id, idType: DATABASE_ID) {
 //       homePage {
-        
+
 //       }
 //     }
 //   }
@@ -438,145 +446,144 @@ export const GET_MUSIC_SECTION = gql`
 
 export const GET_TESTIMONIAL_SECTION = gql`
   query MyQuery2 {
-  page(id: "3114", idType: DATABASE_ID) {
-    id
-    advertise {
-      testimonials {
-        testimonial {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+    page(id: "3114", idType: DATABASE_ID) {
+      id
+      advertise {
+        testimonials {
+          testimonial {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial1 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial1 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial2 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial2 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial3 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial3 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial4 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial4 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial5 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial5 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial6 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial6 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial7 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial7 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial8 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial8 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial9 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial9 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
-        }
-        testimonial10 {
-          authorName
-          authorImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
+          testimonial10 {
+            authorName
+            authorImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
             }
+            message
+            rating
           }
-          message
-          rating
         }
-        
       }
     }
   }
-}
 `;
