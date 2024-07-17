@@ -1,56 +1,33 @@
 import { useDialog } from "./DialogContext";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ExportedImage from "next-image-export-optimizer";
-import imageTwitter from "../public/images/imageTwitter.svg";
 import Group3 from "../public/images/Group (3).svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axios from "axios";
-
-const ACCESS_TOKEN =
-  "AAAAAAAAAAAAAAAAAAAAANYiuQEAAAAAotltTVwd1XSr4N5DScaaJCoqFK0%3D7qzGDbLbL6GvLZjZoMagoPmTeBJRJUVk3TxH68ezEGJGHXZKt5";
 
 const Sliders = () => {
-  const { openDialog } = useDialog();
-  const [tweets, setTweets] = useState([]);
+  const { bannerData } = useDialog();
+  const twitterEmbedCodes = bannerData?.page?.homePage?.twitterEmbedCodes;
 
-  useEffect(() => {
-    const fetchTweets = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.twitter.com/2/tweets?ids=28910294",
-          {
-            headers: {
-              Authorization: `Bearer ${ACCESS_TOKEN}`,
-              "Access-Control-Allow-Headers": "*",
-              "Access-Control-Allow-Origin": "*",
-              "Access-Control-Allow-Methods": "*",
-            },
-          }
-        );
-        console.log(response, "response");
-        setTweets(response.data.data); // Assuming Twitter API response is an array of tweets
-      } catch (error) {
-        console.error("Error fetching tweets:", error);
-      }
-    };
-
-    fetchTweets();
-  }, []);
-
-  // Sample data for the carousel
+  // Extracting the embed codes into an array
   const carouselData = [
-    { id: 1, image: imageTwitter, title: "Barcode" },
-    { id: 2, image: imageTwitter, title: "Twitter" },
+    { id: 1, embedCode: twitterEmbedCodes?.twitterEmbedCode1 },
+    { id: 2, embedCode: twitterEmbedCodes?.twitterEmbedCode2 },
+    { id: 3, embedCode: twitterEmbedCodes?.twitterEmbedCode3 },
+    { id: 4, embedCode: twitterEmbedCodes?.twitterEmbedCode4 },
+    { id: 5, embedCode: twitterEmbedCodes?.twitterEmbedCode5 },
+    { id: 6, embedCode: twitterEmbedCodes?.twitterEmbedCode6 },
   ];
 
   // Settings for the carousel
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
     slidesToShow: 3,
+    autoplay: true,
+    speed: 3000,
+    autoplaySpeed: 3000,
     slidesToScroll: 1,
     responsive: [
       {
@@ -78,7 +55,7 @@ const Sliders = () => {
       >
         <div className="mb-8 md:mb-0">
           <h5 className="text-[35px] md:text-[65px] mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
-            LATEST <br />{" "}
+            LATEST <br />
             <span className="flex">
               ON{" "}
               <ExportedImage
@@ -90,11 +67,26 @@ const Sliders = () => {
             </span>{" "}
           </h5>
         </div>
-        <div className="w-full md:w-2/3">
+        <div className="w-full md:w-2/3" id="tweet">
           <Slider {...settings}>
             {carouselData.map((item) => (
-              <div key={item.id} className="px-4">
-                <ExportedImage src={item.image} alt={item.title} />
+              <div
+                key={item.id}
+                className="bg-white rounded-lg shadow-lg overflow-hidden mx-2" // Added mx-2 for horizontal margin
+                style={{ margin: '0 10px' }} // You can adjust the margin as needed
+              >
+                <div className="p-4">
+                  <div
+                    className="tweet-embed overflow-hidden max-h-24"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      WebkitLineClamp: 3,
+                    }}
+                    dangerouslySetInnerHTML={{ __html: item.embedCode }}
+                  />
+                </div>
               </div>
             ))}
           </Slider>
