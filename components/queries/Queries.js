@@ -341,46 +341,56 @@ export const GET_HOME_PAGE = gql`
 
 export const GET_INSIGHTS_SECTION = gql`
   query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        insightsTitle
-        insightsTitleBottomLineColor
-        insightsPost {
-          nodes {
-            ... on Category {
-              name
-              slug
-              posts {
-                nodes {
-                  featuredImage {
-                    node {
-                      altText
-                      slug
-                      srcSet
-                      sourceUrl
-                    }
+  page(id: $id, idType: DATABASE_ID) {
+    homePage {
+      insightsTitle
+      insightsTitleBottomLineColor
+      insightsPost {
+        nodes {
+          ... on Category {
+            name
+            slug
+            posts {
+              nodes {
+                featuredImage {
+                  node {
+                    altText
+                    slug
+                    srcSet
+                    sourceUrl
                   }
-                  title
-                  slug
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  author {
-                    node {
-                      name
-                    }
-                  }
-                  content
                 }
+                title
+                slug
+                categories {
+                  nodes {
+                    name
+                  }
+                }
+                author {
+                  node {
+                    name
+                  }
+                }
+                content
               }
             }
           }
         }
       }
+      insightsAd {
+        insightsAdCode
+        insightAdImage {
+          node {
+            altText
+            srcSet
+            sourceUrl
+          }
+        }
+      }
     }
   }
+}
 `;
 
 export const GET_MUSIC_SECTION = gql`

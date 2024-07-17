@@ -165,6 +165,7 @@ const Insights = () => {
   const { openDialog, insightsQuery, insightsLoading, insightsError, musicQuery } =
     useDialog();
   const [randomPost, setRandomPost] = useState(null);
+  console.log(insightsQuery, "insightsQuery");
 
   const insightsPost = insightsQuery?.page?.homePage?.insightsPost?.nodes;
   console.log(insightsPost, "insightsPost");
@@ -396,10 +397,8 @@ const Insights = () => {
                     </div>
                     <div className="flex max-w-xs bg-white mr-4 items-center">
                       <ExportedImage
-                        src={musicQuery.page.homePage.musicAd
-                          .musicAdImage.node.sourceUrl || ''}
-                        alt={musicQuery.page.homePage.musicAd
-                          .musicAdImage.node.sourceUrl || ''}
+                        src={insightsQuery?.page?.homePage?.insightsAd?.insightAdImage?.node?.sourceUrl || ''}
+                        alt={insightsQuery?.page?.homePage?.insightsAd?.insightAdImage?.node?.sourceUrl || ''}
                         className="object-cover w-[317px] h-[214px] mr-2"
                         width={317}
                         height={214}
