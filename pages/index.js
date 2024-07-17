@@ -129,7 +129,6 @@ const Home = () => {
         <section>
           <Layout>
             <Banner />
-            <Topheadlines />
             <Advertisement />
             <Insights />
             <Sliders />
@@ -137,7 +136,6 @@ const Home = () => {
             <PlacementPartners />
             <Excusivenews />
             <Cardnews />
-            <PlacementPartners />
           </Layout>
         </section>
       </main>

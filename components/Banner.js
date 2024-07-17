@@ -9,7 +9,13 @@ import image_sun from "../public/images/image_sun.svg";
 import image_sun2 from "../public/images/image_sun2.svg";
 import image_sun3 from "../public/images/image_sun3.svg";
 import image_sun4 from "../public/images/image_sun4.svg";
-import ana_flavia from "../public/images/ana-flavia.svg";
+import Group from "../public/images/Group.svg";
+import Group1 from "../public/images/Group (1).svg";
+import Group2 from "../public/images/Group (2).svg";
+import Group3 from "../public/images/Group (3).svg";
+import Group4 from "../public/images/Group4.svg";
+import Frame208 from "../public/images/Frame208.svg";
+import Frame209 from "../public/images/Frame209.svg";
 import mike_von from "../public/images/mike_von.svg";
 import location from "../public/images/location.svg";
 import sun from "../public/images/sun.svg";
@@ -18,6 +24,8 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import axios from "axios";
 import Link from "next/link";
+import Topheadlines from "./Topheadlines";
+import Ads from "./googleAds/Ads";
 
 const SkeletonLoader = () => (
   <>
@@ -105,7 +113,8 @@ const SkeletonLoader = () => (
 );
 
 const Banner = () => {
-  const { openDialog, bannerData } = useDialog();
+  const { openDialog, bannerData, topheadData, iconDataResult } = useDialog();
+  console.log(bannerData, "bannerDatabannerDatabannerDatabannerData");
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -230,18 +239,16 @@ const Banner = () => {
     { time: "6 pm", temp: 76, image: image_sun4 },
   ];
 
-  const sortedPosts = bannerData?.page?.homePage?.heroSection?.heroPostCategory?.nodes
-    .flatMap((item) => item.posts.nodes)
-    .filter((post) =>
-      post.categories.nodes.some(
-        (category) => category.name
-      )
-    )
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedPosts =
+    bannerData?.page?.homePage?.heroSection?.heroPostCategory?.nodes
+      .flatMap((item) => item.posts.nodes)
+      .filter((post) => post.categories.nodes.some((category) => category.name))
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const sortedPostss = bannerData?.page?.homePage?.heroSection?.heroSidebarPosts?.nodes
-    .flatMap((item) => item.posts.nodes)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedPostss =
+    bannerData?.page?.homePage?.heroSection?.heroSidebarPosts?.nodes
+      .flatMap((item) => item.posts.nodes)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   console.log(sortedPostss, "sortedPostss");
 
@@ -255,7 +262,7 @@ const Banner = () => {
             <div className="flex flex-col justify-center">
               {sortedPosts?.slice(0, 1).map(
                 (post) => (
-                  console.log(post, "post"),
+                  console.log(post, "postpostpostpostpostpostpostpostpostpost"),
                   (
                     <div key={post.id}>
                       <p className="text-base font-bold text-red-800">
@@ -267,7 +274,7 @@ const Banner = () => {
                         }}
                         passHref
                       >
-                        <h1 className="text-[30px] text-b.lack-900 font-bold hover:text-skyBlue">
+                        <h1 className="text-[30px] text-b.lack-900 font-bold hover:text-skyBlue mb-2">
                           {post.title}
                         </h1>
                       </Link>
@@ -278,7 +285,7 @@ const Banner = () => {
                         passHref
                       >
                         <p
-                          className="text-[15px] text-base font-bold text-gray-800 mb-3 cursor-pointer"
+                          className="text-[15px] text-base text-gray-800 mb-3 cursor-pointer"
                           dangerouslySetInnerHTML={{ __html: post.excerpt }}
                         />
                       </Link>
@@ -307,6 +314,7 @@ const Banner = () => {
                       {post.featuredImage?.node?.sourceUrl && (
                         <ExportedImage
                           priority={true}
+                          className="object-cover"
                           src={post?.featuredImage?.node?.sourceUrl}
                           alt={post?.featuredImage?.node?.altText}
                           width={150}
@@ -322,6 +330,8 @@ const Banner = () => {
                   )
                 )
               )}
+
+              <Topheadlines />
               {/* <p className="text-base font-bold text-red-800">POLITICS</p>
               <h1 className="text-[30px] text-black-900 font-bold">
                 Who will become america's last hope
@@ -443,7 +453,301 @@ const Banner = () => {
               </div>
             </div>
 
-            {sortedPostss?.slice(0, 2).map(
+            <div className="w-full max-w-3xl mx-auto mt-5">
+              <p className="text-[15px] font-bold text-black-900 italic">
+                {topheadData?.page?.homePage?.topHeadlineSidebarTitle}
+              </p>
+              <hr
+                className="text-red-800"
+                style={{
+                  height: "7px",
+                  background: `${topheadData?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
+                }}
+              />
+
+              {topheadData?.page?.homePage?.topHeadlineSidebarPosts?.nodes
+                .slice()
+                .sort((a, b) => (a.title < b.title ? 1 : -1))
+                .slice(0, 2)
+                .map(
+                  (side) => (
+                    console.log(side, "side"),
+                    (
+                      <div className="mt-5 mb-5">
+                        {side.posts.nodes
+                          .slice()
+                          .sort((a, b) => (a.title < b.title ? 1 : -1))
+                          .slice(0, 2)
+                          .map(
+                            (itemdata) => (
+                              console.log(itemdata, "itemdata"),
+                              (
+                                <>
+                                  <div className="flex">
+                                    <div className="mr-2 w-48 mb-2">
+                                      <p className="text-[12px] font-bold text-red-800">
+                                        {side.name}
+                                      </p>
+                                      <Link
+                                        href={{
+                                          pathname: `/news/${itemdata.slug}`,
+                                        }}
+                                        passHref
+                                      >
+                                        <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                                          {itemdata.title}
+                                        </p>
+                                      </Link>
+                                    </div>
+                                    {itemdata?.featuredImage?.node
+                                      ?.sourceUrl ? (
+                                      <ExportedImage
+                                        src={
+                                          itemdata.featuredImage.node.sourceUrl
+                                        }
+                                        alt={itemdata.title}
+                                        className="object-cover w-[90px] h-[87px] mr-2"
+                                        width={90}
+                                        height={87}
+                                      />
+                                    ) : (
+                                      <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                        No Image
+                                      </div>
+                                    )}
+                                  </div>
+                                  <hr className="m-3"/>
+                                </>
+                              )
+                            )
+                          )}
+                      </div>
+                    )
+                  )
+                )}
+              <div className="flex mt-5">
+                {topheadData?.page?.homePage?.topHeadlineSidebarFirstAd
+                  ?.topHeadlineFirstAd?.node?.sourceUrl ? (
+                  <ExportedImage
+                    src={
+                      topheadData.page.homePage.topHeadlineSidebarFirstAd
+                        .topHeadlineFirstAd.node.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="object-cover w-[318px] h-[107px] mr-2"
+                    width={318}
+                    height={107}
+                  />
+                ) : (
+                  <Ads
+                    className=""
+                    style={{
+                      display: "block",
+                      width: "318px",
+                      height: "107px",
+                      margin: "0 auto",
+                    }}
+                    adClient="ca-pub-3209848804552918"
+                    adSlot="9293720177"
+                  />
+                )}
+              </div>
+
+              <hr className="mt-5" />
+
+              {topheadData?.page?.homePage?.topHeadlineSidebarSinglePosts?.nodes
+                .slice()
+                .sort((a, b) => (a.title < b.title ? 1 : -1))
+                .slice(0, 1)
+                .map(
+                  (side) => (
+                    console.log(side, "side"),
+                    (
+                      <div className="flex mt-5 mb-5">
+                        {side.posts.nodes
+                          .slice()
+                          .sort((a, b) => (a.title < b.title ? 1 : -1)) // Sorting in descending order based on the title (or any other property)
+                          .slice(0, 1) // Limiting to only one item
+                          .map(
+                            (itemdata) => (
+                              console.log(
+                                itemdata.featuredImage?.node?.srcSet,
+                                "itemdata"
+                              ),
+                              (
+                                <>
+                                  <div className="mr-2">
+                                    <p className="text-[12px] font-bold text-red-800">
+                                      {side.name}
+                                    </p>
+                                    <Link
+                                      href={{
+                                        pathname: `/news/${itemdata.slug}`,
+                                      }}
+                                      passHref
+                                    >
+                                      <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                                        {itemdata.title}
+                                      </p>
+                                    </Link>
+                                  </div>
+                                  {itemdata?.featuredImage?.node?.sourceUrl ? (
+                                    <ExportedImage
+                                      src={
+                                        itemdata.featuredImage.node.sourceUrl
+                                      }
+                                      alt={itemdata.title}
+                                      className="object-cover w-[90px] h-[87px] mr-2"
+                                      width={90}
+                                      height={87}
+                                    />
+                                  ) : (
+                                    <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
+                                      No Image
+                                    </div>
+                                  )}
+                                </>
+                              )
+                            )
+                          )}
+                      </div>
+                    )
+                  )
+                )}
+              {/* <div className="flex mt-5">
+            <div className="mr-2">
+              <p className="text-[12px] font-bold text-red-800">ANALYSIS</p>
+              <p className="text-[15px] font-semibold text-gray-800 mb-3">
+                Our DeSantis and Haley Reporters switched places Her’s What They
+                Found.
+              </p>
+            </div>
+            <ExportedImage
+              src={colin_lloyd}
+              alt="Partly Cloudy"
+              className="h-13 w-13 mr-2"
+            />
+          </div> */}
+
+              <div className="flex mb-5 mt-10">
+                {topheadData?.page?.homePage?.topHeadlineSidebarSecondAd
+                  ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
+                  <ExportedImage
+                    src={
+                      topheadData?.page?.homePage?.topHeadlineSidebarSecondAd
+                        ?.topHeadlineSecondAdImage?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="object-cover w-[314px] h-[441px] mr-2"
+                    width={314}
+                    height={441}
+                  />
+                ) : (
+                  <Ads
+                    className=""
+                    style={{
+                      display: "block",
+                      width: "314px",
+                      height: "441px",
+                      margin: "0 auto",
+                    }}
+                    adClient="ca-pub-3209848804552918"
+                    adSlot="9293720177"
+                  />
+                )}
+              </div>
+
+              {/* <div className="flex mb-5 mt-10">
+            <ExportedImage
+              src={sidepost}
+              alt="Partly Cloudy"
+              className="w-full mr-2"
+              width={314}
+              height={441}
+            />
+          </div> */}
+
+              <p className="text-[15px] font-bold text-black-900 italic">
+                FOLLOW US
+              </p>
+              <hr
+                className="text-red-800"
+                style={{ height: "7px", background: "#CE3A42" }}
+              />
+
+              {console.log(iconDataResult, "iconDataResult")}
+
+              <div className="flex mt-5 mb-8">
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                >
+                  <ExportedImage
+                    src={Group}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                >
+                  <ExportedImage
+                    src={Group1}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                >
+                  <ExportedImage
+                    src={Group2}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                >
+                  <ExportedImage
+                    src={Group3}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                >
+                  <ExportedImage
+                    src={Group4}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                  />
+                </Link>
+              </div>
+
+              <p className="text-[15px] font-bold text-black-900 italic">
+                FOLLOW BELAAZ ON WhatsApp
+              </p>
+              <hr
+                className="text-red-800"
+                style={{ height: "7px", background: "#CE3A42" }}
+              />
+
+              <div className="flex mt-5 mb-8">
+                <ExportedImage
+                  src={Frame208}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13 mx-2 object-cover"
+                />
+                <ExportedImage
+                  src={Frame209}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13 mx-2 object-cover"
+                />
+              </div>
+            </div>
+
+            {/* {sortedPostss?.slice(0, 2).map(
               (item) => (
                 console.log(item, "item banner"),
                 (
@@ -477,7 +781,7 @@ const Banner = () => {
                   </>
                 )
               )
-            )}
+            )} */}
             <hr />
             {/* <div className="flex mt-5">
               <div className="mr-2">

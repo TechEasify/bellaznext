@@ -1,8 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Pulp+Display:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Pulp Display';
+  src: url('/fonts/PulpDisplay-Regular.woff2') format('woff2'),
+       url('/fonts/PulpDisplay-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pulp Display';
+  src: url('/fonts/PulpDisplay-Bold.woff2') format('woff2'),
+       url('/fonts/PulpDisplay-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
 
 /* Write custom base/ component/ utility styles with `@layer` directive */
 

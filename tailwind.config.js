@@ -13,10 +13,11 @@ module.exports = {
         '-70%': '-70%',
       },
       fontFamily: {
-        sans: ["Montserrat"],
+        sans: ["Pulp Display", "sans-serif"],
       },
       colors: {
         skyBlue: '#1662D4',
+        gray: "#5E5E5E",
         red: {
           50: "#ffebee",
           100: "#ffcdd2",

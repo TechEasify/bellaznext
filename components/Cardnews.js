@@ -5,6 +5,7 @@ import markus_spiske from "../public/images/markus_spiske.svg";
 import pexelstara from "../public/images/pexelstara.svg";
 import pexelspixabay from "../public/images/pexelspixabay.svg";
 import { gql, useQuery } from "@apollo/client";
+import FooterTopAd from "./FooterTopAd";
 
 const GET_CARD_SECTION = gql`
   query HomePage($id: ID = "745") {
@@ -45,11 +46,12 @@ const GET_CARD_SECTION = gql`
       }
       footerAdvertisementCode
       allCategoryBottomLineColor {
-        insights
-        jewishNews
-        music
-        politics
-        ukraineRussiaWar
+        a
+        b
+        c
+        d
+        e
+        f
       }
     }
   }
@@ -59,7 +61,7 @@ const GET_CARD_SECTION = gql`
 const Cardnews = () => {
   const { openDialog } = useDialog();
   const { loading, error, data } = useQuery(GET_CARD_SECTION);
-  console.log(data, "datadatadata")
+  console.log(data, "datadatadata");
   const displayedCategories = new Set();
 
   if (loading) return <p>Loading...</p>;
@@ -73,53 +75,52 @@ const Cardnews = () => {
 
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
-      <div className="w-full mx-auto flex flex-wrap justify-between">
-        {data.page.homePage.allCategories.nodes.slice(0, 6).map((item) => (
-          <React.Fragment key={item.id}>
-            {item.posts.nodes.map((post) => (
-              <div
-                className="flex flex-wrap justify-around"
-                key={post.id}
-              >
-                {post.categories.nodes.slice(0, 6).map((category) => {
-                  if (displayedCategories.has(category.name)) {
-                    return null;
+      <div className="w-full mx-auto flex flex-wrap justify-center">
+        {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {
+          return (
+            <React.Fragment key={item.id}>
+              {item.posts.nodes.map((post) => {
+                if (displayedCategories.has(item.name)) {
+                  return null;
+                }
+                displayedCategories.add(item.name);
+
+                const bottomLineColor = (() => {
+                  switch (item.name) {
+                    case "Insights":
+                      return data.page.homePage.allCategoryBottomLineColor
+                        .a;
+                    case "Jewish News":
+                      return data.page.homePage.allCategoryBottomLineColor
+                        .b;
+                    case "music":
+                      return data.page.homePage.allCategoryBottomLineColor
+                        .c;
+                    case "politics":
+                      return data.page.homePage.allCategoryBottomLineColor
+                        .d;
+                    case "ukraineRussiaWar":
+                      return data.page.homePage.allCategoryBottomLineColor
+                        .e;
+                    case "Breaking News":
+                      return "rgb(206, 58, 66)";
+                    case "ANALYSIS":
+                      return "#FFA500";
+                    case "HEALTH":
+                      return "rgb(24, 119, 242)";
+                    case "Israel":
+                      return "rgb(206, 58, 66)";
+                    default:
+                      return "#FFA500";
                   }
-                  displayedCategories.add(category.name);
+                })();
 
-                  const bottomLineColor = (() => {
-                    switch (category.name) {
-                      case "Insights":
-                        return data.page.homePage.allCategoryBottomLineColor.insights;
-                      case "Jewish News":
-                        return data.page.homePage.allCategoryBottomLineColor.jewishNews;
-                      case "music":
-                        return data.page.homePage.allCategoryBottomLineColor.music;
-                      case "politics":
-                        return data.page.homePage.allCategoryBottomLineColor.politics;
-                      case "ukraineRussiaWar":
-                        return data.page.homePage.allCategoryBottomLineColor.ukraineRussiaWar;
-                      case "Breaking News":
-                        return "rgb(206, 58, 66)";
-                      case "ANALYSIS":
-                        return "#FFA500";
-                      case "HEALTH":
-                        return "rgb(24, 119, 242)";
-                      case "Israel":
-                        return "rgb(206, 58, 66)";
-                      default:
-                        return "#FFA500";
-                    }
-                  })();
-
-                  return (
-                    <div
-                      className="max-w-xs bg-white mb-6 mr-4 items-center"
-                      key={category.id}
-                    >
+                return (
+                  <div className="flex flex-wrap justify-around" key={post.id}>
+                    <div className="max-w-xs bg-white mr-4 items-center">
                       <div className="mr-2 mb-20">
                         <h5 className="text-[15px] font-bold text-black-900">
-                          {category.name}
+                          {item.name}
                         </h5>
                         <hr
                           className="text-red-800 mb-3"
@@ -146,13 +147,14 @@ const Cardnews = () => {
                         />
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-            ))}
-          </React.Fragment>
-        ))}
+                  </div>
+                );
+              })}
+            </React.Fragment>
+          );
+        })}
       </div>
+      <FooterTopAd data={data}/>
     </div>
   );
 };

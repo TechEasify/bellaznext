@@ -3,32 +3,10 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import Ads from "./googleAds/Ads";
 
-const GET_MUSICPOST_SECTION = gql`
-  query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        musicAd {
-          musicAdImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
-            }
-          }
-          musicAdCode
-        }
-      }
-    }
-  }
-`;
+const FooterTopAd = ({data}) => {
+  console.log(data, "datadata footer top ads");
 
-const PlacementPartners = () => {
-  const { loading, error, data } = useQuery(GET_MUSICPOST_SECTION);
-  console.log(data, "datadata dtyad adta d");
-
-  if (loading) return <p>Loading...</p>;
-
-  const imageUrl = data?.page?.homePage?.musicAd?.musicAdImage?.node?.sourceUrl;
+  const imageUrl = data?.page?.homePage?.footerAdvertisementImage?.node?.sourceUrl;
 
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl">
@@ -66,4 +44,4 @@ const PlacementPartners = () => {
   );
 };
 
-export default PlacementPartners;
+export default FooterTopAd;
