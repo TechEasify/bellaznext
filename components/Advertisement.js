@@ -5,7 +5,7 @@ import Ads from "./googleAds/Ads";
 import { useDialog } from "./DialogContext";
 
 const Advertisement = () => {
-  const { topheadData } = useDialog()
+  const { bannerData } = useDialog()
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl">
       <div className="relative flex items-center mb-3">
@@ -46,7 +46,7 @@ const Advertisement = () => {
         })}
       </>
       }         */}
-      {topheadData?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
+      {bannerData?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
         ?.sourceUrl ? (
         <ExportedImage
           style={{
@@ -54,7 +54,7 @@ const Advertisement = () => {
           }}
           priority={true}
           src={
-            topheadData.page.homePage.topHeadlineBottomAd.topHeadlineBottomAdImage.node
+            bannerData.page.homePage.topHeadlineBottomAd.topHeadlineBottomAdImage.node
               .sourceUrl
           }
           alt="barcode"
