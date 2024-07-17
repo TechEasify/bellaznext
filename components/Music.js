@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Music = () => {
   const { openDialog, musicQuery, musicError, musicLoading  } = useDialog();
-
+  console.log(musicQuery, "musicQuerymusicQuerymusicQuery");
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">
@@ -241,12 +241,12 @@ const Music = () => {
                           </p>
                         </div>
                         <div className="flex max-w-xs bg-white mr-4 items-center">
-                          {musicQuery?.page?.homePage?.musicBottomAd
-                            ?.musicBottomAdImage?.node?.sourceUrl && (
+                          {musicQuery?.page?.homePage?.musicAd
+                            ?.musicAdImage?.node?.sourceUrl && (
                             <ExportedImage
                               src={
-                                musicQuery.page.homePage.musicBottomAd
-                                  .musicBottomAdImage.node.sourceUrl
+                                musicQuery.page.homePage.musicAd
+                                .musicAdImage.node.sourceUrl
                               }
                               alt="Partly Cloudy"
                               className="object-cover w-[317px] h-[214px] mr-2"

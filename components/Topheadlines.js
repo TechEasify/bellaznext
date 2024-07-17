@@ -1,30 +1,8 @@
 import React, { useState } from "react";
 import ExportedImage from "next-image-export-optimizer";
-import GettyImages from "../public/images/GettyImages.svg";
-import dctaxdeal from "../public/images/dctaxdeal.svg";
-import jeuol4a_prince from "../public/images/jeuol4a_prince.svg";
-import Frame from "../public/images/Frame.svg";
-import download from "../public/images/download.svg";
-import parthasarathy from "../public/images/parthasarathy.svg";
-import ana_flavia_1 from "../public/images/ana_flavia_1.svg";
-import mikevon from "../public/images/mikevon.svg";
-import desing from "../public/images/desing.svg";
-import colin_lloyd from "../public/images/colin_lloyd.svg";
-import sidepost from "../public/images/sidepost.svg";
-import Group from "../public/images/Group.svg";
-import Group1 from "../public/images/Group (1).svg";
-import Group2 from "../public/images/Group (2).svg";
-import Group3 from "../public/images/Group (3).svg";
-import Group4 from "../public/images/Group4.svg";
-import Frame208 from "../public/images/Frame208.svg";
-import Frame209 from "../public/images/Frame209.svg";
-import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
-import Ads from "./googleAds/Ads";
-import { useDialog } from "./DialogContext";
 
-const Topheadlines = () => {
-  const { topheadData, iconDataResult } = useDialog();
+const Topheadlines = ({topheadData}) => {
   console.log(topheadData, "topheadDatatopheadData");
   const sortedTopHeadlines =
     topheadData?.page?.homePage?.topHeadlinesPost?.nodes

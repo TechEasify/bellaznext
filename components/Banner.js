@@ -331,7 +331,7 @@ const Banner = () => {
                 )
               )}
 
-              <Topheadlines />
+              <Topheadlines topheadData={bannerData} />
               {/* <p className="text-base font-bold text-red-800">POLITICS</p>
               <h1 className="text-[30px] text-black-900 font-bold">
                 Who will become america's last hope
@@ -455,17 +455,17 @@ const Banner = () => {
 
             <div className="w-full max-w-3xl mx-auto mt-5">
               <p className="text-[15px] font-bold text-black-900 italic">
-                {topheadData?.page?.homePage?.topHeadlineSidebarTitle}
+                {bannerData?.page?.homePage?.topHeadlineSidebarTitle}
               </p>
               <hr
                 className="text-red-800"
                 style={{
                   height: "7px",
-                  background: `${topheadData?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
+                  background: `${bannerData?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
                 }}
               />
 
-              {topheadData?.page?.homePage?.topHeadlineSidebarPosts?.nodes
+              {bannerData?.page?.homePage?.topHeadlineSidebarPosts?.nodes
                 .slice()
                 .sort((a, b) => (a.title < b.title ? 1 : -1))
                 .slice(0, 2)
@@ -526,11 +526,11 @@ const Banner = () => {
                   )
                 )}
               <div className="flex mt-5">
-                {topheadData?.page?.homePage?.topHeadlineSidebarFirstAd
+                {bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
                   ?.topHeadlineFirstAd?.node?.sourceUrl ? (
                   <ExportedImage
                     src={
-                      topheadData.page.homePage.topHeadlineSidebarFirstAd
+                      bannerData.page.homePage.topHeadlineSidebarFirstAd
                         .topHeadlineFirstAd.node.sourceUrl
                     }
                     alt="Partly Cloudy"
@@ -555,7 +555,7 @@ const Banner = () => {
 
               <hr className="mt-5" />
 
-              {topheadData?.page?.homePage?.topHeadlineSidebarSinglePosts?.nodes
+              {bannerData?.page?.homePage?.topHeadlineSidebarSinglePosts?.nodes
                 .slice()
                 .sort((a, b) => (a.title < b.title ? 1 : -1))
                 .slice(0, 1)
@@ -630,11 +630,11 @@ const Banner = () => {
           </div> */}
 
               <div className="flex mb-5 mt-10">
-                {topheadData?.page?.homePage?.topHeadlineSidebarSecondAd
+                {bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                   ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
                   <ExportedImage
                     src={
-                      topheadData?.page?.homePage?.topHeadlineSidebarSecondAd
+                      bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                         ?.topHeadlineSecondAdImage?.node?.sourceUrl
                     }
                     alt="Partly Cloudy"

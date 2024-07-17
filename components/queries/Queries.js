@@ -192,16 +192,7 @@ export const GET_HOME_PAGE = gql`
             }
           }
         }
-      }
-    }
-  }
-`;
-
-export const GET_TOPHEADLINE_PAGE = gql`
-  query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        topHeadlinesTitle
+          topHeadlinesTitle
         topHeadlineTitleLineColor
         topHeadlinesPost {
           nodes {
@@ -329,6 +320,16 @@ export const GET_TOPHEADLINE_PAGE = gql`
     }
   }
 `;
+
+// export const GET_TOPHEADLINE_PAGE = gql`
+//   query HomePage($id: ID = "745") {
+//     page(id: $id, idType: DATABASE_ID) {
+//       homePage {
+        
+//       }
+//     }
+//   }
+// `;
 
 export const GET_INSIGHTS_SECTION = gql`
   query HomePage($id: ID = "745") {

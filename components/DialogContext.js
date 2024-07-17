@@ -40,7 +40,7 @@ export const DialogProvider = ({ children }) => {
   const [datasubMenu, setDatasubMenu] = useState(null);
   const [dataIcon, setDataIcon] = useState(null);
   const [bannerData, setBannerData] = useState(null);
-  const [topheadData, setTopheadData] = useState(null);
+  // const [topheadData, setTopheadData] = useState(null);
   const [insightsQuery, setInsightsQuery] = useState(null);
   const [musicQuery, setMusicQuery] = useState(null);
   const [categoryInsightData, setCategoryInsightData] = useState(null);
@@ -100,11 +100,11 @@ export const DialogProvider = ({ children }) => {
     data: Data,
   } = useQuery(GET_HOME_PAGE, { fetchPolicy: "cache-first" });
 
-  const {
-    data: topheadlineData,
-    loading: topheadlineLoading,
-    error: topheadlineError,
-  } = useQuery(GET_TOPHEADLINE_PAGE, { fetchPolicy: "cache-first" });
+  // const {
+  //   data: topheadlineData,
+  //   loading: topheadlineLoading,
+  //   error: topheadlineError,
+  // } = useQuery(GET_TOPHEADLINE_PAGE, { fetchPolicy: "cache-first" });
 
   const {
     loading: insightsLoading,
@@ -140,7 +140,7 @@ export const DialogProvider = ({ children }) => {
     if (iconDataResult) setDataIcon(iconDataResult);
     if (categoryData) setNodeByUri(categoryData);
     if (Data) setBannerData(Data);
-    if (topheadlineData) setTopheadData(topheadlineData);
+    // if (topheadlineData) setTopheadData(topheadlineData);
     if (insightsData) setInsightsQuery(insightsData);
     if (musicData) setMusicQuery(musicData);
     if (categoryInsight) setCategoryInsightData(categoryInsight);
@@ -152,7 +152,7 @@ export const DialogProvider = ({ children }) => {
     iconDataResult,
     categoryData,
     Data,
-    topheadlineData,
+    // topheadlineData,
     insightsData,
     testimonialData,
     musicData,
@@ -192,7 +192,7 @@ export const DialogProvider = ({ children }) => {
         bannerData,
         bannerLoading,
         bannerError,
-        topheadData,
+        // topheadData,
         insightsQuery,
         insightsLoading,
         insightsError,

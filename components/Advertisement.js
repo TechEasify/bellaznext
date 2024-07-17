@@ -1,35 +1,11 @@
 import React from "react";
 import ExportedImage from "next-image-export-optimizer";
 import barcode from "../public/images/barcode.svg";
-import { gql, useQuery } from "@apollo/client";
 import Ads from "./googleAds/Ads";
-
-const GET_ADVERTISE_PAGE = gql`
-  query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        topHeadlineBottomAd {
-          topHeadlineBottomAdImage {
-            node {
-              altText
-              srcSet
-              sourceUrl
-            }
-          }
-          topHeadlineBottomAdCode
-        }
-      }
-    }
-  }
-`;
+import { useDialog } from "./DialogContext";
 
 const Advertisement = () => {
-  const { data, loading, error } = useQuery(GET_ADVERTISE_PAGE);
-  console.log(
-    data?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
-      ?.srcSet,
-    "data"
-  );
+  const { topheadData } = useDialog()
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl">
       <div className="relative flex items-center mb-3">
@@ -70,7 +46,7 @@ const Advertisement = () => {
         })}
       </>
       }         */}
-      {data?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
+      {topheadData?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
         ?.sourceUrl ? (
         <ExportedImage
           style={{
@@ -78,7 +54,7 @@ const Advertisement = () => {
           }}
           priority={true}
           src={
-            data.page.homePage.topHeadlineBottomAd.topHeadlineBottomAdImage.node
+            topheadData.page.homePage.topHeadlineBottomAd.topHeadlineBottomAdImage.node
               .sourceUrl
           }
           alt="barcode"
