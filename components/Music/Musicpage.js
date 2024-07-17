@@ -17,6 +17,7 @@ import PR_01CFA from "../../public/images/PR_01CFA.svg";
 import Link from "next/link";
 import { useDialog } from "../DialogContext";
 import Ads from "../googleAds/Ads";
+import Newscard from "../News/Newscard";
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   console.log(nodeByUri?.categoryTamplate, "nodeByUri news");
@@ -441,6 +442,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             </div>
           </div>
         </div>
+        <Newscard/>
       </div>
     </>
   );

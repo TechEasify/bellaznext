@@ -4,55 +4,53 @@ import { gql, useQuery } from "@apollo/client";
 
 const GET_CARD_SECTION = gql`
   query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        allCategories {
-          nodes {
-            ... on Category {
-              posts {
-                nodes {
-                  id
-                  slug
-                  categories {
-                    nodes {
-                      id
-                      name
-                      slug
-                    }
+  page(id: $id, idType: DATABASE_ID) {
+    homePage {
+      allCategories {
+        nodes {
+          id
+          ... on Category {
+            name
+            posts {
+              nodes {
+                content
+                excerpt
+                featuredImage {
+                  node {
+                    altText
+                    srcSet
+                    sourceUrl
                   }
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                      sourceUrl
-                    }
+                }
+                categories {
+                  nodes {
+                    name
                   }
-                  content
-                  excerpt
                 }
               }
             }
           }
         }
-        footerAdvertisementImage {
-          node {
-            altText
-            srcSet
-            sourceUrl
-          }
+      }
+      footerAdvertisementImage {
+        node {
+          altText
+          srcSet
+          sourceUrl
         }
-        footerAdvertisementCode
-        allCategoryBottomLineColor {
-          insights
-          jewishNews
-          music
-          politics
-          ukraineRussiaWar
-        }
+      }
+      footerAdvertisementCode
+      allCategoryBottomLineColor {
+        a
+        b
+        c
+        d
+        e
+        f
       }
     }
   }
+}
 `;
 
 const Newscard = ({ nodeByUri }) => {
@@ -68,7 +66,7 @@ const Newscard = ({ nodeByUri }) => {
   return (
     <>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
-        <div className="w-full mx-auto flex flex-wrap justify-between">
+        <div className="w-full mx-auto flex flex-wrap justify-center">
           {data?.page?.homePage?.allCategories?.nodes.slice(0, 3).map((item) => (
             console.log(item, "item cardnews"),
             <React.Fragment key={item.id}>
@@ -94,15 +92,15 @@ const Newscard = ({ nodeByUri }) => {
                               height: "7px",
                               background: `${
                                 category.name === "Insights"
-                                  ? data.page.homePage.allCategoryBottomLineColor.insights
+                                  ? data.page.homePage.allCategoryBottomLineColor.a
                                   : category.name === "Jewish News"
-                                  ? data.page.homePage.allCategoryBottomLineColor.jewishNews
+                                  ? data.page.homePage.allCategoryBottomLineColor.b
                                   : category.name === "music"
-                                  ? data.page.homePage.allCategoryBottomLineColor.music
+                                  ? data.page.homePage.allCategoryBottomLineColor.c
                                   : category.name === "politics"
-                                  ? data.page.homePage.allCategoryBottomLineColor.politics
+                                  ? data.page.homePage.allCategoryBottomLineColor.d
                                   : category.name === "ukraineRussiaWar"
-                                  ? data.page.homePage.allCategoryBottomLineColor.ukraineRussiaWar
+                                  ? data.page.homePage.allCategoryBottomLineColor.e
                                   : category.name === "Breaking News"
                                   ? "rgb(206, 58, 66)"
                                   : category.name === "ANALYSIS"

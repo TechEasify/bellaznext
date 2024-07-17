@@ -23,6 +23,7 @@ import Ads from "./googleAds/Ads";
 import { gql, useQuery } from "@apollo/client";
 import { INSIGHTS_DATA } from "./queries/categoryQueries";
 import { useDialog } from "./DialogContext";
+import Newscard from "./News/Newscard";
 
 // const IIHT_DATA = gql`
 // query NewQuery($first: Int = 50, $after: String = "", $before: String = "") {
@@ -557,6 +558,7 @@ const Insight = () => {
             </div>
           </div>
         </div>
+        <Newscard/>
       </div>
     </>
   );
