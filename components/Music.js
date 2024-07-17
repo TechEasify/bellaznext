@@ -28,7 +28,7 @@ const Music = () => {
 
         <div className="flex flex-wrap justify-around">
           <div>
-            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(1, 2).map(
+            {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(1, 2).map(
@@ -206,7 +206,7 @@ const Music = () => {
             )}
           </div>
           <div className="max-w-xs bg-white mb-6 mr-4 items-center">
-            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(2, 3).map(
+            {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(2, 3).map(
