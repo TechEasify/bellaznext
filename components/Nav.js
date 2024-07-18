@@ -379,7 +379,7 @@ const Nav = ({
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
                     >
-                      {dataNav !== undefined && dataNav.menu.header.topFirst}
+                      {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
                     </button>
                   </div>
                 </li>
@@ -391,7 +391,7 @@ const Nav = ({
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
                     >
-                      {dataNav !== undefined && dataNav.menu.header.topSecond}
+                      {dataNav !== undefined && dataNav?.menu?.header?.topSecond}
                     </button>
                   </div>
                 </li>
@@ -403,7 +403,7 @@ const Nav = ({
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
                     >
-                      {dataNav !== undefined && dataNav.menu.header.topThird}
+                      {dataNav !== undefined && dataNav?.menu?.header?.topThird}
                     </button>
                   </div>
                 </li>

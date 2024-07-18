@@ -128,7 +128,6 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 console.log(post, "post"),
                 (
                   <React.Fragment key={index}>
-                    <hr />
                     <div className="flex mt-5">
                       <div className="mr-2 flex-1">
                         <p className="text-[12px] font-bold text-red-800">
@@ -150,6 +149,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         />
                       )}
                     </div>
+                    <hr className="my-3"/>
                   </React.Fragment>
                 )
               )
