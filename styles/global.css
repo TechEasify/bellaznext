@@ -186,6 +186,10 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md
   border-color: rgb(87, 160, 238) !important;
 }
 
+.bg-change2 {
+  border-color: #CE3A42 !important;
+}
+
 #slider-testimonial button.slick-arrow.slick-next {
   display: none !important;
 }
@@ -242,13 +246,13 @@ button.contactus:hover {
 }
 
 a.px-4.text-gray-800.hover\:border-b-3.hover\:border-red-600:hover {
-  border-bottom: 3px solid rgb(229 57 53);
+  border-bottom: 1px solid rgb(229 57 53);
 }
 
 a.politics.px-4.text-gray-800.hover\:bg-gray-100:hover {
-  border-bottom: 3px solid #FFA500;
+  border-bottom: 1px solid #FFA500;
 }
 
 a.px-4.text-gray-800.hover\:bg-gray-100:hover {
-  border-bottom: 3px solid #40A6FB;
+  border-bottom: 1px solid #40A6FB;
 }

@@ -579,7 +579,8 @@ const Nav = ({
             <Link
               href="/category/breaking-news"
               className={`px-4 text-gray-800 ${
-                activeLink === "/category/breaking-news"
+                activeLink === "/category/breaking-news" ||
+                router.asPath === "/category/breaking-news"
                   ? "border-b-3 border-red-600"
                   : "hover:border-b-3 hover:border-red-600"
               }`}
@@ -598,7 +599,7 @@ const Nav = ({
               className={`politics px-4 text-gray-800 hover:bg-gray-100 ${
                 activeLink === "/category/politics" ||
                 router.asPath === "/category/politics"
-                  ? `border-b-2 bg-change`
+                  ? `border-b-3 bg-change`
                   : ""
               }`}
               onClick={() => handleLinkClick("/category/politics")}
@@ -616,7 +617,7 @@ const Nav = ({
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
                 activeLink === "/category/jewish-news" ||
                 router.asPath === "/category/jewish-news"
-                  ? "border-b-2 bg-change1"
+                  ? "border-b-3 bg-change1"
                   : ""
               }`}
               onClick={() => handleLinkClick("/category/jewish-news")}
