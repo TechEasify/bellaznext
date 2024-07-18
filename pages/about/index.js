@@ -6,99 +6,100 @@ import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import Testimonial from "../../components/Testimonial";
+import Primarylogo from "../../public/images/Primarylogo.svg";
 
 const GET_ABOUT_PAGE = gql`
-query ($id: ID = "3082") {
-  page(id: $id, idType: DATABASE_ID) {
-    about {
-      pageTitle
-      description
-      ourTeamTitle
-      ourTeamMembers {
-        teamA {
-          image {
-            node {
-              altText
-              srcSet
+  query ($id: ID = "3082") {
+    page(id: $id, idType: DATABASE_ID) {
+      about {
+        pageTitle
+        description
+        ourTeamTitle
+        ourTeamMembers {
+          teamA {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
-        }
-        teamB {
-          image {
-            node {
-              altText
-              srcSet
+          teamB {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
-        }
-        teamC {
-          image {
-            node {
-              altText
-              srcSet
+          teamC {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
-        }
-        teamD {
-          image {
-            node {
-              altText
-              srcSet
+          teamD {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
-        }
-        teamE {
-          image {
-            node {
-              altText
-              srcSet
+          teamE {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
-        }
-        teamF {
-          image {
-            node {
-              altText
-              srcSet
+          teamF {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
-        }
-        teamG {
-          image {
-            node {
-              altText
-              srcSet
+          teamG {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
-        }
-        teamH {
-          image {
-            node {
-              altText
-              srcSet
+          teamH {
+            image {
+              node {
+                altText
+                srcSet
+              }
             }
+            name
+            designation
           }
-          name
-          designation
         }
       }
     }
   }
-}
 `;
 
 function Index() {
@@ -113,33 +114,40 @@ function Index() {
 
   if (loading)
     return (
-      <div className="px-4 py-20 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-300" style={{ background: "#002d73", height: "100vh" }}>
-        <hr className="border-gray-300 mb-5" />
-        <div>
-          <div className="bg-white animate-pulse bg-gray-300 w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">
-            <div className="w-full md:w-1/3 mb-5 md:mb-0 animate-pulse bg-gray-300">
-              <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold animate-pulse bg-gray-300"></h5>
-            </div>
-            <div className="w-full md:w-2/3 text-left animate-pulse bg-gray-300">
-              <p className="font-normal animate-pulse bg-gray-300" />
-            </div>
-          </div>
-          <hr className="border-gray-300 mt-5 mb-8 animate-pulse bg-gray-300" />
-          <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8" style={{ height: "150px" }}>
-            <div className="w-full md:w-1/3 mb-5 md:mb-0 animate-pulse bg-gray-300">
-              <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold animate-pulse bg-gray-300">
-              </h5>
-            </div>
-            <div className="w-full md:w-2/3 text-left animate-pulse bg-gray-300">
-              <div className="mb-6 flex flex-col md:flex-row items-center animate-pulse bg-gray-300">
-                <div>
-                  <p className="text-[20px] font-semibold text-black animate-pulse bg-gray-300"></p>
-                  <span className="animate-pulse bg-gray-300"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      // <div className="px-4 py-20 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-300" style={{ background: "#002d73", height: "100vh" }}>
+      //   <hr className="border-gray-300 mb-5" />
+      //   <div>
+      //     <div className="bg-white animate-pulse bg-gray-300 w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">
+      //       <div className="w-full md:w-1/3 mb-5 md:mb-0 animate-pulse bg-gray-300">
+      //         <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold animate-pulse bg-gray-300"></h5>
+      //       </div>
+      //       <div className="w-full md:w-2/3 text-left animate-pulse bg-gray-300">
+      //         <p className="font-normal animate-pulse bg-gray-300" />
+      //       </div>
+      //     </div>
+      //     <hr className="border-gray-300 mt-5 mb-8 animate-pulse bg-gray-300" />
+      //     <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8" style={{ height: "150px" }}>
+      //       <div className="w-full md:w-1/3 mb-5 md:mb-0 animate-pulse bg-gray-300">
+      //         <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold animate-pulse bg-gray-300">
+      //         </h5>
+      //       </div>
+      //       <div className="w-full md:w-2/3 text-left animate-pulse bg-gray-300">
+      //         <div className="mb-6 flex flex-col md:flex-row items-center animate-pulse bg-gray-300">
+      //           <div>
+      //             <p className="text-[20px] font-semibold text-black animate-pulse bg-gray-300"></p>
+      //             <span className="animate-pulse bg-gray-300"></span>
+      //           </div>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      // </div>
+      <div className="spinner">
+        <ExportedImage
+          src={Primarylogo}
+          alt="Loading..."
+          className="blinking-image"
+        />
       </div>
     );
   if (error) return <p>Error: {error.message}</p>;
@@ -183,12 +191,17 @@ function Index() {
                   const imageHeight = 75;
 
                   return (
-                    <div key={teamKey} className="mb-6 flex flex-col md:flex-row items-center">
+                    <div
+                      key={teamKey}
+                      className="mb-6 flex flex-col md:flex-row items-center"
+                    >
                       {member.image && member.image.node.srcSet && (
                         <ExportedImage
                           className="h-25 mr-5"
                           priority={true}
-                          src={member.image.node.srcSet.split(",")[0].split(" ")[0]}
+                          src={
+                            member.image.node.srcSet.split(",")[0].split(" ")[0]
+                          }
                           alt={member.image.node.altText}
                           width={imageWidth}
                           height={imageHeight}
@@ -207,7 +220,7 @@ function Index() {
             </div>
           </div>
         )}
-        <Testimonial/>
+        <Testimonial />
       </div>
       <Footer />
     </>

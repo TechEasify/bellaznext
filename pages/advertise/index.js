@@ -13,6 +13,8 @@ import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import Testimonial from "../../components/Testimonial";
+import Primarylogo from "../../public/images/Primarylogo.svg";
+
 
 const GET_ADVERTISE_PAGE = gql`
   query ($id: ID = "3114") {
@@ -163,35 +165,42 @@ const GET_ADVERTISE_PAGE = gql`
 `;
 
 const SkeletonLoader = () => (
-  <>
-    <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse bg-gray-300">
-      <h1 className="text-[24px] md:text-[30px] text-center text-black-900 font-bold mb-3 animate-pulse animate-pulse bg-gray-300" />
-      <p className="text-[17px] text-center text-base font-semibold text-gray-600 mb-5 animate-pulse bg-gray-300" />
-      <div className="flex justify-center animate-pulse"></div>
+  // <>
+  //   <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse bg-gray-300">
+  //     <h1 className="text-[24px] md:text-[30px] text-center text-black-900 font-bold mb-3 animate-pulse animate-pulse bg-gray-300" />
+  //     <p className="text-[17px] text-center text-base font-semibold text-gray-600 mb-5 animate-pulse bg-gray-300" />
+  //     <div className="flex justify-center animate-pulse"></div>
 
-      <div className="flex flex-wrap justify-center items-center mt-8 space-y-4 md:space-y-0 md:space-x-4 animate-pulse bg-gray-300">
-        <div className="flex space-x-3 mr-5 animate-pulse bg-gray-300"></div>
-        <div className="flex space-x-3 mr-5 animate-pulse bg-gray-300"></div>
-        <div className="flex space-x-3 ml-5 animate-pulse bg-gray-300"></div>
-      </div>
-    </div>
-    <div className="px-4 py-16 animate-pulse bg-gray-300"></div>
-    <div className="flex justify-center items-center mt-10 animate-pulse bg-gray-300">
-      <p className="text-[17px] text-center text-base font-semibold mb-5 animate-pulse bg-gray-300"></p>
-    </div>
-    <hr className="border-gray-300 animate-pulse bg-gray-300" />
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3 animate-pulse bg-gray-300"></div>
-    <hr className="border-gray-300 my-10 animate-pulse" />
-    <div className="grid bg-gray-300 grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3 animate-pulse"></div>
-    <hr className="border-gray-300 my-10 animate-pulse" />
-    <div className="grid grid-cols-2 bg-gray-300 md:grid-cols-4 gap-4 items-center mt-3 animate-pulse"></div>
-    <hr className="border-gray-300 bg-gray-300 mb-96 animate-pulse" />
-    <div className="px-4 py-20 mx-auto bg-gray-300 max-w-screen-xl animate-pulse">
-      <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left animate-pulse bg-gray-300">
-        <h5 className="text-[24px] md:text-[36px] text-white font-bold mb-6 md:mb-0 md:mr-10 animate-pulse bg-gray-300"></h5>
-      </div>
-    </div>
-  </>
+  //     <div className="flex flex-wrap justify-center items-center mt-8 space-y-4 md:space-y-0 md:space-x-4 animate-pulse bg-gray-300">
+  //       <div className="flex space-x-3 mr-5 animate-pulse bg-gray-300"></div>
+  //       <div className="flex space-x-3 mr-5 animate-pulse bg-gray-300"></div>
+  //       <div className="flex space-x-3 ml-5 animate-pulse bg-gray-300"></div>
+  //     </div>
+  //   </div>
+  //   <div className="px-4 py-16 animate-pulse bg-gray-300"></div>
+  //   <div className="flex justify-center items-center mt-10 animate-pulse bg-gray-300">
+  //     <p className="text-[17px] text-center text-base font-semibold mb-5 animate-pulse bg-gray-300"></p>
+  //   </div>
+  //   <hr className="border-gray-300 animate-pulse bg-gray-300" />
+  //   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3 animate-pulse bg-gray-300"></div>
+  //   <hr className="border-gray-300 my-10 animate-pulse" />
+  //   <div className="grid bg-gray-300 grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3 animate-pulse"></div>
+  //   <hr className="border-gray-300 my-10 animate-pulse" />
+  //   <div className="grid grid-cols-2 bg-gray-300 md:grid-cols-4 gap-4 items-center mt-3 animate-pulse"></div>
+  //   <hr className="border-gray-300 bg-gray-300 mb-96 animate-pulse" />
+  //   <div className="px-4 py-20 mx-auto bg-gray-300 max-w-screen-xl animate-pulse">
+  //     <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left animate-pulse bg-gray-300">
+  //       <h5 className="text-[24px] md:text-[36px] text-white font-bold mb-6 md:mb-0 md:mr-10 animate-pulse bg-gray-300"></h5>
+  //     </div>
+  //   </div>
+  // </>
+  <div className="spinner">
+    <ExportedImage
+      src={Primarylogo}
+      alt="Loading..."
+      className="blinking-image"
+    />
+  </div>
 );
 
 function Index() {
