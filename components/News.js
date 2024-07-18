@@ -253,7 +253,7 @@ function News() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_0px] gap-7">
               <div className="flex flex-col md:flex-row justify-center gap-6 px-3 ">
                 <div className="max-w-4xl text-white">
-                  <div className="py-8 px-8">
+                  <div className="py-8 px-8 mx-8">
                     <div className="flex w-full justify-between items-center">
                       <p className="text-base font-bold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
@@ -269,22 +269,22 @@ function News() {
                     </div>
                     {isOpen && (
                       <div className="absolute left-[50%] transform -translate-x-1/2 flex sm:flex-row justify-around mt-2 p-2 bg-white border rounded-lg shadow-lg sm:w-64 md:w-80 lg:w-96 xl:w-[30rem]">
-                      <FacebookShareButton url={currentUrl} className="mr-3">
-                        <FacebookIcon size={32} round />
-                      </FacebookShareButton>
-                      <TwitterShareButton url={currentUrl} className="mr-3">
-                        <TwitterIcon size={32} round />
-                      </TwitterShareButton>
-                      <WhatsappShareButton url={currentUrl} className="mr-3">
-                        <WhatsappIcon size={32} round />
-                      </WhatsappShareButton>
-                      <TelegramShareButton url={currentUrl} className="mr-3">
-                        <TelegramIcon size={32} round />
-                      </TelegramShareButton>
-                      <EmailShareButton url={currentUrl} className="mr-3">
-                        <EmailIcon size={32} round />
-                      </EmailShareButton>
-                    </div>
+                        <FacebookShareButton url={currentUrl} className="mr-3">
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                        <TwitterShareButton url={currentUrl} className="mr-3">
+                          <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+                        <WhatsappShareButton url={currentUrl} className="mr-3">
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
+                        <TelegramShareButton url={currentUrl} className="mr-3">
+                          <TelegramIcon size={32} round />
+                        </TelegramShareButton>
+                        <EmailShareButton url={currentUrl} className="mr-3">
+                          <EmailIcon size={32} round />
+                        </EmailShareButton>
+                      </div>
                     )}
                     <h1 className="text-[24px] md:text-[40px] text-black font-bold">
                       {newsData?.nodeByUri?.title}
@@ -329,38 +329,38 @@ function News() {
                   </div>
                   {newsData?.nodeByUri?.featuredImage?.node?.sourceUrl && (
                     <ExportedImage
-                      className="w-full mb-2"
+                      className="w-full mb-2 mx-auto w-[760px] h-[498px] object-cover"
                       priority={true}
                       src={newsData?.nodeByUri?.featuredImage?.node?.sourceUrl}
                       alt="article"
                       width={760}
-                      height={499}
+                      height={498}
                     />
                   )}
                   {/* <Responsivevoice nodeByUri={nodeByUri} /> */}
                   <p
-                    className="font-semibold mb-5"
+                    className="font-semibold mb-5 w-full md:w-[760px] mx-auto"
                     style={{ color: "#2B2B2B" }}
                     dangerouslySetInnerHTML={{
                       __html: newsData?.nodeByUri?.content,
                     }}
                   />
 
-                  <div className="w-full max-w-2xl mt-10">
-                    <div className="flex items-center">
-                      <p className="text-[20px] font-bold text-black italic mr-3">
+                  <div className="w-full md:w-[760px] mt-10 mx-auto">
+                    <div className="flex items-center justify-between">
+                      <p className="text-[18px] md:text-[20px] font-bold text-black italic mr-3">
                         MORE STORIES
                       </p>
                       <Link
                         href="#"
-                        className="text-[12px] font-bold text-black underline"
+                        className="text-[10px] md:text-[12px] font-bold text-black underline"
                       >
                         More
                       </Link>
                     </div>
                     <hr
                       className="text-red-800"
-                      style={{ height: "7px", background: "#CE3A42" }}
+                      style={{ height: "5px", background: "#CE3A42" }}
                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
                       {newsData?.nodeByUri?.categories?.nodes
@@ -374,7 +374,7 @@ function News() {
                           <div key={index} className="flex items-center w-full">
                             <div className="flex w-full">
                               <div className="mr-2 flex-1">
-                                <p className="text-[12px] font-bold text-red-800">
+                                <p className="text-[10px] md:text-[12px] font-bold text-red-800">
                                   {post.categoryName}
                                 </p>
                                 <Link
@@ -382,7 +382,7 @@ function News() {
                                     pathname: `/news/${post.slug}`,
                                   }}
                                 >
-                                  <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                                  <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
                                     {post.title}
                                   </p>
                                 </Link>
@@ -396,7 +396,7 @@ function News() {
                                   <ExportedImage
                                     src={post.featuredImage.node.sourceUrl}
                                     alt="Partly Cloudy"
-                                    className="h-[87px] w-[90px] object-cover mr-2"
+                                    className="h-[70px] w-[70px] md:h-[87px] md:w-[90px] object-cover mr-2"
                                     width={90}
                                     height={87}
                                   />
@@ -409,15 +409,15 @@ function News() {
                     </div>
                   </div>
 
-                  <div className="w-full mt-10 mb-20">
+                  <div className="w-full md:w-[760px] mt-10 mb-20 mx-auto">
                     <div className="flex items-center">
-                      <p className="text-[20px] font-bold text-black italic mr-3">
+                      <p className="text-[18px] md:text-[20px] font-bold text-black italic mr-3">
                         MOST READ
                       </p>
                     </div>
                     <hr
                       className="text-red-800"
-                      style={{ height: "7px", background: "#CE3A42" }}
+                      style={{ height: "5px", background: "#CE3A42" }}
                     />
                     {posts.map(
                       (post, index) => (
@@ -426,7 +426,7 @@ function News() {
                           <div key={index}>
                             <div className="flex mt-5">
                               <div className="mr-2 flex-1">
-                                <p className="text-[12px] font-bold text-red-800">
+                                <p className="text-[10px] md:text-[12px] font-bold text-red-800">
                                   {post.categoryName}
                                 </p>
                                 <Link
@@ -434,7 +434,7 @@ function News() {
                                     pathname: `/news/${post.slug}`,
                                   }}
                                 >
-                                  <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                                  <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
                                     {post.title}
                                   </p>
                                 </Link>
@@ -443,7 +443,7 @@ function News() {
                                 <ExportedImage
                                   src={post?.featuredImage?.node?.sourceUrl}
                                   alt="Partly Cloudy"
-                                  className="object-cover w-[90px] h-[87px] mr-2"
+                                  className="object-cover w-[70px] h-[70px] md:w-[90px] md:h-[87px] mr-2"
                                   width={90}
                                   height={87}
                                 />
@@ -457,7 +457,7 @@ function News() {
                   </div>
                 </div>
                 <div
-                  className="max-w-custom md:m-auto"
+                  className="max-w-custom"
                   style={{ maxWidth: "500px" }}
                 >
                   <ExportedImage
