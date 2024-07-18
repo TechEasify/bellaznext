@@ -64,7 +64,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
 
   return (
     <>
-      <div className="px-4 py-16 mx-auto max-w-screen-xl">
+      <div className="hidden md:block px-4 py-16 mx-auto max-w-screen-xl">
         <div className="relative flex items-center mb-3">
           <div className="flex-grow border-t border-gray-300"></div>
           <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
@@ -334,7 +334,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             </div>
           </div>
 
-          <div className="w-full max-w-4xl mx-auto">
+          <div className="hidden md:block w-full max-w-4xl mx-auto">
             {(nodeByUri?.categoryTamplate?.selectYourTemplateType &&
               ["Simple", "Music"].includes(
                 nodeByUri.categoryTamplate.selectYourTemplateType[0]

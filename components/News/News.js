@@ -392,41 +392,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
             ?.sidebarAdImage,
             "categoryTamplate?.selectYourTemplateType[0]"
           )}
-          <div className="w-full max-w-4xl mx-auto">
-            {/* {categoryTamplate?.selectYourTemplateType &&
-            ["Simple", "Music", "Insight"].includes(
-              categoryTamplate.selectYourTemplateType[0]
-            ) &&
-            categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
-              ?.allSidebarAdImage?.node?.sourceUrl ? (
-              <ExportedImage
-                className="mb-2 w-full h-auto max-h-96 object-cover w-[297px] h-[503px]"
-                priority={true}
-                src={
-                  categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
-                    ?.allSidebarAdImage?.node?.sourceUrl
-                }
-                alt={
-                  categoryTamplate?.simpleTamplate?.simpleAllPostsSidebarAds
-                    ?.allSidebarAdImage?.node?.sourceUrl
-                }
-                width={297}
-                height={503}
-              />
-            ) : (
-              <Ads
-                className=""
-                style={{
-                  display: "block",
-                  width: "297px",
-                  height: "503px",
-                  margin: "0 auto",
-                }}
-                adClient="ca-pub-3209848804552918"
-                adSlot="9293720177"
-              />
-            )} */}
-
+          <div className="hidden md:block w-full max-w-4xl mx-auto">
             {categoryTamplate?.selectYourTemplateType[0] === "Simple" ||
             categoryTamplate?.selectYourTemplateType[0] === "Music" ||
             categoryTamplate?.musicTamplate?.musicAllPostsSidebar

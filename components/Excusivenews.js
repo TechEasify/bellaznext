@@ -7,7 +7,7 @@ import Frame396 from "../public/images/Frame396.svg";
 const Excusivenews = () => {
   return (
     <div
-      className="px-4 py-20 mx-auto max-w-screen-xl"
+      className="hidden md:block px-4 py-20 mx-auto max-w-screen-xl"
       style={{
         backgroundImage: `url(${Frame396.src})`,
         backgroundSize: 'cover',

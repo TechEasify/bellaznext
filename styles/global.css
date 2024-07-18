@@ -1,22 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Pulp+Display:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pulp+Display:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Pulp Display';
-  src: url('/fonts/PulpDisplay-Regular.woff2') format('woff2'),
-       url('/fonts/PulpDisplay-Regular.woff') format('woff');
+  font-family: "Pulp Display";
+  src: url("/fonts/PulpDisplay-Regular.woff2") format("woff2"),
+    url("/fonts/PulpDisplay-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Pulp Display';
-  src: url('/fonts/PulpDisplay-Bold.woff2') format('woff2'),
-       url('/fonts/PulpDisplay-Bold.woff') format('woff');
+  font-family: "Pulp Display";
+  src: url("/fonts/PulpDisplay-Bold.woff2") format("woff2"),
+    url("/fonts/PulpDisplay-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
 }
@@ -187,11 +187,11 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md
 }
 
 #slider-testimonial button.slick-arrow.slick-next {
-  display: none !important
+  display: none !important;
 }
 
 #slider-testimonial button.slick-arrow.slick-prev {
-  display: none !important
+  display: none !important;
 }
 
 #tweet .slick-slide {
@@ -203,11 +203,11 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md
 }
 
 button.group.flex.justify-center.items-center.border.border-solid.border-indigo-600.transition-all.duration-500.p-1\.5.font-semibold:hover {
-  background: #40A6FB !important;
+  background: #40a6fb !important;
 }
 
 button.contactus:hover {
-  background: #40A6FB !important;
+  background: #40a6fb !important;
 }
 
 .export {
@@ -239,4 +239,16 @@ button.contactus:hover {
   100% {
     opacity: 1;
   }
+}
+
+a.px-4.text-gray-800.hover\:border-b-3.hover\:border-red-600:hover {
+  border-bottom: 3px solid rgb(229 57 53);
+}
+
+a.politics.px-4.text-gray-800.hover\:bg-gray-100:hover {
+  border-bottom: 3px solid #FFA500;
+}
+
+a.px-4.text-gray-800.hover\:bg-gray-100:hover {
+  border-bottom: 3px solid #40A6FB;
 }

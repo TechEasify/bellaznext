@@ -91,7 +91,7 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                   </div>
                   <div className="ml-0 md:ml-5 w-full md:w-3/5">
                     <p
-                      className="text-base font-bold text-red-800"
+                      className="text-base font-bold text-red-800 w-[120px]"
                       style={{
                         background: `${
                           nodeByUri.categoryTamplate.simpleTamplate
@@ -99,12 +99,11 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
                         }`,
                         color: "#fff",
                         padding: "0 10px",
-                        width: "100px",
                         clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
                         fontSize: "12px",
                         fontWeight: 500,
                         letterSpacing: "2px",
-                        width: "25%",
+                        // width: "25%",
                       }}
                     >
                       {nodeByUri.name}
@@ -289,7 +288,7 @@ const CategoryjewishNews = ({ nodeByUri, fetchMore, loading }) => {
             </div>
           </div>
 
-          <div className="w-full max-w-4xl mx-auto">
+          <div className="hidden md:block w-full max-w-4xl mx-auto">
             {(nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
               "Simple" ||
               nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===

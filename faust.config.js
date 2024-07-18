@@ -6,7 +6,7 @@ import possibleTypes from "./possibleTypes.json";
 import GetRequests from "./plugins/get-requests";
 
 // uncomment to add support for persisted queries
-// import PersistedQueriesPlugin from "./plugins/persisted-queries";
+import PersistedQueriesPlugin from "./plugins/persisted-queries";
 
 /**
  * @type {import('@faustwp/core').FaustConfig}
@@ -15,7 +15,7 @@ export default setConfig({
   templates,
   experimentalPlugins: [
       new GetRequests(),
-      // new PersistedQueriesPlugin(),
+      new PersistedQueriesPlugin(),
   ],
   possibleTypes,
 });

@@ -109,7 +109,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
       {/* <Nav /> */}
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_900px] gap-6">
-          <div className="w-full max-w-3xl mx-auto">
+          <div className="hidden md:block w-full max-w-3xl mx-auto">
             <p className="text-[15px] font-bold text-black-900 italic">
               {
                 nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate

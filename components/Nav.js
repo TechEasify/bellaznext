@@ -74,7 +74,7 @@ const SkeletonLoader = () => (
 
     {/* Main Navigation Skeleton */}
     <nav className="mx-auto flex flex-col lg:flex-row items-center justify-between p-4 lg:px-6">
-      <div className="flex flex-1 justify-between lg:justify-start items-center">
+      <div className="flex justify-between lg:justify-start items-center">
         <div className="-m-1.5 p-1.5">
           <div className="sr-only">BELAAZ</div>
           <div className="h-12 w-auto md:h-14 bg-gray-200 animate-pulse"></div>
@@ -121,7 +121,7 @@ const SkeletonArticleLoader = () => (
       className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
       aria-label="Global"
     >
-      <div className="flex flex-1 justify-between lg:justify-start items-center">
+      <div className="flex justify-between lg:justify-start items-center">
         <div className="h-12 w-36 bg-gray-700 animate-pulse md:h-14"></div>
       </div>
 
@@ -212,13 +212,16 @@ const Nav = ({
   };
 
   const handleSub = () => {
-    localStorage.setItem('lastPathname', router.asPath);
+    localStorage.setItem("lastPathname", router.asPath);
     router.push({
       pathname: "/subscribe",
     });
   };
 
-  console.log(`/news${uri}`, "navDataResultnavDataResultnavDataResultnavDataResult");
+  console.log(
+    `/news${uri}`,
+    "navDataResultnavDataResultnavDataResultnavDataResult"
+  );
 
   return (
     <>
@@ -321,7 +324,7 @@ const Nav = ({
             className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
             aria-label="Global"
           >
-            <div className="flex flex-1 justify-between lg:justify-start items-center">
+            <div className="flex justify-between lg:justify-start items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
                 <ExportedImage
@@ -333,16 +336,17 @@ const Nav = ({
               </Link>
             </div>
 
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+            <div className="flex flex-1 justify-end items-center">
               <button
                 onClick={handleSub}
-                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                className="hidden lg:inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                style={{ background: "#CE3A42" }}
               >
                 Subscribe
               </button>
               <button
                 onClick={toggleContactHeader}
-                className="flex mr-2 text-white font-bold items-center"
+                className="flex text-white font-bold items-center lg:mr-2"
               >
                 {isContactHeaderVisible ? (
                   <ExportedImage
@@ -391,7 +395,8 @@ const Nav = ({
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
                     >
-                      {dataNav !== undefined && dataNav?.menu?.header?.topSecond}
+                      {dataNav !== undefined &&
+                        dataNav?.menu?.header?.topSecond}
                     </button>
                   </div>
                 </li>
@@ -416,7 +421,7 @@ const Nav = ({
             className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
             aria-label="Global"
           >
-            <div className="flex flex-1 justify-between lg:justify-start items-center">
+            <div className="flex justify-between lg:justify-start items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
                 <ExportedImage
@@ -426,7 +431,7 @@ const Nav = ({
                   alt="Primarylogo"
                 />
               </Link>
-              <div className="flex flex-1 justify-center lg:justify-start items-center">
+              <div className="flex justify-center lg:justify-start items-center">
                 <div className="relative mx-2 md:mx-5 hidden lg:block">
                   <button
                     onClick={toggleDropdown}
@@ -569,14 +574,14 @@ const Nav = ({
       )}
 
       {isDropdownOpen && (
-        <div className="w-full bg-white font-medium inline-flex items-center md:ml-28">
+        <div className="bg-white font-medium inline-flex items-center md:ml-28">
           <div className="flex flex-col items-center">
             <Link
               href="/category/breaking-news"
-              className={`px-4 text-gray-800 hover:bg-gray-100 ${
+              className={`px-4 text-gray-800 ${
                 activeLink === "/category/breaking-news"
-                  ? "border-b-2 border-red-600"
-                  : ""
+                  ? "border-b-3 border-red-600"
+                  : "hover:border-b-3 hover:border-red-600"
               }`}
               onClick={() => handleLinkClick("/category/breaking-news")}
             >
@@ -586,10 +591,11 @@ const Nav = ({
               <hr className="w-full border-red-600" />
             )}
           </div>
+
           <div className="flex flex-col items-center">
             <Link
               href="/category/politics"
-              className={`px-4 text-gray-800 hover:bg-gray-100 ${
+              className={`politics px-4 text-gray-800 hover:bg-gray-100 ${
                 activeLink === "/category/politics" ||
                 router.asPath === "/category/politics"
                   ? `border-b-2 bg-change`
@@ -682,95 +688,163 @@ const Nav = ({
 
       {router.asPath === `/news${uri}` ? (
         <header
-          className={`bg-header transition-all duration-500 ${
-            isContactHeaderVisible
-              ? "max-h-64 opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-          style={{
-            position: "absolute",
-            zIndex: "9999999999",
-            top: "114px",
-            left: "0px",
-            background: "black",
-            width: "100%",
-          }}
+        className={`bg-header transition-all duration-500 ${
+          isContactHeaderVisible
+            ? "max-h-64 opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
+        }`}
+        style={{
+          position: "absolute",
+          zIndex: "9999999999",
+          top: "80px",
+          left: "0px",
+          background: "black",
+          width: "100%",
+        }}
+      >
+        <nav
+          className="mx-auto flex max-w-7xl items-center bg-black justify-around p-4 lg:px-6"
+          aria-label="Global"
         >
-          <nav
-            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
-            aria-label="Global"
-          >
-            <div className="items-center flex">
-              <div className="flex flex-col lg:flex-col mr-5">
-                <Link
-                  href="/category/breaking-news"
-                  // onClick={() => router.push("/category/breaking-news")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+          {/* Mobile View */}
+          <div className="block lg:hidden w-full">
+            <div className="flex flex-col">
+              <div className="flex items-center mb-2">
+                <label htmlFor="simple-search" className="sr-only">
+                  Search
+                </label>
+                <div className="relative flex-grow">
+                  <input
+                    type="text"
+                    id="simple-search"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Type to Search"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 px-4 py-2"
+                  style={{
+                    borderRadius: "20px",
+                    background: "#ce3a42",
+                  }}
                 >
-                  {dataMenu !== undefined && dataMenu?.menu?.header?.subFirst}
-                </Link>
-                <Link
-                  href="/category/politics"
-                  // onClick={() => router.push("/category/politics")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {dataMenu !== undefined && dataMenu?.menu?.header?.subSecond}
-                </Link>
-                <Link
-                  href="/category/jewish-news"
-                  // onClick={() => router.push("/category/jewish_news")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {dataMenu !== undefined && dataMenu?.menu?.header?.subThird}
-                </Link>
-                <Link
-                  href="/category/insights"
-                  // onClick={() => router.push("/category/insights")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {dataMenu !== undefined &&
-                    dataMenu?.menu?.header?.mainMenuSecond}
-                </Link>
-                <Link
-                  href="/category/music"
-                  // onClick={() => router.push("/category/music")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {dataMenu !== undefined &&
-                    dataMenu?.menu?.header?.mainMenuThird}
-                </Link>
+                  Search
+                </button>
               </div>
-              <div className="flex flex-col lg:flex-col lg:items-center">
+              <div className="flex justify-end mb-3">
+                <button
+                  onClick={handleSub}
+                  className="w-auto inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gradient-to-r focus:outline-none"
+                >
+                  Subscribe
+                </button>
+              </div>
+              <div className="relative mb-3">
+                <button
+                  onClick={toggleDropdownMobile}
+                  className="flex text-white font-bold items-center"
+                >
+                  {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuFirst}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 ml-2"
+                    src={Vector1}
+                    alt="Dropdown Icon"
+                  />
+                </button>
+                {toggleDropdown1 && (
+                  <>
+                    <Link
+                      href="/category/breaking-news"
+                      className="flex text-white font-bold items-center mt-2"
+                    >
+                      {dataMenu !== undefined && dataMenu.menu.header.subFirst}
+                      <ExportedImage
+                        priority={true}
+                        className="h-3 w-3 mx-2"
+                        src={Vector_red}
+                        alt="Dropdown Icon"
+                      />
+                    </Link>
+                    <Link
+                      href="/category/politics"
+                      className="flex text-white font-bold items-center mt-2"
+                    >
+                      {dataMenu !== undefined && dataMenu.menu.header.subSecond}
+                      <ExportedImage
+                        priority={true}
+                        className="h-3 w-3 mx-2"
+                        src={Vector_yellow}
+                        alt="Dropdown Icon"
+                      />
+                    </Link>
+                    <Link
+                      href="/category/jewish-news"
+                      className="flex text-white font-bold items-center mt-2"
+                    >
+                      {dataMenu !== undefined && dataMenu.menu.header.subThird}
+                      <ExportedImage
+                        priority={true}
+                        className="h-3 w-3 mx-2"
+                        src={Vector}
+                        alt="Dropdown Icon"
+                      />
+                    </Link>
+                  </>
+                )}
+              </div>
+              <Link
+                href="/category/insights"
+                className="flex text-white font-bold items-center mb-3"
+              >
+                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuSecond}
+                <ExportedImage
+                  priority={true}
+                  className="h-3 w-3 mx-2"
+                  src={Vector}
+                  alt="Dropdown Icon"
+                />
+              </Link>
+              <Link
+                href="/category/music"
+                className="flex text-white font-bold items-center mb-3"
+              >
+                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuThird}
+                <ExportedImage
+                  priority={true}
+                  className="h-3 w-3 mx-2"
+                  src={Vector2}
+                  alt="Dropdown Icon"
+                />
+              </Link>
+              <hr className="my-2" />
+              <div className="flex flex-col">
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  className="flex text-white font-bold items-center my-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
-                  // onClick={() => router.push("/contact-us")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  className="flex text-white font-bold items-center my-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
-                  // onClick={() => router.push("/advertise")}
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  className="flex text-white font-bold items-center my-2"
                 >
                   {datasubMenu !== undefined &&
                     datasubMenu?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
-            <div
-              className="hidden lg:flex lg:justify-end items-end"
-              style={{ height: "230px" }}
-            >
+            <div className="flex justify-end items-end mt-4">
               <Link
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
@@ -782,7 +856,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -790,7 +867,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -798,7 +878,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -807,8 +890,117 @@ const Nav = ({
                 />
               </Link>
             </div>
-          </nav>
-        </header>
+          </div>
+          {/* Desktop */}
+          <div className="hidden lg:flex lg:flex-row items-center">
+            <div className="flex flex-col mr-5">
+              <Link
+                href="/category/breaking-news"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {dataMenu !== undefined && dataMenu?.menu?.header?.subFirst}
+              </Link>
+              <Link
+                href="/category/politics"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {dataMenu !== undefined && dataMenu?.menu?.header?.subSecond}
+              </Link>
+              <Link
+                href="/category/jewish-news"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {dataMenu !== undefined && dataMenu?.menu?.header?.subThird}
+              </Link>
+              <Link
+                href="/category/insights"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuSecond}
+              </Link>
+              <Link
+                href="/category/music"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuThird}
+              </Link>
+            </div>
+            <div className="flex flex-col lg:items-center">
+              <Link
+                href="/contact-us"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {datasubMenu !== undefined &&
+                  datasubMenu?.menu?.header?.foreSquareFirst}
+              </Link>
+              <Link
+                href="/contact-us"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {datasubMenu !== undefined &&
+                  datasubMenu?.menu?.header?.foreSquareSecond}
+              </Link>
+              <Link
+                href="/advertise"
+                className="flex text-white font-bold items-center my-2 lg:mr-2"
+              >
+                {datasubMenu !== undefined &&
+                  datasubMenu?.menu?.header?.foreSquareThird}
+              </Link>
+            </div>
+          </div>
+          <div
+            className="hidden lg:flex lg:justify-end items-end"
+            style={{ height: "230px" }}
+          >
+            <Link
+              href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+              className="px-4 py-2"
+            >
+              <ExportedImage
+                priority={true}
+                className="h-8 w-8 mx-1"
+                src={Group}
+                alt="Whatsapp Icon"
+              />
+            </Link>
+            <Link
+              href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+              className="px-4 py-2"
+            >
+              <ExportedImage
+                priority={true}
+                className="h-8 w-8 mx-1"
+                src={Group1}
+                alt="Facebook Icon"
+              />
+            </Link>
+            <Link
+              href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+              className="px-4 py-2"
+            >
+              <ExportedImage
+                priority={true}
+                className="h-8 w-8 mx-1"
+                src={Group2}
+                alt="Instagram Icon"
+              />
+            </Link>
+            <Link
+              href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+              className="px-4 py-2"
+            >
+              <ExportedImage
+                priority={true}
+                className="h-8 w-8 mx-1"
+                src={Group3}
+                alt="Twitter Icon"
+              />
+            </Link>
+          </div>
+        </nav>
+      </header>
+      
       ) : router.pathname === "/about" ? (
         <header
           className={`bg-header transition-all duration-500 ${
@@ -977,41 +1169,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -1056,7 +1257,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1064,7 +1268,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1072,7 +1279,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1251,41 +1461,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -1330,7 +1549,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1338,7 +1560,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1346,7 +1571,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1525,41 +1753,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -1604,7 +1841,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1612,7 +1852,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1620,7 +1863,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1799,41 +2045,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -1878,7 +2133,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1886,7 +2144,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -1894,7 +2155,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2073,41 +2337,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -2152,7 +2425,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2160,7 +2436,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2168,7 +2447,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2347,41 +2629,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -2426,7 +2717,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2434,7 +2728,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2442,7 +2739,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2621,41 +2921,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -2700,7 +3009,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2708,7 +3020,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2716,7 +3031,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2895,41 +3213,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -2974,7 +3301,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2982,7 +3312,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -2990,7 +3323,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -3169,41 +3505,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -3248,7 +3593,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -3256,7 +3604,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -3264,7 +3615,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -3443,41 +3797,50 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
             </div>
 
@@ -3522,7 +3885,10 @@ const Nav = ({
                   alt="Whatsapp Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -3530,7 +3896,10 @@ const Nav = ({
                   alt="Facebook Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"
@@ -3538,7 +3907,10 @@ const Nav = ({
                   alt="Instagram Icon"
                 />
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"} className="px-4 py-2">
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
                 <ExportedImage
                   priority={true}
                   className="h-8 w-8 mx-1"

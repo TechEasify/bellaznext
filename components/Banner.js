@@ -352,15 +352,15 @@ const Banner = () => {
               </p> */}
             </div>
           </div>
-          <div className="w-full max-w-3xl mx-auto">
+          <div className="hidden md:block w-full max-w-3xl mx-auto">
             <input
-              style={{ width: "100%", marginBottom: "10px" }}
+              className="hidden md:block w-full mb-2"
               id="FullName"
               type="text"
               placeholder="Search"
             />
             <div
-              className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               style={{
                 background:
                   "linear-gradient(to bottom right, #002D73, #40A6FB)",
@@ -616,21 +616,6 @@ const Banner = () => {
                     )
                   )
                 )}
-              {/* <div className="flex mt-5">
-            <div className="mr-2">
-              <p className="text-[12px] font-bold text-red-800">ANALYSIS</p>
-              <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                Our DeSantis and Haley Reporters switched places Her’s What They
-                Found.
-              </p>
-            </div>
-            <ExportedImage
-              src={colin_lloyd}
-              alt="Partly Cloudy"
-              className="h-13 w-13 mr-2"
-            />
-          </div> */}
-
               <div className="flex mb-5 mt-10">
                 {bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                   ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
@@ -658,16 +643,6 @@ const Banner = () => {
                   />
                 )}
               </div>
-
-              {/* <div className="flex mb-5 mt-10">
-            <ExportedImage
-              src={sidepost}
-              alt="Partly Cloudy"
-              className="w-full mr-2"
-              width={314}
-              height={441}
-            />
-          </div> */}
 
               <p className="text-[15px] font-bold text-black-900 italic">
                 FOLLOW US
@@ -748,57 +723,7 @@ const Banner = () => {
                 />
               </div>
             </div>
-
-            {/* {sortedPostss?.slice(0, 2).map(
-              (item) => (
-                console.log(item, "item banner"),
-                (
-                  <>
-                    <div className="flex mt-5 justify-between">
-                      <div className="mr-2">
-                        <p className="text-[12px] font-bold text-red-800">
-                          {item.categories.nodes[0].name}
-                        </p>
-                        <Link
-                          href={{
-                            pathname: `/news/${item.slug}`,
-                          }}
-                          passHref
-                        >
-                          <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                            {item.title}
-                          </p>
-                        </Link>
-                      </div>
-                      {item.featuredImage?.node?.sourceUrl && (
-                        <ExportedImage
-                          src={item.featuredImage.node.sourceUrl}
-                          alt={item.featuredImage.node.sourceUrl}
-                          className="h-13 w-13 mr-2 object-contain"
-                          width={90}
-                          height={87}
-                        />
-                      )}
-                    </div>
-                  </>
-                )
-              )
-            )} */}
             <hr />
-            {/* <div className="flex mt-5">
-              <div className="mr-2">
-                <p className="text-[12px] font-bold text-red-800">EUROPE</p>
-                <p className="text-[15px] font-semibold text-gray-800 mb-3">
-                  Our DeSantis and Haley Reporters switched places Her’s What
-                  They Found.
-                </p>
-              </div>
-              <ExportedImage
-                src={mike_von}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mr-2"
-              />
-            </div> */}
           </div>
         </div>
       </div>

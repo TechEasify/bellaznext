@@ -395,7 +395,7 @@ const Insights = () => {
                         6 MIN READ
                       </p>
                     </div>
-                    <div className="flex max-w-xs bg-white mr-4 items-center">
+                    <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
                       <ExportedImage
                         src={insightsQuery?.page?.homePage?.insightsAd?.insightAdImage?.node?.sourceUrl || ''}
                         alt={insightsQuery?.page?.homePage?.insightsAd?.insightAdImage?.node?.sourceUrl || ''}

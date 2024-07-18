@@ -42,13 +42,14 @@ const Sliders = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false
         },
       },
     ],
   };
 
   return (
-    <div className="px-4 py-8 mx-auto max-w-screen-xl">
+    <div className="hidden md:block px-4 py-8 mx-auto max-w-screen-xl">
       <div
         className="px-4 py-8 w-full flex flex-col md:flex-row mx-auto justify-around items-center"
         style={{ background: "#40A6FB" }}

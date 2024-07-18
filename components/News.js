@@ -237,23 +237,26 @@ function News() {
       {newsData?.nodeByUri?.__typename === "Post" && (
         <>
           <hr />
-          <div className="px-4 mx-auto flex bg-black items-center justify-center">
-            <p className="text-base font-normal text-white">
+          <div className="w-full px-4 mx-auto flex bg-black items-center justify-center flex-wrap sm:flex-nowrap">
+            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2">
               Ukraine & Russia War
             </p>
             <span className="text-white px-2">|</span>
-            <p className="text-base font-normal text-white">
+            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2">
               Manage Your Money
             </p>
             <span className="text-white px-2">|</span>
-            <p className="text-base font-normal text-white">Top Stocks</p>
+            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2">
+              Top Stocks
+            </p>
           </div>
+
           <hr />
           <div className="mx-auto max-w-screen-xl">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_0px] gap-7">
               <div className="flex flex-col md:flex-row justify-center gap-6 px-3 ">
                 <div className="max-w-4xl text-white">
-                  <div className="py-8 px-8 mx-8">
+                  <div className="py-8 px-0 mx-8 md:px-8">
                     <div className="flex w-full justify-between items-center">
                       <p className="text-base font-bold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
@@ -289,9 +292,9 @@ function News() {
                     <h1 className="text-[24px] md:text-[40px] text-black font-bold">
                       {newsData?.nodeByUri?.title}
                     </h1>
-                    <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
+                    <p className="text-[15px] md:text-[15px] text-base font-bold text-gray-800 mb-4">
                       <span
-                        className="text-[10px] md:text-[12px] font-extrabold mr-1"
+                        className="text-[15px] md:text-[15px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
                         |
@@ -312,11 +315,11 @@ function News() {
                       6 MIN READ
                     </p>
 
-                    <p className="text-[8px] md:text-[10px] text-base font-bold text-gray-800 mb-4">
-                      <span className="font-extrabold ml-1 mr-1">
+                    <p className="text-[8px] md:text-[14px] text-base font-bold text-gray-800 mb-4">
+                      <span className="ml-1 mr-1">
                         Published {formatDate(nodeByUri?.date)}
                       </span>
-                      <span className="text-[10px] md:text-[12px] font-extrabold mr-1">
+                      <span className="text-[14px] md:text-[12px] font-extrabold mr-1">
                         |
                       </span>
                       Updated{" "}
@@ -346,8 +349,8 @@ function News() {
                     }}
                   />
 
-                  <div className="w-full md:w-[760px] mt-10 mx-auto">
-                    <div className="flex items-center justify-between">
+                  <div className="w-full md:w-[760px] mt-10 mx-auto mb-5">
+                    <div className="flex items-center">
                       <p className="text-[18px] md:text-[20px] font-bold text-black italic mr-3">
                         MORE STORIES
                       </p>
@@ -409,7 +412,7 @@ function News() {
                     </div>
                   </div>
 
-                  <div className="w-full md:w-[760px] mt-10 mb-20 mx-auto">
+                  <div className="hidden md:block w-full md:w-[760px] mt-10 mb-20 mx-auto">
                     <div className="flex items-center">
                       <p className="text-[18px] md:text-[20px] font-bold text-black italic mr-3">
                         MOST READ
@@ -457,7 +460,7 @@ function News() {
                   </div>
                 </div>
                 <div
-                  className="max-w-custom"
+                  className="max-w-custom block md:hidden lg:hidden xl:block"
                   style={{ maxWidth: "500px" }}
                 >
                   <ExportedImage
@@ -465,12 +468,6 @@ function News() {
                     priority={true}
                     src={Screenshot202}
                     alt="Screenshot202"
-                    // style={{
-                    //   color: "transparent",
-                    //   height: "auto",
-                    //   position: "absolute",
-                    //   top: "21%",
-                    // }}
                   />
                   <div className="w-full max-w-3xl mx-auto">
                     <p className="text-[16px] font-bold text-black-900 italic">
@@ -483,67 +480,54 @@ function News() {
                         background: `${data?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
                       }}
                     />
-
                     {data?.page?.homePage?.topHeadlineSidebarPosts?.nodes
                       .slice()
                       .sort((a, b) => (a.title < b.title ? 1 : -1))
                       .slice(0, 2)
-                      .map(
-                        (side) => (
-                          console.log(side, "side"),
-                          (
-                            <div className="mt-5 mb-5 w-64">
-                              {side.posts.nodes
-                                .slice()
-                                .sort((a, b) => (a.title < b.title ? 1 : -1))
-                                .slice(0, 2)
-                                .map(
-                                  (itemdata) => (
-                                    console.log(itemdata, "itemdata"),
-                                    (
-                                      <>
-                                        <div className="flex">
-                                          <div className="mr-2 w-48 mb-2">
-                                            <p className="text-[12px] font-bold text-red-800">
-                                              {side.name}
-                                            </p>
-                                            <Link
-                                              href={{
-                                                pathname: `/news/${itemdata.slug}`,
-                                              }}
-                                              passHref
-                                            >
-                                              <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                                                {itemdata.title}
-                                              </p>
-                                            </Link>
-                                          </div>
-                                          {itemdata?.featuredImage?.node
-                                            ?.sourceUrl ? (
-                                            <ExportedImage
-                                              src={
-                                                itemdata.featuredImage.node
-                                                  .sourceUrl
-                                              }
-                                              alt={itemdata.title}
-                                              className="object-cover w-[90px] h-[87px] mr-2"
-                                              width={90}
-                                              height={87}
-                                            />
-                                          ) : (
-                                            <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
-                                              No Image
-                                            </div>
-                                          )}
-                                        </div>
-                                      </>
-                                    )
-                                  )
-                                )}
-                            </div>
-                          )
-                        )
-                      )}
+                      .map((side) => (
+                        <div className="mt-5 mb-5 w-64" key={side.id}>
+                          {side.posts.nodes
+                            .slice()
+                            .sort((a, b) => (a.title < b.title ? 1 : -1))
+                            .slice(0, 2)
+                            .map((itemdata) => (
+                              <div key={itemdata.id}>
+                                <div className="flex">
+                                  <div className="mr-2 w-48 mb-2">
+                                    <p className="text-[12px] font-bold text-red-800">
+                                      {side.name}
+                                    </p>
+                                    <Link
+                                      href={{
+                                        pathname: `/news/${itemdata.slug}`,
+                                      }}
+                                      passHref
+                                    >
+                                      <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                                        {itemdata.title}
+                                      </p>
+                                    </Link>
+                                  </div>
+                                  {itemdata?.featuredImage?.node?.sourceUrl ? (
+                                    <ExportedImage
+                                      src={
+                                        itemdata.featuredImage.node.sourceUrl
+                                      }
+                                      alt={itemdata.title}
+                                      className="object-cover w-[90px] h-[87px] mr-2"
+                                      width={90}
+                                      height={87}
+                                    />
+                                  ) : (
+                                    <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                      No Image
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                        </div>
+                      ))}
                     <hr />
                     <p className="text-[15px] font-bold text-black-900 italic mt-10">
                       FOLLOW US
@@ -552,7 +536,6 @@ function News() {
                       className="text-red-800"
                       style={{ height: "7px", background: "#CE3A42" }}
                     />
-
                     <div className="flex mt-5 mb-8">
                       <Link
                         href={
@@ -611,7 +594,6 @@ function News() {
                         />
                       </Link>
                     </div>
-
                     <p className="text-[15px] font-bold text-black-900 italic">
                       FOLLOW BELAAZ ON WhatsApp
                     </p>
@@ -619,7 +601,6 @@ function News() {
                       className="text-red-800"
                       style={{ height: "7px", background: "#CE3A42" }}
                     />
-
                     <div className="flex mt-5 mb-8">
                       <ExportedImage
                         src={Frame208}
@@ -633,19 +614,6 @@ function News() {
                       />
                     </div>
                   </div>
-                  {/* <Ads
-              className=""
-              style={{
-                display: "block",
-                width: "251px",
-                height: "496px",
-                color: "transparent",
-                position: "absolute",
-                top: "21%",
-              }}
-              adClient="ca-pub-3209848804552918"
-              adSlot="9293720177" // Replace with your actual ad slot ID
-            /> */}
                 </div>
               </div>
             </div>
