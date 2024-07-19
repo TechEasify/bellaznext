@@ -389,7 +389,7 @@ const Insight = () => {
                             background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate?.simpleTitleBackgroundColor}`,
                             color: "#fff",
                             padding: "0 10px",
-                            width: "100px",
+                            width: "115px",
                             clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
                             fontSize: "12px",
                             fontWeight: 500,

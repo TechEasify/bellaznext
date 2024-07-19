@@ -99,7 +99,7 @@ const SkeletonLoader = () => (
 
 const CategoryPage = () => {
   const router = useRouter();
-  console.log(router, "router category");
+  console.log(router.query.categoryslug, "router category");
   const {
     navData,
     setNavData,
@@ -148,8 +148,8 @@ const CategoryPage = () => {
       </Head>
       <Nav uri={uri} />
 
-      <main>
-        {router.asPath === "/category/breaking-news" &&
+      {/* <main>
+        {router.asPath === `/category/breaking-news` &&
         nodeByUri !== undefined &&
         nodeByUri !== null ? (
           <Breakingnews
@@ -209,15 +209,17 @@ const CategoryPage = () => {
               )}
           </ul>
         )}
-      </main>
+      </main> */}
       {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
       "Simple" ? (
-        <Jewishnews
-          nodeByUri={nodeByUri}
-          loading={loadingCategory}
-          navData={navData}
-          fetchMore={fetchMore}
-        />
+        <main>
+          <Insight
+            nodeByUri={nodeByUri}
+            loading={loadingCategory}
+            navData={navData}
+            fetchMore={fetchMore}
+          />
+        </main>
       ) : nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
         "Music" ? (
         <main>
