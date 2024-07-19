@@ -25,7 +25,7 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const updateIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
 
     // Initial check on mount
@@ -1894,882 +1894,6 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : router.asPath === `/category/politics` ? (
-        <header
-          className={`bg-header transition-all duration-500 ${
-            isContactHeaderVisible
-              ? "max-h-64 opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-          style={{
-            position: "absolute",
-            zIndex: "9999999999",
-            top: "80px",
-            left: "0px",
-            width: "100%",
-          }}
-        >
-          <nav
-            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
-            aria-label="Global"
-          >
-            {/* Mobile View */}
-            <div className="block lg:hidden items-center">
-              <div className="flex flex-col">
-                <div className="block lg:hidden flex">
-                  <label htmlFor="simple-search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative mb-2 md:mb-0 mr-2">
-                    <input
-                      type="text"
-                      id="simple-search"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Type to Search"
-                      required
-                      style={{ width: "166px" }} // Set width 166px for mobile view
-                    />
-                  </div>
-                  <div className="flex md:ml-2 flex-col">
-                    <button
-                      type="submit"
-                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      style={{
-                        paddingLeft: "20px",
-                        paddingRight: "20px",
-                        borderRadius: "20px",
-                        background: "#ce3a42",
-                      }}
-                    >
-                      Search
-                    </button>
-                  </div>
-                </div>
-                <div className="flex justify-end mb-3">
-                  <button
-                    onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
-                  >
-                    Subscribe
-                  </button>
-                </div>
-                <div className="relative">
-                  <button
-                    onClick={toggleDropdownMobile}
-                    className="flex text-white font-bold items-center mb-3"
-                  >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
-                      priority={true}
-                      className="h-3 w-3 ml-2"
-                      src={Vector1}
-                      alt="Dropdown Icon"
-                    />
-                  </button>
-                  {toggleDropdown1 && (
-                    <>
-                      <Link
-                        href="/category/breaking-news"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector_red}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                      <Link
-                        href="/category/politics"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector_yellow}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                      <Link
-                        href="/category/jewish-news"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                    </>
-                  )}
-                </div>
-                <Link
-                  href="/category/insights"
-                  className="flex mr-2 text-white font-bold items-center mb-3"
-                >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
-                  <ExportedImage
-                    priority={true}
-                    className="h-3 w-3 mx-2"
-                    src={Vector}
-                    alt="Dropdown Icon"
-                  />
-                </Link>
-                <Link
-                  href="/category/music"
-                  className="flex mr-2 text-white font-bold items-center mb-3"
-                >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
-                  <ExportedImage
-                    priority={true}
-                    className="h-3 w-3 mx-2"
-                    src={Vector2}
-                    alt="Dropdown Icon"
-                  />
-                </Link>
-                <hr className="my-2" />
-                <div className="flex flex-col">
-                  <Link
-                    href="/contact-us"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
-                  </Link>
-                  <Link
-                    href="/contact-us"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
-                  </Link>
-                  <Link
-                    href="/advertise"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
-                  </Link>
-                </div>
-              </div>
-              <div className="flex justify-end items-end mt-4">
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group}
-                    alt="Whatsapp Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group1}
-                    alt="Facebook Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group2}
-                    alt="Instagram Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group3}
-                    alt="Twitter Icon"
-                  />
-                </Link>
-              </div>
-            </div>
-
-            {/* Desktop/Tablet View */}
-            <div className="hidden lg:block items-center">
-              <div className="flex flex-col lg:flex-col">
-                <Link
-                  href="/contact-us"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
-                </Link>
-                <Link
-                  href="/contact-us"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
-                </Link>
-                <Link
-                  href="/advertise"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
-                </Link>
-              </div>
-            </div>
-            <div
-              className="hidden lg:flex lg:justify-end lg:items-end"
-              style={{ height: "150px" }}
-            >
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
-            </div>
-          </nav>
-        </header>
-      ) : router.asPath === `/category/jewish-news` ? (
-        <header
-          className={`bg-header transition-all duration-500 ${
-            isContactHeaderVisible
-              ? "max-h-64 opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-          style={{
-            position: "absolute",
-            zIndex: "9999999999",
-            top: "80px",
-            left: "0px",
-            width: "100%",
-          }}
-        >
-          <nav
-            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
-            aria-label="Global"
-          >
-            {/* Mobile View */}
-            <div className="block lg:hidden items-center">
-              <div className="flex flex-col">
-                <div className="block lg:hidden flex">
-                  <label htmlFor="simple-search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative mb-2 md:mb-0 mr-2">
-                    <input
-                      type="text"
-                      id="simple-search"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Type to Search"
-                      required
-                      style={{ width: "166px" }} // Set width 166px for mobile view
-                    />
-                  </div>
-                  <div className="flex md:ml-2 flex-col">
-                    <button
-                      type="submit"
-                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      style={{
-                        paddingLeft: "20px",
-                        paddingRight: "20px",
-                        borderRadius: "20px",
-                        background: "#ce3a42",
-                      }}
-                    >
-                      Search
-                    </button>
-                  </div>
-                </div>
-                <div className="flex justify-end mb-3">
-                  <button
-                    onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
-                  >
-                    Subscribe
-                  </button>
-                </div>
-                <div className="relative">
-                  <button
-                    onClick={toggleDropdownMobile}
-                    className="flex text-white font-bold items-center mb-3"
-                  >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
-                      priority={true}
-                      className="h-3 w-3 ml-2"
-                      src={Vector1}
-                      alt="Dropdown Icon"
-                    />
-                  </button>
-                  {toggleDropdown1 && (
-                    <>
-                      <Link
-                        href="/category/breaking-news"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector_red}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                      <Link
-                        href="/category/politics"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector_yellow}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                      <Link
-                        href="/category/jewish-news"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                    </>
-                  )}
-                </div>
-                <Link
-                  href="/category/insights"
-                  className="flex mr-2 text-white font-bold items-center mb-3"
-                >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
-                  <ExportedImage
-                    priority={true}
-                    className="h-3 w-3 mx-2"
-                    src={Vector}
-                    alt="Dropdown Icon"
-                  />
-                </Link>
-                <Link
-                  href="/category/music"
-                  className="flex mr-2 text-white font-bold items-center mb-3"
-                >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
-                  <ExportedImage
-                    priority={true}
-                    className="h-3 w-3 mx-2"
-                    src={Vector2}
-                    alt="Dropdown Icon"
-                  />
-                </Link>
-                <hr className="my-2" />
-                <div className="flex flex-col">
-                  <Link
-                    href="/contact-us"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
-                  </Link>
-                  <Link
-                    href="/contact-us"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
-                  </Link>
-                  <Link
-                    href="/advertise"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
-                  </Link>
-                </div>
-              </div>
-              <div className="flex justify-end items-end mt-4">
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group}
-                    alt="Whatsapp Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group1}
-                    alt="Facebook Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group2}
-                    alt="Instagram Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group3}
-                    alt="Twitter Icon"
-                  />
-                </Link>
-              </div>
-            </div>
-
-            {/* Desktop/Tablet View */}
-            <div className="hidden lg:block items-center">
-              <div className="flex flex-col lg:flex-col">
-                <Link
-                  href="/contact-us"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
-                </Link>
-                <Link
-                  href="/contact-us"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
-                </Link>
-                <Link
-                  href="/advertise"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
-                </Link>
-              </div>
-            </div>
-            <div
-              className="hidden lg:flex lg:justify-end lg:items-end"
-              style={{ height: "150px" }}
-            >
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
-            </div>
-          </nav>
-        </header>
-      ) : router.asPath === `/category/breaking-news` ? (
-        <header
-          className={`bg-header transition-all duration-500 ${
-            isContactHeaderVisible
-              ? "max-h-64 opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-          style={{
-            position: "absolute",
-            zIndex: "9999999999",
-            top: "80px",
-            left: "0px",
-            width: "100%",
-          }}
-        >
-          <nav
-            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
-            aria-label="Global"
-          >
-            {/* Mobile View */}
-            <div className="block lg:hidden items-center">
-              <div className="flex flex-col">
-                <div className="block lg:hidden flex">
-                  <label htmlFor="simple-search" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative mb-2 md:mb-0 mr-2">
-                    <input
-                      type="text"
-                      id="simple-search"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Type to Search"
-                      required
-                      style={{ width: "166px" }} // Set width 166px for mobile view
-                    />
-                  </div>
-                  <div className="flex md:ml-2 flex-col">
-                    <button
-                      type="submit"
-                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                      style={{
-                        paddingLeft: "20px",
-                        paddingRight: "20px",
-                        borderRadius: "20px",
-                        background: "#ce3a42",
-                      }}
-                    >
-                      Search
-                    </button>
-                  </div>
-                </div>
-                <div className="flex justify-end mb-3">
-                  <button
-                    onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
-                  >
-                    Subscribe
-                  </button>
-                </div>
-                <div className="relative">
-                  <button
-                    onClick={toggleDropdownMobile}
-                    className="flex text-white font-bold items-center mb-3"
-                  >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
-                      priority={true}
-                      className="h-3 w-3 ml-2"
-                      src={Vector1}
-                      alt="Dropdown Icon"
-                    />
-                  </button>
-                  {toggleDropdown1 && (
-                    <>
-                      <Link
-                        href="/category/breaking-news"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector_red}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                      <Link
-                        href="/category/politics"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector_yellow}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                      <Link
-                        href="/category/jewish-news"
-                        className="flex mr-2 text-white font-bold items-center mb-3"
-                      >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
-                        <ExportedImage
-                          priority={true}
-                          className="h-3 w-3 mx-2"
-                          src={Vector}
-                          alt="Dropdown Icon"
-                        />
-                      </Link>
-                    </>
-                  )}
-                </div>
-                <Link
-                  href="/category/insights"
-                  className="flex mr-2 text-white font-bold items-center mb-3"
-                >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
-                  <ExportedImage
-                    priority={true}
-                    className="h-3 w-3 mx-2"
-                    src={Vector}
-                    alt="Dropdown Icon"
-                  />
-                </Link>
-                <Link
-                  href="/category/music"
-                  className="flex mr-2 text-white font-bold items-center mb-3"
-                >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
-                  <ExportedImage
-                    priority={true}
-                    className="h-3 w-3 mx-2"
-                    src={Vector2}
-                    alt="Dropdown Icon"
-                  />
-                </Link>
-                <hr className="my-2" />
-                <div className="flex flex-col">
-                  <Link
-                    href="/contact-us"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
-                  </Link>
-                  <Link
-                    href="/contact-us"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
-                  </Link>
-                  <Link
-                    href="/advertise"
-                    className="flex text-white font-bold items-center my-2 lg:mr-2"
-                  >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
-                  </Link>
-                </div>
-              </div>
-              <div className="flex justify-end items-end mt-4">
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group}
-                    alt="Whatsapp Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group1}
-                    alt="Facebook Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group2}
-                    alt="Instagram Icon"
-                  />
-                </Link>
-                <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 mx-1"
-                    src={Group3}
-                    alt="Twitter Icon"
-                  />
-                </Link>
-              </div>
-            </div>
-
-            {/* Desktop/Tablet View */}
-            <div className="hidden lg:block items-center">
-              <div className="flex flex-col lg:flex-col">
-                <Link
-                  href="/contact-us"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
-                </Link>
-                <Link
-                  href="/contact-us"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
-                </Link>
-                <Link
-                  href="/advertise"
-                  className="flex text-white font-bold items-center my-2 lg:mr-2"
-                >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
-                </Link>
-              </div>
-            </div>
-            <div
-              className="hidden lg:flex lg:justify-end lg:items-end"
-              style={{ height: "150px" }}
-            >
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
-                className="px-4 py-2"
-              >
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 mx-1"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
-            </div>
-          </nav>
-        </header>
       ) : router.asPath === `/category/insights` ? (
         <header
           className={`bg-header transition-all duration-500 ${
@@ -3646,7 +2770,7 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : (
+      ) : router.pathname === "/" ? (
         <header
           className={`bg-header transition-all duration-500 ${
             isContactHeaderVisible
@@ -3657,6 +2781,298 @@ const Nav = ({
             position: "absolute",
             zIndex: "9999999999",
             top: isMobile ? "75px" : "156px",
+            left: "0px",
+            width: "100%",
+          }}
+        >
+          <nav
+            className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            aria-label="Global"
+          >
+            {/* Mobile View */}
+            <div className="block lg:hidden items-center">
+              <div className="flex flex-col">
+                <div className="block lg:hidden flex">
+                  <label htmlFor="simple-search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="relative mb-2 md:mb-0 mr-2">
+                    <input
+                      type="text"
+                      id="simple-search"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Type to Search"
+                      required
+                      style={{ width: "166px" }} // Set width 166px for mobile view
+                    />
+                  </div>
+                  <div className="flex md:ml-2 flex-col">
+                    <button
+                      type="submit"
+                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      style={{
+                        paddingLeft: "20px",
+                        paddingRight: "20px",
+                        borderRadius: "20px",
+                        background: "#ce3a42",
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
+                </div>
+                <div className="flex justify-end mb-3">
+                  <button
+                    onClick={handleSub}
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdownMobile}
+                    className="flex text-white font-bold items-center mb-3"
+                  >
+                    {dataMenu !== undefined &&
+                      dataMenu?.menu?.header?.mainMenuFirst}
+                    <ExportedImage
+                      priority={true}
+                      className="h-3 w-3 ml-2"
+                      src={Vector1}
+                      alt="Dropdown Icon"
+                    />
+                  </button>
+                  {toggleDropdown1 && (
+                    <>
+                      <Link
+                        href="/category/breaking-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subFirst}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_red}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/politics"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subSecond}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_yellow}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href="/category/jewish-news"
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataMenu !== undefined &&
+                          dataMenu.menu.header.subThird}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                    </>
+                  )}
+                </div>
+                <Link
+                  href="/category/insights"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined &&
+                    dataMenu.menu.header.mainMenuSecond}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <Link
+                  href="/category/music"
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector2}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <hr className="my-2" />
+                <div className="flex flex-col">
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareFirst}
+                  </Link>
+                  <Link
+                    href="/contact-us"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareSecond}
+                  </Link>
+                  <Link
+                    href="/advertise"
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {datasubMenu !== undefined &&
+                      datasubMenu?.menu?.header?.foreSquareThird}
+                  </Link>
+                </div>
+              </div>
+              <div className="flex justify-end items-end mt-4">
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
+              </div>
+            </div>
+
+            {/* Desktop/Tablet View */}
+            <div className="hidden lg:block items-center">
+              <div className="flex flex-col lg:flex-col">
+                <Link
+                  href="/contact-us"
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu?.menu?.header?.foreSquareFirst}
+                </Link>
+                <Link
+                  href="/contact-us"
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu?.menu?.header?.foreSquareSecond}
+                </Link>
+                <Link
+                  href="/advertise"
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
+                >
+                  {datasubMenu !== undefined &&
+                    datasubMenu?.menu?.header?.foreSquareThird}
+                </Link>
+              </div>
+            </div>
+            <div
+              className="hidden lg:flex lg:justify-end lg:items-end"
+              style={{ height: "150px" }}
+            >
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                className="px-4 py-2"
+              >
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group}
+                  alt="Whatsapp Icon"
+                />
+              </Link>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                className="px-4 py-2"
+              >
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group1}
+                  alt="Facebook Icon"
+                />
+              </Link>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                className="px-4 py-2"
+              >
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group2}
+                  alt="Instagram Icon"
+                />
+              </Link>
+              <Link
+                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                className="px-4 py-2"
+              >
+                <ExportedImage
+                  priority={true}
+                  className="h-8 w-8 mx-1"
+                  src={Group3}
+                  alt="Twitter Icon"
+                />
+              </Link>
+            </div>
+          </nav>
+        </header>
+      ) : (
+        <header
+          className={`bg-header transition-all duration-500 ${
+            isContactHeaderVisible
+              ? "max-h-64 opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+          style={{
+            position: "absolute",
+            zIndex: "9999999999",
+            top: "80px",
             left: "0px",
             width: "100%",
           }}
