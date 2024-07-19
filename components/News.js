@@ -355,7 +355,7 @@ function News() {
                         MORE STORIES
                       </p>
                       <Link
-                        href="#"
+                        href="/"
                         className="text-[10px] md:text-[12px] font-bold text-black underline"
                       >
                         More

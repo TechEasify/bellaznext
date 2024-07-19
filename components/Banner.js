@@ -340,16 +340,8 @@ const Banner = () => {
                 )
               )}
 
-              <Topheadlines topheadData={bannerData} />
-              {/* <p className="text-base font-bold text-red-800">POLITICS</p>
-              <h1 className="text-[30px] text-black-900 font-bold">
-                Who will become america's last hope
-              </h1>
-              <p className="text-[15px] text-base font-bold text-gray-800 mb-3">
-                Speaking after the race, Vasseur praised Leclerc's tactical
-                thinking in the closing stages of the race before jokingly
-                pointing the finger at Mercedes.
-              </p> */}
+              <Topheadlines topheadData={bannerData}  displayedCategories={displayedCategories}/>
+              
             </div>
           </div>
           <div className="hidden md:block w-full max-w-3xl mx-auto">

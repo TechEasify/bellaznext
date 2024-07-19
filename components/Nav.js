@@ -219,7 +219,7 @@ const Nav = ({
   };
 
   console.log(
-    `/news${uri}`,
+    dataNav,
     "navDataResultnavDataResultnavDataResultnavDataResult"
   );
 
@@ -382,6 +382,7 @@ const Nav = ({
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      onClick={() => dataNav?.menu?.header?.topFirstLinks?.url && router.push(dataNav.menu.header.topFirstLinks.url)}
                     >
                       {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
                     </button>
@@ -394,6 +395,7 @@ const Nav = ({
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      onClick={() => dataNav?.menu?.header?.topSecondLinks?.url && router.push(dataNav.menu.header.topSecondLinks.url)}
                     >
                       {dataNav !== undefined &&
                         dataNav?.menu?.header?.topSecond}
@@ -407,8 +409,22 @@ const Nav = ({
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      onClick={() => dataNav?.menu?.header?.topThirdLinks?.url && router.push(dataNav.menu.header.topThirdLinks.url)}
                     >
                       {dataNav !== undefined && dataNav?.menu?.header?.topThird}
+                    </button>
+                  </div>
+                </li>
+                <span className="text-gray-400">|</span>
+                <li aria-current="page">
+                  <div className="flex items-center">
+                    <button
+                      id="dropdownDatabase"
+                      data-dropdown-toggle="dropdown-database"
+                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      onClick={() => dataNav?.menu?.header?.topForeLinks?.url && router.push(dataNav.menu.header.topForeLinks.url)}
+                    >
+                      {dataNav !== undefined && dataNav?.menu?.header?.topFore}
                     </button>
                   </div>
                 </li>
@@ -581,15 +597,15 @@ const Nav = ({
               className={`px-4 text-gray-800 ${
                 activeLink === "/category/breaking-news" ||
                 router.asPath === "/category/breaking-news"
-                  ? "border-b-3 border-red-600"
-                  : "hover:border-b-3 hover:border-red-600"
+                  ? "border-b-3 bg-change2"
+                  : "hover:border-b-3 hover:bg-change2"
               }`}
               onClick={() => handleLinkClick("/category/breaking-news")}
             >
               {dataMenu !== undefined && dataMenu.menu.header.subFirst}
             </Link>
-            {activeLink === "/category/breaking-news" && (
-              <hr className="w-full border-red-600" />
+            {activeLink === "/category/breaking-news" && router.asPath === "/category/breaking-news" && (
+              <hr className="w-full bg-change2" />
             )}
           </div>
 

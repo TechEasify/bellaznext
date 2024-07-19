@@ -7,10 +7,10 @@ export default function Page(props) {
 
 export async function getStaticProps(ctx) {
   console.log(ctx, "ctx");
-  return await getWordPressProps({ ctx });
+  // return await getWordPressProps({ ctx });
 
   // if using WPGraphQL Smart Cache, uncomment this
-  //return { ...(await getWordPressProps({ ctx })), revalidate: 1 }
+  return { ...(await getWordPressProps({ ctx })), revalidate: 1 }
 
 }
 
