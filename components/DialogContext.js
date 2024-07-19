@@ -140,7 +140,6 @@ export const DialogProvider = ({ children }) => {
     if (iconDataResult) setDataIcon(iconDataResult);
     if (categoryData) setNodeByUri(categoryData);
     if (Data) setBannerData(Data);
-    // if (topheadlineData) setTopheadData(topheadlineData);
     if (insightsData) setInsightsQuery(insightsData);
     if (musicData) setMusicQuery(musicData);
     if (categoryInsight) setCategoryInsightData(categoryInsight);
@@ -152,7 +151,6 @@ export const DialogProvider = ({ children }) => {
     iconDataResult,
     categoryData,
     Data,
-    // topheadlineData,
     insightsData,
     testimonialData,
     musicData,

@@ -5,7 +5,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import Breakingnews from "../components/breaking-news";
 import { CATEGORY_QUERY } from "../lib/ga/queries";
 import Article from "../components/News";
 
