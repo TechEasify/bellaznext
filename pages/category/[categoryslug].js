@@ -144,7 +144,7 @@ const CategoryPage = () => {
   return (
     <>
       <Head>
-        <title>{nodeByUri !== null && nodeByUri.name} - News</title>
+        <title>{nodeByUri?.nodeByUri !== null && nodeByUri?.nodeByUri?.name} - News</title>
       </Head>
       <Nav uri={uri} />
 
