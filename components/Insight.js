@@ -365,7 +365,7 @@ const Insight = () => {
                 item.posts.nodes.map((posts) => {
                   const calculateWidth = (text) => {
                     // Example: 10 pixels per character plus some base width
-                    const baseWidth = 100; // Base width in pixels
+                    const baseWidth = 50; // Base width in pixels
                     const charWidth = 10;  // Width per character in pixels
                     return `${baseWidth + charWidth * text.length}px`;
                   };
