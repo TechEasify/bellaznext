@@ -170,8 +170,14 @@ const GET_TOPHEADLINE_PAGE = gql`
 `;
 
 function News() {
-  const { iconDataResult, navData, setNavData, nodeByUri, setNodeByUri } =
-    useDialog();
+  const {
+    iconDataResult,
+    navData,
+    setNavData,
+    nodeByUri,
+    setNodeByUri,
+    dataNav,
+  } = useDialog();
   const router = useRouter();
   const { slug } = router.query;
   const uri = `/${slug}`;
@@ -238,16 +244,20 @@ function News() {
         <>
           <hr />
           <div className="w-full px-4 mx-auto flex bg-black items-center justify-center flex-wrap sm:flex-nowrap">
-            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2">
-              Ukraine & Russia War
+            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer" onClick={() => dataNav?.menu?.header?.topFirstLinks?.url && router.push(dataNav.menu.header.topFirstLinks.url)}>
+              {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
             </p>
             <span className="text-white px-2">|</span>
-            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2">
-              Manage Your Money
+            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+            onClick={() => dataNav?.menu?.header?.topSecondLinks?.url && router.push(dataNav.menu.header.topSecondLinks.url)}
+            >
+              {dataNav !== undefined && dataNav?.menu?.header?.topSecond}
             </p>
             <span className="text-white px-2">|</span>
-            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2">
-              Top Stocks
+            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+            onClick={() => dataNav?.menu?.header?.topThirdLinks?.url && router.push(dataNav.menu.header.topThirdLinks.url)}
+            >
+              {dataNav !== undefined && dataNav?.menu?.header?.topThird}
             </p>
           </div>
 
