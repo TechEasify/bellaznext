@@ -25,7 +25,7 @@ const useIsMobile = () => {
 
   useEffect(() => {
     const updateIsMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
+      setIsMobile(window.innerWidth < 768);
     };
 
     // Initial check on mount
