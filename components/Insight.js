@@ -362,83 +362,95 @@ const Insight = () => {
             {posts.map(
               (item) => (
                 console.log(item, "itemitemitemitemitemitemitemitemitem"),
-                item.posts.nodes.map((posts) => (
-                  <div key={posts.slug}>
-                    <div className="flex flex-col md:flex-row mb-5">
-                      <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                        <Link
-                          href={{
-                            pathname: `/news/${posts.slug}`,
-                          }}
-                          passHref
-                        >
-                          <ExportedImage
-                            className="object-cover w-[357px] h-[261px]"
-                            priority={true}
-                            src={posts?.featuredImage?.node?.sourceUrl}
-                            alt="ferrari4"
-                            width={357}
-                            height={261}
-                          />
-                        </Link>
-                      </div>
-                      <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                        <p
-                          className="text-base font-bold text-red-800"
-                          style={{
-                            background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate?.simpleTitleBackgroundColor}`,
-                            color: "#fff",
-                            padding: "0 10px",
-                            width: "115px",
-                            clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
-                            fontSize: "12px",
-                            fontWeight: 500,
-                            letterSpacing: "2px",
-                          }}
-                        >
-                          {nodeByUri?.nodeByUri?.name}
-                        </p>
-                        <Link
-                          href={{
-                            pathname: `/news/${posts.slug}`,
-                          }}
-                          passHref
-                        >
-                          <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
-                            {posts.title}
-                          </h5>
-                        </Link>
-                        <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                          <span
-                            className="text-[12px] font-extrabold mr-1"
-                            style={{ color: "#40A6FB" }}
+                item.posts.nodes.map((posts) => {
+                  const calculateWidth = (text) => {
+                    // Example: 10 pixels per character plus some base width
+                    const baseWidth = 100; // Base width in pixels
+                    const charWidth = 10;  // Width per character in pixels
+                    return `${baseWidth + charWidth * text.length}px`;
+                  };
+            
+                  // Calculate the width dynamically
+                  const dynamicWidth = calculateWidth(nodeByUri?.nodeByUri?.name);
+                  return (
+                    <div key={posts.slug}>
+                      <div className="flex flex-col md:flex-row mb-5">
+                        <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                          <Link
+                            href={{
+                              pathname: `/news/${posts.slug}`,
+                            }}
+                            passHref
                           >
-                            |
-                          </span>
-                          By
-                          <span
-                            className="font-extrabold ml-1"
-                            style={{ color: "#40A6FB" }}
+                            <ExportedImage
+                              className="object-cover w-[357px] h-[261px]"
+                              priority={true}
+                              src={posts?.featuredImage?.node?.sourceUrl}
+                              alt="ferrari4"
+                              width={357}
+                              height={261}
+                            />
+                          </Link>
+                        </div>
+                        <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                          <p
+                            className="text-base font-bold text-red-800"
+                            style={{
+                              background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate?.simpleTitleBackgroundColor}`,
+                              color: "#fff",
+                              padding: "0 10px",
+                              width: dynamicWidth,
+                              clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                              fontSize: "12px",
+                              fontWeight: 500,
+                              letterSpacing: "2px",
+                            }}
                           >
-                            {posts?.author?.node?.name}
+                            {nodeByUri?.nodeByUri?.name}
+                          </p>
+                          <Link
+                            href={{
+                              pathname: `/news/${posts.slug}`,
+                            }}
+                            passHref
+                          >
+                            <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
+                              {posts.title}
+                            </h5>
+                          </Link>
+                          <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
                             <span
-                              className="text-[25px] font-extrabold mx-1"
+                              className="text-[12px] font-extrabold mr-1"
                               style={{ color: "#40A6FB" }}
                             >
-                              .
+                              |
                             </span>
-                          </span>
-                          6 MIN READ
-                        </p>
-                        <p
-                          className="text-[15px] text-base font-normal text-gray-600 mb-3"
-                          dangerouslySetInnerHTML={{ __html: posts.excerpt }}
-                        />
+                            By
+                            <span
+                              className="font-extrabold ml-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              {posts?.author?.node?.name}
+                              <span
+                                className="text-[25px] font-extrabold mx-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                .
+                              </span>
+                            </span>
+                            6 MIN READ
+                          </p>
+                          <p
+                            className="text-[15px] text-base font-normal text-gray-600 mb-3"
+                            dangerouslySetInnerHTML={{ __html: posts.excerpt }}
+                          />
+                        </div>
                       </div>
+                      <hr className="my-5" />
                     </div>
-                    <hr className="my-5" />
-                  </div>
-                ))
+                  )
+                }
+                  )
               )
             )}
             <div className="flex justify-between">

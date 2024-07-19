@@ -125,7 +125,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
             />
             {randomPosts.map(
               (post, index) => (
-                console.log(post, "post"),
+                console.log(post, "post music"),
                 (
                   <React.Fragment key={index}>
                     <div className="flex mt-5">
