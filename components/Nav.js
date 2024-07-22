@@ -223,8 +223,8 @@ const Nav = ({
 
   return (
     <>
-      {router.pathname === "/contact-us" ? (
-        <header className="bg-header">
+      {router.pathname === dataNav?.menu?.header?.foreSquareFirstLink ? (
+        <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
@@ -271,8 +271,8 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : router.pathname === "/about" ? (
-        <header className="bg-header">
+      ) : router.pathname === dataNav?.menu?.header?.foreSquareSecond ? (
+        <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
@@ -317,7 +317,7 @@ const Nav = ({
           </nav>
         </header>
       ) : router.asPath === `/news${uri}` ? (
-        <header className="bg-black">
+        <header className="bg-black" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
           <nav
             className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
             aria-label="Global"
@@ -366,7 +366,7 @@ const Nav = ({
           </nav>
         </header>
       ) : (
-        <header className="bg-header">
+        <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
           {/* Breadcrumb */}
           {router.pathname === "/" && (
             <nav
@@ -462,8 +462,7 @@ const Nav = ({
                   </button>
                 </div>
                 <Link
-                  href="/category/insights"
-                  // onClick={() => router.push("/category/insights")}
+                  href={dataNav?.menu?.header?.mainMenuSecondLink || ""}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined &&
@@ -476,8 +475,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
-                  // onClick={() => router.push("/category/music")}
+                  href={dataNav?.menu?.header?.mainMenuThirdLink || ""}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -591,55 +589,55 @@ const Nav = ({
         <div className="bg-white font-medium inline-flex items-center md:ml-28">
           <div className="flex flex-col items-center">
             <Link
-              href="/category/breaking-news"
+              href={dataNav?.menu?.header?.subFirstLink?.url}
               className={`px-4 text-gray-800 ${
-                activeLink === "/category/breaking-news" ||
-                router.asPath === "/category/breaking-news"
+                activeLink === dataNav?.menu?.header?.subFirstLink?.url ||
+                router.asPath === dataNav?.menu?.header?.subFirstLink?.url
                   ? "border-b-3 bg-change2"
                   : "hover:border-b-3 hover:bg-change2"
               }`}
-              onClick={() => handleLinkClick("/category/breaking-news")}
+              onClick={() => handleLinkClick(dataNav?.menu?.header?.subFirstLink?.url)}
             >
               {dataNav !== undefined && dataNav.menu.header.subFirst}
             </Link>
-            {activeLink === "/category/breaking-news" && router.asPath === "/category/breaking-news" && (
+            {activeLink === dataNav?.menu?.header?.subFirstLink?.url && router.asPath === dataNav?.menu?.header?.subFirstLink?.url && (
               <hr className="w-full bg-change2" />
             )}
           </div>
 
           <div className="flex flex-col items-center">
             <Link
-              href="/category/politics"
+              href={dataNav?.menu?.header?.subSecondLink?.url}
               className={`politics px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === "/category/politics" ||
-                router.asPath === "/category/politics"
+                activeLink === dataNav?.menu?.header?.subSecondLink?.url ||
+                router.asPath === dataNav?.menu?.header?.subSecondLink?.url
                   ? `border-b-3 bg-change`
                   : ""
               }`}
-              onClick={() => handleLinkClick("/category/politics")}
+              onClick={() => handleLinkClick(dataNav?.menu?.header?.subSecondLink?.url)}
             >
               {dataNav !== undefined && dataNav.menu.header.subSecond}
             </Link>
-            {activeLink === "/category/politics" &&
-              router.asPath === "/category/politics" && (
+            {activeLink === dataNav?.menu?.header?.subSecondLink?.url &&
+              router.asPath === dataNav?.menu?.header?.subSecondLink?.url && (
                 <hr className="w-full bg-change" />
               )}
           </div>
           <div className="flex flex-col items-center">
             <Link
-              href="/category/jewish-news"
+              href={dataNav?.menu?.header?.subThirdLink?.url}
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === "/category/jewish-news" ||
-                router.asPath === "/category/jewish-news"
+                activeLink === dataNav?.menu?.header?.subThirdLink?.url ||
+                router.asPath === dataNav?.menu?.header?.subThirdLink?.url
                   ? "border-b-3 bg-change1"
                   : ""
               }`}
-              onClick={() => handleLinkClick("/category/jewish-news")}
+              onClick={() => handleLinkClick(dataNav?.menu?.header?.subThirdLink?.url)}
             >
               {dataNav !== undefined && dataNav.menu.header.subThird}
             </Link>
-            {activeLink === "/category/jewish-news" &&
-              router.asPath === "/category/jewish-news" && (
+            {activeLink === dataNav?.menu?.header?.subThirdLink?.url &&
+              router.asPath === dataNav?.menu?.header?.subThirdLink?.url && (
                 <hr className="w-full bg-change1" />
               )}
           </div>
@@ -772,7 +770,7 @@ const Nav = ({
                 {toggleDropdown1 && (
                   <>
                     <Link
-                      href="/category/breaking-news"
+                      href={dataNav?.menu?.header?.subFirstLink?.url}
                       className="flex text-white font-bold items-center mt-2"
                     >
                       {dataNav !== undefined && dataNav.menu.header.subFirst}
@@ -784,7 +782,7 @@ const Nav = ({
                       />
                     </Link>
                     <Link
-                      href="/category/politics"
+                      href={dataNav?.menu?.header?.subSecondLink?.url}
                       className="flex text-white font-bold items-center mt-2"
                     >
                       {dataNav !== undefined && dataNav.menu.header.subSecond}
@@ -796,7 +794,7 @@ const Nav = ({
                       />
                     </Link>
                     <Link
-                      href="/category/jewish-news"
+                      href={dataNav?.menu?.header?.subThirdLink?.url}
                       className="flex text-white font-bold items-center mt-2"
                     >
                       {dataNav !== undefined && dataNav.menu.header.subThird}
@@ -811,7 +809,7 @@ const Nav = ({
                 )}
               </div>
               <Link
-                href="/category/insights"
+                href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                 className="flex text-white font-bold items-center mb-3"
               >
                 {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
@@ -823,7 +821,7 @@ const Nav = ({
                 />
               </Link>
               <Link
-                href="/category/music"
+                href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                 className="flex text-white font-bold items-center mb-3"
               >
                 {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
@@ -837,21 +835,21 @@ const Nav = ({
               <hr className="my-2" />
               <div className="flex flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2"
                 >
                   {dataNav !== undefined &&
@@ -910,31 +908,31 @@ const Nav = ({
           <div className="hidden lg:flex lg:flex-row items-center">
             <div className="flex flex-col mr-5">
               <Link
-                href="/category/breaking-news"
+                href={dataNav?.menu?.header?.subFirstLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined && dataNav?.menu?.header?.subFirst}
               </Link>
               <Link
-                href="/category/politics"
+                href={dataNav?.menu?.header?.subSecondLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined && dataNav?.menu?.header?.subSecond}
               </Link>
               <Link
-                href="/category/jewish-news"
+                href={dataNav?.menu?.header?.subThirdLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined && dataNav?.menu?.header?.subThird}
               </Link>
               <Link
-                href="/category/insights"
+                href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
               </Link>
               <Link
-                href="/category/music"
+                href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
@@ -942,21 +940,21 @@ const Nav = ({
             </div>
             <div className="flex flex-col lg:items-center">
               <Link
-                href="/contact-us"
+                href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined &&
                   dataNav?.menu?.header?.foreSquareFirst}
               </Link>
               <Link
-                href="/contact-us"
+                href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined &&
                   dataNav?.menu?.header?.foreSquareSecond}
               </Link>
               <Link
-                href="/advertise"
+                href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
                 {dataNav !== undefined &&
@@ -1092,7 +1090,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1105,7 +1103,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1118,7 +1116,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1134,7 +1132,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -1147,7 +1145,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -1161,21 +1159,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -1235,21 +1233,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -1384,7 +1382,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1397,7 +1395,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1410,7 +1408,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1426,7 +1424,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -1439,7 +1437,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -1453,21 +1451,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -1527,21 +1525,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -1676,7 +1674,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1689,7 +1687,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1702,7 +1700,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1718,7 +1716,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -1731,7 +1729,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -1745,21 +1743,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -1819,21 +1817,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -1968,7 +1966,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1981,7 +1979,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -1994,7 +1992,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2010,7 +2008,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -2023,7 +2021,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2037,21 +2035,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2111,21 +2109,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -2260,7 +2258,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2273,7 +2271,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2286,7 +2284,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2302,7 +2300,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -2315,7 +2313,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2329,21 +2327,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2403,21 +2401,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -2552,7 +2550,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2565,7 +2563,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2578,7 +2576,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2594,7 +2592,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -2607,7 +2605,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2621,21 +2619,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2695,21 +2693,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -2844,7 +2842,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2857,7 +2855,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2870,7 +2868,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -2886,7 +2884,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -2899,7 +2897,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2913,21 +2911,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2987,21 +2985,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
