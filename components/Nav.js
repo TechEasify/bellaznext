@@ -216,15 +216,17 @@ const Nav = ({
     });
   };
 
-  console.log(
-    dataNav,
-    "navDataResultnavDataResultnavDataResultnavDataResult"
-  );
+  console.log(dataNav, "navDataResultnavDataResultnavDataResultnavDataResult");
 
   return (
     <>
       {router.pathname === "/contact-us" ? (
-        <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
+        <header
+          className="bg-header"
+          style={{
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+          }}
+        >
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
@@ -272,7 +274,12 @@ const Nav = ({
           </nav>
         </header>
       ) : router.pathname === "/about" ? (
-        <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
+        <header
+          className="bg-header"
+          style={{
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+          }}
+        >
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
@@ -317,7 +324,12 @@ const Nav = ({
           </nav>
         </header>
       ) : router.asPath === `/news${uri}` ? (
-        <header className="bg-black" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
+        <header
+          className="bg-black"
+          style={{
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+          }}
+        >
           <nav
             className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
             aria-label="Global"
@@ -366,7 +378,12 @@ const Nav = ({
           </nav>
         </header>
       ) : (
-        <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
+        <header
+          className="bg-header"
+          style={{
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+          }}
+        >
           {/* Breadcrumb */}
           {router.pathname === "/" && (
             <nav
@@ -380,7 +397,10 @@ const Nav = ({
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
-                      onClick={() => dataNav?.menu?.header?.topFirstLinks?.url && router.push(dataNav.menu.header.topFirstLinks.url)}
+                      onClick={() =>
+                        dataNav?.menu?.header?.topFirstLinks?.url &&
+                        router.push(dataNav.menu.header.topFirstLinks.url)
+                      }
                     >
                       {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
                     </button>
@@ -393,7 +413,10 @@ const Nav = ({
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
-                      onClick={() => dataNav?.menu?.header?.topSecondLinks?.url && router.push(dataNav.menu.header.topSecondLinks.url)}
+                      onClick={() =>
+                        dataNav?.menu?.header?.topSecondLinks?.url &&
+                        router.push(dataNav.menu.header.topSecondLinks.url)
+                      }
                     >
                       {dataNav !== undefined &&
                         dataNav?.menu?.header?.topSecond}
@@ -407,7 +430,10 @@ const Nav = ({
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
-                      onClick={() => dataNav?.menu?.header?.topThirdLinks?.url && router.push(dataNav.menu.header.topThirdLinks.url)}
+                      onClick={() =>
+                        dataNav?.menu?.header?.topThirdLinks?.url &&
+                        router.push(dataNav.menu.header.topThirdLinks.url)
+                      }
                     >
                       {dataNav !== undefined && dataNav?.menu?.header?.topThird}
                     </button>
@@ -420,7 +446,10 @@ const Nav = ({
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
                       className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
-                      onClick={() => dataNav?.menu?.header?.topForeLinks?.url && router.push(dataNav.menu.header.topForeLinks.url)}
+                      onClick={() =>
+                        dataNav?.menu?.header?.topForeLinks?.url &&
+                        router.push(dataNav.menu.header.topForeLinks.url)
+                      }
                     >
                       {dataNav !== undefined && dataNav?.menu?.header?.topFore}
                     </button>
@@ -462,11 +491,10 @@ const Nav = ({
                   </button>
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={dataNav?.menu?.header?.mainMenuSecondLink !== null ? dataNav?.menu?.header?.mainMenuSecondLink?.url : "/"}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -475,7 +503,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={dataNav?.menu?.header?.mainMenuThirdLink !== null ? dataNav?.menu?.header?.mainMenuThirdLink?.url : "/"}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -589,32 +617,37 @@ const Nav = ({
         <div className="bg-white font-medium inline-flex items-center md:ml-28">
           <div className="flex flex-col items-center">
             <Link
-              href={dataNav?.menu?.header?.subFirstLink?.url}
+              href={dataNav?.menu?.header?.subFirstLink !== null ? dataNav?.menu?.header?.subFirstLink?.url : "/"}
               className={`px-4 text-gray-800 ${
                 activeLink === dataNav?.menu?.header?.subFirstLink?.url ||
                 router.asPath === dataNav?.menu?.header?.subFirstLink?.url
                   ? "border-b-3 bg-change2"
                   : "hover:border-b-3 hover:bg-change2"
               }`}
-              onClick={() => handleLinkClick(dataNav?.menu?.header?.subFirstLink?.url)}
+              onClick={() =>
+                handleLinkClick(dataNav?.menu?.header?.subFirstLink?.url)
+              }
             >
               {dataNav !== undefined && dataNav.menu.header.subFirst}
             </Link>
-            {activeLink === dataNav?.menu?.header?.subFirstLink?.url && router.asPath === dataNav?.menu?.header?.subFirstLink?.url && (
-              <hr className="w-full bg-change2" />
-            )}
+            {activeLink === dataNav?.menu?.header?.subFirstLink?.url &&
+              router.asPath === dataNav?.menu?.header?.subFirstLink?.url && (
+                <hr className="w-full bg-change2" />
+              )}
           </div>
 
           <div className="flex flex-col items-center">
             <Link
-              href={dataNav?.menu?.header?.subSecondLink?.url}
+              href={dataNav?.menu?.header?.subSecondLink !== null ? dataNav?.menu?.header?.subSecondLink?.url : "/"}
               className={`politics px-4 text-gray-800 hover:bg-gray-100 ${
                 activeLink === dataNav?.menu?.header?.subSecondLink?.url ||
                 router.asPath === dataNav?.menu?.header?.subSecondLink?.url
                   ? `border-b-3 bg-change`
                   : ""
               }`}
-              onClick={() => handleLinkClick(dataNav?.menu?.header?.subSecondLink?.url)}
+              onClick={() =>
+                handleLinkClick(dataNav?.menu?.header?.subSecondLink?.url)
+              }
             >
               {dataNav !== undefined && dataNav.menu.header.subSecond}
             </Link>
@@ -625,14 +658,16 @@ const Nav = ({
           </div>
           <div className="flex flex-col items-center">
             <Link
-              href={dataNav?.menu?.header?.subThirdLink?.url}
+              href={dataNav?.menu?.header?.subThirdLink !== null ? dataNav?.menu?.header?.subThirdLink?.url : "/"}
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
                 activeLink === dataNav?.menu?.header?.subThirdLink?.url ||
                 router.asPath === dataNav?.menu?.header?.subThirdLink?.url
                   ? "border-b-3 bg-change1"
                   : ""
               }`}
-              onClick={() => handleLinkClick(dataNav?.menu?.header?.subThirdLink?.url)}
+              onClick={() =>
+                handleLinkClick(dataNav?.menu?.header?.subThirdLink?.url)
+              }
             >
               {dataNav !== undefined && dataNav.menu.header.subThird}
             </Link>
@@ -701,163 +736,290 @@ const Nav = ({
 
       {router.asPath === `/news${uri}` ? (
         <header
-        className={`bg-header transition-all duration-500 ${
-          isContactHeaderVisible
-            ? "max-h-64 opacity-100"
-            : "max-h-0 opacity-0 overflow-hidden"
-        }`}
-        style={{
-          position: "absolute",
-          zIndex: "9999999999",
-          top: "80px",
-          left: "0px",
-          background: "black",
-          width: "100%",
-        }}
-      >
-        <nav
-          className="mx-auto flex max-w-7xl items-center bg-black justify-around p-4 lg:px-6"
-          aria-label="Global"
+          className={`bg-header transition-all duration-500 ${
+            isContactHeaderVisible
+              ? "max-h-64 opacity-100"
+              : "max-h-0 opacity-0 overflow-hidden"
+          }`}
+          style={{
+            position: "absolute",
+            zIndex: "9999999999",
+            top: "80px",
+            left: "0px",
+            background: "black",
+            width: "100%",
+          }}
         >
-          {/* Mobile View */}
-          <div className="block lg:hidden w-full">
-            <div className="flex flex-col">
-              <div className="flex items-center mb-2">
-                <label htmlFor="simple-search" className="sr-only">
-                  Search
-                </label>
-                <div className="relative flex-grow">
-                  <input
-                    type="text"
-                    id="simple-search"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Type to Search"
-                    required
-                  />
+          <nav
+            className="mx-auto flex max-w-7xl items-center bg-black justify-around p-4 lg:px-6"
+            aria-label="Global"
+          >
+            {/* Mobile View */}
+            <div className="block lg:hidden items-center">
+              <div className="flex flex-col">
+                <div className="block lg:hidden flex">
+                  <label htmlFor="simple-search" className="sr-only">
+                    Search
+                  </label>
+                  <div className="relative mb-2 md:mb-0 mr-2">
+                    <input
+                      type="text"
+                      id="simple-search"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Type to Search"
+                      required
+                      style={{ width: "166px" }} // Set width 166px for mobile view
+                    />
+                  </div>
+                  <div className="flex md:ml-2 flex-col">
+                    <button
+                      type="submit"
+                      className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                      style={{
+                        paddingLeft: "20px",
+                        paddingRight: "20px",
+                        borderRadius: "20px",
+                        background: "#ce3a42",
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
                 </div>
-                <button
-                  type="submit"
-                  className="ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 px-4 py-2"
-                  style={{
-                    borderRadius: "20px",
-                    background: "#ce3a42",
-                  }}
+                <div className="flex justify-end mb-3">
+                  <button
+                    onClick={handleSub}
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+                <div className="relative">
+                  <button
+                    onClick={toggleDropdownMobile}
+                    className="flex text-white font-bold items-center mb-3"
+                  >
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
+                    <ExportedImage
+                      priority={true}
+                      className="h-3 w-3 ml-2"
+                      src={Vector1}
+                      alt="Dropdown Icon"
+                    />
+                  </button>
+                  {toggleDropdown1 && (
+                    <>
+                      <Link
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_red}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector_yellow}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                      <Link
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
+                        className="flex mr-2 text-white font-bold items-center mb-3"
+                      >
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
+                        <ExportedImage
+                          priority={true}
+                          className="h-3 w-3 mx-2"
+                          src={Vector}
+                          alt="Dropdown Icon"
+                        />
+                      </Link>
+                    </>
+                  )}
+                </div>
+                <Link
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
+                  className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  Search
-                </button>
-              </div>
-              <div className="flex justify-end mb-3">
-                <button
-                  onClick={handleSub}
-                  className="w-auto inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-gradient-to-r focus:outline-none"
-                >
-                  Subscribe
-                </button>
-              </div>
-              <div className="relative mb-3">
-                <button
-                  onClick={toggleDropdownMobile}
-                  className="flex text-white font-bold items-center"
-                >
-                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuFirst}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
-                    className="h-3 w-3 ml-2"
-                    src={Vector1}
+                    className="h-3 w-3 mx-2"
+                    src={Vector}
                     alt="Dropdown Icon"
                   />
-                </button>
-                {toggleDropdown1 && (
-                  <>
-                    <Link
-                      href={dataNav?.menu?.header?.subFirstLink?.url}
-                      className="flex text-white font-bold items-center mt-2"
-                    >
-                      {dataNav !== undefined && dataNav.menu.header.subFirst}
-                      <ExportedImage
-                        priority={true}
-                        className="h-3 w-3 mx-2"
-                        src={Vector_red}
-                        alt="Dropdown Icon"
-                      />
-                    </Link>
-                    <Link
-                      href={dataNav?.menu?.header?.subSecondLink?.url}
-                      className="flex text-white font-bold items-center mt-2"
-                    >
-                      {dataNav !== undefined && dataNav.menu.header.subSecond}
-                      <ExportedImage
-                        priority={true}
-                        className="h-3 w-3 mx-2"
-                        src={Vector_yellow}
-                        alt="Dropdown Icon"
-                      />
-                    </Link>
-                    <Link
-                      href={dataNav?.menu?.header?.subThirdLink?.url}
-                      className="flex text-white font-bold items-center mt-2"
-                    >
-                      {dataNav !== undefined && dataNav.menu.header.subThird}
-                      <ExportedImage
-                        priority={true}
-                        className="h-3 w-3 mx-2"
-                        src={Vector}
-                        alt="Dropdown Icon"
-                      />
-                    </Link>
-                  </>
-                )}
-              </div>
-              <Link
-                href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
-                className="flex text-white font-bold items-center mb-3"
-              >
-                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
-                <ExportedImage
-                  priority={true}
-                  className="h-3 w-3 mx-2"
-                  src={Vector}
-                  alt="Dropdown Icon"
-                />
-              </Link>
-              <Link
-                href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
-                className="flex text-white font-bold items-center mb-3"
-              >
-                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
-                <ExportedImage
-                  priority={true}
-                  className="h-3 w-3 mx-2"
-                  src={Vector2}
-                  alt="Dropdown Icon"
-                />
-              </Link>
-              <hr className="my-2" />
-              <div className="flex flex-col">
+                </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
-                  className="flex text-white font-bold items-center my-2"
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
+                  className="flex mr-2 text-white font-bold items-center mb-3"
+                >
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
+                  <ExportedImage
+                    priority={true}
+                    className="h-3 w-3 mx-2"
+                    src={Vector2}
+                    alt="Dropdown Icon"
+                  />
+                </Link>
+                <hr className="my-2" />
+                <div className="flex flex-col">
+                  <Link
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
+                  </Link>
+                  <Link
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
+                  </Link>
+                  <Link
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
+                    className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  >
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
+                  </Link>
+                </div>
+              </div>
+              <div className="flex justify-end items-end mt-4">
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  className="px-4 py-2"
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 mx-1"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
+              </div>
+            </div>
+
+            {/* Desktop/Tablet View */}
+            <div className="hidden lg:block items-center">
+              <div className="flex flex-col lg:flex-col">
+                <Link
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
-                  className="flex text-white font-bold items-center my-2"
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
-                  className="flex text-white font-bold items-center my-2"
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
+                  className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
-            <div className="flex justify-end items-end mt-4">
+            <div
+              className="hidden lg:flex lg:justify-end lg:items-end"
+              style={{ height: "150px" }}
+            >
               <Link
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
@@ -903,117 +1065,8 @@ const Nav = ({
                 />
               </Link>
             </div>
-          </div>
-          {/* Desktop */}
-          <div className="hidden lg:flex lg:flex-row items-center">
-            <div className="flex flex-col mr-5">
-              <Link
-                href={dataNav?.menu?.header?.subFirstLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined && dataNav?.menu?.header?.subFirst}
-              </Link>
-              <Link
-                href={dataNav?.menu?.header?.subSecondLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined && dataNav?.menu?.header?.subSecond}
-              </Link>
-              <Link
-                href={dataNav?.menu?.header?.subThirdLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined && dataNav?.menu?.header?.subThird}
-              </Link>
-              <Link
-                href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
-              </Link>
-              <Link
-                href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
-              </Link>
-            </div>
-            <div className="flex flex-col lg:items-center">
-              <Link
-                href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined &&
-                  dataNav?.menu?.header?.foreSquareFirst}
-              </Link>
-              <Link
-                href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined &&
-                  dataNav?.menu?.header?.foreSquareSecond}
-              </Link>
-              <Link
-                href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
-                className="flex text-white font-bold items-center my-2 lg:mr-2"
-              >
-                {dataNav !== undefined &&
-                  dataNav?.menu?.header?.foreSquareThird}
-              </Link>
-            </div>
-          </div>
-          <div
-            className="hidden lg:flex lg:justify-end items-end"
-            style={{ height: "230px" }}
-          >
-            <Link
-              href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
-              className="px-4 py-2"
-            >
-              <ExportedImage
-                priority={true}
-                className="h-8 w-8 mx-1"
-                src={Group}
-                alt="Whatsapp Icon"
-              />
-            </Link>
-            <Link
-              href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
-              className="px-4 py-2"
-            >
-              <ExportedImage
-                priority={true}
-                className="h-8 w-8 mx-1"
-                src={Group1}
-                alt="Facebook Icon"
-              />
-            </Link>
-            <Link
-              href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
-              className="px-4 py-2"
-            >
-              <ExportedImage
-                priority={true}
-                className="h-8 w-8 mx-1"
-                src={Group2}
-                alt="Instagram Icon"
-              />
-            </Link>
-            <Link
-              href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
-              className="px-4 py-2"
-            >
-              <ExportedImage
-                priority={true}
-                className="h-8 w-8 mx-1"
-                src={Group3}
-                alt="Twitter Icon"
-              />
-            </Link>
-          </div>
-        </nav>
-      </header>
-      
+          </nav>
+        </header>
       ) : router.pathname === "/about" ? (
         <header
           className={`bg-header transition-all duration-500 ${
@@ -1090,11 +1143,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1103,11 +1159,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1116,11 +1175,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1132,11 +1194,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1145,7 +1210,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -1159,21 +1228,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -1233,21 +1314,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -1382,11 +1475,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1395,11 +1491,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1408,11 +1507,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1424,11 +1526,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1437,7 +1542,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -1451,21 +1560,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -1525,21 +1646,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -1674,11 +1807,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1687,11 +1823,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1700,11 +1839,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1716,11 +1858,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1729,7 +1874,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -1743,21 +1892,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -1817,21 +1978,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -1966,11 +2139,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1979,11 +2155,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1992,11 +2171,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2008,11 +2190,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2021,7 +2206,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2035,21 +2224,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2109,21 +2310,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -2258,11 +2471,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2271,11 +2487,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2284,11 +2503,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2300,11 +2522,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2313,7 +2538,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2327,21 +2556,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2401,21 +2642,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -2550,11 +2803,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2563,11 +2819,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2576,11 +2835,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2592,11 +2854,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2605,7 +2870,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2619,21 +2888,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2693,21 +2974,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -2842,11 +3135,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2855,11 +3151,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2868,11 +3167,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2884,11 +3186,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2897,7 +3202,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -2911,21 +3220,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -2985,21 +3306,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -3134,11 +3467,14 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menu?.header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subFirstLink !== null
+                            ? dataNav?.menu?.header?.subFirstLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -3147,11 +3483,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subSecondLink !== null
+                            ? dataNav?.menu?.header?.subSecondLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -3160,11 +3499,14 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menu?.header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menu?.header?.subThirdLink !== null
+                            ? dataNav?.menu?.header?.subThirdLink?.url
+                            : "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -3176,11 +3518,14 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuSecondLink !== null
+                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined &&
-                    dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -3189,7 +3534,11 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.mainMenuThirdLink !== null
+                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
+                      : "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -3203,21 +3552,33 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareFirstLink !== null
+                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareSecondLink !== null
+                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menu?.header?.foreSquareThirdLink !== null
+                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                        : "/"
+                    }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -3277,21 +3638,33 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareFirstLink !== null
+                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareSecondLink !== null
+                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menu?.header?.foreSquareThirdLink !== null
+                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
+                      : "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
