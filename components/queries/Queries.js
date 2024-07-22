@@ -2,68 +2,68 @@ import { gql } from "@apollo/client";
 
 export const GET_NAV_SECTION = gql`
   query ($id: ID = "230") {
-  menu(id: $id, idType: DATABASE_ID) {
-    header {
-      topFirst
-      topFirstLinks {
-        url
-      }
-      topSecond
-      topSecondLinks {
-        url
-      }
-      topThird
-      topThirdLinks {
-        url
-      }
-      topFore
-      topForeLinks {
-        url
-      }
-      foreSquareFirst
-      foreSquareFirstLink {
-        url
-      }
-      foreSquareSecond
-      foreSquareSecondLink {
-        url
-      }
-      foreSquareThird
-      foreSquareThirdLink {
-        url
-      }
-      headerButton {
-        link
-        text
-      }
-      headerBackgroundColor
-      mainMenuFirst
-      mainMenuFirstLink {
-        url
-      }
-      mainMenuSecond
-      mainMenuSecondLink {
-        url
-      }
-      mainMenuThird
-      mainMenuThirdLink {
-        url
-      }
-      subFirst
-      subFirstLink {
-        url
-      }
-      subSecond
-      subSecondLink {
-        url
-      }
-      subThird
-      subThirdLink {
-        url
+    menu(id: $id, idType: DATABASE_ID) {
+      header {
+        topFirst
+        topFirstLinks {
+          url
+        }
+        topSecond
+        topSecondLinks {
+          url
+        }
+        topThird
+        topThirdLinks {
+          url
+        }
+        topFore
+        topForeLinks {
+          url
+        }
+        foreSquareFirst
+        foreSquareFirstLink {
+          url
+        }
+        foreSquareSecond
+        foreSquareSecondLink {
+          url
+        }
+        foreSquareThird
+        foreSquareThirdLink {
+          url
+        }
+        headerButton {
+          link
+          text
+        }
+        headerBackgroundColor
+        mainMenuFirst
+        mainMenuFirstLink {
+          url
+        }
+        mainMenuSecond
+        mainMenuSecondLink {
+          url
+        }
+        mainMenuThird
+        mainMenuThirdLink {
+          url
+        }
+        subFirst
+        subFirstLink {
+          url
+        }
+        subSecond
+        subSecondLink {
+          url
+        }
+        subThird
+        subThirdLink {
+          url
+        }
       }
     }
   }
-}
 `;
 
 export const GET_ICON_SECTION = gql`
@@ -306,53 +306,9 @@ export const GET_HOME_PAGE = gql`
           twitterEmbedCode5
           twitterEmbedCode6
         }
-      }
-    }
-  }
-`;
-
-export const GET_INSIGHTS_SECTION = gql`
-  query HomePage($id: ID = "745") {
-  page(id: $id, idType: DATABASE_ID) {
-    homePage {
-      insightsTitle
-      insightsTitleBottomLineColor
-      insightsPost {
-        nodes {
-          ... on Category {
-            name
-            slug
-            posts {
-              nodes {
-                featuredImage {
-                  node {
-                    altText
-                    slug
-                    srcSet
-                    sourceUrl
-                  }
-                }
-                title
-                slug
-                categories {
-                  nodes {
-                    name
-                  }
-                }
-                author {
-                  node {
-                    name
-                  }
-                }
-                content
-              }
-            }
-          }
-        }
-      }
-      insightsAd {
-        insightsAdCode
-        insightAdImage {
+        ctaTitle
+        ctaDescription
+        ctaBackgroundImage {
           node {
             altText
             srcSet
@@ -362,7 +318,60 @@ export const GET_INSIGHTS_SECTION = gql`
       }
     }
   }
-}
+`;
+
+export const GET_INSIGHTS_SECTION = gql`
+  query HomePage($id: ID = "745") {
+    page(id: $id, idType: DATABASE_ID) {
+      homePage {
+        insightsTitle
+        insightsTitleBottomLineColor
+        insightsPost {
+          nodes {
+            ... on Category {
+              name
+              slug
+              posts {
+                nodes {
+                  featuredImage {
+                    node {
+                      altText
+                      slug
+                      srcSet
+                      sourceUrl
+                    }
+                  }
+                  title
+                  slug
+                  categories {
+                    nodes {
+                      name
+                    }
+                  }
+                  author {
+                    node {
+                      name
+                    }
+                  }
+                  content
+                }
+              }
+            }
+          }
+        }
+        insightsAd {
+          insightsAdCode
+          insightAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  }
 `;
 
 export const GET_MUSIC_SECTION = gql`

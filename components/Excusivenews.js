@@ -3,8 +3,11 @@ import React from "react";
 import VectorRouded from "../public/images/VectorRouded.svg";
 import VectorRouded1 from "../public/images/VectorRouded(1).svg";
 import Frame396 from "../public/images/Frame396.svg";
+import { useDialog } from "./DialogContext";
 
 const Excusivenews = () => {
+  const { bannerData } = useDialog()
+  
   return (
     <div
       className="hidden md:block px-4 py-20 mx-auto max-w-screen-xl"
@@ -15,12 +18,12 @@ const Excusivenews = () => {
       }}
     >
       <div className="w-full items-center flex flex-col md:flex-row justify-evenly relative">
-        <div className="md:mr-20 mb-8 md:mb-0">
+        <div className="md:mr-20 mb-8 md:mb-0 w-[470px]">
           <h1 className="text-[25px] md:text-[35px] text-white font-bold mb-2">
-            Get exclusive <br /> <span>Jewish news</span>
+            {bannerData?.page?.homePage?.ctaTitle}
           </h1>
           <p className="text-[14px] md:text-[15px] font-semibold text-white">
-            "Join thousands of satisfied subscribers who rely on <br className="hidden md:block" /> Belaaz's newsletter for their daily dose of exclusive <br className="hidden md:block" /> Jewish & Breaking News."
+            {bannerData?.page?.homePage?.ctaDescription}
           </p>
         </div>
         <div className="flex flex-col md:flex-row items-center w-full md:w-auto">
