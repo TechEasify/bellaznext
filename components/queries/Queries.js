@@ -147,32 +147,6 @@ export const GET_HOME_PAGE = gql`
               }
             }
           }
-          heroSidebarPosts {
-            nodes {
-              ... on Category {
-                name
-                slug
-                posts {
-                  nodes {
-                    slug
-                    categories {
-                      nodes {
-                        name
-                      }
-                    }
-                    featuredImage {
-                      node {
-                        srcSet
-                        slug
-                        sourceUrl
-                      }
-                    }
-                    title
-                  }
-                }
-              }
-            }
-          }
         }
         topHeadlinesTitle
         topHeadlineTitleLineColor
