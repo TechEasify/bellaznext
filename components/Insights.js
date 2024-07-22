@@ -175,7 +175,7 @@ const Insights = () => {
       const shuffledPosts = insightsPost.sort(() => 0.5 - Math.random());
       setRandomPost(shuffledPosts[0]);
     }
-  }, [insightsPost]);
+  }, [insightsPost]);  
 
   if (insightsLoading) return <SkeletonLoader />;
   if (insightsError) return <p>Fetch data error.</p>;

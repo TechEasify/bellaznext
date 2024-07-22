@@ -27,6 +27,12 @@ class MyDocument extends Document {
             src="https://proxy.beyondwords.io/npm/@beyondwords/player@latest/dist/umd.js"
           ></script> */}
 
+          <script
+            async
+            type="text/javascript"
+            src="https://www.klaviyo.com/onsite/js/klaviyo.js?company_id=REMqmH"
+          ></script>
+
           <link
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"

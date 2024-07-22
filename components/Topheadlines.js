@@ -3,6 +3,7 @@ import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 
 const Topheadlines = ({ topheadData, displayedCategories }) => {
+  console.log(topheadData, "topheadDatatopheadDatatopheadDatatopheadData");
   const [displayCount, setDisplayCount] = useState(6);
 
   const sortedTopHeadlines = topheadData?.page?.homePage?.topHeadlinesPost?.nodes
@@ -52,9 +53,11 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-2">
             {uniqueCategoryPosts?.map((item) => (
+              console.log(item, "itemitemitemitemitemitemitemitemitemitemitem"),
               <>
               <div key={item.id} className="max-w-md bg-white mb-6">
                 {item.categories.nodes.slice(0, 1).map((category) => (
+                  console.log(category, "categorycategorycategory"),
                   <div key={category.id}>
                     <Link href={`/news/${item.slug}`}>
                       <ExportedImage
@@ -104,6 +107,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
           </div>
           <div className="w-full max-w-3xl mx-auto mt-5 md:hidden">
             {sortedTopHeadlinesSidebar.slice(0, displayCount).map((side) => (
+              console.log(),
               <div className="flex mt-5 mb-5 justify-between" key={side.id}>
                 {side.posts.nodes
                   .slice()

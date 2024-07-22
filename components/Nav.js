@@ -149,8 +149,6 @@ const Nav = ({
     loadingsubMenu,
     loadingIcon,
     dataNav,
-    dataMenu,
-    datasubMenu,
     dataIcon,
     iconDataResult,
   } = useDialog();
@@ -165,10 +163,10 @@ const Nav = ({
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    if (dataNav && dataMenu && datasubMenu && dataIcon) {
-      setNavData({ dataNav, dataMenu, datasubMenu, dataIcon });
+    if (dataNav && dataIcon) {
+      setNavData({ dataNav, dataIcon });
     }
-  }, [dataNav, dataMenu, datasubMenu, dataIcon]);
+  }, [dataNav, dataIcon]);
 
   useEffect(() => {
     setSubscribe(router.pathname);
@@ -453,8 +451,8 @@ const Nav = ({
                     onClick={toggleDropdown}
                     className="flex text-white font-bold items-center"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -468,8 +466,8 @@ const Nav = ({
                   // onClick={() => router.push("/category/insights")}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -482,7 +480,7 @@ const Nav = ({
                   // onClick={() => router.push("/category/music")}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -542,7 +540,7 @@ const Nav = ({
           style={{ background: "#25AC7D" }}
         >
           <span className="text-white font-medium">
-            {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+            {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
           </span>
         </div>
       ) : name === "Insights" || router.asPath === "/category/insights" ? (
@@ -551,7 +549,7 @@ const Nav = ({
           style={{ background: "#1662D4" }}
         >
           <span className="text-white font-medium">
-            {dataMenu !== undefined && dataMenu.menu.header.mainMenuSecond}
+            {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
           </span>
         </div>
       ) : name === "Jewish News" ||
@@ -561,7 +559,7 @@ const Nav = ({
           style={{ background: "#57A0EE" }}
         >
           <span className="text-white font-medium">
-            {dataMenu !== undefined && dataMenu.menu.header.subThird}
+            {dataNav !== undefined && dataNav.menu.header.subThird}
           </span>
         </div>
       ) : name === "Breaking News" ||
@@ -571,7 +569,7 @@ const Nav = ({
           style={{ background: "#ce3a42" }}
         >
           <span className="text-white font-medium">
-            {dataMenu !== undefined && dataMenu.menu.header.subFirst}
+            {dataNav !== undefined && dataNav.menu.header.subFirst}
           </span>
         </div>
       ) : name === "Politics" || router.asPath === "/category/politics" ? (
@@ -580,7 +578,7 @@ const Nav = ({
           style={{ background: "#FFA500" }}
         >
           <span className="text-white font-medium">
-            {dataMenu !== undefined && dataMenu.menu.header.subSecond}
+            {dataNav !== undefined && dataNav.menu.header.subSecond}
           </span>
         </div>
       ) : (
@@ -602,7 +600,7 @@ const Nav = ({
               }`}
               onClick={() => handleLinkClick("/category/breaking-news")}
             >
-              {dataMenu !== undefined && dataMenu.menu.header.subFirst}
+              {dataNav !== undefined && dataNav.menu.header.subFirst}
             </Link>
             {activeLink === "/category/breaking-news" && router.asPath === "/category/breaking-news" && (
               <hr className="w-full bg-change2" />
@@ -620,7 +618,7 @@ const Nav = ({
               }`}
               onClick={() => handleLinkClick("/category/politics")}
             >
-              {dataMenu !== undefined && dataMenu.menu.header.subSecond}
+              {dataNav !== undefined && dataNav.menu.header.subSecond}
             </Link>
             {activeLink === "/category/politics" &&
               router.asPath === "/category/politics" && (
@@ -638,7 +636,7 @@ const Nav = ({
               }`}
               onClick={() => handleLinkClick("/category/jewish-news")}
             >
-              {dataMenu !== undefined && dataMenu.menu.header.subThird}
+              {dataNav !== undefined && dataNav.menu.header.subThird}
             </Link>
             {activeLink === "/category/jewish-news" &&
               router.asPath === "/category/jewish-news" && (
@@ -763,7 +761,7 @@ const Nav = ({
                   onClick={toggleDropdownMobile}
                   className="flex text-white font-bold items-center"
                 >
-                  {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuFirst}
+                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuFirst}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 ml-2"
@@ -777,7 +775,7 @@ const Nav = ({
                       href="/category/breaking-news"
                       className="flex text-white font-bold items-center mt-2"
                     >
-                      {dataMenu !== undefined && dataMenu.menu.header.subFirst}
+                      {dataNav !== undefined && dataNav.menu.header.subFirst}
                       <ExportedImage
                         priority={true}
                         className="h-3 w-3 mx-2"
@@ -789,7 +787,7 @@ const Nav = ({
                       href="/category/politics"
                       className="flex text-white font-bold items-center mt-2"
                     >
-                      {dataMenu !== undefined && dataMenu.menu.header.subSecond}
+                      {dataNav !== undefined && dataNav.menu.header.subSecond}
                       <ExportedImage
                         priority={true}
                         className="h-3 w-3 mx-2"
@@ -801,7 +799,7 @@ const Nav = ({
                       href="/category/jewish-news"
                       className="flex text-white font-bold items-center mt-2"
                     >
-                      {dataMenu !== undefined && dataMenu.menu.header.subThird}
+                      {dataNav !== undefined && dataNav.menu.header.subThird}
                       <ExportedImage
                         priority={true}
                         className="h-3 w-3 mx-2"
@@ -816,7 +814,7 @@ const Nav = ({
                 href="/category/insights"
                 className="flex text-white font-bold items-center mb-3"
               >
-                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuSecond}
+                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
                 <ExportedImage
                   priority={true}
                   className="h-3 w-3 mx-2"
@@ -828,7 +826,7 @@ const Nav = ({
                 href="/category/music"
                 className="flex text-white font-bold items-center mb-3"
               >
-                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuThird}
+                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
                 <ExportedImage
                   priority={true}
                   className="h-3 w-3 mx-2"
@@ -842,22 +840,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -915,31 +913,31 @@ const Nav = ({
                 href="/category/breaking-news"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {dataMenu !== undefined && dataMenu?.menu?.header?.subFirst}
+                {dataNav !== undefined && dataNav?.menu?.header?.subFirst}
               </Link>
               <Link
                 href="/category/politics"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {dataMenu !== undefined && dataMenu?.menu?.header?.subSecond}
+                {dataNav !== undefined && dataNav?.menu?.header?.subSecond}
               </Link>
               <Link
                 href="/category/jewish-news"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {dataMenu !== undefined && dataMenu?.menu?.header?.subThird}
+                {dataNav !== undefined && dataNav?.menu?.header?.subThird}
               </Link>
               <Link
                 href="/category/insights"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuSecond}
+                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
               </Link>
               <Link
                 href="/category/music"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {dataMenu !== undefined && dataMenu?.menu?.header?.mainMenuThird}
+                {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
               </Link>
             </div>
             <div className="flex flex-col lg:items-center">
@@ -947,22 +945,22 @@ const Nav = ({
                 href="/contact-us"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {datasubMenu !== undefined &&
-                  datasubMenu?.menu?.header?.foreSquareFirst}
+                {dataNav !== undefined &&
+                  dataNav?.menu?.header?.foreSquareFirst}
               </Link>
               <Link
                 href="/contact-us"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {datasubMenu !== undefined &&
-                  datasubMenu?.menu?.header?.foreSquareSecond}
+                {dataNav !== undefined &&
+                  dataNav?.menu?.header?.foreSquareSecond}
               </Link>
               <Link
                 href="/advertise"
                 className="flex text-white font-bold items-center my-2 lg:mr-2"
               >
-                {datasubMenu !== undefined &&
-                  datasubMenu?.menu?.header?.foreSquareThird}
+                {dataNav !== undefined &&
+                  dataNav?.menu?.header?.foreSquareThird}
               </Link>
             </div>
           </div>
@@ -1082,8 +1080,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -1097,8 +1095,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1110,8 +1108,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1123,8 +1121,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1139,8 +1137,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1152,7 +1150,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1166,22 +1164,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -1240,22 +1238,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -1374,8 +1372,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -1389,8 +1387,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1402,8 +1400,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1415,8 +1413,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1431,8 +1429,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1444,7 +1442,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1458,22 +1456,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -1532,22 +1530,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -1666,8 +1664,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -1681,8 +1679,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1694,8 +1692,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1707,8 +1705,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1723,8 +1721,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1736,7 +1734,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -1750,22 +1748,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -1824,22 +1822,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -1958,8 +1956,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -1973,8 +1971,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1986,8 +1984,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -1999,8 +1997,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2015,8 +2013,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2028,7 +2026,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2042,22 +2040,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -2116,22 +2114,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -2250,8 +2248,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -2265,8 +2263,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2278,8 +2276,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2291,8 +2289,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2307,8 +2305,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2320,7 +2318,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2334,22 +2332,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -2408,22 +2406,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -2542,8 +2540,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -2557,8 +2555,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2570,8 +2568,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2583,8 +2581,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2599,8 +2597,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2612,7 +2610,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2626,22 +2624,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -2700,22 +2698,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -2834,8 +2832,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -2849,8 +2847,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2862,8 +2860,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2875,8 +2873,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -2891,8 +2889,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2904,7 +2902,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -2918,22 +2916,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -2992,22 +2990,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>
@@ -3126,8 +3124,8 @@ const Nav = ({
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataMenu !== undefined &&
-                      dataMenu?.menu?.header?.mainMenuFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.mainMenuFirst}
                     <ExportedImage
                       priority={true}
                       className="h-3 w-3 ml-2"
@@ -3141,8 +3139,8 @@ const Nav = ({
                         href="/category/breaking-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subFirst}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -3154,8 +3152,8 @@ const Nav = ({
                         href="/category/politics"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subSecond}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -3167,8 +3165,8 @@ const Nav = ({
                         href="/category/jewish-news"
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataMenu !== undefined &&
-                          dataMenu.menu.header.subThird}
+                        {dataNav !== undefined &&
+                          dataNav.menu.header.subThird}
                         <ExportedImage
                           priority={true}
                           className="h-3 w-3 mx-2"
@@ -3183,8 +3181,8 @@ const Nav = ({
                   href="/category/insights"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined &&
-                    dataMenu.menu.header.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav.menu.header.mainMenuSecond}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -3196,7 +3194,7 @@ const Nav = ({
                   href="/category/music"
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataMenu !== undefined && dataMenu.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
                   <ExportedImage
                     priority={true}
                     className="h-3 w-3 mx-2"
@@ -3210,22 +3208,22 @@ const Nav = ({
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareFirst}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
                     href="/contact-us"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareSecond}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
                     href="/advertise"
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {datasubMenu !== undefined &&
-                      datasubMenu?.menu?.header?.foreSquareThird}
+                    {dataNav !== undefined &&
+                      dataNav?.menu?.header?.foreSquareThird}
                   </Link>
                 </div>
               </div>
@@ -3284,22 +3282,22 @@ const Nav = ({
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
                   href="/contact-us"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
                   href="/advertise"
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {datasubMenu !== undefined &&
-                    datasubMenu?.menu?.header?.foreSquareThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.foreSquareThird}
                 </Link>
               </div>
             </div>

@@ -32,15 +32,9 @@ export const DialogProvider = ({ children }) => {
   const [nodeByUri, setNodeByUri] = useState(null);
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
-  const [media, setMedia] = useState([]);
-  const [footerMenu, setFooterMenu] = useState([]);
-  const [sideBarMenu, setSideBarMenu] = useState([]);
   const [dataNav, setDataNav] = useState(null);
-  const [dataMenu, setDataMenu] = useState(null);
-  const [datasubMenu, setDatasubMenu] = useState(null);
   const [dataIcon, setDataIcon] = useState(null);
   const [bannerData, setBannerData] = useState(null);
-  // const [topheadData, setTopheadData] = useState(null);
   const [insightsQuery, setInsightsQuery] = useState(null);
   const [musicQuery, setMusicQuery] = useState(null);
   const [categoryInsightData, setCategoryInsightData] = useState(null);
@@ -65,18 +59,6 @@ export const DialogProvider = ({ children }) => {
   } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
   
   const {
-    loading: loadingMenu,
-    error: errorMenu,
-    data: menuDataResult,
-  } = useQuery(GET_MENU_SECTION, { fetchPolicy: "cache-first" });
-  
-  const {
-    loading: loadingSubMenu,
-    error: errorSubMenu,
-    data: subMenuDataResult,
-  } = useQuery(GET_SUBMENU_SECTION, { fetchPolicy: "cache-first" });
-  
-  const {
     loading: loadingIcon,
     error: errorIcon,
     data: iconDataResult,
@@ -99,12 +81,6 @@ export const DialogProvider = ({ children }) => {
     error: bannerError,
     data: Data,
   } = useQuery(GET_HOME_PAGE, { fetchPolicy: "cache-first" });
-
-  // const {
-  //   data: topheadlineData,
-  //   loading: topheadlineLoading,
-  //   error: topheadlineError,
-  // } = useQuery(GET_TOPHEADLINE_PAGE, { fetchPolicy: "cache-first" });
 
   const {
     loading: insightsLoading,
@@ -135,8 +111,6 @@ export const DialogProvider = ({ children }) => {
 
   useEffect(() => {
     if (navDataResult) setDataNav(navDataResult);
-    if (menuDataResult) setDataMenu(menuDataResult);
-    if (subMenuDataResult) setDatasubMenu(subMenuDataResult);
     if (iconDataResult) setDataIcon(iconDataResult);
     if (categoryData) setNodeByUri(categoryData);
     if (Data) setBannerData(Data);
@@ -146,8 +120,6 @@ export const DialogProvider = ({ children }) => {
     if (testimonialData) setTestimonialQuery(testimonialData)
   }, [
     navDataResult,
-    menuDataResult,
-    subMenuDataResult,
     iconDataResult,
     categoryData,
     Data,
@@ -176,12 +148,8 @@ export const DialogProvider = ({ children }) => {
         isDialogOpen,
         openDialog,
         closeDialog,
-        dataMenu,
-        datasubMenu,
         dataIcon,
         loadingNav,
-        loadingMenu,
-        loadingSubMenu,
         loadingIcon,
         uri,
         loadingCategory,
@@ -190,7 +158,6 @@ export const DialogProvider = ({ children }) => {
         bannerData,
         bannerLoading,
         bannerError,
-        // topheadData,
         insightsQuery,
         insightsLoading,
         insightsError,
