@@ -47,9 +47,6 @@ const GET_CARD_SECTION = gql`
           a
           b
           c
-          d
-          e
-          f
         }
       }
     }
@@ -158,10 +155,6 @@ const Newscard = ({ nodeByUri }) => {
                     return data.page.homePage.allCategoryBottomLineColor.b;
                   case "music":
                     return data.page.homePage.allCategoryBottomLineColor.c;
-                  case "politics":
-                    return data.page.homePage.allCategoryBottomLineColor.d;
-                  case "ukraineRussiaWar":
-                    return data.page.homePage.allCategoryBottomLineColor.e;
                   case "Breaking News":
                     return "rgb(206, 58, 66)";
                   case "ANALYSIS":
@@ -189,7 +182,6 @@ const Newscard = ({ nodeByUri }) => {
                       style={{
                         height: "7px",
                         background: bottomLineColor,
-                        width: "20%",
                       }}
                     />
 

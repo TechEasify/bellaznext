@@ -119,7 +119,6 @@ const Cardnews = () => {
                     style={{
                       height: "7px",
                       background: bottomLineColor,
-                      width: "20%",
                     }}
                   />
                   
