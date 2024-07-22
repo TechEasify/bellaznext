@@ -8,11 +8,10 @@ import Group2 from "../public/images/Group (2).svg";
 import Group3 from "../public/images/Group (3).svg";
 import imgbin_whatsapp from "../public/images/imgbin_whatsapp.svg";
 import { gql, useQuery } from "@apollo/client";
-import Script from "next/script";
 import { useDialog } from "./DialogContext";
 import { useRouter } from "next/router";
 
-const GET_COMPANY_PAGE = gql`
+const GET_FOOTER_PAGE = gql`
   query footer($id: ID = "229") {
     menu(id: $id, idType: DATABASE_ID) {
       footer {
@@ -33,15 +32,6 @@ const GET_COMPANY_PAGE = gql`
         companyForeLink {
           url
         }
-      }
-    }
-  }
-`;
-
-const GET_FOOTER_PAGE = gql`
-  query footer($id: ID = "229") {
-    menu(id: $id, idType: DATABASE_ID) {
-      footer {
         footerBackgroundColor
         newsTitle
         newsFirst
@@ -64,21 +54,16 @@ const GET_FOOTER_PAGE = gql`
         newsFiveLinks {
           url
         }
-      }
-    }
-  }
-`;
-
-const GET_SOCIALLINK_PAGE = gql`
-  query footer($id: ID = "229") {
-    menu(id: $id, idType: DATABASE_ID) {
-      footer {
         belaazTwitter
         belaazTwitterLink
         belaazFacebook
         belaazFacebookLink
         belaazInstagram
         belaazInstagramLink
+        belaazYoutube
+        belaazYoutubeLink
+        belaazTelegram
+        belaazTelegramLink
         copyrightText
       }
     }
@@ -86,53 +71,18 @@ const GET_SOCIALLINK_PAGE = gql`
 `;
 
 const Footer = () => {
-  const {iconDataResult} = useDialog();
-  const router = useRouter()
+  const { iconDataResult } = useDialog();
+  const router = useRouter();
   const {
     loading: loadingFooter,
     error: errorFooter,
     data: dataFooter,
   } = useQuery(GET_FOOTER_PAGE);
 
-  const {
-    loading: loadingCompany,
-    error: errorCompany,
-    data: dataCompany,
-  } = useQuery(GET_COMPANY_PAGE);
+  console.log(dataFooter, "dataFooterdataFooter");
 
-  const {
-    loading: loadingSocial,
-    error: errorSocial,
-    data: dataSocial,
-  } = useQuery(GET_SOCIALLINK_PAGE);
-
-  console.log(
-    dataSocial === undefined ? loadingSocial : dataSocial,
-    "dataSocial"
-  );
-  console.log(
-    dataCompany === undefined ? loadingCompany : dataCompany,
-    "dataCompany"
-  );
-  console.log(
-    dataFooter === undefined ? loadingFooter : dataFooter,
-    "data footer"
-  );
   return (
     <>
-      {/* <script src="https://wordpress-484386-3840570.cloudwaysapps.com/wp-content/plugins/text-to-audio/admin/js/build/text-to-audio-button.min.js?ver=1.6.22"></script> */}
-
-      {/* <script
-        async
-        defer
-        src="https://proxy.beyondwords.io/npm/@beyondwords/player@latest/dist/umd.js"
-        onload="new BeyondWords.Player({
-    target: this,
-    projectId: 45037,
-    clientSideEnabled: true,
-  })"
-      ></script> */}
-
       <div className="footer bg-gray-800 text-white">
         <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="flex justify-center md:hidden">
@@ -220,12 +170,12 @@ const Footer = () => {
                   {/* Second Column */}
                   <div className="mb-8 md:mb-0">
                     <h2 className="mb-6 text-[20px] font-semibold text-white">
-                      {dataCompany?.menu?.footer?.companyTitle}
+                      {dataFooter?.menu?.footer?.companyTitle}
                     </h2>
                     <ul className="text-white font-medium">
                       <li className="mb-4">
                         <Link href="/contact-us" className="hover:underline">
-                          {dataCompany?.menu?.footer?.companyFirst}
+                          {dataFooter?.menu?.footer?.companyFirst}
                         </Link>
                       </li>
                       <li className="mb-4">
@@ -235,12 +185,12 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link href="/advertise" className="hover:underline">
-                          {dataCompany?.menu?.footer?.companyThird}
+                          {dataFooter?.menu?.footer?.companyThird}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <a href="#" className="hover:underline">
-                          {dataCompany?.menu?.footer?.companyFore}
+                          {dataFooter?.menu?.footer?.companyFore}
                         </a>
                       </li>
                     </ul>
@@ -251,21 +201,56 @@ const Footer = () => {
                       Social
                     </h2>
                     <ul className="text-white font-medium">
-                      <li className="mb-4">
-                        <a href="#" className="hover:underline">
-                          {dataSocial?.menu?.footer?.belaazTwitter}
-                        </a>
-                      </li>
-                      <li className="mb-4">
-                        <a href="#" className="hover:underline">
-                          {dataSocial?.menu?.footer?.belaazFacebook}
-                        </a>
-                      </li>
-                      <li className="mb-4">
-                        <a href="#" className="hover:underline">
-                          {dataSocial?.menu?.footer?.belaazInstagram}
-                        </a>
-                      </li>
+                      {dataFooter?.menu?.footer?.belaazTwitterLink && (
+                        <li className="mb-4">
+                          <Link
+                            href={dataFooter.menu.footer.belaazTwitterLink}
+                            className="hover:underline"
+                          >
+                            {dataFooter.menu.footer.belaazTwitter}
+                          </Link>
+                        </li>
+                      )}
+                      {dataFooter?.menu?.footer?.belaazFacebookLink && (
+                        <li className="mb-4">
+                          <Link
+                            href={dataFooter.menu.footer.belaazFacebookLink}
+                            className="hover:underline"
+                          >
+                            {dataFooter.menu.footer.belaazFacebook}
+                          </Link>
+                        </li>
+                      )}
+                      {dataFooter?.menu?.footer?.belaazInstagramLink && (
+                        <li className="mb-4">
+                          <Link
+                            href={dataFooter.menu.footer.belaazInstagramLink}
+                            className="hover:underline"
+                          >
+                            {dataFooter.menu.footer.belaazInstagram}
+                          </Link>
+                        </li>
+                      )}
+                      {dataFooter?.menu?.footer?.belaazYoutubeLink && (
+                        <li className="mb-4">
+                          <Link
+                            href={dataFooter.menu.footer.belaazYoutubeLink}
+                            className="hover:underline"
+                          >
+                            {dataFooter.menu.footer.belaazYoutube}
+                          </Link>
+                        </li>
+                      )}
+                      {dataFooter?.menu?.footer?.belaazTelegramLink && (
+                        <li className="mb-4">
+                          <Link
+                            href={dataFooter.menu.footer.belaazTelegramLink}
+                            className="hover:underline"
+                          >
+                            {dataFooter.menu.footer.belaazTelegram}
+                          </Link>
+                        </li>
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -288,47 +273,58 @@ const Footer = () => {
             {/* Social Icons and Copyright Section */}
             <div className="text-center">
               <div className="flex justify-center mb-3 space-x-2">
-              <Link href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}>
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 object-cover"
-                  src={Group}
-                  alt="Whatsapp Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}>
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 object-cover"
-                  src={Group1}
-                  alt="Facebook Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}>
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 object-cover"
-                  src={Group2}
-                  alt="Instagram Icon"
-                />
-              </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
-                <ExportedImage
-                  priority={true}
-                  className="h-8 w-8 object-cover"
-                  src={Group3}
-                  alt="Twitter Icon"
-                />
-              </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 object-cover"
+                    src={Group}
+                    alt="Whatsapp Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 object-cover"
+                    src={Group1}
+                    alt="Facebook Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 object-cover"
+                    src={Group2}
+                    alt="Instagram Icon"
+                  />
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                >
+                  <ExportedImage
+                    priority={true}
+                    className="h-8 w-8 object-cover"
+                    src={Group3}
+                    alt="Twitter Icon"
+                  />
+                </Link>
               </div>
               <p className="text-sm text-white font-semibold">
-                {dataSocial?.menu?.footer?.copyrightText}
+                {dataFooter?.menu?.footer?.copyrightText}
               </p>
             </div>
             {/* Contact Us Button Section */}
             <div className="text-center hidden md:block">
               <div className="flex justify-center mb-3 space-x-2">
-                <button style={{ border: "1px solid", padding: "5px" }} onClick={() => router.push("/contact-us")}>
+                <button
+                  style={{ border: "1px solid", padding: "5px" }}
+                  onClick={() => router.push("/contact-us")}
+                >
                   Contact us
                 </button>
               </div>
