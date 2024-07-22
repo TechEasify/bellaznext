@@ -206,6 +206,7 @@ const Footer = () => {
                           <Link
                             href={dataFooter.menu.footer.belaazTwitterLink}
                             className="hover:underline"
+                            target="_blank"
                           >
                             {dataFooter.menu.footer.belaazTwitter}
                           </Link>
@@ -216,6 +217,7 @@ const Footer = () => {
                           <Link
                             href={dataFooter.menu.footer.belaazFacebookLink}
                             className="hover:underline"
+                            target="_blank"
                           >
                             {dataFooter.menu.footer.belaazFacebook}
                           </Link>
@@ -226,6 +228,7 @@ const Footer = () => {
                           <Link
                             href={dataFooter.menu.footer.belaazInstagramLink}
                             className="hover:underline"
+                            target="_blank"
                           >
                             {dataFooter.menu.footer.belaazInstagram}
                           </Link>
@@ -236,6 +239,7 @@ const Footer = () => {
                           <Link
                             href={dataFooter.menu.footer.belaazYoutubeLink}
                             className="hover:underline"
+                            target="_blank"
                           >
                             {dataFooter.menu.footer.belaazYoutube}
                           </Link>
@@ -246,6 +250,7 @@ const Footer = () => {
                           <Link
                             href={dataFooter.menu.footer.belaazTelegramLink}
                             className="hover:underline"
+                            target="_blank"
                           >
                             {dataFooter.menu.footer.belaazTelegram}
                           </Link>
@@ -275,6 +280,7 @@ const Footer = () => {
               <div className="flex justify-center mb-3 space-x-2">
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  target="_blank"
                 >
                   <ExportedImage
                     priority={true}
@@ -285,6 +291,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  target="_blank"
                 >
                   <ExportedImage
                     priority={true}
@@ -295,6 +302,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  target="_blank"
                 >
                   <ExportedImage
                     priority={true}
@@ -305,6 +313,7 @@ const Footer = () => {
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  target="_blank"
                 >
                   <ExportedImage
                     priority={true}

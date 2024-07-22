@@ -52,9 +52,6 @@ const GET_CARD_SECTION = gql`
           a
           b
           c
-          d
-          e
-          f
         }
       }
     }
@@ -79,96 +76,6 @@ const Cardnews = () => {
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto flex flex-wrap justify-center">
-        {/* {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {
-          console.log(item, "itemitemitemitemitem");
-          return (
-            <React.Fragment key={item.id}>
-              {item.posts.nodes.map((post) => {
-                console.log(post, "postpostpostpostpostpostpostpost");
-                if (displayedCategories.has(item.name)) {
-                  return null;
-                }
-                displayedCategories.add(item.name);
-
-                const bottomLineColor = (() => {
-                  switch (item.name) {
-                    case "Insights":
-                      return data.page.homePage.allCategoryBottomLineColor.a;
-                    case "Jewish News":
-                      return data.page.homePage.allCategoryBottomLineColor.b;
-                    case "music":
-                      return data.page.homePage.allCategoryBottomLineColor.c;
-                    case "politics":
-                      return data.page.homePage.allCategoryBottomLineColor.d;
-                    case "ukraineRussiaWar":
-                      return data.page.homePage.allCategoryBottomLineColor.e;
-                    case "Breaking News":
-                      return "rgb(206, 58, 66)";
-                    case "ANALYSIS":
-                      return "#FFA500";
-                    case "HEALTH":
-                      return "rgb(24, 119, 242)";
-                    case "Israel":
-                      return "rgb(206, 58, 66)";
-                    default:
-                      return "#FFA500";
-                  }
-                })();
-
-                return (
-                  <div className="flex flex-wrap justify-around" key={post.id}>
-                    <div className="max-w-xs bg-white mr-4 items-center">
-                      <div className="mr-2 mb-20">
-                        <h5 className="text-[15px] font-bold text-black-900">
-                          {item.name}
-                        </h5>
-                        <hr
-                          className="text-red-800 mb-3"
-                          style={{
-                            height: "7px",
-                            background: bottomLineColor,
-                            width: "20%",
-                          }}
-                        />
-                        <ExportedImage
-                          src={post?.featuredImage?.node?.sourceUrl}
-                          alt="vladimirputin"
-                          className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
-                          width={397}
-                          height={210}
-                        />
-                        <Link href={`/news/${post.slug}`}>
-                          <p className="text-[15px] font-semibold text-gray-800 mb-2">
-                            {post.title}
-                          </p>
-                        </Link>
-                        {data.page.homePage.allCategories.nodes.slice(3, 6).map((item) => {
-                          console.log(item, "item inside data");
-                          return (
-                            <div key={item.id}>
-                              {item.posts.nodes.map((post) => {
-                                console.log(post, "post inside posts");
-                                return (
-                                  <div key={post.id}>
-                                    <Link href={`/news/${post.slug}`}>
-                                      <p className="text-[15px] font-semibold text-gray-800 mb-2">
-                                        {post.title}
-                                      </p>
-                                    </Link>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </React.Fragment>
-          );
-        })} */}
         <div className="flex flex-wrap justify-around">
           {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {
             console.log(item, "item card inside");
@@ -185,10 +92,6 @@ const Cardnews = () => {
                   return data.page.homePage.allCategoryBottomLineColor.b;
                 case "music":
                   return data.page.homePage.allCategoryBottomLineColor.c;
-                case "politics":
-                  return data.page.homePage.allCategoryBottomLineColor.d;
-                case "ukraineRussiaWar":
-                  return data.page.homePage.allCategoryBottomLineColor.e;
                 case "Breaking News":
                   return "rgb(206, 58, 66)";
                 case "ANALYSIS":
