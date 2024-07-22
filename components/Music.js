@@ -38,13 +38,20 @@ const Music = () => {
                       <React.Fragment key={post.id}>
                         <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                           <div className="mr-2">
-                            <ExportedImage
-                              src={post?.featuredImage?.node?.sourceUrl}
-                              alt="vladimirputin"
-                              className="object-cover w-[317px] h-[194px] mr-2 mb-2"
-                              width={317}
-                              height={194}
-                            />
+                            <Link
+                              href={{
+                                pathname: `/news/${post.slug}`,
+                              }}
+                              passHref
+                            >
+                              <ExportedImage
+                                src={post?.featuredImage?.node?.sourceUrl}
+                                alt="vladimirputin"
+                                className="object-cover w-[317px] h-[194px] mr-2 mb-2"
+                                width={317}
+                                height={194}
+                              />
+                            </Link>
                             <p className="text-[12px] font-bold text-red-800">
                               {musicQuery?.page?.homePage?.musicTitle}
                             </p>
@@ -98,13 +105,20 @@ const Music = () => {
                               </p>
                             </Link>
                           </div>
-                          <ExportedImage
-                            src={post?.featuredImage?.node?.sourceUrl}
-                            alt="Partly Cloudy"
-                            className="object-cover w-[120px] h-[97px] mr-2"
-                            width={120}
-                            height={97}
-                          />
+                          <Link
+                            href={{
+                              pathname: `/news/${post.slug}`,
+                            }}
+                            passHref
+                          >
+                            <ExportedImage
+                              src={post?.featuredImage?.node?.sourceUrl}
+                              alt="Partly Cloudy"
+                              className="object-cover w-[120px] h-[97px] mr-2"
+                              width={120}
+                              height={97}
+                            />
+                          </Link>
                         </div>
                         <p className="text-[10px] text-base font-bold text-gray-800">
                           <span

@@ -121,35 +121,39 @@ const Cardnews = () => {
                       background: bottomLineColor,
                     }}
                   />
-                  
-                    <div key={item.id}>
+
+                  <div key={item.id}>
+                    <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
                       <ExportedImage
-                        src={item?.posts?.nodes[0]?.featuredImage?.node?.sourceUrl}
+                        src={
+                          item?.posts?.nodes[0]?.featuredImage?.node?.sourceUrl
+                        }
                         alt="vladimirputin"
                         className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
                         width={397}
                         height={210}
                       />
-                      <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
-                        <p className="text-[15px] font-semibold text-gray-800 mb-2">
-                          {item?.posts?.nodes[0]?.title}
-                        </p>
-                      </Link>
-                    </div>
-                    <div key={item.id}>
-                      <Link href={`/news/${item?.posts?.nodes[1]?.slug}`}>
-                        <p className="text-[15px] font-semibold text-gray-800 mb-2">
-                          {item?.posts?.nodes[1]?.title}
-                        </p>
-                      </Link>
-                    </div>
-                    <div key={item.id}>
-                      <Link href={`/news/${item?.posts?.nodes[2]?.slug}`}>
-                        <p className="text-[15px] font-semibold text-gray-800 mb-2">
-                          {item?.posts?.nodes[2]?.title}
-                        </p>
-                      </Link>
-                    </div>
+                    </Link>
+                    <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                      <p className="text-[15px] font-semibold text-gray-800 mb-2">
+                        {item?.posts?.nodes[0]?.title}
+                      </p>
+                    </Link>
+                  </div>
+                  <div key={item.id}>
+                    <Link href={`/news/${item?.posts?.nodes[1]?.slug}`}>
+                      <p className="text-[15px] font-semibold text-gray-800 mb-2">
+                        {item?.posts?.nodes[1]?.title}
+                      </p>
+                    </Link>
+                  </div>
+                  <div key={item.id}>
+                    <Link href={`/news/${item?.posts?.nodes[2]?.slug}`}>
+                      <p className="text-[15px] font-semibold text-gray-800 mb-2">
+                        {item?.posts?.nodes[2]?.title}
+                      </p>
+                    </Link>
+                  </div>
                 </div>
               </div>
             );

@@ -140,13 +140,15 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         </Link>
                       </div>
                       {post?.featuredImage?.node?.sourceUrl && (
-                        <ExportedImage
-                          src={post.featuredImage.node.sourceUrl}
-                          alt="Partly Cloudy"
-                          className="h-13 w-13 mr-2 object-cover w-[90px] h-[87px]"
-                          width={90}
-                          height={87}
-                        />
+                        <Link href={`/news/${post.slug}`}>
+                          <ExportedImage
+                            src={post.featuredImage.node.sourceUrl}
+                            alt="Partly Cloudy"
+                            className="h-13 w-13 mr-2 object-cover w-[90px] h-[87px]"
+                            width={90}
+                            height={87}
+                          />
+                        </Link>
                       )}
                     </div>
                     <hr className="my-3"/>
@@ -187,13 +189,15 @@ function Music({ nodeByUri, fetchMore, loading }) {
               <React.Fragment key={index}>
                 <div className="mr-2 my-2">
                   {post?.featuredImage?.node?.sourceUrl && (
-                    <ExportedImage
-                      src={post?.featuredImage?.node?.sourceUrl}
-                      alt="vladimirputin"
-                      className="h-13 w-13 mr-2 mb-2 object-cover w-[317px] h-[194px]"
-                      width={317}
-                      height={194}
-                    />
+                    <Link href={`/news/${post.slug}`}>
+                      <ExportedImage
+                        src={post?.featuredImage?.node?.sourceUrl}
+                        alt="vladimirputin"
+                        className="h-13 w-13 mr-2 mb-2 object-cover w-[317px] h-[194px]"
+                        width={317}
+                        height={194}
+                      />
+                    </Link>
                   )}
                   <p className="text-[12px] font-bold text-red-800">
                     {post.categoryName}
@@ -244,13 +248,15 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     </Link>
                   </div>
                   {post?.featuredImage?.node?.sourceUrl && (
-                    <ExportedImage
-                      src={post?.featuredImage?.node?.sourceUrl}
-                      alt="Partly Cloudy"
-                      className="h-13 w-13 mr-2 object-cover w-[120px] h-[97px]"
-                      width={120}
-                      height={97}
-                    />
+                    <Link href={`/news/${post.slug}`}>
+                      <ExportedImage
+                        src={post?.featuredImage?.node?.sourceUrl}
+                        alt="Partly Cloudy"
+                        className="h-13 w-13 mr-2 object-cover w-[120px] h-[97px]"
+                        width={120}
+                        height={97}
+                      />
+                    </Link>
                   )}
                 </div>
               </React.Fragment>
@@ -263,14 +269,16 @@ function Music({ nodeByUri, fetchMore, loading }) {
               (
                 <div className="w-full max-w-5xl mx-auto relative">
                   {shuffledPost[0]?.featuredImage?.node?.sourceUrl && (
-                    <ExportedImage
-                      className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
-                      priority={true}
-                      src={shuffledPost[0]?.featuredImage?.node?.sourceUrl}
-                      width={910}
-                      height={554}
-                      alt="vladimirputin"
-                    />
+                    <Link href={`/news/${musicpost.slug}`}>
+                      <ExportedImage
+                        className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
+                        priority={true}
+                        src={shuffledPost[0]?.featuredImage?.node?.sourceUrl}
+                        width={910}
+                        height={554}
+                        alt="vladimirputin"
+                      />
+                    </Link>
                   )}
 
                   <div className="absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:w-[750px] h-60">
@@ -321,14 +329,16 @@ function Music({ nodeByUri, fetchMore, loading }) {
                             className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2"
                           >
                             {post?.featuredImage?.node?.sourceUrl && (
-                              <ExportedImage
-                                className="object-cover w-full h-[293px]"
-                                priority={true}
-                                src={post?.featuredImage?.node?.sourceUrl}
-                                alt="vladimirputin"
-                                width={432}
-                                height={293}
-                              />
+                              <Link href={`/news/${post.slug}`}>
+                                <ExportedImage
+                                  className="object-cover w-full h-[293px]"
+                                  priority={true}
+                                  src={post?.featuredImage?.node?.sourceUrl}
+                                  alt="vladimirputin"
+                                  width={432}
+                                  height={293}
+                                />
+                              </Link>
                             )}
 
                             <p className="text-base font-bold text-red-800 mt-2">

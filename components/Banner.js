@@ -121,8 +121,7 @@ const SkeletonLoader = () => (
 );
 
 const Banner = () => {
-  const { openDialog, bannerData, topheadData, iconDataResult } = useDialog();
-  console.log(bannerData, "bannerDatabannerDatabannerDatabannerData");
+  const { bannerData, iconDataResult } = useDialog();
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -321,27 +320,36 @@ const Banner = () => {
                         6 MIN READ
                       </p>
                       {post.featuredImage?.node?.sourceUrl && (
-                        <ExportedImage
-                          priority={true}
-                          className="object-cover"
-                          src={post?.featuredImage?.node?.sourceUrl}
-                          alt={post?.featuredImage?.node?.altText}
-                          width={150}
-                          height={150}
-                          style={{
-                            width: "100%",
-                            height: "auto",
-                            maxHeight: "500px",
+                        <Link
+                          href={{
+                            pathname: `/news/${post.slug}`,
                           }}
-                        />
+                          passHref
+                        >
+                          <ExportedImage
+                            priority={true}
+                            className="object-cover"
+                            src={post?.featuredImage?.node?.sourceUrl}
+                            alt={post?.featuredImage?.node?.altText}
+                            width={150}
+                            height={150}
+                            style={{
+                              width: "100%",
+                              height: "auto",
+                              maxHeight: "500px",
+                            }}
+                          />
+                        </Link>
                       )}
                     </div>
                   )
                 )
               )}
 
-              <Topheadlines topheadData={bannerData}  displayedCategories={displayedCategories}/>
-              
+              <Topheadlines
+                topheadData={bannerData}
+                displayedCategories={displayedCategories}
+              />
             </div>
           </div>
           <div className="hidden md:block w-full max-w-3xl mx-auto">
@@ -500,13 +508,20 @@ const Banner = () => {
                                 </Link>
                               </div>
                               {itemdata?.featuredImage?.node?.sourceUrl ? (
-                                <ExportedImage
-                                  src={itemdata.featuredImage.node.sourceUrl}
-                                  alt={itemdata.title}
-                                  className="object-cover w-[90px] h-[87px] mr-2"
-                                  width={90}
-                                  height={87}
-                                />
+                                <Link
+                                  href={{
+                                    pathname: `/news/${itemdata.slug}`,
+                                  }}
+                                  passHref
+                                >
+                                  <ExportedImage
+                                    src={itemdata.featuredImage.node.sourceUrl}
+                                    alt={itemdata.title}
+                                    className="object-cover w-[90px] h-[87px] mr-2"
+                                    width={90}
+                                    height={87}
+                                  />
+                                </Link>
                               ) : (
                                 <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
                                   No Image
@@ -586,15 +601,22 @@ const Banner = () => {
                                     </Link>
                                   </div>
                                   {itemdata?.featuredImage?.node?.sourceUrl ? (
-                                    <ExportedImage
-                                      src={
-                                        itemdata.featuredImage.node.sourceUrl
-                                      }
-                                      alt={itemdata.title}
-                                      className="object-cover w-[90px] h-[87px] mr-2"
-                                      width={90}
-                                      height={87}
-                                    />
+                                    <Link
+                                      href={{
+                                        pathname: `/news/${itemdata.slug}`,
+                                      }}
+                                      passHref
+                                    >
+                                      <ExportedImage
+                                        src={
+                                          itemdata.featuredImage.node.sourceUrl
+                                        }
+                                        alt={itemdata.title}
+                                        className="object-cover w-[90px] h-[87px] mr-2"
+                                        width={90}
+                                        height={87}
+                                      />
+                                    </Link>
                                   ) : (
                                     <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
                                       No Image
