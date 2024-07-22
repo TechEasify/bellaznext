@@ -108,35 +108,10 @@ const CategoryPage = () => {
   } = useDialog();
   const { categoryslug } = router.query;
   console.log(nodeByUri, "nodeByUri category");
-  // const [navData, setNavData] = useState(null);
-
-  // console.log("categoryslug:", categoryslug);
-  // console.log("uri:", uri);
-
-  // const { data, loading, error } = useQuery(CATEGORY_QUERY);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     setNavData(data);
-  //     setNodeByUri(data.nodeByUri)
-  //   }
-  // }, [data]);
-
-  // if (!categoryslug) {
-  //   return <SkeletonLoader />;
-  // }
 
   if (loadingCategory) {
     return <SkeletonLoader />;
   }
-
-  // if (error) {
-  //   return <p>Category not found</p>;
-  // }
-
-  // const { nodeByUri } = data;
-
-  // console.log(data, "datadatadatadatadatadatadatadata");
 
   return (
     <>
@@ -145,68 +120,6 @@ const CategoryPage = () => {
       </Head>
       <Nav uri={uri} />
 
-      {/* <main>
-        {router.asPath === `/category/breaking-news` &&
-        nodeByUri !== undefined &&
-        nodeByUri !== null ? (
-          <Breakingnews
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/insights" &&
-          nodeByUri !== undefined &&
-          nodeByUri !== null ? (
-          <Insight
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/jewish-news" &&
-          nodeByUri !== undefined &&
-          nodeByUri !== null ? (
-          <Jewishnews
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/politics" &&
-          nodeByUri !== undefined &&
-          nodeByUri !== null ? (
-          <PoliticsCategory
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : router.asPath === "/category/music" &&
-          nodeByUri !== undefined &&
-          nodeByUri !== null ? (
-          <Music
-            nodeByUri={nodeByUri}
-            loading={loadingCategory}
-            navData={navData}
-            fetchMore={fetchMore}
-          />
-        ) : (
-          <ul>
-            {nodeByUri !== null &&
-              nodeByUri?.posts?.nodes.map((post) =>
-                post.link
-                  ? (console.log(post, "post"),
-                    (
-                      <li key={post.id}>
-                        <Link href={post.link}>{post.title}</Link>
-                      </li>
-                    ))
-                  : null
-              )}
-          </ul>
-        )}
-      </main> */}
       {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTemplateType[0] ===
       "Simple" ? (
         <main>

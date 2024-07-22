@@ -223,7 +223,7 @@ const Nav = ({
 
   return (
     <>
-      {router.pathname === dataNav?.menu?.header?.foreSquareFirstLink ? (
+      {router.pathname === "/contact-us" ? (
         <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
@@ -271,7 +271,7 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : router.pathname === dataNav?.menu?.header?.foreSquareSecond ? (
+      ) : router.pathname === "/about" ? (
         <header className="bg-header" style={{ backgroundColor: dataNav?.menu?.header?.headerBackgroundColor }}>
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
@@ -462,7 +462,7 @@ const Nav = ({
                   </button>
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink || ""}
+                  href={dataNav?.menu?.header?.mainMenuSecondLink}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined &&
@@ -475,7 +475,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink || ""}
+                  href={dataNav?.menu?.header?.mainMenuThirdLink}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
