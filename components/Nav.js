@@ -462,7 +462,7 @@ const Nav = ({
                   </button>
                 </div>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuSecondLink}
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined &&
@@ -475,7 +475,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menu?.header?.mainMenuThirdLink}
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -3134,7 +3134,7 @@ const Nav = ({
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href="/category/breaking-news"
+                        href={dataNav?.menu?.header?.subFirstLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -3147,7 +3147,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/politics"
+                        href={dataNav?.menu?.header?.subSecondLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -3160,7 +3160,7 @@ const Nav = ({
                         />
                       </Link>
                       <Link
-                        href="/category/jewish-news"
+                        href={dataNav?.menu?.header?.subThirdLink?.url}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined &&
@@ -3176,7 +3176,7 @@ const Nav = ({
                   )}
                 </div>
                 <Link
-                  href="/category/insights"
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -3189,7 +3189,7 @@ const Nav = ({
                   />
                 </Link>
                 <Link
-                  href="/category/music"
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
@@ -3203,21 +3203,21 @@ const Nav = ({
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href="/contact-us"
+                    href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href="/advertise"
+                    href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
                     {dataNav !== undefined &&
@@ -3277,21 +3277,21 @@ const Nav = ({
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href="/contact-us"
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href="/advertise"
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
