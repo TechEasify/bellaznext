@@ -58,7 +58,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   };
 
   console.log(
-    nodeByUri?.categoryTamplate?.selectYourTemplateType[0],
+    nodeByUri?.categoryTamplate?.selectYourTempleteType[0],
     "nodeByUri?.categoryTamplate"
   );
 
@@ -70,8 +70,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-        {nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Simple" || nodeByUri?.categoryTamplate?.selectYourTemplateType[0] === "Music" &&
-        nodeByUri?.categoryTamplate?.musicTamplate?.musicAdervtiseImage?.adImage
+        {nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" || nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Music" &&
+        nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage?.adImage
           ?.node?.sourceUrl ? (
           <ExportedImage
             style={{
@@ -84,7 +84,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             height={169}
             priority={true}
             src={
-              nodeByUri?.categoryTamplate?.musicTamplate?.musicAdervtiseImage
+              nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
                 ?.adImage?.node?.sourceUrl
             }
             alt="PR_01CFA"
@@ -122,14 +122,17 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                           }}
                           passHref
                         >
-                          <ExportedImage
-                            className="object-cover w-[357px] h-[261px]"
-                            priority={true}
-                            src={item?.featuredImage?.node?.sourceUrl}
-                            alt="ferrari4"
-                            width={357}
-                            height={261}
-                          />
+                          {
+                            item?.featuredImage?.node?.sourceUrl && 
+                            <ExportedImage
+                              className="object-cover w-[357px] h-[261px]"
+                              priority={true}
+                              src={item?.featuredImage?.node?.sourceUrl}
+                              alt="ferrari4"
+                              width={357}
+                              height={261}
+                            />
+                          }
                         </Link>
                       </div>
                       <div className="ml-0 md:ml-5 w-full md:w-3/5">
@@ -335,19 +338,19 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           </div>
 
           <div className="hidden md:block w-full max-w-4xl mx-auto">
-            {(nodeByUri?.categoryTamplate?.selectYourTemplateType &&
+            {(nodeByUri?.categoryTamplate?.selectYourTempleteType &&
               ["Simple", "Music"].includes(
-                nodeByUri.categoryTamplate.selectYourTemplateType[0]
+                nodeByUri.categoryTamplate.selectYourTempleteType[0]
               )) ||
-            nodeByUri?.categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+            nodeByUri?.categoryTamplate?.musicTemplete?.musicAllPostsSidebar
               ?.sidebarAdImage?.node?.sourceUrl !== null ? (
-              nodeByUri?.categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+              nodeByUri?.categoryTamplate?.musicTemplete?.musicAllPostsSidebar
                 ?.sidebarAdImage?.node?.sourceUrl ? (
                 <ExportedImage
                   className="mb-2 w-full h-auto max-h-96"
                   priority={true}
                   src={
-                    nodeByUri?.categoryTamplate?.musicTamplate
+                    nodeByUri?.categoryTamplate?.musicTemplete
                       ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
                   }
                   width={297}

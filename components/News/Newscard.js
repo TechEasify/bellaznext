@@ -186,18 +186,20 @@ const Newscard = ({ nodeByUri }) => {
                     />
 
                     <div key={item.id}>
-                      <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
-                        <ExportedImage
-                          src={
-                            item?.posts?.nodes[0]?.featuredImage?.node
-                              ?.sourceUrl
-                          }
-                          alt="vladimirputin"
-                          className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
-                          width={397}
-                          height={210}
-                        />
-                      </Link>
+                      {item?.posts?.nodes[0]?.featuredImage?.node?.sourceUrl && (
+                        <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                          <ExportedImage
+                            src={
+                              item?.posts?.nodes[0]?.featuredImage?.node
+                                ?.sourceUrl
+                            }
+                            alt="vladimirputin"
+                            className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
+                            width={397}
+                            height={210}
+                          />
+                        </Link>
+                      )}
                       <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
                         <p className="text-[15px] font-semibold text-gray-800 mb-2">
                           {item?.posts?.nodes[0]?.title}

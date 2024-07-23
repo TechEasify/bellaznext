@@ -62,13 +62,15 @@ function Music({ nodeByUri, fetchMore, loading }) {
   const posts = [];
   const [shuffledPost, setShuffledPosts] = useState([]);
 
+  console.log(nodeByUri, "nodeByUri music");
+
   useEffect(() => {
     if (
-      nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate
+      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
         ?.selectCategoryForAllPost?.nodes
     ) {
       const posts =
-        nodeByUri.nodeByUri.categoryTamplate.musicTamplate.selectCategoryForAllPost.nodes.flatMap(
+        nodeByUri.nodeByUri.categoryTamplate.musicTemplete.selectCategoryForAllPost.nodes.flatMap(
           (item) => item.posts.nodes
         );
       setShuffledPosts(posts);
@@ -77,7 +79,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
 
   console.log(shuffledPost, "shuffledPost");
 
-  nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.musicHeroSection?.selectCategory?.nodes.forEach(
+  nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicHeroSection?.selectCategory?.nodes.forEach(
     (item) => {
       item.posts.nodes.forEach((post) => {
         posts.push({ ...post, categoryName: item.name });
@@ -112,7 +114,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
           <div className="hidden md:block w-full max-w-3xl mx-auto">
             <p className="text-[15px] font-bold text-black-900 italic">
               {
-                nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate
+                nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
                   ?.musicHeroSection?.heroSidebarTitle
               }
             </p>
@@ -120,7 +122,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
               className="text-red-800"
               style={{
                 height: "7px",
-                background: `${nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.musicHeroSection?.heroSidebarTitleLineColor}`,
+                background: `${nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicHeroSection?.heroSidebarTitleLineColor || "#000"}`,
               }}
             />
             {randomPosts.map(
@@ -131,11 +133,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     <div className="flex mt-5">
                       <div className="mr-2 flex-1">
                         <p className="text-[12px] font-bold text-red-800">
-                          {post.categoryName}
+                          {post?.categoryName || ""} 
                         </p>
                         <Link href={`/news/${post.slug}`}>
                           <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue export">
-                            {post.title}
+                            {post?.title || ""}
                           </p>
                         </Link>
                       </div>
@@ -158,11 +160,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
             )}
 
             <div className="flex mt-5 mb-5">
-              {nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate
+              {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
                 ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl ? (
                 <ExportedImage
                   src={
-                    nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate
+                    nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
                       ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
                   }
                   alt="Partly Cloudy"
@@ -200,11 +202,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     </Link>
                   )}
                   <p className="text-[12px] font-bold text-red-800">
-                    {post.categoryName}
+                    {post?.categoryName || ""}
                   </p>
                   <Link href={`/news/${post.slug}`}>
                     <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue export">
-                      {post.title}
+                      {post?.title || ""}
                     </p>
                   </Link>
                   <p className="text-[10px] text-base font-bold text-gray-800">
@@ -239,11 +241,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 <div className="flex my-5">
                   <div className="mr-2 flex-1">
                     <p className="text-[12px] font-bold text-red-800">
-                      {post.categoryName}
+                      {post?.categoryName || ""}
                     </p>
                     <Link href={`/news/${post.slug}`}>
                       <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue export">
-                        {post.title}
+                        {post?.title || ""}
                       </p>
                     </Link>
                   </div>
@@ -321,7 +323,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   </div>
 
                   <div className="flex flex-wrap justify-around mt-32">
-                    {nodeByUri?.nodeByUri?.categoryTamplate?.musicTamplate?.selectCategoryForAllPost?.nodes
+                    {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes
                       .map((item) =>
                         item.posts.nodes.slice(1, 5).map((post) => (
                           <div

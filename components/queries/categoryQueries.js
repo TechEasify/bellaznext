@@ -43,8 +43,8 @@ export const CATEGORY_BREAKING_QUERY = gql`
           }
         }
         categoryTamplate {
-          selectYourTemplateType
-          simpleTamplate {
+          selectYourTempleteType
+          simpleTemplete {
             simpleTitleBackgroundColor
             simpleHeroSection {
               heroSidebarAdCode
@@ -86,7 +86,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
               }
             }
           }
-          musicTamplate {
+          musicTemplete {
             musicTitleBackgroundColor
             musicHeroSection {
               heroSidebarTitle

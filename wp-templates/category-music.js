@@ -86,7 +86,7 @@ Component.query = gql`
           }
         }
         categoryTamplate {
-          musicTamplate {
+          musicTemplete {
             musicTitleBackgroundColor
             musicHeroSection {
               heroSidebarTitle

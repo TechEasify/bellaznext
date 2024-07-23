@@ -316,12 +316,12 @@ const Insight = () => {
   useEffect(() => {
     if (
       nodeByUri?.nodeByUri &&
-      nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
-        ?.selectCategoryForAllPost.nodes
+      nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+        ?.selectCategoryForAllPost?.nodes
     ) {
       setPosts(
-        nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
-          ?.selectCategoryForAllPost.nodes
+        nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+          ?.selectCategoryForAllPost?.nodes
       );
       setCursor(nodeByUri?.nodeByUri?.posts?.pageInfo?.endCursor);
       setHasNextPage(nodeByUri?.nodeByUri?.posts?.pageInfo?.hasNextPage);
@@ -366,12 +366,14 @@ const Insight = () => {
                   const calculateWidth = (text) => {
                     // Example: 10 pixels per character plus some base width
                     const baseWidth = 50; // Base width in pixels
-                    const charWidth = 10;  // Width per character in pixels
+                    const charWidth = 10; // Width per character in pixels
                     return `${baseWidth + charWidth * text.length}px`;
                   };
-            
+
                   // Calculate the width dynamically
-                  const dynamicWidth = calculateWidth(nodeByUri?.nodeByUri?.name);
+                  const dynamicWidth = calculateWidth(
+                    nodeByUri?.nodeByUri?.name
+                  );
                   return (
                     <div key={posts.slug}>
                       <div className="flex flex-col md:flex-row mb-5">
@@ -382,25 +384,28 @@ const Insight = () => {
                             }}
                             passHref
                           >
-                            <ExportedImage
-                              className="object-cover w-[357px] h-[261px]"
-                              priority={true}
-                              src={posts?.featuredImage?.node?.sourceUrl}
-                              alt="ferrari4"
-                              width={357}
-                              height={261}
-                            />
+                            {posts?.featuredImage?.node?.sourceUrl !== undefined && (
+                              <ExportedImage
+                                className="object-cover w-[357px] h-[261px]"
+                                priority={true}
+                                src={posts?.featuredImage?.node?.sourceUrl}
+                                alt="ferrari4"
+                                width={357}
+                                height={261}
+                              />
+                            )}
                           </Link>
                         </div>
                         <div className="ml-0 md:ml-5 w-full md:w-3/5">
                           <p
                             className="text-base font-bold text-red-800"
                             style={{
-                              background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate?.simpleTitleBackgroundColor}`,
+                              background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor || "#fff"}`,
                               color: "#fff",
                               padding: "0 10px",
                               width: dynamicWidth,
-                              clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                              clipPath:
+                                "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
                               fontSize: "12px",
                               fontWeight: 500,
                               letterSpacing: "2px",
@@ -448,9 +453,8 @@ const Insight = () => {
                       </div>
                       <hr className="my-5" />
                     </div>
-                  )
-                }
-                  )
+                  );
+                })
               )
             )}
             <div className="flex justify-between">
@@ -466,18 +470,18 @@ const Insight = () => {
 
           <div className="w-full max-w-4xl mx-auto">
             {(nodeByUri?.nodeByUri?.categoryTamplate
-              ?.selectYourTemplateType[0] === "Simple" ||
+              ?.selectYourTempleteType[0] === "Simple" ||
               nodeByUri?.nodeByUri?.categoryTamplate
-                ?.selectYourTemplateType[0] === "Music") &&
-            nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
+                ?.selectYourTempleteType[0] === "Music") &&
+            nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
               ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl !==
               null ? (
               <ExportedImage
                 className="mb-2 w-full h-auto max-h-96"
                 priority={true}
                 src={
-                  nodeByUri?.nodeByUri?.categoryTamplate?.simpleTamplate
-                  ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
+                  nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+                    ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
                 }
                 alt="Rectangle367"
                 width={297}
@@ -570,7 +574,7 @@ const Insight = () => {
             </div>
           </div>
         </div>
-        <Newscard/>
+        <Newscard />
       </div>
     </>
   );

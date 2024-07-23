@@ -21,7 +21,7 @@ import { useDialog } from "../DialogContext";
 const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
   console.log(nodeByUri, "nodeByUri");
   console.log(
-    categoryTamplate?.musicTamplate?.musicAllPostsSidebar?.sidebarAdImage,
+    categoryTamplate?.musicTemplete?.musicAllPostsSidebar?.sidebarAdImage,
     "categoryTamplatecategoryTamplatecategoryTamplate"
   );
   const { iconDataResult } = useDialog();
@@ -63,17 +63,17 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
   return (
     <>
       {/* <div className="px-4 py-16" style={{ background: "#F2F2F2" }}>
-        {categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+        {categoryTamplate?.simpleTemplete?.simpleAdvertisementImage
           ?.simpleAdImage?.node?.sourceUrl ? (
           <ExportedImage
             style={{ margin: "0 auto" }}
             priority={true}
             src={
-              categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+              categoryTamplate?.simpleTemplete?.simpleAdvertisementImage
                 ?.simpleAdImage?.node?.sourceUrl || ""
             }
             alt={
-              categoryTamplate?.simpleTamplate?.simpleAdvertisementImage
+              categoryTamplate?.simpleTemplete?.simpleAdvertisementImage
                 ?.simpleAdImage?.node?.sourceUrl || ""
             }
             width={550}
@@ -388,24 +388,24 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
             </div>
           </div>
           {console.log(
-            categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+            categoryTamplate?.musicTemplete?.musicAllPostsSidebar
             ?.sidebarAdImage,
-            "categoryTamplate?.selectYourTemplateType[0]"
+            "categoryTamplate?.selectYourTempleteType[0]"
           )}
           <div className="hidden md:block w-full max-w-4xl mx-auto">
-            {categoryTamplate?.selectYourTemplateType[0] === "Simple" ||
-            categoryTamplate?.selectYourTemplateType[0] === "Music" ||
-            categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+            {categoryTamplate?.selectYourTempleteType[0] === "Simple" ||
+            categoryTamplate?.selectYourTempleteType[0] === "Music" ||
+            categoryTamplate?.musicTemplete?.musicAllPostsSidebar
               ?.sidebarAdImage !== null ||
-            categoryTamplate?.simpleTamplate?.simpleHeroSection
+            categoryTamplate?.simpleTemplete?.simpleHeroSection
               ?.heroSidebarAdImage !== null ? (
               <ExportedImage
                 className="mb-2 w-full h-auto max-h-96"
                 priority={true}
                 src={
-                  categoryTamplate?.musicTamplate?.musicAllPostsSidebar
+                  categoryTamplate?.musicTemplete?.musicAllPostsSidebar
                     ?.sidebarAdImage?.node?.sourceUrl ||
-                  categoryTamplate?.simpleTamplate?.simpleHeroSection
+                  categoryTamplate?.simpleTemplete?.simpleHeroSection
                     ?.heroSidebarAdImage?.node?.sourceUrl
                 }
                 alt="Rectangle367"
