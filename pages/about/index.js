@@ -186,10 +186,6 @@ function Index() {
                   const member = data.page.about.ourTeamMembers[teamKey];
                   if (!member || !member.name) return null;
 
-                  // Assuming default width and height values for images
-                  const imageWidth = 75;
-                  const imageHeight = 75;
-
                   return (
                     <div
                       key={teamKey}
@@ -197,14 +193,14 @@ function Index() {
                     >
                       {member.image && member.image.node.srcSet && (
                         <ExportedImage
-                          className="h-25 mr-5"
+                          className="h-[75px] mr-5 rounded-full w-[75px]"
                           priority={true}
                           src={
                             member.image.node.srcSet.split(",")[0].split(" ")[0]
                           }
                           alt={member.image.node.altText}
-                          width={imageWidth}
-                          height={imageHeight}
+                          width={75}
+                          height={75}
                         />
                       )}
                       <div>

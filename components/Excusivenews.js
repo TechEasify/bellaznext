@@ -6,13 +6,22 @@ import Frame396 from "../public/images/Frame396.svg";
 import { useDialog } from "./DialogContext";
 
 const Excusivenews = () => {
-  const { bannerData } = useDialog()
-  
+  const { bannerData } = useDialog();
+  let backgroundImage = bannerData?.page?.homePage?.ctaBackgroundImage?.node?.sourceUrl;
+
+  // Clean up the URL by removing newline characters and trimming spaces
+  if (backgroundImage) {
+    backgroundImage = backgroundImage.replace(/\s+/g, '');
+  }
+
+  console.log(bannerData?.page?.homePage?.ctaBackgroundImage, "bannerDatabannerDatabannerData");
+  console.log(backgroundImage, "backgroundImage");
+
   return (
     <div
       className="hidden md:block px-4 py-20 mx-auto max-w-screen-xl"
       style={{
-        backgroundImage: `url(${Frame396.src})`,
+        backgroundImage: `url(${backgroundImage || Frame396.src})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
