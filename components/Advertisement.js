@@ -58,7 +58,7 @@ const Advertisement = () => {
               .sourceUrl
           }
           alt="barcode"
-          className="object-fill w-[1134px] h-[169px]"
+          className="object-cover w-[1134px] h-[169px]"
           width={1134}
           height={169}
         />
