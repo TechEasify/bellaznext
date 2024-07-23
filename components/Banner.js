@@ -1,4 +1,5 @@
 import { useDialog } from "./DialogContext";
+import { useSelector, useDispatch } from "react-redux";
 import vladimirputin from "../public/images/vladimir-putin.svg";
 import mdi_weather from "../public/images/mdi_weather.svg";
 import typcn_weather from "../public/images/typcn_weather.svg";
@@ -126,6 +127,8 @@ const Banner = () => {
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
   const displayedCategories = new Set();
+
+  console.log(bannerData, "bannerDatabannerDatabannerData");
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -537,16 +540,25 @@ const Banner = () => {
               <div className="flex mt-5">
                 {bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
                   ?.topHeadlineFirstAd?.node?.sourceUrl ? (
-                  <ExportedImage
-                    src={
-                      bannerData.page.homePage.topHeadlineSidebarFirstAd
-                        .topHeadlineFirstAd.node.sourceUrl
-                    }
-                    alt="Partly Cloudy"
-                    className="object-cover w-[318px] h-[107px] mr-2"
-                    width={318}
-                    height={107}
-                  />
+                  <Link
+                    href={{
+                      pathname: bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
+                      ?.topHeadlineFirstAdLink,
+                    }}
+                    passHref
+                    target="_blank"
+                  >
+                    <ExportedImage
+                      src={
+                        bannerData.page.homePage.topHeadlineSidebarFirstAd
+                          .topHeadlineFirstAd.node.sourceUrl
+                      }
+                      alt="Partly Cloudy"
+                      className="object-cover w-[318px] h-[107px] mr-2"
+                      width={318}
+                      height={107}
+                    />
+                  </Link>
                 ) : (
                   <Ads
                     className=""
@@ -633,16 +645,25 @@ const Banner = () => {
               <div className="flex mb-5 mt-10">
                 {bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                   ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
-                  <ExportedImage
-                    src={
-                      bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
-                        ?.topHeadlineSecondAdImage?.node?.sourceUrl
-                    }
-                    alt="Partly Cloudy"
-                    className="object-cover w-[314px] h-[441px] mr-2"
-                    width={314}
-                    height={441}
-                  />
+                    <Link
+                    href={{
+                      pathname: bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
+                      ?.topHeadlineSecondAdLink,
+                    }}
+                    passHref
+                    target="_blank"
+                  >
+                    <ExportedImage
+                      src={
+                        bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
+                          ?.topHeadlineSecondAdImage?.node?.sourceUrl
+                      }
+                      alt="Partly Cloudy"
+                      className="object-cover w-[314px] h-[441px] mr-2"
+                      width={314}
+                      height={441}
+                    />
+                  </Link>
                 ) : (
                   <Ads
                     className=""

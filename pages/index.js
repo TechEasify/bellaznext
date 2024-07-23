@@ -121,7 +121,7 @@ const Home = () => {
   const { bannerData, bannerLoading, bannerError } = useDialog();
 
   if (bannerLoading) return <SkeletonLoader />;
-  if (bannerError) return <p>Error loading data: {error.message}</p>;
+  if (bannerError) return <p>Error loading data: {bannerError.message}</p>;
 
   const title = bannerData?.generalSettings?.title || "Default Title";
   const siteDescription =

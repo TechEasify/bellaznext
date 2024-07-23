@@ -48,6 +48,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
             simpleTitleBackgroundColor
             simpleHeroSection {
               heroSidebarAdCode
+              heroSidebarAdLink
               heroSidebarAdImage {
                 node {
                   altText
@@ -119,6 +120,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
               }
               heroSidebarTitleLineColor
               musicHeroSidebarAds {
+              musicSidebarAdLink
                 musicSidebarAdCode
                 musicSidebarAdImage {
                   node {
@@ -131,6 +133,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
               }
             }
             musicAdervtiseImage {
+            adLink
               adCode
               adImage {
                 node {
@@ -142,6 +145,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
             }
             musicAllPostsSidebar {
               sidebarAdCode
+              sidebarAdLink
               sidebarAdImage {
                 node {
                   altText

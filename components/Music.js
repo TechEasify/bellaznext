@@ -274,16 +274,38 @@ const Music = () => {
                         </div>
                         <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
                           {musicQuery?.page?.homePage?.musicAd?.musicAdImage
-                            ?.node?.sourceUrl && (
-                            <ExportedImage
-                              src={
-                                musicQuery.page.homePage.musicAd.musicAdImage
-                                  .node.sourceUrl
-                              }
-                              alt="Partly Cloudy"
-                              className="object-cover w-[317px] h-[214px] mr-2"
-                              width={317}
-                              height={214}
+                            ?.node?.sourceUrl ? (
+                            <Link
+                              href={{
+                                pathname:
+                                  musicQuery?.page?.homePage?.musicAd
+                                    ?.musicAdLink,
+                              }}
+                              passHref
+                              target="_blank"
+                            >
+                              <ExportedImage
+                                src={
+                                  musicQuery.page.homePage.musicAd.musicAdImage
+                                    .node.sourceUrl
+                                }
+                                alt="Partly Cloudy"
+                                className="object-cover w-[317px] h-[214px] mr-2"
+                                width={317}
+                                height={214}
+                              />
+                            </Link>
+                          ) : (
+                            <Ads
+                              className=""
+                              style={{
+                                display: "block",
+                                width: "317px",
+                                height: "214px",
+                                margin: "0 auto",
+                              }}
+                              adClient="ca-pub-3209848804552918"
+                              adSlot="9293720177"
                             />
                           )}
                         </div>

@@ -122,7 +122,10 @@ function Music({ nodeByUri, fetchMore, loading }) {
               className="text-red-800"
               style={{
                 height: "7px",
-                background: `${nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicHeroSection?.heroSidebarTitleLineColor || "#000"}`,
+                background: `${
+                  nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                    ?.musicHeroSection?.heroSidebarTitleLineColor || "#000"
+                }`,
               }}
             />
             {randomPosts.map(
@@ -133,7 +136,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     <div className="flex mt-5">
                       <div className="mr-2 flex-1">
                         <p className="text-[12px] font-bold text-red-800">
-                          {post?.categoryName || ""} 
+                          {post?.categoryName || ""}
                         </p>
                         <Link href={`/news/${post.slug}`}>
                           <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue export">
@@ -153,7 +156,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         </Link>
                       )}
                     </div>
-                    <hr className="my-3"/>
+                    <hr className="my-3" />
                   </React.Fragment>
                 )
               )
@@ -162,16 +165,25 @@ function Music({ nodeByUri, fetchMore, loading }) {
             <div className="flex mt-5 mb-5">
               {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
                 ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl ? (
-                <ExportedImage
-                  src={
-                    nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                      ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
-                  }
-                  alt="Partly Cloudy"
-                  className="w-full mr-2 object-cover w-[316px] h-[336px]"
-                  width={316}
-                  height={336}
-                />
+                <Link
+                  href={{
+                    pathname: nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                    ?.musicAllPostsSidebar?.sidebarAdLink,
+                  }}
+                  passHref
+                  target="_blank"
+                >
+                  <ExportedImage
+                    src={
+                      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                        ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="w-full mr-2 object-cover w-[316px] h-[336px]"
+                    width={316}
+                    height={336}
+                  />
+                </Link>
               ) : (
                 <Ads
                   className=""

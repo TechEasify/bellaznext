@@ -389,7 +389,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
           </div>
           {console.log(
             categoryTamplate?.musicTemplete?.musicAllPostsSidebar
-            ?.sidebarAdImage,
+              ?.sidebarAdImage,
             "categoryTamplate?.selectYourTempleteType[0]"
           )}
           <div className="hidden md:block w-full max-w-4xl mx-auto">
@@ -399,20 +399,30 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               ?.sidebarAdImage !== null ||
             categoryTamplate?.simpleTemplete?.simpleHeroSection
               ?.heroSidebarAdImage !== null ? (
-              <ExportedImage
-                className="mb-2 w-full h-auto max-h-96"
-                priority={true}
-                src={
+              <Link
+                href={{
+                  pathname:
                   categoryTamplate?.musicTemplete?.musicAllPostsSidebar
-                    ?.sidebarAdImage?.node?.sourceUrl ||
-                  categoryTamplate?.simpleTemplete?.simpleHeroSection
-                    ?.heroSidebarAdImage?.node?.sourceUrl
-                }
-                alt="Rectangle367"
-                width={297}
-                height={503}
-                style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-              />
+                  ?.sidebarAdLink,
+                }}
+                passHref
+                target="_blank"
+              >
+                <ExportedImage
+                  className="mb-2 w-full h-auto max-h-96"
+                  priority={true}
+                  src={
+                    categoryTamplate?.musicTemplete?.musicAllPostsSidebar
+                      ?.sidebarAdImage?.node?.sourceUrl ||
+                    categoryTamplate?.simpleTemplete?.simpleHeroSection
+                      ?.heroSidebarAdImage?.node?.sourceUrl
+                  }
+                  alt="Rectangle367"
+                  width={297}
+                  height={503}
+                  style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+                />
+              </Link>
             ) : (
               <Ads
                 className=""

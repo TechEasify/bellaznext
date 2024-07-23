@@ -2,6 +2,7 @@ import ExportedImage from "next-image-export-optimizer";
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import Ads from "./googleAds/Ads";
+import Link from "next/link";
 
 const FooterTopAd = ({data}) => {
   console.log(data, "datadata footer top ads");
@@ -16,6 +17,13 @@ const FooterTopAd = ({data}) => {
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
       {imageUrl ? (
+        <Link
+        href={{
+          pathname: data?.page?.homePage?.footerAdLink,
+        }}
+        passHref
+        target="_blank"
+      >
         <ExportedImage
           style={{
             margin: "0 auto",
@@ -27,6 +35,7 @@ const FooterTopAd = ({data}) => {
           width={1134}
           height={169}
         />
+        </Link>
       ) : (
         <Ads
           className=""

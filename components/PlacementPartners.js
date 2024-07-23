@@ -2,10 +2,13 @@ import ExportedImage from "next-image-export-optimizer";
 import React from "react";
 import Ads from "./googleAds/Ads";
 import { useDialog } from "./DialogContext";
+import Link from "next/link";
 
 const PlacementPartners = () => {
-  const { musicQuery } = useDialog()
-  const imageUrl = musicQuery?.page?.homePage?.musicBottomAd?.musicBottomAdImage?.node?.sourceUrl;
+  const { musicQuery } = useDialog();
+  const imageUrl =
+    musicQuery?.page?.homePage?.musicBottomAd?.musicBottomAdImage?.node
+      ?.sourceUrl;
 
   return (
     <div className="hidden md:block px-4 py-16 mx-auto max-w-screen-xl">
@@ -15,17 +18,25 @@ const PlacementPartners = () => {
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
       {imageUrl ? (
-        <ExportedImage
-          style={{
-            margin: "0 auto",
+        <Link
+          href={{
+            pathname: musicQuery?.page?.homePage?.musicBottomAd?.musicBottomAdLink,
           }}
-          priority={true}
-          src={imageUrl}
-          alt="PR_01CFA"
-          className="object-cover w-[1134px] h-[169px]"
-          width={1134}
-          height={169}
-        />
+          passHref
+          target="_blank"
+        >
+          <ExportedImage
+            style={{
+              margin: "0 auto",
+            }}
+            priority={true}
+            src={imageUrl}
+            alt="PR_01CFA"
+            className="object-cover w-[1134px] h-[169px]"
+            width={1134}
+            height={169}
+          />
+        </Link>
       ) : (
         <Ads
           className=""

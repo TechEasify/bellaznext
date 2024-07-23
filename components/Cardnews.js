@@ -47,11 +47,12 @@ const GET_CARD_SECTION = gql`
             sourceUrl
           }
         }
+        footerAdLink
         footerAdvertisementCode
         allCategoryBottomLineColor {
-          a
-          b
-          c
+          block1
+          block2
+          block3
         }
       }
     }
@@ -87,11 +88,11 @@ const Cardnews = () => {
             const bottomLineColor = (() => {
               switch (item.name) {
                 case "Insights":
-                  return data.page.homePage.allCategoryBottomLineColor.a;
+                  return data.page.homePage.allCategoryBottomLineColor.block1;
                 case "Jewish News":
-                  return data.page.homePage.allCategoryBottomLineColor.b;
+                  return data.page.homePage.allCategoryBottomLineColor.block2;
                 case "music":
-                  return data.page.homePage.allCategoryBottomLineColor.c;
+                  return data.page.homePage.allCategoryBottomLineColor.block3;
                 case "Breaking News":
                   return "rgb(206, 58, 66)";
                 case "ANALYSIS":

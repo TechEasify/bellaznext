@@ -384,7 +384,8 @@ const Insight = () => {
                             }}
                             passHref
                           >
-                            {posts?.featuredImage?.node?.sourceUrl !== undefined && (
+                            {posts?.featuredImage?.node?.sourceUrl !==
+                              undefined && (
                               <ExportedImage
                                 className="object-cover w-[357px] h-[261px]"
                                 priority={true}
@@ -400,7 +401,11 @@ const Insight = () => {
                           <p
                             className="text-base font-bold text-red-800"
                             style={{
-                              background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor || "#fff"}`,
+                              background: `${
+                                nodeByUri?.nodeByUri?.categoryTamplate
+                                  ?.simpleTemplete
+                                  ?.simpleTitleBackgroundColor || "#fff"
+                              }`,
                               color: "#fff",
                               padding: "0 10px",
                               width: dynamicWidth,
@@ -476,18 +481,27 @@ const Insight = () => {
             nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
               ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl !==
               null ? (
-              <ExportedImage
-                className="mb-2 w-full h-auto max-h-96"
-                priority={true}
-                src={
-                  nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
-                    ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
-                }
-                alt="Rectangle367"
-                width={297}
-                height={503}
-                style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-              />
+              <Link
+                href={{
+                  pathname: nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+                  ?.simpleHeroSection?.heroSidebarAdLink,
+                }}
+                passHref
+                target="_blank"
+              >
+                <ExportedImage
+                  className="mb-2 w-full h-auto max-h-96"
+                  priority={true}
+                  src={
+                    nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+                      ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
+                  }
+                  alt="Rectangle367"
+                  width={297}
+                  height={503}
+                  style={{ width: "100%", height: "auto", maxHeight: "500px" }}
+                />
+              </Link>
             ) : (
               <Ads
                 className=""

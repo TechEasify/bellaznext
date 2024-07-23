@@ -70,25 +70,34 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-        {nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" || nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Music" &&
-        nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage?.adImage
-          ?.node?.sourceUrl ? (
-          <ExportedImage
-            style={{
-              width: "1134px",
-              height: "169px",
-              margin: "0 auto",
-              objectFit: "cover",
+        {nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" ||
+        (nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Music" &&
+          nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
+            ?.adImage?.node?.sourceUrl) ? (
+          <Link
+            href={{
+              pathname: nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage?.adLink,
             }}
-            width={1134}
-            height={169}
-            priority={true}
-            src={
-              nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
-                ?.adImage?.node?.sourceUrl
-            }
-            alt="PR_01CFA"
-          />
+            passHref
+            target="_blank"
+          >
+            <ExportedImage
+              style={{
+                width: "1134px",
+                height: "169px",
+                margin: "0 auto",
+                objectFit: "cover",
+              }}
+              width={1134}
+              height={169}
+              priority={true}
+              src={
+                nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
+                  ?.adImage?.node?.sourceUrl
+              }
+              alt="PR_01CFA"
+            />
+          </Link>
         ) : (
           <Ads
             className=""
@@ -122,8 +131,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                           }}
                           passHref
                         >
-                          {
-                            item?.featuredImage?.node?.sourceUrl && 
+                          {item?.featuredImage?.node?.sourceUrl && (
                             <ExportedImage
                               className="object-cover w-[357px] h-[261px]"
                               priority={true}
@@ -132,7 +140,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                               width={357}
                               height={261}
                             />
-                          }
+                          )}
                         </Link>
                       </div>
                       <div className="ml-0 md:ml-5 w-full md:w-3/5">
@@ -346,6 +354,15 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               ?.sidebarAdImage?.node?.sourceUrl !== null ? (
               nodeByUri?.categoryTamplate?.musicTemplete?.musicAllPostsSidebar
                 ?.sidebarAdImage?.node?.sourceUrl ? (
+                  <Link
+                href={{
+                  pathname:
+                  nodeByUri?.categoryTamplate?.musicTemplete
+                      ?.musicAllPostsSidebar?.sidebarAdLink,
+                }}
+                passHref
+                target="_blank"
+              >
                 <ExportedImage
                   className="mb-2 w-full h-auto max-h-96"
                   priority={true}
@@ -358,6 +375,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                   alt="Rectangle367"
                   style={{ width: "100%", height: "auto", maxHeight: "500px" }}
                 />
+              </Link>
               ) : (
                 <Ads
                   className=""
@@ -445,7 +463,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             </div>
           </div>
         </div>
-        <Newscard/>
+        <Newscard />
       </div>
     </>
   );

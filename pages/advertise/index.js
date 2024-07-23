@@ -206,7 +206,7 @@ const SkeletonLoader = () => (
 function Index() {
   const router = useRouter();
   const { loading, error, data } = useQuery(GET_ADVERTISE_PAGE);
-  console.log(data, "data");
+  console.log(data, "data advertise");
   if (loading) return <SkeletonLoader />;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -490,7 +490,7 @@ function Index() {
         <div
           className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 mx-auto max-w-screen-xl"
           style={{
-            background: "#40A6FB",
+            background: data?.page?.advertise?.cta?.backgroundColor || "#40A6FB",
           }}
         >
           <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left px-4 md:px-20 py-6">

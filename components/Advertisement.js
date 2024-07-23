@@ -3,9 +3,10 @@ import ExportedImage from "next-image-export-optimizer";
 import barcode from "../public/images/barcode.svg";
 import Ads from "./googleAds/Ads";
 import { useDialog } from "./DialogContext";
+import Link from "next/link";
 
 const Advertisement = () => {
-  const { bannerData } = useDialog()
+  const { bannerData } = useDialog();
   return (
     <div className="hidden md:block px-4 py-16 mx-auto max-w-screen-xl">
       <div className="relative flex items-center mb-3">
@@ -46,36 +47,45 @@ const Advertisement = () => {
         })}
       </>
       }         */}
-      {bannerData?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage?.node
-        ?.sourceUrl ? (
-        <ExportedImage
+      {bannerData?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage
+        ?.node?.sourceUrl ? (
+        <Link
+          href={{
+            pathname:
+              bannerData?.page?.homePage?.topHeadlineBottomAd
+                ?.topHeadlineBottomAdLink,
+          }}
+          passHref
+          target="_blank"
+        >
+          <ExportedImage
+            style={{
+              margin: "0 auto",
+            }}
+            priority={true}
+            src={
+              bannerData.page.homePage.topHeadlineBottomAd
+                .topHeadlineBottomAdImage.node.sourceUrl
+            }
+            alt="barcode"
+            className="object-cover w-[1134px] h-[169px]"
+            width={1134}
+            height={169}
+          />
+        </Link>
+      ) : (
+        <Ads
+          className=""
           style={{
+            display: "block",
+            width: "1134px",
+            height: "169px",
             margin: "0 auto",
           }}
-          priority={true}
-          src={
-            bannerData.page.homePage.topHeadlineBottomAd.topHeadlineBottomAdImage.node
-              .sourceUrl
-          }
-          alt="barcode"
-          className="object-cover w-[1134px] h-[169px]"
-          width={1134}
-          height={169}
+          adClient="ca-pub-3209848804552918"
+          adSlot="9293720177"
         />
-      )
-      :
-      <Ads
-        className=""
-        style={{
-          display: "block",
-          width: "1134px",
-          height: "169px",
-          margin: "0 auto"
-        }}
-        adClient="ca-pub-3209848804552918"
-        adSlot="9293720177"
-      />
-    }
+      )}
     </div>
   );
 };

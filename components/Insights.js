@@ -417,19 +417,44 @@ const Insights = () => {
                   </p>
                 </div>
                 <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
-                  <ExportedImage
-                    src={
-                      insightsQuery?.page?.homePage?.insightsAd?.insightAdImage
-                        ?.node?.sourceUrl || ""
-                    }
-                    alt={
-                      insightsQuery?.page?.homePage?.insightsAd?.insightAdImage
-                        ?.node?.sourceUrl || ""
-                    }
-                    className="object-cover w-[317px] h-[214px] mr-2"
-                    width={317}
-                    height={214}
-                  />
+                  {insightsQuery?.page?.homePage?.insightsAd?.insightAdImage
+                    ?.node?.sourceUrl ? (
+                    <Link
+                      href={{
+                        pathname:
+                          insightsQuery?.page?.homePage?.insightsAd
+                            ?.insightAdLink,
+                      }}
+                      passHref
+                      target="_blank"
+                    >
+                      <ExportedImage
+                        src={
+                          insightsQuery?.page?.homePage?.insightsAd
+                            ?.insightAdImage?.node?.sourceUrl || ""
+                        }
+                        alt={
+                          insightsQuery?.page?.homePage?.insightsAd
+                            ?.insightAdImage?.node?.sourceUrl || ""
+                        }
+                        className="object-cover w-[317px] h-[214px] mr-2"
+                        width={317}
+                        height={214}
+                      />
+                    </Link>
+                  ) : (
+                    <Ads
+                      className=""
+                      style={{
+                        display: "block",
+                        width: "317px",
+                        height: "214px",
+                        margin: "0 auto",
+                      }}
+                      adClient="ca-pub-3209848804552918"
+                      adSlot="9293720177"
+                    />
+                  )}
                 </div>
               </div>
             </div>

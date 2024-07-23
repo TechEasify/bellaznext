@@ -222,6 +222,7 @@ export const GET_HOME_PAGE = gql`
             }
           }
           topHeadlineFirstAdCode
+          topHeadlineFirstAdLink
         }
         topHeadlineSidebarSinglePosts {
           nodes {
@@ -259,6 +260,7 @@ export const GET_HOME_PAGE = gql`
               sourceUrl
             }
           }
+          topHeadlineSecondAdLink
           topHeadlineSecondAdCode
         }
         topHeadlineBottomAd {
@@ -271,6 +273,7 @@ export const GET_HOME_PAGE = gql`
             }
           }
           topHeadlineBottomAdCode
+          topHeadlineBottomAdLink
         }
         twitterEmbedCodes {
           twitterEmbedCode1
@@ -334,6 +337,7 @@ export const GET_INSIGHTS_SECTION = gql`
           }
         }
         insightsAd {
+        insightAdLink
           insightsAdCode
           insightAdImage {
             node {
@@ -393,6 +397,7 @@ export const GET_MUSIC_SECTION = gql`
             }
           }
           musicAdCode
+          musicAdLink
         }
         musicBottomAd {
           musicBottomAdImage {
@@ -403,6 +408,7 @@ export const GET_MUSIC_SECTION = gql`
             }
           }
           musicBottomAdCode
+          musicBottomAdLink
         }
       }
     }
