@@ -114,7 +114,7 @@ const Music = () => {
                             <ExportedImage
                               src={post?.featuredImage?.node?.sourceUrl}
                               alt="Partly Cloudy"
-                              className="object-cover w-[120px] h-[97px] mr-2"
+                              className="object-cover w-[240px] h-[97px] mr-2"
                               width={120}
                               height={97}
                             />

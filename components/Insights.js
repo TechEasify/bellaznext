@@ -275,7 +275,7 @@ const Insights = () => {
                         item.featuredImage.node.sourceUrl !== null &&
                         item.featuredImage.node.sourceUrl
                       }
-                      className="h-[87px] w-13 mr-2"
+                      className="h-[87px] w-[240px] object-cover mr-2"
                       width={90}
                       height={87}
                     />

@@ -491,7 +491,7 @@ const Banner = () => {
                         .slice(0, 2)
                         .map((itemdata) => (
                           <div key={itemdata.slug}>
-                            <div className="flex">
+                            <div className="flex justify-between">
                               <div className="mr-2 w-48 mb-2">
                                 <p className="text-[12px] font-bold text-red-800">
                                   {side.name}
@@ -572,7 +572,7 @@ const Banner = () => {
                   (side) => (
                     console.log(side, "side"),
                     (
-                      <div className="flex mt-5 mb-5">
+                      <div className="flex justify-between mt-5 mb-5">
                         {side.posts.nodes
                           .slice()
                           .sort((a, b) => (a.title < b.title ? 1 : -1)) // Sorting in descending order based on the title (or any other property)
@@ -612,7 +612,7 @@ const Banner = () => {
                                           itemdata.featuredImage.node.sourceUrl
                                         }
                                         alt={itemdata.title}
-                                        className="object-cover w-[90px] h-[87px] mr-2"
+                                        className="object-cover w-[240px] h-[87px] mr-2"
                                         width={90}
                                         height={87}
                                       />
