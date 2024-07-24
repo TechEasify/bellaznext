@@ -21,7 +21,7 @@ const Music = () => {
           </h1>
           <hr
             className="text-red-800 mr-5"
-            style={{ height: "7px", background: "#25AC7D" }}
+            style={{ height: "7px", background: `${musicQuery?.page?.homePage?.musicBottomLineColor ? musicQuery?.page?.homePage?.musicBottomLineColor : "#25AC7D"}` }}
           />
           <br />
         </div>

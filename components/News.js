@@ -253,7 +253,7 @@ function News() {
           <div className="w-full px-4 mx-auto flex bg-black items-center justify-center flex-wrap sm:flex-nowrap">
             <p
               className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
-              onClick={() =>
+              onClick={() =>  
                 dataNav?.menu?.header?.topFirstLinks?.url &&
                 router.push(dataNav.menu.header.topFirstLinks.url)
               }
