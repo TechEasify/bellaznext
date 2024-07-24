@@ -20,42 +20,49 @@ import Ads from "../googleAds/Ads";
 import Newscard from "../News/Newscard";
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
-  console.log(nodeByUri?.categoryTamplate, "nodeByUri news");
+  console.log(nodeByUri, "nodeByUri news");
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
   const { iconDataResult } = useDialog();
 
-  // Effect to initialize posts when data changes
   useEffect(() => {
-    if (nodeByUri && nodeByUri.posts) {
-      setPosts(nodeByUri.posts.nodes);
+    if (
+      nodeByUri?.posts?.nodes
+    ) {
+      const initialPosts =
+      nodeByUri?.posts?.nodes
+      setPosts(initialPosts);
       setCursor(nodeByUri.posts.pageInfo.endCursor);
       setHasNextPage(nodeByUri.posts.pageInfo.hasNextPage);
+      console.log("Initial posts set:", initialPosts);
     }
   }, [nodeByUri]);
 
-  // Function to handle "View More" button click
-  const handleViewMore = () => {
+  const handleViewMore = async () => {
     if (hasNextPage && !loading) {
-      fetchMore({
-        variables: {
-          after: cursor,
-        },
-        updateQuery: (previousResult, { fetchMoreResult }) => {
-          if (!fetchMoreResult) return previousResult;
-          const newPosts = fetchMoreResult.posts.nodes;
-          return {
-            posts: {
-              __typename: previousResult.posts.__typename,
-              nodes: [...previousResult.posts.nodes, ...newPosts],
-              pageInfo: fetchMoreResult.posts.pageInfo,
-            },
-          };
-        },
-      });
+      try {
+        const { data } = await fetchMore({
+          variables: {
+            after: cursor,
+          },
+        });
+        console.log(data, "data view more");
+        if (data && data.nodeByUri.posts.nodes.length > 0) {
+          const newPosts = data.nodeByUri.posts.nodes;
+          console.log("New posts fetched:", newPosts);
+          setPosts((prevPosts) => [...prevPosts, ...newPosts]);
+          setCursor(data.nodeByUri.posts.pageInfo.endCursor);
+          setHasNextPage(data.nodeByUri.posts.pageInfo.hasNextPage);
+        } else {
+          console.log("No new posts fetched.");
+        }
+      } catch (error) {
+        console.error("Error fetching more posts:", error);
+      }
     }
   };
+  
 
   console.log(
     nodeByUri?.categoryTamplate?.selectYourTempleteType[0],
@@ -212,134 +219,6 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 </>
               );
             })}
-            {/* <hr className="my-5" />
-            <div className="flex flex-col md:flex-row mb-5">
-              <div className="mr-5 mb-5 md:mb-0">
-                <ExportedImage
-                  priority={true}
-                  src={pexelstara1}
-                  alt="pexelstara1"
-                />
-              </div>
-              <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <p className="text-[12px] text-base font-bold text-red-800">POLITICS</p>
-                <h5 className="text-[20px] text-black-900 font-bold">
-                  Ferrari F1 boss makes savage Mercedes dig after constructors'
-                  setback.
-                </h5>
-                <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                  <span
-                    className="text-[12px] font-extrabold mr-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    |
-                  </span>
-                  By
-                  <span
-                    className="font-extrabold ml-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    Linah Absteen
-                    <span
-                      className="text-[25px] font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      .
-                    </span>
-                  </span>
-                  6 MIN READ
-                </p>
-                <p className="text-[15px] text-base font-normal text-gray-600 mb-3">
-                  President Vladimir Putin said Wednesday that Russia is ready
-                  to use nuclear weapons if its sovereignty or independence is
-                  threatened, issuing another blunt warning to the West
-                </p>
-              </div>
-            </div>
-            <hr className="my-5" />
-            <div className="flex flex-col md:flex-row mb-5">
-              <div className="mr-5 mb-5 md:mb-0">
-                <ExportedImage
-                  priority={true}
-                  src={jeuol4aprinceharry}
-                  alt="ferrari"
-                />
-              </div>
-              <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <p className="text-[12px] text-base font-bold text-red-800">POLITICS</p>
-                <h5 className="text-[20px] text-black-900 font-bold">
-                  Ferrari F1 boss makes savage Mercedes dig after constructors'
-                  setback.
-                </h5>
-                <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                  <span
-                    className="text-[12px] font-extrabold mr-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    |
-                  </span>
-                  By
-                  <span
-                    className="font-extrabold ml-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    Linah Absteen
-                    <span
-                      className="text-[25px] font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      .
-                    </span>
-                  </span>
-                  6 MIN READ
-                </p>
-                <p className="text-[15px] text-base font-normal text-gray-600 mb-3">
-                  President Vladimir Putin said Wednesday that Russia is ready
-                  to use nuclear weapons if its sovereignty or independence is
-                  threatened, issuing another blunt warning to the West
-                </p>
-              </div>
-            </div>
-            <hr className="my-5" />
-            <div className="text-[12px] flex flex-col md:flex-row mb-5">
-              <div className="mr-5 mb-5 md:mb-0">
-                <ExportedImage priority={true} src={andreas} alt="andreas" />
-              </div>
-              <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                <p className="text-[12px] text-base font-bold text-red-800">POLITICS</p>
-                <h5 className="text-[20px] text-black-900 font-bold">
-                  Ferrari F1 boss makes savage Mercedes dig after constructors'
-                  setback.
-                </h5>
-                <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                  <span
-                    className="text-[12px] font-extrabold mr-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    |
-                  </span>
-                  By
-                  <span
-                    className="font-extrabold ml-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    Linah Absteen
-                    <span
-                      className="text-[25px] font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      .
-                    </span>
-                  </span>
-                  6 MIN READ
-                </p>
-                <p className="text-[15px] text-base font-normal text-gray-600 mb-3">
-                  President Vladimir Putin said Wednesday that Russia is ready
-                  to use nuclear weapons if its sovereignty or independence is
-                  threatened, issuing another blunt warning to the West
-                </p>
-              </div>
-            </div> */}
             <div className="flex justify-between">
               <button
                 className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
