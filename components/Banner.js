@@ -755,16 +755,30 @@ const Banner = () => {
               />
 
               <div className="flex mt-5 mb-8">
-                <ExportedImage
-                  src={Frame208}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 mx-2 object-cover"
-                />
-                <ExportedImage
-                  src={Frame209}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 mx-2 object-cover"
-                />
+                <Link
+                  href={
+                    iconDataResult?.menu?.followBelaazOnWhatsapp
+                      ?.whatsappStatusLink ?? "/"
+                  }
+                >
+                  <ExportedImage
+                    src={Frame208}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                  />
+                </Link>
+                <Link
+                  href={
+                    iconDataResult?.menu?.followBelaazOnWhatsapp
+                      ?.whatsappGroupLink ?? "/"
+                  }
+                >
+                  <ExportedImage
+                    src={Frame209}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                  />
+                </Link>
               </div>
             </div>
             <hr />

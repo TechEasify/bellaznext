@@ -106,6 +106,10 @@ export const GET_ICON_SECTION = gql`
         }
         youtubeLink
       }
+      followBelaazOnWhatsapp {
+        whatsappGroupLink
+        whatsappStatusLink
+      }
     }
   }
 `;
@@ -338,7 +342,7 @@ export const GET_INSIGHTS_SECTION = gql`
           }
         }
         insightsAd {
-        insightAdLink
+          insightAdLink
           insightsAdCode
           insightAdImage {
             node {
