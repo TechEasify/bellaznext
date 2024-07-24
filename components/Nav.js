@@ -570,7 +570,7 @@ const Nav = ({
         </header>
       )}
 
-      {nodeByUri?.nodeByUri?.name === "Music" ? (
+      {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Music" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: `${nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor ? nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor : "#25AC7D"}` }}
@@ -579,7 +579,7 @@ const Nav = ({
             {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
           </span>
         </div>
-      ) : nodeByUri?.nodeByUri?.name === "Simple" ? (
+      ) : nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{ background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor ? nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor : "#1662D4"}` }}
