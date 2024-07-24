@@ -632,7 +632,7 @@ const Banner = () => {
                                           itemdata.featuredImage.node.sourceUrl
                                         }
                                         alt={itemdata.title}
-                                        className="object-cover w-[240px] h-[87px] mr-2"
+                                        className="object-cover w-[94px] h-[87px] mr-2"
                                         width={90}
                                         height={87}
                                       />

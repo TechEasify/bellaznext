@@ -125,7 +125,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
             )}
           </div>
           <div className="w-full max-w-3xl mx-auto mt-5 md:hidden">
-            {sortedTopHeadlinesSidebar.slice(0, displayCount).map(
+            {sortedTopHeadlinesSidebar !== null && sortedTopHeadlinesSidebar.slice(0, displayCount).map(
               (side) => (
                 console.log(),
                 (
