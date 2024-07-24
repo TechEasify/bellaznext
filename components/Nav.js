@@ -218,7 +218,7 @@ const Nav = ({
   };
 
   console.log(dataNav, "navDataResultnavDataResultnavDataResultnavDataResult");
-  console.log(nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor, "nodeByUrinodeByUrinodeByUrinodeByUri");
+  console.log(nodeByUri?.nodeByUri, "nodeByUrinodeByUrinodeByUrinodeByUri");
 
   return (
     <>
@@ -576,7 +576,7 @@ const Nav = ({
           style={{ background: `${nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor ? nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor : "#25AC7D"}` }}
         >
           <span className="text-white font-medium">
-            {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
+            {nodeByUri?.nodeByUri !== undefined && nodeByUri?.nodeByUri?.name}
           </span>
         </div>
       ) : nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" ? (
@@ -585,7 +585,7 @@ const Nav = ({
           style={{ background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor ? nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor : "#1662D4"}` }}
         >
           <span className="text-white font-medium">
-            {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
+            {nodeByUri?.nodeByUri !== undefined && nodeByUri?.nodeByUri?.name}
           </span>
         </div>
       ) : (
