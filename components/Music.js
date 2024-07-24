@@ -32,8 +32,8 @@ const Music = () => {
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(1, 2).map((post) => {
-                  const contentText = item?.content
-                    ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                  const contentText = post?.content
+                    ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                     : ""; // Fallback if content is not available
 
                   const wordCount = contentText
@@ -160,8 +160,8 @@ const Music = () => {
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(0, 1).map((post) => {
-                  const contentText = item?.content
-                    ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                  const contentText = post?.content
+                    ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                     : ""; // Fallback if content is not available
 
                   const wordCount = contentText
@@ -236,8 +236,8 @@ const Music = () => {
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(2, 3).map((post) => {
-                  const contentText = item?.content
-                    ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                  const contentText = post?.content
+                    ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                     : ""; // Fallback if content is not available
 
                   const wordCount = contentText

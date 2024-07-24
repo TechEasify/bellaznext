@@ -164,12 +164,12 @@ function Music({ nodeByUri, fetchMore, loading }) {
 
             <div className="flex mt-5 mb-5">
               {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl ? (
+                ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdImage?.node?.sourceUrl ? (
                 <Link
                   href={{
                     pathname:
-                      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                        ?.musicAllPostsSidebar?.sidebarAdLink,
+                    nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                    ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdLink,
                   }}
                   passHref
                   target="_blank"
@@ -177,7 +177,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   <ExportedImage
                     src={
                       nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                        ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
+                ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdImage?.node?.sourceUrl
                     }
                     alt="Partly Cloudy"
                     className="w-full mr-2 object-cover w-[316px] h-[336px]"
@@ -354,8 +354,8 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes
                     .map((item) =>
                       item.posts.nodes.slice(1, 5).map((post) => {
-                        const contentText = item?.content
-                          ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                        const contentText = post?.content
+                          ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                           : ""; // Fallback if content is not available
 
                         const wordCount = contentText
