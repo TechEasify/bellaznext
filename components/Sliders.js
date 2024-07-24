@@ -10,7 +10,7 @@ const Sliders = () => {
   const { bannerData } = useDialog();
   const twitterEmbedCodes = bannerData?.page?.homePage?.twitterEmbedCodes;
 
-  // Extracting the embed codes into an array
+  // Extracting the embed codes into an array and filtering out empty codes
   const carouselData = [
     { id: 1, embedCode: twitterEmbedCodes?.twitterEmbedCode1 },
     { id: 2, embedCode: twitterEmbedCodes?.twitterEmbedCode2 },
@@ -18,7 +18,7 @@ const Sliders = () => {
     { id: 4, embedCode: twitterEmbedCodes?.twitterEmbedCode4 },
     { id: 5, embedCode: twitterEmbedCodes?.twitterEmbedCode5 },
     { id: 6, embedCode: twitterEmbedCodes?.twitterEmbedCode6 },
-  ];
+  ].filter(item => item.embedCode); // Filtering out items without embedCode
 
   // Settings for the carousel
   const settings = {
