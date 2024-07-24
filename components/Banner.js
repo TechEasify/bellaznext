@@ -272,9 +272,15 @@ const Banner = () => {
             <div className="flex flex-col justify-center">
               {sortedPosts?.slice(0, 1).map((post) => {
                 console.log(post, "postpostpostpostpostpostpost");
-                const contentText = post?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-                const wordCount = contentText?.split(" ").length;
-                const readingTime = Math.ceil(wordCount / 250); // Assuming 250 words per minute
+                const contentText = post?.content
+                  ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                  : ""; // Fallback if content is not available
+
+                const wordCount = contentText
+                  ? contentText?.split(" ").length
+                  : 0;
+                const readingTime =
+                  wordCount > 0 ? Math.ceil(wordCount / 250) : 0; // Assuming 250 words per minute
 
                 return (
                   <div key={post.id}>

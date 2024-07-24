@@ -363,12 +363,15 @@ const Insight = () => {
               (item) => (
                 console.log(item, "itemitemitemitemitemitemitemitemitem"),
                 item.posts.nodes.map((posts) => {
-                  const contentText = posts?.content?.replace(
-                    /(<([^>]+)>)/gi,
-                    ""
-                  ); // Remove HTML tags
-                  const wordCount = contentText?.split(" ").length;
-                  const readingTime = Math.ceil(wordCount / 250);
+                  const contentText = item?.content
+                    ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                    : ""; // Fallback if content is not available
+
+                  const wordCount = contentText
+                    ? contentText?.split(" ").length
+                    : 0;
+                  const readingTime =
+                    wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
                   const calculateWidth = (text) => {
                     // Example: 10 pixels per character plus some base width
                     const baseWidth = 50; // Base width in pixels

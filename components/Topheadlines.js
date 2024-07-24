@@ -63,62 +63,61 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                 (
                   <>
                     <div key={item.id} className="max-w-md bg-white mb-6">
-                      {item.categories.nodes.slice(0, 1).map(
-                        (category) => {
-                          const contentText = category?.content?.replace(
-                            /(<([^>]+)>)/gi,
-                            ""
-                          ); // Remove HTML tags
-                          const wordCount = contentText?.split(" ").length;
-                          const readingTime = Math.ceil(wordCount / 250);
-                          return (
-                            <div key={category.id}>
-                              <Link href={`/news/${item.slug}`}>
-                                <ExportedImage
-                                  priority={true}
-                                  src={item?.featuredImage?.node?.sourceUrl}
-                                  alt={
-                                    item?.featuredImage?.node?.sourceUrl || ""
-                                  }
-                                  width={432}
-                                  height={293}
-                                  className="object-cover w-[432px] h-[293px]"
-                                />
-                              </Link>
-                              <p className="text-base font-bold text-red-800 mt-2">
-                                {category.name}
-                              </p>
-                              <Link href={`/news/${item.slug}`}>
-                                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
-                                  {item?.title}
-                                </h5>
-                              </Link>
-                              <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                      {item.categories.nodes.slice(0, 1).map((category) => {
+                        const contentText = item?.content
+                          ? item.content.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                          : ""; // Fallback if content is not available
+
+                        const wordCount = contentText
+                          ? contentText.split(" ").length
+                          : 0;
+                        const readingTime =
+                          wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+                        return (
+                          <div key={category.id}>
+                            <Link href={`/news/${item.slug}`}>
+                              <ExportedImage
+                                priority={true}
+                                src={item?.featuredImage?.node?.sourceUrl}
+                                alt={item?.featuredImage?.node?.sourceUrl || ""}
+                                width={432}
+                                height={293}
+                                className="object-cover w-[432px] h-[293px]"
+                              />
+                            </Link>
+                            <p className="text-base font-bold text-red-800 mt-2">
+                              {category.name}
+                            </p>
+                            <Link href={`/news/${item.slug}`}>
+                              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                                {item?.title}
+                              </h5>
+                            </Link>
+                            <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                              <span
+                                className="text-[25px] font-extrabold mr-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                |
+                              </span>
+                              By
+                              <span
+                                className="font-extrabold mx-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                {item?.author?.node?.name || ""}
                                 <span
-                                  className="text-[25px] font-extrabold mr-1"
+                                  className="text-[36px] font-extrabold mx-1"
                                   style={{ color: "#40A6FB" }}
                                 >
-                                  |
+                                  .
                                 </span>
-                                By
-                                <span
-                                  className="font-extrabold mx-1"
-                                  style={{ color: "#40A6FB" }}
-                                >
-                                  {item?.author?.node?.name || ""}
-                                  <span
-                                    className="text-[36px] font-extrabold mx-1"
-                                    style={{ color: "#40A6FB" }}
-                                  >
-                                    .
-                                  </span>
-                                </span>
-                                {readingTime} MIN READ
-                              </p>
-                            </div>
-                          )
-                        }
-                      )}
+                              </span>
+                              {readingTime} MIN READ
+                            </p>
+                          </div>
+                        );
+                      })}
                     </div>
                   </>
                 )

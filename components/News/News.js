@@ -151,103 +151,101 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 </p>
               </div>
             </div> */}
-            {posts.map(
-              (item) => {
-                const contentText = item?.content?.replace(
-                  /(<([^>]+)>)/gi,
-                  ""
-                ); // Remove HTML tags
-                const wordCount = contentText?.split(" ").length;
-                const readingTime = Math.ceil(wordCount / 250);
-                return (
-                  <>
-                    <div className="flex flex-col md:flex-row mb-5">
-                      <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                        <Link
-                          href={{
-                            pathname: `/news/${item.slug}`,
-                            query: {
-                              state: JSON.stringify(navData),
-                            },
-                          }}
-                          passHref
-                        >
-                          {item?.featuredImage?.node?.sourceUrl && (
-                            <ExportedImage
-                              className="object-cover w-[357px] h-[261px]"
-                              priority={true}
-                              src={item?.featuredImage?.node?.sourceUrl}
-                              alt={item.title}
-                              width={357}
-                              height={261}
-                            />
-                          )}
-                        </Link>
-                      </div>
-                      <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                        <p
-                          className="text-base font-bold text-red-800"
-                          style={{
-                            background:
-                              "rgb(198 40 40 / var(--tw-text-opacity))",
-                            // background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
-                            color: "#fff",
-                            padding: "0 10px",
-                            width: "150px",
-                            clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
-                            fontSize: "12px",
-                            fontWeight: 500,
-                            letterSpacing: "2px",
-                          }}
-                        >
-                          {nodeByUri.name}
-                        </p>
-                        <Link
-                          href={{
-                            pathname: `/news/${item.slug}`,
-                            query: {
-                              state: JSON.stringify(navData),
-                            },
-                          }}
-                          passHref
-                        >
-                          <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
-                            {item.title}
-                          </h5>
-                        </Link>
-                        <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                          <span
-                            className="text-[12px] font-extrabold mr-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            |
-                          </span>
-                          By
-                          <span
-                            className="font-extrabold ml-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            {item.author.node.name}
-                            <span
-                              className="text-[25px] font-extrabold mx-1"
-                              style={{ color: "#40A6FB" }}
-                            >
-                              .
-                            </span>
-                          </span>
-                          {readingTime} MIN READ
-                        </p>
-                        <p
-                          className="text-[15px] text-base font-normal text-gray-600 mb-3"
-                          dangerouslySetInnerHTML={{ __html: item.excerpt }}
-                        />
-                      </div>
+            {posts.map((item) => {
+              const contentText = item?.content
+                ? item.content.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                : ""; // Fallback if content is not available
+
+              const wordCount = contentText ? contentText.split(" ").length : 0;
+              const readingTime =
+                wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+              return (
+                <>
+                  <div className="flex flex-col md:flex-row mb-5">
+                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                      <Link
+                        href={{
+                          pathname: `/news/${item.slug}`,
+                          query: {
+                            state: JSON.stringify(navData),
+                          },
+                        }}
+                        passHref
+                      >
+                        {item?.featuredImage?.node?.sourceUrl && (
+                          <ExportedImage
+                            className="object-cover w-[357px] h-[261px]"
+                            priority={true}
+                            src={item?.featuredImage?.node?.sourceUrl}
+                            alt={item.title}
+                            width={357}
+                            height={261}
+                          />
+                        )}
+                      </Link>
                     </div>
-                    <hr className="my-5" />
-                  </>
-                )
-              }
-            )}
+                    <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                      <p
+                        className="text-base font-bold text-red-800"
+                        style={{
+                          background: "rgb(198 40 40 / var(--tw-text-opacity))",
+                          // background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
+                          color: "#fff",
+                          padding: "0 10px",
+                          width: "150px",
+                          clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                          fontSize: "12px",
+                          fontWeight: 500,
+                          letterSpacing: "2px",
+                        }}
+                      >
+                        {nodeByUri.name}
+                      </p>
+                      <Link
+                        href={{
+                          pathname: `/news/${item.slug}`,
+                          query: {
+                            state: JSON.stringify(navData),
+                          },
+                        }}
+                        passHref
+                      >
+                        <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
+                          {item.title}
+                        </h5>
+                      </Link>
+                      <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[12px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold ml-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {item.author.node.name}
+                          <span
+                            className="text-[25px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
+                      </p>
+                      <p
+                        className="text-[15px] text-base font-normal text-gray-600 mb-3"
+                        dangerouslySetInnerHTML={{ __html: item.excerpt }}
+                      />
+                    </div>
+                  </div>
+                  <hr className="my-5" />
+                </>
+              );
+            })}
             {/* <hr className="my-5" />
             <div className="flex flex-col md:flex-row mb-5">
               <div className="mr-5 mb-5 md:mb-0">
@@ -407,8 +405,8 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               <Link
                 href={{
                   pathname:
-                  categoryTamplate?.musicTemplete?.musicAllPostsSidebar
-                  ?.sidebarAdLink,
+                    categoryTamplate?.musicTemplete?.musicAllPostsSidebar
+                      ?.sidebarAdLink,
                 }}
                 passHref
                 target="_blank"

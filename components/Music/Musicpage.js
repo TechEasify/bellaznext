@@ -76,7 +76,9 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             ?.adImage?.node?.sourceUrl) ? (
           <Link
             href={{
-              pathname: nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage?.adLink,
+              pathname:
+                nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
+                  ?.adLink,
             }}
             passHref
             target="_blank"
@@ -115,102 +117,101 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
-            {posts.slice(5).map(
-              (item) => {
-                const contentText = item?.content?.replace(
-                  /(<([^>]+)>)/gi,
-                  ""
-                ); // Remove HTML tags
-                const wordCount = contentText?.split(" ").length;
-                const readingTime = Math.ceil(wordCount / 250);
-                return (
-                  <>
-                    <div className="flex flex-col md:flex-row mb-5">
-                      <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-                        <Link
-                          href={{
-                            pathname: `/news/${item.slug}`,
-                            query: {
-                              state: JSON.stringify(navData),
-                            },
-                          }}
-                          passHref
-                        >
-                          {item?.featuredImage?.node?.sourceUrl && (
-                            <ExportedImage
-                              className="object-cover w-[357px] h-[261px]"
-                              priority={true}
-                              src={item?.featuredImage?.node?.sourceUrl}
-                              alt="ferrari4"
-                              width={357}
-                              height={261}
-                            />
-                          )}
-                        </Link>
-                      </div>
-                      <div className="ml-0 md:ml-5 w-full md:w-3/5">
-                        <p
-                          className="text-base font-bold text-red-800"
-                          style={{
-                            background: "#25AC7D",
-                            // background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
-                            color: "#fff",
-                            padding: "0 10px",
-                            width: "150px",
-                            clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
-                            fontSize: "12px",
-                            fontWeight: 500,
-                            letterSpacing: "2px",
-                          }}
-                        >
-                          {nodeByUri.name}
-                        </p>
-                        <Link
-                          href={{
-                            pathname: `/news/${item.slug}`,
-                            query: {
-                              state: JSON.stringify(navData),
-                            },
-                          }}
-                          passHref
-                        >
-                          <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
-                            {item.title}
-                          </h5>
-                        </Link>
-                        <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                          <span
-                            className="text-[12px] font-extrabold mr-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            |
-                          </span>
-                          By
-                          <span
-                            className="font-extrabold ml-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            {item.author.node.name}
-                            <span
-                              className="text-[25px] font-extrabold mx-1"
-                              style={{ color: "#40A6FB" }}
-                            >
-                              .
-                            </span>
-                          </span>
-                          {readingTime} MIN READ
-                        </p>
-                        <p
-                          className="text-[15px] text-base font-normal text-gray-600 mb-3 export"
-                          dangerouslySetInnerHTML={{ __html: item.excerpt }}
-                        />
-                      </div>
+            {posts.slice(5).map((item) => {
+              const contentText = item?.content
+                ? item.content.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                : ""; // Fallback if content is not available
+
+              const wordCount = contentText ? contentText.split(" ").length : 0;
+              const readingTime =
+                wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+              return (
+                <>
+                  <div className="flex flex-col md:flex-row mb-5">
+                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                      <Link
+                        href={{
+                          pathname: `/news/${item.slug}`,
+                          query: {
+                            state: JSON.stringify(navData),
+                          },
+                        }}
+                        passHref
+                      >
+                        {item?.featuredImage?.node?.sourceUrl && (
+                          <ExportedImage
+                            className="object-cover w-[357px] h-[261px]"
+                            priority={true}
+                            src={item?.featuredImage?.node?.sourceUrl}
+                            alt="ferrari4"
+                            width={357}
+                            height={261}
+                          />
+                        )}
+                      </Link>
                     </div>
-                    <hr className="my-5" />
-                  </>
-                )
-              }
-            )}
+                    <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                      <p
+                        className="text-base font-bold text-red-800"
+                        style={{
+                          background: "#25AC7D",
+                          // background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
+                          color: "#fff",
+                          padding: "0 10px",
+                          width: "150px",
+                          clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                          fontSize: "12px",
+                          fontWeight: 500,
+                          letterSpacing: "2px",
+                        }}
+                      >
+                        {nodeByUri.name}
+                      </p>
+                      <Link
+                        href={{
+                          pathname: `/news/${item.slug}`,
+                          query: {
+                            state: JSON.stringify(navData),
+                          },
+                        }}
+                        passHref
+                      >
+                        <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
+                          {item.title}
+                        </h5>
+                      </Link>
+                      <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[12px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold ml-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {item.author.node.name}
+                          <span
+                            className="text-[25px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
+                      </p>
+                      <p
+                        className="text-[15px] text-base font-normal text-gray-600 mb-3 export"
+                        dangerouslySetInnerHTML={{ __html: item.excerpt }}
+                      />
+                    </div>
+                  </div>
+                  <hr className="my-5" />
+                </>
+              );
+            })}
             {/* <hr className="my-5" />
             <div className="flex flex-col md:flex-row mb-5">
               <div className="mr-5 mb-5 md:mb-0">
@@ -359,28 +360,32 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               ?.sidebarAdImage?.node?.sourceUrl !== null ? (
               nodeByUri?.categoryTamplate?.musicTemplete?.musicAllPostsSidebar
                 ?.sidebarAdImage?.node?.sourceUrl ? (
-                  <Link
-                href={{
-                  pathname:
-                  nodeByUri?.categoryTamplate?.musicTemplete
-                      ?.musicAllPostsSidebar?.sidebarAdLink,
-                }}
-                passHref
-                target="_blank"
-              >
-                <ExportedImage
-                  className="mb-2 w-full h-auto max-h-96"
-                  priority={true}
-                  src={
-                    nodeByUri?.categoryTamplate?.musicTemplete
-                      ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
-                  }
-                  width={297}
-                  height={503}
-                  alt="Rectangle367"
-                  style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-                />
-              </Link>
+                <Link
+                  href={{
+                    pathname:
+                      nodeByUri?.categoryTamplate?.musicTemplete
+                        ?.musicAllPostsSidebar?.sidebarAdLink,
+                  }}
+                  passHref
+                  target="_blank"
+                >
+                  <ExportedImage
+                    className="mb-2 w-full h-auto max-h-96"
+                    priority={true}
+                    src={
+                      nodeByUri?.categoryTamplate?.musicTemplete
+                        ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
+                    }
+                    width={297}
+                    height={503}
+                    alt="Rectangle367"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      maxHeight: "500px",
+                    }}
+                  />
+                </Link>
               ) : (
                 <Ads
                   className=""

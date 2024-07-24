@@ -31,85 +31,20 @@ const Music = () => {
             {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
               (item) => (
                 console.log(item, "item music"),
-                item.posts?.nodes.slice(1, 2).map(
-                  (post) => {
-                    const contentText = post?.content?.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    ); // Remove HTML tags
-                    const wordCount = contentText?.split(" ").length;
-                    const readingTime = Math.ceil(wordCount / 250);
-                    return (
-                      <React.Fragment key={post.id}>
-                        <div className="max-w-xs bg-white mb-6 mr-4 items-center">
-                          <div className="mr-2">
-                            <Link
-                              href={{
-                                pathname: `/news/${post.slug}`,
-                              }}
-                              passHref
-                            >
-                              <ExportedImage
-                                src={post?.featuredImage?.node?.sourceUrl}
-                                alt="vladimirputin"
-                                className="object-cover w-[317px] h-[194px] mr-2 mb-2"
-                                width={317}
-                                height={194}
-                              />
-                            </Link>
-                            <p className="text-[12px] font-bold text-red-800">
-                              {musicQuery?.page?.homePage?.musicTitle}
-                            </p>
-                            <Link
-                              href={{
-                                pathname: `/news/${post.slug}`,
-                              }}
-                              passHref
-                            >
-                              <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                                {post.title}
-                              </p>
-                            </Link>
-                            <p className="text-[10px] text-base font-bold text-gray-800">
-                              <span
-                                className="text-[10px] font-extrabold mr-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                |
-                              </span>
-                              By
-                              <span
-                                className="font-extrabold mx-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                {post.author?.node?.name}
-                                <span
-                                  className="text-[36px] font-extrabold mx-1"
-                                  style={{ color: "#40A6FB" }}
-                                >
-                                  .
-                                </span>
-                              </span>
-                              {readingTime} MIN READ
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex max-w-xs bg-white mr-4 items-center">
-                          <div className="mr-2">
-                            <p className="text-[12px] font-bold text-red-800">
-                              {musicQuery?.page?.homePage?.musicTitle}
-                            </p>
-                            <Link
-                              href={{
-                                pathname: `/news/${post.slug}`,
-                              }}
-                              passHref
-                            >
-                              <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                                {post.title}
-                              </p>
-                            </Link>
-                          </div>
+                item.posts?.nodes.slice(1, 2).map((post) => {
+                  const contentText = item?.content
+                    ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                    : ""; // Fallback if content is not available
+
+                  const wordCount = contentText
+                    ? contentText?.split(" ").length
+                    : 0;
+                  const readingTime =
+                    wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+                  return (
+                    <React.Fragment key={post.id}>
+                      <div className="max-w-xs bg-white mb-6 mr-4 items-center">
+                        <div className="mr-2">
                           <Link
                             href={{
                               pathname: `/news/${post.slug}`,
@@ -118,139 +53,12 @@ const Music = () => {
                           >
                             <ExportedImage
                               src={post?.featuredImage?.node?.sourceUrl}
-                              alt="Partly Cloudy"
-                              className="object-cover w-[240px] h-[97px] mr-2"
-                              width={120}
-                              height={97}
+                              alt="vladimirputin"
+                              className="object-cover w-[317px] h-[194px] mr-2 mb-2"
+                              width={317}
+                              height={194}
                             />
                           </Link>
-                        </div>
-                        <p className="text-[10px] text-base font-bold text-gray-800">
-                          <span
-                            className="text-[10px] font-extrabold mr-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            |
-                          </span>
-                          By
-                          <span
-                            className="font-extrabold mx-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            {post.author?.node?.name}
-                            <span
-                              className="text-[36px] font-extrabold mx-1"
-                              style={{ color: "#40A6FB" }}
-                            >
-                              .
-                            </span>
-                          </span>
-                          {readingTime} MIN READ
-                        </p>
-                      </React.Fragment>
-                    )
-                  }
-                )
-              )
-            )}
-          </div>
-          <div className="max-w-md bg-white mb-6 mx-auto">
-            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
-              (item) => (
-                console.log(item, "item music"),
-                item.posts?.nodes.slice(0, 1).map(
-                  (post) => {
-                    const contentText = post?.content?.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    ); // Remove HTML tags
-                    const wordCount = contentText?.split(" ").length;
-                    const readingTime = Math.ceil(wordCount / 250);
-                    return (
-                      <React.Fragment key={post.id}>
-                        <Link
-                          href={{
-                            pathname: `/news/${post.slug}`,
-                          }}
-                          passHref
-                        >
-                          <ExportedImage
-                            priority={true}
-                            className="object-cover w-[593px] h-[395px]"
-                            src={post?.featuredImage?.node?.sourceUrl}
-                            alt="vladimirputin"
-                            width={593}
-                            height={395}
-                          />
-                        </Link>
-                        <p className="text-base font-bold text-red-800 mt-2">
-                          {musicQuery?.page?.homePage?.musicTitle}
-                        </p>
-                        <Link
-                          href={{
-                            pathname: `/news/${post.slug}`,
-                          }}
-                          passHref
-                        >
-                          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
-                            {post.title}
-                          </h5>
-                        </Link>
-                        <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-                          <span
-                            className="text-[10px] font-extrabold mr-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            |
-                          </span>
-                          By
-                          <span
-                            className="font-extrabold mx-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            {post.author?.node?.name}
-                            <span
-                              className="text-[36px] font-extrabold mx-1"
-                              style={{ color: "#40A6FB" }}
-                            >
-                              .
-                            </span>
-                          </span>
-                          {readingTime} MIN READ
-                        </p>
-                        <p
-                          className="text-[12px] font-normal text-gray-800 mt-2 export"
-                          dangerouslySetInnerHTML={{ __html: post.content }}
-                        />
-                      </React.Fragment>
-                    )
-                  }
-                )
-              )
-            )}
-          </div>
-          <div className="max-w-xs bg-white mb-6 mr-4 items-center">
-            {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
-              (item) => (
-                console.log(item, "item music"),
-                item.posts?.nodes.slice(2, 3).map(
-                  (post) => {
-                    const contentText = post?.content?.replace(
-                      /(<([^>]+)>)/gi,
-                      ""
-                    ); // Remove HTML tags
-                    const wordCount = contentText?.split(" ").length;
-                    const readingTime = Math.ceil(wordCount / 250);
-                    return (
-                      <React.Fragment key={post.id}>
-                        <div className="mr-2">
-                          <ExportedImage
-                            src={post?.featuredImage?.node?.sourceUrl}
-                            alt="vladimirputin"
-                            className="object-cover w-[317px] h-[194px] mr-2 mb-2"
-                            width={317}
-                            height={194}
-                          />
                           <p className="text-[12px] font-bold text-red-800">
                             {musicQuery?.page?.homePage?.musicTitle}
                           </p>
@@ -287,47 +95,242 @@ const Music = () => {
                             {readingTime} MIN READ
                           </p>
                         </div>
-                        <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
-                          {musicQuery?.page?.homePage?.musicAd?.musicAdImage
-                            ?.node?.sourceUrl ? (
-                            <Link
-                              href={{
-                                pathname:
-                                  musicQuery?.page?.homePage?.musicAd
-                                    ?.musicAdLink,
-                              }}
-                              passHref
-                              target="_blank"
-                            >
-                              <ExportedImage
-                                src={
-                                  musicQuery.page.homePage.musicAd.musicAdImage
-                                    .node.sourceUrl
-                                }
-                                alt="Partly Cloudy"
-                                className="object-cover w-[317px] h-[214px] mr-2"
-                                width={317}
-                                height={214}
-                              />
-                            </Link>
-                          ) : (
-                            <Ads
-                              className=""
-                              style={{
-                                display: "block",
-                                width: "317px",
-                                height: "214px",
-                                margin: "0 auto",
-                              }}
-                              adClient="ca-pub-3209848804552918"
-                              adSlot="9293720177"
-                            />
-                          )}
+                      </div>
+                      <div className="flex max-w-xs bg-white mr-4 items-center">
+                        <div className="mr-2">
+                          <p className="text-[12px] font-bold text-red-800">
+                            {musicQuery?.page?.homePage?.musicTitle}
+                          </p>
+                          <Link
+                            href={{
+                              pathname: `/news/${post.slug}`,
+                            }}
+                            passHref
+                          >
+                            <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                              {post.title}
+                            </p>
+                          </Link>
                         </div>
-                      </React.Fragment>
-                    )
-                  }
-                )
+                        <Link
+                          href={{
+                            pathname: `/news/${post.slug}`,
+                          }}
+                          passHref
+                        >
+                          <ExportedImage
+                            src={post?.featuredImage?.node?.sourceUrl}
+                            alt="Partly Cloudy"
+                            className="object-cover w-[240px] h-[97px] mr-2"
+                            width={120}
+                            height={97}
+                          />
+                        </Link>
+                      </div>
+                      <p className="text-[10px] text-base font-bold text-gray-800">
+                        <span
+                          className="text-[10px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {post.author?.node?.name}
+                          <span
+                            className="text-[36px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
+                      </p>
+                    </React.Fragment>
+                  );
+                })
+              )
+            )}
+          </div>
+          <div className="max-w-md bg-white mb-6 mx-auto">
+            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
+              (item) => (
+                console.log(item, "item music"),
+                item.posts?.nodes.slice(0, 1).map((post) => {
+                  const contentText = item?.content
+                    ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                    : ""; // Fallback if content is not available
+
+                  const wordCount = contentText
+                    ? contentText?.split(" ").length
+                    : 0;
+                  const readingTime =
+                    wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+                  return (
+                    <React.Fragment key={post.id}>
+                      <Link
+                        href={{
+                          pathname: `/news/${post.slug}`,
+                        }}
+                        passHref
+                      >
+                        <ExportedImage
+                          priority={true}
+                          className="object-cover w-[593px] h-[395px]"
+                          src={post?.featuredImage?.node?.sourceUrl}
+                          alt="vladimirputin"
+                          width={593}
+                          height={395}
+                        />
+                      </Link>
+                      <p className="text-base font-bold text-red-800 mt-2">
+                        {musicQuery?.page?.homePage?.musicTitle}
+                      </p>
+                      <Link
+                        href={{
+                          pathname: `/news/${post.slug}`,
+                        }}
+                        passHref
+                      >
+                        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                          {post.title}
+                        </h5>
+                      </Link>
+                      <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[10px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {post.author?.node?.name}
+                          <span
+                            className="text-[36px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
+                      </p>
+                      <p
+                        className="text-[12px] font-normal text-gray-800 mt-2 export"
+                        dangerouslySetInnerHTML={{ __html: post.content }}
+                      />
+                    </React.Fragment>
+                  );
+                })
+              )
+            )}
+          </div>
+          <div className="max-w-xs bg-white mb-6 mr-4 items-center">
+            {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
+              (item) => (
+                console.log(item, "item music"),
+                item.posts?.nodes.slice(2, 3).map((post) => {
+                  const contentText = item?.content
+                    ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                    : ""; // Fallback if content is not available
+
+                  const wordCount = contentText
+                    ? contentText?.split(" ").length
+                    : 0;
+                  const readingTime =
+                    wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+                  return (
+                    <React.Fragment key={post.id}>
+                      <div className="mr-2">
+                        <ExportedImage
+                          src={post?.featuredImage?.node?.sourceUrl}
+                          alt="vladimirputin"
+                          className="object-cover w-[317px] h-[194px] mr-2 mb-2"
+                          width={317}
+                          height={194}
+                        />
+                        <p className="text-[12px] font-bold text-red-800">
+                          {musicQuery?.page?.homePage?.musicTitle}
+                        </p>
+                        <Link
+                          href={{
+                            pathname: `/news/${post.slug}`,
+                          }}
+                          passHref
+                        >
+                          <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                            {post.title}
+                          </p>
+                        </Link>
+                        <p className="text-[10px] text-base font-bold text-gray-800">
+                          <span
+                            className="text-[10px] font-extrabold mr-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            |
+                          </span>
+                          By
+                          <span
+                            className="font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            {post.author?.node?.name}
+                            <span
+                              className="text-[36px] font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              .
+                            </span>
+                          </span>
+                          {readingTime} MIN READ
+                        </p>
+                      </div>
+                      <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
+                        {musicQuery?.page?.homePage?.musicAd?.musicAdImage?.node
+                          ?.sourceUrl ? (
+                          <Link
+                            href={{
+                              pathname:
+                                musicQuery?.page?.homePage?.musicAd
+                                  ?.musicAdLink,
+                            }}
+                            passHref
+                            target="_blank"
+                          >
+                            <ExportedImage
+                              src={
+                                musicQuery.page.homePage.musicAd.musicAdImage
+                                  .node.sourceUrl
+                              }
+                              alt="Partly Cloudy"
+                              className="object-cover w-[317px] h-[214px] mr-2"
+                              width={317}
+                              height={214}
+                            />
+                          </Link>
+                        ) : (
+                          <Ads
+                            className=""
+                            style={{
+                              display: "block",
+                              width: "317px",
+                              height: "214px",
+                              margin: "0 auto",
+                            }}
+                            adClient="ca-pub-3209848804552918"
+                            adSlot="9293720177"
+                          />
+                        )}
+                      </div>
+                    </React.Fragment>
+                  );
+                })
               )
             )}
           </div>

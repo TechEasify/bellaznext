@@ -235,9 +235,12 @@ function News() {
   // Sorting posts by category view count in descending order
   posts.sort((a, b) => b.categoryViews - a.categoryViews);
 
-  const contentText = newsData?.nodeByUri?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-  const wordCount = contentText?.split(" ").length;
-  const readingTime = Math.ceil(wordCount / 250);
+  const contentText = newsData?.nodeByUri?.content
+    ? newsData?.nodeByUri?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+    : ""; // Fallback if content is not available
+
+  const wordCount = contentText ? contentText?.split(" ").length : 0;
+  const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
 
   console.log(posts, "postspostspostsposts");
 

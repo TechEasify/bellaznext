@@ -167,8 +167,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl ? (
                 <Link
                   href={{
-                    pathname: nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                    ?.musicAllPostsSidebar?.sidebarAdLink,
+                    pathname:
+                      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                        ?.musicAllPostsSidebar?.sidebarAdLink,
                   }}
                   passHref
                   target="_blank"
@@ -200,55 +201,63 @@ function Music({ nodeByUri, fetchMore, loading }) {
             </div>
 
             {firstLayoutPosts.map((post, index) => {
-              const contentText = post?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-              const wordCount = contentText?.split(" ").length;
-              const readingTime = Math.ceil(wordCount / 250);
-              return (<React.Fragment key={index}>
-                <div className="mr-2 my-2">
-                  {post?.featuredImage?.node?.sourceUrl && (
-                    <Link href={`/news/${post.slug}`}>
-                      <ExportedImage
-                        src={post?.featuredImage?.node?.sourceUrl}
-                        alt="vladimirputin"
-                        className="h-13 w-13 mr-2 mb-2 object-cover w-[317px] h-[194px]"
-                        width={317}
-                        height={194}
-                      />
-                    </Link>
-                  )}
-                  <p className="text-[12px] font-bold text-red-800">
-                    {post?.categoryName || ""}
-                  </p>
-                  <Link href={`/news/${post.slug}`}>
-                    <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue export">
-                      {post?.title || ""}
+              const contentText = post?.content
+                ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                : ""; // Fallback if content is not available
+
+              const wordCount = contentText
+                ? contentText?.split(" ").length
+                : 0;
+              const readingTime =
+                wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+              return (
+                <React.Fragment key={index}>
+                  <div className="mr-2 my-2">
+                    {post?.featuredImage?.node?.sourceUrl && (
+                      <Link href={`/news/${post.slug}`}>
+                        <ExportedImage
+                          src={post?.featuredImage?.node?.sourceUrl}
+                          alt="vladimirputin"
+                          className="h-13 w-13 mr-2 mb-2 object-cover w-[317px] h-[194px]"
+                          width={317}
+                          height={194}
+                        />
+                      </Link>
+                    )}
+                    <p className="text-[12px] font-bold text-red-800">
+                      {post?.categoryName || ""}
                     </p>
-                  </Link>
-                  <p className="text-[10px] text-base font-bold text-gray-800">
-                    <span
-                      className="text-[10px] font-extrabold mr-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      |
-                    </span>
-                    By
-                    <span
-                      className="font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      Linah Absteen
+                    <Link href={`/news/${post.slug}`}>
+                      <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue export">
+                        {post?.title || ""}
+                      </p>
+                    </Link>
+                    <p className="text-[10px] text-base font-bold text-gray-800">
                       <span
-                        className="text-[36px] font-extrabold mx-1"
+                        className="text-[10px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
-                        .
+                        |
                       </span>
-                    </span>
-                    {readingTime} MIN READ
-                  </p>
-                </div>
-                <hr className="my-3" />
-              </React.Fragment>)
+                      By
+                      <span
+                        className="font-extrabold mx-1"
+                        style={{ color: "#40A6FB" }}
+                      >
+                        Linah Absteen
+                        <span
+                          className="text-[36px] font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          .
+                        </span>
+                      </span>
+                      {readingTime} MIN READ
+                    </p>
+                  </div>
+                  <hr className="my-3" />
+                </React.Fragment>
+              );
             })}
 
             {secondLayoutPosts.map((post, index) => (
@@ -280,73 +289,82 @@ function Music({ nodeByUri, fetchMore, loading }) {
             ))}
           </div>
 
-          {shuffledPost.slice(0, 1).map(
-            (musicpost) => {
-              const contentText = musicpost?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-                const wordCount = contentText?.split(" ").length;
-                const readingTime = Math.ceil(wordCount / 250);
-              return (
-                <div className="w-full max-w-5xl mx-auto relative">
-                  {shuffledPost[0]?.featuredImage?.node?.sourceUrl && (
+          {shuffledPost.slice(0, 1).map((musicpost) => {
+            const contentText = musicpost?.content
+              ? musicpost?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+              : ""; // Fallback if content is not available
+
+            const wordCount = contentText ? contentText?.split(" ").length : 0;
+            const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+            return (
+              <div className="w-full max-w-5xl mx-auto relative">
+                {shuffledPost[0]?.featuredImage?.node?.sourceUrl && (
+                  <Link href={`/news/${musicpost.slug}`}>
+                    <ExportedImage
+                      className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
+                      priority={true}
+                      src={shuffledPost[0]?.featuredImage?.node?.sourceUrl}
+                      width={910}
+                      height={554}
+                      alt="vladimirputin"
+                    />
+                  </Link>
+                )}
+
+                <div className="absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:w-[750px] h-60">
+                  <div>
+                    <p className="text-[12px] font-bold text-red-800">
+                      {nodeByUri?.nodeByUri?.name}
+                    </p>
                     <Link href={`/news/${musicpost.slug}`}>
-                      <ExportedImage
-                        className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
-                        priority={true}
-                        src={shuffledPost[0]?.featuredImage?.node?.sourceUrl}
-                        width={910}
-                        height={554}
-                        alt="vladimirputin"
-                      />
+                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                        {musicpost?.title}
+                      </h5>
                     </Link>
-                  )}
-
-                  <div className="absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:w-[750px] h-60">
-                    <div>
-                      <p className="text-[12px] font-bold text-red-800">
-                        {nodeByUri?.nodeByUri?.name}
-                      </p>
-                      <Link href={`/news/${musicpost.slug}`}>
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
-                          {musicpost?.title}
-                        </h5>
-                      </Link>
-                      <p className="text-[10px] text-base font-bold text-gray-800 mb-2">
+                    <p className="text-[10px] text-base font-bold text-gray-800 mb-2">
+                      <span
+                        className="text-[10px] font-extrabold mr-1"
+                        style={{ color: "#40A6FB" }}
+                      >
+                        |
+                      </span>
+                      By
+                      <span
+                        className="font-extrabold mx-1"
+                        style={{ color: "#40A6FB" }}
+                      >
+                        {musicpost?.author?.node?.name}
                         <span
-                          className="text-[10px] font-extrabold mr-1"
+                          className="text-[36px] font-extrabold mx-1"
                           style={{ color: "#40A6FB" }}
                         >
-                          |
+                          .
                         </span>
-                        By
-                        <span
-                          className="font-extrabold mx-1"
-                          style={{ color: "#40A6FB" }}
-                        >
-                          {musicpost?.author?.node?.name}
-                          <span
-                            className="text-[36px] font-extrabold mx-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            .
-                          </span>
-                        </span>
-                        {readingTime} MIN READ
-                      </p>
-                      <p
-                        className="font-normal text-gray-700 dark:text-gray-400 export"
-                        dangerouslySetInnerHTML={{ __html: musicpost?.excerpt }}
-                      />
-                    </div>
+                      </span>
+                      {readingTime} MIN READ
+                    </p>
+                    <p
+                      className="font-normal text-gray-700 dark:text-gray-400 export"
+                      dangerouslySetInnerHTML={{ __html: musicpost?.excerpt }}
+                    />
                   </div>
+                </div>
 
-                  <div className="flex flex-wrap justify-around mt-32">
-                    {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes
-                      .map((item) =>
-                        item.posts.nodes.slice(1, 5).map((post) => {
-                          const contentText = post?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-                const wordCount = contentText?.split(" ").length;
-                const readingTime = Math.ceil(wordCount / 250);
-                          return(<div
+                <div className="flex flex-wrap justify-around mt-32">
+                  {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes
+                    .map((item) =>
+                      item.posts.nodes.slice(1, 5).map((post) => {
+                        const contentText = item?.content
+                          ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                          : ""; // Fallback if content is not available
+
+                        const wordCount = contentText
+                          ? contentText?.split(" ").length
+                          : 0;
+                        const readingTime =
+                          wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+                        return (
+                          <div
                             key={post.slug}
                             className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2"
                           >
@@ -393,15 +411,15 @@ function Music({ nodeByUri, fetchMore, loading }) {
                               </span>
                               {readingTime} MIN READ
                             </p>
-                          </div>)
-            })
-                      )
-                      .slice(0, 4)}
-                  </div>
+                          </div>
+                        );
+                      })
+                    )
+                    .slice(0, 4)}
                 </div>
-              )
-            }
-          )}
+              </div>
+            );
+          })}
         </div>
       </div>
       {/* <div className="px-4 py-8 mx-auto max-w-screen-xl">
