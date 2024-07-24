@@ -91,7 +91,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
             musicTitleBackgroundColor
             musicHeroSection {
               heroSidebarTitle
-              selectCategory {
+              selectCategoryForSidebarPosts {
                 nodes {
                   ... on Category {
                     id

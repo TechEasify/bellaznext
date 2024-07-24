@@ -207,30 +207,84 @@ const Insights = () => {
         </div>
 
         <div className="flex flex-wrap justify-around items-stretch">
-          {insight?.slice(1, 2)?.map((item) => (
-            <div className="flex flex-col" key={item.name}>
-              <div
-                className="max-w-xs bg-white mb-6 items-center"
-                key={item.slug}
-              >
-                <div className="mr-2 mb-2">
-                  <Link href={`/news/${item.slug}`} passHref>
-                    <ExportedImage
-                      src={item.featuredImage?.node?.sourceUrl || ""}
-                      alt={item.featuredImage?.node?.sourceUrl || ""}
-                      className="object-cover mr-2 mb-2"
-                      width={317}
-                      height={194}
-                    />
-                  </Link>
-                  <p className="text-[12px] font-bold text-red-800">
-                    {insightsPost[0].name}
-                  </p>
-                  <Link href={`/news/${item.slug}`} passHref>
-                    <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                      {item.title}
+          {insight?.slice(1, 2)?.map((item) => {
+            const contentText = item?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+            const wordCount = contentText?.split(" ").length;
+            const readingTime = Math.ceil(wordCount / 250);
+            return (
+              <div className="flex flex-col" key={item.name}>
+                <div
+                  className="max-w-xs bg-white mb-6 items-center"
+                  key={item.slug}
+                >
+                  <div className="mr-2 mb-2">
+                    <Link href={`/news/${item.slug}`} passHref>
+                      <ExportedImage
+                        src={item.featuredImage?.node?.sourceUrl || ""}
+                        alt={item.featuredImage?.node?.sourceUrl || ""}
+                        className="object-cover mr-2 mb-2"
+                        width={317}
+                        height={194}
+                      />
+                    </Link>
+                    <p className="text-[12px] font-bold text-red-800">
+                      {insightsPost[0].name}
                     </p>
-                  </Link>
+                    <Link href={`/news/${item.slug}`} passHref>
+                      <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                        {item.title}
+                      </p>
+                    </Link>
+                    <p className="text-[10px] text-base font-bold text-gray-800">
+                      <span
+                        className="text-[10px] font-extrabold mr-1"
+                        style={{ color: "#40A6FB" }}
+                      >
+                        |
+                      </span>
+                      By
+                      <span
+                        className="font-extrabold mx-1"
+                        style={{ color: "#40A6FB" }}
+                      >
+                        {item.author.node.name}
+                        <span
+                          className="text-[36px] font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          .
+                        </span>
+                      </span>
+                      {readingTime} MIN READ
+                    </p>
+                  </div>
+                  <div className="flex max-w-xs bg-white mr-4 items-center justify-between">
+                    <div className="mr-2">
+                      <p className="text-[12px] font-bold text-red-800">
+                        {insightsPost[0].name}
+                      </p>
+                      <Link href={`/news/${item.slug}`} passHref>
+                        <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                          {item.title}
+                        </p>
+                      </Link>
+                    </div>
+                    <Link href={`/news/${item.slug}`} passHref>
+                      <ExportedImage
+                        src={
+                          item.featuredImage.node.sourceUrl !== null &&
+                          item.featuredImage.node.sourceUrl
+                        }
+                        alt={
+                          item.featuredImage.node.sourceUrl !== null &&
+                          item.featuredImage.node.sourceUrl
+                        }
+                        className="h-[87px] w-[240px] object-cover mr-2"
+                        width={90}
+                        height={87}
+                      />
+                    </Link>
+                  </div>
                   <p className="text-[10px] text-base font-bold text-gray-800">
                     <span
                       className="text-[10px] font-extrabold mr-1"
@@ -251,67 +305,25 @@ const Insights = () => {
                         .
                       </span>
                     </span>
-                    6 MIN READ
+                    {readingTime} MIN READ
                   </p>
                 </div>
-                <div className="flex max-w-xs bg-white mr-4 items-center justify-between">
-                  <div className="mr-2">
-                    <p className="text-[12px] font-bold text-red-800">
-                      {insightsPost[0].name}
-                    </p>
-                    <Link href={`/news/${item.slug}`} passHref>
-                      <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                        {item.title}
-                      </p>
-                    </Link>
-                  </div>
-                  <Link href={`/news/${item.slug}`} passHref>
-                    <ExportedImage
-                      src={
-                        item.featuredImage.node.sourceUrl !== null &&
-                        item.featuredImage.node.sourceUrl
-                      }
-                      alt={
-                        item.featuredImage.node.sourceUrl !== null &&
-                        item.featuredImage.node.sourceUrl
-                      }
-                      className="h-[87px] w-[240px] object-cover mr-2"
-                      width={90}
-                      height={87}
-                    />
-                  </Link>
-                </div>
-                <p className="text-[10px] text-base font-bold text-gray-800">
-                  <span
-                    className="text-[10px] font-extrabold mr-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    |
-                  </span>
-                  By
-                  <span
-                    className="font-extrabold mx-1"
-                    style={{ color: "#40A6FB" }}
-                  >
-                    {item.author.node.name}
-                    <span
-                      className="text-[36px] font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      .
-                    </span>
-                  </span>
-                  6 MIN READ
-                </p>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {insightsPost?.map(
             (item) =>
               item.name === "Insights" && (
                 <div className="max-w-md bg-white mb-6 mx-auto" key={item.name}>
-                  {item.posts.nodes.slice(0, 1).map((node) => (
+                  {item.posts.nodes.slice(0, 1).map((node) => {
+                    const contentText = node?.content?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    ); // Remove HTML tags
+                    const wordCount = contentText?.split(" ").length;
+                    const readingTime = Math.ceil(wordCount / 250);
+                    return(
                     <div key={node.slug}>
                       <Link href={`/news/${node.slug}`} passHref>
                         <ExportedImage
@@ -357,19 +369,26 @@ const Insights = () => {
                             .
                           </span>
                         </span>
-                        6 MIN READ
+                        {readingTime} MIN READ
                       </p>
                       <p
                         className="text-[12px] font-normal text-gray-800 mt-2 export"
                         dangerouslySetInnerHTML={{ __html: node.content }}
                       />
                     </div>
-                  ))}
+                  )})}
                 </div>
               )
           )}
 
-          {insight?.slice(2, 3)?.map((item) => (
+          {insight?.slice(2, 3)?.map((item) => {
+            const contentText = item?.content?.replace(
+              /(<([^>]+)>)/gi,
+              ""
+            ); // Remove HTML tags
+            const wordCount = contentText?.split(" ").length;
+            const readingTime = Math.ceil(wordCount / 250);
+            return (
             <div
               className="max-w-xs bg-white mb-6 mr-4 items-center"
               key={item.name}
@@ -413,7 +432,7 @@ const Insights = () => {
                         .
                       </span>
                     </span>
-                    6 MIN READ
+                    {readingTime} MIN READ
                   </p>
                 </div>
                 <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
@@ -458,7 +477,7 @@ const Insights = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
     </div>

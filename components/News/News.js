@@ -152,9 +152,14 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               </div>
             </div> */}
             {posts.map(
-              (item) => (
-                console.log(item, "item Insights"),
-                (
+              (item) => {
+                const contentText = item?.content?.replace(
+                  /(<([^>]+)>)/gi,
+                  ""
+                ); // Remove HTML tags
+                const wordCount = contentText?.split(" ").length;
+                const readingTime = Math.ceil(wordCount / 250);
+                return (
                   <>
                     <div className="flex flex-col md:flex-row mb-5">
                       <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
@@ -230,7 +235,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                               .
                             </span>
                           </span>
-                          6 MIN READ
+                          {readingTime} MIN READ
                         </p>
                         <p
                           className="text-[15px] text-base font-normal text-gray-600 mb-3"
@@ -241,7 +246,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                     <hr className="my-5" />
                   </>
                 )
-              )
+              }
             )}
             {/* <hr className="my-5" />
             <div className="flex flex-col md:flex-row mb-5">

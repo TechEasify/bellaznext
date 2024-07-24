@@ -235,6 +235,10 @@ function News() {
   // Sorting posts by category view count in descending order
   posts.sort((a, b) => b.categoryViews - a.categoryViews);
 
+  const contentText = newsData?.nodeByUri?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+  const wordCount = contentText?.split(" ").length;
+  const readingTime = Math.ceil(wordCount / 250);
+
   console.log(posts, "postspostspostsposts");
 
   return (
@@ -244,18 +248,32 @@ function News() {
         <>
           <hr />
           <div className="w-full px-4 mx-auto flex bg-black items-center justify-center flex-wrap sm:flex-nowrap">
-            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer" onClick={() => dataNav?.menu?.header?.topFirstLinks?.url && router.push(dataNav.menu.header.topFirstLinks.url)}>
+            <p
+              className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+              onClick={() =>
+                dataNav?.menu?.header?.topFirstLinks?.url &&
+                router.push(dataNav.menu.header.topFirstLinks.url)
+              }
+            >
               {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
             </p>
             <span className="text-white px-2">|</span>
-            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
-            onClick={() => dataNav?.menu?.header?.topSecondLinks?.url && router.push(dataNav.menu.header.topSecondLinks.url)}
+            <p
+              className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+              onClick={() =>
+                dataNav?.menu?.header?.topSecondLinks?.url &&
+                router.push(dataNav.menu.header.topSecondLinks.url)
+              }
             >
               {dataNav !== undefined && dataNav?.menu?.header?.topSecond}
             </p>
             <span className="text-white px-2">|</span>
-            <p className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
-            onClick={() => dataNav?.menu?.header?.topThirdLinks?.url && router.push(dataNav.menu.header.topThirdLinks.url)}
+            <p
+              className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+              onClick={() =>
+                dataNav?.menu?.header?.topThirdLinks?.url &&
+                router.push(dataNav.menu.header.topThirdLinks.url)
+              }
             >
               {dataNav !== undefined && dataNav?.menu?.header?.topThird}
             </p>
@@ -322,7 +340,7 @@ function News() {
                           .
                         </span>
                       </span>
-                      6 MIN READ
+                      {readingTime} MIN READ
                     </p>
 
                     <p className="text-[8px] md:text-[14px] text-base font-bold text-gray-800 mb-4">

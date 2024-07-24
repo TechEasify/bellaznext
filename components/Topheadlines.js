@@ -64,9 +64,14 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                   <>
                     <div key={item.id} className="max-w-md bg-white mb-6">
                       {item.categories.nodes.slice(0, 1).map(
-                        (category) => (
-                          console.log(category, "categorycategorycategory"),
-                          (
+                        (category) => {
+                          const contentText = category?.content?.replace(
+                            /(<([^>]+)>)/gi,
+                            ""
+                          ); // Remove HTML tags
+                          const wordCount = contentText?.split(" ").length;
+                          const readingTime = Math.ceil(wordCount / 250);
+                          return (
                             <div key={category.id}>
                               <Link href={`/news/${item.slug}`}>
                                 <ExportedImage
@@ -108,11 +113,11 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                                     .
                                   </span>
                                 </span>
-                                6 MIN READ
+                                {readingTime} MIN READ
                               </p>
                             </div>
                           )
-                        )
+                        }
                       )}
                     </div>
                   </>

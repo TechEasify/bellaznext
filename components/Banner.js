@@ -270,83 +270,85 @@ const Banner = () => {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_340px] gap-6">
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
-              {sortedPosts?.slice(0, 1).map(
-                (post) => (
-                  console.log(post, "postpostpostpostpostpostpostpostpostpost"),
-                  (
-                    <div key={post.id}>
-                      <p className="text-base font-bold text-red-800">
-                        {post.categories.nodes[0]?.name}
-                      </p>
+              {sortedPosts?.slice(0, 1).map((post) => {
+                console.log(post, "postpostpostpostpostpostpost");
+                const contentText = post?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+                const wordCount = contentText?.split(" ").length;
+                const readingTime = Math.ceil(wordCount / 250); // Assuming 250 words per minute
+
+                return (
+                  <div key={post.id}>
+                    <p className="text-base font-bold text-red-800">
+                      {post.categories.nodes[0]?.name}
+                    </p>
+                    <Link
+                      href={{
+                        pathname: `/news/${post.slug}`,
+                      }}
+                      passHref
+                    >
+                      <h1 className="text-[30px] text-black-900 font-bold hover:text-skyBlue mb-2">
+                        {post.title}
+                      </h1>
+                    </Link>
+                    <Link
+                      href={{
+                        pathname: `/news/${post.slug}`,
+                      }}
+                      passHref
+                    >
+                      <p
+                        className="text-[15px] text-base text-gray-800 mb-3 cursor-pointer"
+                        dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                      />
+                    </Link>
+                    <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                      <span
+                        className="text-[25px] font-extrabold mr-1"
+                        style={{ color: "#40A6FB" }}
+                      >
+                        |
+                      </span>
+                      By
+                      <span
+                        className="font-extrabold mx-1"
+                        style={{ color: "#40A6FB" }}
+                      >
+                        Linah Absteen
+                        <span
+                          className="text-[36px] font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          .
+                        </span>
+                      </span>
+                      {readingTime} MIN READ
+                    </p>
+                    {post.featuredImage?.node?.sourceUrl && (
                       <Link
                         href={{
                           pathname: `/news/${post.slug}`,
                         }}
                         passHref
                       >
-                        <h1 className="text-[30px] text-b.lack-900 font-bold hover:text-skyBlue mb-2">
-                          {post.title}
-                        </h1>
-                      </Link>
-                      <Link
-                        href={{
-                          pathname: `/news/${post.slug}`,
-                        }}
-                        passHref
-                      >
-                        <p
-                          className="text-[15px] text-base text-gray-800 mb-3 cursor-pointer"
-                          dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                        <ExportedImage
+                          priority={true}
+                          className="object-cover"
+                          src={post?.featuredImage?.node?.sourceUrl}
+                          alt={post?.featuredImage?.node?.altText}
+                          width={150}
+                          height={150}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            maxHeight: "500px",
+                          }}
                         />
                       </Link>
-                      <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
-                        <span
-                          className="text-[25px] font-extrabold mr-1"
-                          style={{ color: "#40A6FB" }}
-                        >
-                          |
-                        </span>
-                        By
-                        <span
-                          className="font-extrabold mx-1"
-                          style={{ color: "#40A6FB" }}
-                        >
-                          Linah Absteen
-                          <span
-                            className="text-[36px] font-extrabold mx-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            .
-                          </span>
-                        </span>
-                        6 MIN READ
-                      </p>
-                      {post.featuredImage?.node?.sourceUrl && (
-                        <Link
-                          href={{
-                            pathname: `/news/${post.slug}`,
-                          }}
-                          passHref
-                        >
-                          <ExportedImage
-                            priority={true}
-                            className="object-cover"
-                            src={post?.featuredImage?.node?.sourceUrl}
-                            alt={post?.featuredImage?.node?.altText}
-                            width={150}
-                            height={150}
-                            style={{
-                              width: "100%",
-                              height: "auto",
-                              maxHeight: "500px",
-                            }}
-                          />
-                        </Link>
-                      )}
-                    </div>
-                  )
-                )
-              )}
+                    )}
+                  </div>
+                );
+              })}
 
               <Topheadlines
                 topheadData={bannerData}
@@ -541,8 +543,9 @@ const Banner = () => {
                   ?.topHeadlineFirstAd?.node?.sourceUrl ? (
                   <Link
                     href={{
-                      pathname: bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
-                      ?.topHeadlineFirstAdLink,
+                      pathname:
+                        bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
+                          ?.topHeadlineFirstAdLink,
                     }}
                     passHref
                     target="_blank"
@@ -644,10 +647,11 @@ const Banner = () => {
               <div className="flex mb-5 mt-10">
                 {bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                   ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
-                    <Link
+                  <Link
                     href={{
-                      pathname: bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
-                      ?.topHeadlineSecondAdLink,
+                      pathname:
+                        bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
+                          ?.topHeadlineSecondAdLink,
                     }}
                     passHref
                     target="_blank"

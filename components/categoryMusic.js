@@ -79,7 +79,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
 
   console.log(shuffledPost, "shuffledPost");
 
-  nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicHeroSection?.selectCategory?.nodes.forEach(
+  nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicHeroSection?.selectCategoryForSidebarPosts?.nodes.forEach(
     (item) => {
       item.posts.nodes.forEach((post) => {
         posts.push({ ...post, categoryName: item.name });
@@ -199,8 +199,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
               )}
             </div>
 
-            {firstLayoutPosts.map((post, index) => (
-              <React.Fragment key={index}>
+            {firstLayoutPosts.map((post, index) => {
+              const contentText = post?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+              const wordCount = contentText?.split(" ").length;
+              const readingTime = Math.ceil(wordCount / 250);
+              return (<React.Fragment key={index}>
                 <div className="mr-2 my-2">
                   {post?.featuredImage?.node?.sourceUrl && (
                     <Link href={`/news/${post.slug}`}>
@@ -241,12 +244,12 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         .
                       </span>
                     </span>
-                    6 MIN READ
+                    {readingTime} MIN READ
                   </p>
                 </div>
                 <hr className="my-3" />
-              </React.Fragment>
-            ))}
+              </React.Fragment>)
+            })}
 
             {secondLayoutPosts.map((post, index) => (
               <React.Fragment key={index}>
@@ -278,9 +281,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
           </div>
 
           {shuffledPost.slice(0, 1).map(
-            (musicpost) => (
-              console.log(musicpost, "musicpost"),
-              (
+            (musicpost) => {
+              const contentText = musicpost?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+                const wordCount = contentText?.split(" ").length;
+                const readingTime = Math.ceil(wordCount / 250);
+              return (
                 <div className="w-full max-w-5xl mx-auto relative">
                   {shuffledPost[0]?.featuredImage?.node?.sourceUrl && (
                     <Link href={`/news/${musicpost.slug}`}>
@@ -325,7 +330,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                             .
                           </span>
                         </span>
-                        6 MIN READ
+                        {readingTime} MIN READ
                       </p>
                       <p
                         className="font-normal text-gray-700 dark:text-gray-400 export"
@@ -337,8 +342,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   <div className="flex flex-wrap justify-around mt-32">
                     {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes
                       .map((item) =>
-                        item.posts.nodes.slice(1, 5).map((post) => (
-                          <div
+                        item.posts.nodes.slice(1, 5).map((post) => {
+                          const contentText = post?.content?.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+                const wordCount = contentText?.split(" ").length;
+                const readingTime = Math.ceil(wordCount / 250);
+                          return(<div
                             key={post.slug}
                             className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2"
                           >
@@ -383,16 +391,16 @@ function Music({ nodeByUri, fetchMore, loading }) {
                                   .
                                 </span>
                               </span>
-                              6 MIN READ
+                              {readingTime} MIN READ
                             </p>
-                          </div>
-                        ))
+                          </div>)
+            })
                       )
                       .slice(0, 4)}
                   </div>
                 </div>
               )
-            )
+            }
           )}
         </div>
       </div>

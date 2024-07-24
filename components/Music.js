@@ -32,9 +32,14 @@ const Music = () => {
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(1, 2).map(
-                  (post) => (
-                    console.log(post, "post"),
-                    (
+                  (post) => {
+                    const contentText = post?.content?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    ); // Remove HTML tags
+                    const wordCount = contentText?.split(" ").length;
+                    const readingTime = Math.ceil(wordCount / 250);
+                    return (
                       <React.Fragment key={post.id}>
                         <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                           <div className="mr-2">
@@ -85,7 +90,7 @@ const Music = () => {
                                   .
                                 </span>
                               </span>
-                              6 MIN READ
+                              {readingTime} MIN READ
                             </p>
                           </div>
                         </div>
@@ -140,11 +145,11 @@ const Music = () => {
                               .
                             </span>
                           </span>
-                          6 MIN READ
+                          {readingTime} MIN READ
                         </p>
                       </React.Fragment>
                     )
-                  )
+                  }
                 )
               )
             )}
@@ -154,9 +159,14 @@ const Music = () => {
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(0, 1).map(
-                  (post) => (
-                    console.log(post, "post"),
-                    (
+                  (post) => {
+                    const contentText = post?.content?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    ); // Remove HTML tags
+                    const wordCount = contentText?.split(" ").length;
+                    const readingTime = Math.ceil(wordCount / 250);
+                    return (
                       <React.Fragment key={post.id}>
                         <Link
                           href={{
@@ -206,7 +216,7 @@ const Music = () => {
                               .
                             </span>
                           </span>
-                          6 MIN READ
+                          {readingTime} MIN READ
                         </p>
                         <p
                           className="text-[12px] font-normal text-gray-800 mt-2 export"
@@ -214,7 +224,7 @@ const Music = () => {
                         />
                       </React.Fragment>
                     )
-                  )
+                  }
                 )
               )
             )}
@@ -224,9 +234,14 @@ const Music = () => {
               (item) => (
                 console.log(item, "item music"),
                 item.posts?.nodes.slice(2, 3).map(
-                  (post) => (
-                    console.log(post, "post"),
-                    (
+                  (post) => {
+                    const contentText = post?.content?.replace(
+                      /(<([^>]+)>)/gi,
+                      ""
+                    ); // Remove HTML tags
+                    const wordCount = contentText?.split(" ").length;
+                    const readingTime = Math.ceil(wordCount / 250);
+                    return (
                       <React.Fragment key={post.id}>
                         <div className="mr-2">
                           <ExportedImage
@@ -269,7 +284,7 @@ const Music = () => {
                                 .
                               </span>
                             </span>
-                            6 MIN READ
+                            {readingTime} MIN READ
                           </p>
                         </div>
                         <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
@@ -311,7 +326,7 @@ const Music = () => {
                         </div>
                       </React.Fragment>
                     )
-                  )
+                  }
                 )
               )
             )}

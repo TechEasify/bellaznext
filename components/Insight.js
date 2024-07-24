@@ -363,6 +363,12 @@ const Insight = () => {
               (item) => (
                 console.log(item, "itemitemitemitemitemitemitemitemitem"),
                 item.posts.nodes.map((posts) => {
+                  const contentText = posts?.content?.replace(
+                    /(<([^>]+)>)/gi,
+                    ""
+                  ); // Remove HTML tags
+                  const wordCount = contentText?.split(" ").length;
+                  const readingTime = Math.ceil(wordCount / 250);
                   const calculateWidth = (text) => {
                     // Example: 10 pixels per character plus some base width
                     const baseWidth = 50; // Base width in pixels
@@ -448,7 +454,7 @@ const Insight = () => {
                                 .
                               </span>
                             </span>
-                            6 MIN READ
+                            {readingTime} MIN READ
                           </p>
                           <p
                             className="text-[15px] text-base font-normal text-gray-600 mb-3"
@@ -483,8 +489,9 @@ const Insight = () => {
               null ? (
               <Link
                 href={{
-                  pathname: nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
-                  ?.simpleHeroSection?.heroSidebarAdLink,
+                  pathname:
+                    nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+                      ?.simpleHeroSection?.heroSidebarAdLink,
                 }}
                 passHref
                 target="_blank"
