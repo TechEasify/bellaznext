@@ -302,67 +302,68 @@ const Insight = () => {
     cursor,
     setPosts,
     posts,
-    iconDataResult,
     categoryError,
-    categoryInsightData,
+    iconDataResult,
     categoryLoading,
     nodeByUri,
     insightFetchMore,
   } = useDialog();
-  console.log(nodeByUri.nodeByUri, "nodeByUrinodeByUrinodeByUrinodeByUri");
+
   const [hasNextPage, setHasNextPage] = useState(true);
 
-  // Effect to initialize posts when data changes
   useEffect(() => {
     if (
-      nodeByUri?.nodeByUri &&
       nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
         ?.selectCategoryForAllPost?.nodes
     ) {
-      setPosts(
-        nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
-          ?.selectCategoryForAllPost?.nodes
-      );
-      setCursor(nodeByUri?.nodeByUri?.posts?.pageInfo?.endCursor);
-      setHasNextPage(nodeByUri?.nodeByUri?.posts?.pageInfo?.hasNextPage);
+      const initialPosts =
+        nodeByUri.nodeByUri.categoryTamplate.simpleTemplete.selectCategoryForAllPost.nodes.flatMap(
+          (category) => category.posts.nodes
+        );
+      setPosts(initialPosts);
+      setCursor(nodeByUri.nodeByUri.posts.pageInfo.endCursor);
+      setHasNextPage(nodeByUri.nodeByUri.posts.pageInfo.hasNextPage);
+      console.log("Initial posts set:", initialPosts);
     }
-  }, [nodeByUri?.nodeByUri]);
+  }, [nodeByUri]);
 
-  // Function to handle "View More" button click
   const handleViewMore = async () => {
     if (hasNextPage && !categoryLoading) {
-      const { data } = await insightFetchMore({
-        variables: {
-          after: cursor,
-        },
-      });
+      try {
+        const { data } = await insightFetchMore({
+          variables: {
+            after: cursor,
+          },
+        });
 
-      if (data) {
-        const newPosts = data.posts.nodes;
-        setPosts((prevPosts) => [...prevPosts, ...newPosts]);
-        setCursor(data.posts.pageInfo.endCursor);
-        setHasNextPage(data.posts.pageInfo.hasNextPage);
+        if (data && data.posts.nodes.length > 0) {
+          const newPosts = data.posts.nodes;
+          console.log("New posts fetched:", newPosts);
+          setPosts((prevPosts) => [...prevPosts, ...newPosts]);
+          setCursor(data.posts.pageInfo.endCursor);
+          setHasNextPage(data.posts.pageInfo.hasNextPage);
+        } else {
+          console.log("No new posts fetched.");
+        }
+      } catch (error) {
+        console.error("Error fetching more posts:", error);
       }
     }
   };
 
-  console.log(posts, "posts");
-
-  // Render loading state
-  if (categoryLoading && posts.length === 0) return <SkeletonLoader />;
-
-  // Render error state
+  console.log("Current posts state:", posts);
+  if (categoryLoading && posts.length === 0) return <p>Loading...</p>;
   if (categoryError) return <p>Error: {categoryError.message}</p>;
 
   return (
     <>
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
-          <div className="w-full max-w-5xl mx-auto">
+          {/* <div className="w-full max-w-5xl mx-auto">
             {posts.map(
               (item) => (
                 console.log(item, "itemitemitemitemitemitemitemitemitem"),
-                item.posts.nodes.map((posts) => {
+                item?.posts?.nodes?.map((posts) => {
                   const contentText = item?.content
                     ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                     : ""; // Fallback if content is not available
@@ -471,6 +472,107 @@ const Insight = () => {
                 })
               )
             )}
+            <div className="flex justify-between">
+              <button
+                className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
+                onClick={handleViewMore}
+                disabled={!hasNextPage || categoryLoading}
+              >
+                {hasNextPage ? "VIEW MORE" : "NO MORE POSTS"}
+              </button>
+            </div>
+          </div> */}
+          <div className="w-full max-w-5xl mx-auto">
+            {posts.map((post) => {
+              const contentText = post?.content
+                ? post?.content.replace(/(<([^>]+)>)/gi, "")
+                : "";
+              const wordCount = contentText ? contentText.split(" ").length : 0;
+              const readingTime =
+                wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+              const calculateWidth = (text) => {
+                const baseWidth = 50;
+                const charWidth = 10;
+                return `${baseWidth + charWidth * text.length}px`;
+              };
+              const dynamicWidth = calculateWidth(
+                nodeByUri?.nodeByUri?.name || ""
+              );
+
+              return (
+                <div key={post.id}>
+                  <div className="flex flex-col md:flex-row mb-5">
+                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                      <Link href={`/news/${post.slug}`} passHref>
+                        {post?.featuredImage?.node?.sourceUrl && (
+                          <ExportedImage
+                            className="object-cover w-[357px] h-[261px]"
+                            priority={true}
+                            src={post?.featuredImage?.node?.sourceUrl}
+                            alt={post.title}
+                            width={357}
+                            height={261}
+                          />
+                        )}
+                      </Link>
+                    </div>
+                    <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                      <p
+                        className="text-base font-bold text-red-800"
+                        style={{
+                          background: `${
+                            nodeByUri?.nodeByUri?.categoryTamplate
+                              ?.simpleTemplete?.simpleTitleBackgroundColor ||
+                            "#fff"
+                          }`,
+                          color: "#fff",
+                          padding: "0 10px",
+                          width: dynamicWidth,
+                          clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                          fontSize: "12px",
+                          fontWeight: 500,
+                          letterSpacing: "2px",
+                        }}
+                      >
+                        {nodeByUri?.nodeByUri?.name}
+                      </p>
+                      <Link href={`/news/${post.slug}`} passHref>
+                        <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
+                          {post.title}
+                        </h5>
+                      </Link>
+                      <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[12px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold ml-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {post?.author?.node?.name}
+                          <span
+                            className="text-[25px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
+                      </p>
+                      <p
+                        className="text-[15px] text-base font-normal text-gray-600 mb-3"
+                        dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                      />
+                    </div>
+                  </div>
+                  <hr className="my-5" />
+                </div>
+              );
+            })}
             <div className="flex justify-between">
               <button
                 className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
