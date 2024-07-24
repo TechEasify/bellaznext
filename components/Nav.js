@@ -151,6 +151,7 @@ const Nav = ({
     dataNav,
     dataIcon,
     iconDataResult,
+    nodeByUri
   } = useDialog();
   const router = useRouter();
   console.log(router.asPath, "router");
@@ -217,6 +218,7 @@ const Nav = ({
   };
 
   console.log(dataNav, "navDataResultnavDataResultnavDataResultnavDataResult");
+  console.log(nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor, "nodeByUrinodeByUrinodeByUrinodeByUri");
 
   return (
     <>
@@ -568,51 +570,22 @@ const Nav = ({
         </header>
       )}
 
-      {name === "music" || router.asPath === "/category/music" ? (
+      {nodeByUri?.nodeByUri?.name === "Music" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
-          style={{ background: "#25AC7D" }}
+          style={{ background: `${nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor ? nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicTitleBackgroundColor : "#25AC7D"}` }}
         >
           <span className="text-white font-medium">
             {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
           </span>
         </div>
-      ) : name === "Insights" || router.asPath === "/category/insights" ? (
+      ) : nodeByUri?.nodeByUri?.name === "Simple" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
-          style={{ background: "#1662D4" }}
+          style={{ background: `${nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor ? nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete?.simpleTitleBackgroundColor : "#1662D4"}` }}
         >
           <span className="text-white font-medium">
             {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-          </span>
-        </div>
-      ) : name === "Jewish News" ||
-        router.asPath === "/category/jewish-news" ? (
-        <div
-          className="w-full h-7 inline-flex items-center justify-center"
-          style={{ background: "#57A0EE" }}
-        >
-          <span className="text-white font-medium">
-            {dataNav !== undefined && dataNav.menu.header.subThird}
-          </span>
-        </div>
-      ) : name === "Breaking News" ||
-        router.asPath === "/category/breaking-news" ? (
-        <div
-          className="w-full h-7 inline-flex items-center justify-center"
-          style={{ background: "#ce3a42" }}
-        >
-          <span className="text-white font-medium">
-            {dataNav !== undefined && dataNav.menu.header.subFirst}
-          </span>
-        </div>
-      ) : name === "Politics" || router.asPath === "/category/politics" ? (
-        <div
-          className="w-full h-7 inline-flex items-center justify-center"
-          style={{ background: "#FFA500" }}
-        >
-          <span className="text-white font-medium">
-            {dataNav !== undefined && dataNav.menu.header.subSecond}
           </span>
         </div>
       ) : (
