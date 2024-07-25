@@ -148,11 +148,15 @@ function Index() {
       //   </div>
       // </div>
       <div className="spinner">
-        <ExportedImage
-          src={Primarylogo}
-          alt="Loading..."
-          className="blinking-image"
-        />
+        <Image
+      priority={true}
+      loader={customLoader}
+      src={Primarylogo}
+      alt="Loading..."
+      className="blinking-image"
+      width={250}
+      height={54}
+    />
       </div>
     );
   if (error) return <p>Error: {error.message}</p>;

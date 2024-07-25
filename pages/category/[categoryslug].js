@@ -9,6 +9,11 @@ import Music from "../../components/categoryMusic";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import { useDialog } from "../../components/DialogContext";
 import ExportedImage from "next-image-export-optimizer";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const SkeletonLoader = () => (
   // <div
@@ -83,10 +88,14 @@ const SkeletonLoader = () => (
   //   </div>
   // </div>
   <div className="spinner">
-    <ExportedImage
+    <Image
+      priority={true}
+      loader={customLoader}
       src={Primarylogo}
       alt="Loading..."
       className="blinking-image"
+      width={250}
+      height={54}
     />
   </div>
 );

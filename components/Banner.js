@@ -29,6 +29,10 @@ import Topheadlines from "./Topheadlines";
 import Ads from "./googleAds/Ads";
 import Image from "next/image";
 
+const customLoader = ({ src }) => {
+  return src;
+};
+
 const SkeletonLoader = () => (
   // <>
   //   <div
@@ -113,17 +117,17 @@ const SkeletonLoader = () => (
   //   </div>
   // </>
   <div className="spinner">
-    <ExportedImage
+    <Image
+      priority={true}
+      loader={customLoader}
       src={Primarylogo}
       alt="Loading..."
       className="blinking-image"
+      width={250}
+      height={54}
     />
   </div>
 );
-
-const customLoader = ({ src }) => {
-  return src;
-};
 
 const Banner = () => {
   const { bannerData, iconDataResult, dataIcon } = useDialog();

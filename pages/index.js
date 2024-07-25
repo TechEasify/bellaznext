@@ -18,9 +18,14 @@ import { GET_HOME_PAGE } from "../components/queries/Queries";
 import { useDialog } from "../components/DialogContext";
 import Primarylogo from "../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
+import Image from "next/image";
 
 const { publicRuntimeConfig } = getConfig();
 const { name } = publicRuntimeConfig.site;
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const SkeletonLoader = () => (
   // <>
@@ -104,10 +109,14 @@ const SkeletonLoader = () => (
   //   </div>
   // </>
   <div className="spinner">
-    <ExportedImage
+    <Image
+      priority={true}
+      loader={customLoader}
       src={Primarylogo}
       alt="Loading..."
       className="blinking-image"
+      width={250}
+      height={54}
     />
   </div>
 );

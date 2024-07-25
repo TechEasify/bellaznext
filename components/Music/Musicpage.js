@@ -148,9 +148,10 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                         passHref
                       >
                         {item?.featuredImage?.node?.sourceUrl && (
-                          <ExportedImage
-                            className="object-cover w-[357px] h-[261px]"
+                          <Image
                             priority={true}
+                            loader={customLoader}
+                            className="object-cover w-[357px] h-[261px]"
                             src={item?.featuredImage?.node?.sourceUrl}
                             alt="ferrari4"
                             width={357}

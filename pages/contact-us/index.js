@@ -164,10 +164,14 @@ function Index() {
       // </div>
       // </>
       <div className="spinner">
-        <ExportedImage
+        <Image
+          priority={true}
+          loader={customLoader}
           src={Primarylogo}
           alt="Loading..."
           className="blinking-image"
+          width={250}
+          height={54}
         />
       </div>
     );

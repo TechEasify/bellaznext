@@ -12,6 +12,11 @@ import { GET_NEWS_SECTION } from "../../components/queries/categoryQueries";
 import { useDialog } from "../../components/DialogContext";
 import ExportedImage from "next-image-export-optimizer";
 import Primarylogo from "../../public/images/Primarylogo.svg";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const SkeletonLoader = () => (
   // <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800">
@@ -52,11 +57,15 @@ const SkeletonLoader = () => (
   //   </div>
   // </div>
   <div className="spinner">
-        <ExportedImage
-          src={Primarylogo}
-          alt="Loading..."
-          className="blinking-image"
-        />
+        <Image
+      priority={true}
+      loader={customLoader}
+      src={Primarylogo}
+      alt="Loading..."
+      className="blinking-image"
+      width={250}
+      height={54}
+    />
       </div>
 );
 
