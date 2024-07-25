@@ -32,6 +32,10 @@ const GET_FOOTER_PAGE = gql`
         companyForeLink {
           url
         }
+        companyFive
+        companyFiveLink {
+          url
+        }
         footerBackgroundColor
         newsTitle
         newsFirst
@@ -71,7 +75,8 @@ const GET_FOOTER_PAGE = gql`
 `;
 
 const Footer = () => {
-  const { iconDataResult } = useDialog();
+  const { iconDataResult, dataIcon } = useDialog();
+  console.log(dataIcon, "iconDataResult dataNav");
   const router = useRouter();
   const {
     loading: loadingFooter,
@@ -127,7 +132,9 @@ const Footer = () => {
                     <ul className="text-white font-medium">
                       <li className="mb-4">
                         <Link
-                          href="/category/breaking-news"
+                          href={
+                            dataFooter?.menu?.footer?.newsFirstLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsFirst}
@@ -135,7 +142,10 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/politics"
+                          href={
+                            dataFooter?.menu?.footer?.newsSecondLinks?.url ??
+                            "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsSecond}
@@ -143,7 +153,9 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/jewish-news"
+                          href={
+                            dataFooter?.menu?.footer?.newsThirdLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsThird}
@@ -151,7 +163,9 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/insights"
+                          href={
+                            dataFooter?.menu?.footer?.newsForeLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsFore}
@@ -159,7 +173,9 @@ const Footer = () => {
                       </li>
                       <li className="mb-4">
                         <Link
-                          href="/category/music"
+                          href={
+                            dataFooter?.menu?.footer?.newsFiveLinks?.url ?? "/"
+                          }
                           className="hover:underline"
                         >
                           {dataFooter?.menu?.footer?.newsFive}
@@ -174,24 +190,59 @@ const Footer = () => {
                     </h2>
                     <ul className="text-white font-medium">
                       <li className="mb-4">
-                        <Link href="/contact-us" className="hover:underline">
+                        <Link
+                          href={
+                            dataFooter?.menu?.footer?.companyFirstLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataFooter?.menu?.footer?.companyFirst}
                         </Link>
                       </li>
                       <li className="mb-4">
-                        <Link href="/about" className="hover:underline">
-                          About us
+                        <Link
+                          href={
+                            dataFooter?.menu?.footer?.companySecondLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
+                          {dataFooter?.menu?.footer?.companySecond}
                         </Link>
                       </li>
                       <li className="mb-4">
-                        <Link href="/advertise" className="hover:underline">
+                        <Link
+                          href={
+                            dataFooter?.menu?.footer?.companyThirdLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataFooter?.menu?.footer?.companyThird}
                         </Link>
                       </li>
                       <li className="mb-4">
-                        <a href="#" className="hover:underline">
+                        <Link
+                          href={
+                            dataFooter?.menu?.footer?.companyForeLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
                           {dataFooter?.menu?.footer?.companyFore}
-                        </a>
+                        </Link>
+                      </li>
+                      <li className="mb-4">
+                        <Link
+                          href={
+                            dataFooter?.menu?.footer?.companyFiveLink?.url ??
+                            "/"
+                          }
+                          className="hover:underline"
+                        >
+                          {dataFooter?.menu?.footer?.companyFive}
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -282,45 +333,94 @@ const Footer = () => {
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   target="_blank"
                 >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 object-cover"
-                    src={Group}
-                    alt="Whatsapp Icon"
-                  />
+                  {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                    ?.sourceUrl && (
+                    <ExportedImage
+                      priority={true}
+                      className="h-8 w-8 object-cover"
+                      src={
+                        dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Whatsapp Icon"
+                      width={39.75}
+                      height={40}
+                    />
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   target="_blank"
                 >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 object-cover"
-                    src={Group1}
-                    alt="Facebook Icon"
-                  />
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <ExportedImage
+                      priority={true}
+                      className="h-8 w-8 object-cover"
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Facebook Icon"
+                      width={39.75}
+                      height={40}
+                    />
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   target="_blank"
                 >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 object-cover"
-                    src={Group2}
-                    alt="Instagram Icon"
-                  />
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <ExportedImage
+                      priority={true}
+                      className="h-8 w-8 object-cover"
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Instagram Icon"
+                      width={39.75}
+                      height={40}
+                    />
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   target="_blank"
                 >
-                  <ExportedImage
-                    priority={true}
-                    className="h-8 w-8 object-cover"
-                    src={Group3}
-                    alt="Twitter Icon"
-                  />
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <ExportedImage
+                      priority={true}
+                      className="h-8 w-8 object-cover"
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
+                      alt="Twitter Icon"
+                      width={39.75}
+                      height={40}
+                    />
+                  )}
+                </Link>
+                <Link
+                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  target="_blank"
+                >
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <ExportedImage
+                      priority={true}
+                      className="h-8 w-8 object-cover"
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Twitter Icon"
+                      width={39.75}
+                      height={40}
+                    />
+                  )}
                 </Link>
               </div>
               <p className="text-sm text-white font-semibold">
