@@ -84,6 +84,8 @@ const Footer = () => {
     data: dataFooter,
   } = useQuery(GET_FOOTER_PAGE);
 
+  console.log(dataFooter, "");
+
   return (
     <>
       <div className="footer bg-gray-800 text-white">
