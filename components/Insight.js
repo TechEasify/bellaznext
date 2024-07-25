@@ -24,203 +24,11 @@ import { gql, useQuery } from "@apollo/client";
 import { INSIGHTS_DATA } from "./queries/categoryQueries";
 import { useDialog } from "./DialogContext";
 import Newscard from "./News/Newscard";
+import Image from "next/image";
 
-// const IIHT_DATA = gql`
-// query NewQuery($first: Int = 50, $after: String = "", $before: String = "") {
-//   posts(first: $first, after: $after, before: $before) {
-//     nodes {
-//       excerpt
-//       link
-//       slug
-//       title
-//       uri
-//       featuredImage {
-//         node {
-//           altText
-//           srcSet
-//           sourceUrl
-//         }
-//         cursor
-//       }
-//     }
-//   }
-// }
-
-// `;
-
-// const Insight = ({ nodeByUri }) => {
-//   console.log(nodeByUri, "nodeByUri");
-//   const [numToShow, setNumToShow] = useState(1);
-
-//   const { loading, data, error } = useQuery(IIHT_DATA)
-//   console.log(data, "data");
-
-//   const handleViewMore = () => {
-//     setNumToShow(nodeByUri.posts.nodes.length);
-//   };
-//   return (
-//     <>
-//       {/* <Nav /> */}
-//       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
-//         <div className="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-6">
-//           <div className="w-full max-w-5xl mx-auto">
-//             {nodeByUri.posts.nodes.slice(0, numToShow).map(
-//               (item) => (
-//                 console.log(item.featuredImage.node.sourceUrl, "item Insights"),
-//                 (
-//                   <>
-//                     <div className="flex flex-col md:flex-row mb-5">
-//                       <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
-//                         <Link
-//                           href={{
-//                             pathname: `/news/${item.slug}`,
-//                           }}
-//                           passHref
-//                         >
-//                           <ExportedImage
-//                             priority={true}
-//                             src={item?.featuredImage?.node?.sourceUrl}
-//                             alt="ferrari4"
-//                             width={357}
-//                             height={261}
-//                             style={{ width: "357px", height: "261px" }}
-//                           />
-//                         </Link>
-//                       </div>
-//                       <div className="ml-0 md:ml-5 w-full md:w-3/5">
-//                         <p
-//                           className="text-base font-bold text-red-800"
-//                           style={{
-//                             // background: "rgb(198 40 40 / var(--tw-text-opacity))",
-//                             background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
-//                             color: "#fff",
-//                             padding: "0 10px",
-//                             width: "100px",
-//                             clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
-//                             fontSize: "12px",
-//                             fontWeight: 500,
-//                             letterSpacing: "2px",
-//                           }}
-//                         >
-//                           {nodeByUri.name}
-//                         </p>
-//                         <Link
-//                           href={{
-//                             pathname: `/news/${item.slug}`,
-//                           }}
-//                           passHref
-//                         >
-//                           <h5 className="text-[20px] text-black-900 font-bold">
-//                             {item.title}
-//                           </h5>
-//                         </Link>
-//                         <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
-//                           <span
-//                             className="text-[12px] font-extrabold mr-1"
-//                             style={{ color: "#40A6FB" }}
-//                           >
-//                             |
-//                           </span>
-//                           By
-//                           <span
-//                             className="font-extrabold ml-1"
-//                             style={{ color: "#40A6FB" }}
-//                           >
-//                             {item.author.node.name}
-//                             <span
-//                               className="text-[25px] font-extrabold mx-1"
-//                               style={{ color: "#40A6FB" }}
-//                             >
-//                               .
-//                             </span>
-//                           </span>
-//                           6 MIN READ
-//                         </p>
-//                         <p
-//                           className="text-[15px] text-base font-normal text-gray-600 mb-3"
-//                           dangerouslySetInnerHTML={{ __html: item.content }}
-//                         />
-//                       </div>
-//                     </div>
-//                     <hr className="my-5" />
-//                   </>
-//                 )
-//               )
-//             )}
-//             <button
-//               className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
-//               onClick={handleViewMore}
-//             >
-//               VIEW MORE
-//             </button>
-//           </div>
-
-//           <div className="w-full max-w-4xl mx-auto">
-//             {nodeByUri.categoryTamplate.insightTamplate
-//               .insightSidebarAdvertisementImage.sidebarAdImage.node
-//               .sourceUrl ? (
-//               <ExportedImage
-//                 className="mb-2 w-full h-auto max-h-96"
-//                 priority={true}
-//                 src={
-//                   nodeByUri.categoryTamplate.insightTamplate
-//                     .insightSidebarAdvertisementImage.sidebarAdImage.node
-//                     .sourceUrl
-//                 }
-//                 alt="Rectangle367"
-//                 width={297}
-//                 height={503}
-//                 style={{ width: "100%", height: "auto", maxHeight: "500px" }}
-//               />
-//             ) : (
-//               <Ads
-//                 className=""
-//                 style={{
-//                   display: "block",
-//                   width: "297px",
-//                   height: "503px",
-//                   margin: "0 auto",
-//                 }}
-//                 adClient="ca-pub-3209848804552918"
-//                 adSlot="9293720177"
-//               />
-//             )}
-//             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
-//             <hr
-//               className="text-red-800 my-3"
-//               style={{ height: "3px", background: "black" }}
-//             />
-//             <div className="flex justify-around mt-5 mb-8">
-//               <ExportedImage
-//                 src={Group}
-//                 alt="Partly Cloudy"
-//                 className="h-13 w-13"
-//               />
-//               <ExportedImage
-//                 src={Group1}
-//                 alt="Partly Cloudy"
-//                 className="h-13 w-13"
-//               />
-//               <ExportedImage
-//                 src={Group2}
-//                 alt="Partly Cloudy"
-//                 className="h-13 w-13"
-//               />
-//               <ExportedImage
-//                 src={Group3}
-//                 alt="Partly Cloudy"
-//                 className="h-13 w-13"
-//               />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//       {/* <Footer /> */}
-//     </>
-//   );
-// };
-
-// export default Insight;
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const SkeletonLoader = () => (
   <div
@@ -307,6 +115,7 @@ const Insight = () => {
     categoryLoading,
     nodeByUri,
     insightFetchMore,
+    dataIcon,
   } = useDialog();
 
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -505,9 +314,10 @@ const Insight = () => {
                     <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
                       <Link href={`/news/${post.slug}`} passHref>
                         {post?.featuredImage?.node?.sourceUrl && (
-                          <ExportedImage
-                            className="object-cover w-[357px] h-[261px]"
+                          <Image
                             priority={true}
+                            loader={customLoader}
+                            className="object-cover w-[357px] h-[261px]"
                             src={post?.featuredImage?.node?.sourceUrl}
                             alt={post.title}
                             width={357}
@@ -601,9 +411,10 @@ const Insight = () => {
                 passHref
                 target="_blank"
               >
-                <ExportedImage
-                  className="mb-2 w-full h-auto max-h-96"
+                <Image
                   priority={true}
+                  loader={customLoader}
+                  className="mb-2 w-full h-auto max-h-96"
                   src={
                     nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
                       ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
@@ -637,45 +448,87 @@ const Insight = () => {
               <Link
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group1}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group2}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
-                <ExportedImage
-                  src={Group3}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group4}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 mx-2 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
             </div>
             <p className="text-[15px] font-bold text-black-900 italic">
@@ -687,16 +540,38 @@ const Insight = () => {
             />
 
             <div className="flex mt-5 mb-8">
-              <ExportedImage
-                src={Frame208}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mx-2 object-cover"
-              />
-              <ExportedImage
-                src={Frame209}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mx-2 object-cover"
-              />
+            <Link
+                  href={
+                    iconDataResult?.menu?.followBelaazOnWhatsapp
+                      ?.whatsappStatusLink ?? "/"
+                  }
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={Frame208}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={101}
+                    height={32}
+                  />
+                </Link>
+                <Link
+                  href={
+                    iconDataResult?.menu?.followBelaazOnWhatsapp
+                      ?.whatsappGroupLink ?? "/"
+                  }
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={Frame209}
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={101}
+                    height={32}
+                  />
+                </Link>
             </div>
           </div>
         </div>

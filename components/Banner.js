@@ -126,7 +126,7 @@ const customLoader = ({ src }) => {
 };
 
 const Banner = () => {
-  const { bannerData, iconDataResult } = useDialog();
+  const { bannerData, iconDataResult, dataIcon } = useDialog();
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -457,8 +457,8 @@ const Banner = () => {
               >
                 <p className="text-white mt-4 font-medium">{date}</p>
                 <Image
-                priority={true}
-                loader={customLoader}
+                  priority={true}
+                  loader={customLoader}
                   src={jam_menu}
                   alt="Toggle"
                   className="h-6 w-6"
@@ -479,8 +479,8 @@ const Banner = () => {
                         {slot.time}
                       </p>
                       <Image
-                      priority={true}
-                      loader={customLoader}
+                        priority={true}
+                        loader={customLoader}
                         src={slot.image}
                         alt="Sun"
                         style={{ margin: "0 auto" }}
@@ -546,8 +546,8 @@ const Banner = () => {
                                   passHref
                                 >
                                   <Image
-                                  priority={true}
-                                  loader={customLoader}
+                                    priority={true}
+                                    loader={customLoader}
                                     src={itemdata.featuredImage.node.sourceUrl}
                                     alt={itemdata.title}
                                     className="object-cover w-[90px] h-[87px] mr-2"
@@ -580,8 +580,8 @@ const Banner = () => {
                     target="_blank"
                   >
                     <Image
-                    priority={true}
-                    loader={customLoader}
+                      priority={true}
+                      loader={customLoader}
                       src={
                         bannerData.page.homePage.topHeadlineSidebarFirstAd
                           .topHeadlineFirstAd.node.sourceUrl
@@ -653,8 +653,8 @@ const Banner = () => {
                                       passHref
                                     >
                                       <Image
-                                      priority={true}
-                                      loader={customLoader}
+                                        priority={true}
+                                        loader={customLoader}
                                         src={
                                           itemdata.featuredImage.node.sourceUrl
                                         }
@@ -690,8 +690,8 @@ const Banner = () => {
                     target="_blank"
                   >
                     <Image
-                    priority={true}
-                    loader={customLoader}
+                      priority={true}
+                      loader={customLoader}
                       src={
                         bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                           ?.topHeadlineSecondAdImage?.node?.sourceUrl
@@ -731,57 +731,95 @@ const Banner = () => {
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 >
-                  <Image
-                  priority={true}
-                  loader={customLoader}
-                    src={Group}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
-                  />
+                  {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                    ?.sourceUrl && (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      src={
+                        dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2 object-cover"
+                      width={39.99}
+                      height={40}
+                    />
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 >
-                  <Image
-                  priority={true}
-                  loader={customLoader}
-                    src={Group1}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
-                  />
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2 object-cover"
+                      width={39.99}
+                      height={40}
+                    />
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 >
-                  <Image
-                  priority={true}
-                  loader={customLoader}
-                    src={Group2}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
-                  />
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2 object-cover"
+                      width={39.99}
+                      height={40}
+                    />
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 >
-                  <Image
-                  priority={true}
-                  loader={customLoader}
-                    src={Group3}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
-                  />
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2 object-cover"
+                      width={39.99}
+                      height={40}
+                    />
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 >
-                  <Image
-                  priority={true}
-                  loader={customLoader}
-                    src={Group4}
-                    alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
-                  />
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
+                      alt="Partly Cloudy"
+                      className="h-13 w-13 mx-2 object-cover"
+                      width={39.99}
+                      height={40}
+                    />
+                  )}
                 </Link>
               </div>
 
@@ -801,11 +839,13 @@ const Banner = () => {
                   }
                 >
                   <Image
-                  priority={true}
-                  loader={customLoader}
+                    priority={true}
+                    loader={customLoader}
                     src={Frame208}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
+                    width={101}
+                    height={32}
                   />
                 </Link>
                 <Link
@@ -815,11 +855,13 @@ const Banner = () => {
                   }
                 >
                   <Image
-                  priority={true}
-                  loader={customLoader}
+                    priority={true}
+                    loader={customLoader}
                     src={Frame209}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
+                    width={101}
+                    height={32}
                   />
                 </Link>
               </div>

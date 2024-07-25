@@ -373,8 +373,8 @@ function News() {
                   )}
                   {/* <Responsivevoice nodeByUri={nodeByUri} /> */}
                   <p
-                    className="font-semibold mb-5 w-full md:w-[760px] mx-auto"
-                    style={{ color: "#2B2B2B" }}
+                    className="mb-5 w-full md:w-[760px] mx-auto"
+                    style={{ color: "#2B2B2B"}}
                     dangerouslySetInnerHTML={{
                       __html: newsData?.nodeByUri?.content,
                     }}

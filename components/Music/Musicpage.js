@@ -18,20 +18,22 @@ import Link from "next/link";
 import { useDialog } from "../DialogContext";
 import Ads from "../googleAds/Ads";
 import Newscard from "../News/Newscard";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   console.log(nodeByUri, "nodeByUri news");
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
-  const { iconDataResult } = useDialog();
+  const { iconDataResult, dataIcon } = useDialog();
 
   useEffect(() => {
-    if (
-      nodeByUri?.posts?.nodes
-    ) {
-      const initialPosts =
-      nodeByUri?.posts?.nodes
+    if (nodeByUri?.posts?.nodes) {
+      const initialPosts = nodeByUri?.posts?.nodes;
       setPosts(initialPosts);
       setCursor(nodeByUri.posts.pageInfo.endCursor);
       setHasNextPage(nodeByUri.posts.pageInfo.hasNextPage);
@@ -62,7 +64,6 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
       }
     }
   };
-  
 
   console.log(
     nodeByUri?.categoryTamplate?.selectYourTempleteType[0],
@@ -289,45 +290,87 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               <Link
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group1}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group2}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
-                <ExportedImage
-                  src={Group3}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
               >
-                <ExportedImage
-                  src={Group4}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 mx-2 object-cover"
-                />
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
+                    alt="Partly Cloudy"
+                    className="h-13 w-13 mx-2 object-cover"
+                    width={39.99}
+                    height={40}
+                  />
+                )}
               </Link>
             </div>
             <p className="text-[15px] font-bold text-black-900 italic">
@@ -339,16 +382,38 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             />
 
             <div className="flex mt-5 mb-8">
-              <ExportedImage
-                src={Frame208}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mx-2 object-cover"
-              />
-              <ExportedImage
-                src={Frame209}
-                alt="Partly Cloudy"
-                className="h-13 w-13 mx-2 object-cover"
-              />
+              <Link
+                href={
+                  iconDataResult?.menu?.followBelaazOnWhatsapp
+                    ?.whatsappStatusLink ?? "/"
+                }
+              >
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  src={Frame208}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13 mx-2 object-cover"
+                  width={101}
+                  height={32}
+                />
+              </Link>
+              <Link
+                href={
+                  iconDataResult?.menu?.followBelaazOnWhatsapp
+                    ?.whatsappGroupLink ?? "/"
+                }
+              >
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  src={Frame209}
+                  alt="Partly Cloudy"
+                  className="h-13 w-13 mx-2 object-cover"
+                  width={101}
+                  height={32}
+                />
+              </Link>
             </div>
           </div>
         </div>
