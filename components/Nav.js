@@ -228,10 +228,14 @@ const Nav = ({
 
   const handleSearch = (event) => {
     event.preventDefault();
+    
+    const searchWords = searchTerm.toLowerCase().split(' '); // Split the search term into words
   
     const post = searchData?.categories?.nodes
-      .flatMap((item) => item.posts.nodes)
-      .find((p) => p?.title?.toLowerCase() === searchTerm.toLowerCase());
+      .flatMap((item) => item.posts.nodes) // Flatten the array of arrays
+      .find((p) => 
+        searchWords.every(word => p?.title?.toLowerCase().includes(word)) // Check if every search word is included in the title
+      );
   
     if (post) {
       router.push(`/news/${post.slug}`);
