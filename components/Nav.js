@@ -824,6 +824,9 @@ const Nav = ({
           <nav
             className="mx-auto flex max-w-7xl items-center bg-black justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden w-full">
