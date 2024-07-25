@@ -74,6 +74,7 @@ export const GET_ICON_SECTION = gql`
           node {
             altText
             srcSet
+            sourceUrl
           }
         }
         facebookLink
@@ -81,6 +82,7 @@ export const GET_ICON_SECTION = gql`
           node {
             altText
             srcSet
+            sourceUrl
           }
         }
         instagramLink
@@ -88,6 +90,7 @@ export const GET_ICON_SECTION = gql`
           node {
             altText
             srcSet
+            sourceUrl
           }
         }
         twiterLink
@@ -95,6 +98,7 @@ export const GET_ICON_SECTION = gql`
           node {
             altText
             srcSet
+            sourceUrl
           }
         }
         whatsappLink
@@ -102,6 +106,7 @@ export const GET_ICON_SECTION = gql`
           node {
             altText
             srcSet
+            sourceUrl
           }
         }
         youtubeLink
