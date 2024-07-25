@@ -10,6 +10,7 @@ import {
   GET_SUBMENU_SECTION,
   GET_TESTIMONIAL_SECTION,
   GET_TOPHEADLINE_PAGE,
+  SEARCH_QUERY,
 } from "./queries/Queries";
 import {
   CATEGORY_BREAKING_QUERY,
@@ -39,6 +40,7 @@ export const DialogProvider = ({ children }) => {
   const [musicQuery, setMusicQuery] = useState(null);
   const [categoryInsightData, setCategoryInsightData] = useState(null);
   const [testimonialQuery, setTestimonialQuery] = useState(null);
+  const [searchData, setSearchData] = useState(null);
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -57,12 +59,18 @@ export const DialogProvider = ({ children }) => {
     error: errorNav,
     data: navDataResult,
   } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
-  
+
   const {
     loading: loadingIcon,
     error: errorIcon,
     data: iconDataResult,
   } = useQuery(GET_ICON_SECTION, { fetchPolicy: "cache-first" });
+
+  const {
+    loading: loadingSearch,
+    error: errorSearch,
+    data: navDataSearch,
+  } = useQuery(SEARCH_QUERY, { fetchPolicy: "cache-first" });
 
   const {
     data: categoryData,
@@ -74,7 +82,10 @@ export const DialogProvider = ({ children }) => {
     fetchPolicy: "cache-first",
   });
 
-  console.log(categoryData, "categoryDatacategoryDatacategoryDatacategoryDatacategoryData");
+  console.log(
+    categoryData,
+    "categoryDatacategoryDatacategoryDatacategoryDatacategoryData"
+  );
 
   const {
     loading: bannerLoading,
@@ -98,14 +109,14 @@ export const DialogProvider = ({ children }) => {
     data: categoryInsight,
     loading: categoryLoading,
     error: categoryError,
-    fetchMore: insightFetchMore
+    fetchMore: insightFetchMore,
   } = useQuery(INSIGHTS_DATA, { fetchPolicy: "cache-first" });
 
   const {
     data: testimonialData,
     loading: testimonialLoading,
-    error: testimonialError
-  } = useQuery(GET_TESTIMONIAL_SECTION, { fetchPolicy: "cache-first" })
+    error: testimonialError,
+  } = useQuery(GET_TESTIMONIAL_SECTION, { fetchPolicy: "cache-first" });
 
   console.log(testimonialData, "testimonialData");
 
@@ -117,7 +128,8 @@ export const DialogProvider = ({ children }) => {
     if (insightsData) setInsightsQuery(insightsData);
     if (musicData) setMusicQuery(musicData);
     if (categoryInsight) setCategoryInsightData(categoryInsight);
-    if (testimonialData) setTestimonialQuery(testimonialData)
+    if (testimonialData) setTestimonialQuery(testimonialData);
+    if (navDataSearch) setSearchData(navDataSearch);
   }, [
     navDataResult,
     iconDataResult,
@@ -126,7 +138,8 @@ export const DialogProvider = ({ children }) => {
     insightsData,
     testimonialData,
     musicData,
-    categoryInsight
+    categoryInsight,
+    navDataSearch,
   ]);
 
   console.log(nodeByUri, "nodeByUri");
@@ -169,7 +182,8 @@ export const DialogProvider = ({ children }) => {
         categoryInsightData,
         categoryLoading,
         categoryError,
-        testimonialQuery
+        testimonialQuery,
+        searchData
       }}
     >
       {children}

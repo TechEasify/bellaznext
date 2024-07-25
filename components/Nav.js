@@ -157,6 +157,7 @@ const Nav = ({
     dataIcon,
     iconDataResult,
     nodeByUri,
+    searchData,
   } = useDialog();
   const router = useRouter();
   console.log(router.asPath, "router");
@@ -166,7 +167,10 @@ const Nav = ({
   const [subscribe, setSubscribe] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [toggleDropdown1, setToggleDropdown1] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
   const isMobile = useIsMobile();
+
+  console.log(searchData, "searchData");
 
   useEffect(() => {
     if (dataNav && dataIcon) {
@@ -222,8 +226,21 @@ const Nav = ({
     });
   };
 
-  console.log(dataNav, "navDataResultnavDataResultnavDataResultnavDataResult");
-  console.log(nodeByUri?.nodeByUri, "nodeByUrinodeByUrinodeByUrinodeByUri");
+  const handleSearch = (event) => {
+    event.preventDefault();
+  
+    const post = searchData?.categories?.nodes
+      .flatMap((item) => item.posts.nodes)
+      .find((p) => p?.title?.toLowerCase() === searchTerm.toLowerCase());
+  
+    if (post) {
+      router.push(`/news/${post.slug}`);
+      console.log(post, "post search");
+    } else {
+      router.push("/404");
+    }
+  };
+
 
   return (
     <>
@@ -758,7 +775,7 @@ const Nav = ({
       )}
 
       {isDropdownSearch && (
-        <div className="bg-white font-medium inline-flex flex-col items-center md:flex-row md:ml-10 py-2">
+        <div className="bg-white flex justify-center w-full font-medium inline-flex flex-col items-center md:flex-row py-2">
           <label htmlFor="simple-search" className="sr-only">
             Search
           </label>
@@ -768,6 +785,8 @@ const Nav = ({
               id="simple-search"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Type to Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               required
               style={{ width: "166px" }} // Set width 166px for mobile view
             />
@@ -775,6 +794,7 @@ const Nav = ({
           <div className="flex md:ml-2">
             <button
               type="submit"
+              onClick={handleSearch}
               className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               style={{
                 paddingLeft: "20px",
@@ -822,7 +842,7 @@ const Nav = ({
           }}
         >
           <nav
-            className="mx-auto flex max-w-7xl items-center bg-black justify-around p-4 lg:px-6"
+            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
             style={{
               backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,

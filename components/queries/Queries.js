@@ -568,3 +568,19 @@ export const GET_TESTIMONIAL_SECTION = gql`
     }
   }
 `;
+
+export const SEARCH_QUERY = gql`
+  query MyQuery2 {
+    categories {
+      nodes {
+        name
+        posts {
+          nodes {
+            title
+            slug
+          }
+        }
+      }
+    }
+  }
+`;
