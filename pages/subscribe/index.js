@@ -39,6 +39,8 @@ function Index() {
             loading="lazy"
             alt="Primarylogo"
             className="max-h-32 object-fill hidden md:block"
+            width={250}
+            height={54}
           />
         </Link>
         <button

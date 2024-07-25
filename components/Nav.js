@@ -19,6 +19,11 @@ import Vector_yellow from "../public/images/Vector_yellow.svg";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -236,11 +241,14 @@ const Nav = ({
             <div className="flex justify-between items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
-                <ExportedImage
+                <Image
                   priority={true}
+                  loader={customLoader}
                   className="h-12 w-auto md:h-14 mr-5"
                   src={BELAAZICON}
                   alt="BELAAZICON"
+                  width={250}
+                  height={54}
                 />
               </Link>
               <button
@@ -257,18 +265,24 @@ const Nav = ({
                 className="flex mr-2 text-white font-bold items-center"
               >
                 {isContactHeaderVisible ? (
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-5 w-5 mx-2 object-cover"
                     src={closewhite}
                     alt="close Icon"
+                    width={21}
+                    height={18}
                   />
                 ) : (
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-5 w-5 mx-2 object-cover"
                     src={Frame283}
                     alt="Contact Toggle Icon"
+                    width={21}
+                    height={18}
                   />
                 )}
               </button>
@@ -289,11 +303,14 @@ const Nav = ({
             <div className="flex justify-between items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
-                <ExportedImage
+                <Image
                   priority={true}
-                  className="h-12 w-auto md:h-14 mr-5 object-cover"
+                  loader={customLoader}
+                  className="h-12 w-auto md:h-14 mr-5"
                   src={BELAAZICON}
                   alt="BELAAZICON"
+                  width={250}
+                  height={54}
                 />
               </Link>
               <Link href="/" className="flex text-white font-bold">
@@ -307,18 +324,24 @@ const Nav = ({
                 className="flex mr-2 text-white font-bold items-center"
               >
                 {isContactHeaderVisible ? (
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-5 w-5 mx-2 object-cover"
                     src={closewhite}
                     alt="close Icon"
+                    width={21}
+                    height={18}
                   />
                 ) : (
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-5 w-5 mx-2 object-cover"
                     src={Frame283}
                     alt="Contact Toggle Icon"
+                    width={21}
+                    height={18}
                   />
                 )}
               </button>
@@ -339,11 +362,14 @@ const Nav = ({
             <div className="flex justify-between lg:justify-start items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
-                <ExportedImage
+                <Image
                   priority={true}
+                  loader={customLoader}
                   className="h-12 w-auto md:h-14 object-cover"
                   src={Primarylogo}
                   alt="Primarylogo"
+                  width={250}
+                  height={54}
                 />
               </Link>
             </div>
@@ -361,18 +387,24 @@ const Nav = ({
                 className="flex text-white font-bold items-center lg:mr-2"
               >
                 {isContactHeaderVisible ? (
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-5 w-5 mx-2 object-cover"
                     src={closewhite}
                     alt="close Icon"
+                    width={21}
+                    height={18}
                   />
                 ) : (
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-5 w-5 mx-2 object-cover"
                     src={Frame283}
                     alt="Contact Toggle Icon"
+                    width={21}
+                    height={18}
                   />
                 )}
               </button>
@@ -469,11 +501,14 @@ const Nav = ({
             <div className="flex justify-between lg:justify-start items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
-                <ExportedImage
+                <Image
                   priority={true}
+                  loader={customLoader}
                   className="h-12 w-auto md:h-14 object-cover"
                   src={Primarylogo}
                   alt="Primarylogo"
+                  width={250}
+                  height={54}
                 />
               </Link>
               <div className="flex justify-center lg:justify-start items-center">
@@ -484,11 +519,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                 </div>
@@ -501,11 +539,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -517,11 +558,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <button
@@ -529,18 +573,24 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center ml-2"
                 >
                   {isContactHeaderVisible ? (
-                    <ExportedImage
+                    <Image
                       priority={true}
-                      className="h-5 w-5 mx-2"
+                      loader={customLoader}
+                      className="h-5 w-5 mx-2 object-cover"
                       src={closewhite}
                       alt="close Icon"
+                      width={21}
+                      height={18}
                     />
                   ) : (
-                    <ExportedImage
+                    <Image
                       priority={true}
-                      className="h-5 w-5 mx-2"
+                      loader={customLoader}
+                      className="h-5 w-5 mx-2 object-cover"
                       src={Frame283}
                       alt="Contact Toggle Icon"
+                      width={21}
+                      height={18}
                     />
                   )}
                 </button>
@@ -548,11 +598,14 @@ const Nav = ({
                   onClick={toggleDropdownSearch}
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-6 w-6 mx-2"
                     src={magnify}
                     alt="Search Icon"
+                    width={30}
+                    height={30}
                   />
                 </button>
               </div>
@@ -691,11 +744,14 @@ const Nav = ({
             onClick={() => setDropdownOpen(false)}
             className="px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
-            <ExportedImage
+            <Image
               priority={true}
+              loader={customLoader}
               className="h-4 w-4 mx-2"
               src={Closeicon}
               alt="Close Icon"
+              width={21}
+              height={18}
             />
           </button>
         </div>
@@ -733,11 +789,14 @@ const Nav = ({
               onClick={closeSearch}
               className="px-4 py-2 text-gray-800 hover:bg-gray-100 ml-2"
             >
-              <ExportedImage
+              <Image
                 priority={true}
+                loader={customLoader}
                 className="h-4 w-4 mx-2"
                 src={Closeicon}
                 alt="Close Icon"
+                width={21}
+                height={18}
               />
             </button>
           </div>
@@ -757,7 +816,8 @@ const Nav = ({
             zIndex: "9999999999",
             top: "80px",
             left: "0px",
-            background: "black",
+
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
             width: "100%",
           }}
         >
@@ -807,11 +867,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -821,11 +884,14 @@ const Nav = ({
                         className="flex text-white font-bold items-center mt-2"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -833,11 +899,14 @@ const Nav = ({
                         className="flex text-white font-bold items-center mt-2"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -845,11 +914,14 @@ const Nav = ({
                         className="flex text-white font-bold items-center mt-2"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -861,11 +933,14 @@ const Nav = ({
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -874,11 +949,14 @@ const Nav = ({
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -907,14 +985,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -922,7 +1001,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -930,70 +1009,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -1065,89 +1153,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -1170,6 +1262,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -1218,11 +1313,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -1236,11 +1334,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -1252,11 +1353,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -1268,11 +1372,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -1287,11 +1394,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -1303,11 +1413,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -1348,14 +1461,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -1363,7 +1477,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -1371,70 +1485,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -1485,89 +1608,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -1590,6 +1717,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -1638,11 +1768,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -1656,11 +1789,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -1672,11 +1808,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -1688,11 +1827,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -1707,11 +1849,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -1723,11 +1868,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -1768,14 +1916,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -1783,7 +1932,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -1791,70 +1940,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -1905,89 +2063,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -2010,6 +2172,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -2058,11 +2223,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -2076,11 +2244,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -2092,11 +2263,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -2108,11 +2282,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -2127,11 +2304,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -2143,11 +2323,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -2188,14 +2371,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -2203,7 +2387,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -2211,70 +2395,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -2325,89 +2518,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -2430,6 +2627,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -2478,11 +2678,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -2496,11 +2699,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -2512,11 +2718,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -2528,11 +2737,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -2547,11 +2759,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -2563,11 +2778,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -2608,14 +2826,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -2623,7 +2842,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -2631,70 +2850,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -2745,89 +2973,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -2850,6 +3082,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -2898,11 +3133,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -2916,11 +3154,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -2932,11 +3173,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -2948,11 +3192,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -2967,11 +3214,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -2983,11 +3233,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -3028,14 +3281,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -3043,7 +3297,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -3051,70 +3305,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -3165,89 +3428,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -3270,6 +3537,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -3318,11 +3588,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -3336,11 +3609,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -3352,11 +3628,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -3368,11 +3647,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -3387,11 +3669,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -3403,11 +3688,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -3448,14 +3736,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -3463,7 +3752,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -3471,70 +3760,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -3585,89 +3883,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -3690,6 +3992,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -3738,11 +4043,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -3756,11 +4064,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -3772,11 +4083,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -3788,11 +4102,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -3807,11 +4124,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -3823,11 +4143,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -3874,8 +4197,9 @@ const Nav = ({
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -3883,7 +4207,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -3891,70 +4215,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -4005,89 +4338,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>
@@ -4110,6 +4447,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -4158,11 +4498,14 @@ const Nav = ({
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-3 w-3 ml-2"
                       src={Vector1}
                       alt="Dropdown Icon"
+                      width={12}
+                      height={6}
                     />
                   </button>
                   {toggleDropdown1 && (
@@ -4176,11 +4519,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_red}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -4192,11 +4538,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector_yellow}
                           alt="Dropdown Icon"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -4208,11 +4557,14 @@ const Nav = ({
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="h-3 w-3 mx-2"
                           src={Vector}
                           alt="Dropdown Icon"
+                          width={12}
+                          height={6}
                         />
                       </Link>
                     </>
@@ -4227,11 +4579,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <Link
@@ -4243,11 +4598,14 @@ const Nav = ({
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
-                  <ExportedImage
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-3 w-3 mx-2"
                     src={Vector2}
                     alt="Dropdown Icon"
+                    width={12}
+                    height={6}
                   />
                 </Link>
                 <hr className="my-2" />
@@ -4288,14 +4646,15 @@ const Nav = ({
                 </div>
               </div>
               <div className="flex justify-end items-end mt-4">
-              <Link
+                <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -4303,7 +4662,7 @@ const Nav = ({
                       }
                       alt="Whatsapp Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
                   )}
                 </Link>
@@ -4311,70 +4670,79 @@ const Nav = ({
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && 
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Facebook Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Instagram Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      }
                       alt="Twitter Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
-                  {
-                    dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl &&
-                    <ExportedImage
+                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                    ?.sourceUrl && (
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 mx-1"
-                      src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                        ?.sourceUrl}
+                      src={
+                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl
+                      }
                       alt="Youtube Icon"
                       width={39.99}
-                    height={40}
+                      height={40}
                     />
-                  }
+                  )}
                 </Link>
               </div>
             </div>
@@ -4425,89 +4793,93 @@ const Nav = ({
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
+                    }
                     alt="Whatsapp Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
+                    }
                     alt="Facebook Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                  ?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                        ?.sourceUrl
+                    }
                     alt="Instagram Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                    }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
               <Link
                 href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {
-                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                  ?.sourceUrl &&
-                  <ExportedImage
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                  <Image
                     priority={true}
+                    loader={customLoader}
                     className="h-8 w-8 mx-1"
-                    src={dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                      ?.sourceUrl}
+                    src={
+                      dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
+                    }
                     alt="Youtube Icon"
                     width={39.99}
                     height={40}
                   />
-                }
+                )}
               </Link>
             </div>
           </nav>

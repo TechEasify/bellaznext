@@ -26,6 +26,11 @@ import jeuol4a_prince1 from "../public/images/jeuol4a_prince1.svg";
 import Musicpage from "./Music/Musicpage";
 import Ads from "./googleAds/Ads";
 import Link from "next/link";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 // Utility function to shuffle an array
 function shuffle(array) {
@@ -146,7 +151,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                       </div>
                       {post?.featuredImage?.node?.sourceUrl && (
                         <Link href={`/news/${post.slug}`}>
-                          <ExportedImage
+                          <Image
+                            priority={true}
+                            loader={customLoader}
                             src={post.featuredImage.node.sourceUrl}
                             alt="Partly Cloudy"
                             className="h-13 w-13 mr-2 object-cover w-[90px] h-[87px]"
@@ -164,20 +171,25 @@ function Music({ nodeByUri, fetchMore, loading }) {
 
             <div className="flex mt-5 mb-5">
               {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdImage?.node?.sourceUrl ? (
+                ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdImage
+                ?.node?.sourceUrl ? (
                 <Link
                   href={{
                     pathname:
-                    nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                    ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdLink,
+                      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                        ?.musicHeroSection?.musicHeroSidebarAds
+                        ?.musicSidebarAdLink,
                   }}
                   passHref
                   target="_blank"
                 >
-                  <ExportedImage
+                  <Image
+                    priority={true}
+                    loader={customLoader}
                     src={
                       nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-                ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdImage?.node?.sourceUrl
+                        ?.musicHeroSection?.musicHeroSidebarAds
+                        ?.musicSidebarAdImage?.node?.sourceUrl
                     }
                     alt="Partly Cloudy"
                     className="w-full mr-2 object-cover w-[316px] h-[336px]"
@@ -215,7 +227,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   <div className="mr-2 my-2">
                     {post?.featuredImage?.node?.sourceUrl && (
                       <Link href={`/news/${post.slug}`}>
-                        <ExportedImage
+                        <Image
+                          priority={true}
+                          loader={customLoader}
                           src={post?.featuredImage?.node?.sourceUrl}
                           alt="vladimirputin"
                           className="h-13 w-13 mr-2 mb-2 object-cover w-[317px] h-[194px]"
@@ -275,7 +289,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   </div>
                   {post?.featuredImage?.node?.sourceUrl && (
                     <Link href={`/news/${post.slug}`}>
-                      <ExportedImage
+                      <Image
+                        priority={true}
+                        loader={customLoader}
                         src={post?.featuredImage?.node?.sourceUrl}
                         alt="Partly Cloudy"
                         className="h-13 w-13 mr-2 object-cover w-[120px] h-[97px]"
@@ -300,9 +316,10 @@ function Music({ nodeByUri, fetchMore, loading }) {
               <div className="w-full max-w-5xl mx-auto relative">
                 {shuffledPost[0]?.featuredImage?.node?.sourceUrl && (
                   <Link href={`/news/${musicpost.slug}`}>
-                    <ExportedImage
-                      className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
+                    <Image
                       priority={true}
+                      loader={customLoader}
+                      className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
                       src={shuffledPost[0]?.featuredImage?.node?.sourceUrl}
                       width={910}
                       height={554}
@@ -370,9 +387,10 @@ function Music({ nodeByUri, fetchMore, loading }) {
                           >
                             {post?.featuredImage?.node?.sourceUrl && (
                               <Link href={`/news/${post.slug}`}>
-                                <ExportedImage
-                                  className="object-cover w-full h-[293px]"
+                                <Image
                                   priority={true}
+                                  loader={customLoader}
+                                  className="object-cover w-full h-[293px]"
                                   src={post?.featuredImage?.node?.sourceUrl}
                                   alt="vladimirputin"
                                   width={432}

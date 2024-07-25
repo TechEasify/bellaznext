@@ -7,6 +7,11 @@ import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import Testimonial from "../../components/Testimonial";
 import Primarylogo from "../../public/images/Primarylogo.svg";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const GET_ABOUT_PAGE = gql`
   query ($id: ID = "3082") {
@@ -192,9 +197,10 @@ function Index() {
                       className="mb-6 flex flex-col md:flex-row items-center"
                     >
                       {member.image && member.image.node.srcSet && (
-                        <ExportedImage
-                          className="h-[75px] mr-5 rounded-full w-[75px]"
+                        <Image
                           priority={true}
+                          loader={customLoader}
+                          className="h-[75px] mr-5 rounded-full w-[75px]"
                           src={
                             member.image.node.srcSet.split(",")[0].split(" ")[0]
                           }

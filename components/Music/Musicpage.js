@@ -91,7 +91,9 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             passHref
             target="_blank"
           >
-            <ExportedImage
+            <Image
+              priority={true}
+              loader={customLoader}
               style={{
                 width: "1134px",
                 height: "169px",
@@ -100,7 +102,6 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               }}
               width={1134}
               height={169}
-              priority={true}
               src={
                 nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
                   ?.adImage?.node?.sourceUrl
@@ -249,9 +250,10 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                   passHref
                   target="_blank"
                 >
-                  <ExportedImage
-                    className="mb-2 w-full h-auto max-h-96"
+                  <Image
                     priority={true}
+                    loader={customLoader}
+                    className="mb-2 w-full h-auto max-h-96"
                     src={
                       nodeByUri?.categoryTamplate?.musicTemplete
                         ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl

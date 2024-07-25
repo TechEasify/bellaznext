@@ -10,6 +10,11 @@ import imgbin_whatsapp from "../public/images/imgbin_whatsapp.svg";
 import { gql, useQuery } from "@apollo/client";
 import { useDialog } from "./DialogContext";
 import { useRouter } from "next/router";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const GET_FOOTER_PAGE = gql`
   query footer($id: ID = "229") {
@@ -97,8 +102,9 @@ const Footer = () => {
                 style={{ border: "1px solid #25D366" }}
               >
                 Status
-                <ExportedImage
+                <Image
                   priority={true}
+                  loader={customLoader}
                   className="ml-2 h-4 w-4"
                   src={imgbin_whatsapp}
                   alt="Whatsapp Icon"
@@ -111,8 +117,9 @@ const Footer = () => {
                 style={{ border: "1px solid #25D366" }}
               >
                 Group
-                <ExportedImage
+                <Image
                   priority={true}
+                  loader={customLoader}
                   className="ml-2 h-4 w-4"
                   src={imgbin_whatsapp}
                   alt="Whatsapp Icon"
@@ -319,10 +326,14 @@ const Footer = () => {
             {/* Logo Section */}
             <div className="flex items-center space-x-4">
               <Link href={"/"}>
-                <ExportedImage
+                <Image
+                  priority={true}
+                  loader={customLoader}
                   className="h-12 w-auto"
                   src={Primarylogo}
-                  alt="Manipal University Jaipur logo - IIHT Surat"
+                  alt="Belaaz logo"
+                  width={250}
+                  height={54}
                 />
               </Link>
             </div>
@@ -335,8 +346,9 @@ const Footer = () => {
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 object-cover"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -354,8 +366,9 @@ const Footer = () => {
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 object-cover"
                       src={
                         dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -373,8 +386,9 @@ const Footer = () => {
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 object-cover"
                       src={
                         dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -391,8 +405,9 @@ const Footer = () => {
                   target="_blank"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 object-cover"
                       src={
                         dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
@@ -409,8 +424,9 @@ const Footer = () => {
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
                     ?.sourceUrl && (
-                    <ExportedImage
+                    <Image
                       priority={true}
+                      loader={customLoader}
                       className="h-8 w-8 object-cover"
                       src={
                         dataIcon?.menu?.socialIcons?.youtubeIcon?.node

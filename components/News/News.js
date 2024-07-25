@@ -17,6 +17,7 @@ import Newscard from "./Newscard";
 import Ads from "../googleAds/Ads";
 import Link from "next/link";
 import { useDialog } from "../DialogContext";
+import Image from "next/image";
 
 const customLoader = ({ src }) => {
   return src;
@@ -177,9 +178,10 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                         passHref
                       >
                         {item?.featuredImage?.node?.sourceUrl && (
-                          <ExportedImage
-                            className="object-cover w-[357px] h-[261px]"
+                          <Image
                             priority={true}
+                            loader={customLoader}
+                            className="object-cover w-[357px] h-[261px]"
                             src={item?.featuredImage?.node?.sourceUrl}
                             alt={item.title}
                             width={357}
@@ -415,9 +417,10 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
                 passHref
                 target="_blank"
               >
-                <ExportedImage
+                <Image
+                            priority={true}
+                            loader={customLoader}
                   className="mb-2 w-full h-auto max-h-96"
-                  priority={true}
                   src={
                     categoryTamplate?.musicTemplete?.musicAllPostsSidebar
                       ?.sidebarAdImage?.node?.sourceUrl ||
@@ -450,7 +453,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-            <Link
+              <Link
                 href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -545,7 +548,7 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
             />
 
             <div className="flex mt-5 mb-8">
-            <Link
+              <Link
                 href={
                   iconDataResult?.menu?.followBelaazOnWhatsapp
                     ?.whatsappStatusLink ?? "/"

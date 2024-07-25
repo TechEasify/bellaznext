@@ -2,6 +2,11 @@ import ExportedImage from "next-image-export-optimizer";
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const GET_CARD_SECTION = gql`
   query HomePage($id: ID = "745") {
@@ -189,7 +194,9 @@ const Newscard = ({ nodeByUri }) => {
                       {item?.posts?.nodes[0]?.featuredImage?.node
                         ?.sourceUrl && (
                         <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
-                          <ExportedImage
+                          <Image
+                            priority={true}
+                            loader={customLoader}
                             src={
                               item?.posts?.nodes[0]?.featuredImage?.node
                                 ?.sourceUrl

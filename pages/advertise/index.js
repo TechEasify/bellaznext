@@ -14,7 +14,11 @@ import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import Testimonial from "../../components/Testimonial";
 import Primarylogo from "../../public/images/Primarylogo.svg";
+import Image from "next/image";
 
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const GET_ADVERTISE_PAGE = gql`
   query ($id: ID = "3114") {
@@ -242,8 +246,9 @@ function Index() {
             <p className="text-[18px] text-center text-base font-semibold text-gray-600">
               SHARE
             </p>
-            <ExportedImage
-              priority={true}
+            <Image
+                          priority={true}
+                          loader={customLoader}
               width={70}
               height={70}
               className="h-5 w-5 cursor-pointer"
@@ -253,10 +258,11 @@ function Index() {
                 (window.location.href = data.page.advertise.share.iconFirst)
               }
             />
-            <ExportedImage
+            <Image
+                          priority={true}
+                          loader={customLoader}
               width={70}
               height={70}
-              priority={true}
               className="h-5 w-5 cursor-pointer"
               src={email}
               alt="Email Icon"
@@ -269,10 +275,11 @@ function Index() {
             <p className="text-[18px] text-center text-base font-semibold text-gray-600">
               FOLLOW
             </p>
-            <ExportedImage
+            <Image
+                          priority={true}
+                          loader={customLoader}
               width={70}
               height={70}
-              priority={true}
               className="h-5 w-5 cursor-pointer"
               src={SocialIcons1}
               alt="Facebook Icon"
@@ -280,10 +287,11 @@ function Index() {
                 (window.location.href = data.page.advertise.follow.facebookLink)
               }
             />
-            <ExportedImage
+            <Image
+                          priority={true}
+                          loader={customLoader}
               width={70}
               height={70}
-              priority={true}
               className="h-5 w-5 cursor-pointer"
               src={SocialIcons}
               alt="Twitter Icon"
@@ -291,10 +299,11 @@ function Index() {
                 (window.location.href = data.page.advertise.follow.twiterLink)
               }
             />
-            <ExportedImage
+            <Image
+                          priority={true}
+                          loader={customLoader}
               width={70}
               height={70}
-              priority={true}
               className="h-5 w-5 cursor-pointer"
               src={SocialIcons2}
               alt="Instagram Icon"
@@ -315,13 +324,14 @@ function Index() {
         </div>
       </div>
       <div className="px-4 py-16" style={{ background: "#002D73" }}>
-        <ExportedImage
+        <Image
+                          priority={true}
+                          loader={customLoader}
           style={{ margin: "0 auto" }}
-          priority={true}
           src={PrimaryBlue2}
           alt="PrimaryBlue2"
-          width="80%"
-          height="auto"
+          width={600}
+          height={128}
         />
       </div>
       <div className="flex justify-center items-center mt-10">
@@ -332,9 +342,10 @@ function Index() {
       <hr className="border-gray-300" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
         {data.page.advertise.clientImages.imageA && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageA.node.srcSet
             )}
@@ -344,9 +355,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageB && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageB.node.srcSet
             )}
@@ -356,9 +368,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageC && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageC.node.srcSet
             )}
@@ -368,9 +381,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageD && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageD.node.srcSet
             )}
@@ -383,9 +397,10 @@ function Index() {
       <hr className="border-gray-300 my-10" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
         {data.page.advertise.clientImages.imageE && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageE.node.srcSet
             )}
@@ -395,9 +410,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageF && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageF.node.srcSet
             )}
@@ -407,9 +423,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageG && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageG.node.srcSet
             )}
@@ -419,9 +436,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageH && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="h-25 mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageH.node.srcSet
             )}
@@ -434,9 +452,10 @@ function Index() {
       <hr className="border-gray-300 my-10" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
         {data.page.advertise.clientImages.imageI && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageI.node.srcSet
             )}
@@ -446,9 +465,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageJ && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageJ.node.srcSet
             )}
@@ -458,9 +478,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageK && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageK.node.srcSet
             )}
@@ -470,9 +491,10 @@ function Index() {
           />
         )}
         {data.page.advertise.clientImages.imageL && (
-          <ExportedImage
+          <Image
+          priority={true}
+          loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
-            priority={true}
             src={getImageSrc(
               data.page.advertise.clientImages.imageL.node.srcSet
             )}
@@ -508,12 +530,12 @@ function Index() {
                 <Link href={`mailto:${data.page.advertise.cta.emailAddress}`}>
                   <span className="flex flex-col md:flex-row items-center text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
                     {data.page.advertise.cta.emailAddress}
-                    <ExportedImage
+                    {/* <ExportedImage
                       className="h-8 md:h-10 ml-2"
                       priority={true}
                       src={arrowtop_right_thick}
                       alt="arrowtop_right_thick"
-                    />
+                    /> */}
                   </span>
                 </Link>
               </div>

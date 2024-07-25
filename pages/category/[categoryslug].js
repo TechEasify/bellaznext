@@ -1,5 +1,4 @@
 // [categoryslug].js
-import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Nav from "../../components/Nav";
@@ -7,10 +6,8 @@ import Footer from "../../components/Footer";
 import Link from "next/link";
 import Insight from "../../components/Insight";
 import Music from "../../components/categoryMusic";
-import { useEffect, useState } from "react";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import { useDialog } from "../../components/DialogContext";
-import { CATEGORY_BREAKING_QUERY } from "../../components/queries/categoryQueries";
 import ExportedImage from "next-image-export-optimizer";
 
 const SkeletonLoader = () => (

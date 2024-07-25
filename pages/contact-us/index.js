@@ -8,6 +8,11 @@ import whatsapp1 from "../../public/images/whatsapp1.svg";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import Primarylogo from "../../public/images/Primarylogo.svg";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const GET_CONTACT_PAGE = gql`
   query AboutPage($id: ID = "3163") {
@@ -256,11 +261,14 @@ function Index() {
                 data.page.contactUs.advertise.description}
             </p>
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-              <ExportedImage
+              <Image
                 priority={true}
+                loader={customLoader}
                 className="h-5 w-5 mr-2 object-cover"
                 src={emailoutline}
                 alt="emailoutline"
+                width={23}
+                height={23}
               />
               <span className="mr-2 text-black">Email :</span>
               <Link
@@ -272,11 +280,14 @@ function Index() {
               </Link>
             </div>
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-              <ExportedImage
+              <Image
                 priority={true}
+                loader={customLoader}
                 className="h-5 w-5 mr-2 object-cover"
                 src={whatsapp1}
                 alt="whatsapp1"
+                width={23}
+                height={23}
               />
               <span className="mr-2 text-black">WhatsApp :</span>
               <Link
@@ -336,11 +347,14 @@ function Index() {
                 data.page.contactUs.submitNewsTip.description}
             </p>
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-              <ExportedImage
+              <Image
                 priority={true}
+                loader={customLoader}
                 className="h-5 w-5 mr-2 object-cover"
                 src={emailoutline}
                 alt="emailoutline"
+                width={23}
+                height={23}
               />
               <span className="mr-2 text-black">Email :</span>
               <Link
@@ -352,11 +366,14 @@ function Index() {
               </Link>
             </div>
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-              <ExportedImage
+              <Image
                 priority={true}
+                loader={customLoader}
                 className="h-5 w-5 mr-2 object-cover"
                 src={whatsapp1}
                 alt="whatsapp1"
+                width={23}
+                height={23}
               />
               <span className="mr-2 text-black">WhatsApp :</span>
               <Link
@@ -410,11 +427,14 @@ function Index() {
                 data.page.contactUs.noteToEditor.description}
             </p>
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-              <ExportedImage
+              <Image
                 priority={true}
+                loader={customLoader}
                 className="h-5 w-5 mr-2 object-cover"
                 src={emailoutline}
                 alt="emailoutline"
+                width={23}
+                height={23}
               />
               <span className="mr-2 text-black">Email :</span>
               <Link
@@ -426,11 +446,14 @@ function Index() {
               </Link>
             </div>
             <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-              <ExportedImage
+              <Image
                 priority={true}
+                loader={customLoader}
                 className="h-5 w-5 mr-2 object-cover"
                 src={whatsapp1}
                 alt="whatsapp1"
+                width={23}
+                height={23}
               />
               <span className="mr-2 text-black">WhatsApp :</span>
               <Link

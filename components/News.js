@@ -35,6 +35,11 @@ import {
   WhatsappShareButton,
 } from "react-share";
 import { GET_NEWS_SECTION } from "./queries/categoryQueries";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const GET_TOPHEADLINE_PAGE = gql`
   query HomePage($id: ID = "745") {
@@ -177,6 +182,7 @@ function News() {
     nodeByUri,
     setNodeByUri,
     dataNav,
+    dataIcon,
   } = useDialog();
   const router = useRouter();
   const { slug } = router.query;
@@ -253,7 +259,7 @@ function News() {
           <div className="w-full px-4 mx-auto flex bg-black items-center justify-center flex-wrap sm:flex-nowrap">
             <p
               className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
-              onClick={() =>  
+              onClick={() =>
                 dataNav?.menu?.header?.topFirstLinks?.url &&
                 router.push(dataNav.menu.header.topFirstLinks.url)
               }
@@ -362,9 +368,10 @@ function News() {
                     </p>
                   </div>
                   {newsData?.nodeByUri?.featuredImage?.node?.sourceUrl && (
-                    <ExportedImage
-                      className="w-full mb-2 mx-auto w-[760px] h-[498px] object-cover"
+                    <Image
                       priority={true}
+                      loader={customLoader}
+                      className="w-full mb-2 mx-auto w-[760px] h-[498px] object-cover"
                       src={newsData?.nodeByUri?.featuredImage?.node?.sourceUrl}
                       alt="article"
                       width={760}
@@ -374,7 +381,7 @@ function News() {
                   {/* <Responsivevoice nodeByUri={nodeByUri} /> */}
                   <p
                     className="mb-5 w-full md:w-[760px] mx-auto"
-                    style={{ color: "#2B2B2B"}}
+                    style={{ color: "#2B2B2B" }}
                     dangerouslySetInnerHTML={{
                       __html: newsData?.nodeByUri?.content,
                     }}
@@ -427,7 +434,9 @@ function News() {
                                     pathname: `/news/${post.slug}`,
                                   }}
                                 >
-                                  <ExportedImage
+                                  <Image
+                                    priority={true}
+                                    loader={customLoader}
                                     src={post.featuredImage.node.sourceUrl}
                                     alt="Partly Cloudy"
                                     className="h-[70px] w-[70px] md:h-[87px] md:w-[90px] object-cover mr-2"
@@ -474,7 +483,9 @@ function News() {
                                 </Link>
                               </div>
                               {post?.featuredImage?.node?.sourceUrl && (
-                                <ExportedImage
+                                <Image
+                                  priority={true}
+                                  loader={customLoader}
                                   src={post?.featuredImage?.node?.sourceUrl}
                                   alt="Partly Cloudy"
                                   className="object-cover w-[70px] h-[70px] md:w-[90px] md:h-[87px] mr-2"
@@ -494,11 +505,14 @@ function News() {
                   className="max-w-custom block md:hidden lg:hidden xl:block"
                   style={{ maxWidth: "500px" }}
                 >
-                  <ExportedImage
-                    className="mb-2 object-cover"
+                  <Image
                     priority={true}
+                    loader={customLoader}
+                    className="mb-2 object-cover"
                     src={Screenshot202}
                     alt="Screenshot202"
+                    width={251}
+                    height={496}
                   />
                   <div className="w-full max-w-3xl mx-auto">
                     <p className="text-[16px] font-bold text-black-900 italic">
@@ -540,7 +554,9 @@ function News() {
                                     </Link>
                                   </div>
                                   {itemdata?.featuredImage?.node?.sourceUrl ? (
-                                    <ExportedImage
+                                    <Image
+                                      priority={true}
+                                      loader={customLoader}
                                       src={
                                         itemdata.featuredImage.node.sourceUrl
                                       }
@@ -573,22 +589,42 @@ function News() {
                           iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"
                         }
                       >
-                        <ExportedImage
-                          src={Group}
-                          alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2 object-cover"
-                        />
+                        {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                          ?.sourceUrl && (
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                                ?.sourceUrl
+                            }
+                            alt="Partly Cloudy"
+                            className="h-13 w-13 mx-2 object-cover"
+                            width={39.99}
+                            height={40}
+                          />
+                        )}
                       </Link>
                       <Link
                         href={
                           iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"
                         }
                       >
-                        <ExportedImage
-                          src={Group1}
-                          alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2 object-cover"
-                        />
+                        {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                          ?.sourceUrl && (
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                                ?.sourceUrl
+                            }
+                            alt="Partly Cloudy"
+                            className="h-13 w-13 mx-2 object-cover"
+                            width={39.99}
+                            height={40}
+                          />
+                        )}
                       </Link>
                       <Link
                         href={
@@ -596,21 +632,38 @@ function News() {
                           "/"
                         }
                       >
-                        <ExportedImage
-                          src={Group2}
-                          alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2 object-cover"
-                        />
+                        {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                          ?.sourceUrl && (
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                                ?.sourceUrl
+                            }
+                            alt="Partly Cloudy"
+                            className="h-13 w-13 mx-2 object-cover"
+                            width={39.99}
+                            height={40}
+                          />
+                        )}
                       </Link>
                       <Link
                         href={
                           iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"
                         }
                       >
-                        <ExportedImage
-                          src={Group3}
+                        <Image
+                          priority={true}
+                          loader={customLoader}
+                          src={
+                            dataIcon?.menu?.socialIcons?.twiterIcon?.node
+                              ?.sourceUrl
+                          }
                           alt="Partly Cloudy"
                           className="h-13 w-13 mx-2 object-cover"
+                          width={39.99}
+                          height={40}
                         />
                       </Link>
                       <Link
@@ -618,11 +671,21 @@ function News() {
                           iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"
                         }
                       >
-                        <ExportedImage
-                          src={Group4}
-                          alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2 object-cover"
-                        />
+                        {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                          ?.sourceUrl && (
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                                ?.sourceUrl
+                            }
+                            alt="Partly Cloudy"
+                            className="h-13 w-13 mx-2 object-cover"
+                            width={39.99}
+                            height={40}
+                          />
+                        )}
                       </Link>
                     </div>
                     <p className="text-[15px] font-bold text-black-900 italic">
@@ -633,16 +696,38 @@ function News() {
                       style={{ height: "7px", background: "#CE3A42" }}
                     />
                     <div className="flex mt-5 mb-8">
-                      <ExportedImage
-                        src={Frame208}
-                        alt="Partly Cloudy"
-                        className="h-13 w-13 mx-2 object-cover"
-                      />
-                      <ExportedImage
-                        src={Frame209}
-                        alt="Partly Cloudy"
-                        className="h-13 w-13 mx-2 object-cover"
-                      />
+                      <Link
+                        href={
+                          iconDataResult?.menu?.followBelaazOnWhatsapp
+                            ?.whatsappStatusLink ?? "/"
+                        }
+                      >
+                        <Image
+                          priority={true}
+                          loader={customLoader}
+                          src={Frame208}
+                          alt="Partly Cloudy"
+                          className="h-13 w-13 mx-2 object-cover"
+                          width={101}
+                          height={32}
+                        />
+                      </Link>
+                      <Link
+                        href={
+                          iconDataResult?.menu?.followBelaazOnWhatsapp
+                            ?.whatsappGroupLink ?? "/"
+                        }
+                      >
+                        <Image
+                          priority={true}
+                          loader={customLoader}
+                          src={Frame209}
+                          alt="Partly Cloudy"
+                          className="h-13 w-13 mx-2 object-cover"
+                          width={101}
+                          height={32}
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>

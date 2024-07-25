@@ -8,8 +8,13 @@ import { useDialog } from "./DialogContext";
 import Primarylogo from "../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
 import Script from "next/script";
+import Image from "next/image";
 
 const { publicRuntimeConfig } = getConfig();
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const Layout = ({ children, ...customMeta }) => {
   const router = useRouter();
@@ -110,11 +115,15 @@ const Layout = ({ children, ...customMeta }) => {
                     className="relative transform overflow-hidden rounded-lg bg-slate-200 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-6xl"
                     style={{ background: "#002D73", height: "500px" }}
                   >
-                    <ExportedImage
+                    <Image
+                      priority={true}
+                      loader={customLoader}
                       src={Primarylogo}
                       loading="lazy"
                       alt="Primarylogo"
                       className="max-h-max object-fill block md:hidden w-full"
+                      width={250}
+                      height={54}
                     />
                     <button
                       type="button"
