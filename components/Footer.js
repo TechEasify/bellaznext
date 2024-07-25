@@ -416,7 +416,7 @@ const Footer = () => {
                         dataIcon?.menu?.socialIcons?.youtubeIcon?.node
                           ?.sourceUrl
                       }
-                      alt="Twitter Icon"
+                      alt="Youtube Icon"
                       width={39.75}
                       height={40}
                     />

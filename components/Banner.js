@@ -27,6 +27,7 @@ import axios from "axios";
 import Link from "next/link";
 import Topheadlines from "./Topheadlines";
 import Ads from "./googleAds/Ads";
+import Image from "next/image";
 
 const SkeletonLoader = () => (
   // <>
@@ -119,6 +120,10 @@ const SkeletonLoader = () => (
     />
   </div>
 );
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const Banner = () => {
   const { bannerData, iconDataResult } = useDialog();
@@ -337,13 +342,15 @@ const Banner = () => {
                         }}
                         passHref
                       >
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="object-cover"
                           src={post?.featuredImage?.node?.sourceUrl}
                           alt={post?.featuredImage?.node?.altText}
                           width={150}
                           height={150}
+                          unoptimized
                           style={{
                             width: "100%",
                             height: "auto",
@@ -387,14 +394,18 @@ const Banner = () => {
                     {description.charAt(0).toUpperCase() + description.slice(1)}
                   </h5>
                 </div>
-                <ExportedImage
+                <Image
+                  priority={true}
+                  loader={customLoader}
                   src={sun}
                   alt="Partly Cloudy"
                   className="h-13 w-13 mr-2 object-cover"
                 />
               </div>
               <div className="flex items-center">
-                <ExportedImage
+                <Image
+                  priority={true}
+                  loader={customLoader}
                   src={location}
                   alt="Location"
                   className="h-5 w-5 mr-2 object-cover"
@@ -413,13 +424,17 @@ const Banner = () => {
                 <p className="font-bold text-white mr-px text-base">
                   {tempF}°F
                 </p>
-                <ExportedImage
+                <Image
+                  priority={true}
+                  loader={customLoader}
                   src={mdi_weather}
                   alt="Cloud"
                   className="h-4 w-4 object-cover"
                 />
                 <p className="font-xs text-white text-sm">{clouds.all}%</p>
-                <ExportedImage
+                <Image
+                  priority={true}
+                  loader={customLoader}
                   src={typcn_weather}
                   alt="Cloud"
                   className="h-4 w-4 object-cover"
@@ -427,7 +442,9 @@ const Banner = () => {
                 <p className="font-xs text-white text-sm">
                   {(main.feels_like - 273.15).toFixed(1)}°C
                 </p>
-                <ExportedImage
+                <Image
+                  priority={true}
+                  loader={customLoader}
                   src={wind_weather}
                   alt="Wind"
                   className="h-4 w-4"
@@ -439,7 +456,9 @@ const Banner = () => {
                 style={{ marginBottom: "30px" }}
               >
                 <p className="text-white mt-4 font-medium">{date}</p>
-                <ExportedImage
+                <Image
+                priority={true}
+                loader={customLoader}
                   src={jam_menu}
                   alt="Toggle"
                   className="h-6 w-6"
@@ -459,7 +478,9 @@ const Banner = () => {
                       <p className="text-xs text-white mr-2 mb-1">
                         {slot.time}
                       </p>
-                      <ExportedImage
+                      <Image
+                      priority={true}
+                      loader={customLoader}
                         src={slot.image}
                         alt="Sun"
                         style={{ margin: "0 auto" }}
@@ -524,7 +545,9 @@ const Banner = () => {
                                   }}
                                   passHref
                                 >
-                                  <ExportedImage
+                                  <Image
+                                  priority={true}
+                                  loader={customLoader}
                                     src={itemdata.featuredImage.node.sourceUrl}
                                     alt={itemdata.title}
                                     className="object-cover w-[90px] h-[87px] mr-2"
@@ -556,7 +579,9 @@ const Banner = () => {
                     passHref
                     target="_blank"
                   >
-                    <ExportedImage
+                    <Image
+                    priority={true}
+                    loader={customLoader}
                       src={
                         bannerData.page.homePage.topHeadlineSidebarFirstAd
                           .topHeadlineFirstAd.node.sourceUrl
@@ -627,7 +652,9 @@ const Banner = () => {
                                       }}
                                       passHref
                                     >
-                                      <ExportedImage
+                                      <Image
+                                      priority={true}
+                                      loader={customLoader}
                                         src={
                                           itemdata.featuredImage.node.sourceUrl
                                         }
@@ -662,7 +689,9 @@ const Banner = () => {
                     passHref
                     target="_blank"
                   >
-                    <ExportedImage
+                    <Image
+                    priority={true}
+                    loader={customLoader}
                       src={
                         bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                           ?.topHeadlineSecondAdImage?.node?.sourceUrl
@@ -702,7 +731,9 @@ const Banner = () => {
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
                 >
-                  <ExportedImage
+                  <Image
+                  priority={true}
+                  loader={customLoader}
                     src={Group}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
@@ -711,7 +742,9 @@ const Banner = () => {
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
                 >
-                  <ExportedImage
+                  <Image
+                  priority={true}
+                  loader={customLoader}
                     src={Group1}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
@@ -720,7 +753,9 @@ const Banner = () => {
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
                 >
-                  <ExportedImage
+                  <Image
+                  priority={true}
+                  loader={customLoader}
                     src={Group2}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
@@ -729,7 +764,9 @@ const Banner = () => {
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
                 >
-                  <ExportedImage
+                  <Image
+                  priority={true}
+                  loader={customLoader}
                     src={Group3}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
@@ -738,7 +775,9 @@ const Banner = () => {
                 <Link
                   href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
                 >
-                  <ExportedImage
+                  <Image
+                  priority={true}
+                  loader={customLoader}
                     src={Group4}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
@@ -761,7 +800,9 @@ const Banner = () => {
                       ?.whatsappStatusLink ?? "/"
                   }
                 >
-                  <ExportedImage
+                  <Image
+                  priority={true}
+                  loader={customLoader}
                     src={Frame208}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
@@ -773,7 +814,9 @@ const Banner = () => {
                       ?.whatsappGroupLink ?? "/"
                   }
                 >
-                  <ExportedImage
+                  <Image
+                  priority={true}
+                  loader={customLoader}
                     src={Frame209}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover"
