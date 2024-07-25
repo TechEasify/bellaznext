@@ -3,6 +3,11 @@ import React from "react";
 import Ads from "./googleAds/Ads";
 import { useDialog } from "./DialogContext";
 import Link from "next/link";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const PlacementPartners = () => {
   const { musicQuery } = useDialog();
@@ -25,11 +30,12 @@ const PlacementPartners = () => {
           passHref
           target="_blank"
         >
-          <ExportedImage
+          <Image
+                        priority={true}
+                        loader={customLoader}
             style={{
               margin: "0 auto",
             }}
-            priority={true}
             src={imageUrl}
             alt="PR_01CFA"
             className="object-cover w-[1134px] h-[169px]"

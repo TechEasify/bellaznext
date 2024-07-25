@@ -3,11 +3,17 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import Ads from "./googleAds/Ads";
 import Link from "next/link";
+import Image from "next/image";
 
-const FooterTopAd = ({data}) => {
+const customLoader = ({ src }) => {
+  return src;
+};
+
+const FooterTopAd = ({ data }) => {
   console.log(data, "datadata footer top ads");
 
-  const imageUrl = data?.page?.homePage?.footerAdvertisementImage?.node?.sourceUrl;
+  const imageUrl =
+    data?.page?.homePage?.footerAdvertisementImage?.node?.sourceUrl;
 
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl">
@@ -18,23 +24,24 @@ const FooterTopAd = ({data}) => {
       </div>
       {imageUrl ? (
         <Link
-        href={{
-          pathname: data?.page?.homePage?.footerAdLink,
-        }}
-        passHref
-        target="_blank"
-      >
-        <ExportedImage
-          style={{
-            margin: "0 auto",
+          href={{
+            pathname: data?.page?.homePage?.footerAdLink,
           }}
-          priority={true}
-          src={imageUrl}
-          alt="PR_01CFA"
-          className="object-cover w-[1134px] h-[169px]"
-          width={1134}
-          height={169}
-        />
+          passHref
+          target="_blank"
+        >
+          <Image
+            priority={true}
+            loader={customLoader}
+            style={{
+              margin: "0 auto",
+            }}
+            src={imageUrl}
+            alt="PR_01CFA"
+            className="object-cover w-[1134px] h-[169px]"
+            width={1134}
+            height={169}
+          />
         </Link>
       ) : (
         <Ads

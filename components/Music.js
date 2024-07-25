@@ -8,6 +8,11 @@ import download6 from "../public/images/download6.svg";
 import spotifydeal from "../public/images/spotifydeal.svg";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const Music = () => {
   const { openDialog, musicQuery, musicError, musicLoading } = useDialog();
@@ -21,7 +26,14 @@ const Music = () => {
           </h1>
           <hr
             className="text-red-800 mr-5"
-            style={{ height: "7px", background: `${musicQuery?.page?.homePage?.musicBottomLineColor ? musicQuery?.page?.homePage?.musicBottomLineColor : "#25AC7D"}` }}
+            style={{
+              height: "7px",
+              background: `${
+                musicQuery?.page?.homePage?.musicBottomLineColor
+                  ? musicQuery?.page?.homePage?.musicBottomLineColor
+                  : "#25AC7D"
+              }`,
+            }}
           />
           <br />
         </div>
@@ -51,7 +63,9 @@ const Music = () => {
                             }}
                             passHref
                           >
-                            <ExportedImage
+                            <Image
+                              priority={true}
+                              loader={customLoader}
                               src={post?.featuredImage?.node?.sourceUrl}
                               alt="vladimirputin"
                               className="object-cover w-[317px] h-[194px] mr-2 mb-2"
@@ -118,7 +132,9 @@ const Music = () => {
                           }}
                           passHref
                         >
-                          <ExportedImage
+                          <Image
+                            priority={true}
+                            loader={customLoader}
                             src={post?.featuredImage?.node?.sourceUrl}
                             alt="Partly Cloudy"
                             className="object-cover w-[240px] h-[97px] mr-2"
@@ -177,8 +193,9 @@ const Music = () => {
                         }}
                         passHref
                       >
-                        <ExportedImage
+                        <Image
                           priority={true}
+                          loader={customLoader}
                           className="object-cover w-[593px] h-[395px]"
                           src={post?.featuredImage?.node?.sourceUrl}
                           alt="vladimirputin"
@@ -248,7 +265,9 @@ const Music = () => {
                   return (
                     <React.Fragment key={post.id}>
                       <div className="mr-2">
-                        <ExportedImage
+                        <Image
+                          priority={true}
+                          loader={customLoader}
                           src={post?.featuredImage?.node?.sourceUrl}
                           alt="vladimirputin"
                           className="object-cover w-[317px] h-[194px] mr-2 mb-2"
@@ -303,7 +322,9 @@ const Music = () => {
                             passHref
                             target="_blank"
                           >
-                            <ExportedImage
+                            <Image
+                              priority={true}
+                              loader={customLoader}
                               src={
                                 musicQuery.page.homePage.musicAd.musicAdImage
                                   .node.sourceUrl

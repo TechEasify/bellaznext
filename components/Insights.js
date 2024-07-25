@@ -8,6 +8,11 @@ import download3 from "../public/images/download3.svg";
 import addpost from "../public/images/addpost.svg";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const SkeletonLoader = () => (
   <>
@@ -222,7 +227,9 @@ const Insights = () => {
                 >
                   <div className="mr-2 mb-2">
                     <Link href={`/news/${item.slug}`} passHref>
-                      <ExportedImage
+                      <Image
+                        priority={true}
+                        loader={customLoader}
                         src={item.featuredImage?.node?.sourceUrl || ""}
                         alt={item.featuredImage?.node?.sourceUrl || ""}
                         className="object-cover mr-2 mb-2"
@@ -273,7 +280,9 @@ const Insights = () => {
                       </Link>
                     </div>
                     <Link href={`/news/${item.slug}`} passHref>
-                      <ExportedImage
+                      <Image
+                        priority={true}
+                        loader={customLoader}
                         src={
                           item.featuredImage.node.sourceUrl !== null &&
                           item.featuredImage.node.sourceUrl
@@ -332,8 +341,9 @@ const Insights = () => {
                     return (
                       <div key={node.slug}>
                         <Link href={`/news/${node.slug}`} passHref>
-                          <ExportedImage
-                            priority={true}
+                          <Image
+                        priority={true}
+                        loader={customLoader}
                             src={
                               node.featuredImage.node.sourceUrl !== null &&
                               node.featuredImage.node.sourceUrl
@@ -403,7 +413,9 @@ const Insights = () => {
                 <div key={item.slug}>
                   <div className="mr-2">
                     <Link href={`/news/${item.slug}`} passHref>
-                      <ExportedImage
+                      <Image
+                        priority={true}
+                        loader={customLoader}
                         src={item.featuredImage?.node?.sourceUrl || ""}
                         alt={item.featuredImage?.node?.sourceUrl || ""}
                         className="object-cover w-[317px] h-[194px] mr-2 mb-2"
@@ -454,7 +466,9 @@ const Insights = () => {
                         passHref
                         target="_blank"
                       >
-                        <ExportedImage
+                        <Image
+                        priority={true}
+                        loader={customLoader}
                           src={
                             insightsQuery?.page?.homePage?.insightsAd
                               ?.insightAdImage?.node?.sourceUrl || ""

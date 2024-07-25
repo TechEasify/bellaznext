@@ -4,6 +4,11 @@ import barcode from "../public/images/barcode.svg";
 import Ads from "./googleAds/Ads";
 import { useDialog } from "./DialogContext";
 import Link from "next/link";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const Advertisement = () => {
   const { bannerData } = useDialog();
@@ -58,11 +63,12 @@ const Advertisement = () => {
           passHref
           target="_blank"
         >
-          <ExportedImage
+          <Image
+            priority={true}
+            loader={customLoader}
             style={{
               margin: "0 auto",
             }}
-            priority={true}
             src={
               bannerData.page.homePage.topHeadlineBottomAd
                 .topHeadlineBottomAdImage.node.sourceUrl

@@ -7,6 +7,11 @@ import pexelspixabay from "../public/images/pexelspixabay.svg";
 import { gql, useQuery } from "@apollo/client";
 import FooterTopAd from "./FooterTopAd";
 import Link from "next/link";
+import Image from "next/image";
+
+const customLoader = ({ src }) => {
+  return src;
+};
 
 const GET_CARD_SECTION = gql`
   query HomePage($id: ID = "745") {
@@ -125,7 +130,9 @@ const Cardnews = () => {
 
                   <div key={item.id}>
                     <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
-                      <ExportedImage
+                      <Image
+                        priority={true}
+                        loader={customLoader}
                         src={
                           item?.posts?.nodes[0]?.featuredImage?.node?.sourceUrl
                         }
