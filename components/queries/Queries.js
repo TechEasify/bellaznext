@@ -570,16 +570,52 @@ export const GET_TESTIMONIAL_SECTION = gql`
 `;
 
 export const SEARCH_QUERY = gql`
-  query MyQuery2 {
-    categories {
+  query MyQuery2(
+    $last: Int
+    $first: Int = 10
+    $before: String
+    $after: String
+    $after1: String
+    $before1: String
+    $first1: Int = 10
+    $last1: Int
+  ) {
+    categories(after: $after, before: $before, first: $first, last: $last) {
       nodes {
         name
-        posts {
+        posts(after: $after1, before: $before1, first: $first1, last: $last1) {
           nodes {
             title
             slug
+            featuredImage {
+              node {
+                altText
+                slug
+                sourceUrl
+                srcSet
+                description
+              }
+            }
+            excerpt
+            content
+            author {
+              node {
+                name
+              }
+            }
+            categories {
+              nodes {
+                name
+              }
+            }
           }
         }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
       }
     }
   }

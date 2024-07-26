@@ -70,6 +70,7 @@ export const DialogProvider = ({ children }) => {
     loading: loadingSearch,
     error: errorSearch,
     data: navDataSearch,
+    fetchMore: searchFetch
   } = useQuery(SEARCH_QUERY, { fetchPolicy: "cache-first" });
 
   const {
@@ -183,7 +184,10 @@ export const DialogProvider = ({ children }) => {
         categoryLoading,
         categoryError,
         testimonialQuery,
-        searchData
+        searchData,
+        searchFetch,
+        loadingSearch,
+        errorSearch
       }}
     >
       {children}
