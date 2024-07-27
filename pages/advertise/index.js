@@ -251,8 +251,8 @@ function Index() {
               SHARE
             </p>
             <Image
-                          priority={true}
-                          loader={customLoader}
+              priority={true}
+              loader={customLoader}
               width={70}
               height={70}
               className="h-5 w-5 cursor-pointer"
@@ -263,8 +263,8 @@ function Index() {
               }
             />
             <Image
-                          priority={true}
-                          loader={customLoader}
+              priority={true}
+              loader={customLoader}
               width={70}
               height={70}
               className="h-5 w-5 cursor-pointer"
@@ -280,8 +280,8 @@ function Index() {
               FOLLOW
             </p>
             <Image
-                          priority={true}
-                          loader={customLoader}
+              priority={true}
+              loader={customLoader}
               width={70}
               height={70}
               className="h-5 w-5 cursor-pointer"
@@ -292,8 +292,8 @@ function Index() {
               }
             />
             <Image
-                          priority={true}
-                          loader={customLoader}
+              priority={true}
+              loader={customLoader}
               width={70}
               height={70}
               className="h-5 w-5 cursor-pointer"
@@ -304,8 +304,8 @@ function Index() {
               }
             />
             <Image
-                          priority={true}
-                          loader={customLoader}
+              priority={true}
+              loader={customLoader}
               width={70}
               height={70}
               className="h-5 w-5 cursor-pointer"
@@ -329,8 +329,8 @@ function Index() {
       </div>
       <div className="px-4 py-16" style={{ background: "#002D73" }}>
         <Image
-                          priority={true}
-                          loader={customLoader}
+          priority={true}
+          loader={customLoader}
           style={{ margin: "0 auto" }}
           src={PrimaryBlue2}
           alt="PrimaryBlue2"
@@ -347,8 +347,8 @@ function Index() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
         {data.page.advertise.clientImages.imageA && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageA.node.srcSet
@@ -360,8 +360,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageB && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageB.node.srcSet
@@ -373,8 +373,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageC && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageC.node.srcSet
@@ -386,8 +386,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageD && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageD.node.srcSet
@@ -402,8 +402,8 @@ function Index() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
         {data.page.advertise.clientImages.imageE && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageE.node.srcSet
@@ -415,8 +415,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageF && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageF.node.srcSet
@@ -428,8 +428,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageG && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageG.node.srcSet
@@ -441,8 +441,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageH && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="h-25 mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageH.node.srcSet
@@ -457,8 +457,8 @@ function Index() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
         {data.page.advertise.clientImages.imageI && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageI.node.srcSet
@@ -470,8 +470,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageJ && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageJ.node.srcSet
@@ -483,8 +483,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageK && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageK.node.srcSet
@@ -496,8 +496,8 @@ function Index() {
         )}
         {data.page.advertise.clientImages.imageL && (
           <Image
-          priority={true}
-          loader={customLoader}
+            priority={true}
+            loader={customLoader}
             className="object-cover w-[150px] h-[100px] mx-auto"
             src={getImageSrc(
               data.page.advertise.clientImages.imageL.node.srcSet
@@ -516,7 +516,8 @@ function Index() {
         <div
           className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 mx-auto max-w-screen-xl"
           style={{
-            background: data?.page?.advertise?.cta?.backgroundColor || "#40A6FB",
+            background:
+              data?.page?.advertise?.cta?.backgroundColor || "#40A6FB",
           }}
         >
           <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left px-4 md:px-20 py-6">

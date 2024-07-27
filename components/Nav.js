@@ -228,22 +228,22 @@ const Nav = ({
 
   const handleSearch = (event) => {
     event.preventDefault();
-    
-    const searchWords = searchTerm.toLowerCase().split(' ');
+
+    const searchWords = searchTerm.toLowerCase().split(" ");
     localStorage.setItem("searchTerm", searchTerm); // Store the search term
     console.log(searchWords, "searchWords");
-  
+
     const post = searchData?.categories?.nodes
       .flatMap((item) => item.posts.nodes)
-      .find((p) => 
-        searchWords.every(word => p?.title?.toLowerCase().includes(word))
+      .find((p) =>
+        searchWords.every((word) => p?.title?.toLowerCase().includes(word))
       );
-  
+
     if (post) {
       router.push(`/search`);
       console.log(post, "post search");
     } else {
-      router.push("/search")
+      router.push("/search");
     }
   };
 
@@ -780,56 +780,58 @@ const Nav = ({
       )}
 
       {isDropdownSearch && (
-         <div className="bg-white flex justify-center w-full font-medium inline-flex flex-col items-center md:flex-row py-2">
-         <label htmlFor="simple-search" className="sr-only">Search</label>
-         <div className="relative mb-2 md:mb-0">
-           <input
-             type="text"
-             id="simple-search"
-             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-             placeholder="Type to Search"
-             value={searchTerm}
-             onChange={(e) => setSearchTerm(e.target.value)}
-             onKeyDown={(e) => {
-              console.log(e, "eeeeee");
-               if (e.key === 'Enter') {
-                 handleSearch(e);
-               }
-             }}
-             required
-             style={{ width: "166px" }} // Set width 166px for mobile view
-           />
-         </div>
-         <div className="flex md:ml-2">
-           <button
-             type="submit"
-             onClick={handleSearch}
-             className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-             style={{
-               paddingLeft: "20px",
-               paddingRight: "20px",
-               borderRadius: "20px",
-               background: "#ce3a42",
-             }}
-           >
-             Search
-           </button>
-           <button
-             onClick={closeSearch}
-             className="px-4 py-2 text-gray-800 hover:bg-gray-100 ml-2"
-           >
-             <Image
-               priority={true}
-               loader={customLoader}
-               className="h-4 w-4 mx-2"
-               src={Closeicon}
-               alt="Close Icon"
-               width={21}
-               height={18}
-             />
-           </button>
-         </div>
-       </div>
+        <div className="bg-white flex justify-center w-full font-medium inline-flex flex-col items-center md:flex-row py-2">
+          <label htmlFor="simple-search" className="sr-only">
+            Search
+          </label>
+          <div className="relative mb-2 md:mb-0">
+            <input
+              type="text"
+              id="simple-search"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Type to Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={(e) => {
+                console.log(e, "eeeeee");
+                if (e.key === "Enter") {
+                  handleSearch(e);
+                }
+              }}
+              required 
+              style={{ width: "300px" }}
+            />
+          </div>
+          <div className="flex md:ml-2">
+            <button
+              type="submit"
+              onClick={handleSearch}
+              className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              style={{
+                paddingLeft: "20px",
+                paddingRight: "20px",
+                borderRadius: "20px",
+                background: "#ce3a42",
+              }}
+            >
+              Search
+            </button>
+            <button
+              onClick={closeSearch}
+              className="px-4 py-2 text-gray-800 hover:bg-gray-100 ml-2"
+            >
+              <Image
+                priority={true}
+                loader={customLoader}
+                className="h-4 w-4 mx-2"
+                src={Closeicon}
+                alt="Close Icon"
+                width={21}
+                height={18}
+              />
+            </button>
+          </div>
+        </div>
       )}
       {console.log(uri, "uri uri")}
 
@@ -1286,6 +1288,7 @@ const Nav = ({
             top: "80px",
             left: "0px",
             width: "100%",
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
           }}
         >
           <nav
@@ -2197,7 +2200,7 @@ const Nav = ({
             top: "80px",
             left: "0px",
             width: "100%",
-            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
           }}
         >
           <nav
@@ -3109,7 +3112,7 @@ const Nav = ({
             top: "80px",
             left: "0px",
             width: "100%",
-            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
           }}
         >
           <nav

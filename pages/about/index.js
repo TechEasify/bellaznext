@@ -198,7 +198,7 @@ function Index() {
                   return (
                     <div
                       key={teamKey}
-                      className="mb-6 flex flex-col md:flex-row items-center"
+                      className="mb-6 flex flex-row md:flex-row items-center"
                     >
                       {member.image && member.image.node.srcSet && (
                         <Image
