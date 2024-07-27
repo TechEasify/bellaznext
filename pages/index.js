@@ -43,7 +43,9 @@ const SkeletonLoader = () => (
 );
 
 // Lazy load component
-const LazyComponent = lazy(() => import('../components/lazyComponent/LazyComponent'));
+const LazyComponent = lazy(() =>
+  import("../components/lazyComponent/LazyComponent")
+);
 
 const Home = () => {
   const router = useRouter();
@@ -51,40 +53,29 @@ const Home = () => {
   // const uri = router.asPath; // Define your URI here. This is an example for the home page.
 
   // const { loading, error, data } = useQuery(GET_HOME_PAGE);
-  const { bannerData, bannerLoading, bannerError } = useDialog();
-  console.log(bannerData, "bannerData home page");
+  const { bannerData, bannerLoading, bannerError, seoData } = useDialog();
+  console.log(seoData, "bannerData home page");
   console.log(url, "urlurlurlurl");
 
   if (bannerLoading) return <SkeletonLoader />;
   if (bannerError) return <p>Error loading data: {bannerError.message}</p>;
 
-  // const title = bannerData?.generalSettings?.title || "Default Title";
-  // const siteDescription =
-  //   bannerData?.generalSettings?.description || "Default Description";
-  // const menuItems = bannerData?.primaryMenuItems?.nodes || [];
+  let title;
+  let description;
+  let canonical;
 
-  const page = bannerData?.page;
-  const seo = page?.homePage?.heroSection?.heroPostCategory?.nodes?.[0]?.posts?.nodes?.[0]?.seo || {};
-  console.log(seo, "seo");
-  const title = seo.title || "Belaaz News";
-  const description = seo.metaDesc || "Default Description";
-  const canonical = seo.canonical || `${url}${router.asPath}`;
+  seoData?.pages?.nodes.flatMap((item) => {
+    console.log(item, "item page");
+    if (item.title === "Home" && router.asPath === "/") {
+      console.log("if inside", item?.seo?.title);
+      title = item?.seo?.title || "Belaaz News";
+      description = item?.seo?.metaDesc || "Default Description";
+      canonical = item?.seo?.canonical || `${url}${router.asPath}`;
+    }
+  });
 
   return (
     <>
-      {/* <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-      </Head> */}
-
       <main>
         <section>
           <Layout title={title} description={description} canonical={canonical}>
@@ -92,7 +83,7 @@ const Home = () => {
             <Advertisement />
             <Insights />
             <Sliders />
-            <Music/>
+            <Music />
             <PlacementPartners />
             <Excusivenews />
             <Cardnews />

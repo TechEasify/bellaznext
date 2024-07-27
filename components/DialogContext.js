@@ -11,6 +11,7 @@ import {
   GET_TESTIMONIAL_SECTION,
   GET_TOPHEADLINE_PAGE,
   SEARCH_QUERY,
+  SEO_QUERY,
 } from "./queries/Queries";
 import {
   CATEGORY_BREAKING_QUERY,
@@ -44,6 +45,7 @@ export const DialogProvider = ({ children }) => {
   const [categoryInsightData, setCategoryInsightData] = useState(null);
   const [testimonialQuery, setTestimonialQuery] = useState(null);
   const [searchData, setSearchData] = useState(null);
+  const [seoData, setSeoData] = useState(null)
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -62,6 +64,12 @@ export const DialogProvider = ({ children }) => {
     error: errorNav,
     data: navDataResult,
   } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
+
+  const {
+    loading: loadingSeo,
+    error: errorSeo,
+    data: seoQuery,
+  } = useQuery(SEO_QUERY, { fetchPolicy: "cache-first" });
 
   const {
     loading: loadingIcon,
@@ -134,6 +142,7 @@ export const DialogProvider = ({ children }) => {
     if (categoryInsight) setCategoryInsightData(categoryInsight);
     if (testimonialData) setTestimonialQuery(testimonialData);
     if (navDataSearch) setSearchData(navDataSearch);
+    if (seoQuery) setSeoData(seoQuery)
   }, [
     navDataResult,
     iconDataResult,
@@ -144,6 +153,7 @@ export const DialogProvider = ({ children }) => {
     musicData,
     categoryInsight,
     navDataSearch,
+    seoQuery
   ]);
 
   console.log(nodeByUri, "nodeByUri");
@@ -190,7 +200,8 @@ export const DialogProvider = ({ children }) => {
         searchData,
         searchFetch,
         loadingSearch,
-        errorSearch
+        errorSearch,
+        seoData
       }}
     >
       {children}

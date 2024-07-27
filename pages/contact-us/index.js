@@ -9,10 +9,16 @@ import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import Image from "next/image";
+import Layout from "../../components/Layout";
+import { useDialog } from "../../components/DialogContext";
+import getConfig from "next/config";
 
 const customLoader = ({ src }) => {
   return src;
 };
+
+const { publicRuntimeConfig } = getConfig();
+const { name, url } = publicRuntimeConfig.site;
 
 const GET_CONTACT_PAGE = gql`
   query AboutPage($id: ID = "3163") {
@@ -46,13 +52,30 @@ const GET_CONTACT_PAGE = gql`
 
 function Index() {
   const { loading, error, data } = useQuery(GET_CONTACT_PAGE);
-  console.log(data, "contact data");
+  const { seoData } = useDialog();
+  console.log(seoData, "contact data");
   const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState(null);
 
   const toggleAccordion = (section) => {
     setOpenAccordion((prev) => (prev === section ? null : section));
   };
+
+  let title;
+  let description;
+  let canonical;
+
+  console.log(router.asPath, "url contact");
+
+  seoData?.pages?.nodes.flatMap((item) => {
+    console.log(item, "item page");
+    if (item.title === "Contact Us" && router.asPath === `/${item.slug}`) {
+      console.log("if inside", item?.seo?.title);
+      title = item?.seo?.title || "Belaaz News";
+      description = item?.seo?.metaDesc || "Default Description";
+      canonical = item?.seo?.canonical || `${url}${router.asPath}`;
+    }
+  });
 
   if (loading)
     return (
@@ -179,303 +202,311 @@ function Index() {
 
   return (
     <>
-      <Nav />
-      <div className="px-4 py-8 mx-auto max-w-screen-xl">
-        <nav className="flex" aria-label="Breadcrumb">
-          <ol className="inline-flex items-center mb-3 sm:mb-0">
-            <li>
-              <div className="flex items-center">
-                <button
-                  id="dropdownProject"
-                  data-dropdown-toggle="dropdown-project"
-                  className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
-                  onClick={() => router.push("/")}
-                >
-                  Home
-                </button>
-              </div>
-            </li>
-            <span className="mx-2 text-gray-400">/</span>
-            <li aria-current="page">
-              <div className="flex items-center">
-                <button
-                  id="dropdownDatabase"
-                  data-dropdown-toggle="dropdown-database"
-                  className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
-                >
-                  Contact us
-                </button>
-              </div>
-            </li>
-          </ol>
-        </nav>
-        <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold mb-3">
-          Contact us
-        </h1>
-      </div>
-      <div
-        className="px-4 py-8 mx-auto max-w-screen-xl mb-20"
-        style={{ background: "#002D73" }}
-      >
-        <div
-          id="accordion-color"
-          data-accordion="collapse"
-          data-active-classes="bg-blue-100 text-blue-600 dark:text-white w-50 px-10"
-          className="bg-white w-full md:w-1/2 mx-auto"
-        >
-          <h2 id="accordion-color-heading-1">
-            <button
-              type="button"
-              className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
-                openAccordion === 1 ? "bg-blue-100 dark:bg-gray-800" : ""
-              }`}
-              onClick={() => toggleAccordion(1)}
-            >
-              <span>
-                {data.page !== undefined &&
-                  data.page.contactUs.advertise.advertiseTitle}
-              </span>
-              <svg
-                data-accordion-icon
-                className={`w-3 h-3 ${openAccordion === 1 ? "rotate-180" : ""}`}
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          <div
-            id="accordion-color-body-1"
-            className={`${
-              openAccordion === 1 ? "" : "hidden"
-            } p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900`}
-            aria-labelledby="accordion-color-heading-1"
-          >
-            <p className="mb-2 font-normal">
-              {data.page !== undefined &&
-                data.page.contactUs.advertise.description}
-            </p>
-            <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-              <Image
-                priority={true}
-                loader={customLoader}
-                className="h-5 w-5 mr-2 object-cover"
-                src={emailoutline}
-                alt="emailoutline"
-                width={23}
-                height={23}
-              />
-              <span className="mr-2 text-black">Email :</span>
-              <Link
-                href="#"
-                className="text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                {data.page !== undefined &&
-                  data.page.contactUs.advertise.emailAddress}
-              </Link>
-            </div>
-            <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-              <Image
-                priority={true}
-                loader={customLoader}
-                className="h-5 w-5 mr-2 object-cover"
-                src={whatsapp1}
-                alt="whatsapp1"
-                width={23}
-                height={23}
-              />
-              <span className="mr-2 text-black">WhatsApp :</span>
-              <Link
-                href="#"
-                className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
-              >
-                {data.page !== undefined &&
-                  data.page.contactUs.advertise.whatsappLink}
-              </Link>
-              <Link
-                href="#"
-                className="text-blue-600 dark:text-blue-500 underline text-end"
-              >
-                Know more
-              </Link>
-            </div>
-          </div>
-          <h2 id="accordion-color-heading-2">
-            <button
-              type="button"
-              className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
-                openAccordion === 2 ? "bg-blue-100 dark:bg-gray-800" : ""
-              }`}
-              onClick={() => toggleAccordion(2)}
-            >
-              <span>
-                {data.page !== undefined &&
-                  data.page.contactUs.submitNewsTip.submitNewsTipTitle}
-              </span>
-              <svg
-                data-accordion-icon
-                className={`w-3 h-3 ${openAccordion === 2 ? "rotate-180" : ""}`}
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          <div
-            id="accordion-color-body-2"
-            className={`${
-              openAccordion === 2 ? "" : "hidden"
-            } p-5 border border-b-0 border-gray-200 dark:border-gray-700`}
-            aria-labelledby="accordion-color-heading-2"
-          >
-            <p className="mb-2 font-normal">
-              {data.page !== undefined &&
-                data.page.contactUs.submitNewsTip.description}
-            </p>
-            <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-              <Image
-                priority={true}
-                loader={customLoader}
-                className="h-5 w-5 mr-2 object-cover"
-                src={emailoutline}
-                alt="emailoutline"
-                width={23}
-                height={23}
-              />
-              <span className="mr-2 text-black">Email :</span>
-              <Link
-                href="#"
-                className="text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                {data.page !== undefined &&
-                  data.page.contactUs.submitNewsTip.emailAddress}
-              </Link>
-            </div>
-            <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-              <Image
-                priority={true}
-                loader={customLoader}
-                className="h-5 w-5 mr-2 object-cover"
-                src={whatsapp1}
-                alt="whatsapp1"
-                width={23}
-                height={23}
-              />
-              <span className="mr-2 text-black">WhatsApp :</span>
-              <Link
-                href="#"
-                className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
-              >
-                {data.page !== undefined &&
-                  data.page.contactUs.submitNewsTip.whatsappLink}
-              </Link>
-            </div>
-          </div>
-          <h2 id="accordion-color-heading-3">
-            <button
-              type="button"
-              className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
-                openAccordion === 3 ? "bg-blue-100 dark:bg-gray-800" : ""
-              }`}
-              onClick={() => toggleAccordion(3)}
-            >
-              <span>
-                {data.page !== undefined &&
-                  data.page.contactUs.noteToEditor.noteToEditorTitle}
-              </span>
-              <svg
-                data-accordion-icon
-                className={`w-3 h-3 ${openAccordion === 3 ? "rotate-180" : ""}`}
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 6"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5 5 1 1 5"
-                />
-              </svg>
-            </button>
-          </h2>
-          <div
-            id="accordion-color-body-3"
-            className={`${
-              openAccordion === 3 ? "" : "hidden"
-            } p-5 border border-t-0 border-gray-200 dark:border-gray-700`}
-            aria-labelledby="accordion-color-heading-3"
-          >
-            <p className="mb-2 font-normal">
-              {data.page !== undefined &&
-                data.page.contactUs.noteToEditor.description}
-            </p>
-            <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-              <Image
-                priority={true}
-                loader={customLoader}
-                className="h-5 w-5 mr-2 object-cover"
-                src={emailoutline}
-                alt="emailoutline"
-                width={23}
-                height={23}
-              />
-              <span className="mr-2 text-black">Email :</span>
-              <Link
-                href="#"
-                className="text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                {data.page !== undefined &&
-                  data.page.contactUs.noteToEditor.emailAddress}
-              </Link>
-            </div>
-            <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-              <Image
-                priority={true}
-                loader={customLoader}
-                className="h-5 w-5 mr-2 object-cover"
-                src={whatsapp1}
-                alt="whatsapp1"
-                width={23}
-                height={23}
-              />
-              <span className="mr-2 text-black">WhatsApp :</span>
-              <Link
-                href="#"
-                className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
-              >
-                {data.page !== undefined &&
-                  data.page.contactUs.noteToEditor.whatsappLink}
-              </Link>
-            </div>
-          </div>
-          <p className="px-5 py-5 text-[12px] mb-2 text-black-500 dark:text-gray-400">
-            Terms & Conditions: Your information will only be used to respond to
-            your inquiry and will be treated according to our privacy policy.
-          </p>
+      <Layout title={title} description={description} canonical={canonical}>
+        <div className="px-4 py-8 mx-auto max-w-screen-xl">
+          <nav className="flex" aria-label="Breadcrumb">
+            <ol className="inline-flex items-center mb-3 sm:mb-0">
+              <li>
+                <div className="flex items-center">
+                  <button
+                    id="dropdownProject"
+                    data-dropdown-toggle="dropdown-project"
+                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
+                    onClick={() => router.push("/")}
+                  >
+                    Home
+                  </button>
+                </div>
+              </li>
+              <span className="mx-2 text-gray-400">/</span>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
+                  >
+                    Contact us
+                  </button>
+                </div>
+              </li>
+            </ol>
+          </nav>
+          <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold mb-3">
+            Contact us
+          </h1>
         </div>
-      </div>
-      <Footer />
+        <div
+          className="px-4 py-8 mx-auto max-w-screen-xl mb-20"
+          style={{ background: "#002D73" }}
+        >
+          <div
+            id="accordion-color"
+            data-accordion="collapse"
+            data-active-classes="bg-blue-100 text-blue-600 dark:text-white w-50 px-10"
+            className="bg-white w-full md:w-1/2 mx-auto"
+          >
+            <h2 id="accordion-color-heading-1">
+              <button
+                type="button"
+                className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
+                  openAccordion === 1 ? "bg-blue-100 dark:bg-gray-800" : ""
+                }`}
+                onClick={() => toggleAccordion(1)}
+              >
+                <span>
+                  {data.page !== undefined &&
+                    data.page.contactUs.advertise.advertiseTitle}
+                </span>
+                <svg
+                  data-accordion-icon
+                  className={`w-3 h-3 ${
+                    openAccordion === 1 ? "rotate-180" : ""
+                  }`}
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5 5 1 1 5"
+                  />
+                </svg>
+              </button>
+            </h2>
+            <div
+              id="accordion-color-body-1"
+              className={`${
+                openAccordion === 1 ? "" : "hidden"
+              } p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900`}
+              aria-labelledby="accordion-color-heading-1"
+            >
+              <p className="mb-2 font-normal">
+                {data.page !== undefined &&
+                  data.page.contactUs.advertise.description}
+              </p>
+              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-5 w-5 mr-2 object-cover"
+                  src={emailoutline}
+                  alt="emailoutline"
+                  width={23}
+                  height={23}
+                />
+                <span className="mr-2 text-black">Email :</span>
+                <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  {data.page !== undefined &&
+                    data.page.contactUs.advertise.emailAddress}
+                </Link>
+              </div>
+              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-5 w-5 mr-2 object-cover"
+                  src={whatsapp1}
+                  alt="whatsapp1"
+                  width={23}
+                  height={23}
+                />
+                <span className="mr-2 text-black">WhatsApp :</span>
+                <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
+                >
+                  {data.page !== undefined &&
+                    data.page.contactUs.advertise.whatsappLink}
+                </Link>
+                <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 underline text-end"
+                >
+                  Know more
+                </Link>
+              </div>
+            </div>
+            <h2 id="accordion-color-heading-2">
+              <button
+                type="button"
+                className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
+                  openAccordion === 2 ? "bg-blue-100 dark:bg-gray-800" : ""
+                }`}
+                onClick={() => toggleAccordion(2)}
+              >
+                <span>
+                  {data.page !== undefined &&
+                    data.page.contactUs.submitNewsTip.submitNewsTipTitle}
+                </span>
+                <svg
+                  data-accordion-icon
+                  className={`w-3 h-3 ${
+                    openAccordion === 2 ? "rotate-180" : ""
+                  }`}
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5 5 1 1 5"
+                  />
+                </svg>
+              </button>
+            </h2>
+            <div
+              id="accordion-color-body-2"
+              className={`${
+                openAccordion === 2 ? "" : "hidden"
+              } p-5 border border-b-0 border-gray-200 dark:border-gray-700`}
+              aria-labelledby="accordion-color-heading-2"
+            >
+              <p className="mb-2 font-normal">
+                {data.page !== undefined &&
+                  data.page.contactUs.submitNewsTip.description}
+              </p>
+              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-5 w-5 mr-2 object-cover"
+                  src={emailoutline}
+                  alt="emailoutline"
+                  width={23}
+                  height={23}
+                />
+                <span className="mr-2 text-black">Email :</span>
+                <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  {data.page !== undefined &&
+                    data.page.contactUs.submitNewsTip.emailAddress}
+                </Link>
+              </div>
+              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-5 w-5 mr-2 object-cover"
+                  src={whatsapp1}
+                  alt="whatsapp1"
+                  width={23}
+                  height={23}
+                />
+                <span className="mr-2 text-black">WhatsApp :</span>
+                <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
+                >
+                  {data.page !== undefined &&
+                    data.page.contactUs.submitNewsTip.whatsappLink}
+                </Link>
+              </div>
+            </div>
+            <h2 id="accordion-color-heading-3">
+              <button
+                type="button"
+                className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
+                  openAccordion === 3 ? "bg-blue-100 dark:bg-gray-800" : ""
+                }`}
+                onClick={() => toggleAccordion(3)}
+              >
+                <span>
+                  {data.page !== undefined &&
+                    data.page.contactUs.noteToEditor.noteToEditorTitle}
+                </span>
+                <svg
+                  data-accordion-icon
+                  className={`w-3 h-3 ${
+                    openAccordion === 3 ? "rotate-180" : ""
+                  }`}
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5 5 1 1 5"
+                  />
+                </svg>
+              </button>
+            </h2>
+            <div
+              id="accordion-color-body-3"
+              className={`${
+                openAccordion === 3 ? "" : "hidden"
+              } p-5 border border-t-0 border-gray-200 dark:border-gray-700`}
+              aria-labelledby="accordion-color-heading-3"
+            >
+              <p className="mb-2 font-normal">
+                {data.page !== undefined &&
+                  data.page.contactUs.noteToEditor.description}
+              </p>
+              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-5 w-5 mr-2 object-cover"
+                  src={emailoutline}
+                  alt="emailoutline"
+                  width={23}
+                  height={23}
+                />
+                <span className="mr-2 text-black">Email :</span>
+                <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  {data.page !== undefined &&
+                    data.page.contactUs.noteToEditor.emailAddress}
+                </Link>
+              </div>
+              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-5 w-5 mr-2 object-cover"
+                  src={whatsapp1}
+                  alt="whatsapp1"
+                  width={23}
+                  height={23}
+                />
+                <span className="mr-2 text-black">WhatsApp :</span>
+                <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
+                >
+                  {data.page !== undefined &&
+                    data.page.contactUs.noteToEditor.whatsappLink}
+                </Link>
+              </div>
+            </div>
+            <p className="px-5 py-5 text-[12px] mb-2 text-black-500 dark:text-gray-400">
+              Terms & Conditions: Your information will only be used to respond
+              to your inquiry and will be treated according to our privacy
+              policy.
+            </p>
+          </div>
+        </div>
+        <Footer />
+      </Layout>
     </>
   );
 }

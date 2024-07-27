@@ -662,3 +662,47 @@ export const SEARCH_QUERY = gql`
     }
   }
 `;
+
+export const SEO_QUERY = gql`
+  query MyQuery2 {
+    categories {
+      nodes {
+        name
+        slug
+        seo {
+          canonical
+          focuskw
+          metaDesc
+          metaKeywords
+          title
+        }
+      }
+    }
+    pages {
+      nodes {
+        title
+        slug
+        seo {
+          canonical
+          focuskw
+          metaDesc
+          metaKeywords
+          title
+        }
+      }
+    }
+    posts {
+      nodes {
+        title
+        slug
+        seo {
+          canonical
+          focuskw
+          metaDesc
+          metaKeywords
+          title
+        }
+      }
+    }
+  }
+`;
