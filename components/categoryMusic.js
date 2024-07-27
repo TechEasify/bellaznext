@@ -316,8 +316,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     />
                   </Link>
                 )}
-                <div className="absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:max-w-[750px] h-60 tablet-custom mobile-custom">
-                  <div>
+                {/* absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:max-w-[750px] h-60 tablet-custom mobile-custom */}
+                <div>
+                  <div className="absolute top-[23%] my-0 mx-6 z-50 bg-white p-6 border border-[#25AC7D] shadow h-60 tablet-custom mobile-custom">
                     <p className="text-[12px] font-bold text-red-800">
                       {nodeByUri?.nodeByUri?.name}
                     </p>

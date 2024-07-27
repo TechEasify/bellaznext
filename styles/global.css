@@ -100,21 +100,18 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 1024px) {
   .tablet-custom {
     top: 18%;
     left: 5%;
-    width: 650px;
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 425px) {
   .mobile-custom {
-    top: 5%;
-    left: 6%;
-    width: 260px;
+    top: 6%;
+    left: 0%;
     height: auto;
-    padding: 0.5rem;
   }
 
   .mobile-custom-h5 {
