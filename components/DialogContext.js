@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, lazy, Suspense, useContext, useEffect, useState } from "react";
 import { gql, useQuery, useLazyQuery } from "@apollo/client";
 import {
   GET_HOME_PAGE,
@@ -20,6 +20,9 @@ import {
 import { useRouter } from "next/router";
 
 const DialogContext = createContext();
+
+// Lazy load components that depend on data fetching
+const LazyComponent = lazy(() => import('../components/lazyComponent/LazyComponent'));
 
 export const useDialog = () => {
   return useContext(DialogContext);
@@ -190,7 +193,9 @@ export const DialogProvider = ({ children }) => {
         errorSearch
       }}
     >
-      {children}
+      <Suspense fallback={<div>Loading Lazy Component...</div>}>
+        <LazyComponent children={children}/>
+      </Suspense>
     </DialogContext.Provider>
   );
 };

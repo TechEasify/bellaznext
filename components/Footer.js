@@ -130,7 +130,7 @@ const Footer = () => {
           <div className="flex justify-center">
             <div className="lg:col-span-12">
               <div className="mx-auto w-full max-w-screen-xl">
-                <div className="grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 text-center">
                   {/* First Column */}
                   <div className="mb-8 md:mb-0">
                     <h2 className="mb-6 text-[20px] font-semibold text-white">

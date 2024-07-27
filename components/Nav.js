@@ -1286,12 +1286,14 @@ const Nav = ({
             top: "80px",
             left: "0px",
             width: "100%",
-            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
           }}
         >
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -1745,6 +1747,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -2198,6 +2203,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -2651,6 +2659,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -3104,6 +3115,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -3557,6 +3571,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -4010,6 +4027,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
@@ -4463,6 +4483,9 @@ const Nav = ({
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden items-center">

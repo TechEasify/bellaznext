@@ -133,7 +133,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
           {console.log(displayCount, "displayCount")}
           <div className="w-full max-w-3xl mx-auto mt-5 md:hidden">
             {sortedTopHeadlinesSidebar !== null &&
-              sortedTopHeadlinesSidebar.slice(0, displayCount).map(
+              sortedTopHeadlinesSidebar?.slice(0, displayCount).map(
                 (side) => (
                   console.log(side, "sidesideside"),
                   (
@@ -178,7 +178,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                   )
                 )
               )}
-            {displayCount < sortedTopHeadlinesSidebar.length && (
+            {displayCount < sortedTopHeadlinesSidebar?.length && (
               <div className="flex justify-between">
                 <button
                   className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700 lg:hidden" // Hide on large screens and above

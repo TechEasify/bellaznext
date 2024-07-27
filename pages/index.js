@@ -19,6 +19,7 @@ import { useDialog } from "../components/DialogContext";
 import Primarylogo from "../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
 import Image from "next/image";
+import { lazy, Suspense } from "react";
 
 const { publicRuntimeConfig } = getConfig();
 const { name, url } = publicRuntimeConfig.site;
@@ -40,6 +41,9 @@ const SkeletonLoader = () => (
     />
   </div>
 );
+
+// Lazy load component
+const LazyComponent = lazy(() => import('../components/lazyComponent/LazyComponent'));
 
 const Home = () => {
   const router = useRouter();
@@ -88,7 +92,7 @@ const Home = () => {
             <Advertisement />
             <Insights />
             <Sliders />
-            <Music />
+            <Music/>
             <PlacementPartners />
             <Excusivenews />
             <Cardnews />
