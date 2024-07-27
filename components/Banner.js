@@ -34,7 +34,7 @@ const customLoader = ({ src }) => {
   return src;
 };
 
-const SkeletonLoader = () => (  
+const SkeletonLoader = () => (
   <div className="spinner">
     <Image
       priority={true}
@@ -50,7 +50,7 @@ const SkeletonLoader = () => (
 
 const Banner = () => {
   const { bannerData, iconDataResult, dataIcon, searchData } = useDialog();
-  const router = useRouter()
+  const router = useRouter();
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -190,26 +190,26 @@ const Banner = () => {
       .flatMap((item) => item.posts.nodes)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      const handleSearch = (event) => {
-        event.preventDefault();
-        
-        const searchWords = searchTerm.toLowerCase().split(' ');
-        localStorage.setItem("searchTerm", searchTerm); // Store the search term
-        console.log(searchWords, "searchWords");
-      
-        const post = searchData?.categories?.nodes
-          .flatMap((item) => item.posts.nodes)
-          .find((p) => 
-            searchWords.every(word => p?.title?.toLowerCase().includes(word))
-          );
-      
-        if (post) {
-          router.push(`/search`);
-          console.log(post, "post search");
-        } else {
-          router.push("/search")
-        }
-      };
+  const handleSearch = (event) => {
+    event.preventDefault();
+
+    const searchWords = searchTerm.toLowerCase().split(" ");
+    localStorage.setItem("searchTerm", searchTerm); // Store the search term
+    console.log(searchWords, "searchWords");
+
+    const post = searchData?.categories?.nodes
+      .flatMap((item) => item.posts.nodes)
+      .find((p) =>
+        searchWords.every((word) => p?.title?.toLowerCase().includes(word))
+      );
+
+    if (post) {
+      router.push(`/search`);
+      console.log(post, "post search");
+    } else {
+      router.push("/search");
+    }
+  };
 
   console.log(sortedPostss, "sortedPostss");
 
@@ -321,15 +321,14 @@ const Banner = () => {
               id="FullName"
               type="text"
               placeholder="Type to Search"
-             value={searchTerm}
-             onChange={(e) => setSearchTerm(e.target.value)}
-             onKeyDown={(e) => {
-              console.log(e, "eeeeee");
-               if (e.key === 'Enter') {
-                 handleSearch(e);
-               }
-             }}
-              
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={(e) => {
+                console.log(e, "eeeeee");
+                if (e.key === "Enter") {
+                  handleSearch(e);
+                }
+              }}
             />
             <div
               className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"

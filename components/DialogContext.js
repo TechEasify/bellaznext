@@ -193,9 +193,10 @@ export const DialogProvider = ({ children }) => {
         errorSearch
       }}
     >
-      <Suspense fallback={<div>Loading Lazy Component...</div>}>
+      {children}
+      {/* <Suspense fallback={<div>Loading Lazy Component...</div>}>
         <LazyComponent children={children}/>
-      </Suspense>
+      </Suspense> */}
     </DialogContext.Provider>
   );
 };
