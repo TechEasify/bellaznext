@@ -164,6 +164,8 @@ const Insight = () => {
   if (categoryLoading && posts.length === 0) return <p>Loading...</p>;
   if (categoryError) return <p>Error: {categoryError.message}</p>;
 
+  console.log(nodeByUri, "nodeByUrinodeByUrinodeByUri data");
+
   return (
     <>
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">

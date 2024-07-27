@@ -151,6 +151,12 @@ export const GET_HOME_PAGE = gql`
                         sourceUrl
                       }
                     }
+                    seo {
+                      title
+                      metaDesc
+                      canonical
+                      focuskw
+                    }
                   }
                 }
               }
@@ -187,6 +193,12 @@ export const GET_HOME_PAGE = gql`
                       name
                     }
                   }
+                  seo {
+                    title
+                    metaDesc
+                    canonical
+                    focuskw
+                  }
                 }
               }
             }
@@ -216,6 +228,12 @@ export const GET_HOME_PAGE = gql`
                       slug
                       sourceUrl
                     }
+                  }
+                  seo {
+                    title
+                    metaDesc
+                    canonical
+                    focuskw
                   }
                 }
               }
@@ -255,6 +273,12 @@ export const GET_HOME_PAGE = gql`
                       slug
                       sourceUrl
                     }
+                  }
+                  seo {
+                    title
+                    metaDesc
+                    canonical
+                    focuskw
                   }
                 }
               }
@@ -341,6 +365,12 @@ export const GET_INSIGHTS_SECTION = gql`
                     }
                   }
                   content
+                  seo {
+                    title
+                    metaDesc
+                    canonical
+                    focuskw
+                  }
                 }
               }
             }
@@ -393,6 +423,12 @@ export const GET_MUSIC_SECTION = gql`
                     }
                   }
                   content
+                  seo {
+                    title
+                    metaDesc
+                    canonical
+                    focuskw
+                  }
                 }
               }
             }
@@ -607,6 +643,12 @@ export const SEARCH_QUERY = gql`
               nodes {
                 name
               }
+            }
+            seo {
+              title
+              metaDesc
+              canonical
+              focuskw
             }
           }
         }

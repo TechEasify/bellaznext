@@ -136,7 +136,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
               return (
                 <>
-                  <div className="flex flex-col md:flex-row mb-5">
+                  <div className="flex flex-col md:flex-row mb-5 items-start">
                     <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
                       <Link
                         href={{

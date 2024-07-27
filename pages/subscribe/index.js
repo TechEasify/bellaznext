@@ -1,49 +1,47 @@
-import React, { useState } from "react";
-import Primarylogo from "../../public/images/Primarylogo.svg";
-import ExportedImage from "next-image-export-optimizer";
-import { useRouter } from "next/router";
-import Link from "next/link";
-import Image from "next/image";
+import React, { useState } from 'react';
+import Primarylogo from '../../public/images/Primarylogo.svg';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { subscribeToNewsletter } from '../../lib/klaviyo';
 
 const customLoader = ({ src }) => {
   return src;
 };
 
 function Index() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const router = useRouter();
 
   const handleClose = () => {
-    const lastPathname = localStorage.getItem("lastPathname");
+    const lastPathname = localStorage.getItem('lastPathname');
     if (lastPathname) {
       router.push(lastPathname);
     } else {
-      router.push("/");
+      router.push('/');
     }
   };
 
-  const handleSubscribe = () => {
-    if (window._learnq) {
-      window._learnq.push(['identify', {
-        $email: email
-      }]);
-      window._learnq.push(['track', 'Newsletter Subscription', {
-        email: email
-      }]);
+  const handleSubscribe = async () => {
+    try {
+      await subscribeToNewsletter(email);
+      alert('Thank you for subscribing!');
+      setEmail(''); // Clear the email input field
+    } catch (error) {
+      alert('There was an error subscribing. Please try again later.');
     }
-    alert("Thank you for subscribing!");
-    setEmail(""); // Clear the email input field
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "#002D73" }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ background: '#002D73' }}
+    >
       <div className="flex justify-between items-center p-4">
         <Link href="/">
           <Image
-      priority={true}
-      loader={customLoader}
             src={Primarylogo}
-            loading="lazy"
+            loader={customLoader}
             alt="Primarylogo"
             className="max-h-32 object-fill hidden md:block"
             width={250}
@@ -59,7 +57,7 @@ function Index() {
             className="w-6 h-6 mx-auto p-1"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            style={{ color: "white" }}
+            style={{ color: 'white' }}
           >
             <path
               strokeWidth="4"
@@ -74,7 +72,9 @@ function Index() {
 
       <div className="flex flex-col items-center p-5 md:p-10 lg:p-20 flex-grow">
         <p className="text-lg md:text-2xl text-white font-semibold text-center mb-5">
-          Get the latest Jewish and breaking <br className="hidden md:block" /> news delivered straight to your inbox. <br className="hidden md:block" /> Subscribe now!
+          Get the latest Jewish and breaking <br className="hidden md:block" />{' '}
+          news delivered straight to your inbox. <br className="hidden md:block" />{' '}
+          Subscribe now!
         </p>
         <div className="w-full max-w-md">
           <div className="flex flex-col md:flex-row items-center">

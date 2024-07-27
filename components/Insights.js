@@ -268,57 +268,61 @@ const Insights = () => {
                       {readingTime} MIN READ
                     </p>
                   </div>
-                  <div className="flex max-w-xs bg-white mr-4 items-center justify-between">
-                    <div className="mr-2">
-                      <p className="text-[12px] font-bold text-red-800">
-                        {insightsPost[0].name}
+                  {insight?.slice(2, 4)?.map((item) => (
+                    <>
+                      <div className="flex max-w-xs bg-white mr-4 items-center justify-between">
+                        <div className="mr-2">
+                          <p className="text-[12px] font-bold text-red-800">
+                            {insightsPost[0].name}
+                          </p>
+                          <Link href={`/news/${item.slug}`} passHref>
+                            <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue w-[167px]">
+                              {item.title}
+                            </p>
+                          </Link>
+                        </div>
+                        <Link href={`/news/${item.slug}`} passHref>
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              item.featuredImage.node.sourceUrl !== null &&
+                              item.featuredImage.node.sourceUrl
+                            }
+                            alt={
+                              item.featuredImage.node.sourceUrl !== null &&
+                              item.featuredImage.node.sourceUrl
+                            }
+                            className="h-[87px] w-[240px] object-cover mr-2"
+                            width={90}
+                            height={87}
+                          />
+                        </Link>
+                      </div>
+                      <p className="text-[10px] text-base font-bold text-gray-800">
+                        <span
+                          className="text-[10px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {item.author.node.name}
+                          <span
+                            className="text-[36px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
                       </p>
-                      <Link href={`/news/${item.slug}`} passHref>
-                        <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                          {item.title}
-                        </p>
-                      </Link>
-                    </div>
-                    <Link href={`/news/${item.slug}`} passHref>
-                      <Image
-                        priority={true}
-                        loader={customLoader}
-                        src={
-                          item.featuredImage.node.sourceUrl !== null &&
-                          item.featuredImage.node.sourceUrl
-                        }
-                        alt={
-                          item.featuredImage.node.sourceUrl !== null &&
-                          item.featuredImage.node.sourceUrl
-                        }
-                        className="h-[87px] w-[240px] object-cover mr-2"
-                        width={90}
-                        height={87}
-                      />
-                    </Link>
-                  </div>
-                  <p className="text-[10px] text-base font-bold text-gray-800">
-                    <span
-                      className="text-[10px] font-extrabold mr-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      |
-                    </span>
-                    By
-                    <span
-                      className="font-extrabold mx-1"
-                      style={{ color: "#40A6FB" }}
-                    >
-                      {item.author.node.name}
-                      <span
-                        className="text-[36px] font-extrabold mx-1"
-                        style={{ color: "#40A6FB" }}
-                      >
-                        .
-                      </span>
-                    </span>
-                    {readingTime} MIN READ
-                  </p>
+                    </>
+                  ))}
                 </div>
               </div>
             );
@@ -327,7 +331,10 @@ const Insights = () => {
           {insightsPost?.map(
             (item) =>
               item.name === "Insights" && (
-                <div className="max-w-md bg-white mb-6 mx-auto" key={item.name}>
+                <div
+                  className="max-w-md bg-white mb-6 mx-auto lg:block xl:block hidden" // Hidden on tablet and desktop, visible on mobile
+                  key={item.name}
+                >
                   {item.posts.nodes.slice(0, 1).map((node) => {
                     const contentText = node?.content
                       ? node?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
@@ -342,8 +349,8 @@ const Insights = () => {
                       <div key={node.slug}>
                         <Link href={`/news/${node.slug}`} passHref>
                           <Image
-                        priority={true}
-                        loader={customLoader}
+                            priority={true}
+                            loader={customLoader}
                             src={
                               node.featuredImage.node.sourceUrl !== null &&
                               node.featuredImage.node.sourceUrl
@@ -407,7 +414,7 @@ const Insights = () => {
             const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
             return (
               <div
-                className="max-w-xs bg-white mb-6 mr-4 items-center"
+                className="max-w-xs bg-white mb-6 mr-4 items-center lg:block xl:block hidden" // Visible only on large screens
                 key={item.name}
               >
                 <div key={item.slug}>
@@ -467,8 +474,8 @@ const Insights = () => {
                         target="_blank"
                       >
                         <Image
-                        priority={true}
-                        loader={customLoader}
+                          priority={true}
+                          loader={customLoader}
                           src={
                             insightsQuery?.page?.homePage?.insightsAd
                               ?.insightAdImage?.node?.sourceUrl || ""

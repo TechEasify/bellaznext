@@ -7,7 +7,6 @@ import { Fragment } from "react";
 import { useDialog } from "./DialogContext";
 import Primarylogo from "../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
-import Script from "next/script";
 import Image from "next/image";
 
 const { publicRuntimeConfig } = getConfig();
@@ -33,12 +32,14 @@ const Layout = ({ children, ...customMeta }) => {
     ...customMeta,
   };
 
+  console.log(meta, "metametametameta");
+
   return (
     <>
       <Head>
+        <title>{meta.title}</title>
         <link rel="icon" href="/belaazicon" key="favicon" />
-        {/* <link rel="canonical" href={`${url}${asPath}`} key="canonical" /> */}
-
+        
         {/* Twitter */}
         <meta
           name="twitter:card"
@@ -71,10 +72,10 @@ const Layout = ({ children, ...customMeta }) => {
           content={`${url}${socialPreview}`}
           key="og_image"
         />
-        <meta property="og:image:width" content={`1200`} key="og_image_width" />
+        <meta property="og:image:width" content="1200" key="og_image_width" />
         <meta
           property="og:image:height"
-          content={`630`}
+          content="630"
           key="og_image_height"
         />
 
@@ -82,7 +83,6 @@ const Layout = ({ children, ...customMeta }) => {
         {meta.date && (
           <meta property="article:published_time" content={meta.date} />
         )}
-        <title key="title">{meta.title}</title>
       </Head>
       <main>
         <Nav />

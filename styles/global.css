@@ -100,6 +100,28 @@
   }
 }
 
+@media (min-width: 768px) {
+  .tablet-custom {
+    top: 18%;
+    left: 5%;
+    width: 650px;
+  }
+}
+
+@media (max-width: 320px) {
+  .mobile-custom {
+    top: 5%;
+    left: 6%;
+    width: 260px;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  .mobile-custom-h5 {
+    font-size: 15px;
+  }
+}
+
 @keyframes dash {
   from {
     stroke-dashoffset: 650;

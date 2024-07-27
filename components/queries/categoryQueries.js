@@ -34,6 +34,12 @@ export const CATEGORY_BREAKING_QUERY = gql`
             link
             slug
             id
+            seo {
+              title
+              metaDesc
+              canonical
+              focuskw
+            }
           }
           pageInfo {
             endCursor
@@ -81,6 +87,12 @@ export const CATEGORY_BREAKING_QUERY = gql`
                         }
                       }
                       title
+                      seo {
+                        title
+                        metaDesc
+                        canonical
+                        focuskw
+                      }
                     }
                   }
                 }
@@ -113,6 +125,12 @@ export const CATEGORY_BREAKING_QUERY = gql`
                             name
                           }
                         }
+                        seo {
+                          title
+                          metaDesc
+                          canonical
+                          focuskw
+                        }
                       }
                     }
                   }
@@ -120,7 +138,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
               }
               heroSidebarTitleLineColor
               musicHeroSidebarAds {
-              musicSidebarAdLink
+                musicSidebarAdLink
                 musicSidebarAdCode
                 musicSidebarAdImage {
                   node {
@@ -133,7 +151,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
               }
             }
             musicAdervtiseImage {
-            adLink
+              adLink
               adCode
               adImage {
                 node {
@@ -176,6 +194,12 @@ export const CATEGORY_BREAKING_QUERY = gql`
                           sourceUrl
                         }
                       }
+                      seo {
+                        title
+                        metaDesc
+                        canonical
+                        focuskw
+                      }
                     }
                   }
                 }
@@ -210,6 +234,12 @@ export const INSIGHTS_DATA = gql`
             sourceUrl
           }
           cursor
+        }
+        seo {
+          title
+          metaDesc
+          canonical
+          focuskw
         }
       }
       pageInfo {
@@ -265,6 +295,12 @@ export const GET_NEWS_SECTION = gql`
                 }
                 postView {
                   view
+                }
+                seo {
+                  title
+                  metaDesc
+                  canonical
+                  focuskw
                 }
               }
             }
