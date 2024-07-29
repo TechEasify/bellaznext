@@ -588,7 +588,7 @@ function Index() {
             </div>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Layout>
     </>
   );

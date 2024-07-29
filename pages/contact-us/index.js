@@ -505,7 +505,7 @@ function Index() {
             </p>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Layout>
     </>
   );

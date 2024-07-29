@@ -261,7 +261,7 @@ const Banner = () => {
                     </Link>
                     <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
                       <span
-                        className="text-[25px] font-extrabold mr-1"
+                        className="text-[20px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
                         |
@@ -271,7 +271,7 @@ const Banner = () => {
                         className="font-extrabold mx-1"
                         style={{ color: "#40A6FB" }}
                       >
-                        Linah Absteen
+                        {post?.author?.node?.name}
                         <span
                           className="text-[36px] font-extrabold mx-1"
                           style={{ color: "#40A6FB" }}

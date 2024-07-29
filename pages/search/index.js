@@ -6,6 +6,7 @@ import Nav from "../../components/Nav";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import Footer from "../../components/Footer";
 import debounce from "lodash.debounce";
+import Layout from "../../components/Layout";
 
 const customLoader = ({ src }) => {
   return src;
@@ -122,7 +123,8 @@ const SearchPage = () => {
 
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
+      <Layout>
       <div className="px-4 py-8 mx-auto max-w-screen-xl mt-5">
         <div className="mb-8">
           <input
@@ -252,7 +254,8 @@ const SearchPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      </Layout>
+      {/* <Footer /> */}
     </>
   );
 };

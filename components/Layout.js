@@ -8,6 +8,7 @@ import { useDialog } from "./DialogContext";
 import Primarylogo from "../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
 import Image from "next/image";
+import Footer from "./Footer";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -151,6 +152,7 @@ const Layout = ({ children, ...customMeta }) => {
           </Dialog>
         </Transition.Root>
         {children}
+        <Footer/>
       </main>
     </>
   );

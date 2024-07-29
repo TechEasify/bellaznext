@@ -229,7 +229,7 @@ function Index() {
           )}
           <Testimonial />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </Layout>
     </>
   );
