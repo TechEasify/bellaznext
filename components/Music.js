@@ -1,12 +1,5 @@
 import { useDialog } from "./DialogContext";
 import React from "react";
-import ExportedImage from "next-image-export-optimizer";
-import anaflavia_kR5VQr3 from "../public/images/anaflavia_kR5VQr3.svg";
-import Frame256 from "../public/images/Frame256.svg";
-import Frame257 from "../public/images/Frame257.svg";
-import download6 from "../public/images/download6.svg";
-import spotifydeal from "../public/images/spotifydeal.svg";
-import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 import Image from "next/image";
 

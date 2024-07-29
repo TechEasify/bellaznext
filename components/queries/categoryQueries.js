@@ -175,6 +175,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
             selectCategoryForAllPost {
               nodes {
                 ... on Category {
+                  id
                   name
                   posts {
                     nodes {
@@ -259,7 +260,6 @@ export const GET_NEWS_SECTION = gql`
       id
       ... on Post {
         id
-        link
         excerpt
         slug
         content

@@ -201,7 +201,7 @@ function News() {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
-  console.log(newsData.nodeByUri, "newsData");
+  console.log(newsData, "newsData");
 
   useEffect(() => {
     if (newsData) {
@@ -238,6 +238,7 @@ function News() {
         ...post,
         categoryName: item.name,
         categoryViews: post.postView.view,
+        href: post.uri || '', // Ensure href is a valid string
       }))
     ) || [];
 
@@ -284,7 +285,7 @@ function News() {
               className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
               onClick={() =>
                 dataNav?.menu?.header?.topThirdLinks?.url &&
-                router.push(dataNav.menu.header.topThirdLinks.url)
+                router.push(dataNav?.menu?.header?.topThirdLinks?.url)
               }
             >
               {dataNav !== undefined && dataNav?.menu?.header?.topThird}
@@ -419,28 +420,28 @@ function News() {
                             <div className="flex w-full">
                               <div className="mr-2 flex-1">
                                 <p className="text-[10px] md:text-[12px] font-bold text-red-800">
-                                  {post.categoryName}
+                                  {post?.categoryName}
                                 </p>
                                 <Link
                                   href={{
-                                    pathname: `/news/${post.slug}`,
+                                    pathname: `/news/${post?.slug}`,
                                   }}
                                 >
                                   <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                                    {post.title}
+                                    {post?.title}
                                   </p>
                                 </Link>
                               </div>
-                              {post.featuredImage?.node?.sourceUrl && (
+                              {post?.featuredImage?.node?.sourceUrl && (
                                 <Link
                                   href={{
-                                    pathname: `/news/${post.slug}`,
+                                    pathname: `/news/${post?.slug}`,
                                   }}
                                 >
                                   <Image
                                     priority={true}
                                     loader={customLoader}
-                                    src={post.featuredImage.node.sourceUrl}
+                                    src={post?.featuredImage?.node?.sourceUrl}
                                     alt="Partly Cloudy"
                                     className="h-[70px] w-[70px] md:h-[87px] md:w-[90px] object-cover mr-2"
                                     width={90}
@@ -473,17 +474,18 @@ function News() {
                             <div className="flex mt-5">
                               <div className="mr-2 flex-1">
                                 <p className="text-[10px] md:text-[12px] font-bold text-red-800">
-                                  {post.categoryName}
+                                  {post?.categoryName}
                                 </p>
-                                <Link
+                                {post?.href !== undefined && <Link
                                   href={{
                                     pathname: `/news/${post.slug}`,
                                   }}
                                 >
                                   <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                                    {post.title}
+                                    {post?.title}
                                   </p>
-                                </Link>
+                                </Link>}
+                                
                               </div>
                               {post?.featuredImage?.node?.sourceUrl && (
                                 <Image
@@ -543,7 +545,7 @@ function News() {
                                 <div className="flex">
                                   <div className="mr-2 w-48 mb-2">
                                     <p className="text-[12px] font-bold text-red-800">
-                                      {side.name}
+                                      {side?.name}
                                     </p>
                                     <Link
                                       href={{
@@ -552,7 +554,7 @@ function News() {
                                       passHref
                                     >
                                       <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                                        {itemdata.title}
+                                        {itemdata?.title}
                                       </p>
                                     </Link>
                                   </div>
@@ -561,9 +563,9 @@ function News() {
                                       priority={true}
                                       loader={customLoader}
                                       src={
-                                        itemdata.featuredImage.node.sourceUrl
+                                        itemdata?.featuredImage?.node?.sourceUrl
                                       }
-                                      alt={itemdata.title}
+                                      alt={itemdata?.title}
                                       className="object-cover w-[90px] h-[87px] mr-2"
                                       width={90}
                                       height={87}
