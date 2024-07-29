@@ -20,6 +20,7 @@ import Router, { useRouter } from "next/router";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -158,7 +159,7 @@ const Nav = ({
     iconDataResult,
     nodeByUri,
     searchData,
-  } = useDialog();
+  } = useHeader();
   const router = useRouter();
   console.log(router.asPath, "router");
   const [isDropdownOpen, setDropdownOpen] = useState(false);

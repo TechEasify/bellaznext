@@ -5,6 +5,8 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import * as ga from "../lib/ga/index";
 import { FaustProvider } from "@faustwp/core";
+import { HeaderProvider } from "../components/HeaderContext";
+import Footer from "../components/Footer";
 
 const App = ({ Component, pageProps }) => {
   console.log(pageProps, "pageProps");
@@ -30,9 +32,12 @@ const App = ({ Component, pageProps }) => {
   }, [router.events]);
   return (
     <FaustProvider pageProps={pageProps}>
-      <DialogProvider>
-        <Component {...pageProps} key={router.asPath}/>
-      </DialogProvider>
+      <HeaderProvider>
+        <DialogProvider>
+          <Component {...pageProps} key={router.asPath} />
+          <Footer/>
+        </DialogProvider>
+      </HeaderProvider>
     </FaustProvider>
   );
 };

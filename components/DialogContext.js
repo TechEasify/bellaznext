@@ -59,23 +59,23 @@ export const DialogProvider = ({ children }) => {
     setIsDialogOpen(false);
   };
 
-  const {
-    loading: loadingNav,
-    error: errorNav,
-    data: navDataResult,
-  } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
+  // const {
+  //   loading: loadingNav,
+  //   error: errorNav,
+  //   data: navDataResult,
+  // } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
 
-  const {
-    loading: loadingSeo,
-    error: errorSeo,
-    data: seoQuery,
-  } = useQuery(SEO_QUERY, { fetchPolicy: "cache-first" });
+  // const {
+  //   loading: loadingSeo,
+  //   error: errorSeo,
+  //   data: seoQuery,
+  // } = useQuery(SEO_QUERY, { fetchPolicy: "cache-first" });
 
-  const {
-    loading: loadingIcon,
-    error: errorIcon,
-    data: iconDataResult,
-  } = useQuery(GET_ICON_SECTION, { fetchPolicy: "cache-first" });
+  // const {
+  //   loading: loadingIcon,
+  //   error: errorIcon,
+  //   data: iconDataResult,
+  // } = useQuery(GET_ICON_SECTION, { fetchPolicy: "cache-first" });
 
   const {
     loading: loadingSearch,
@@ -133,8 +133,8 @@ export const DialogProvider = ({ children }) => {
   console.log(testimonialData, "testimonialData");
 
   useEffect(() => {
-    if (navDataResult) setDataNav(navDataResult);
-    if (iconDataResult) setDataIcon(iconDataResult);
+    // if (navDataResult) setDataNav(navDataResult);
+    // if (iconDataResult) setDataIcon(iconDataResult);
     if (categoryData) setNodeByUri(categoryData);
     if (Data) setBannerData(Data);
     if (insightsData) setInsightsQuery(insightsData);
@@ -142,10 +142,10 @@ export const DialogProvider = ({ children }) => {
     if (categoryInsight) setCategoryInsightData(categoryInsight);
     if (testimonialData) setTestimonialQuery(testimonialData);
     if (navDataSearch) setSearchData(navDataSearch);
-    if (seoQuery) setSeoData(seoQuery)
+    // if (seoQuery) setSeoData(seoQuery)
   }, [
-    navDataResult,
-    iconDataResult,
+    // navDataResult,
+    // iconDataResult,
     categoryData,
     Data,
     insightsData,
@@ -153,7 +153,7 @@ export const DialogProvider = ({ children }) => {
     musicData,
     categoryInsight,
     navDataSearch,
-    seoQuery
+    // seoQuery
   ]);
 
   console.log(nodeByUri, "nodeByUri");
@@ -163,9 +163,9 @@ export const DialogProvider = ({ children }) => {
   return (
     <DialogContext.Provider
       value={{
-        setNavData,
-        navData,
-        dataNav,
+        // setNavData,
+        // navData,
+        // dataNav,
         posts,
         setPosts,
         cursor,
@@ -176,8 +176,8 @@ export const DialogProvider = ({ children }) => {
         openDialog,
         closeDialog,
         dataIcon,
-        loadingNav,
-        loadingIcon,
+        // loadingNav,
+        // loadingIcon,
         uri,
         loadingCategory,
         fetchMore,
@@ -191,8 +191,8 @@ export const DialogProvider = ({ children }) => {
         musicQuery,
         musicLoading,
         musicError,
-        iconDataResult,
-        errorIcon,
+        // iconDataResult,
+        // errorIcon,
         categoryInsightData,
         categoryLoading,
         categoryError,

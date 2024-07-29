@@ -152,7 +152,7 @@ const Layout = ({ children, ...customMeta }) => {
           </Dialog>
         </Transition.Root>
         {children}
-        <Footer/>
+        {/* <Footer/> */}
       </main>
     </>
   );
