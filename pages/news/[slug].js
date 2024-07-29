@@ -110,7 +110,7 @@ const NewsPage = () => {
       <main>
         <News />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
