@@ -706,3 +706,33 @@ export const SEO_QUERY = gql`
     }
   }
 `;
+
+export const GET_CONTACT_PAGE = gql`
+  query AboutPage($id: ID = "3163") {
+    page(id: $id, idType: DATABASE_ID) {
+      contactUs {
+        advertise {
+          advertiseTitle
+          description
+          emailAddress
+          whatsappLink
+          fieldGroupName
+        }
+        submitNewsTip {
+          description
+          emailAddress
+          fieldGroupName
+          submitNewsTipTitle
+          whatsappLink
+        }
+        noteToEditor {
+          description
+          emailAddress
+          fieldGroupName
+          noteToEditorTitle
+          whatsappLink
+        }
+      }
+    }
+  }
+`;

@@ -57,8 +57,8 @@ const Home = () => {
   console.log(seoData, "bannerData home page");
   console.log(url, "urlurlurlurl");
 
-  if (bannerLoading) return <SkeletonLoader />;
-  if (bannerError) return <p>Error loading data: {bannerError.message}</p>;
+  // if (bannerLoading) return <SkeletonLoader />;
+  // if (bannerError) return <p>Error loading data: {bannerError.message}</p>;
 
   let title;
   let description;

@@ -13,6 +13,7 @@ import { useDialog } from "../../components/DialogContext";
 import ExportedImage from "next-image-export-optimizer";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import Image from "next/image";
+import { useHeader } from "../../components/HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -72,7 +73,8 @@ const SkeletonLoader = () => (
 const NewsPage = () => {
   const router = useRouter();
   console.log(router, "routerrouterrouter");
-  const { navData, setNavData, nodeByUri, setNodeByUri } = useDialog();
+  const { nodeByUri, setNodeByUri } = useDialog();
+  const { navData, setNavData} = useHeader();
   const { slug } = router.query;
   const uri = `/${slug}`;
 

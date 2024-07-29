@@ -36,6 +36,7 @@ import {
 } from "react-share";
 import { GET_NEWS_SECTION } from "./queries/categoryQueries";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -176,14 +177,16 @@ const GET_TOPHEADLINE_PAGE = gql`
 
 function News() {
   const {
+    nodeByUri,
+    setNodeByUri
+  } = useDialog();
+  const {
     iconDataResult,
     navData,
     setNavData,
-    nodeByUri,
-    setNodeByUri,
     dataNav,
     dataIcon,
-  } = useDialog();
+  } = useHeader();
   const router = useRouter();
   const { slug } = router.query;
   const uri = `/${slug}`;

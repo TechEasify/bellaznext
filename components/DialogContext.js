@@ -1,6 +1,7 @@
 import React, { createContext, lazy, Suspense, useContext, useEffect, useState } from "react";
 import { gql, useQuery, useLazyQuery } from "@apollo/client";
 import {
+  GET_CONTACT_PAGE,
   GET_HOME_PAGE,
   GET_ICON_SECTION,
   GET_INSIGHTS_SECTION,
@@ -46,6 +47,7 @@ export const DialogProvider = ({ children }) => {
   const [testimonialQuery, setTestimonialQuery] = useState(null);
   const [searchData, setSearchData] = useState(null);
   const [seoData, setSeoData] = useState(null)
+  const [contactQuery, setContactQuery] = useState(null)
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -130,6 +132,12 @@ export const DialogProvider = ({ children }) => {
     error: testimonialError,
   } = useQuery(GET_TESTIMONIAL_SECTION, { fetchPolicy: "cache-first" });
 
+  const {
+    data: contactData,
+    loading: contactLoading,
+    error: contactError,
+  } = useQuery(GET_CONTACT_PAGE, { fetchPolicy: "cache-first" });
+
   console.log(testimonialData, "testimonialData");
 
   useEffect(() => {
@@ -142,6 +150,7 @@ export const DialogProvider = ({ children }) => {
     if (categoryInsight) setCategoryInsightData(categoryInsight);
     if (testimonialData) setTestimonialQuery(testimonialData);
     if (navDataSearch) setSearchData(navDataSearch);
+    if (contactData) setContactQuery(contactData)
     // if (seoQuery) setSeoData(seoQuery)
   }, [
     // navDataResult,
@@ -153,6 +162,7 @@ export const DialogProvider = ({ children }) => {
     musicData,
     categoryInsight,
     navDataSearch,
+    contactData
     // seoQuery
   ]);
 
@@ -179,6 +189,7 @@ export const DialogProvider = ({ children }) => {
         // loadingNav,
         // loadingIcon,
         uri,
+        contactQuery,
         loadingCategory,
         fetchMore,
         insightFetchMore,
