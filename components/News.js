@@ -253,7 +253,7 @@ function News() {
   const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
 
   console.log(posts, "postspostspostsposts");
-
+  console.log(dataNav, "dataNav dataNav news");
   return (
     <>
       {/* <Nav /> */}

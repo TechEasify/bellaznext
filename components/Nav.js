@@ -3646,7 +3646,7 @@ const Nav = ({
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined && dataNav.menu.header.subFirst}
+                        {dataNav !== undefined && dataNav?.menu?.header?.subFirst}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -3665,7 +3665,7 @@ const Nav = ({
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined && dataNav.menu.header.subSecond}
+                        {dataNav !== undefined && dataNav?.menu?.header?.subSecond}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -3684,7 +3684,7 @@ const Nav = ({
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined && dataNav.menu.header.subThird}
+                        {dataNav !== undefined && dataNav?.menu?.header?.subThird}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -4618,7 +4618,7 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -4637,7 +4637,7 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
                   <Image
                     priority={true}
                     loader={customLoader}

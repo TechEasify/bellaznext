@@ -268,7 +268,7 @@ const Banner = () => {
                       </span>
                       By
                       <span
-                        className="font-extrabold mx-1"
+                        className="font-extrabold ml-1"
                         style={{ color: "#40A6FB" }}
                       >
                         {post?.author?.node?.name}
