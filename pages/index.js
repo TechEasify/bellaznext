@@ -20,6 +20,7 @@ import Primarylogo from "../public/images/Primarylogo.svg";
 import ExportedImage from "next-image-export-optimizer";
 import Image from "next/image";
 import { lazy, Suspense } from "react";
+import { useHeader } from "../components/HeaderContext";
 
 const { publicRuntimeConfig } = getConfig();
 const { name, url } = publicRuntimeConfig.site;
@@ -53,7 +54,7 @@ const Home = () => {
   // const uri = router.asPath; // Define your URI here. This is an example for the home page.
 
   // const { loading, error, data } = useQuery(GET_HOME_PAGE);
-  const { bannerData, bannerLoading, bannerError, seoData } = useDialog();
+  const { bannerData, bannerLoading, bannerError, seoData } = useHeader();
   console.log(seoData, "bannerData home page");
   console.log(url, "urlurlurlurl");
 

@@ -799,3 +799,245 @@ export const GET_FOOTER_PAGE = gql`
     }
   }
 `;
+
+export const GET_ABOUT_PAGE = gql`
+  query ($id: ID = "3082") {
+    page(id: $id, idType: DATABASE_ID) {
+      about {
+        pageTitle
+        description
+        ourTeamTitle
+        ourTeamMembers {
+          teamA {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+          teamB {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+          teamC {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+          teamD {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+          teamE {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+          teamF {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+          teamG {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+          teamH {
+            image {
+              node {
+                altText
+                srcSet
+              }
+            }
+            name
+            designation
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_ADVERTISE_PAGE = gql`
+  query ($id: ID = "3114") {
+    page(id: $id, idType: DATABASE_ID) {
+      advertise {
+        title
+        description
+        button {
+          advertiseWithUs
+          buttonLink
+          buttonTextColor
+          buttonBorderColor
+          buttonBackgroundColor
+        }
+        share {
+          iconFirst
+          email
+        }
+        follow {
+          twiterLink
+          instagramLink
+          facebookLink
+        }
+        logoSection {
+          backgroundColor
+          logoImage {
+            node {
+              altText
+              srcSet
+              slug
+            }
+          }
+        }
+        clientImages {
+          imageA {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageB {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageC {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageD {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageE {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageF {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageG {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageH {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageI {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageJ {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageK {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageL {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageM {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageN {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageO {
+            node {
+              altText
+              srcSet
+            }
+          }
+          imageP {
+            node {
+              altText
+              srcSet
+            }
+          }
+        }
+        cta {
+          leftSideTitle
+          emailAddress
+          phoneNumber
+          backgroundColor
+          backgroundImage {
+            node {
+              altText
+              srcSet
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+`;

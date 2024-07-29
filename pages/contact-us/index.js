@@ -13,6 +13,7 @@ import Image from "next/image";
 import Layout from "../../components/Layout";
 import { useDialog } from "../../components/DialogContext";
 import getConfig from "next/config";
+import { useHeader } from "../../components/HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -22,7 +23,8 @@ const { publicRuntimeConfig } = getConfig();
 const { name, url } = publicRuntimeConfig.site;
 
 function Index() { 
-  const { seoData, contactQuery } = useDialog();
+  const { contactQuery } = useDialog();
+  const { seoData } = useHeader();
   console.log(seoData, "contact data");
   console.log(contactQuery, "datadatadatadata contact");
   const router = useRouter();
@@ -47,129 +49,6 @@ function Index() {
       canonical = item?.seo?.canonical || `${url}${router.asPath}`;
     }
   });
-
-  // if (loading)
-  //   return (
-  //     // <>
-  //     // <div className="px-4 py-8 mx-auto max-w-screen-xl animate-pulse bg-gray-800" style={{ background: "#002d73" }}>
-  //     //   <nav className="flex animate-pulse bg-gray-300" aria-label="Breadcrumb">
-  //     //     <ol className="inline-flex items-center mb-3 sm:mb-0 animate-pulse bg-gray-300">
-  //     //       <li>
-  //     //         <div className="flex items-center animate-pulse bg-gray-300">
-  //     //           <button
-  //     //             id="dropdownProject"
-  //     //             data-dropdown-toggle="dropdown-project"
-  //     //             className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700 animate-pulse bg-gray-300"
-  //     //           >
-  //     //           </button>
-  //     //         </div>
-  //     //       </li>
-  //     //       <span className="mx-2 text-gray-400 animate-pulse bg-gray-300"></span>
-  //     //       <li aria-current="page animate-pulse bg-gray-300">
-  //     //         <div className="flex items-center animate-pulse bg-gray-300">
-  //     //           <button
-  //     //             id="dropdownDatabase"
-  //     //             data-dropdown-toggle="dropdown-database"
-  //     //             className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700 animate-pulse bg-gray-300"
-  //     //           >
-  //     //           </button>
-  //     //         </div>
-  //     //       </li>
-  //     //     </ol>
-  //     //   </nav>
-  //     //   <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold mb-3 animate-pulse bg-gray-300">
-  //     //   </h1>
-  //     // </div>
-  //     // <div
-  //     //   className="px-4 py-8 mx-auto max-w-screen-xl mb-20 animate-pulse bg-gray-800" style={{ background: "#002d73", height: "100vh" }}
-  //     // >
-  //     //   <div
-  //     //     id="accordion-color"
-  //     //     data-accordion="collapse"
-  //     //     data-active-classes="bg-blue-100 text-blue-600 dark:text-white w-50 px-10"
-  //     //     className="bg-white w-full md:w-1/2 mx-auto animate-pulse bg-gray-300"
-  //     //   >
-  //     //     <h2 id="accordion-color-heading-1">
-  //     //       <button
-  //     //         type="button"
-  //     //         className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 animate-pulse bg-gray-300"
-  //     //       >
-  //     //         <span className="animate-pulse bg-gray-300">
-  //     //         </span>
-  //     //       </button>
-  //     //     </h2>
-  //     //     <div
-  //     //       id="accordion-color-body-1"
-  //     //       className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900 animate-pulse bg-gray-500"
-  //     //       aria-labelledby="accordion-color-heading-1"
-  //     //     >
-  //     //       <p className="mb-2 font-normal animate-pulse bg-gray-300">
-  //     //       </p>
-  //     //       <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3 animate-pulse bg-gray-300">
-  //     //       </div>
-  //     //       <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 animate-pulse bg-gray-300">
-  //     //         <span className="mr-2 text-black animate-pulse bg-gray-300"></span>
-  //     //       </div>
-  //     //     </div>
-  //     //     <h2 id="accordion-color-heading-2">
-  //     //       <button
-  //     //         type="button"
-  //     //         className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 animate-pulse bg-gray-300"
-  //     //       >
-  //     //         <span className="animate-pulse bg-gray-300 animate-pulse bg-gray-300">
-  //     //         </span>
-  //     //       </button>
-  //     //     </h2>
-  //     //     <div
-  //     //       id="accordion-color-body-2"
-  //     //       className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 animate-pulse bg-gray-500"
-  //     //       aria-labelledby="accordion-color-heading-2"
-  //     //     >
-  //     //       <p className="mb-2 font-normal animate-pulse bg-gray-300"></p>
-  //     //       <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3 animate-pulse bg-gray-300">
-  //     //         <span className="mr-2 text-black animate-pulse bg-gray-300"></span>
-  //     //       </div>
-  //     //       <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 animate-pulse bg-gray-300">
-  //     //         <span className="mr-2 text-black animate-pulse bg-gray-300"></span>
-  //     //       </div>
-  //     //     </div>
-  //     //     <h2 className="animate-pulse bg-gray-300">
-  //     //       <button
-  //     //         type="button"
-  //     //         className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 animate-pulse bg-gray-300"
-  //     //       >
-  //     //         <span className="animate-pulse bg-gray-300">
-  //     //         </span>
-  //     //       </button>
-  //     //     </h2>
-  //     //     <div
-  //     //       id="accordion-color-body-3"
-  //     //       className="p-5 border border-t-0 border-gray-200 dark:border-gray-700 animate-pulse bg-gray-500"
-  //     //     >
-  //     //       <p className="mb-2 font-normal animate-pulse bg-gray-300">
-  //     //       </p>
-  //     //       <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3 animate-pulse bg-gray-300">
-  //     //         <span className="mr-2 text-black animate-pulse bg-gray-300"></span>
-  //     //       </div>
-  //     //       <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 animate-pulse bg-gray-300"></div>
-  //     //     </div>
-  //     //     <p className="px-5 py-5 text-[12px] mb-2 text-black-500 dark:text-gray-400 animate-pulse bg-gray-300"></p>
-  //     //   </div>
-  //     // </div>
-  //     // </>
-  //     <div className="spinner">
-  //       <Image
-  //         priority={true}
-  //         loader={customLoader}
-  //         src={Primarylogo}
-  //         alt="Loading..."
-  //         className="blinking-image"
-  //         width={250}
-  //         height={54}
-  //       />
-  //     </div>
-  //   );
-  // if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>

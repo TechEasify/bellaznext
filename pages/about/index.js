@@ -11,6 +11,7 @@ import Image from "next/image";
 import Layout from "../../components/Layout";
 import { useDialog } from "../../components/DialogContext";
 import getConfig from "next/config";
+import { useHeader } from "../../components/HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -19,104 +20,9 @@ const customLoader = ({ src }) => {
 const { publicRuntimeConfig } = getConfig();
 const { name, url } = publicRuntimeConfig.site;
 
-const GET_ABOUT_PAGE = gql`
-  query ($id: ID = "3082") {
-    page(id: $id, idType: DATABASE_ID) {
-      about {
-        pageTitle
-        description
-        ourTeamTitle
-        ourTeamMembers {
-          teamA {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-          teamB {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-          teamC {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-          teamD {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-          teamE {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-          teamF {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-          teamG {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-          teamH {
-            image {
-              node {
-                altText
-                srcSet
-              }
-            }
-            name
-            designation
-          }
-        }
-      }
-    }
-  }
-`;
-
-function Index() {
-  const { loading, error, data } = useQuery(GET_ABOUT_PAGE);
-  console.log(data, "data about");
-  const { seoData } = useDialog();
+function Index() { 
+  const { aboutQuery, aboutLoading } = useDialog();
+  const { seoData } = useHeader();
   console.log(seoData, "about data");
   const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -141,7 +47,7 @@ function Index() {
     }
   });
 
-  if (loading)
+  if (aboutLoading)
     return (
       <div className="flex justify-center items-center h-screen">
         <Image
@@ -155,7 +61,6 @@ function Index() {
         />
       </div>
     );
-  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>
@@ -163,19 +68,19 @@ function Index() {
       <Layout title={title} description={description} canonical={canonical}>
         <div className="px-4 py-20 mx-auto max-w-screen-xl mb-20">
           <hr className="border-gray-300 mb-5" />
-          {data && data.page && (
+          {aboutQuery && aboutQuery?.page && (
             <div>
               <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">
                 <div className="w-full md:w-1/3 mb-5 md:mb-0">
                   <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold">
-                    {data.page.about.pageTitle}
+                    {aboutQuery?.page?.about?.pageTitle}
                   </h5>
                 </div>
                 <div className="w-full md:w-2/3 text-left">
                   <p
                     className="font-normal"
                     dangerouslySetInnerHTML={{
-                      __html: data.page.about.description,
+                      __html: aboutQuery?.page?.about?.description,
                     }}
                   />
                 </div>
@@ -184,13 +89,13 @@ function Index() {
               <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-20">
                 <div className="w-full md:w-1/3 mb-5 md:mb-0">
                   <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold">
-                    {data.page.about.ourTeamTitle}
+                    {aboutQuery?.page?.about?.ourTeamTitle}
                   </h5>
                 </div>
                 <div className="flex flex-wrap w-full md:w-2/3 text-left">
-                  {Object.keys(data.page.about.ourTeamMembers).map(
+                  {Object.keys(aboutQuery?.page?.about?.ourTeamMembers).map(
                     (teamKey) => {
-                      const member = data.page.about.ourTeamMembers[teamKey];
+                      const member = aboutQuery?.page?.about?.ourTeamMembers[teamKey];
                       if (!member || !member.name) return null;
 
                       return (

@@ -5,12 +5,11 @@ import { useDialog } from "./DialogContext";
 function Testimonial() {
   const { testimonialQuery } = useDialog();
   const [testimonialData, setTestimonialData] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(false);
   const sliderRef = useRef(null);
 
   useEffect(() => {
     if (testimonialQuery) {
-      // Flatten the testimonial objects into an array and filter out empty testimonials
       const testimonials = Object.values(
         testimonialQuery?.page?.advertise?.testimonials || {}
       ).filter(
@@ -50,14 +49,24 @@ function Testimonial() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth < 768 && sliderRef.current) {
-        sliderRef.current.slickGoTo(0); // Close slider on mobile view
+      if (typeof window !== "undefined") {
+        setIsMobile(window.innerWidth < 768);
+        if (window.innerWidth < 768 && sliderRef.current) {
+          sliderRef.current.slickGoTo(0);
+        }
       }
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      setIsMobile(window.innerWidth < 768);
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
   }, []);
 
   const next = () => {
@@ -72,7 +81,7 @@ function Testimonial() {
     }
   };
 
-  console.log(testimonialData, "testimonialDatatestimonialData");
+  console.log(testimonialData, "testimonialData");
 
   return (
     <>

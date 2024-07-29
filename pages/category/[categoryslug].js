@@ -12,6 +12,7 @@ import ExportedImage from "next-image-export-optimizer";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import getConfig from "next/config";
+import { useHeader } from "../../components/HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -38,15 +39,15 @@ const CategoryPage = () => {
   const router = useRouter();
   console.log(router.query.categoryslug, "router category");
   const {
-    navData,
-    setNavData,
-    setNodeByUri,
     nodeByUri,
     uri,
     loadingCategory,
     fetchMore,
-    seoData,
   } = useDialog();
+  const {
+    seoData,
+    navData
+  } = useHeader();
   const { categoryslug } = router.query;
   console.log(seoData, "nodeByUri category");
   console.log(router, "router category");
