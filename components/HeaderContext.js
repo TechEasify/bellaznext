@@ -96,7 +96,6 @@ export const HeaderProvider = ({ children }) => {
       }}
     >
       {children}
-      <Footer/>
     </HeaderContext.Provider>
   );
 };

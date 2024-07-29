@@ -106,7 +106,7 @@ const NewsPage = () => {
       <Head>
         <title>{nodeByUri?.title} - News</title>
       </Head>
-      <Nav uri={uri} />
+      {/* <Nav uri={uri} /> */}
       <main>
         <News />
       </main>

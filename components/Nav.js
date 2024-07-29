@@ -561,7 +561,7 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
+                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -580,7 +580,7 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
+                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
                   <Image
                     priority={true}
                     loader={customLoader}

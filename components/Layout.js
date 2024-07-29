@@ -86,7 +86,7 @@ const Layout = ({ children, ...customMeta }) => {
         )}
       </Head>
       <main>
-        <Nav />
+        {/* <Nav /> */}
         <Transition.Root show={isDialogOpen} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={() => {}}>
             <Transition.Child
