@@ -11,85 +11,18 @@ import { gql, useQuery } from "@apollo/client";
 import { useDialog } from "./DialogContext";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
 
-const GET_FOOTER_PAGE = gql`
-  query footer($id: ID = "229") {
-    menu(id: $id, idType: DATABASE_ID) {
-      footer {
-        companyTitle
-        companyFirst
-        companyFirstLink {
-          url
-        }
-        companySecond
-        companySecondLink {
-          url
-        }
-        companyThird
-        companyThirdLink {
-          url
-        }
-        companyFore
-        companyForeLink {
-          url
-        }
-        companyFive
-        companyFiveLink {
-          url
-        }
-        footerBackgroundColor
-        newsTitle
-        newsFirst
-        newsFirstLinks {
-          url
-        }
-        newsSecond
-        newsSecondLinks {
-          url
-        }
-        newsThird
-        newsThirdLinks {
-          url
-        }
-        newsFore
-        newsForeLinks {
-          url
-        }
-        newsFive
-        newsFiveLinks {
-          url
-        }
-        belaazTwitter
-        belaazTwitterLink
-        belaazFacebook
-        belaazFacebookLink
-        belaazInstagram
-        belaazInstagramLink
-        belaazYoutube
-        belaazYoutubeLink
-        belaazTelegram
-        belaazTelegramLink
-        copyrightText
-      }
-    }
-  }
-`;
-
 const Footer = () => {
-  const { iconDataResult, dataIcon } = useDialog();
-  console.log(dataIcon, "iconDataResult dataNav");
+  const { iconDataResult, dataIcon, footerData,
+    loadingFooter,
+    errorFooter } = useHeader();
   const router = useRouter();
-  const {
-    loading: loadingFooter,
-    error: errorFooter,
-    data: dataFooter,
-  } = useQuery(GET_FOOTER_PAGE);
-
-  console.log(dataFooter, "");
+  console.log(dataIcon, "iconDataResult dataNav");
 
   return (
     <>
@@ -134,58 +67,58 @@ const Footer = () => {
                   {/* First Column */}
                   <div className="mb-8 md:mb-0">
                     <h2 className="mb-6 text-[20px] font-semibold text-white">
-                      {dataFooter?.menu?.footer?.newsTitle}
+                      {footerData?.menu?.footer?.newsTitle}
                     </h2>
                     <ul className="text-white font-medium">
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.newsFirstLinks?.url ?? "/"
+                            footerData?.menu?.footer?.newsFirstLinks?.url ?? "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.newsFirst}
+                          {footerData?.menu?.footer?.newsFirst}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.newsSecondLinks?.url ??
+                            footerData?.menu?.footer?.newsSecondLinks?.url ??
                             "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.newsSecond}
+                          {footerData?.menu?.footer?.newsSecond}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.newsThirdLinks?.url ?? "/"
+                            footerData?.menu?.footer?.newsThirdLinks?.url ?? "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.newsThird}
+                          {footerData?.menu?.footer?.newsThird}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.newsForeLinks?.url ?? "/"
+                            footerData?.menu?.footer?.newsForeLinks?.url ?? "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.newsFore}
+                          {footerData?.menu?.footer?.newsFore}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.newsFiveLinks?.url ?? "/"
+                            footerData?.menu?.footer?.newsFiveLinks?.url ?? "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.newsFive}
+                          {footerData?.menu?.footer?.newsFive}
                         </Link>
                       </li>
                     </ul>
@@ -193,62 +126,62 @@ const Footer = () => {
                   {/* Second Column */}
                   <div className="mb-8 md:mb-0">
                     <h2 className="mb-6 text-[20px] font-semibold text-white">
-                      {dataFooter?.menu?.footer?.companyTitle}
+                      {footerData?.menu?.footer?.companyTitle}
                     </h2>
                     <ul className="text-white font-medium">
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.companyFirstLink?.url ??
+                            footerData?.menu?.footer?.companyFirstLink?.url ??
                             "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.companyFirst}
+                          {footerData?.menu?.footer?.companyFirst}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.companySecondLink?.url ??
+                            footerData?.menu?.footer?.companySecondLink?.url ??
                             "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.companySecond}
+                          {footerData?.menu?.footer?.companySecond}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.companyThirdLink?.url ??
+                            footerData?.menu?.footer?.companyThirdLink?.url ??
                             "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.companyThird}
+                          {footerData?.menu?.footer?.companyThird}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.companyForeLink?.url ??
+                            footerData?.menu?.footer?.companyForeLink?.url ??
                             "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.companyFore}
+                          {footerData?.menu?.footer?.companyFore}
                         </Link>
                       </li>
                       <li className="mb-4">
                         <Link
                           href={
-                            dataFooter?.menu?.footer?.companyFiveLink?.url ??
+                            footerData?.menu?.footer?.companyFiveLink?.url ??
                             "/"
                           }
                           className="hover:underline"
                         >
-                          {dataFooter?.menu?.footer?.companyFive}
+                          {footerData?.menu?.footer?.companyFive}
                         </Link>
                       </li>
                     </ul>
@@ -259,58 +192,58 @@ const Footer = () => {
                       Social
                     </h2>
                     <ul className="text-white font-medium">
-                      {dataFooter?.menu?.footer?.belaazTwitterLink && (
+                      {footerData?.menu?.footer?.belaazTwitterLink && (
                         <li className="mb-4">
                           <Link
-                            href={dataFooter.menu.footer.belaazTwitterLink}
+                            href={footerData.menu.footer.belaazTwitterLink}
                             className="hover:underline"
                             target="_blank"
                           >
-                            {dataFooter.menu.footer.belaazTwitter}
+                            {footerData.menu.footer.belaazTwitter}
                           </Link>
                         </li>
                       )}
-                      {dataFooter?.menu?.footer?.belaazFacebookLink && (
+                      {footerData?.menu?.footer?.belaazFacebookLink && (
                         <li className="mb-4">
                           <Link
-                            href={dataFooter.menu.footer.belaazFacebookLink}
+                            href={footerData.menu.footer.belaazFacebookLink}
                             className="hover:underline"
                             target="_blank"
                           >
-                            {dataFooter.menu.footer.belaazFacebook}
+                            {footerData.menu.footer.belaazFacebook}
                           </Link>
                         </li>
                       )}
-                      {dataFooter?.menu?.footer?.belaazInstagramLink && (
+                      {footerData?.menu?.footer?.belaazInstagramLink && (
                         <li className="mb-4">
                           <Link
-                            href={dataFooter.menu.footer.belaazInstagramLink}
+                            href={footerData.menu.footer.belaazInstagramLink}
                             className="hover:underline"
                             target="_blank"
                           >
-                            {dataFooter.menu.footer.belaazInstagram}
+                            {footerData.menu.footer.belaazInstagram}
                           </Link>
                         </li>
                       )}
-                      {dataFooter?.menu?.footer?.belaazYoutubeLink && (
+                      {footerData?.menu?.footer?.belaazYoutubeLink && (
                         <li className="mb-4">
                           <Link
-                            href={dataFooter.menu.footer.belaazYoutubeLink}
+                            href={footerData.menu.footer.belaazYoutubeLink}
                             className="hover:underline"
                             target="_blank"
                           >
-                            {dataFooter.menu.footer.belaazYoutube}
+                            {footerData.menu.footer.belaazYoutube}
                           </Link>
                         </li>
                       )}
-                      {dataFooter?.menu?.footer?.belaazTelegramLink && (
+                      {footerData?.menu?.footer?.belaazTelegramLink && (
                         <li className="mb-4">
                           <Link
-                            href={dataFooter.menu.footer.belaazTelegramLink}
+                            href={footerData.menu.footer.belaazTelegramLink}
                             className="hover:underline"
                             target="_blank"
                           >
-                            {dataFooter.menu.footer.belaazTelegram}
+                            {footerData.menu.footer.belaazTelegram}
                           </Link>
                         </li>
                       )}
@@ -440,7 +373,7 @@ const Footer = () => {
                 </Link>
               </div>
               <p className="text-sm text-white font-semibold">
-                {dataFooter?.menu?.footer?.copyrightText}
+                {footerData?.menu?.footer?.copyrightText}
               </p>
             </div>
             {/* Contact Us Button Section */}

@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import {
+  GET_FOOTER_PAGE,
   GET_ICON_SECTION,
   GET_NAV_SECTION,
   SEARCH_QUERY,
   SEO_QUERY,
 } from "./queries/Queries";
 import { useRouter } from "next/router";
+import Footer from "./Footer";
 
 const HeaderContext = createContext();
 
@@ -22,7 +24,8 @@ export const HeaderProvider = ({ children }) => {
   const [dataNav, setDataNav] = useState(null);
   const [dataIcon, setDataIcon] = useState(null);
   const [searchData, setSearchData] = useState(null);
-  const [seoData, setSeoData] = useState(null)
+  const [seoData, setSeoData] = useState(null);
+  const [footerData, setFooterData] = useState(null);
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -58,20 +61,22 @@ export const HeaderProvider = ({ children }) => {
     loading: loadingSearch,
     error: errorSearch,
     data: navDataSearch,
-    fetchMore: searchFetch
+    fetchMore: searchFetch,
   } = useQuery(SEARCH_QUERY, { fetchPolicy: "cache-first" });
+
+  const {
+    loading: loadingFooter,
+    error: errorFooter,
+    data: dataFooter,
+  } = useQuery(GET_FOOTER_PAGE);
 
   useEffect(() => {
     if (navDataResult) setDataNav(navDataResult);
     if (iconDataResult) setDataIcon(iconDataResult);
     if (navDataSearch) setSearchData(navDataSearch);
-    if (seoQuery) setSeoData(seoQuery)
-  }, [
-    navDataResult,
-    iconDataResult,
-    navDataSearch,
-    seoQuery
-  ]);
+    if (seoQuery) setSeoData(seoQuery);
+    if (dataFooter) setFooterData(dataFooter);
+  }, [navDataResult, iconDataResult, navDataSearch, seoQuery, dataFooter]);
 
   return (
     <HeaderContext.Provider
@@ -84,10 +89,14 @@ export const HeaderProvider = ({ children }) => {
         searchFetch,
         loadingSearch,
         errorSearch,
-        seoData
+        seoData,
+        footerData,
+        loadingFooter,
+        errorFooter
       }}
     >
       {children}
+      <Footer/>
     </HeaderContext.Provider>
   );
 };

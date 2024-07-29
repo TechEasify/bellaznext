@@ -33,10 +33,9 @@ const App = ({ Component, pageProps }) => {
   return (
     <FaustProvider pageProps={pageProps}>
       <HeaderProvider>
-        <DialogProvider>
-          <Component {...pageProps} key={router.asPath} />
-          <Footer/>
-        </DialogProvider>
+          <DialogProvider>
+            <Component {...pageProps} key={router.asPath} />
+          </DialogProvider>
       </HeaderProvider>
     </FaustProvider>
   );

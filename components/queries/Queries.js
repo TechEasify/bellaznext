@@ -736,3 +736,66 @@ export const GET_CONTACT_PAGE = gql`
     }
   }
 `;
+
+export const GET_FOOTER_PAGE = gql`
+  query footer($id: ID = "229") {
+    menu(id: $id, idType: DATABASE_ID) {
+      footer {
+        companyTitle
+        companyFirst
+        companyFirstLink {
+          url
+        }
+        companySecond
+        companySecondLink {
+          url
+        }
+        companyThird
+        companyThirdLink {
+          url
+        }
+        companyFore
+        companyForeLink {
+          url
+        }
+        companyFive
+        companyFiveLink {
+          url
+        }
+        footerBackgroundColor
+        newsTitle
+        newsFirst
+        newsFirstLinks {
+          url
+        }
+        newsSecond
+        newsSecondLinks {
+          url
+        }
+        newsThird
+        newsThirdLinks {
+          url
+        }
+        newsFore
+        newsForeLinks {
+          url
+        }
+        newsFive
+        newsFiveLinks {
+          url
+        }
+        belaazTwitter
+        belaazTwitterLink
+        belaazFacebook
+        belaazFacebookLink
+        belaazInstagram
+        belaazInstagramLink
+        belaazYoutube
+        belaazYoutubeLink
+        belaazTelegram
+        belaazTelegramLink
+        copyrightText
+      }
+    }
+  }
+`;
