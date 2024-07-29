@@ -238,9 +238,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         {post?.title || ""}
                       </p>
                     </Link>
-                    <p className="text-[10px] text-base font-bold text-gray-800">
+                    <p className="text-[12px] text-base font-bold text-gray-800">
                       <span
-                        className="text-[10px] font-extrabold mr-1"
+                        className="text-[12px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
                         |
@@ -250,7 +250,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         className="font-extrabold mx-1"
                         style={{ color: "#40A6FB" }}
                       >
-                        Linah Absteen
+                        {post?.author?.node?.name}
                         <span
                           className="text-[36px] font-extrabold mx-1"
                           style={{ color: "#40A6FB" }}
@@ -327,9 +327,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         {musicpost?.title}
                       </h5>
                     </Link>
-                    <p className="text-[10px] text-base font-bold text-gray-800 mb-2">
+                    <p className="text-[12px] text-base font-bold text-gray-800 mb-2">
                       <span
-                        className="text-[10px] font-extrabold mr-1"
+                        className="text-[12px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
                         |
@@ -394,9 +394,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
                                 {post.title}
                               </h5>
                             </Link>
-                            <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                            <p className="text-[12px] text-base font-bold text-gray-800 mb-4">
                               <span
-                                className="text-[25px] font-extrabold mr-1"
+                                className="text-[12px] font-extrabold mr-1"
                                 style={{ color: "#40A6FB" }}
                               >
                                 |

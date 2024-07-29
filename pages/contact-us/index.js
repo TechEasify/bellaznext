@@ -3,7 +3,8 @@ import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
 import ExportedImage from "next-image-export-optimizer";
-import emailoutline from "../../public/images/email-outline.svg";
+import Frame_209 from "../../public/images/Frame_209.png";
+import Frame_208 from "../../public/images/Frame_208.png";
 import whatsapp1 from "../../public/images/whatsapp1.svg";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
@@ -54,6 +55,7 @@ function Index() {
   const { loading, error, data } = useQuery(GET_CONTACT_PAGE);
   const { seoData } = useDialog();
   console.log(seoData, "contact data");
+  console.log(data, "datadatadatadata contact");
   const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState(null);
 
@@ -290,42 +292,58 @@ function Index() {
                   data.page.contactUs.advertise.description}
               </p>
               <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  className="h-5 w-5 mr-2 object-cover"
-                  src={emailoutline}
-                  alt="emailoutline"
-                  width={23}
-                  height={23}
-                />
-                <span className="mr-2 text-black">Email :</span>
                 <Link
+                  // href={
+                  //   data.page !== undefined &&
+                  //   data.page.contactUs.advertise.emailAddress
+                  // }
+                  href={`mailto:${data.page?.contactUs?.advertise?.emailAddress}?subject=Subject&body=Message%20body`}
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-[32px] w-[88px] mr-2 object-cover"
+                    src={Frame_209}
+                    alt="Frame_209"
+                    width={88}
+                    height={32}
+                  />
+                </Link>
+                <Link
+                  href={
+                    data.page !== undefined &&
+                    data.page.contactUs.advertise.whatsappLink
+                  }
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-[32px] w-[140px] mr-2 object-cover"
+                    src={Frame_208}
+                    alt="Frame_208"
+                    width={140}
+                    height={32}
+                  />
+                </Link>
+                {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   {data.page !== undefined &&
                     data.page.contactUs.advertise.emailAddress}
-                </Link>
+                </Link> */}
               </div>
-              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  className="h-5 w-5 mr-2 object-cover"
-                  src={whatsapp1}
-                  alt="whatsapp1"
-                  width={23}
-                  height={23}
-                />
-                <span className="mr-2 text-black">WhatsApp :</span>
-                <Link
+              <div className="flex flex-col justify-between md:flex-row text-gray-500 dark:text-gray-400">
+                <span className="mr-2 text-black">929-9-Belaaz (235-229)</span>
+                {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
                 >
                   {data.page !== undefined &&
                     data.page.contactUs.advertise.whatsappLink}
-                </Link>
+                </Link> */}
                 <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 underline text-end"
@@ -378,42 +396,65 @@ function Index() {
                   data.page.contactUs.submitNewsTip.description}
               </p>
               <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  className="h-5 w-5 mr-2 object-cover"
-                  src={emailoutline}
-                  alt="emailoutline"
-                  width={23}
-                  height={23}
-                />
-                <span className="mr-2 text-black">Email :</span>
+                <Link
+                  // href={
+                  //   data.page !== undefined &&
+                  //   data.page.contactUs.submitNewsTip.emailAddress
+                  // }
+                  href={`mailto:${data.page?.contactUs?.submitNewsTip?.emailAddress}?subject=Subject&body=Message%20body`}
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-[32px] w-[88px] mr-2 object-cover"
+                    src={Frame_209}
+                    alt="Frame_209"
+                    width={88}
+                    height={32}
+                  />
+                </Link>
+                <Link
+                  href={
+                    data.page !== undefined &&
+                    data.page.contactUs.submitNewsTip.whatsappLink
+                  }
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-[32px] w-[140px] mr-2 object-cover"
+                    src={Frame_208}
+                    alt="Frame_208"
+                    width={140}
+                    height={32}
+                  />
+                </Link>
+                {/*                 
                 <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   {data.page !== undefined &&
                     data.page.contactUs.submitNewsTip.emailAddress}
-                </Link>
+                </Link> */}
               </div>
-              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  className="h-5 w-5 mr-2 object-cover"
-                  src={whatsapp1}
-                  alt="whatsapp1"
-                  width={23}
-                  height={23}
-                />
-                <span className="mr-2 text-black">WhatsApp :</span>
-                <Link
+              <div className="flex flex-col justify-between md:flex-row text-gray-500 dark:text-gray-400">
+                <span className="mr-2 text-black">929-9-Belaaz (235-229)</span>
+                {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
                 >
                   {data.page !== undefined &&
-                    data.page.contactUs.submitNewsTip.whatsappLink}
-                </Link>
+                    data.page.contactUs.advertise.whatsappLink}
+                </Link> */}
+                {/* <Link
+                  href="#"
+                  className="text-blue-600 dark:text-blue-500 underline text-end"
+                >
+                  Know more
+                </Link> */}
               </div>
             </div>
             <h2 id="accordion-color-heading-3">
@@ -460,42 +501,58 @@ function Index() {
                   data.page.contactUs.noteToEditor.description}
               </p>
               <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  className="h-5 w-5 mr-2 object-cover"
-                  src={emailoutline}
-                  alt="emailoutline"
-                  width={23}
-                  height={23}
-                />
-                <span className="mr-2 text-black">Email :</span>
                 <Link
+                  // href={
+                  //   data.page !== undefined &&
+                  //   data.page.contactUs.noteToEditor.emailAddress
+                  // }
+                  href={`mailto:${data.page?.contactUs?.noteToEditor?.emailAddress}?subject=Subject&body=Message%20body`}
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-[32px] w-[88px] mr-2 object-cover"
+                    src={Frame_209}
+                    alt="Frame_209"
+                    width={88}
+                    height={32}
+                  />
+                </Link>
+                <Link
+                  href={
+                    data.page !== undefined &&
+                    data.page.contactUs.noteToEditor.whatsappLink
+                  }
+                  className="text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-[32px] w-[140px] mr-2 object-cover"
+                    src={Frame_208}
+                    alt="Frame_208"
+                    width={140}
+                    height={32}
+                  />
+                </Link>
+                {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   {data.page !== undefined &&
                     data.page.contactUs.noteToEditor.emailAddress}
-                </Link>
+                </Link> */}
               </div>
               <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  className="h-5 w-5 mr-2 object-cover"
-                  src={whatsapp1}
-                  alt="whatsapp1"
-                  width={23}
-                  height={23}
-                />
-                <span className="mr-2 text-black">WhatsApp :</span>
-                <Link
+                <span className="mr-2 text-black">929-9-Belaaz (235-229)</span>
+                {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
                 >
                   {data.page !== undefined &&
                     data.page.contactUs.noteToEditor.whatsappLink}
-                </Link>
+                </Link> */}
               </div>
             </div>
             <p className="px-5 py-5 text-[12px] mb-2 text-black-500 dark:text-gray-400">

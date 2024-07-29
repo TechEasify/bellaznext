@@ -230,7 +230,7 @@ const Insight = () => {
                           {post.title}
                         </h5>
                       </Link>
-                      <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                      <p className="text-[12px] text-base font-bold text-gray-800 mb-4">
                         <span
                           className="text-[12px] font-extrabold mr-1"
                           style={{ color: "#40A6FB" }}
