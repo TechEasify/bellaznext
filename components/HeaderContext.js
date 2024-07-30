@@ -9,6 +9,7 @@ import {
 } from "./queries/Queries";
 import { useRouter } from "next/router";
 import Footer from "./Footer";
+import { CATEGORY_BREAKING_QUERY } from "./queries/categoryQueries";
 
 const HeaderContext = createContext();
 
@@ -26,6 +27,7 @@ export const HeaderProvider = ({ children }) => {
   const [searchData, setSearchData] = useState(null);
   const [seoData, setSeoData] = useState(null);
   const [footerData, setFooterData] = useState(null);
+  const [nodeByUri, setNodeByUri] = useState(null);
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -70,6 +72,16 @@ export const HeaderProvider = ({ children }) => {
     data: dataFooter,
   } = useQuery(GET_FOOTER_PAGE);
 
+  const {
+    data: categoryData,
+    loading: loadingCategory,
+    error: errorCategory,
+    fetchMore,
+  } = useQuery(CATEGORY_BREAKING_QUERY, {
+    variables: { uri },
+    fetchPolicy: "cache-first",
+  });
+
   useEffect(() => {
     if (navDataResult) setNavData(navDataResult);
     if (navDataResult) setDataNav(navDataResult);
@@ -77,7 +89,8 @@ export const HeaderProvider = ({ children }) => {
     if (navDataSearch) setSearchData(navDataSearch);
     if (seoQuery) setSeoData(seoQuery);
     if (dataFooter) setFooterData(dataFooter);
-  }, [navDataResult, iconDataResult, navDataSearch, seoQuery, dataFooter]);
+    if (categoryData) setNodeByUri(categoryData);
+  }, [navDataResult, iconDataResult, navDataSearch, seoQuery, dataFooter, categoryData]);
 
   return (
     <HeaderContext.Provider
@@ -94,6 +107,7 @@ export const HeaderProvider = ({ children }) => {
         footerData,
         loadingFooter,
         errorFooter,
+        nodeByUri
       }}
     >
       {children}
