@@ -61,11 +61,14 @@ const Banner = () => {
 
   console.log(bannerData, "bannerDatabannerDatabannerData");
 
+  const kelvinToFahrenheit = (kelvin) =>
+    (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
+
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
         let latitude, longitude;
-
+  
         const successCallback = async (position) => {
           latitude = position.coords.latitude;
           longitude = position.coords.longitude;
@@ -75,10 +78,9 @@ const Banner = () => {
           const forecastResponse = await axios.get(
             `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_FORCAST_KEY}`
           );
-
+  
           setWeatherData(weatherResponse.data);
-
-          // Extract the next 5 time slots from the forecast data
+  
           const hourlyData = forecastResponse.data.list
             .slice(0, 5)
             .map((slot) => ({
@@ -86,27 +88,35 @@ const Banner = () => {
                 hour: "2-digit",
                 minute: "2-digit",
               }),
-              temp: (((slot.main.temp - 273.15) * 9) / 5 + 32).toFixed(2),
+              temp: kelvinToFahrenheit(slot.main.temp),
               image: getWeatherImage(slot.weather[0].icon),
             }));
-
+  
           setHourlyForecast(hourlyData);
           setLoading(false);
         };
-
+  
         const errorCallback = (error) => {
           console.error("Error fetching location:", error.message);
-          // If location access is denied or error occurs, default to New York coordinates
           latitude = 40.7128; // New York latitude
           longitude = -74.006; // New York longitude
-
+  
           axios
             .get(
               `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_FORCAST_KEY}`
             )
             .then((weatherResponse) => {
-              console.log(weatherResponse, "weatherResponse");
               setWeatherData(weatherResponse.data);
+  
+              const defaultHourlyData = [
+                { time: "2 pm", temp: 72, image: image_sun },
+                { time: "3 pm", temp: 70, image: image_sun1 },
+                { time: "4 pm", temp: 69, image: image_sun2 },
+                { time: "5 pm", temp: 75, image: image_sun3 },
+                { time: "6 pm", temp: 76, image: image_sun4 },
+              ];
+  
+              setHourlyForecast(defaultHourlyData);
               setLoading(false);
             })
             .catch((error) => {
@@ -114,7 +124,7 @@ const Banner = () => {
               setLoading(false);
             });
         };
-
+  
         navigator.geolocation.getCurrentPosition(
           successCallback,
           errorCallback
@@ -127,7 +137,7 @@ const Banner = () => {
         setLoading(false);
       }
     };
-
+  
     fetchWeatherData();
   }, []);
 
@@ -142,7 +152,7 @@ const Banner = () => {
       case "02n":
         return image_sun3;
       default:
-        return image_sun4;
+        return image_sun4; // Ensure this fallback image is valid
     }
   };
 
@@ -155,9 +165,6 @@ const Banner = () => {
   if (!weatherData) {
     return <p>Failed to fetch weather data</p>;
   }
-
-  const kelvinToFahrenheit = (kelvin) =>
-    (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
 
   const { main, weather, wind, name, sys, clouds } = weatherData;
   const { description } = weather[0];
@@ -332,7 +339,8 @@ const Banner = () => {
                 }
               }}
             />
-            <div
+
+            {/* <div
               className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               style={{
                 background:
@@ -447,7 +455,125 @@ const Banner = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
+
+<div
+  className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+  style={{
+    background: "linear-gradient(to bottom right, #002D73, #40A6FB)",
+    padding: "10px",
+    borderRadius: "10px",
+  }}
+>
+  <div className="flex items-center justify-between mb-1">
+    <div>
+      <p className="text-xs tracking-tight text-white">
+        Chance of rain {main.humidity}%
+      </p>
+      <h5 className="text-xl text-white font-medium">
+        {description.charAt(0).toUpperCase() + description.slice(1)}
+      </h5>
+    </div>
+    <Image
+      priority={true}
+      loader={customLoader}
+      src={sun}
+      alt="Partly Cloudy"
+      className="h-13 w-13 mr-2 object-cover"
+    />
+  </div>
+  <div className="flex items-center">
+    <Image
+      priority={true}
+      loader={customLoader}
+      src={location}
+      alt="Location"
+      className="h-5 w-5 mr-2 object-cover"
+    />
+    <p className="text-normal tracking-tight text-white">
+      {name}, {sys.country}
+    </p>
+  </div>
+  <div
+    className="flex items-center mt-2"
+    style={{
+      justifyContent: "space-around",
+      marginBottom: "20px",
+    }}
+  >
+    <p className="font-bold text-white mr-px text-base">
+      {tempF}°F
+    </p>
+    <Image
+      priority={true}
+      loader={customLoader}
+      src={mdi_weather}
+      alt="Cloud"
+      className="h-4 w-4 object-cover"
+    />
+    <p className="font-xs text-white text-sm">{clouds.all}%</p>
+    <Image
+      priority={true}
+      loader={customLoader}
+      src={typcn_weather}
+      alt="Cloud"
+      className="h-4 w-4 object-cover"
+    />
+    <p className="font-xs text-white text-sm">
+      {(main.feels_like - 273.15).toFixed(1)}°C
+    </p>
+    <Image
+      priority={true}
+      loader={customLoader}
+      src={wind_weather}
+      alt="Wind"
+      className="h-4 w-4"
+    />
+    <p className="font-xs text-white text-sm">{wind.speed} mp/h</p>
+  </div>
+  <div
+    className="flex justify-between items-center"
+    style={{ marginBottom: "30px" }}
+  >
+    <p className="text-white mt-4 font-medium">{date}</p>
+    <Image
+      priority={true}
+      loader={customLoader}
+      src={jam_menu}
+      alt="Toggle"
+      className="h-6 w-6"
+    />
+  </div>
+  <div className="mt-4">
+    <div className="flex justify-between items-center text-center">
+      {hourlyForecast.length > 0 ? (
+        hourlyForecast.map((slot, index) => (
+          <div
+            key={index}
+            style={{
+              margin: "0 auto",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <p className="text-xs text-white mr-2 mb-1">{slot.time}</p>
+            <Image
+              priority={true}
+              loader={customLoader}
+              src={slot.image}
+              alt="Weather Icon"
+              style={{ margin: "0 auto" }}
+              className="h-7 w-7"
+            />
+            <p className="text-xs text-white mt-1">{slot.temp}°F</p>
+          </div>
+        ))
+      ) : (
+        <p className="text-white">No hourly forecast data available.</p>
+      )}
+    </div>
+  </div>
+</div>
 
             <div className="w-full max-w-3xl mx-auto mt-5">
               <p className="text-[15px] font-bold text-black-900 italic">
