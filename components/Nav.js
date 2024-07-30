@@ -146,10 +146,11 @@ const Nav = ({
   archiveType,
   name,
   uri,
+  navData
 }) => {
   const {
-    navData,
-    setNavData,
+    // navData,
+    // setNavData,
     loadingNav,
     loadingMenu,
     loadingsubMenu,
@@ -161,7 +162,7 @@ const Nav = ({
     searchData,
   } = useHeader();
   const router = useRouter();
-  console.log(router.asPath, "router");
+  console.log(router, "router");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownSearch, setIsDropdownSearch] = useState(false);
   const [isContactHeaderVisible, setContactHeaderVisible] = useState(false);
@@ -171,20 +172,20 @@ const Nav = ({
   const [searchTerm, setSearchTerm] = useState("");
   const isMobile = useIsMobile();
 
-  console.log(searchData, "searchData");
+  console.log(navData, "navData props");
 
-  useEffect(() => {
-    if (dataNav && dataIcon) {
-      setNavData({ dataNav, dataIcon });
-    }
-  }, [dataNav, dataIcon]);
+  // useEffect(() => {
+  //   if (dataNav && dataIcon) {
+  //     setNavData({ dataNav, dataIcon });
+  //   }
+  // }, [dataNav, dataIcon]);
 
   useEffect(() => {
     setSubscribe(router.pathname);
   }, [subscribe]);
 
   if (loadingNav || loadingMenu || loadingsubMenu || !navData) {
-    if (router.asPath === `/news${uri}`) {
+    if (router.asPath.startsWith(`/news/${uri}`)) {
       return <SkeletonArticleLoader />;
     } else {
       return <SkeletonLoader />;
@@ -196,7 +197,7 @@ const Nav = ({
     setActiveLink(link);
   };
 
-  console.log(subscribe, "subscribe");
+  console.log(uri, "uri uri uri");
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -371,7 +372,8 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : router.asPath === `/news${uri}` ? (
+      ) : router.asPath === `/news/${router.query.slug}` ? (
+        console.log(router.asPath === `/news/${router.query.slug}`, "router.asPath === `/news${uri}`"),
         <header
           className="bg-black"
           style={{
@@ -836,7 +838,7 @@ const Nav = ({
       )}
       {console.log(uri, "uri uri")}
 
-      {router.asPath === `/news${uri}` ? (
+      {router.asPath === `/news/${router.query.slug}` ? (
         <header
           className={`bg-header transition-all duration-500 ${
             isContactHeaderVisible
@@ -1732,7 +1734,7 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : router.asPath === `/category${uri}` ? (
+      ) : router.asPath === `/category/${router.query.slug}` ? (
         <header
           className={`bg-header transition-all duration-500 ${
             isContactHeaderVisible

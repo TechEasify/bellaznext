@@ -176,17 +176,9 @@ const GET_TOPHEADLINE_PAGE = gql`
 `;
 
 function News() {
-  const {
-    nodeByUri,
-    setNodeByUri
-  } = useDialog();
-  const {
-    iconDataResult,
-    navData,
-    setNavData,
-    dataNav,
-    dataIcon,
-  } = useHeader();
+  const { nodeByUri, setNodeByUri } = useDialog();
+  const { iconDataResult, navData, setNavData, dataNav, dataIcon } =
+    useHeader();
   const router = useRouter();
   const { slug } = router.query;
   const uri = `/${slug}`;
@@ -201,7 +193,7 @@ function News() {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
-  console.log(newsData, "newsData");
+  console.log(newsData, "newsData newsData");
 
   useEffect(() => {
     if (newsData) {
@@ -234,11 +226,10 @@ function News() {
 
   const posts =
     newsData?.nodeByUri?.categories?.nodes?.flatMap((item) =>
-      item.posts?.nodes?.map((post) => ({
+      item.posts?.nodes?.map((post) => (console.log(post, "post postss"),{
         ...post,
         categoryName: item.name,
-        categoryViews: post.postView.view,
-        href: post.uri || '', // Ensure href is a valid string
+        categoryViews: post.postView.view
       }))
     ) || [];
 
@@ -252,8 +243,9 @@ function News() {
   const wordCount = contentText ? contentText?.split(" ").length : 0;
   const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
 
-  console.log(posts, "postspostspostsposts");
-  console.log(dataNav, "dataNav dataNav news");
+  console.log(newsData, "postspostspostsposts");
+  console.log(navData, "dataNav dataNav news");
+  console.log(dataNav, "dataNavdataNavdataNav");
   return (
     <>
       {/* <Nav /> */}
@@ -265,7 +257,7 @@ function News() {
               className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
               onClick={() =>
                 dataNav?.menu?.header?.topFirstLinks?.url &&
-                router.push(dataNav.menu.header.topFirstLinks.url)
+                router.push(dataNav?.menu?.header?.topFirstLinks?.url)
               }
             >
               {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
@@ -275,7 +267,7 @@ function News() {
               className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
               onClick={() =>
                 dataNav?.menu?.header?.topSecondLinks?.url &&
-                router.push(dataNav.menu.header.topSecondLinks.url)
+                router.push(dataNav?.menu?.header?.topSecondLinks?.url)
               }
             >
               {dataNav !== undefined && dataNav?.menu?.header?.topSecond}
@@ -397,7 +389,7 @@ function News() {
                         MORE STORIES
                       </p>
                       <Link
-                        href="/"
+                        href="#"
                         className="text-[10px] md:text-[12px] font-bold text-black underline"
                       >
                         More
@@ -422,22 +414,14 @@ function News() {
                                 <p className="text-[10px] md:text-[12px] font-bold text-red-800">
                                   {post?.categoryName}
                                 </p>
-                                <Link
-                                  href={{
-                                    pathname: `/news/${post?.slug}`,
-                                  }}
-                                >
+                                <Link href={`/news/${post?.slug}`}>
                                   <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
                                     {post?.title}
                                   </p>
                                 </Link>
                               </div>
                               {post?.featuredImage?.node?.sourceUrl && (
-                                <Link
-                                  href={{
-                                    pathname: `/news/${post?.slug}`,
-                                  }}
-                                >
+                                <Link href={`/news/${post?.slug}`}>
                                   <Image
                                     priority={true}
                                     loader={customLoader}
@@ -476,16 +460,11 @@ function News() {
                                 <p className="text-[10px] md:text-[12px] font-bold text-red-800">
                                   {post?.categoryName}
                                 </p>
-                                {post?.href !== undefined && <Link
-                                  href={{
-                                    pathname: `/news/${post.slug}`,
-                                  }}
-                                >
-                                  <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                                    {post?.title}
-                                  </p>
-                                </Link>}
-                                
+                                  <Link href={`/news/${post?.slug}`}>
+                                    <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                                      {post?.title}
+                                    </p>
+                                  </Link>
                               </div>
                               {post?.featuredImage?.node?.sourceUrl && (
                                 <Image
@@ -530,11 +509,12 @@ function News() {
                         background: `${data?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
                       }}
                     />
-                    {data?.page?.homePage?.topHeadlineSidebarPosts?.nodes
+                    {data?.page?.homePage?.topHeadlineSidebarPosts?.nodes !== undefined && data?.page?.homePage?.topHeadlineSidebarPosts?.nodes
                       .slice()
                       .sort((a, b) => (a.title < b.title ? 1 : -1))
                       .slice(0, 2)
                       .map((side) => (
+                        console.log(side, "side news"),
                         <div className="mt-5 mb-5 w-64" key={side.id}>
                           {side.posts.nodes
                             .slice()
@@ -548,9 +528,7 @@ function News() {
                                       {side?.name}
                                     </p>
                                     <Link
-                                      href={{
-                                        pathname: `/news/${itemdata.slug}`,
-                                      }}
+                                      href={`/news/${itemdata?.slug}`}
                                       passHref
                                     >
                                       <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">

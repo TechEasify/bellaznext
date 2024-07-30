@@ -44,7 +44,7 @@ const App = ({ Component, pageProps }) => {
 const NavAndFooterWrapper = ({ children }) => {
   const { navData, footerData } = useHeader();
 
-  const MemoizedNav = useMemo(() => <Nav data={navData} />, [navData]);
+  const MemoizedNav = useMemo(() => <Nav navData={navData} />, [navData]);
   const MemoizedFooter = useMemo(
     () => <Footer data={footerData} />,
     [footerData]

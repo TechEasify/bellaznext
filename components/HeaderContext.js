@@ -71,6 +71,7 @@ export const HeaderProvider = ({ children }) => {
   } = useQuery(GET_FOOTER_PAGE);
 
   useEffect(() => {
+    if (navDataResult) setNavData(navDataResult);
     if (navDataResult) setDataNav(navDataResult);
     if (iconDataResult) setDataIcon(iconDataResult);
     if (navDataSearch) setSearchData(navDataSearch);
@@ -92,7 +93,7 @@ export const HeaderProvider = ({ children }) => {
         seoData,
         footerData,
         loadingFooter,
-        errorFooter
+        errorFooter,
       }}
     >
       {children}
