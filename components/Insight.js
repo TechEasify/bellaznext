@@ -25,6 +25,7 @@ import { INSIGHTS_DATA } from "./queries/categoryQueries";
 import { useDialog } from "./DialogContext";
 import Newscard from "./News/Newscard";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -37,12 +38,15 @@ const Insight = () => {
     setPosts,
     posts,
     categoryError,
-    iconDataResult,
     categoryLoading,
     nodeByUri,
     insightFetchMore,
-    dataIcon,
   } = useDialog();
+
+  const {
+    iconDataResult,
+    dataIcon,
+  } = useHeader();
 
   const [hasNextPage, setHasNextPage] = useState(true);
 

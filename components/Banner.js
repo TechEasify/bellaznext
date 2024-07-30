@@ -29,6 +29,7 @@ import Topheadlines from "./Topheadlines";
 import Ads from "./googleAds/Ads";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -49,7 +50,8 @@ const SkeletonLoader = () => (
 );
 
 const Banner = () => {
-  const { bannerData, iconDataResult, dataIcon, searchData } = useDialog();
+  const { bannerData, searchData } = useDialog();
+  const { iconDataResult, dataIcon } = useHeader()
   const router = useRouter();
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);

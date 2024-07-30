@@ -19,6 +19,7 @@ import { useDialog } from "../DialogContext";
 import Ads from "../googleAds/Ads";
 import Newscard from "../News/Newscard";
 import Image from "next/image";
+import { useHeader } from "../HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
@@ -29,7 +30,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
-  const { iconDataResult, dataIcon } = useDialog();
+  const { iconDataResult, dataIcon } = useHeader();
 
   useEffect(() => {
     if (nodeByUri?.posts?.nodes) {
