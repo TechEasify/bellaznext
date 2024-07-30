@@ -436,6 +436,8 @@ const Nav = ({
             </div>
           </nav>
         </header>
+      ) : router.asPath === `/subscribe` ? (
+        <></>
       ) : (
         <header
           className="bg-header"
@@ -4470,7 +4472,9 @@ const Nav = ({
             </div>
           </nav>
         </header>
-      ) : (
+      ) : router.pathname === "/subscribe" ? (
+        <></>
+      ):(
         <header
           className={`bg-header transition-all duration-500 ${
             isContactHeaderVisible
