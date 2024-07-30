@@ -177,7 +177,7 @@ const GET_TOPHEADLINE_PAGE = gql`
 
 function News() {
   const { nodeByUri, setNodeByUri } = useDialog();
-  const { iconDataResult, navData, setNavData, dataNav, dataIcon } =
+  const { navData, setNavData, dataNav, dataIcon } =
     useHeader();
   const router = useRouter();
   const { slug } = router.query;
@@ -569,7 +569,7 @@ function News() {
                     <div className="flex mt-5 mb-8">
                       <Link
                         href={
-                          iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"
+                          dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"
                         }
                       >
                         {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -590,7 +590,7 @@ function News() {
                       </Link>
                       <Link
                         href={
-                          iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"
+                          dataIcon?.menu?.socialIcons?.facebookLink ?? "/"
                         }
                       >
                         {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -611,7 +611,7 @@ function News() {
                       </Link>
                       <Link
                         href={
-                          iconDataResult?.menu?.socialIcons?.instagramLink ??
+                          dataIcon?.menu?.socialIcons?.instagramLink ??
                           "/"
                         }
                       >
@@ -633,7 +633,7 @@ function News() {
                       </Link>
                       <Link
                         href={
-                          iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"
+                          dataIcon?.menu?.socialIcons?.twiterLink ?? "/"
                         }
                       >
                         <Image
@@ -651,7 +651,7 @@ function News() {
                       </Link>
                       <Link
                         href={
-                          iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"
+                          dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"
                         }
                       >
                         {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -681,7 +681,7 @@ function News() {
                     <div className="flex mt-5 mb-8">
                       <Link
                         href={
-                          iconDataResult?.menu?.followBelaazOnWhatsapp
+                          dataIcon?.menu?.followBelaazOnWhatsapp
                             ?.whatsappStatusLink ?? "/"
                         }
                       >
@@ -697,7 +697,7 @@ function News() {
                       </Link>
                       <Link
                         href={
-                          iconDataResult?.menu?.followBelaazOnWhatsapp
+                          dataIcon?.menu?.followBelaazOnWhatsapp
                             ?.whatsappGroupLink ?? "/"
                         }
                       >

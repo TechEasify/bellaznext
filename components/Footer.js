@@ -18,9 +18,7 @@ const customLoader = ({ src }) => {
 };
 
 const Footer = () => {
-  const { iconDataResult, dataIcon, footerData,
-    loadingFooter,
-    errorFooter } = useHeader();
+  const { dataIcon, footerData, loadingFooter, errorFooter } = useHeader();
   const router = useRouter();
   console.log(dataIcon, "iconDataResult dataNav");
 
@@ -274,7 +272,7 @@ const Footer = () => {
             <div className="text-center">
               <div className="flex justify-center mb-3 space-x-2">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   target="_blank"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -294,7 +292,7 @@ const Footer = () => {
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   target="_blank"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -314,7 +312,7 @@ const Footer = () => {
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   target="_blank"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -334,7 +332,7 @@ const Footer = () => {
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   target="_blank"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -352,7 +350,7 @@ const Footer = () => {
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   target="_blank"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node

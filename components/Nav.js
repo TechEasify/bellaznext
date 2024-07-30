@@ -157,7 +157,6 @@ const Nav = ({
     loadingIcon,
     dataNav,
     dataIcon,
-    iconDataResult,
     nodeByUri,
     searchData,
   } = useHeader();
@@ -1022,7 +1021,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -1042,7 +1041,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -1062,7 +1061,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -1082,7 +1081,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -1100,7 +1099,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -1186,7 +1185,7 @@ const Nav = ({
               style={{ height: "230px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -1204,7 +1203,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -1222,7 +1221,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -1242,7 +1241,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -1260,7 +1259,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -1499,7 +1498,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -1519,7 +1518,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -1539,7 +1538,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -1559,7 +1558,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -1577,7 +1576,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -1642,7 +1641,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -1660,7 +1659,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -1678,7 +1677,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -1698,7 +1697,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -1716,7 +1715,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -1955,7 +1954,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -1975,7 +1974,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -1995,7 +1994,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -2015,7 +2014,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -2033,7 +2032,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -2098,7 +2097,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -2116,7 +2115,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -2134,7 +2133,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -2154,7 +2153,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -2172,7 +2171,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -2411,7 +2410,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -2431,7 +2430,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -2451,7 +2450,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -2471,7 +2470,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -2489,7 +2488,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -2554,7 +2553,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -2572,7 +2571,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -2590,7 +2589,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -2610,7 +2609,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -2628,7 +2627,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -2867,7 +2866,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -2887,7 +2886,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -2907,7 +2906,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -2927,7 +2926,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -2945,7 +2944,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -3010,7 +3009,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -3028,7 +3027,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -3046,7 +3045,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -3066,7 +3065,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -3084,7 +3083,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -3323,7 +3322,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -3343,7 +3342,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -3363,7 +3362,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -3383,7 +3382,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -3401,7 +3400,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -3466,7 +3465,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -3484,7 +3483,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -3502,7 +3501,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -3522,7 +3521,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -3540,7 +3539,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -3779,7 +3778,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -3799,7 +3798,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -3819,7 +3818,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -3839,7 +3838,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -3857,7 +3856,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -3922,7 +3921,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -3940,7 +3939,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -3958,7 +3957,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -3978,7 +3977,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -3996,7 +3995,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -4235,7 +4234,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -4255,7 +4254,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -4275,7 +4274,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -4295,7 +4294,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -4313,7 +4312,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -4378,7 +4377,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -4396,7 +4395,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -4414,7 +4413,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -4434,7 +4433,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -4452,7 +4451,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
@@ -4693,7 +4692,7 @@ const Nav = ({
               </div>
               <div className="flex justify-end items-end mt-4">
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
@@ -4713,7 +4712,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
@@ -4733,7 +4732,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -4753,7 +4752,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -4771,7 +4770,7 @@ const Nav = ({
                   )}
                 </Link>
                 <Link
-                  href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                   className="px-4 py-2"
                 >
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
@@ -4836,7 +4835,7 @@ const Nav = ({
               style={{ height: "150px" }}
             >
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
@@ -4854,7 +4853,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
@@ -4872,7 +4871,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
@@ -4892,7 +4891,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
@@ -4910,7 +4909,7 @@ const Nav = ({
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (

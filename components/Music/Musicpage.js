@@ -30,7 +30,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
-  const { iconDataResult, dataIcon } = useHeader();
+  const { dataIcon } = useHeader();
 
   useEffect(() => {
     if (nodeByUri?.posts?.nodes) {
@@ -292,7 +292,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             />
             <div className="flex justify-around mt-5 mb-8">
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
                   <Image
@@ -309,7 +309,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
                   <Image
@@ -326,7 +326,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
                   ?.sourceUrl && (
@@ -344,7 +344,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                   />
                 )}
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
+              <Link href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}>
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
                   <Image
                     priority={true}
@@ -360,7 +360,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
                   <Image
@@ -388,7 +388,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             <div className="flex mt-5 mb-8">
               <Link
                 href={
-                  iconDataResult?.menu?.followBelaazOnWhatsapp
+                  dataIcon?.menu?.followBelaazOnWhatsapp
                     ?.whatsappStatusLink ?? "/"
                 }
               >
@@ -404,7 +404,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               </Link>
               <Link
                 href={
-                  iconDataResult?.menu?.followBelaazOnWhatsapp
+                  dataIcon?.menu?.followBelaazOnWhatsapp
                     ?.whatsappGroupLink ?? "/"
                 }
               >

@@ -44,7 +44,6 @@ const Insight = () => {
   } = useDialog();
 
   const {
-    iconDataResult,
     dataIcon,
   } = useHeader();
 
@@ -255,7 +254,7 @@ const Insight = () => {
             />
             <div className="flex justify-around mt-5 mb-8">
               <Link
-                href={iconDataResult?.menu?.socialIcons?.whatsappLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
                   <Image
@@ -272,7 +271,7 @@ const Insight = () => {
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.facebookLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
                   <Image
@@ -289,7 +288,7 @@ const Insight = () => {
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.instagramLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
                   ?.sourceUrl && (
@@ -307,7 +306,7 @@ const Insight = () => {
                   />
                 )}
               </Link>
-              <Link href={iconDataResult?.menu?.socialIcons?.twiterLink ?? "/"}>
+              <Link href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}>
                 {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
                   <Image
                     priority={true}
@@ -323,7 +322,7 @@ const Insight = () => {
                 )}
               </Link>
               <Link
-                href={iconDataResult?.menu?.socialIcons?.youtubeLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
               >
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
                   <Image
@@ -351,7 +350,7 @@ const Insight = () => {
             <div className="flex mt-5 mb-8">
             <Link
                   href={
-                    iconDataResult?.menu?.followBelaazOnWhatsapp
+                    dataIcon?.menu?.followBelaazOnWhatsapp
                       ?.whatsappStatusLink ?? "/"
                   }
                 >
@@ -367,7 +366,7 @@ const Insight = () => {
                 </Link>
                 <Link
                   href={
-                    iconDataResult?.menu?.followBelaazOnWhatsapp
+                    dataIcon?.menu?.followBelaazOnWhatsapp
                       ?.whatsappGroupLink ?? "/"
                   }
                 >
