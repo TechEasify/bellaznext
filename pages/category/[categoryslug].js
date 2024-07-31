@@ -13,6 +13,10 @@ import Image from "next/image";
 import Layout from "../../components/Layout";
 import getConfig from "next/config";
 import { useHeader } from "../../components/HeaderContext";
+import client from '../../lib/ga/apolloClient';
+import { CATEGORY_BREAKING_QUERY } from "../../components/queries/categoryQueries";
+import { GET_FOOTER_PAGE, GET_ICON_SECTION, GET_NAV_SECTION, SEARCH_QUERY, SEO_QUERY } from "../../components/queries/Queries";
+import { gql } from "@apollo/client";
 
 const customLoader = ({ src }) => {
   return src;
@@ -49,39 +53,13 @@ const CategoryPage = () => {
     navData
   } = useHeader();
   const { categoryslug } = router.query;
-  console.log(seoData, "nodeByUri category");
-  console.log(router, "router category");
-  // const [navData, setNavData] = useState(null);
-
-  // console.log("categoryslug:", categoryslug);
-  // console.log("uri:", uri);
-
-  // const { data, loading, error } = useQuery(CATEGORY_QUERY);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     setNavData(data);
-  //     setNodeByUri(data.nodeByUri)
-  //   }
-  // }, [data]);
-
-  // if (!categoryslug) {
-  //   return <SkeletonLoader />;
-  // }
 
   if (loadingCategory) {
     return <SkeletonLoader />;
   }
 
-  // if (error) {
-  //   return <p>Category not found</p>;
-  // }
-
-  // const { nodeByUri } = data;
-
-  // console.log(data, "datadatadatadatadatadatadatadata");
   console.log(
-    nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0],
+    nodeByUri,
     "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0]"
   );
 
@@ -101,75 +79,7 @@ const CategoryPage = () => {
 
   return (
     <>
-      {/* <Head>
-        <title>{nodeByUri?.nodeByUri !== null && nodeByUri?.nodeByUri?.name} - News</title>
-      </Head> */}
-
       <Layout title={title} description={description} canonical={canonical}>
-        {/* <Nav uri={uri} /> */}
-
-        {/* <main>
-  {router.asPath === `/category/breaking-news` &&
-  nodeByUri !== undefined &&
-  nodeByUri !== null ? (
-    <Breakingnews
-      nodeByUri={nodeByUri}
-      loading={loadingCategory}
-      navData={navData}
-      fetchMore={fetchMore}
-    />
-  ) : router.asPath === "/category/insights" &&
-    nodeByUri !== undefined &&
-    nodeByUri !== null ? (
-    <Insight
-      nodeByUri={nodeByUri}
-      loading={loadingCategory}
-      navData={navData}
-      fetchMore={fetchMore}
-    />
-  ) : router.asPath === "/category/jewish-news" &&
-    nodeByUri !== undefined &&
-    nodeByUri !== null ? (
-    <Jewishnews
-      nodeByUri={nodeByUri}
-      loading={loadingCategory}
-      navData={navData}
-      fetchMore={fetchMore}
-    />
-  ) : router.asPath === "/category/politics" &&
-    nodeByUri !== undefined &&
-    nodeByUri !== null ? (
-    <PoliticsCategory
-      nodeByUri={nodeByUri}
-      loading={loadingCategory}
-      navData={navData}
-      fetchMore={fetchMore}
-    />
-  ) : router.asPath === "/category/music" &&
-    nodeByUri !== undefined &&
-    nodeByUri !== null ? (
-    <Music
-      nodeByUri={nodeByUri}
-      loading={loadingCategory}
-      navData={navData}
-      fetchMore={fetchMore}
-    />
-  ) : (
-    <ul>
-      {nodeByUri !== null &&
-        nodeByUri?.posts?.nodes.map((post) =>
-          post.link
-            ? (console.log(post, "post"),
-              (
-                <li key={post.id}>
-                  <Link href={post.link}>{post.title}</Link>
-                </li>
-              ))
-            : null
-        )}
-    </ul>
-  )}
-</main> */}
         {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
         "Simple" ? (
           <main>
@@ -205,10 +115,71 @@ const CategoryPage = () => {
               )}
           </ul>
         )}
-        {/* <Footer /> */}
       </Layout>
     </>
   );
 };
+
+export async function getStaticPaths() {
+  const { data } = await client.query({
+    query: gql`
+      query GetAllCategorySlugs {
+        categories {
+          nodes {
+            slug
+          }
+        }
+      }
+    `,
+  });
+
+  const paths = data.categories.nodes.map((category) => ({
+    params: { categoryslug: category.slug },
+  }));
+
+  return { paths, fallback: true };
+}
+
+export async function getStaticProps({ params }) {
+  const { categoryslug } = params;
+  const uri = `/category/${categoryslug}`;
+
+  const { data: categoryData } = await client.query({
+    query: CATEGORY_BREAKING_QUERY,
+    variables: { uri },
+  });
+
+  const { data: seoData } = await client.query({
+    query: SEO_QUERY,
+  });
+
+  const { data: navData } = await client.query({
+    query: GET_NAV_SECTION,
+  });
+
+  const { data: iconDataResult } = await client.query({
+    query: GET_ICON_SECTION,
+  });
+
+  const { data: navDataSearch } = await client.query({
+    query: SEARCH_QUERY,
+  });
+
+  const { data: dataFooter } = await client.query({
+    query: GET_FOOTER_PAGE,
+  });
+
+  return {
+    props: {
+      categoryData,
+      seoData,
+      navData,
+      iconDataResult,
+      navDataSearch,
+      dataFooter,
+    },
+    revalidate: 1, // optional: revalidate every second
+  };
+}
 
 export default CategoryPage;

@@ -264,7 +264,7 @@ const Insight = () => {
                       dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl
                     }
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                     width={39.99}
                     height={40}
                   />
@@ -281,7 +281,7 @@ const Insight = () => {
                       dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl
                     }
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                     width={39.99}
                     height={40}
                   />
@@ -300,7 +300,7 @@ const Insight = () => {
                         ?.sourceUrl
                     }
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                     width={39.99}
                     height={40}
                   />
@@ -315,7 +315,7 @@ const Insight = () => {
                       dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
                     }
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                     width={39.99}
                     height={40}
                   />
@@ -332,7 +332,7 @@ const Insight = () => {
                       dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl
                     }
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                     width={39.99}
                     height={40}
                   />
@@ -359,7 +359,7 @@ const Insight = () => {
                     loader={customLoader}
                     src={Frame208}
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                     width={101}
                     height={32}
                   />
@@ -375,7 +375,7 @@ const Insight = () => {
                     loader={customLoader}
                     src={Frame209}
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                     width={101}
                     height={32}
                   />

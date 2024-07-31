@@ -815,9 +815,7 @@ const Banner = () => {
               {console.log(dataIcon, "dataIcon")}
 
               <div className="flex mt-5 mb-8">
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
-                >
+                <Link href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}>
                   {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                     ?.sourceUrl && (
                     <Image
@@ -827,16 +825,14 @@ const Banner = () => {
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                           ?.sourceUrl
                       }
-                      alt="Partly Cloudy"
-                      className="h-13 w-13 mx-2 object-cover"
+                      alt="WhatsApp Icon"
+                      className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                       width={39.99}
                       height={40}
                     />
                   )}
                 </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
-                >
+                <Link href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}>
                   {dataIcon?.menu?.socialIcons?.facebookIcon?.node
                     ?.sourceUrl && (
                     <Image
@@ -846,16 +842,14 @@ const Banner = () => {
                         dataIcon?.menu?.socialIcons?.facebookIcon?.node
                           ?.sourceUrl
                       }
-                      alt="Partly Cloudy"
-                      className="h-13 w-13 mx-2 object-cover"
+                      alt="Facebook Icon"
+                      className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                       width={39.99}
                       height={40}
                     />
                   )}
                 </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
-                >
+                <Link href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}>
                   {dataIcon?.menu?.socialIcons?.instagramIcon?.node
                     ?.sourceUrl && (
                     <Image
@@ -865,16 +859,14 @@ const Banner = () => {
                         dataIcon?.menu?.socialIcons?.instagramIcon?.node
                           ?.sourceUrl
                       }
-                      alt="Partly Cloudy"
-                      className="h-13 w-13 mx-2 object-cover"
+                      alt="Instagram Icon"
+                      className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                       width={39.99}
                       height={40}
                     />
                   )}
                 </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
-                >
+                <Link href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}>
                   {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
                     <Image
                       priority={true}
@@ -882,16 +874,14 @@ const Banner = () => {
                       src={
                         dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
                       }
-                      alt="Partly Cloudy"
-                      className="h-13 w-13 mx-2 object-cover"
+                      alt="Twitter Icon"
+                      className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                       width={39.99}
                       height={40}
                     />
                   )}
                 </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
-                >
+                <Link href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}>
                   {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
                     ?.sourceUrl && (
                     <Image
@@ -901,8 +891,8 @@ const Banner = () => {
                         dataIcon?.menu?.socialIcons?.youtubeIcon?.node
                           ?.sourceUrl
                       }
-                      alt="Partly Cloudy"
-                      className="h-13 w-13 mx-2 object-cover"
+                      alt="YouTube Icon"
+                      className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                       width={39.99}
                       height={40}
                     />
@@ -930,15 +920,15 @@ const Banner = () => {
                     loader={customLoader}
                     src={Frame208}
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                     width={101}
                     height={32}
                   />
                 </Link>
                 <Link
                   href={
-                    dataIcon?.menu?.followBelaazOnWhatsapp
-                      ?.whatsappGroupLink ?? "/"
+                    dataIcon?.menu?.followBelaazOnWhatsapp?.whatsappGroupLink ??
+                    "/"
                   }
                 >
                   <Image
@@ -946,7 +936,7 @@ const Banner = () => {
                     loader={customLoader}
                     src={Frame209}
                     alt="Partly Cloudy"
-                    className="h-13 w-13 mx-2 object-cover"
+                    className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                     width={101}
                     height={32}
                   />

@@ -280,7 +280,7 @@ const Footer = () => {
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-8 w-8 object-cover"
+                      className="h-8 w-8 object-cover hover:scale-110 hover:opacity-80"
                       src={
                         dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                           ?.sourceUrl
@@ -300,7 +300,7 @@ const Footer = () => {
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-8 w-8 object-cover"
+                      className="h-8 w-8 object-cover hover:scale-110 hover:opacity-80"
                       src={
                         dataIcon?.menu?.socialIcons?.facebookIcon?.node
                           ?.sourceUrl
@@ -320,7 +320,7 @@ const Footer = () => {
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-8 w-8 object-cover"
+                      className="h-8 w-8 object-cover hover:scale-110 hover:opacity-80"
                       src={
                         dataIcon?.menu?.socialIcons?.instagramIcon?.node
                           ?.sourceUrl
@@ -339,7 +339,7 @@ const Footer = () => {
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-8 w-8 object-cover"
+                      className="h-8 w-8 object-cover hover:scale-110 hover:opacity-80"
                       src={
                         dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
                       }
@@ -358,7 +358,7 @@ const Footer = () => {
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-8 w-8 object-cover"
+                      className="h-8 w-8 object-cover hover:scale-110 hover:opacity-80"
                       src={
                         dataIcon?.menu?.socialIcons?.youtubeIcon?.node
                           ?.sourceUrl
