@@ -254,33 +254,33 @@ function News() {
           <hr />
           <div className="w-full px-4 mx-auto flex bg-black items-center justify-center flex-wrap sm:flex-nowrap">
             <p
-              className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+              className="text-[11px] md:text-[13px] font-normal text-white px-2 cursor-pointer"
               onClick={() =>
                 dataNav?.menu?.header?.topFirstLinks?.url &&
                 router.push(dataNav?.menu?.header?.topFirstLinks?.url)
               }
             >
-              {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
+              {dataNav?.menu?.header?.topFirst || "Ukraine & Russia War"}
             </p>
             <span className="text-white px-2">|</span>
             <p
-              className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+              className="text-[11px] md:text-[13px] font-normal text-white px-2 cursor-pointer"
               onClick={() =>
                 dataNav?.menu?.header?.topSecondLinks?.url &&
                 router.push(dataNav?.menu?.header?.topSecondLinks?.url)
               }
             >
-              {dataNav !== undefined && dataNav?.menu?.header?.topSecond}
+              {dataNav?.menu?.header?.topSecond || "Manage Your Money"}
             </p>
             <span className="text-white px-2">|</span>
             <p
-              className="text-base sm:text-xs md:text-sm lg:text-base font-normal text-white px-2 cursor-pointer"
+              className="text-[11px] md:text-[13px] font-normal text-white px-2 cursor-pointer"
               onClick={() =>
                 dataNav?.menu?.header?.topThirdLinks?.url &&
                 router.push(dataNav?.menu?.header?.topThirdLinks?.url)
               }
             >
-              {dataNav !== undefined && dataNav?.menu?.header?.topThird}
+              {dataNav?.menu?.header?.topThird || "Top Stocks"}
             </p>
           </div>
 
@@ -289,7 +289,7 @@ function News() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_0px] gap-7">
               <div className="flex flex-col md:flex-row justify-center gap-6 px-3 ">
                 <div className="max-w-4xl text-white">
-                  <div className="py-8 px-0 mx-8 md:px-8">
+                  <div className="py-8 px-0 mr-8 md:px-8 text-left">
                     <div className="flex w-full justify-between items-center">
                       <p className="text-base font-bold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
@@ -486,7 +486,7 @@ function News() {
                   </div>
                 </div>
                 <div
-                  className="max-w-custom block md:hidden lg:hidden xl:block"
+                  className="max-w-custom hidden lg:block"
                   style={{ maxWidth: "500px" }}
                 >
                   <Image

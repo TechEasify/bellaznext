@@ -138,7 +138,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               return (
                 <>
                   <div className="flex flex-col md:flex-row mb-5 items-start">
-                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center hidden md:block">
                       <Link
                         href={{
                           pathname: `/news/${item.slug}`,
@@ -161,7 +161,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                         )}
                       </Link>
                     </div>
-                    <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                    <div className="ml-0 md:ml-5 w-full md:w-3/5 hidden md:block">
                       <p
                         className="text-base font-bold text-red-800"
                         style={{
@@ -220,6 +220,32 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                     </div>
                   </div>
                   <hr className="my-5" />
+
+                  <div className="flex mt-5 block md:hidden">
+                    <div className="mr-2 flex-1">
+                      <p className="text-[12px] font-bold text-red-800">
+                        {nodeByUri?.name}
+                      </p>
+                      <Link href={`/news/${item.slug}`}>
+                        <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                          {item?.title || ""}
+                        </p>
+                      </Link>
+                    </div>
+                    {item?.featuredImage?.node?.sourceUrl && (
+                      <Link href={`/news/${item.slug}`}>
+                        <Image
+                          priority={true}
+                          loader={customLoader}
+                          src={item.featuredImage.node.sourceUrl}
+                          alt="Partly Cloudy"
+                          className="h-13 w-13 mr-2 object-cover w-[90px] h-[87px]"
+                          width={90}
+                          height={87}
+                        />
+                      </Link>
+                    )}
+                  </div>
                 </>
               );
             })}
@@ -291,9 +317,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               style={{ height: "3px", background: "black" }}
             />
             <div className="flex justify-around mt-5 mb-8">
-              <Link
-                href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
-              >
+              <Link href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}>
                 {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
                   <Image
                     priority={true}
@@ -308,9 +332,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                   />
                 )}
               </Link>
-              <Link
-                href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
-              >
+              <Link href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}>
                 {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
                   <Image
                     priority={true}
@@ -325,9 +347,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                   />
                 )}
               </Link>
-              <Link
-                href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
-              >
+              <Link href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}>
                 {dataIcon?.menu?.socialIcons?.instagramIcon?.node
                   ?.sourceUrl && (
                   <Image
@@ -359,9 +379,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                   />
                 )}
               </Link>
-              <Link
-                href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
-              >
+              <Link href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}>
                 {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
                   <Image
                     priority={true}
@@ -388,8 +406,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             <div className="flex mt-5 mb-8">
               <Link
                 href={
-                  dataIcon?.menu?.followBelaazOnWhatsapp
-                    ?.whatsappStatusLink ?? "/"
+                  dataIcon?.menu?.followBelaazOnWhatsapp?.whatsappStatusLink ??
+                  "/"
                 }
               >
                 <Image
@@ -404,8 +422,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               </Link>
               <Link
                 href={
-                  dataIcon?.menu?.followBelaazOnWhatsapp
-                    ?.whatsappGroupLink ?? "/"
+                  dataIcon?.menu?.followBelaazOnWhatsapp?.whatsappGroupLink ??
+                  "/"
                 }
               >
                 <Image

@@ -80,7 +80,7 @@ const Cardnews = () => {
   console.log(data, "data card");
 
   return (
-    <div className="px-4 py-8 mx-auto max-w-screen-xl">
+    <div className="px-4 py-8 mx-auto max-w-screen-xl hidden md:block">
       <div className="w-full mx-auto flex flex-wrap justify-center">
         <div className="flex flex-wrap justify-around">
           {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {

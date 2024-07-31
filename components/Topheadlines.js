@@ -17,7 +17,6 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
       .flatMap((item) => item?.posts?.nodes)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // Keep track of categories that have been used
   const usedCategories = new Set();
 
   const uniqueCategoryPosts = sortedTopHeadlines
@@ -34,11 +33,12 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
     })
     .slice(0, displayCount);
 
-  // Sorted posts for the sidebar section
   const sortedTopHeadlinesSidebar =
     topheadData?.page?.homePage?.topHeadlineSidebarSinglePosts?.nodes
       .slice()
       .sort((a, b) => (a.title < b.title ? 1 : -1));
+
+  const hasMorePosts = displayCount < sortedTopHeadlinesSidebar?.length;
 
   return (
     <div className="py-8 mx-auto max-w-screen-xl">
@@ -133,61 +133,59 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
           {console.log(displayCount, "displayCount")}
           <div className="w-full max-w-3xl mx-auto mt-5 md:hidden">
             {sortedTopHeadlinesSidebar !== null &&
-              sortedTopHeadlinesSidebar?.slice(0, displayCount).map(
-                (side) => (
-                  console.log(side, "sidesideside"),
-                  (
-                    <div className="mt-5 mb-5 sm:flex" key={side.id}>
-                      {side.posts.nodes
-                        .slice()
-                        .sort((a, b) => (a.title < b.title ? 1 : -1))
-                        .map((itemdata) => (
-                          <React.Fragment key={itemdata.id}>
-                            <div className="flex justify-between">
-                              <div className="mr-2 mb-5 w-[203px]">
-                                <p className="text-[12px] font-bold text-red-800">
-                                  {side.name}
-                                </p>
-                                <Link href={`/news/${itemdata.slug}`} passHref>
-                                  <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                                    {itemdata.title}
-                                  </p>
-                                </Link>
-                              </div>
-                              {itemdata?.featuredImage?.node?.sourceUrl ? (
-                                <Link href={`/news/${itemdata.slug}`} passHref>
-                                  <Image
-                                    priority={true}
-                                    loader={customLoader}
-                                    src={itemdata.featuredImage.node.sourceUrl}
-                                    alt={itemdata.title}
-                                    className="object-cover w-[90px] h-[87px] mr-2"
-                                    width={150}
-                                    height={87}
-                                  />
-                                </Link>
-                              ) : (
-                                <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
-                                  No Image
-                                </div>
-                              )}
+              sortedTopHeadlinesSidebar?.slice(0, displayCount).map((side) => (
+                <div className="mt-5 mb-5 sm:flex" key={side.id}>
+                  {side.posts.nodes
+                    .slice()
+                    .sort((a, b) => (a.title < b.title ? 1 : -1))
+                    .map((itemdata) => (
+                      <React.Fragment key={itemdata.id}>
+                        <div className="flex justify-between">
+                          <div className="mr-2 mb-5 w-[203px]">
+                            <p className="text-[12px] font-bold text-red-800">
+                              {side.name}
+                            </p>
+                            <Link href={`/news/${itemdata.slug}`} passHref>
+                              <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                                {itemdata.title}
+                              </p>
+                            </Link>
+                          </div>
+                          {itemdata?.featuredImage?.node?.sourceUrl ? (
+                            <Link href={`/news/${itemdata.slug}`} passHref>
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                src={itemdata.featuredImage.node.sourceUrl}
+                                alt={itemdata.title}
+                                className="object-cover w-[90px] h-[87px] mr-2"
+                                width={150}
+                                height={87}
+                              />
+                            </Link>
+                          ) : (
+                            <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
+                              No Image
                             </div>
-                          </React.Fragment>
-                        ))}
-                    </div>
-                  )
-                )
-              )}
-            {displayCount < sortedTopHeadlinesSidebar?.length && (
-              <div className="flex justify-between">
-                <button
-                  className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700 lg:hidden" // Hide on large screens and above
-                  onClick={() => setDisplayCount((prevCount) => prevCount + 3)}
-                >
-                  VIEW MORE
-                </button>
-              </div>
-            )}
+                          )}
+                        </div>
+                      </React.Fragment>
+                    ))}
+                </div>
+              ))}
+
+            <div className="flex justify-between">
+              <button
+                className={`viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700 lg:hidden`}
+                onClick={() => {
+                  if (hasMorePosts)
+                    setDisplayCount((prevCount) => prevCount + 2);
+                }}
+                disabled={!hasMorePosts}
+              >
+                {hasMorePosts ? "VIEW MORE" : "NO MORE POSTS"}
+              </button>
+            </div>
           </div>
         </div>
       </div>

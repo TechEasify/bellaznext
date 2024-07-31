@@ -362,10 +362,56 @@ function Index() {
           )}
         </div>
         <hr className="border-gray-300 my-10" />
-        <div className="mb-96">
+        <div className="mb-10 sm:hidden">
+          <div
+            className="px-4 py-4 mx-auto max-w-screen-xl"
+            style={{
+              background:
+              advertiseQuery?.page?.advertise?.cta?.backgroundColor || "#40A6FB",
+            }}
+          >
+            <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left px-4 md:px-20 py-6">
+              <h5
+                className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-6 md:mb-0 md:mr-10"
+                style={{ color: "#002D73" }}
+              >
+                {advertiseQuery?.page?.advertise?.cta?.leftSideTitle}
+              </h5>
+              <div>
+                <div className="flex flex-col md:flex-row items-center md:items-start">
+                  <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
+                    EMAIL:
+                  </span>
+                  <Link href={`mailto:${advertiseQuery?.page?.advertise?.cta?.emailAddress}`}>
+                    <span className="flex flex-col md:flex-row items-center text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
+                      {advertiseQuery?.page?.advertise?.cta?.emailAddress}
+                      {/* <ExportedImage
+                      className="h-8 md:h-10 ml-2"
+                      priority={true}
+                      src={arrowtop_right_thick}
+                      alt="arrowtop_right_thick"
+                    /> */}
+                    </span>
+                  </Link>
+                </div>
+                <div className="flex flex-col md:flex-row items-center md:items-start mt-4 md:mt-0">
+                  <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
+                    CALL:
+                  </span>
+                  <Link href={`tel:${advertiseQuery?.page?.advertise?.cta?.phoneNumber}`}>
+                    <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold">
+                      {advertiseQuery?.page?.advertise?.cta?.phoneNumber}
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="sm:mb-52">
           <Testimonial />
         </div>
-        <div className="px-4 py-20 mx-auto max-w-screen-xl relative">
+        <div className="px-4 py-20 hidden sm:block mx-auto max-w-screen-xl relative">
           <div
             className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 mx-auto max-w-screen-xl"
             style={{

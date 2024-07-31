@@ -68,7 +68,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
         nodeByUri.nodeByUri.categoryTamplate.musicTemplete.selectCategoryForAllPost.nodes.flatMap(
           (item) => item.posts.nodes
         );
-        console.log(posts, "posts use Music");
+      console.log(posts, "posts use Music");
       setShuffledPosts(posts);
     }
   }, [nodeByUri]);
@@ -317,7 +317,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     <Link href={`/news/${musicpost.slug}`}>
                       <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue mobile-custom-h5">
                         {musicpost?.title}
-                      </h5> 
+                      </h5>
                     </Link>
                     <p className="text-[12px] text-base font-bold text-gray-800 mb-2">
                       <span

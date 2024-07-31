@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
 import ExportedImage from "next-image-export-optimizer";
 import Frame_209 from "../../public/images/Frame_209.png";
 import Frame_208 from "../../public/images/Frame_208.png";
+import News193 from "../../public/images/News193.svg";
 import whatsapp1 from "../../public/images/whatsapp1.svg";
 import Link from "next/link";
 import { gql, useQuery } from "@apollo/client";
@@ -29,6 +30,20 @@ function Index() {
   console.log(contactQuery, "datadatadatadata contact");
   const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+
+    handleResize(); // Set initial state
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const toggleAccordion = (section) => {
     setOpenAccordion((prev) => (prev === section ? null : section));
@@ -54,7 +69,7 @@ function Index() {
     <>
       <Layout title={title} description={description} canonical={canonical}>
         <div className="px-4 py-8 mx-auto max-w-screen-xl">
-          <nav className="flex" aria-label="Breadcrumb">
+          <nav className="flex hidden md:block" aria-label="Breadcrumb">
             <ol className="inline-flex items-center mb-3 sm:mb-0">
               <li>
                 <div className="flex items-center">
@@ -88,7 +103,7 @@ function Index() {
         </div>
         <div
           className="px-4 py-8 mx-auto max-w-screen-xl mb-20"
-          style={{ background: "#002D73" }}
+          style={!isMobile ? { backgroundImage: `url(${News193.src})`, backgroundSize: 'cover' } : {}}
         >
           <div
             id="accordion-color"

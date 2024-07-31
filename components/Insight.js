@@ -118,8 +118,8 @@ const Insight = () => {
 
               return (
                 <div key={post.id}>
-                  <div className="flex flex-col md:flex-row mb-5">
-                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block">
+                  <div className="flex flex-row mb-5">
+                    <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center md:block hidden">
                       <Link href={`/news/${post.slug}`} passHref>
                         {post?.featuredImage?.node?.sourceUrl && (
                           <Image
@@ -134,7 +134,7 @@ const Insight = () => {
                         )}
                       </Link>
                     </div>
-                    <div className="ml-0 md:ml-5 w-full md:w-3/5">
+                    <div className="ml-0 md:ml-5 w-full md:w-3/5 md:block hidden">
                       <p
                         className="text-base font-bold text-red-800"
                         style={{
@@ -188,6 +188,71 @@ const Insight = () => {
                     </div>
                   </div>
                   <hr className="my-5" />
+                  <div className="flex flex-row mb-5">
+                    <div className="mr-5 md:mr-5 mb-5 md:mb-0 flex justify-center md:hidden block">
+                      <Link href={`/news/${post.slug}`} passHref>
+                        {post?.featuredImage?.node?.sourceUrl && (
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            className="object-cover w-[142px] h-[104px]"
+                            src={post?.featuredImage?.node?.sourceUrl}
+                            alt={post.title}
+                            width={142}
+                            height={104}
+                          />
+                        )}
+                      </Link>
+                    </div>
+                    <div className="ml-0 md:ml-5 w-full md:w-3/5 md:hidden block">
+                      <p
+                        className="text-base font-bold text-red-800"
+                        style={{
+                          background: `${
+                            nodeByUri?.nodeByUri?.categoryTamplate
+                              ?.simpleTemplete?.simpleTitleBackgroundColor ||
+                            "#fff"
+                          }`,
+                          color: "#fff",
+                          padding: "0 10px",
+                          width: dynamicWidth,
+                          clipPath: "polygon(0 0, 100% 0, 95% 100%, 0% 100%)",
+                          fontSize: "12px",
+                          fontWeight: 500,
+                          letterSpacing: "2px",
+                        }}
+                      >
+                        {nodeByUri?.nodeByUri?.name}
+                      </p>
+                      <Link href={`/news/${post.slug}`} passHref>
+                        <h5 className="text-[15px] text-black-900 font-bold hover:text-skyBlue">
+                          {post.title}
+                        </h5>
+                      </Link>
+                      <p className="text-[12px] text-base font-bold text-gray-800 mb-4">
+                        <span
+                          className="text-[12px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold ml-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {post?.author?.node?.name}
+                          <span
+                            className="text-[25px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
+                      </p>
+                    </div>
+                  </div>
                 </div>
               );
             })}
@@ -202,7 +267,7 @@ const Insight = () => {
             </div>
           </div>
 
-          <div className="w-full max-w-4xl mx-auto">
+          <div className="w-full max-w-4xl mx-auto hidden md:block">
             {(nodeByUri?.nodeByUri?.categoryTamplate
               ?.selectYourTempleteType[0] === "Simple" ||
               nodeByUri?.nodeByUri?.categoryTamplate

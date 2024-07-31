@@ -66,8 +66,7 @@ function Index() {
     <>
       {/* <Nav /> */}
       <Layout title={title} description={description} canonical={canonical}>
-        <div className="px-4 py-20 mx-auto max-w-screen-xl mb-20">
-          <hr className="border-gray-300 mb-5" />
+        <div className="px-4 py-20 mx-auto max-w-screen-xl sm:mb-20">
           {aboutQuery && aboutQuery?.page && (
             <div>
               <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">

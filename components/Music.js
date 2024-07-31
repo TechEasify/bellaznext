@@ -31,7 +31,7 @@ const Music = () => {
           <br />
         </div>
 
-        <div className="flex flex-wrap justify-around">
+        <div className="flex justify-around items-stretch md:flex-row flex-col">
           <div>
             {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
               (item) => (
@@ -47,7 +47,7 @@ const Music = () => {
                   const readingTime =
                     wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
                   return (
-                    <React.Fragment key={post.id}>
+                    <div className="flex flex-col items-center" key={post.id}>
                       <div className="max-w-xs bg-white mb-6 mr-4 items-center">
                         <div className="mr-2">
                           <Link
@@ -79,7 +79,7 @@ const Music = () => {
                               {post.title}
                             </p>
                           </Link>
-                          <p className="text-[10px] text-base font-bold text-gray-800">
+                          <p className="text-[10px] text-base font-bold text-gray-800 w-full text-start">
                             <span
                               className="text-[10px] font-extrabold mr-1"
                               style={{ color: "#40A6FB" }}
@@ -118,6 +118,28 @@ const Music = () => {
                               {post.title}
                             </p>
                           </Link>
+                          <p className="text-[10px] text-base font-bold text-gray-800">
+                            <span
+                              className="text-[10px] font-extrabold mr-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              |
+                            </span>
+                            By
+                            <span
+                              className="font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              {post.author?.node?.name}
+                              <span
+                                className="text-[36px] font-extrabold mx-1"
+                                style={{ color: "#40A6FB" }}
+                              >
+                                .
+                              </span>
+                            </span>
+                            {readingTime} MIN READ
+                          </p>
                         </div>
                         <Link
                           href={{
@@ -136,35 +158,13 @@ const Music = () => {
                           />
                         </Link>
                       </div>
-                      <p className="text-[10px] text-base font-bold text-gray-800">
-                        <span
-                          className="text-[10px] font-extrabold mr-1"
-                          style={{ color: "#40A6FB" }}
-                        >
-                          |
-                        </span>
-                        By
-                        <span
-                          className="font-extrabold mx-1"
-                          style={{ color: "#40A6FB" }}
-                        >
-                          {post.author?.node?.name}
-                          <span
-                            className="text-[36px] font-extrabold mx-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            .
-                          </span>
-                        </span>
-                        {readingTime} MIN READ
-                      </p>
-                    </React.Fragment>
+                    </div>
                   );
                 })
               )
             )}
           </div>
-          <div className="max-w-md bg-white mb-6 mx-auto">
+          <div className="max-w-md bg-white mb-6 mx-auto hidden md:block">
             {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
               (item) => (
                 console.log(item, "item music"),
@@ -241,7 +241,7 @@ const Music = () => {
               )
             )}
           </div>
-          <div className="max-w-xs bg-white mb-6 mr-4 items-center">
+          <div className="max-w-xs bg-white mb-6 mr-4 items-center lg:block xl:block hidden">
             {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
               (item) => (
                 console.log(item, "item music"),

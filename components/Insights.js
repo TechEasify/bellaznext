@@ -211,7 +211,7 @@ const Insights = () => {
           <br />
         </div>
 
-        <div className="flex flex-wrap justify-around items-stretch">
+        <div className="flex justify-around items-stretch">
           {insight?.slice(1, 2)?.map((item) => {
             const contentText = item?.content
               ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
@@ -332,7 +332,7 @@ const Insights = () => {
             (item) =>
               item.name === "Insights" && (
                 <div
-                  className="max-w-md bg-white mb-6 mx-auto lg:block xl:block hidden" // Hidden on tablet and desktop, visible on mobile
+                  className="max-w-md bg-white mb-6 mx-auto md:block hidden" // Hidden on tablet and desktop, visible on mobile
                   key={item.name}
                 >
                   {item.posts.nodes.slice(0, 1).map((node) => {
