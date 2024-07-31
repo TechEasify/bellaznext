@@ -289,7 +289,7 @@ function News() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_0px] gap-7">
               <div className="flex flex-col md:flex-row justify-center gap-6 px-3 ">
                 <div className="max-w-4xl text-white">
-                  <div className="py-8 px-0 mr-8 md:px-8 text-left">
+                  <div className="py-8 px-0 mx-8 md:px-8 text-left">
                     <div className="flex w-full justify-between items-center">
                       <p className="text-base font-bold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
