@@ -150,7 +150,7 @@ function Testimonial() {
                         <img
                           src={testimonial.authorImage.node.sourceUrl}
                           alt={testimonial.authorName}
-                          className="w-8 h-8 sm:w-12 sm:h-12 rounded-full"
+                          className="w-[60px] h-[60px] sm:w-[60px] sm:h-[60px] rounded-full object-cover"
                         />
                       )}
                     </div>
@@ -174,7 +174,7 @@ function Testimonial() {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm w-full sm:text-sm text-gray-500 leading-4 sm:leading-6 transition-all duration-500 mb-3 sm:mb-9 group-hover:text-gray-800 break-words overflow-hidden overflow-ellipsis max-h-24">
+                <p className="text-[18px] w-full font-extralight sm:text-sm text-black leading-4 sm:leading-6 transition-all duration-500 mb-3 sm:mb-9 group-hover:text-gray-800 break-words overflow-hidden overflow-ellipsis max-h-24">
                   {testimonial.message}
                 </p>
               </div>
@@ -192,7 +192,7 @@ function Testimonial() {
                           <img
                             src={testimonial.authorImage.node.sourceUrl}
                             alt={testimonial.authorName}
-                            className="w-8 h-8 sm:w-12 sm:h-12 rounded-full"
+                            className="w-[60px] h-[60px] sm:w-[60px] sm:h-[60px] rounded-full object-cover"
                           />
                         )}
                       </div>
@@ -216,7 +216,7 @@ function Testimonial() {
                       </div>
                     </div>
                   </div>
-                  <p className="text-sm w-full sm:text-sm text-gray-500 leading-4 sm:leading-6 transition-all duration-500 mb-3 sm:mb-9 group-hover:text-gray-800 break-words overflow-hidden overflow-ellipsis max-h-24">
+                  <p className="text-[18px] w-full font-extralight sm:text-sm text-black leading-4 sm:leading-6 transition-all duration-500 mb-3 sm:mb-9 group-hover:text-gray-800 break-words overflow-hidden overflow-ellipsis max-h-24">
                     {testimonial.message}
                   </p>
                 </div>
