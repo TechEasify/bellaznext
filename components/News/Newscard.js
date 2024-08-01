@@ -179,7 +179,7 @@ const Newscard = ({ nodeByUri }) => {
                   className="max-w-xs bg-white mr-4 items-center"
                 >
                   <div className="mr-2 mb-20">
-                    <h5 className="text-[15px] font-bold text-black-900">
+                    <h5 className="text-[18px] font-extrabold text-black-900 italic">
                       {item.name}
                     </h5>
                     <hr
@@ -209,21 +209,21 @@ const Newscard = ({ nodeByUri }) => {
                         </Link>
                       )}
                       <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
-                        <p className="text-[15px] font-semibold text-gray-800 mb-2 hover:text-skyBlue">
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
                           {item?.posts?.nodes[0]?.title}
                         </p>
                       </Link>
                     </div>
                     <div key={item.id}>
                       <Link href={`/news/${item?.posts?.nodes[1]?.slug}`}>
-                        <p className="text-[15px] font-semibold text-gray-800 mb-2 hover:text-skyBlue">
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
                           {item?.posts?.nodes[1]?.title}
                         </p>
                       </Link>
                     </div>
                     <div key={item.id}>
                       <Link href={`/news/${item?.posts?.nodes[2]?.slug}`}>
-                        <p className="text-[15px] font-semibold text-gray-800 mb-2 hover:text-skyBlue">
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
                           {item?.posts?.nodes[2]?.title}
                         </p>
                       </Link>

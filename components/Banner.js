@@ -14,8 +14,8 @@ import Group1 from "../public/images/Group (1).svg";
 import Group2 from "../public/images/Group (2).svg";
 import Group3 from "../public/images/Group (3).svg";
 import Group4 from "../public/images/Group4.svg";
-import Frame208 from "../public/images/Frame208.svg";
-import Frame209 from "../public/images/Frame209.svg";
+import Status208 from "../public/images/Status208.svg";
+import Group209 from "../public/images/Group209.svg";
 import mike_von from "../public/images/mike_von.svg";
 import location from "../public/images/location.svg";
 import sun from "../public/images/sun.svg";
@@ -244,7 +244,7 @@ const Banner = () => {
 
                 return (
                   <div key={post.id}>
-                    <p className="text-base font-bold text-red-800">
+                    <p className="text-[15px] text-base font-semibold text-red-800 tracking-widest">
                       {post.categories.nodes[0]?.name}
                     </p>
                     <Link
@@ -268,16 +268,16 @@ const Banner = () => {
                         dangerouslySetInnerHTML={{ __html: post.excerpt }}
                       />
                     </Link>
-                    <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                    <p className="text-[15px] text-base text-gray-800 mb-4 font-extralight">
                       <span
-                        className="text-[20px] font-extrabold mr-1"
+                        className="text-[20px] w-[3px] h-[18px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
                         |
                       </span>
                       By
                       <span
-                        className="font-extrabold ml-1"
+                        className="font-extrabold ml-1 text-[15px]"
                         style={{ color: "#40A6FB" }}
                       >
                         {post?.author?.node?.name}
@@ -325,20 +325,32 @@ const Banner = () => {
             </div>
           </div>
           <div className="hidden md:block w-full max-w-3xl mx-auto">
-            <input
-              className="hidden md:block w-full mb-2"
-              id="FullName"
-              type="text"
-              placeholder="Type to Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={(e) => {
-                console.log(e, "eeeeee");
-                if (e.key === "Enter") {
-                  handleSearch(e);
-                }
-              }}
-            />
+            <div className="relative hidden md:block w-full mb-2">
+              <svg
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zm-5.442 0a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z" />
+              </svg>
+              <input
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full"
+                id="FullName"
+                type="text"
+                placeholder="Zmanim"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  console.log(e, "eeeeee");
+                  if (e.key === "Enter") {
+                    handleSearch(e);
+                  }
+                }}
+              />
+            </div>
 
             {/* <div
               className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
@@ -581,7 +593,7 @@ const Banner = () => {
             </div>
 
             <div className="w-full max-w-3xl mx-auto mt-5">
-              <p className="text-[15px] font-bold text-black-900 italic">
+              <p className="text-[22px] font-bold text-black-900 italic">
                 {bannerData?.page?.homePage?.topHeadlineSidebarTitle}
               </p>
               <hr
@@ -609,9 +621,9 @@ const Banner = () => {
                         .slice(0, 2)
                         .map((itemdata) => (
                           <div key={itemdata.slug}>
-                            <div className="flex justify-between">
-                              <div className="mr-2 w-48 mb-2">
-                                <p className="text-[12px] font-bold text-red-800">
+                            <div className="flex justify-between align-center">
+                              <div className="mr-2 w-56 mb-2">
+                                <p className="text-[12px] font-bold text-red-800 tracking-widest uppercase">
                                   {side.name}
                                 </p>
                                 <Link
@@ -620,7 +632,7 @@ const Banner = () => {
                                   }}
                                   passHref
                                 >
-                                  <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                                  <p className="text-[16px] font-semibold text-black-800 hover:text-skyBlue">
                                     {itemdata.title}
                                   </p>
                                 </Link>
@@ -718,7 +730,7 @@ const Banner = () => {
                               (
                                 <>
                                   <div className="mr-2">
-                                    <p className="text-[12px] font-bold text-red-800">
+                                    <p className="tracking-widest text-[12px] font-semibold text-red-800 uppercase">
                                       {side.name}
                                     </p>
                                     <Link
@@ -727,7 +739,7 @@ const Banner = () => {
                                       }}
                                       passHref
                                     >
-                                      <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                                      <p className="text-[15px] font-semibold text-black-800 mb-3 hover:text-skyBlue">
                                         {itemdata.title}
                                       </p>
                                     </Link>
@@ -746,9 +758,9 @@ const Banner = () => {
                                           itemdata.featuredImage.node.sourceUrl
                                         }
                                         alt={itemdata.title}
-                                        className="object-cover w-[94px] h-[87px] mr-2"
+                                        className="object-cover w-[90px] h-[88px] mr-2"
                                         width={90}
-                                        height={87}
+                                        height={88}
                                       />
                                     </Link>
                                   ) : (
@@ -764,7 +776,7 @@ const Banner = () => {
                     )
                   )
                 )}
-              <div className="flex mb-5 mt-10">
+              <div className="flex mb-5 mt-10 justify-center">
                 {bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
                   ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
                   <Link
@@ -918,7 +930,7 @@ const Banner = () => {
                   <Image
                     priority={true}
                     loader={customLoader}
-                    src={Frame208}
+                    src={Status208}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                     width={101}
@@ -934,7 +946,7 @@ const Banner = () => {
                   <Image
                     priority={true}
                     loader={customLoader}
-                    src={Frame209}
+                    src={Group209}
                     alt="Partly Cloudy"
                     className="h-13 w-13 mx-2 object-cover transition-transform duration-200 hover:scale-110 hover:opacity-80"
                     width={101}

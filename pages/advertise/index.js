@@ -2,11 +2,11 @@ import React from "react";
 import Nav from "../../components/Nav";
 import Footer from "../../components/Footer";
 import ExportedImage from "next-image-export-optimizer";
-import SocialIcons from "../../public/images/SocialIcons.svg";
-import email from "../../public/images/email.svg";
-import SocialIcons1 from "../../public/images/SocialIcons1.svg";
+import SocialIconsX from "../../public/images/SocialIconsX.svg";
+import Ademail from "../../public/images/Ademail.svg";
+import SocialIcon from "../../public/images/SocialIcon.svg";
 import Frame193 from "../../public/images/Frame193.svg";
-import SocialIcons2 from "../../public/images/SocialIcons2.svg";
+import SocialIcons3 from "../../public/images/SocialIcons3.svg";
 import PrimaryBlue2 from "../../public/images/PrimaryBlue2.svg";
 import arrowtop_right_thick from "../../public/images/arrowtop_right_thick.svg";
 import Link from "next/link";
@@ -73,18 +73,18 @@ function Index() {
       {/* <Nav /> */}
       <Layout title={title} description={description} canonical={canonical}>
         <div className="px-4 py-8 mx-auto max-w-screen-xl">
-          <h1 className="text-[24px] md:text-[30px] text-center text-black-900 font-bold mb-3">
+          <h1 className="text-[24px] md:text-[40px] text-center text-black-900 font-semibold mb-3">
             {advertiseQuery?.page?.advertise?.title}
           </h1>
           <p
-            className="text-[17px] text-center text-base font-semibold text-gray-600 mb-5"
+            className="text-[24px] text-center text-base font-light text-gray-600 mb-5"
             dangerouslySetInnerHTML={{
               __html: advertiseQuery?.page?.advertise?.description,
             }}
           />
           <div className="flex justify-center">
             <button
-              className="inline-flex items-center justify-center w-full h-12 px-8 font-semibold md:w-auto focus:outline-none"
+              className="inline-flex items-center justify-center w-[278px] h-[49px] px-8 font-semibold md:w-auto focus:outline-none tracking-widest uppercase"
               style={{
                 color: advertiseQuery?.page?.advertise?.button?.buttonTextColor,
                 border: `1px solid ${advertiseQuery?.page?.advertise?.button?.buttonBorderColor}`,
@@ -98,17 +98,17 @@ function Index() {
           </div>
 
           <div className="flex flex-wrap justify-center items-center mt-8 space-y-4 md:space-y-0 md:space-x-4">
-            <div className="flex space-x-3 mr-5">
-              <p className="text-[18px] text-center text-base font-semibold text-gray-600">
+            <div className="flex items-center space-x-3 mr-5">
+              <p className="text-[18px] tracking-widest text-center text-base font-semibold text-gray-600">
                 SHARE
               </p>
               <Image
                 priority={true}
                 loader={customLoader}
-                width={70}
-                height={70}
-                className="h-5 w-5 cursor-pointer"
-                src={SocialIcons}
+                width={20}
+                height={18}
+                className="h-[18px] w-[20px] cursor-pointer"
+                src={SocialIconsX}
                 alt="Social Icon"
                 onClick={() =>
                   (window.location.href = advertiseQuery?.page?.advertise?.share?.iconFirst)
@@ -117,18 +117,18 @@ function Index() {
               <Image
                 priority={true}
                 loader={customLoader}
-                width={70}
-                height={70}
-                className="h-5 w-5 cursor-pointer"
-                src={email}
+                width={20}
+                height={20}
+                className="h-[20px] w-[20px] cursor-pointer"
+                src={Ademail}
                 alt="Email Icon"
                 onClick={() =>
                   (window.location.href = `mailto:${advertiseQuery?.page?.advertise?.share?.email}`)
                 }
               />
             </div>
-            <div className="flex space-x-3 mr-5">
-              <p className="text-[18px] text-center text-base font-semibold text-gray-600">
+            <div className="flex space-x-3 mr-10">
+              <p className="text-[18px] text-center text-base font-semibold text-gray-600 tracking-widest">
                 FOLLOW
               </p>
               <Image
@@ -137,7 +137,7 @@ function Index() {
                 width={70}
                 height={70}
                 className="h-5 w-5 cursor-pointer"
-                src={SocialIcons1}
+                src={SocialIcon}
                 alt="Facebook Icon"
                 onClick={() =>
                   (window.location.href =
@@ -150,7 +150,7 @@ function Index() {
                 width={70}
                 height={70}
                 className="h-5 w-5 cursor-pointer"
-                src={SocialIcons}
+                src={SocialIconsX}
                 alt="Twitter Icon"
                 onClick={() =>
                   (window.location.href = advertiseQuery?.page?.advertise?.follow?.twiterLink)
@@ -162,7 +162,7 @@ function Index() {
                 width={70}
                 height={70}
                 className="h-5 w-5 cursor-pointer"
-                src={SocialIcons2}
+                src={SocialIcons3}
                 alt="Instagram Icon"
                 onClick={() =>
                   (window.location.href =
@@ -170,10 +170,11 @@ function Index() {
                 }
               />
             </div>
-            <div className="flex space-x-3 ml-5">
+            <div className="flex space-x-3 mx-10">
               <Link
-                className="underline font-semibold"
+                className="text-[18px] underline font-semibold"
                 href="https://belaaz.com/"
+                style={{ color: "#40A6FB" }}
               >
                 BELAAZ.COM/
               </Link>

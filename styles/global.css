@@ -177,7 +177,7 @@ body {
   background-color: #002d73;
 }
 
-button.inline-flex.items-center.justify-center.w-full.h-12.px-6.font-medium.tracking-wide.text-white.transition.duration-200.rounded.shadow-md.md\:w-auto.bg-gradient-to-r.focus\:outline-none {
+button.inline-flex.items-center.justify-center.w-full.h-12.px-6.font-medium.tracking-wide.text-white.transition.duration-200.shadow-md.md\:w-auto.bg-gradient-to-r.focus\:outline-none {
   background: #ce3a42;
 }
 

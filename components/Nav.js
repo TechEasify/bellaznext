@@ -149,8 +149,6 @@ const Nav = ({
   navData
 }) => {
   const {
-    // navData,
-    // setNavData,
     loadingNav,
     loadingMenu,
     loadingsubMenu,
@@ -172,12 +170,6 @@ const Nav = ({
   const isMobile = useIsMobile();
 
   console.log(navData, "navData props");
-
-  // useEffect(() => {
-  //   if (dataNav && dataIcon) {
-  //     setNavData({ dataNav, dataIcon });
-  //   }
-  // }, [dataNav, dataIcon]);
 
   useEffect(() => {
     setSubscribe(router.pathname);
@@ -640,7 +632,7 @@ const Nav = ({
             <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
               <button
                 onClick={handleSub}
-                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
               >
                 Subscribe
               </button>
@@ -851,7 +843,6 @@ const Nav = ({
             zIndex: "9999999999",
             top: "80px",
             left: "0px",
-
             backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
             width: "100%",
           }}
@@ -1306,7 +1297,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -1338,7 +1329,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -1762,7 +1753,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -1794,7 +1785,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -2218,7 +2209,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -2250,7 +2241,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -2674,7 +2665,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -2706,7 +2697,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -3130,7 +3121,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -3162,7 +3153,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -3586,7 +3577,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -3618,7 +3609,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -4042,7 +4033,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -4074,7 +4065,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -4500,7 +4491,7 @@ const Nav = ({
             {/* Mobile View */}
             <div className="block lg:hidden items-center">
               <div className="flex flex-col">
-                <div className="block lg:hidden flex">
+                <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
                     Search
                   </label>
@@ -4532,7 +4523,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>

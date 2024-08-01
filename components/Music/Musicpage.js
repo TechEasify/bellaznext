@@ -163,7 +163,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                     </div>
                     <div className="ml-0 md:ml-5 w-full md:w-3/5 hidden md:block">
                       <p
-                        className="text-base font-bold text-red-800"
+                        className="text-base font-semibold text-red-800"
                         style={{
                           background: "#25AC7D",
                           // background: `${nodeByUri.categoryTamplate.insightTamplate.insightTitleBackgroundColor}`,
@@ -187,11 +187,11 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                         }}
                         passHref
                       >
-                        <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
+                        <h5 className="text-[25px] text-black-900 font-bold hover:text-skyBlue">
                           {item.title}
                         </h5>
                       </Link>
-                      <p className="text-[12px] text-base font-bold text-gray-800 mb-4">
+                      <p className="text-[12px] font-extralight text-gray-800 mb-4">
                         <span
                           className="text-[12px] font-extrabold mr-1"
                           style={{ color: "#40A6FB" }}
@@ -214,7 +214,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                         {readingTime} MIN READ
                       </p>
                       <p
-                        className="text-[15px] text-base font-normal text-gray-600 mb-3 export"
+                        className="text-[16px] text-base font-extralight text-gray-600 mb-3 export"
                         dangerouslySetInnerHTML={{ __html: item.excerpt }}
                       />
                     </div>
@@ -311,10 +311,10 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               )
             ) : null}
 
-            <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
+            <p className="text-[17px] font-extrabold italic text-black-900">FOLLOW US</p>
             <hr
-              className="text-red-800 my-3"
-              style={{ height: "3px", background: "black" }}
+              className="text-red-800"
+              style={{ height: "7px", background: "#CE3A42" }}
             />
             <div className="flex justify-around mt-5 mb-8">
               <Link href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}>

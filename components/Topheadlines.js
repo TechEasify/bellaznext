@@ -44,7 +44,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
     <div className="py-8 mx-auto max-w-screen-xl">
       <div className="grid grid-cols-1 gap-7">
         <div className="w-full max-w-5xl mx-auto md:border-r">
-          <div className="flex flex-col justify-center mx-auto md:mx-0">
+          <div className="flex flex-col justify-center md:mx-0">
             <h1 className="text-[25px] font-bold text-black-900 italic">
               {topheadData?.page?.homePage?.topHeadlinesTitle}
             </h1>
@@ -58,7 +58,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
             <br />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-4">
             {uniqueCategoryPosts?.map(
               (item) => (
                 console.log(
@@ -91,17 +91,17 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                                 className="object-cover w-[432px] h-[293px]"
                               />
                             </Link>
-                            <p className="text-base font-bold text-red-800 mt-2">
+                            <p className="text-[12px] tracking-widest font-semibold text-red-800 mt-2 uppercase">
                               {category.name}
                             </p>
                             <Link href={`/news/${item.slug}`}>
-                              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                              <h5 className="mb-2 text-xl font-semibold tracking-tight text-black-900 dark:text-white hover:text-skyBlue">
                                 {item?.title}
                               </h5>
                             </Link>
-                            <p className="text-[15px] text-base font-bold text-gray-800 mb-4">
+                            <p className="text-[12px] text-base font-extralight text-gray-800 mb-4">
                               <span
-                                className="text-[25px] font-extrabold mr-1"
+                                className="text-[12px] font-extrabold mr-1 w-[2px] h-[14px]"
                                 style={{ color: "#40A6FB" }}
                               >
                                 |

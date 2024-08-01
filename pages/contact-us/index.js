@@ -23,7 +23,7 @@ const customLoader = ({ src }) => {
 const { publicRuntimeConfig } = getConfig();
 const { name, url } = publicRuntimeConfig.site;
 
-function Index() { 
+function Index() {
   const { contactQuery } = useDialog();
   const { seoData } = useHeader();
   console.log(seoData, "contact data");
@@ -76,7 +76,7 @@ function Index() {
                   <button
                     id="dropdownProject"
                     data-dropdown-toggle="dropdown-project"
-                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
+                    className="inline-flex items-center px-3 py-2 text-[16px] font-extralight text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
                     onClick={() => router.push("/")}
                   >
                     Home
@@ -89,7 +89,7 @@ function Index() {
                   <button
                     id="dropdownDatabase"
                     data-dropdown-toggle="dropdown-database"
-                    className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
+                    className="inline-flex items-center px-3 py-2 text-[16px] font-extralight text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-900 dark:hover:bg-gray-800 dark:text-white dark:focus:ring-gray-700"
                   >
                     Contact us
                   </button>
@@ -97,13 +97,20 @@ function Index() {
               </li>
             </ol>
           </nav>
-          <h1 className="text-[24px] md:text-[30px] text-black-900 font-bold mb-3">
+          <h1 className="text-[24px] md:text-[40px] text-black-900 font-semibold mb-3">
             Contact us
           </h1>
         </div>
         <div
           className="px-4 py-8 mx-auto max-w-screen-xl mb-20"
-          style={!isMobile ? { backgroundImage: `url(${News193.src})`, backgroundSize: 'cover' } : {}}
+          style={
+            !isMobile
+              ? {
+                  backgroundImage: `url(${News193.src})`,
+                  backgroundSize: "cover",
+                }
+              : {}
+          }
         >
           <div
             id="accordion-color"
@@ -114,7 +121,7 @@ function Index() {
             <h2 id="accordion-color-heading-1">
               <button
                 type="button"
-                className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
+                className={`flex text-[30px] font-light items-center justify-between w-full p-5 rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
                   openAccordion === 1 ? "bg-blue-100 dark:bg-gray-800" : ""
                 }`}
                 onClick={() => toggleAccordion(1)}
@@ -124,21 +131,20 @@ function Index() {
                     contactQuery?.page?.contactUs?.advertise?.advertiseTitle}
                 </span>
                 <svg
-                  data-accordion-icon
-                  className={`w-3 h-3 ${
+                  className={`w-5 h-5 text-[#40A6FB] transition-transform ${
                     openAccordion === 1 ? "rotate-180" : ""
                   }`}
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  viewBox="0 0 10 6"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
                   <path
-                    stroke="currentColor"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 5 5 1 1 5"
+                    d="M19 9l-7 7-7-7"
                   />
                 </svg>
               </button>
@@ -150,7 +156,7 @@ function Index() {
               } p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900`}
               aria-labelledby="accordion-color-heading-1"
             >
-              <p className="mb-2 font-normal">
+              <p className="text-[16px] mb-2 font-extralight">
                 {contactQuery?.page !== undefined &&
                   contactQuery?.page?.contactUs?.advertise?.description}
               </p>
@@ -175,8 +181,9 @@ function Index() {
                 </Link>
                 <Link
                   href={
-                    contactQuery?.page !== undefined ?
-                    contactQuery?.page?.contactUs?.advertise?.whatsappLink : "/"
+                    contactQuery?.page !== undefined
+                      ? contactQuery?.page?.contactUs?.advertise?.whatsappLink
+                      : "/"
                   }
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
@@ -199,7 +206,7 @@ function Index() {
                 </Link> */}
               </div>
               <div className="flex flex-col justify-between md:flex-row text-gray-500 dark:text-gray-400">
-                <span className="mr-2 text-black">929-9-Belaaz (235-229)</span>
+                <span className="mr-2 text-gray-800 text-[16px] font-light">929-9-Belaaz (235-229)</span>
                 {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
@@ -218,31 +225,32 @@ function Index() {
             <h2 id="accordion-color-heading-2">
               <button
                 type="button"
-                className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
+                className={`flex items-center text-[30px] font-light justify-between w-full p-5 rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
                   openAccordion === 2 ? "bg-blue-100 dark:bg-gray-800" : ""
                 }`}
                 onClick={() => toggleAccordion(2)}
               >
                 <span>
                   {contactQuery?.page !== undefined &&
-                    contactQuery?.page?.contactUs?.submitNewsTip?.submitNewsTipTitle}
+                    contactQuery?.page?.contactUs?.submitNewsTip
+                      ?.submitNewsTipTitle}
                 </span>
                 <svg
                   data-accordion-icon
-                  className={`w-3 h-3 ${
+                  className={`w-5 h-5 text-[#40A6FB] transition-transform ${
                     openAccordion === 2 ? "rotate-180" : ""
                   }`}
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  viewBox="0 0 10 6"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
                   <path
-                    stroke="currentColor"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 5 5 1 1 5"
+                    d="M19 9l-7 7-7-7"
                   />
                 </svg>
               </button>
@@ -254,7 +262,7 @@ function Index() {
               } p-5 border border-b-0 border-gray-200 dark:border-gray-700`}
               aria-labelledby="accordion-color-heading-2"
             >
-              <p className="mb-2 font-normal">
+              <p className="mb-2 text-[16px] font-extralight">
                 {contactQuery?.page !== undefined &&
                   contactQuery?.page?.contactUs?.submitNewsTip?.description}
               </p>
@@ -279,8 +287,10 @@ function Index() {
                 </Link>
                 <Link
                   href={
-                    contactQuery?.page !== undefined ?
-                    contactQuery?.page?.contactUs?.submitNewsTip?.whatsappLink : "/"
+                    contactQuery?.page !== undefined
+                      ? contactQuery?.page?.contactUs?.submitNewsTip
+                          ?.whatsappLink
+                      : "/"
                   }
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
@@ -304,7 +314,7 @@ function Index() {
                 </Link> */}
               </div>
               <div className="flex flex-col justify-between md:flex-row text-gray-500 dark:text-gray-400">
-                <span className="mr-2 text-black">929-9-Belaaz (235-229)</span>
+                <span className="mr-2 text-gray-800 text-[16px] font-light">929-9-Belaaz (235-229)</span>
                 {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
@@ -323,31 +333,32 @@ function Index() {
             <h2 id="accordion-color-heading-3">
               <button
                 type="button"
-                className={`flex items-center justify-between w-full p-5 font-medium rtl:text-right text-black-500 border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
+                className={`flex items-center text-[30px] font-light justify-between w-full p-5 rtl:text-right text-black-500 border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
                   openAccordion === 3 ? "bg-blue-100 dark:bg-gray-800" : ""
                 }`}
                 onClick={() => toggleAccordion(3)}
               >
                 <span>
                   {contactQuery?.page !== undefined &&
-                    contactQuery?.page?.contactUs?.noteToEditor?.noteToEditorTitle}
+                    contactQuery?.page?.contactUs?.noteToEditor
+                      ?.noteToEditorTitle}
                 </span>
                 <svg
                   data-accordion-icon
-                  className={`w-3 h-3 ${
+                  className={`w-5 h-5 text-[#40A6FB] transition-transform ${
                     openAccordion === 3 ? "rotate-180" : ""
                   }`}
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  viewBox="0 0 10 6"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
                   <path
-                    stroke="currentColor"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 5 5 1 1 5"
+                    d="M19 9l-7 7-7-7"
                   />
                 </svg>
               </button>
@@ -359,7 +370,7 @@ function Index() {
               } p-5 border border-t-0 border-gray-200 dark:border-gray-700`}
               aria-labelledby="accordion-color-heading-3"
             >
-              <p className="mb-2 font-normal">
+              <p className="mb-2 text-[16px] font-extralight">
                 {contactQuery?.page !== undefined &&
                   contactQuery?.page?.contactUs?.noteToEditor?.description}
               </p>
@@ -384,8 +395,10 @@ function Index() {
                 </Link>
                 <Link
                   href={
-                    contactQuery?.page !== undefined ?
-                    contactQuery?.page?.contactUs?.noteToEditor?.whatsappLink : "/"
+                    contactQuery?.page !== undefined
+                      ? contactQuery?.page?.contactUs?.noteToEditor
+                          ?.whatsappLink
+                      : "/"
                   }
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
@@ -408,7 +421,7 @@ function Index() {
                 </Link> */}
               </div>
               <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-                <span className="mr-2 text-black">929-9-Belaaz (235-229)</span>
+                <span className="mr-2 text-gray-800 text-[16px] font-light">929-9-Belaaz (235-229)</span>
                 {/* <Link
                   href="#"
                   className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
@@ -418,7 +431,7 @@ function Index() {
                 </Link> */}
               </div>
             </div>
-            <p className="px-5 py-5 text-[12px] mb-2 text-black-500 dark:text-gray-400">
+            <p className="px-5 py-5 text-[13px] font-extralight mb-2 text-gray-800 dark:text-gray-400">
               Terms & Conditions: Your information will only be used to respond
               to your inquiry and will be treated according to our privacy
               policy.

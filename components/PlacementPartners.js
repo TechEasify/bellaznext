@@ -38,9 +38,9 @@ const PlacementPartners = () => {
             }}
             src={imageUrl}
             alt="PR_01CFA"
-            className="object-cover w-[1134px] h-[169px]"
+            className="object-cover w-[1134px] h-[245px]"
             width={1134}
-            height={169}
+            height={245}
           />
         </Link>
       ) : (
@@ -49,7 +49,7 @@ const PlacementPartners = () => {
           style={{
             display: "block",
             width: "1134px",
-            height: "169px",
+            height: "245px",
             margin: "0 auto",
           }}
           adClient="ca-pub-3209848804552918"

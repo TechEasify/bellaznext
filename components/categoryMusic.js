@@ -108,7 +108,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_900px] gap-6">
           <div className="hidden lg:block w-full max-w-3xl mx-auto">
-            <p className="text-[15px] font-bold text-black-900 italic">
+            <p className="text-[22px] font-extrabold text-black-900 italic uppercase">
               {
                 nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
                   ?.musicHeroSection?.heroSidebarTitle
@@ -128,11 +128,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
               <React.Fragment key={index}>
                 <div className="flex mt-5">
                   <div className="mr-2 flex-1">
-                    <p className="text-[12px] font-bold text-red-800">
+                    <p className="text-[12px] font-semibold text-red-800 uppercase tracking-widest">
                       {post?.categoryName || ""}
                     </p>
                     <Link href={`/news/${post.slug}`}>
-                      <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
+                      <p className="text-[16px] font-semibold text-black-800 mb-3 hover:text-skyBlue">
                         {post?.title || ""}
                       </p>
                     </Link>
@@ -196,7 +196,8 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 />
               )}
             </div>
-            {firstLayoutPosts.map((post, index) => {
+            <hr className="my-3" />
+            {/* {firstLayoutPosts.map((post, index) => {
               const contentText = post?.content
                 ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                 : ""; // Fallback if content is not available
@@ -221,11 +222,11 @@ function Music({ nodeByUri, fetchMore, loading }) {
                         />
                       </Link>
                     )}
-                    <p className="text-[12px] font-bold text-red-800">
+                    <p className="text-[12px] font-bold text-red-800 uppercase tracking-widest">
                       {post?.categoryName || ""}
                     </p>
                     <Link href={`/news/${post.slug}`}>
-                      <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                      <p className="text-[20px] font-semibold text-gray-800 hover:text-skyBlue">
                         {post?.title || ""}
                       </p>
                     </Link>
@@ -255,36 +256,68 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   <hr className="my-3" />
                 </React.Fragment>
               );
-            })}
-            {secondLayoutPosts.map((post, index) => (
-              <React.Fragment key={index}>
-                <div className="flex my-5">
-                  <div className="mr-2 flex-1">
-                    <p className="text-[12px] font-bold text-red-800">
-                      {post?.categoryName || ""}
-                    </p>
-                    <Link href={`/news/${post.slug}`}>
-                      <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                        {post?.title || ""}
+            })} */}
+            {secondLayoutPosts.map((post, index) => {
+              const contentText = post?.content
+                ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+                : ""; // Fallback if content is not available
+              const wordCount = contentText
+                ? contentText?.split(" ").length
+                : 0;
+              const readingTime =
+                wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+              return (
+                <React.Fragment key={index}>
+                  <div className="flex my-5">
+                    <div className="mr-2 flex-1">
+                      <p className="text-[12px] font-semibold text-red-800 tracking-widest uppercase">
+                        {post?.categoryName || ""}
                       </p>
-                    </Link>
+                      <Link href={`/news/${post.slug}`}>
+                        <p className="text-[20px] font-semibold text-black-800 mb-3 hover:text-skyBlue">
+                          {post?.title || ""}
+                        </p>
+                      </Link>
+                      <p className="text-[12px] text-base font-bold text-gray-800">
+                        <span
+                          className="text-[12px] font-extrabold mr-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          |
+                        </span>
+                        By
+                        <span
+                          className="font-extrabold mx-1"
+                          style={{ color: "#40A6FB" }}
+                        >
+                          {post?.author?.node?.name}
+                          <span
+                            className="text-[36px] font-extrabold mx-1"
+                            style={{ color: "#40A6FB" }}
+                          >
+                            .
+                          </span>
+                        </span>
+                        {readingTime} MIN READ
+                      </p>
+                    </div>
+                    {post?.featuredImage?.node?.sourceUrl && (
+                      <Link href={`/news/${post.slug}`}>
+                        <Image
+                          priority={true}
+                          loader={customLoader}
+                          src={post?.featuredImage?.node?.sourceUrl}
+                          alt="Partly Cloudy"
+                          className="h-13 w-13 mr-2 object-cover w-[120px] h-[97px]"
+                          width={120}
+                          height={97}
+                        />
+                      </Link>
+                    )}
                   </div>
-                  {post?.featuredImage?.node?.sourceUrl && (
-                    <Link href={`/news/${post.slug}`}>
-                      <Image
-                        priority={true}
-                        loader={customLoader}
-                        src={post?.featuredImage?.node?.sourceUrl}
-                        alt="Partly Cloudy"
-                        className="h-13 w-13 mr-2 object-cover w-[120px] h-[97px]"
-                        width={120}
-                        height={97}
-                      />
-                    </Link>
-                  )}
-                </div>
-              </React.Fragment>
-            ))}
+                </React.Fragment>
+              );
+            })}
           </div>
           {shuffledPost.slice(0, 1).map((musicpost) => {
             console.log(musicpost, "musicpostmusicpostmusicpost");
@@ -310,18 +343,18 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 )}
                 {/* absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:max-w-[750px] h-60 tablet-custom mobile-custom */}
                 <div>
-                  <div className="absolute top-[23%] my-0 mx-6 z-50 bg-white p-6 border border-[#25AC7D] shadow h-60 tablet-custom mobile-custom">
-                    <p className="text-[12px] font-bold text-red-800">
+                  <div className="absolute top-[23%] my-0 mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-64 tablet-custom mobile-custom">
+                    <p className="text-[15px] font-semibold text-red-800 uppercase tracking-widest">
                       {nodeByUri?.nodeByUri?.name}
                     </p>
                     <Link href={`/news/${musicpost.slug}`}>
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue mobile-custom-h5">
+                      <h5 className="text-[40px] font-extrabold text-black-900 dark:text-white hover:text-skyBlue mobile-custom-h5">
                         {musicpost?.title}
                       </h5>
                     </Link>
-                    <p className="text-[12px] text-base font-bold text-gray-800 mb-2">
+                    <p className="text-[15px] text-base font-extralight text-gray-800 mb-2">
                       <span
-                        className="text-[12px] font-extrabold mr-1"
+                        className="text-[18px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
                         |
@@ -342,7 +375,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                       {readingTime} MIN READ
                     </p>
                     <p
-                      className="hidden md:block font-normal text-gray-700 dark:text-gray-400"
+                      className="text-[16px] font-extralight hidden md:block font-normal text-gray-700 dark:text-gray-400"
                       dangerouslySetInnerHTML={{ __html: musicpost?.excerpt }}
                     />
                   </div>
@@ -378,15 +411,15 @@ function Music({ nodeByUri, fetchMore, loading }) {
                                 />
                               </Link>
                             )}
-                            <p className="text-base font-bold text-red-800 mt-2">
+                            <p className="text-[12px] font-semibold text-red-800 mt-2 tracking-widest uppercase mb-2">
                               {item.name}
                             </p>
                             <Link href={`/news/${post.slug}`}>
-                              <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                              <h5 className="text-[28px] mb-2 text-xl font-semibold text-black-900 dark:text-white hover:text-skyBlue">
                                 {post.title}
                               </h5>
                             </Link>
-                            <p className="text-[12px] text-base font-bold text-gray-800 mb-4">
+                            <p className="text-[12px] text-base font-extralight text-gray-800 mb-4">
                               <span
                                 className="text-[12px] font-extrabold mr-1"
                                 style={{ color: "#40A6FB" }}

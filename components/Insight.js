@@ -136,7 +136,7 @@ const Insight = () => {
                     </div>
                     <div className="ml-0 md:ml-5 w-full md:w-3/5 md:block hidden">
                       <p
-                        className="text-base font-bold text-red-800"
+                        className="text-base font-semibold text-red-800 "
                         style={{
                           background: `${
                             nodeByUri?.nodeByUri?.categoryTamplate
@@ -155,13 +155,13 @@ const Insight = () => {
                         {nodeByUri?.nodeByUri?.name}
                       </p>
                       <Link href={`/news/${post.slug}`} passHref>
-                        <h5 className="text-[20px] text-black-900 font-bold hover:text-skyBlue">
+                        <h5 className="text-[25px] text-black-900 font-bold hover:text-skyBlue">
                           {post.title}
                         </h5>
                       </Link>
-                      <p className="text-[12px] text-base font-bold text-gray-800 mb-4">
+                      <p className="text-[12px] text-base font-extralight text-gray-800 mb-4">
                         <span
-                          className="text-[12px] font-extrabold mr-1"
+                          className="text-[15px] font-extrabold mr-1"
                           style={{ color: "#40A6FB" }}
                         >
                           |
@@ -182,7 +182,7 @@ const Insight = () => {
                         {readingTime} MIN READ
                       </p>
                       <p
-                        className="text-[15px] text-base font-normal text-gray-600 mb-3"
+                        className="text-[16px] text-base font-extralight text-gray-600 mb-3"
                         dangerouslySetInnerHTML={{ __html: post.excerpt }}
                       />
                     </div>

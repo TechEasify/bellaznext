@@ -16,12 +16,12 @@ const FooterTopAd = ({ data }) => {
     data?.page?.homePage?.footerAdvertisementImage?.node?.sourceUrl;
 
   return (
-    <div className="px-4 py-16 mx-auto max-w-screen-xl">
-      <div className="relative flex items-center mb-3">
+    <div className="px-4 py-16 mx-auto max-w-screen-xl mt-3">
+      {/* <div className="relative flex items-center mb-3">
         <div className="flex-grow border-t border-gray-300"></div>
         <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
         <div className="flex-grow border-t border-gray-300"></div>
-      </div>
+      </div> */}
       {imageUrl ? (
         <Link
           href={{

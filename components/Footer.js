@@ -61,10 +61,10 @@ const Footer = () => {
           <div className="flex justify-center">
             <div className="lg:col-span-12">
               <div className="mx-auto w-full max-w-screen-xl">
-                <div className="grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 text-center">
+                <div className="grid grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 text-center md:text-left">
                   {/* First Column */}
                   <div className="mb-8 md:mb-0">
-                    <h2 className="mb-6 text-[20px] font-semibold text-white">
+                    <h2 className="mb-3 text-[23px] font-semibold text-white">
                       {footerData?.menu?.footer?.newsTitle}
                     </h2>
                     <ul className="text-white font-medium">
@@ -73,7 +73,7 @@ const Footer = () => {
                           href={
                             footerData?.menu?.footer?.newsFirstLinks?.url ?? "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.newsFirst}
                         </Link>
@@ -84,7 +84,7 @@ const Footer = () => {
                             footerData?.menu?.footer?.newsSecondLinks?.url ??
                             "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.newsSecond}
                         </Link>
@@ -94,7 +94,7 @@ const Footer = () => {
                           href={
                             footerData?.menu?.footer?.newsThirdLinks?.url ?? "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.newsThird}
                         </Link>
@@ -104,7 +104,7 @@ const Footer = () => {
                           href={
                             footerData?.menu?.footer?.newsForeLinks?.url ?? "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.newsFore}
                         </Link>
@@ -114,7 +114,7 @@ const Footer = () => {
                           href={
                             footerData?.menu?.footer?.newsFiveLinks?.url ?? "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.newsFive}
                         </Link>
@@ -123,7 +123,7 @@ const Footer = () => {
                   </div>
                   {/* Second Column */}
                   <div className="mb-8 md:mb-0">
-                    <h2 className="mb-6 text-[20px] font-semibold text-white">
+                    <h2 className="mb-3 text-[23px] font-semibold text-white">
                       {footerData?.menu?.footer?.companyTitle}
                     </h2>
                     <ul className="text-white font-medium">
@@ -133,7 +133,7 @@ const Footer = () => {
                             footerData?.menu?.footer?.companyFirstLink?.url ??
                             "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.companyFirst}
                         </Link>
@@ -144,7 +144,7 @@ const Footer = () => {
                             footerData?.menu?.footer?.companySecondLink?.url ??
                             "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.companySecond}
                         </Link>
@@ -155,7 +155,7 @@ const Footer = () => {
                             footerData?.menu?.footer?.companyThirdLink?.url ??
                             "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.companyThird}
                         </Link>
@@ -166,7 +166,7 @@ const Footer = () => {
                             footerData?.menu?.footer?.companyForeLink?.url ??
                             "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.companyFore}
                         </Link>
@@ -177,7 +177,7 @@ const Footer = () => {
                             footerData?.menu?.footer?.companyFiveLink?.url ??
                             "/"
                           }
-                          className="hover:underline"
+                          className="hover:underline text-[19px]"
                         >
                           {footerData?.menu?.footer?.companyFive}
                         </Link>
@@ -186,7 +186,7 @@ const Footer = () => {
                   </div>
                   {/* Third Column (Social Links - Hidden on Mobile) */}
                   <div className="hidden md:block">
-                    <h2 className="mb-6 text-[20px] font-semibold text-white">
+                    <h2 className="mb-3 text-[23px] font-semibold text-white">
                       Social
                     </h2>
                     <ul className="text-white font-medium">
@@ -194,7 +194,7 @@ const Footer = () => {
                         <li className="mb-4">
                           <Link
                             href={footerData.menu.footer.belaazTwitterLink}
-                            className="hover:underline"
+                            className="hover:underline text-[19px]"
                             target="_blank"
                           >
                             {footerData.menu.footer.belaazTwitter}
@@ -205,7 +205,7 @@ const Footer = () => {
                         <li className="mb-4">
                           <Link
                             href={footerData.menu.footer.belaazFacebookLink}
-                            className="hover:underline"
+                            className="hover:underline text-[19px]"
                             target="_blank"
                           >
                             {footerData.menu.footer.belaazFacebook}
@@ -216,7 +216,7 @@ const Footer = () => {
                         <li className="mb-4">
                           <Link
                             href={footerData.menu.footer.belaazInstagramLink}
-                            className="hover:underline"
+                            className="hover:underline text-[19px]"
                             target="_blank"
                           >
                             {footerData.menu.footer.belaazInstagram}
@@ -227,7 +227,7 @@ const Footer = () => {
                         <li className="mb-4">
                           <Link
                             href={footerData.menu.footer.belaazYoutubeLink}
-                            className="hover:underline"
+                            className="hover:underline text-[19px]"
                             target="_blank"
                           >
                             {footerData.menu.footer.belaazYoutube}
@@ -238,7 +238,7 @@ const Footer = () => {
                         <li className="mb-4">
                           <Link
                             href={footerData.menu.footer.belaazTelegramLink}
-                            className="hover:underline"
+                            className="hover:underline text-[19px]"
                             target="_blank"
                           >
                             {footerData.menu.footer.belaazTelegram}
@@ -378,6 +378,7 @@ const Footer = () => {
             <div className="text-center hidden md:block">
               <div className="flex justify-center mb-3 space-x-2">
                 <button
+                  className="hover:bg-skyBlue"
                   style={{ border: "1px solid", padding: "5px" }}
                   onClick={() => router.push("/contact-us")}
                 >

@@ -66,7 +66,7 @@ const Music = () => {
                               height={194}
                             />
                           </Link>
-                          <p className="text-[12px] font-bold text-red-800">
+                          <p className="text-[12px] font-semibold text-red-800 tracking-widest uppercase">
                             {musicQuery?.page?.homePage?.musicTitle}
                           </p>
                           <Link
@@ -75,13 +75,13 @@ const Music = () => {
                             }}
                             passHref
                           >
-                            <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                            <p className="text-[20px] font-semibold text-black-800 hover:text-skyBlue">
                               {post.title}
                             </p>
                           </Link>
-                          <p className="text-[10px] text-base font-bold text-gray-800 w-full text-start">
+                          <p className="text-[12px] text-base font-extralight text-gray-800 w-full text-start mb-5">
                             <span
-                              className="text-[10px] font-extrabold mr-1"
+                              className="text-[12px] font-extralight mr-1"
                               style={{ color: "#40A6FB" }}
                             >
                               |
@@ -102,10 +102,11 @@ const Music = () => {
                             {readingTime} MIN READ
                           </p>
                         </div>
+                      <hr className="my-3"/>
                       </div>
                       <div className="flex max-w-xs bg-white mr-4 items-center">
                         <div className="mr-2">
-                          <p className="text-[12px] font-bold text-red-800">
+                          <p className="text-[12px] font-semibold text-red-800 tracking-widest uppercase">
                             {musicQuery?.page?.homePage?.musicTitle}
                           </p>
                           <Link
@@ -114,13 +115,13 @@ const Music = () => {
                             }}
                             passHref
                           >
-                            <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                            <p className="text-[20px] font-semibold text-black-800 hover:text-skyBlue">
                               {post.title}
                             </p>
                           </Link>
-                          <p className="text-[10px] text-base font-bold text-gray-800">
+                          <p className="text-[12px] font-extralight text-gray-800">
                             <span
-                              className="text-[10px] font-extrabold mr-1"
+                              className="text-[12px] font-extrabold mr-1 w-[2px] h-[14px]"
                               style={{ color: "#40A6FB" }}
                             >
                               |
@@ -196,7 +197,7 @@ const Music = () => {
                           height={395}
                         />
                       </Link>
-                      <p className="text-base font-bold text-red-800 mt-2">
+                      <p className="text-[12px] tracking-wide font-semibold text-red-800 mt-2 uppercase tracking-widest">
                         {musicQuery?.page?.homePage?.musicTitle}
                       </p>
                       <Link
@@ -205,13 +206,13 @@ const Music = () => {
                         }}
                         passHref
                       >
-                        <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white hover:text-skyBlue">
+                        <h5 className="mb-2 text-[28px] font-semibold tracking-tight text-black-900 dark:text-white hover:text-skyBlue">
                           {post.title}
                         </h5>
                       </Link>
-                      <p className="text-[10px] text-base font-bold text-gray-800 mb-4">
+                      <p className="text-[12px] text-base font-extralight text-gray-800 mb-4">
                         <span
-                          className="text-[10px] font-extrabold mr-1"
+                          className="text-[12px] font-extrabold mr-1"
                           style={{ color: "#40A6FB" }}
                         >
                           |
@@ -232,7 +233,7 @@ const Music = () => {
                         {readingTime} MIN READ
                       </p>
                       <p
-                        className="text-[12px] font-normal text-gray-800 mt-2 export"
+                        className="text-[16px] font-extralight text-gray-800 mt-2 export"
                         dangerouslySetInnerHTML={{ __html: post.content }}
                       />
                     </React.Fragment>
@@ -267,7 +268,7 @@ const Music = () => {
                           width={317}
                           height={194}
                         />
-                        <p className="text-[12px] font-bold text-red-800">
+                        <p className="text-[12px] font-semibold text-red-800 uppercase tracking-widest">
                           {musicQuery?.page?.homePage?.musicTitle}
                         </p>
                         <Link
@@ -276,13 +277,13 @@ const Music = () => {
                           }}
                           passHref
                         >
-                          <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
+                          <p className="text-[20px] font-semibold text-black-800 hover:text-skyBlue">
                             {post.title}
                           </p>
                         </Link>
-                        <p className="text-[10px] text-base font-bold text-gray-800">
+                        <p className="text-[12px] font-extralight text-gray-800">
                           <span
-                            className="text-[10px] font-extrabold mr-1"
+                            className="text-[12px] font-extrabold mr-1"
                             style={{ color: "#40A6FB" }}
                           >
                             |
