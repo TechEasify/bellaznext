@@ -113,330 +113,253 @@ function Index() {
           }
         >
           <div
-            id="accordion-color"
-            data-accordion="collapse"
-            data-active-classes="bg-blue-100 text-blue-600 dark:text-white w-50 px-10"
-            className="bg-white w-full md:w-1/2 mx-auto"
+      id="accordion-color"
+      data-accordion="collapse"
+      data-active-classes="bg-blue-100 text-blue-600 dark:text-white"
+      className="bg-white w-full md:w-1/2 mx-auto"
+    >
+      <h2 id="accordion-color-heading-1">
+        <button
+          type="button"
+          className={`flex items-center justify-between w-full p-4 md:p-5 text-[16px] md:text-[30px] font-light rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 ${
+            openAccordion === 1 ? "bg-blue-100 dark:bg-gray-800" : ""
+          }`}
+          onClick={() => toggleAccordion(1)}
+        >
+          <span>
+            {contactQuery?.page?.contactUs?.advertise?.advertiseTitle}
+          </span>
+          <svg
+            className={`w-4 h-4 md:w-5 md:h-5 text-[#40A6FB] transition-transform ${
+              openAccordion === 1 ? "rotate-180" : ""
+            }`}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <h2 id="accordion-color-heading-1">
-              <button
-                type="button"
-                className={`flex text-[30px] font-light items-center justify-between w-full p-5 rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
-                  openAccordion === 1 ? "bg-blue-100 dark:bg-gray-800" : ""
-                }`}
-                onClick={() => toggleAccordion(1)}
-              >
-                <span>
-                  {contactQuery?.page !== undefined &&
-                    contactQuery?.page?.contactUs?.advertise?.advertiseTitle}
-                </span>
-                <svg
-                  className={`w-5 h-5 text-[#40A6FB] transition-transform ${
-                    openAccordion === 1 ? "rotate-180" : ""
-                  }`}
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-color-body-1"
-              className={`${
-                openAccordion === 1 ? "" : "hidden"
-              } p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900`}
-              aria-labelledby="accordion-color-heading-1"
-            >
-              <p className="text-[16px] mb-2 font-extralight">
-                {contactQuery?.page !== undefined &&
-                  contactQuery?.page?.contactUs?.advertise?.description}
-              </p>
-              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-                <Link
-                  // href={
-                  //   data.page !== undefined &&
-                  //   data.page.contactUs.advertise.emailAddress
-                  // }
-                  href={`mailto:${contactQuery?.page?.contactUs?.advertise?.emailAddress}?subject=Subject&body=Message%20body`}
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-[32px] w-[88px] mr-2 object-cover"
-                    src={Frame_209}
-                    alt="Frame_209"
-                    width={88}
-                    height={32}
-                  />
-                </Link>
-                <Link
-                  href={
-                    contactQuery?.page !== undefined
-                      ? contactQuery?.page?.contactUs?.advertise?.whatsappLink
-                      : "/"
-                  }
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-[32px] w-[140px] mr-2 object-cover"
-                    src={Frame_208}
-                    alt="Frame_208"
-                    width={140}
-                    height={32}
-                  />
-                </Link>
-                {/* <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  {data.page !== undefined &&
-                    data.page.contactUs.advertise.emailAddress}
-                </Link> */}
-              </div>
-              <div className="flex flex-col justify-between md:flex-row text-gray-500 dark:text-gray-400">
-                <span className="mr-2 text-gray-800 text-[16px] font-light">929-9-Belaaz (235-229)</span>
-                {/* <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
-                >
-                  {data.page !== undefined &&
-                    data.page.contactUs.advertise.whatsappLink}
-                </Link> */}
-                <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 underline text-end"
-                >
-                  Know more
-                </Link>
-              </div>
-            </div>
-            <h2 id="accordion-color-heading-2">
-              <button
-                type="button"
-                className={`flex items-center text-[30px] font-light justify-between w-full p-5 rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
-                  openAccordion === 2 ? "bg-blue-100 dark:bg-gray-800" : ""
-                }`}
-                onClick={() => toggleAccordion(2)}
-              >
-                <span>
-                  {contactQuery?.page !== undefined &&
-                    contactQuery?.page?.contactUs?.submitNewsTip
-                      ?.submitNewsTipTitle}
-                </span>
-                <svg
-                  data-accordion-icon
-                  className={`w-5 h-5 text-[#40A6FB] transition-transform ${
-                    openAccordion === 2 ? "rotate-180" : ""
-                  }`}
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-color-body-2"
-              className={`${
-                openAccordion === 2 ? "" : "hidden"
-              } p-5 border border-b-0 border-gray-200 dark:border-gray-700`}
-              aria-labelledby="accordion-color-heading-2"
-            >
-              <p className="mb-2 text-[16px] font-extralight">
-                {contactQuery?.page !== undefined &&
-                  contactQuery?.page?.contactUs?.submitNewsTip?.description}
-              </p>
-              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-                <Link
-                  // href={
-                  //   data.page !== undefined &&
-                  //   data.page.contactUs.submitNewsTip.emailAddress
-                  // }
-                  href={`mailto:${contactQuery?.page?.contactUs?.submitNewsTip?.emailAddress}?subject=Subject&body=Message%20body`}
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-[32px] w-[88px] mr-2 object-cover"
-                    src={Frame_209}
-                    alt="Frame_209"
-                    width={88}
-                    height={32}
-                  />
-                </Link>
-                <Link
-                  href={
-                    contactQuery?.page !== undefined
-                      ? contactQuery?.page?.contactUs?.submitNewsTip
-                          ?.whatsappLink
-                      : "/"
-                  }
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-[32px] w-[140px] mr-2 object-cover"
-                    src={Frame_208}
-                    alt="Frame_208"
-                    width={140}
-                    height={32}
-                  />
-                </Link>
-                {/*                 
-                <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  {data.page !== undefined &&
-                    data.page.contactUs.submitNewsTip.emailAddress}
-                </Link> */}
-              </div>
-              <div className="flex flex-col justify-between md:flex-row text-gray-500 dark:text-gray-400">
-                <span className="mr-2 text-gray-800 text-[16px] font-light">929-9-Belaaz (235-229)</span>
-                {/* <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
-                >
-                  {data.page !== undefined &&
-                    data.page.contactUs.advertise.whatsappLink}
-                </Link> */}
-                {/* <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 underline text-end"
-                >
-                  Know more
-                </Link> */}
-              </div>
-            </div>
-            <h2 id="accordion-color-heading-3">
-              <button
-                type="button"
-                className={`flex items-center text-[30px] font-light justify-between w-full p-5 rtl:text-right text-black-500 border border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 gap-3 ${
-                  openAccordion === 3 ? "bg-blue-100 dark:bg-gray-800" : ""
-                }`}
-                onClick={() => toggleAccordion(3)}
-              >
-                <span>
-                  {contactQuery?.page !== undefined &&
-                    contactQuery?.page?.contactUs?.noteToEditor
-                      ?.noteToEditorTitle}
-                </span>
-                <svg
-                  data-accordion-icon
-                  className={`w-5 h-5 text-[#40A6FB] transition-transform ${
-                    openAccordion === 3 ? "rotate-180" : ""
-                  }`}
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-color-body-3"
-              className={`${
-                openAccordion === 3 ? "" : "hidden"
-              } p-5 border border-t-0 border-gray-200 dark:border-gray-700`}
-              aria-labelledby="accordion-color-heading-3"
-            >
-              <p className="mb-2 text-[16px] font-extralight">
-                {contactQuery?.page !== undefined &&
-                  contactQuery?.page?.contactUs?.noteToEditor?.description}
-              </p>
-              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400 mb-3">
-                <Link
-                  // href={
-                  //   data.page !== undefined &&
-                  //   data.page.contactUs.noteToEditor.emailAddress
-                  // }
-                  href={`mailto:${contactQuery?.page?.contactUs?.noteToEditor?.emailAddress}?subject=Subject&body=Message%20body`}
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-[32px] w-[88px] mr-2 object-cover"
-                    src={Frame_209}
-                    alt="Frame_209"
-                    width={88}
-                    height={32}
-                  />
-                </Link>
-                <Link
-                  href={
-                    contactQuery?.page !== undefined
-                      ? contactQuery?.page?.contactUs?.noteToEditor
-                          ?.whatsappLink
-                      : "/"
-                  }
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-[32px] w-[140px] mr-2 object-cover"
-                    src={Frame_208}
-                    alt="Frame_208"
-                    width={140}
-                    height={32}
-                  />
-                </Link>
-                {/* <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  {data.page !== undefined &&
-                    data.page.contactUs.noteToEditor.emailAddress}
-                </Link> */}
-              </div>
-              <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
-                <span className="mr-2 text-gray-800 text-[16px] font-light">929-9-Belaaz (235-229)</span>
-                {/* <Link
-                  href="#"
-                  className="text-blue-600 dark:text-blue-500 hover:underline md:mr-10"
-                >
-                  {data.page !== undefined &&
-                    data.page.contactUs.noteToEditor.whatsappLink}
-                </Link> */}
-              </div>
-            </div>
-            <p className="px-5 py-5 text-[13px] font-extralight mb-2 text-gray-800 dark:text-gray-400">
-              Terms & Conditions: Your information will only be used to respond
-              to your inquiry and will be treated according to our privacy
-              policy.
-            </p>
-          </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      </h2>
+      <div
+        id="accordion-color-body-1"
+        className={`${
+          openAccordion === 1 ? "" : "hidden"
+        } p-4 md:p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900`}
+        aria-labelledby="accordion-color-heading-1"
+      >
+        <p className="text-[14px] md:text-[16px] mb-2 font-extralight">
+          {contactQuery?.page?.contactUs?.advertise?.description}
+        </p>
+        <div className="flex flex-row md:flex-row text-gray-500 dark:text-gray-400 mb-3">
+          <Link
+            href={`mailto:${contactQuery?.page?.contactUs?.advertise?.emailAddress}?subject=Subject&body=Message%20body`}
+            className="text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            <Image
+              priority={true}
+              loader={customLoader}
+              className="h-[32px] w-[88px] mr-2 object-cover"
+              src={Frame_209}
+              alt="Frame_209"
+              width={88}
+              height={32}
+            />
+          </Link>
+          <Link
+            href={
+              contactQuery?.page?.contactUs?.advertise?.whatsappLink || "/"
+            }
+            className="text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            <Image
+              priority={true}
+              loader={customLoader}
+              className="h-[32px] w-[140px] mr-2 object-cover"
+              src={Frame_208}
+              alt="Frame_208"
+              width={140}
+              height={32}
+            />
+          </Link>
+        </div>
+        <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
+          <span className="mr-2 text-gray-800 text-[14px] md:text-[16px] font-light">
+            929-9-Belaaz (235-229)
+          </span>
+          <Link
+            href="#"
+            className="text-blue-600 dark:text-blue-500 underline md:text-end"
+          >
+            Know more
+          </Link>
+        </div>
+      </div>
+
+      <h2 id="accordion-color-heading-2">
+        <button
+          type="button"
+          className={`flex items-center justify-between w-full p-4 md:p-5 text-[16px] md:text-[30px] font-light rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 ${
+            openAccordion === 2 ? "bg-blue-100 dark:bg-gray-800" : ""
+          }`}
+          onClick={() => toggleAccordion(2)}
+        >
+          <span>
+            {contactQuery?.page?.contactUs?.submitNewsTip?.submitNewsTipTitle}
+          </span>
+          <svg
+            className={`w-4 h-4 md:w-5 md:h-5 text-[#40A6FB] transition-transform ${
+              openAccordion === 2 ? "rotate-180" : ""
+            }`}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      </h2>
+      <div
+        id="accordion-color-body-2"
+        className={`${
+          openAccordion === 2 ? "" : "hidden"
+        } p-4 md:p-5 border border-b-0 border-gray-200 dark:border-gray-700`}
+        aria-labelledby="accordion-color-heading-2"
+      >
+        <p className="text-[14px] md:text-[16px] mb-2 font-extralight">
+          {contactQuery?.page?.contactUs?.submitNewsTip?.description}
+        </p>
+        <div className="flex flex-row md:flex-row text-gray-500 dark:text-gray-400 mb-3">
+          <Link
+            href={`mailto:${contactQuery?.page?.contactUs?.submitNewsTip?.emailAddress}?subject=Subject&body=Message%20body`}
+            className="text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            <Image
+              priority={true}
+              loader={customLoader}
+              className="h-[32px] w-[88px] mr-2 object-cover"
+              src={Frame_209}
+              alt="Frame_209"
+              width={88}
+              height={32}
+            />
+          </Link>
+          <Link
+            href={
+              contactQuery?.page?.contactUs?.submitNewsTip?.whatsappLink ||
+              "/"
+            }
+            className="text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            <Image
+              priority={true}
+              loader={customLoader}
+              className="h-[32px] w-[140px] mr-2 object-cover"
+              src={Frame_208}
+              alt="Frame_208"
+              width={140}
+              height={32}
+            />
+          </Link>
+        </div>
+        <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
+          <span className="mr-2 text-gray-800 text-[14px] md:text-[16px] font-light">
+            929-9-Belaaz (235-229)
+          </span>
+        </div>
+      </div>
+
+      <h2 id="accordion-color-heading-3">
+        <button
+          type="button"
+          className={`flex items-center justify-between w-full p-4 md:p-5 text-[16px] md:text-[30px] font-light rtl:text-right text-black-500 border border-b-0 border-gray-200 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800 ${
+            openAccordion === 3 ? "bg-blue-100 dark:bg-gray-800" : ""
+          }`}
+          onClick={() => toggleAccordion(3)}
+        >
+          <span>
+            {contactQuery?.page?.contactUs?.noteToEditor?.noteToEditorTitle}
+          </span>
+          <svg
+            className={`w-4 h-4 md:w-5 md:h-5 text-[#40A6FB] transition-transform ${
+              openAccordion === 3 ? "rotate-180" : ""
+            }`}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
+      </h2>
+      <div
+        id="accordion-color-body-3"
+        className={`${
+          openAccordion === 3 ? "" : "hidden"
+        } p-4 md:p-5 border border-b-0 border-gray-200 dark:border-gray-700`}
+        aria-labelledby="accordion-color-heading-3"
+      >
+        <p className="text-[14px] md:text-[16px] mb-2 font-extralight">
+          {contactQuery?.page?.contactUs?.noteToEditor?.description}
+        </p>
+        <div className="flex flex-row md:flex-row text-gray-500 dark:text-gray-400 mb-3">
+          <Link
+            href={`mailto:${contactQuery?.page?.contactUs?.noteToEditor?.emailAddress}?subject=Subject&body=Message%20body`}
+            className="text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            <Image
+              priority={true}
+              loader={customLoader}
+              className="h-[32px] w-[88px] mr-2 object-cover"
+              src={Frame_209}
+              alt="Frame_209"
+              width={88}
+              height={32}
+            />
+          </Link>
+          <Link
+            href={
+              contactQuery?.page?.contactUs?.noteToEditor?.whatsappLink ||
+              "/"
+            }
+            className="text-blue-600 dark:text-blue-500 hover:underline"
+          >
+            <Image
+              priority={true}
+              loader={customLoader}
+              className="h-[32px] w-[140px] mr-2 object-cover"
+              src={Frame_208}
+              alt="Frame_208"
+              width={140}
+              height={32}
+            />
+          </Link>
+        </div>
+        <div className="flex flex-col md:flex-row text-gray-500 dark:text-gray-400">
+          <span className="mr-2 text-gray-800 text-[14px] md:text-[16px] font-light">
+            929-9-Belaaz (235-229)
+          </span>
+        </div>
+      </div>
+    </div>
         </div>
         {/* <Footer /> */}
       </Layout>

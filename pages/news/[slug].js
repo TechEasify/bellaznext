@@ -83,15 +83,15 @@ const NewsPage = () => {
     fetchPolicy: "cache-first",
   });
 
-  console.log(data, "news data");
+  console.log(nodeByUri, "news data");
   console.log(router.asPath === `/news${uri}`, "router.asPath === `/news/${uri}`");
 
-  useEffect(() => {
-    if (data) {
-      setNavData(data);
-      setNodeByUri(data.nodeByUri);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setNavData(data);
+  //     setNodeByUri(data.nodeByUri);
+  //   }
+  // }, [data]);
 
   if (loading) {
     return <SkeletonLoader />;
@@ -104,7 +104,7 @@ const NewsPage = () => {
   return (
     <>
       <Head>
-        <title>{nodeByUri?.title} - News</title>
+        <title>{data?.nodeByUri?.title} - News</title>
       </Head>
       {/* <Nav uri={uri} /> */}
       <main>

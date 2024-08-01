@@ -146,7 +146,7 @@ const Nav = ({
   archiveType,
   name,
   uri,
-  navData
+  navData,
 }) => {
   const {
     loadingNav,
@@ -253,7 +253,7 @@ const Nav = ({
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
           >
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between hidden md:flex items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
                 <Image
@@ -274,6 +274,20 @@ const Nav = ({
               </button>
             </div>
 
+            <div className="flex justify-between md:hidden items-center">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">BELAAZ</span>
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-12 w-auto md:h-14 mr-5"
+                  src={Primarylogo}
+                  alt="Primarylogo"
+                  width={250}
+                  height={54}
+                />
+              </Link>
+            </div>
             <div className="flex lg:flex-1 justify-end">
               <button
                 onClick={toggleContactHeader}
@@ -315,7 +329,7 @@ const Nav = ({
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
           >
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between hidden md:flex items-center">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">BELAAZ</span>
                 <Image
@@ -328,8 +342,26 @@ const Nav = ({
                   height={54}
                 />
               </Link>
-              <Link href="/" className="flex text-white font-bold">
+              <button
+                onClick={() => router.push("/")}
+                className="flex text-white font-bold"
+              >
                 Home
+              </button>
+            </div>
+
+            <div className="flex justify-between md:hidden items-center">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">BELAAZ</span>
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-12 w-auto md:h-14 mr-5"
+                  src={Primarylogo}
+                  alt="Primarylogo"
+                  width={250}
+                  height={54}
+                />
               </Link>
             </div>
 
@@ -364,69 +396,74 @@ const Nav = ({
           </nav>
         </header>
       ) : router.asPath === `/news/${router.query.slug}` ? (
-        console.log(router.asPath === `/news/${router.query.slug}`, "router.asPath === `/news${uri}`"),
-        <header
-          className="bg-black"
-          style={{
-            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
-          }}
-        >
-          <nav
-            className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
-            aria-label="Global"
+        (console.log(
+          router.asPath === `/news/${router.query.slug}`,
+          "router.asPath === `/news${uri}`"
+        ),
+        (
+          <header
+            className="bg-black"
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
-            <div className="flex justify-between lg:justify-start items-center">
-              <Link href="/" className="-m-1.5 p-1.5">
-                <span className="sr-only">BELAAZ</span>
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  className="h-12 w-auto md:h-14 object-cover"
-                  src={Primarylogo}
-                  alt="Primarylogo"
-                  width={250}
-                  height={54}
-                />
-              </Link>
-            </div>
+            <nav
+              className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
+              aria-label="Global"
+            >
+              <div className="flex justify-between lg:justify-start items-center">
+                <Link href="/" className="-m-1.5 p-1.5">
+                  <span className="sr-only">BELAAZ</span>
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-12 w-auto md:h-14 object-cover"
+                    src={Primarylogo}
+                    alt="Primarylogo"
+                    width={250}
+                    height={54}
+                  />
+                </Link>
+              </div>
 
-            <div className="flex flex-1 justify-end items-center">
-              <button
-                onClick={handleSub}
-                className="hidden lg:inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
-                style={{ background: "#CE3A42" }}
-              >
-                Subscribe
-              </button>
-              <button
-                onClick={toggleContactHeader}
-                className="flex text-white font-bold items-center lg:mr-2"
-              >
-                {isContactHeaderVisible ? (
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-5 w-5 mx-2 object-cover"
-                    src={closewhite}
-                    alt="close Icon"
-                    width={21}
-                    height={18}
-                  />
-                ) : (
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-5 w-5 mx-2 object-cover"
-                    src={Frame283}
-                    alt="Contact Toggle Icon"
-                    width={21}
-                    height={18}
-                  />
-                )}
-              </button>
-            </div>
-          </nav>
-        </header>
+              <div className="flex flex-1 justify-end items-center">
+                <button
+                  onClick={handleSub}
+                  className="hidden lg:inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                  style={{ background: "#CE3A42" }}
+                >
+                  Subscribe
+                </button>
+                <button
+                  onClick={toggleContactHeader}
+                  className="flex text-white font-bold items-center lg:mr-2"
+                >
+                  {isContactHeaderVisible ? (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      className="h-5 w-5 mx-2 object-cover"
+                      src={closewhite}
+                      alt="close Icon"
+                      width={21}
+                      height={18}
+                    />
+                  ) : (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      className="h-5 w-5 mx-2 object-cover"
+                      src={Frame283}
+                      alt="Contact Toggle Icon"
+                      width={21}
+                      height={18}
+                    />
+                  )}
+                </button>
+              </div>
+            </nav>
+          </header>
+        ))
       ) : router.asPath === `/subscribe` ? (
         <></>
       ) : (
@@ -556,7 +593,8 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.mainMenuSecond}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -575,7 +613,8 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center hidden lg:flex"
                 >
-                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.mainMenuThird}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -794,7 +833,7 @@ const Nav = ({
                   handleSearch(e);
                 }
               }}
-              required 
+              required
               style={{ width: "300px" }}
             />
           </div>
@@ -850,7 +889,9 @@ const Nav = ({
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
-            style={{backgroundColor: dataNav?.menu?.header?.headerBackgroundColor}}
+            style={{
+              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden w-full">
@@ -3641,7 +3682,8 @@ const Nav = ({
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined && dataNav?.menu?.header?.subFirst}
+                        {dataNav !== undefined &&
+                          dataNav?.menu?.header?.subFirst}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -3660,7 +3702,8 @@ const Nav = ({
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined && dataNav?.menu?.header?.subSecond}
+                        {dataNav !== undefined &&
+                          dataNav?.menu?.header?.subSecond}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -3679,7 +3722,8 @@ const Nav = ({
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined && dataNav?.menu?.header?.subThird}
+                        {dataNav !== undefined &&
+                          dataNav?.menu?.header?.subThird}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -4465,7 +4509,7 @@ const Nav = ({
         </header>
       ) : router.pathname === "/subscribe" ? (
         <></>
-      ):(
+      ) : (
         <header
           className={`bg-header transition-all duration-500 ${
             isContactHeaderVisible
@@ -4615,7 +4659,8 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.mainMenuSecond}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -4634,7 +4679,8 @@ const Nav = ({
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined && dataNav?.menu?.header?.mainMenuThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menu?.header?.mainMenuThird}
                   <Image
                     priority={true}
                     loader={customLoader}
