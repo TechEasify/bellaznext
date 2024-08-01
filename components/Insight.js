@@ -314,8 +314,8 @@ const Insight = () => {
 
             <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
             <hr
-              className="text-red-800 my-3"
-              style={{ height: "3px", background: "black" }}
+              className="text-red-800"
+              style={{ height: "7px", background: "#CE3A42" }}
             />
             <div className="flex justify-around mt-5 mb-8">
               <Link
