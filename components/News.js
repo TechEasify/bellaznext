@@ -622,7 +622,7 @@ function News() {
                                 ?.sourceUrl
                             }
                             alt="Partly Cloudy"
-                            className="h-13 w-13 mx-2 object-cover"
+                            className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                             width={39.99}
                             height={40}
                           />
@@ -641,7 +641,7 @@ function News() {
                                 ?.sourceUrl
                             }
                             alt="Partly Cloudy"
-                            className="h-13 w-13 mx-2 object-cover"
+                            className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                             width={39.99}
                             height={40}
                           />
@@ -660,7 +660,7 @@ function News() {
                                 ?.sourceUrl
                             }
                             alt="Partly Cloudy"
-                            className="h-13 w-13 mx-2 object-cover"
+                            className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                             width={39.99}
                             height={40}
                           />
@@ -677,7 +677,7 @@ function News() {
                               ?.sourceUrl
                           }
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2 object-cover"
+                          className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                           width={39.99}
                           height={40}
                         />
@@ -695,7 +695,7 @@ function News() {
                                 ?.sourceUrl
                             }
                             alt="Partly Cloudy"
-                            className="h-13 w-13 mx-2 object-cover"
+                            className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                             width={39.99}
                             height={40}
                           />
@@ -721,7 +721,7 @@ function News() {
                           loader={customLoader}
                           src={Frame208}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2 object-cover"
+                          className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                           width={101}
                           height={32}
                         />
@@ -737,7 +737,7 @@ function News() {
                           loader={customLoader}
                           src={Frame209}
                           alt="Partly Cloudy"
-                          className="h-13 w-13 mx-2 object-cover"
+                          className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
                           width={101}
                           height={32}
                         />
