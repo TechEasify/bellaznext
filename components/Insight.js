@@ -312,7 +312,7 @@ const Insight = () => {
               />
             )}
 
-            <p className="text-[15px] font-bold text-black-900">FOLLOW US</p>
+            <p className="text-[17px] font-extrabold text-black-900 italic">FOLLOW US</p>
             <hr
               className="text-red-800"
               style={{ height: "7px", background: "#CE3A42" }}

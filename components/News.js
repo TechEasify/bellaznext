@@ -481,7 +481,7 @@ function News() {
                           <div key={index}>
                             <div className="flex mt-5 pl-3">
                               <div className="mr-2 flex-1">
-                                <h5 className="text-[35px] text-black" style={{ color: "#CE3A42" }}>{index}</h5>
+                                <h5 className="text-[35px] text-black" style={{ color: "#CE3A42" }}>{index+1}</h5>
                               </div>
                               <div className="flex">
                                 <div className="mr-2 flex-2 w-[203px]">
