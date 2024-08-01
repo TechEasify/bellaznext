@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import article from "../public/images/article.svg";
-import vladimirputin from "../public/images/vladimir-putin.svg";
+import NewsVector from "../public/images/NewsVector.svg";
 import Screenshot202 from "../public/images/Screenshot202.svg";
 import ExportedImage from "next-image-export-optimizer";
 import colinlloyd from "../public/images/colinlloyd.svg";
@@ -177,10 +177,10 @@ const GET_TOPHEADLINE_PAGE = gql`
 
 function News() {
   const { nodeByUri, setNodeByUri } = useDialog();
-  const { navData, setNavData, dataNav, dataIcon } =
-    useHeader();
+  const { navData, setNavData, dataNav, dataIcon } = useHeader();
   const router = useRouter();
   const { slug } = router.query;
+  console.log(slug, "router slug");
   const uri = `/${slug}`;
   const [isOpen, setIsOpen] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("");
@@ -226,11 +226,16 @@ function News() {
 
   const posts =
     newsData?.nodeByUri?.categories?.nodes?.flatMap((item) =>
-      item.posts?.nodes?.map((post) => (console.log(post, "post postss"),{
-        ...post,
-        categoryName: item.name,
-        categoryViews: post.postView.view
-      }))
+      item.posts?.nodes?.map(
+        (post) => (
+          console.log(post, "post postss"),
+          {
+            ...post,
+            categoryName: item.name,
+            categoryViews: post.postView.view,
+          }
+        )
+      )
     ) || [];
 
   // Sorting posts by category view count in descending order
@@ -251,7 +256,6 @@ function News() {
       {/* <Nav /> */}
       {newsData?.nodeByUri?.__typename === "Post" && (
         <>
-          <hr />
           <div className="w-full px-4 mx-auto flex bg-black items-center justify-center flex-wrap sm:flex-nowrap">
             <p
               className="text-[11px] md:text-[13px] font-normal text-white px-2 cursor-pointer"
@@ -291,11 +295,11 @@ function News() {
                 <div className="max-w-4xl text-white">
                   <div className="py-8 px-0 mx-8 md:px-8 text-left">
                     <div className="flex w-full justify-between items-center">
-                      <p className="text-base font-bold text-red-800">
+                      <p className="text-[15px] uppercase tracking-widest text-base font-semibold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
                       </p>
                       <button
-                        className="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 sm:w-10 md:w-12 lg:w-14 xl:w-16 h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16 max-w-[40px] max-h-[40px] rounded-lg text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
+                        className="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 sm:w-10 md:w-12 lg:w-14 xl:w-16 h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16 max-w-[40px] max-h-[40px] text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
                         type="button"
                         style={{ background: "#CE3A42" }}
                         onClick={toggleShareOptions}
@@ -325,9 +329,9 @@ function News() {
                     <h1 className="text-[24px] md:text-[40px] text-black font-bold">
                       {newsData?.nodeByUri?.title}
                     </h1>
-                    <p className="text-[15px] md:text-[15px] text-base font-bold text-gray-800 mb-4">
+                    <p className="text-[15px] md:text-[15px] text-base font-extralight text-gray-800 mb-4">
                       <span
-                        className="text-[15px] md:text-[15px] font-extrabold mr-1"
+                        className="text-[18px] md:text-[15px] font-extrabold mr-1"
                         style={{ color: "#40A6FB" }}
                       >
                         |
@@ -348,7 +352,7 @@ function News() {
                       {readingTime} MIN READ
                     </p>
 
-                    <p className="text-[8px] md:text-[14px] text-base font-bold text-gray-800 mb-4">
+                    <p className="text-[8px] md:text-[14px] text-base font-extralight text-gray-800 mb-4">
                       <span className="ml-1 mr-1">
                         Published {formatDate(nodeByUri?.date)}
                       </span>
@@ -376,7 +380,7 @@ function News() {
                   )}
                   {/* <Responsivevoice nodeByUri={nodeByUri} /> */}
                   <p
-                    className="mb-5 w-full md:w-[760px] mx-auto"
+                    className="text-[20px] font-extralight mb-5 w-full md:w-[760px] mx-auto"
                     style={{ color: "#2B2B2B" }}
                     dangerouslySetInnerHTML={{
                       __html: newsData?.nodeByUri?.content,
@@ -385,15 +389,24 @@ function News() {
 
                   <div className="w-full md:w-[760px] mt-10 mx-auto mb-5">
                     <div className="flex items-center">
-                      <p className="text-[18px] md:text-[20px] font-bold text-black italic mr-3">
+                      <p className="text-[18px] md:text-[22px] font-extrabold text-black italic mr-3">
                         MORE STORIES
                       </p>
                       <Link
                         href="#"
-                        className="text-[10px] md:text-[12px] font-bold text-black underline"
+                        className="text-[10px] md:text-[14px] font-bold text-black mr-1 underline"
                       >
                         More
                       </Link>
+                      <Image
+                        priority={true}
+                        loader={customLoader}
+                        src={NewsVector}
+                        alt="Partly Cloudy"
+                        className="h-[7px] w-[5px] md:h-[7px] md:w-[5px] object-cover mr-2"
+                        width={5}
+                        height={7}
+                      />
                     </div>
                     <hr
                       className="text-red-800"
@@ -407,42 +420,52 @@ function News() {
                             categoryName: item.name,
                           }))
                         )
-                        ?.map((post, index) => (
-                          <div key={index} className="flex items-center w-full">
-                            <div className="flex w-full">
-                              <div className="mr-2 flex-1">
-                                <p className="text-[10px] md:text-[12px] font-bold text-red-800">
-                                  {post?.categoryName}
-                                </p>
-                                <Link href={`/news/${post?.slug}`}>
-                                  <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                                    {post?.title}
-                                  </p>
-                                </Link>
+                        ?.map((post, index) => {
+                          if (post.slug !== slug) {
+                            return (
+                              <div
+                                key={index}
+                                className="flex items-center w-full"
+                              >
+                                <div className="flex w-full">
+                                  <div className="mr-2 flex-1">
+                                    <p className="text-[10px] md:text-[12px] font-semibold tracking-widest text-red-800 uppercase">
+                                      {post?.categoryName}
+                                    </p>
+                                    <Link href={`/news/${post?.slug}`}>
+                                      <p className="text-[13px] md:text-[16px] font-semibold text-black mb-3 hover:text-skyBlue">
+                                        {post?.title}
+                                      </p>
+                                    </Link>
+                                  </div>
+                                  {post?.featuredImage?.node?.sourceUrl && (
+                                    <Link href={`/news/${post?.slug}`}>
+                                      <Image
+                                        priority={true}
+                                        loader={customLoader}
+                                        src={
+                                          post?.featuredImage?.node?.sourceUrl
+                                        }
+                                        alt="Partly Cloudy"
+                                        className="h-[70px] w-[70px] md:h-[87px] md:w-[90px] object-cover mr-2"
+                                        width={90}
+                                        height={87}
+                                      />
+                                    </Link>
+                                  )}
+                                </div>
+                                {(index + 1) % 2 === 0 && <hr />}
                               </div>
-                              {post?.featuredImage?.node?.sourceUrl && (
-                                <Link href={`/news/${post?.slug}`}>
-                                  <Image
-                                    priority={true}
-                                    loader={customLoader}
-                                    src={post?.featuredImage?.node?.sourceUrl}
-                                    alt="Partly Cloudy"
-                                    className="h-[70px] w-[70px] md:h-[87px] md:w-[90px] object-cover mr-2"
-                                    width={90}
-                                    height={87}
-                                  />
-                                </Link>
-                              )}
-                            </div>
-                            {(index + 1) % 2 === 0 && <hr />}
-                          </div>
-                        ))}
+                            );
+                          }
+                          return null; // Return null to avoid rendering anything if the condition is not met
+                        })}
                     </div>
                   </div>
 
                   <div className="hidden md:block w-full md:w-[760px] mt-10 mb-20 mx-auto">
                     <div className="flex items-center">
-                      <p className="text-[18px] md:text-[20px] font-bold text-black italic mr-3">
+                      <p className="text-[18px] md:text-[22px] font-extrabold text-black italic mr-3">
                         MOST READ
                       </p>
                     </div>
@@ -450,21 +473,22 @@ function News() {
                       className="text-red-800"
                       style={{ height: "5px", background: "#CE3A42" }}
                     />
-                    {posts.map(
-                      (post, index) => (
-                        console.log(post, "postpostpostpostpostpost"),
-                        (
+                    {posts.map((post, index) => {
+                      console.log(post, "postpostpostpostpostpost");
+
+                      if (post.slug !== slug) {
+                        return (
                           <div key={index}>
                             <div className="flex mt-5">
                               <div className="mr-2 flex-1">
-                                <p className="text-[10px] md:text-[12px] font-bold text-red-800">
+                                <p className="text-[10px] md:text-[12px] font-semibold text-red-800 uppercase tracking-widest">
                                   {post?.categoryName}
                                 </p>
-                                  <Link href={`/news/${post?.slug}`}>
-                                    <p className="text-[13px] md:text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
-                                      {post?.title}
-                                    </p>
-                                  </Link>
+                                <Link href={`/news/${post?.slug}`}>
+                                  <p className="text-[13px] md:text-[16px] font-bold text-black mb-3 hover:text-skyBlue">
+                                    {post?.title}
+                                  </p>
+                                </Link>
                               </div>
                               {post?.featuredImage?.node?.sourceUrl && (
                                 <Image
@@ -480,9 +504,11 @@ function News() {
                             </div>
                             <hr className="mt-5" />
                           </div>
-                        )
-                      )
-                    )}
+                        );
+                      }
+
+                      return null; // Return null if the condition is not met
+                    })}
                   </div>
                 </div>
                 <div
@@ -499,7 +525,7 @@ function News() {
                     height={496}
                   />
                   <div className="w-full max-w-3xl mx-auto">
-                    <p className="text-[16px] font-bold text-black-900 italic">
+                    <p className="text-[22px] font-bold text-black-900 italic">
                       MORE FROM BELAAZ NEWS
                     </p>
                     <hr
@@ -509,56 +535,64 @@ function News() {
                         background: `${data?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
                       }}
                     />
-                    {data?.page?.homePage?.topHeadlineSidebarPosts?.nodes !== undefined && data?.page?.homePage?.topHeadlineSidebarPosts?.nodes
-                      .slice()
-                      .sort((a, b) => (a.title < b.title ? 1 : -1))
-                      .slice(0, 2)
-                      .map((side) => (
-                        console.log(side, "side news"),
-                        <div className="mt-5 mb-5 w-64" key={side.id}>
-                          {side.posts.nodes
-                            .slice()
-                            .sort((a, b) => (a.title < b.title ? 1 : -1))
-                            .slice(0, 2)
-                            .map((itemdata) => (
-                              <div key={itemdata.id}>
-                                <div className="flex">
-                                  <div className="mr-2 w-48 mb-2">
-                                    <p className="text-[12px] font-bold text-red-800">
-                                      {side?.name}
-                                    </p>
-                                    <Link
-                                      href={`/news/${itemdata?.slug}`}
-                                      passHref
-                                    >
-                                      <p className="text-[15px] font-semibold text-gray-800 hover:text-skyBlue">
-                                        {itemdata?.title}
-                                      </p>
-                                    </Link>
-                                  </div>
-                                  {itemdata?.featuredImage?.node?.sourceUrl ? (
-                                    <Image
-                                      priority={true}
-                                      loader={customLoader}
-                                      src={
-                                        itemdata?.featuredImage?.node?.sourceUrl
-                                      }
-                                      alt={itemdata?.title}
-                                      className="object-cover w-[90px] h-[87px] mr-2"
-                                      width={90}
-                                      height={87}
-                                    />
-                                  ) : (
-                                    <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
-                                      No Image
+                    {data?.page?.homePage?.topHeadlineSidebarPosts?.nodes !==
+                      undefined &&
+                      data?.page?.homePage?.topHeadlineSidebarPosts?.nodes
+                        .slice()
+                        .sort((a, b) => (a.title < b.title ? 1 : -1))
+                        .slice(0, 2)
+                        .map(
+                          (side) => (
+                            console.log(side, "side news"),
+                            (
+                              <div className="mt-5 mb-5 w-64" key={side.id}>
+                                {side.posts.nodes
+                                  .slice()
+                                  .sort((a, b) => (a.title < b.title ? 1 : -1))
+                                  .slice(0, 2)
+                                  .map((itemdata) => (
+                                    <div key={itemdata.id} className="w-[290px]">
+                                      <div className="flex my-3">
+                                        <div className="mr-2 w-48 mb-2">
+                                          <p className="text-[10px] font-bold text-red-800 uppercase tracking-widest">
+                                            {side?.name}
+                                          </p>
+                                          <Link
+                                            href={`/news/${itemdata?.slug}`}
+                                            passHref
+                                          >
+                                            <p className="text-[13px] font-semibold text-black hover:text-skyBlue">
+                                              {itemdata?.title}
+                                            </p>
+                                          </Link>
+                                        </div>
+                                        {itemdata?.featuredImage?.node
+                                          ?.sourceUrl ? (
+                                          <Image
+                                            priority={true}
+                                            loader={customLoader}
+                                            src={
+                                              itemdata?.featuredImage?.node
+                                                ?.sourceUrl
+                                            }
+                                            alt={itemdata?.title}
+                                            className="object-cover w-[68px] h-[76px] mr-2"
+                                            width={68}
+                                            height={76}
+                                          />
+                                        ) : (
+                                          <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                            No Image
+                                          </div>
+                                        )}
+                                      </div>
+                                      <hr/>
                                     </div>
-                                  )}
-                                </div>
+                                  ))}
                               </div>
-                            ))}
-                        </div>
-                      ))}
-                    <hr />
+                            )
+                          )
+                        )}
                     <p className="text-[15px] font-bold text-black-900 italic mt-10">
                       FOLLOW US
                     </p>
@@ -568,9 +602,7 @@ function News() {
                     />
                     <div className="flex mt-5 mb-8">
                       <Link
-                        href={
-                          dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"
-                        }
+                        href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                       >
                         {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
                           ?.sourceUrl && (
@@ -589,9 +621,7 @@ function News() {
                         )}
                       </Link>
                       <Link
-                        href={
-                          dataIcon?.menu?.socialIcons?.facebookLink ?? "/"
-                        }
+                        href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                       >
                         {dataIcon?.menu?.socialIcons?.facebookIcon?.node
                           ?.sourceUrl && (
@@ -610,10 +640,7 @@ function News() {
                         )}
                       </Link>
                       <Link
-                        href={
-                          dataIcon?.menu?.socialIcons?.instagramLink ??
-                          "/"
-                        }
+                        href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                       >
                         {dataIcon?.menu?.socialIcons?.instagramIcon?.node
                           ?.sourceUrl && (
@@ -632,9 +659,7 @@ function News() {
                         )}
                       </Link>
                       <Link
-                        href={
-                          dataIcon?.menu?.socialIcons?.twiterLink ?? "/"
-                        }
+                        href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
                       >
                         <Image
                           priority={true}
@@ -650,9 +675,7 @@ function News() {
                         />
                       </Link>
                       <Link
-                        href={
-                          dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"
-                        }
+                        href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                       >
                         {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
                           ?.sourceUrl && (
