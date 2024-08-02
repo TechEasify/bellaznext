@@ -13,9 +13,15 @@ import Image from "next/image";
 import Layout from "../../components/Layout";
 import getConfig from "next/config";
 import { useHeader } from "../../components/HeaderContext";
-import client from '../../lib/ga/apolloClient';
+import client from "../../lib/ga/apolloClient";
 import { CATEGORY_BREAKING_QUERY } from "../../components/queries/categoryQueries";
-import { GET_FOOTER_PAGE, GET_ICON_SECTION, GET_NAV_SECTION, SEARCH_QUERY, SEO_QUERY } from "../../components/queries/Queries";
+import {
+  GET_FOOTER_PAGE,
+  GET_ICON_SECTION,
+  GET_NAV_SECTION,
+  SEARCH_QUERY,
+  SEO_QUERY,
+} from "../../components/queries/Queries";
 import { gql } from "@apollo/client";
 import { useEffect, useState } from "react";
 
@@ -40,7 +46,14 @@ const SkeletonLoader = () => (
   </div>
 );
 
-const CategoryPage = ({ categoryData, seoData, navData, iconDataResult, navDataSearch, dataFooter }) => {
+const CategoryPage = ({
+  categoryData,
+  seoData,
+  navData,
+  iconDataResult,
+  navDataSearch,
+  dataFooter,
+}) => {
   const router = useRouter();
   const { categoryslug } = router.query;
   const { nodeByUri, uri, loadingCategory, fetchMore } = useDialog();
@@ -69,7 +82,8 @@ const CategoryPage = ({ categoryData, seoData, navData, iconDataResult, navDataS
   return (
     <>
       <Layout title={title} description={description} canonical={canonical}>
-        {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" ? (
+        {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
+        "Simple" ? (
           <main>
             <Insight
               nodeByUri={nodeByUri}
@@ -78,7 +92,8 @@ const CategoryPage = ({ categoryData, seoData, navData, iconDataResult, navDataS
               fetchMore={fetchMore}
             />
           </main>
-        ) : nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Music" ? (
+        ) : nodeByUri?.nodeByUri?.categoryTamplate
+            ?.selectYourTempleteType[0] === "Music" ? (
           <main>
             <Music
               nodeByUri={nodeByUri}
@@ -107,66 +122,73 @@ const CategoryPage = ({ categoryData, seoData, navData, iconDataResult, navDataS
 export async function getStaticPaths() {
   const { data } = await client.query({
     query: gql`
-      query GetAllCategorySlugs {
-        categories {
+      query GetAllCategorySlugs($first: Int) {
+        categories(first: $first) {
           nodes {
             slug
           }
         }
       }
     `,
+    variables: { first: 50 }, // Fetch only the first 50 categories
   });
 
   const paths = data.categories.nodes.map((category) => ({
     params: { categoryslug: [category.slug] },
   }));
 
-  return { 
-    paths, 
-    fallback: 'blocking'  // Ensure paths that are not pre-rendered will be server-rendered on request
+  return {
+    paths,
+    fallback: "blocking", // Handle additional categories dynamically
   };
 }
 
 export async function getStaticProps({ params }) {
-  const categoryslug = params.categoryslug ? params.categoryslug.join('/') : '';
+  const categoryslug = params.categoryslug ? params.categoryslug.join("/") : "";
   const uri = `/category/${categoryslug}`;
 
-  const { data: categoryData } = await client.query({
-    query: CATEGORY_BREAKING_QUERY,
-    variables: { uri },
-  });
+  try {
+    const { data: categoryData } = await client.query({
+      query: CATEGORY_BREAKING_QUERY,
+      variables: { uri },
+    });
 
-  const { data: seoData } = await client.query({
-    query: SEO_QUERY,
-  });
+    const { data: seoData } = await client.query({
+      query: SEO_QUERY,
+    });
 
-  const { data: navData } = await client.query({
-    query: GET_NAV_SECTION,
-  });
+    const { data: navData } = await client.query({
+      query: GET_NAV_SECTION,
+    });
 
-  const { data: iconDataResult } = await client.query({
-    query: GET_ICON_SECTION,
-  });
+    const { data: iconDataResult } = await client.query({
+      query: GET_ICON_SECTION,
+    });
 
-  const { data: navDataSearch } = await client.query({
-    query: SEARCH_QUERY,
-  });
+    const { data: navDataSearch } = await client.query({
+      query: SEARCH_QUERY,
+    });
 
-  const { data: dataFooter } = await client.query({
-    query: GET_FOOTER_PAGE,
-  });
+    const { data: dataFooter } = await client.query({
+      query: GET_FOOTER_PAGE,
+    });
 
-  return {
-    props: {
-      categoryData,
-      seoData,
-      navData,
-      iconDataResult,
-      navDataSearch,
-      dataFooter,
-    },
-    revalidate: 10,
-  };
+    return {
+      props: {
+        categoryData,
+        seoData,
+        navData,
+        iconDataResult,
+        navDataSearch,
+        dataFooter,
+      },
+      revalidate: 10, // Revalidate the page every 10 seconds
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
+  }
 }
 
 export default CategoryPage;

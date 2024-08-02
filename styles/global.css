@@ -21,7 +21,7 @@
 }
 
 body {
-  font-family: 'Pulp Display', sans-serif;
+  font-family: "Pulp Display", sans-serif;
 }
 
 /* Write custom base/ component/ utility styles with `@layer` directive */
@@ -111,9 +111,12 @@ body {
 
 @media (max-width: 425px) {
   .mobile-custom {
-    top: 6%;
+    /* top: 6%;
     left: 0%;
+    height: auto; */
     height: auto;
+    position: relative;
+    top: -4%;
   }
 
   .mobile-custom-h5 {
@@ -177,7 +180,7 @@ body {
   background-color: #002d73;
 }
 
-button.inline-flex.items-center.justify-center.w-full.h-12.px-6.font-medium.tracking-wide.text-white.transition.duration-200.shadow-md.md\:w-auto.bg-gradient-to-r.focus\:outline-none {
+button.inline-flex.items-center.justify-center.w-\[120px\].h-\[38px\].px-6.font-medium.tracking-wide.text-white.transition.duration-200.shadow-md.md\:w-auto.bg-gradient-to-r.focus\:outline-none {
   background: #ce3a42;
 }
 
@@ -208,7 +211,7 @@ button.inline-flex.items-center.justify-center.w-full.h-12.px-8.font-semibold.md
 }
 
 .bg-change2 {
-  border-color: #CE3A42 !important;
+  border-color: #ce3a42 !important;
 }
 
 #slider-testimonial button.slick-arrow.slick-next {
@@ -271,9 +274,9 @@ a.px-4.text-gray-800.hover\:border-b-3.hover\:border-red-600:hover {
 }
 
 a.politics.px-4.text-gray-800.hover\:bg-gray-100:hover {
-  border-bottom: 1px solid #FFA500;
+  border-bottom: 1px solid #ffa500;
 }
 
 a.px-4.text-gray-800.hover\:bg-gray-100:hover {
-  border-bottom: 1px solid #40A6FB;
+  border-bottom: 1px solid #40a6fb;
 }

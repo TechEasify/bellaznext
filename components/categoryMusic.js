@@ -333,7 +333,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="mb-2 object-cover w-full md:w-[910px] max-h-[554px]"
+                      className="object-cover w-full md:w-[910px] max-h-[554px] relative"
                       src={shuffledPost[0]?.featuredImage?.node?.sourceUrl}
                       width={910}
                       height={554}
@@ -342,8 +342,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   </Link>
                 )}
                 {/* absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:max-w-[750px] h-60 tablet-custom mobile-custom */}
-                <div>
-                  <div className="absolute top-[23%] my-0 mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-64 tablet-custom mobile-custom">
+                  <div className="relative bottom-[8%] mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-64 tablet-custom mobile-custom">
                     <p className="text-[15px] font-semibold text-red-800 uppercase tracking-widest">
                       {nodeByUri?.nodeByUri?.name}
                     </p>
@@ -379,9 +378,8 @@ function Music({ nodeByUri, fetchMore, loading }) {
                       dangerouslySetInnerHTML={{ __html: musicpost?.excerpt }}
                     />
                   </div>
-                </div>
 
-                <div className="flex flex-wrap justify-around mt-32">
+                <div className="flex flex-wrap justify-around mt-[-8%]">
                   {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes
                     .map((item) =>
                       item.posts.nodes.slice(1, 5).map((post) => {
@@ -415,7 +413,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                               {item.name}
                             </p>
                             <Link href={`/news/${post.slug}`}>
-                              <h5 className="text-[28px] mb-2 text-xl font-semibold text-black-900 dark:text-white hover:text-skyBlue">
+                              <h5 className="text-[28px] mb-2 text-xl font-semibold text-black-900 dark:text-white hover:text-skyBlue leading-9">
                                 {post.title}
                               </h5>
                             </Link>

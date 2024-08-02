@@ -649,13 +649,13 @@ const Banner = () => {
                                     loader={customLoader}
                                     src={itemdata.featuredImage.node.sourceUrl}
                                     alt={itemdata.title}
-                                    className="object-cover w-[90px] h-[87px] mr-2"
+                                    className="object-cover w-[90px] h-[87px]"
                                     width={90}
                                     height={87}
                                   />
                                 </Link>
                               ) : (
-                                <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                <div className="h-13 w-13 bg-gray-200 flex items-center justify-center mb-5">
                                   No Image
                                 </div>
                               )}
@@ -666,7 +666,7 @@ const Banner = () => {
                     </div>
                   );
                 })}
-              <div className="flex mt-5">
+              <div className="mt-5">
                 {bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
                   ?.topHeadlineFirstAd?.node?.sourceUrl ? (
                   <Link
@@ -686,7 +686,7 @@ const Banner = () => {
                           .topHeadlineFirstAd.node.sourceUrl
                       }
                       alt="Partly Cloudy"
-                      className="object-cover w-[318px] h-[107px] mr-2"
+                      className="object-cover w-full h-[107px]"
                       width={318}
                       height={107}
                     />
@@ -796,7 +796,7 @@ const Banner = () => {
                           ?.topHeadlineSecondAdImage?.node?.sourceUrl
                       }
                       alt="Partly Cloudy"
-                      className="object-cover w-[314px] h-[441px] mr-2"
+                      className="object-cover w-[314px] h-[441px]"
                       width={314}
                       height={441}
                     />

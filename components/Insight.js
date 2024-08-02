@@ -136,7 +136,7 @@ const Insight = () => {
                     </div>
                     <div className="ml-0 md:ml-5 w-full md:w-3/5 md:block hidden">
                       <p
-                        className="text-base font-semibold text-red-800 "
+                        className="text-base font-semibold text-red-800 uppercase tracking-widest"
                         style={{
                           background: `${
                             nodeByUri?.nodeByUri?.categoryTamplate

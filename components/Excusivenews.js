@@ -37,14 +37,15 @@ const Excusivenews = () => {
 
   return (
     <div
-      className="hidden md:block px-4 py-20 mx-auto max-w-[1523px] h-[432px]"
+      className="hidden md:block px-1 py-20 mx-auto max-w-[1523px]"
       style={{
         backgroundImage: `url(${backgroundImage || Frame396.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        margin: "0 auto"
       }}
     >
-      <div className="w-full flex flex-col md:flex-row justify-evenly relative">
+      <div className="w-full flex flex-col md:flex-row justify-around items-stretch relative">
         <div className="md:mr-20 mb-8 md:mb-0 w-[470px]">
           <h1 className="text-[25px] md:text-[53px] text-white font-semibold mb-2">
             {bannerData?.page?.homePage?.ctaTitle}

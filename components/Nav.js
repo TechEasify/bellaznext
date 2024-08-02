@@ -6,6 +6,7 @@ import Vector from "../public/images/Vector.svg";
 import Vector1 from "../public/images/Vector-1.svg";
 import Vector2 from "../public/images/Vector-2.svg";
 import Frame283 from "../public/images/Frame 283.svg";
+import MenuFrame166 from "../public/images/MenuFrame166.svg"
 import magnify from "../public/images/magnify.svg";
 import Closeicon from "../public/images/Closeicon.svg";
 import Group from "../public/images/Group.svg";
@@ -299,7 +300,7 @@ const Nav = ({
                   <Image
                     priority={true}
                     loader={customLoader}
-                    className="h-5 w-5 mx-2 object-cover"
+                    className="mx-2 object-cover"
                     src={closewhite}
                     alt="close Icon"
                     width={21}
@@ -309,8 +310,8 @@ const Nav = ({
                   <Image
                     priority={true}
                     loader={customLoader}
-                    className="h-5 w-5 mx-2 object-cover"
-                    src={Frame283}
+                    className="mx-2 object-cover"
+                    src={MenuFrame166}
                     alt="Contact Toggle Icon"
                     width={21}
                     height={18}
@@ -376,7 +377,7 @@ const Nav = ({
                   <Image
                     priority={true}
                     loader={customLoader}
-                    className="h-5 w-5 mx-2 object-cover"
+                    className="mx-2 object-cover"
                     src={closewhite}
                     alt="close Icon"
                     width={21}
@@ -386,8 +387,8 @@ const Nav = ({
                   <Image
                     priority={true}
                     loader={customLoader}
-                    className="h-5 w-5 mx-2 object-cover"
-                    src={Frame283}
+                    className="mx-2 object-cover"
+                    src={MenuFrame166}
                     alt="Contact Toggle Icon"
                     width={21}
                     height={18}
@@ -419,7 +420,7 @@ const Nav = ({
                   <Image
                     priority={true}
                     loader={customLoader}
-                    className="h-12 w-auto md:h-14 object-cover"
+                    className="h-12 w-auto md:h-14 object-cover mr-9"
                     src={Primarylogo}
                     alt="Primarylogo"
                     width={250}
@@ -444,7 +445,7 @@ const Nav = ({
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-5 w-5 mx-2 object-cover"
+                      className="mx-2 object-cover"
                       src={closewhite}
                       alt="close Icon"
                       width={21}
@@ -454,8 +455,8 @@ const Nav = ({
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-5 w-5 mx-2 object-cover"
-                      src={Frame283}
+                      className="mx-2 object-cover"
+                      src={MenuFrame166}
                       alt="Contact Toggle Icon"
                       width={21}
                       height={18}
@@ -487,7 +488,7 @@ const Nav = ({
                     <button
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
                       onClick={() =>
                         dataNav?.menu?.header?.topFirstLinks?.url &&
                         router.push(dataNav.menu.header.topFirstLinks.url)
@@ -503,7 +504,7 @@ const Nav = ({
                     <button
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
                       onClick={() =>
                         dataNav?.menu?.header?.topSecondLinks?.url &&
                         router.push(dataNav.menu.header.topSecondLinks.url)
@@ -520,7 +521,7 @@ const Nav = ({
                     <button
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
                       onClick={() =>
                         dataNav?.menu?.header?.topThirdLinks?.url &&
                         router.push(dataNav.menu.header.topThirdLinks.url)
@@ -536,7 +537,7 @@ const Nav = ({
                     <button
                       id="dropdownDatabase"
                       data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-sm font-normal text-center text-white"
+                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
                       onClick={() =>
                         dataNav?.menu?.header?.topForeLinks?.url &&
                         router.push(dataNav.menu.header.topForeLinks.url)
@@ -561,7 +562,7 @@ const Nav = ({
                 <Image
                   priority={true}
                   loader={customLoader}
-                  className="h-12 w-auto md:h-14 object-cover"
+                  className="h-12 w-auto md:h-14 object-cover mr-9"
                   src={Primarylogo}
                   alt="Primarylogo"
                   width={250}
@@ -572,7 +573,7 @@ const Nav = ({
                 <div className="relative mx-2 md:mx-5 hidden lg:block">
                   <button
                     onClick={toggleDropdown}
-                    className="flex text-white font-bold items-center"
+                    className="flex text-white font-medium items-center text-[20px]"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menu?.header?.mainMenuFirst}
@@ -593,7 +594,7 @@ const Nav = ({
                       ? dataNav?.menu?.header?.mainMenuSecondLink?.url
                       : "/"
                   }
-                  className="flex mr-2 text-white font-bold items-center hidden lg:flex"
+                  className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.mainMenuSecond}
@@ -613,7 +614,7 @@ const Nav = ({
                       ? dataNav?.menu?.header?.mainMenuThirdLink?.url
                       : "/"
                   }
-                  className="flex mr-2 text-white font-bold items-center hidden lg:flex"
+                  className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menu?.header?.mainMenuThird}
@@ -635,7 +636,7 @@ const Nav = ({
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-5 w-5 mx-2 object-cover"
+                      className="mx-2 object-cover"
                       src={closewhite}
                       alt="close Icon"
                       width={21}
@@ -645,8 +646,8 @@ const Nav = ({
                     <Image
                       priority={true}
                       loader={customLoader}
-                      className="h-5 w-5 mx-2 object-cover"
-                      src={Frame283}
+                      className="mx-2 object-cover"
+                      src={MenuFrame166}
                       alt="Contact Toggle Icon"
                       width={21}
                       height={18}
@@ -655,7 +656,7 @@ const Nav = ({
                 </button>
                 <button
                   onClick={toggleDropdownSearch}
-                  className="flex mr-2 text-white font-bold items-center hidden lg:flex"
+                  className="flex mr-2 text-[20px] text-white font-bold items-center hidden lg:flex"
                 >
                   <Image
                     priority={true}
@@ -673,7 +674,7 @@ const Nav = ({
             <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
               <button
                 onClick={handleSub}
-                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
               >
                 Subscribe
               </button>
@@ -1386,7 +1387,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -1842,7 +1843,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -2298,7 +2299,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -2754,7 +2755,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -3210,7 +3211,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -3666,7 +3667,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -4125,7 +4126,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
@@ -4583,7 +4584,7 @@ const Nav = ({
                 <div className="flex justify-end mb-3">
                   <button
                     onClick={handleSub}
-                    className="w-auto inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                    className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
                   >
                     Subscribe
                   </button>
