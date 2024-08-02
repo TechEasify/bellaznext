@@ -1,4 +1,4 @@
-// [categoryslug].js
+// pages/category/[[...categoryslug]].js
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Nav from "../../components/Nav";
@@ -17,6 +17,7 @@ import client from '../../lib/ga/apolloClient';
 import { CATEGORY_BREAKING_QUERY } from "../../components/queries/categoryQueries";
 import { GET_FOOTER_PAGE, GET_ICON_SECTION, GET_NAV_SECTION, SEARCH_QUERY, SEO_QUERY } from "../../components/queries/Queries";
 import { gql } from "@apollo/client";
+import { useEffect, useState } from "react";
 
 const customLoader = ({ src }) => {
   return src;
@@ -39,49 +40,36 @@ const SkeletonLoader = () => (
   </div>
 );
 
-const CategoryPage = () => {
+const CategoryPage = ({ categoryData, seoData, navData, iconDataResult, navDataSearch, dataFooter }) => {
   const router = useRouter();
-  console.log(router.query.categoryslug, "router category");
-  const {
-    nodeByUri,
-    uri,
-    loadingCategory,
-    fetchMore,
-  } = useDialog();
-  const {
-    seoData,
-    navData
-  } = useHeader();
   const { categoryslug } = router.query;
+  const { nodeByUri, uri, loadingCategory, fetchMore } = useDialog();
+  const { seoData: headerSeoData, navData: headerNavData } = useHeader();
+
+  const [title, setTitle] = useState("Belaaz News");
+  const [description, setDescription] = useState("Default Description");
+  const [canonical, setCanonical] = useState(`${url}${router.asPath}`);
+
+  useEffect(() => {
+    if (headerSeoData && headerNavData) {
+      headerSeoData.categories?.nodes.flatMap((item) => {
+        if (`/category/${categoryslug}` === `/category/${item.slug}`) {
+          setTitle(item?.seo?.title || "Belaaz News");
+          setDescription(item?.seo?.metaDesc || "Default Description");
+          setCanonical(item?.seo?.canonical || `${url}${router.asPath}`);
+        }
+      });
+    }
+  }, [categoryslug, headerSeoData]);
 
   if (loadingCategory) {
     return <SkeletonLoader />;
   }
 
-  console.log(
-    nodeByUri,
-    "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0]"
-  );
-
-  let title;
-  let description;
-  let canonical;
-
-  seoData?.categories?.nodes.flatMap((item) => {
-    console.log(item, "item page");
-    if (`/category/${categoryslug}` === `/category/${item.slug}`) {
-      console.log("if inside", item?.seo?.title);
-      title = item?.seo?.title || "Belaaz News";
-      description = item?.seo?.metaDesc || "Default Description";
-      canonical = item?.seo?.canonical || `${url}${router.asPath}`;
-    }
-  });
-
   return (
     <>
       <Layout title={title} description={description} canonical={canonical}>
-        {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
-        "Simple" ? (
+        {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" ? (
           <main>
             <Insight
               nodeByUri={nodeByUri}
@@ -90,8 +78,7 @@ const CategoryPage = () => {
               fetchMore={fetchMore}
             />
           </main>
-        ) : nodeByUri?.nodeByUri?.categoryTamplate
-            ?.selectYourTempleteType[0] === "Music" ? (
+        ) : nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Music" ? (
           <main>
             <Music
               nodeByUri={nodeByUri}
@@ -104,14 +91,11 @@ const CategoryPage = () => {
           <ul>
             {nodeByUri !== null &&
               nodeByUri?.posts?.nodes.map((post) =>
-                post.link
-                  ? (console.log(post, "post"),
-                    (
-                      <li key={post.id}>
-                        <Link href={post.link}>{post.title}</Link>
-                      </li>
-                    ))
-                  : null
+                post.link ? (
+                  <li key={post.id}>
+                    <Link href={post.link}>{post.title}</Link>
+                  </li>
+                ) : null
               )}
           </ul>
         )}
@@ -134,14 +118,17 @@ export async function getStaticPaths() {
   });
 
   const paths = data.categories.nodes.map((category) => ({
-    params: { categoryslug: category.slug },
+    params: { categoryslug: [category.slug] },
   }));
 
-  return { paths, fallback: true };
+  return { 
+    paths, 
+    fallback: 'blocking'  // Ensure paths that are not pre-rendered will be server-rendered on request
+  };
 }
 
 export async function getStaticProps({ params }) {
-  const { categoryslug } = params;
+  const categoryslug = params.categoryslug ? params.categoryslug.join('/') : '';
   const uri = `/category/${categoryslug}`;
 
   const { data: categoryData } = await client.query({
@@ -178,7 +165,7 @@ export async function getStaticProps({ params }) {
       navDataSearch,
       dataFooter,
     },
-    revalidate: 1, // optional: revalidate every second
+    revalidate: 10,
   };
 }
 

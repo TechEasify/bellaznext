@@ -72,7 +72,7 @@ function Index() {
     <>
       {/* <Nav /> */}
       <Layout title={title} description={description} canonical={canonical}>
-        <div className="px-4 py-8 mx-auto max-w-screen-xl">
+        <div className="px-4 py-8 mx-auto max-w-[821px]">
           <h1 className="text-[24px] md:text-[40px] text-center text-black-900 font-semibold mb-3">
             {advertiseQuery?.page?.advertise?.title}
           </h1>
@@ -84,20 +84,23 @@ function Index() {
           />
           <div className="flex justify-center">
             <button
-              className="inline-flex items-center justify-center w-[278px] h-[49px] px-8 font-semibold md:w-auto focus:outline-none tracking-widest uppercase"
+              className="inline-flex items-center justify-center w-[278px] h-[49px] px-8 font-semibold md:w-auto focus:outline-none tracking-widest uppercase hover:bg-skyBlue"
               style={{
                 color: advertiseQuery?.page?.advertise?.button?.buttonTextColor,
                 border: `1px solid ${advertiseQuery?.page?.advertise?.button?.buttonBorderColor}`,
                 backgroundColor:
-                advertiseQuery?.page?.advertise?.button?.buttonBackgroundColor,
+                  advertiseQuery?.page?.advertise?.button
+                    ?.buttonBackgroundColor,
               }}
-              onClick={() => router.push(advertiseQuery?.page?.advertise?.button?.buttonLink)}
+              onClick={() =>
+                router.push(advertiseQuery?.page?.advertise?.button?.buttonLink)
+              }
             >
               {advertiseQuery?.page?.advertise?.button?.advertiseWithUs}
             </button>
           </div>
 
-          <div className="flex flex-wrap justify-center items-center mt-8 space-y-4 md:space-y-0 md:space-x-4">
+          <div className="flex flex-wrap justify-center items-center mt-8 space-y-4 md:space-y-0 md:space-x-11">
             <div className="flex items-center space-x-3 mr-5">
               <p className="text-[18px] tracking-widest text-center text-base font-semibold text-gray-600">
                 SHARE
@@ -111,7 +114,8 @@ function Index() {
                 src={SocialIconsX}
                 alt="Social Icon"
                 onClick={() =>
-                  (window.location.href = advertiseQuery?.page?.advertise?.share?.iconFirst)
+                  (window.location.href =
+                    advertiseQuery?.page?.advertise?.share?.iconFirst)
                 }
               />
               <Image
@@ -127,7 +131,7 @@ function Index() {
                 }
               />
             </div>
-            <div className="flex space-x-3 mr-10">
+            <div className="flex space-x-3 mr-10 items-center">
               <p className="text-[18px] text-center text-base font-semibold text-gray-600 tracking-widest">
                 FOLLOW
               </p>
@@ -153,7 +157,8 @@ function Index() {
                 src={SocialIconsX}
                 alt="Twitter Icon"
                 onClick={() =>
-                  (window.location.href = advertiseQuery?.page?.advertise?.follow?.twiterLink)
+                  (window.location.href =
+                    advertiseQuery?.page?.advertise?.follow?.twiterLink)
                 }
               />
               <Image
@@ -170,9 +175,9 @@ function Index() {
                 }
               />
             </div>
-            <div className="flex space-x-3 mx-10">
+            <div className="flex space-x-6 mx-10">
               <Link
-                className="text-[18px] underline font-semibold"
+                className="text-[18px] font-semibold hover:underline"
                 href="https://belaaz.com/"
                 style={{ color: "#40A6FB" }}
               >
@@ -205,9 +210,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageA?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageA?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageA?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageA?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -218,9 +227,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageB?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageB?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageB?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageB?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -231,9 +244,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageC?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageC?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageC?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageC?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -244,9 +261,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageD?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageD?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageD?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageD?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -260,9 +281,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageE?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageE?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageE?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageE?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -273,9 +298,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageF?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageF?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageF?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageF?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -286,9 +315,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageG?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageG?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageG?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageG?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -299,9 +332,13 @@ function Index() {
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageH?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageH?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageH?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageH?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -315,9 +352,13 @@ function Index() {
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageI?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageI?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageI?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageI?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -328,9 +369,13 @@ function Index() {
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageJ?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageJ?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageJ?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageJ?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -341,9 +386,13 @@ function Index() {
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageK?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageK?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageK?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageK?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -354,9 +403,13 @@ function Index() {
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageL?.node?.srcSet
+                advertiseQuery?.page?.advertise?.clientImages?.imageL?.node
+                  ?.srcSet
               )}
-              alt={advertiseQuery?.page?.advertise?.clientImages?.imageL?.node?.altText}
+              alt={
+                advertiseQuery?.page?.advertise?.clientImages?.imageL?.node
+                  ?.altText
+              }
               width={150}
               height={100}
             />
@@ -368,7 +421,8 @@ function Index() {
             className="px-4 py-4 mx-auto max-w-screen-xl"
             style={{
               background:
-              advertiseQuery?.page?.advertise?.cta?.backgroundColor || "#40A6FB",
+                advertiseQuery?.page?.advertise?.cta?.backgroundColor ||
+                "#40A6FB",
             }}
           >
             <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left px-4 md:px-20 py-6">
@@ -383,7 +437,9 @@ function Index() {
                   <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
                     EMAIL:
                   </span>
-                  <Link href={`mailto:${advertiseQuery?.page?.advertise?.cta?.emailAddress}`}>
+                  <Link
+                    href={`mailto:${advertiseQuery?.page?.advertise?.cta?.emailAddress}`}
+                  >
                     <span className="flex flex-col md:flex-row items-center text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
                       {advertiseQuery?.page?.advertise?.cta?.emailAddress}
                       {/* <ExportedImage
@@ -399,7 +455,9 @@ function Index() {
                   <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
                     CALL:
                   </span>
-                  <Link href={`tel:${advertiseQuery?.page?.advertise?.cta?.phoneNumber}`}>
+                  <Link
+                    href={`tel:${advertiseQuery?.page?.advertise?.cta?.phoneNumber}`}
+                  >
                     <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold">
                       {advertiseQuery?.page?.advertise?.cta?.phoneNumber}
                     </span>
@@ -417,7 +475,8 @@ function Index() {
             className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 mx-auto max-w-screen-xl"
             style={{
               background:
-              advertiseQuery?.page?.advertise?.cta?.backgroundColor || "#40A6FB",
+                advertiseQuery?.page?.advertise?.cta?.backgroundColor ||
+                "#40A6FB",
             }}
           >
             <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left px-4 md:px-20 py-6">
@@ -432,7 +491,9 @@ function Index() {
                   <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
                     EMAIL:
                   </span>
-                  <Link href={`mailto:${advertiseQuery?.page?.advertise?.cta?.emailAddress}`}>
+                  <Link
+                    href={`mailto:${advertiseQuery?.page?.advertise?.cta?.emailAddress}`}
+                  >
                     <span className="flex flex-col md:flex-row items-center text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
                       {advertiseQuery?.page?.advertise?.cta?.emailAddress}
                       {/* <ExportedImage
@@ -448,7 +509,9 @@ function Index() {
                   <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] text-white font-bold mr-5">
                     CALL:
                   </span>
-                  <Link href={`tel:${advertiseQuery?.page?.advertise?.cta?.phoneNumber}`}>
+                  <Link
+                    href={`tel:${advertiseQuery?.page?.advertise?.cta?.phoneNumber}`}
+                  >
                     <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold">
                       {advertiseQuery?.page?.advertise?.cta?.phoneNumber}
                     </span>

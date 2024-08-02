@@ -142,7 +142,7 @@ function Testimonial() {
         {isMobile ? (
           testimonialData?.map((testimonial, index) => (
             <div key={index} className="p-3">
-              <div className="swiper-slide group bg-white border border-solid h-56 border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
+              <div className="swiper-slide group bg-white border border-solid h-56 border-gray-300 p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
                 <div className="flex items-center mb-3 sm:mb-9 gap-2 text-amber-500 transition-all duration-500 group-hover:text-indigo-600 swiper-slide-active:text-indigo-600">
                   <div className="flex w-full items-center justify-between">
                     <div>
@@ -184,7 +184,7 @@ function Testimonial() {
           <Slider ref={sliderRef} {...settings}>
             {testimonialData?.map((testimonial, index) => (
               <div key={index} className="p-3">
-                <div className="swiper-slide group bg-white border border-solid h-56 border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
+                <div className="swiper-slide group bg-white border border-solid h-56 border-gray-300 p-6 transition-all duration-500 w-full hover:border-indigo-600 slide-active:border-indigo-600">
                   <div className="flex items-center mb-3 sm:mb-9 gap-2 text-amber-500 transition-all duration-500 group-hover:text-indigo-600 swiper-slide-active:text-indigo-600">
                     <div className="flex w-full items-center justify-between">
                       <div>
