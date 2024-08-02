@@ -49,7 +49,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
               {topheadData?.page?.homePage?.topHeadlinesTitle}
             </h1>
             <hr
-              className="text-red-800 mr-5"
+              className="text-red-800 mr-8"
               style={{
                 height: "7px",
                 background: `${topheadData?.page?.homePage?.topHeadlineTitleLineColor}`,
@@ -58,7 +58,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
             <br />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-8">
             {uniqueCategoryPosts?.map(
               (item) => (
                 console.log(

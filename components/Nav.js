@@ -234,9 +234,11 @@ const Nav = ({
 
     if (post) {
       router.push(`/search`);
+      setIsDropdownSearch(!isDropdownSearch)
       console.log(post, "post search");
     } else {
       router.push("/search");
+      setIsDropdownSearch(!isDropdownSearch)
     }
   };
 
@@ -823,7 +825,7 @@ const Nav = ({
             <input
               type="text"
               id="simple-search"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-auto ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-3xl focus:ring-blue-500 focus:border-blue-500 block w-full md:w-[612px] pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
               placeholder="Type to Search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -834,9 +836,23 @@ const Nav = ({
                 }
               }}
               required
-              style={{ width: "300px" }}
             />
+            <svg
+              className="absolute top-1/2 left-3 transform -translate-y-1/2 w-5 h-5 text-black dark:text-black"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M11 4a7 7 0 011.707 13.707l4.596 4.596a1 1 0 001.414-1.414l-4.596-4.596A7 7 0 1111 4z"
+              />
+            </svg>
           </div>
+
           <div className="flex md:ml-2">
             <button
               type="submit"
