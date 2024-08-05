@@ -95,8 +95,9 @@ function Index() {
             </button>
           </div>
 
-          <div className="flex flex-wrap justify-center items-center mt-8 space-y-4 md:space-y-0 md:space-x-11">
-            <div className="flex items-center space-x-3 mr-5">
+          <div className="flex flex-col md:flex-row flex-wrap justify-center items-left md:items-center mt-8 space-y-4 md:space-y-0 md:space-x-11">
+            <div className="flex items-left md:items-center">
+            <div className="flex items-left md:items-center space-x-3 mr-5">
               <p className="text-[18px] tracking-widest text-center text-base font-semibold text-gray-600">
                 SHARE
               </p>
@@ -126,7 +127,7 @@ function Index() {
                 }
               />
             </div>
-            <div className="flex space-x-3 mr-10 items-center">
+            <div className="flex space-x-3 mr-10 items-left md:items-center">
               <p className="text-[18px] text-center text-base font-semibold text-gray-600 tracking-widest">
                 FOLLOW
               </p>
@@ -170,7 +171,7 @@ function Index() {
                 }
               />
             </div>
-            <div className="flex space-x-6 mx-10">
+            <div className="flex space-x-3 mx-10 items-left md:items-center">
               <Link
                 className="text-[18px] font-semibold hover:underline"
                 href="https://belaaz.com/"
@@ -178,6 +179,7 @@ function Index() {
               >
                 BELAAZ.COM/
               </Link>
+            </div>
             </div>
           </div>
         </div>
@@ -467,7 +469,7 @@ function Index() {
         </div>
         <div className="px-4 py-20 hidden sm:block mx-auto max-w-screen-xl relative">
           <div
-            className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 mx-auto max-w-screen-xl"
+            className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 h-auto mx-auto max-w-screen-xl"
             style={{
               background:
                 advertiseQuery?.page?.advertise?.cta?.backgroundColor ||

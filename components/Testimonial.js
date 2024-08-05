@@ -172,7 +172,7 @@ function Testimonial() {
                     </div>
                   </div>
                 </div>
-                <p className="text-[18px] w-full font-extralight sm:text-sm text-black leading-4 sm:leading-6 transition-all duration-500 mb-3 sm:mb-9 group-hover:text-gray-800 break-words overflow-hidden overflow-ellipsis max-h-24">
+                <p className="text-[18px] w-full font-extralight sm:text-sm text-black leading-8 sm:leading-6 transition-all duration-500 mb-3 sm:mb-9 group-hover:text-gray-800 break-words overflow-hidden overflow-ellipsis max-h-24">
                   {testimonial.message}
                 </p>
               </div>

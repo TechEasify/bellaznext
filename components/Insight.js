@@ -51,18 +51,18 @@ const Insight = () => {
 
   useEffect(() => {
     if (
-      nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
-        ?.selectCategoryForAllPost?.nodes
+      nodeByUri?.nodeByUri?.posts?.nodes
     ) {
       const initialPosts =
-        nodeByUri.nodeByUri.categoryTamplate.simpleTemplete.selectCategoryForAllPost.nodes.flatMap(
-          (category) => category.posts.nodes
-        );
+      nodeByUri?.nodeByUri?.posts?.nodes
       setPosts(initialPosts);
       setCursor(nodeByUri.nodeByUri.posts.pageInfo.endCursor);
       setHasNextPage(nodeByUri.nodeByUri.posts.pageInfo.hasNextPage);
     }
   }, [nodeByUri]);
+
+  console.log(nodeByUri?.nodeByUri, "nodeByUri?.nodeByUri");
+  
 
   const handleViewMore = async () => {
     if (hasNextPage && !categoryLoading) {
@@ -264,16 +264,16 @@ const Insight = () => {
 
           <div className="w-full max-w-4xl mx-auto hidden md:block">
             {(nodeByUri?.nodeByUri?.categoryTamplate
-              ?.selectYourTempleteType[0] === "Simple" ||
+              ?.selectYourTempleteType[0] === "Template-1" ||
               nodeByUri?.nodeByUri?.categoryTamplate
-                ?.selectYourTempleteType[0] === "Music") &&
-            nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+                ?.selectYourTempleteType[0] === "Template-2") &&
+            nodeByUri?.nodeByUri?.categoryTamplate?.template1
               ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl !==
               null ? (
               <Link
                 href={{
                   pathname:
-                    nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+                    nodeByUri?.nodeByUri?.categoryTamplate?.template1
                       ?.simpleHeroSection?.heroSidebarAdLink,
                 }}
                 passHref
@@ -284,7 +284,7 @@ const Insight = () => {
                   loader={customLoader}
                   className="mb-2 w-full h-auto max-h-96"
                   src={
-                    nodeByUri?.nodeByUri?.categoryTamplate?.simpleTemplete
+                    nodeByUri?.nodeByUri?.categoryTamplate?.template1
                       ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
                   }
                   alt="Rectangle367"
@@ -443,7 +443,7 @@ const Insight = () => {
             </div>
           </div>
         </div>
-        <Newscard />
+        <Newscard nodeByUri={nodeByUri}/>
       </div>
     </>
   );

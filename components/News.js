@@ -193,6 +193,8 @@ function News() {
     fetchPolicy: "cache-first",
   });
 
+  console.log(newsData, "newsData");
+
   useEffect(() => {
     if (newsData) {
       setNavData(newsData);
@@ -222,15 +224,11 @@ function News() {
 
   const posts =
     newsData?.nodeByUri?.categories?.nodes?.flatMap((item) =>
-      item.posts?.nodes?.map(
-        (post) => (
-          {
-            ...post,
-            categoryName: item.name,
-            categoryViews: post.postView.view,
-          }
-        )
-      )
+      item.posts?.nodes?.map((post) => ({
+        ...post,
+        categoryName: item.name,
+        categoryViews: post.postView.view,
+      }))
     ) || [];
 
   // Sorting posts by category view count in descending order
@@ -242,6 +240,14 @@ function News() {
 
   const wordCount = contentText ? contentText?.split(" ").length : 0;
   const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+
+  const sidebarAds = newsData?.nodeByUri?.categories?.nodes?.flatMap(
+    (ads) => ads?.posts?.nodes
+  );
+  
+  console.log(newsData, "newsData newsData");
+  console.log(sidebarAds, "sidebarAds");
+  
 
   return (
     <>
@@ -285,7 +291,7 @@ function News() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_0px] gap-7">
               <div className="flex flex-col md:flex-row justify-center gap-6 px-3 ">
                 <div className="max-w-4xl text-white">
-                  <div className="py-8 px-0 mx-8 md:px-8 text-left">
+                  <div className="py-8 px-0 md:px-8 text-left">
                     <div className="flex w-full justify-between items-center">
                       <p className="text-[15px] uppercase tracking-widest text-base font-semibold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
@@ -471,7 +477,12 @@ function News() {
                           <div key={index}>
                             <div className="flex mt-5 pl-3">
                               <div className="mr-2 flex-1">
-                                <h5 className="text-[35px] text-black" style={{ color: "#CE3A42" }}>{index+1}</h5>
+                                <h5
+                                  className="text-[35px] text-black"
+                                  style={{ color: "#CE3A42" }}
+                                >
+                                  {index + 1}
+                                </h5>
                               </div>
                               <div className="flex">
                                 <div className="mr-2 flex-2 w-[203px]">
@@ -510,15 +521,27 @@ function News() {
                   className="max-w-custom hidden lg:block"
                   style={{ maxWidth: "500px" }}
                 >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="mb-2 object-cover"
-                    src={Screenshot202}
-                    alt="Screenshot202"
-                    width={251}
-                    height={496}
-                  />
+                  {sidebarAds.slice(1).map((item) => {
+                    console.log(item, "item sidebar music");
+                    return (
+                      item?.postDetailsEdit?.sidebarFirstAd?.adImage && (
+                        <Image
+                          key={item.id} // Assuming each item has a unique `id` or another unique identifier
+                          priority={true}
+                          loader={customLoader}
+                          className="mb-2 object-cover"
+                          src={
+                            item?.postDetailsEdit?.sidebarFirstAd?.adImage?.node
+                              ?.sourceUrl
+                          }
+                          alt="Screenshot202"
+                          width={251}
+                          height={496}
+                        />
+                      )
+                    );
+                  })}
+
                   <div className="w-full max-w-3xl mx-auto">
                     <p className="text-[22px] font-bold text-black-900 italic">
                       MORE FROM BELAAZ NEWS
@@ -536,60 +559,53 @@ function News() {
                         .slice()
                         .sort((a, b) => (a.title < b.title ? 1 : -1))
                         .slice(0, 2)
-                        .map(
-                          (side) => (
-                            (
-                              <div className="mt-5 mb-5 w-64" key={side.id}>
-                                {side.posts.nodes
-                                  .slice()
-                                  .sort((a, b) => (a.title < b.title ? 1 : -1))
-                                  .slice(0, 2)
-                                  .map((itemdata) => (
-                                    <div
-                                      key={itemdata.id}
-                                      className="w-[290px]"
-                                    >
-                                      <div className="flex my-3">
-                                        <div className="mr-2 w-48 mb-2">
-                                          <p className="text-[10px] font-bold text-red-800 uppercase tracking-widest">
-                                            {side?.name}
-                                          </p>
-                                          <Link
-                                            href={`/news/${itemdata?.slug}`}
-                                            passHref
-                                          >
-                                            <p className="text-[13px] font-semibold text-black hover:text-skyBlue">
-                                              {itemdata?.title}
-                                            </p>
-                                          </Link>
-                                        </div>
-                                        {itemdata?.featuredImage?.node
-                                          ?.sourceUrl ? (
-                                          <Image
-                                            priority={true}
-                                            loader={customLoader}
-                                            src={
-                                              itemdata?.featuredImage?.node
-                                                ?.sourceUrl
-                                            }
-                                            alt={itemdata?.title}
-                                            className="object-cover w-[68px] h-[76px] mr-2"
-                                            width={68}
-                                            height={76}
-                                          />
-                                        ) : (
-                                          <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
-                                            No Image
-                                          </div>
-                                        )}
-                                      </div>
-                                      <hr />
+                        .map((side) => (
+                          <div className="mt-5 mb-5 w-64" key={side.id}>
+                            {side.posts.nodes
+                              .slice()
+                              .sort((a, b) => (a.title < b.title ? 1 : -1))
+                              .slice(0, 2)
+                              .map((itemdata) => (
+                                <div key={itemdata.id} className="w-[290px]">
+                                  <div className="flex my-3">
+                                    <div className="mr-2 w-48 mb-2">
+                                      <p className="text-[10px] font-bold text-red-800 uppercase tracking-widest">
+                                        {side?.name}
+                                      </p>
+                                      <Link
+                                        href={`/news/${itemdata?.slug}`}
+                                        passHref
+                                      >
+                                        <p className="text-[13px] font-semibold text-black hover:text-skyBlue">
+                                          {itemdata?.title}
+                                        </p>
+                                      </Link>
                                     </div>
-                                  ))}
-                              </div>
-                            )
-                          )
-                        )}
+                                    {itemdata?.featuredImage?.node
+                                      ?.sourceUrl ? (
+                                      <Image
+                                        priority={true}
+                                        loader={customLoader}
+                                        src={
+                                          itemdata?.featuredImage?.node
+                                            ?.sourceUrl
+                                        }
+                                        alt={itemdata?.title}
+                                        className="object-cover w-[68px] h-[76px] mr-2"
+                                        width={68}
+                                        height={76}
+                                      />
+                                    ) : (
+                                      <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                        No Image
+                                      </div>
+                                    )}
+                                  </div>
+                                  <hr />
+                                </div>
+                              ))}
+                          </div>
+                        ))}
                     <p className="text-[15px] font-bold text-black-900 italic mt-10">
                       FOLLOW US
                     </p>

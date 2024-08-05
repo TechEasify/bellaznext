@@ -79,11 +79,17 @@ const CategoryPage = ({
     return <SkeletonLoader />;
   }
 
+  console.log(nodeByUri, "nodeByUri");
+  console.log(nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0], "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType");
+  
+
   return (
     <>
       <Layout title={title} description={description} canonical={canonical}>
         {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
-        "Simple" ? (
+        "Template-1" ? (
+          console.log("true"),
+          
           <main>
             <Insight
               nodeByUri={nodeByUri}
@@ -93,7 +99,8 @@ const CategoryPage = ({
             />
           </main>
         ) : nodeByUri?.nodeByUri?.categoryTamplate
-            ?.selectYourTempleteType[0] === "Music" ? (
+            ?.selectYourTempleteType[0] === "Template-2" ? (
+              console.log("false"),
           <main>
             <Music
               nodeByUri={nodeByUri}
@@ -119,76 +126,76 @@ const CategoryPage = ({
   );
 };
 
-export async function getStaticPaths() {
-  const { data } = await client.query({
-    query: gql`
-      query GetAllCategorySlugs($first: Int) {
-        categories(first: $first) {
-          nodes {
-            slug
-          }
-        }
-      }
-    `,
-    variables: { first: 50 }, // Fetch only the first 50 categories
-  });
+// export async function getStaticPaths() {
+//   const { data } = await client.query({
+//     query: gql`
+//       query GetAllCategorySlugs($first: Int) {
+//         categories(first: $first) {
+//           nodes {
+//             slug
+//           }
+//         }
+//       }
+//     `,
+//     variables: { first: 50 }, // Fetch only the first 50 categories
+//   });
 
-  const paths = data.categories.nodes.map((category) => ({
-    params: { categoryslug: [category.slug] },
-  }));
+//   const paths = data.categories.nodes.map((category) => ({
+//     params: { categoryslug: [category.slug] },
+//   }));
 
-  return {
-    paths,
-    fallback: "blocking", // Handle additional categories dynamically
-  };
-}
+//   return {
+//     paths,
+//     fallback: "blocking", // Handle additional categories dynamically
+//   };
+// }
 
-export async function getStaticProps({ params }) {
-  const categoryslug = params.categoryslug ? params.categoryslug.join("/") : "";
-  const uri = `/category/${categoryslug}`;
+// export async function getStaticProps({ params }) {
+//   const categoryslug = params.categoryslug ? params.categoryslug.join("/") : "";
+//   const uri = `/category/${categoryslug}`;
 
-  try {
-    const { data: categoryData } = await client.query({
-      query: CATEGORY_BREAKING_QUERY,
-      variables: { uri },
-    });
+//   try {
+//     const { data: categoryData } = await client.query({
+//       query: CATEGORY_BREAKING_QUERY,
+//       variables: { uri },
+//     });
 
-    const { data: seoData } = await client.query({
-      query: SEO_QUERY,
-    });
+//     const { data: seoData } = await client.query({
+//       query: SEO_QUERY,
+//     });
 
-    const { data: navData } = await client.query({
-      query: GET_NAV_SECTION,
-    });
+//     const { data: navData } = await client.query({
+//       query: GET_NAV_SECTION,
+//     });
 
-    const { data: iconDataResult } = await client.query({
-      query: GET_ICON_SECTION,
-    });
+//     const { data: iconDataResult } = await client.query({
+//       query: GET_ICON_SECTION,
+//     });
 
-    const { data: navDataSearch } = await client.query({
-      query: SEARCH_QUERY,
-    });
+//     const { data: navDataSearch } = await client.query({
+//       query: SEARCH_QUERY,
+//     });
 
-    const { data: dataFooter } = await client.query({
-      query: GET_FOOTER_PAGE,
-    });
+//     const { data: dataFooter } = await client.query({
+//       query: GET_FOOTER_PAGE,
+//     });
 
-    return {
-      props: {
-        categoryData,
-        seoData,
-        navData,
-        iconDataResult,
-        navDataSearch,
-        dataFooter,
-      },
-      revalidate: 10, // Revalidate the page every 10 seconds
-    };
-  } catch (error) {
-    return {
-      notFound: true,
-    };
-  }
-}
+//     return {
+//       props: {
+//         categoryData,
+//         seoData,
+//         navData,
+//         iconDataResult,
+//         navDataSearch,
+//         dataFooter,
+//       },
+//       revalidate: 10, // Revalidate the page every 10 seconds
+//     };
+//   } catch (error) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+// }
 
 export default CategoryPage;

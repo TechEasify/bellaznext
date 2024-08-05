@@ -5,7 +5,6 @@ import Nav from "../../components/Nav";
 const NotFound = () => {
   return (
     <>
-    <Nav/>
     <div
       className='pt-2 flex justify-center items-center'
       style={{ height: "80vh" }}
@@ -15,7 +14,6 @@ const NotFound = () => {
         <h2 className='font-extrabold text-3xl'>Page Not Found</h2>
       </div>
     </div>
-    <Footer/>
     </>
   );
 };

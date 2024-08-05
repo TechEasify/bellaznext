@@ -392,8 +392,8 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
             </div>
           </div>
           <div className="hidden md:block w-full max-w-4xl mx-auto">
-            {categoryTamplate?.selectYourTempleteType[0] === "Simple" ||
-            categoryTamplate?.selectYourTempleteType[0] === "Music" ||
+            {categoryTamplate?.selectYourTempleteType[0] === "template1" ||
+            categoryTamplate?.selectYourTempleteType[0] === "template2" ||
             categoryTamplate?.musicTemplete?.musicAllPostsSidebar
               ?.sidebarAdImage !== null ||
             categoryTamplate?.simpleTemplete?.simpleHeroSection

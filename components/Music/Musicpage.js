@@ -40,6 +40,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
     }
   }, [nodeByUri]);
 
+
+
   const handleViewMore = async () => {
     if (hasNextPage && !loading) {
       try {
@@ -62,6 +64,9 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
     }
   };
 
+  console.log(posts, "posts music card");
+  
+
   return (
     <>
       <div className="hidden md:block px-4 py-16 mx-auto max-w-screen-xl">
@@ -70,14 +75,14 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
           <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
-        {nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Simple" ||
-        (nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Music" &&
-          nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
+        {nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Template-1" ||
+        (nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Template-2" &&
+          nodeByUri?.categoryTamplate?.template2?.musicAdervtiseImage
             ?.adImage?.node?.sourceUrl) ? (
           <Link
             href={{
               pathname:
-                nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
+                nodeByUri?.categoryTamplate?.template2?.musicAdervtiseImage
                   ?.adLink,
             }}
             passHref
@@ -95,7 +100,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               width={1134}
               height={169}
               src={
-                nodeByUri?.categoryTamplate?.musicTemplete?.musicAdervtiseImage
+                nodeByUri?.categoryTamplate?.template2?.musicAdervtiseImage
                   ?.adImage?.node?.sourceUrl
               }
               alt="PR_01CFA"
@@ -253,17 +258,17 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
 
           <div className="hidden md:block w-full max-w-4xl mx-auto">
             {(nodeByUri?.categoryTamplate?.selectYourTempleteType &&
-              ["Simple", "Music"].includes(
+              ["Template-1", "Template-2"].includes(
                 nodeByUri.categoryTamplate.selectYourTempleteType[0]
               )) ||
-            nodeByUri?.categoryTamplate?.musicTemplete?.musicAllPostsSidebar
+            nodeByUri?.categoryTamplate?.template2?.musicAllPostsSidebar
               ?.sidebarAdImage?.node?.sourceUrl !== null ? (
-              nodeByUri?.categoryTamplate?.musicTemplete?.musicAllPostsSidebar
+              nodeByUri?.categoryTamplate?.template2?.musicAllPostsSidebar
                 ?.sidebarAdImage?.node?.sourceUrl ? (
                 <Link
                   href={{
                     pathname:
-                      nodeByUri?.categoryTamplate?.musicTemplete
+                      nodeByUri?.categoryTamplate?.template2
                         ?.musicAllPostsSidebar?.sidebarAdLink,
                   }}
                   passHref
@@ -274,7 +279,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                     loader={customLoader}
                     className="mb-2 w-full h-auto max-h-96"
                     src={
-                      nodeByUri?.categoryTamplate?.musicTemplete
+                      nodeByUri?.categoryTamplate?.template2
                         ?.musicAllPostsSidebar?.sidebarAdImage?.node?.sourceUrl
                     }
                     width={297}

@@ -60,6 +60,22 @@ const GET_CARD_SECTION = gql`
 
 const Newscard = ({ nodeByUri }) => {
   const { loading, error, data } = useQuery(GET_CARD_SECTION);
+  console.log(
+    nodeByUri,
+    "nodeByUri card"
+  );
+
+  const section1 =
+    nodeByUri?.nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section1
+      ?.selectCategory?.nodes;
+
+  const section2 =
+    nodeByUri?.nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section2
+      ?.selectCategory?.nodes;
+
+  const section3 =
+    nodeByUri?.nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section3
+      ?.selectCategory?.nodes;
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
@@ -143,7 +159,7 @@ const Newscard = ({ nodeByUri }) => {
             </React.Fragment>
           ))} */}
           <div className="flex flex-wrap justify-around">
-            {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {
+            {section1?.map((item) => {
               if (displayedCategories.has(item.name)) {
                 return null;
               }
@@ -229,6 +245,264 @@ const Newscard = ({ nodeByUri }) => {
                 </div>
               );
             })}
+            {section2?.map((item) => {
+              if (displayedCategories.has(item.name)) {
+                return null;
+              }
+              displayedCategories.add(item.name);
+
+              const bottomLineColor = (() => {
+                switch (item.name) {
+                  case "Insights":
+                    return data.page.homePage.allCategoryBottomLineColor.block1;
+                  case "Jewish News":
+                    return data.page.homePage.allCategoryBottomLineColor.block2;
+                  case "music":
+                    return data.page.homePage.allCategoryBottomLineColor.block3;
+                  case "Breaking News":
+                    return "rgb(206, 58, 66)";
+                  case "ANALYSIS":
+                    return "#FFA500";
+                  case "HEALTH":
+                    return "rgb(24, 119, 242)";
+                  case "Israel":
+                    return "rgb(206, 58, 66)";
+                  default:
+                    return "#FFA500";
+                }
+              })();
+
+              return (
+                <div
+                  key={item.id}
+                  className="max-w-xs bg-white mr-4 items-center"
+                >
+                  <div className="mr-2 mb-20">
+                    <h5 className="text-[18px] font-extrabold text-black-900 italic">
+                      {item.name}
+                    </h5>
+                    <hr
+                      className="text-red-800 mb-3"
+                      style={{
+                        height: "7px",
+                        background: bottomLineColor,
+                      }}
+                    />
+
+                    <div key={item.id}>
+                      {item?.posts?.nodes[0]?.featuredImage?.node
+                        ?.sourceUrl && (
+                        <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              item?.posts?.nodes[0]?.featuredImage?.node
+                                ?.sourceUrl
+                            }
+                            alt="vladimirputin"
+                            className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
+                            width={397}
+                            height={210}
+                          />
+                        </Link>
+                      )}
+                      <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[0]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                    <div key={item.id}>
+                      <Link href={`/news/${item?.posts?.nodes[1]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[1]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                    <div key={item.id}>
+                      <Link href={`/news/${item?.posts?.nodes[2]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[2]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            {section3?.map((item) => {
+              if (displayedCategories.has(item.name)) {
+                return null;
+              }
+              displayedCategories.add(item.name);
+
+              const bottomLineColor = (() => {
+                switch (item.name) {
+                  case "Insights":
+                    return data.page.homePage.allCategoryBottomLineColor.block1;
+                  case "Jewish News":
+                    return data.page.homePage.allCategoryBottomLineColor.block2;
+                  case "music":
+                    return data.page.homePage.allCategoryBottomLineColor.block3;
+                  case "Breaking News":
+                    return "rgb(206, 58, 66)";
+                  case "ANALYSIS":
+                    return "#FFA500";
+                  case "HEALTH":
+                    return "rgb(24, 119, 242)";
+                  case "Israel":
+                    return "rgb(206, 58, 66)";
+                  default:
+                    return "#FFA500";
+                }
+              })();
+
+              return (
+                <div
+                  key={item.id}
+                  className="max-w-xs bg-white mr-4 items-center"
+                >
+                  <div className="mr-2 mb-20">
+                    <h5 className="text-[18px] font-extrabold text-black-900 italic">
+                      {item.name}
+                    </h5>
+                    <hr
+                      className="text-red-800 mb-3"
+                      style={{
+                        height: "7px",
+                        background: bottomLineColor,
+                      }}
+                    />
+
+                    <div key={item.id}>
+                      {item?.posts?.nodes[0]?.featuredImage?.node
+                        ?.sourceUrl && (
+                        <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              item?.posts?.nodes[0]?.featuredImage?.node
+                                ?.sourceUrl
+                            }
+                            alt="vladimirputin"
+                            className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
+                            width={397}
+                            height={210}
+                          />
+                        </Link>
+                      )}
+                      <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[0]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                    <div key={item.id}>
+                      <Link href={`/news/${item?.posts?.nodes[1]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[1]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                    <div key={item.id}>
+                      <Link href={`/news/${item?.posts?.nodes[2]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[2]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+            {/* {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {
+              if (displayedCategories.has(item.name)) {
+                return null;
+              }
+              displayedCategories.add(item.name);
+
+              const bottomLineColor = (() => {
+                switch (item.name) {
+                  case "Insights":
+                    return data.page.homePage.allCategoryBottomLineColor.block1;
+                  case "Jewish News":
+                    return data.page.homePage.allCategoryBottomLineColor.block2;
+                  case "music":
+                    return data.page.homePage.allCategoryBottomLineColor.block3;
+                  case "Breaking News":
+                    return "rgb(206, 58, 66)";
+                  case "ANALYSIS":
+                    return "#FFA500";
+                  case "HEALTH":
+                    return "rgb(24, 119, 242)";
+                  case "Israel":
+                    return "rgb(206, 58, 66)";
+                  default:
+                    return "#FFA500";
+                }
+              })();
+
+              return (
+                <div
+                  key={item.id}
+                  className="max-w-xs bg-white mr-4 items-center"
+                >
+                  <div className="mr-2 mb-20">
+                    <h5 className="text-[18px] font-extrabold text-black-900 italic">
+                      {item.name}
+                    </h5>
+                    <hr
+                      className="text-red-800 mb-3"
+                      style={{
+                        height: "7px",
+                        background: bottomLineColor,
+                      }}
+                    />
+
+                    <div key={item.id}>
+                      {item?.posts?.nodes[0]?.featuredImage?.node
+                        ?.sourceUrl && (
+                        <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={
+                              item?.posts?.nodes[0]?.featuredImage?.node
+                                ?.sourceUrl
+                            }
+                            alt="vladimirputin"
+                            className="h-[210px] w-[397px] mr-2 mb-2 object-cover"
+                            width={397}
+                            height={210}
+                          />
+                        </Link>
+                      )}
+                      <Link href={`/news/${item?.posts?.nodes[0]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[0]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                    <div key={item.id}>
+                      <Link href={`/news/${item?.posts?.nodes[1]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[1]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                    <div key={item.id}>
+                      <Link href={`/news/${item?.posts?.nodes[2]?.slug}`}>
+                        <p className="text-[17px] font-medium text-black-800 mb-2 hover:text-skyBlue">
+                          {item?.posts?.nodes[2]?.title}
+                        </p>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              );
+            })} */}
           </div>
         </div>
       </div>

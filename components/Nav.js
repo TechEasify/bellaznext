@@ -466,74 +466,82 @@ const Nav = ({
           {router.pathname === "/" && (
             <nav
               aria-label="Breadcrumb"
-              className="hidden lg:flex justify-center p-4 lg:px-6"
+              className="hidden lg:flex justify-center pt-8"
             >
-              <ol className="inline-flex items-center space-x-2 lg:space-x-4">
-                <li>
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menu?.header?.topFirstLinks?.url &&
-                        router.push(dataNav.menu.header.topFirstLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined && dataNav?.menu?.header?.topFirst}
-                    </button>
-                  </div>
-                </li>
-                <span className="text-gray-400">|</span>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menu?.header?.topSecondLinks?.url &&
-                        router.push(dataNav.menu.header.topSecondLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined &&
-                        dataNav?.menu?.header?.topSecond}
-                    </button>
-                  </div>
-                </li>
-                <span className="text-gray-400">|</span>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menu?.header?.topThirdLinks?.url &&
-                        router.push(dataNav.menu.header.topThirdLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined && dataNav?.menu?.header?.topThird}
-                    </button>
-                  </div>
-                </li>
-                <span className="text-gray-400">|</span>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menu?.header?.topForeLinks?.url &&
-                        router.push(dataNav.menu.header.topForeLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined && dataNav?.menu?.header?.topFore}
-                    </button>
-                  </div>
-                </li>
-              </ol>
+              <div className="flex justify-between items-center w-full ml-[30%]">
+                <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+                  <li>
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menu?.header?.topFirstLinks?.url &&
+                          router.push(dataNav.menu.header.topFirstLinks.url)
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menu?.header?.topFirst}
+                      </button>
+                    </div>
+                  </li>
+                  <span className="text-gray-400">|</span>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menu?.header?.topSecondLinks?.url &&
+                          router.push(dataNav.menu.header.topSecondLinks.url)
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menu?.header?.topSecond}
+                      </button>
+                    </div>
+                  </li>
+                  <span className="text-gray-400">|</span>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menu?.header?.topThirdLinks?.url &&
+                          router.push(dataNav.menu.header.topThirdLinks.url)
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menu?.header?.topThird}
+                      </button>
+                    </div>
+                  </li>
+                  <span className="text-gray-400">|</span>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menu?.header?.topForeLinks?.url &&
+                          router.push(dataNav.menu.header.topForeLinks.url)
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menu?.header?.topFore}
+                      </button>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+                <div className="w-[55%] text-center">
+                  <p className="text-white text-[19px] font-regular">בס״ד</p>
+                </div>
             </nav>
           )}
 
@@ -670,7 +678,7 @@ const Nav = ({
       )}
 
       {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
-      "Music" ? (
+      "template2" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{
@@ -688,7 +696,7 @@ const Nav = ({
           </span>
         </div>
       ) : nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
-        "Simple" ? (
+        "template1" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
           style={{

@@ -55,7 +55,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
         }
         categoryTamplate {
           selectYourTempleteType
-          simpleTemplete {
+          template1 {
             simpleTitleBackgroundColor
             simpleHeroSection {
               heroSidebarAdCode
@@ -68,35 +68,69 @@ export const CATEGORY_BREAKING_QUERY = gql`
                 }
               }
             }
-            selectCategoryForAllPost {
-              nodes {
-                ... on Category {
-                  id
-                  name
-                  slug
-                  posts {
-                    nodes {
-                      slug
-                      author {
-                        node {
-                          name
+
+            relatedCategory {
+              section1 {
+                categoryBottomLineColor
+                selectCategory {
+                  nodes {
+                    name
+                    ... on Category {
+                      posts {
+                        nodes {
+                          title
+                          featuredImage {
+                            node {
+                              altText
+                              sourceUrl
+                              srcSet
+                            }
+                          }
                         }
                       }
-                      content
-                      excerpt
-                      featuredImage {
-                        node {
-                          altText
-                          sourceUrl
-                          srcSet
+                    }
+                  }
+                }
+              }
+              section2 {
+                categoryBottomLineColor
+                selectCategory {
+                  nodes {
+                    name
+                    ... on Category {
+                      posts {
+                        nodes {
+                          title
+                          featuredImage {
+                            node {
+                              altText
+                              sourceUrl
+                              srcSet
+                            }
+                          }
                         }
                       }
-                      title
-                      seo {
-                        title
-                        metaDesc
-                        canonical
-                        focuskw
+                    }
+                  }
+                }
+              }
+              section3 {
+                categoryBottomLineColor
+                selectCategory {
+                  nodes {
+                    name
+                    ... on Category {
+                      posts {
+                        nodes {
+                          title
+                          featuredImage {
+                            node {
+                              altText
+                              sourceUrl
+                              srcSet
+                            }
+                          }
+                        }
                       }
                     }
                   }
@@ -104,7 +138,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
               }
             }
           }
-          musicTemplete {
+          template2 {
             musicTitleBackgroundColor
             musicHeroSection {
               heroSidebarTitle
@@ -182,38 +216,67 @@ export const CATEGORY_BREAKING_QUERY = gql`
                 }
               }
             }
-            selectCategoryForAllPost {
-              nodes {
-                ... on Category {
-                  id
-                  name
-                  posts {
-                    nodes {
-                      author {
-                        node {
-                          name
-                        }
-                      }
-                      title
-                      slug
-                      content
-                      excerpt
-                      featuredImage {
-                        node {
-                          altText
-                          srcSet
-                          sourceUrl
-                        }
-                      }
-                      seo {
-                        title
-                        metaDesc
-                        canonical
-                        focuskw
-                      }
-                      tags {
+            relatedCategory {
+              section1 {
+                categoryBottomLineColor
+                selectCategory {
+                  nodes {
+                    name
+                    ... on Category {
+                      posts {
                         nodes {
-                          name
+                          title
+                          featuredImage {
+                            node {
+                              altText
+                              sourceUrl
+                              srcSet
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              section2 {
+                categoryBottomLineColor
+                selectCategory {
+                  nodes {
+                    name
+                    ... on Category {
+                      posts {
+                        nodes {
+                          title
+                          featuredImage {
+                            node {
+                              altText
+                              sourceUrl
+                              srcSet
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              section3 {
+                categoryBottomLineColor
+                selectCategory {
+                  nodes {
+                    name
+                    ... on Category {
+                      posts {
+                        nodes {
+                          title
+                          featuredImage {
+                            node {
+                              altText
+                              sourceUrl
+                              srcSet
+                            }
+                          }
                         }
                       }
                     }
@@ -298,6 +361,39 @@ export const GET_NEWS_SECTION = gql`
             posts {
               nodes {
                 title
+                postDetailsEdit {
+                  sidebarFirstAd {
+                    adImage {
+                      node {
+                        altText
+                        srcSet
+                        sourceUrl
+                      }
+                    }
+                    adCode
+                  }
+                  moreNewsSelectCategory {
+                    nodes {
+                      name
+                      ... on Category {
+                        posts {
+                          nodes {
+                            title
+                            featuredImage {
+                              node {
+                                altText
+                                sourceUrl
+                                srcSet
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  bottomLineColor
+                  title
+                }
                 slug
                 featuredImage {
                   node {

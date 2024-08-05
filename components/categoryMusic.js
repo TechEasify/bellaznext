@@ -67,18 +67,21 @@ function Music({ nodeByUri, fetchMore, loading }) {
 
   useEffect(() => {
     if (
-      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
-        ?.selectCategoryForAllPost?.nodes
+      nodeByUri?.nodeByUri?.categoryTamplate?.template2?.musicHeroSection
+        ?.selectCategoryForSidebarPosts?.nodes
     ) {
       const posts =
-        nodeByUri.nodeByUri.categoryTamplate.musicTemplete.selectCategoryForAllPost.nodes.flatMap(
+        nodeByUri.nodeByUri.categoryTamplate.template2.musicHeroSection.selectCategoryForSidebarPosts.nodes.flatMap(
           (item) => item.posts.nodes
         );
+
+      console.log(posts, "postspostsposts");
+
       setShuffledPosts(posts);
     }
-  }, [nodeByUri]);
+  }, [nodeByUri.nodeByUri]);
 
-  nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicHeroSection?.selectCategoryForSidebarPosts?.nodes.forEach(
+  nodeByUri?.nodeByUri?.categoryTamplate?.template2?.musicHeroSection?.selectCategoryForSidebarPosts?.nodes.forEach(
     (item) => {
       item.posts.nodes.forEach((post) => {
         posts.push({ ...post, categoryName: item.name });
@@ -87,6 +90,8 @@ function Music({ nodeByUri, fetchMore, loading }) {
   );
 
   const shuffledPosts = shuffle(posts);
+
+  console.log(shuffledPost, "shuffledPost");
 
   // Check if posts have unique identifier (id or slug)
   const hasUniqueId = (post) => post.id || post.slug;
@@ -113,7 +118,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
           <div className="hidden lg:block w-full max-w-3xl mx-auto">
             <p className="text-[22px] font-extrabold text-black-900 italic uppercase">
               {
-                nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                nodeByUri?.nodeByUri?.categoryTamplate?.template2
                   ?.musicHeroSection?.heroSidebarTitle
               }
             </p>
@@ -122,7 +127,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
               style={{
                 height: "7px",
                 background: `${
-                  nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                  nodeByUri?.nodeByUri?.categoryTamplate?.template2
                     ?.musicHeroSection?.heroSidebarTitleLineColor || "#000"
                 }`,
               }}
@@ -158,13 +163,13 @@ function Music({ nodeByUri, fetchMore, loading }) {
               </React.Fragment>
             ))}
             <div className="flex mt-5 mb-5">
-              {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+              {nodeByUri?.nodeByUri?.categoryTamplate?.template2
                 ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdImage
                 ?.node?.sourceUrl ? (
                 <Link
                   href={{
                     pathname:
-                      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                      nodeByUri?.nodeByUri?.categoryTamplate?.template2
                         ?.musicHeroSection?.musicHeroSidebarAds
                         ?.musicSidebarAdLink,
                   }}
@@ -175,7 +180,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     priority={true}
                     loader={customLoader}
                     src={
-                      nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
+                      nodeByUri?.nodeByUri?.categoryTamplate?.template2
                         ?.musicHeroSection?.musicHeroSidebarAds
                         ?.musicSidebarAdImage?.node?.sourceUrl
                     }
@@ -395,69 +400,60 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 </div>
 
                 <div className="flex flex-wrap justify-around mt-[-8%]">
-                  {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes
-                    .map((item) =>
-                      item.posts.nodes.slice(1, 5).map((post) => {
-                        const contentText = post?.content
-                          ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
-                          : ""; // Fallback if content is not available
-                        const wordCount = contentText
-                          ? contentText?.split(" ").length
-                          : 0;
-                        const readingTime =
-                          wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
-                        return (
-                          <div
-                            key={post.slug}
-                            className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2"
-                          >
-                            {post?.featuredImage?.node?.sourceUrl && (
-                              <Link href={`/news/${post.slug}`}>
-                                <Image
-                                  priority={true}
-                                  loader={customLoader}
-                                  className="object-cover w-full h-[293px]"
-                                  src={post?.featuredImage?.node?.sourceUrl}
-                                  alt="vladimirputin"
-                                  width={432}
-                                  height={293}
-                                />
-                              </Link>
-                            )}
-                            <p className="text-[12px] font-semibold text-red-800 mt-2 tracking-widest uppercase mb-2">
-                              {item.name}
-                            </p>
-                            <Link href={`/news/${post.slug}`}>
-                              <h5 className="text-[28px] mb-2 text-xl font-semibold text-black-900 dark:text-white hover:text-skyBlue leading-9">
-                                {post.title}
-                              </h5>
+                  {nodeByUri?.nodeByUri?.posts?.nodes
+                    .map((item) => {
+                      console.log(item, "item music");
+                      return (
+                        <div
+                          key={item.slug}
+                          className="max-w-md bg-white mb-6 w-full md:w-[calc(50%-1rem)] md:mx-2"
+                        >
+                          {item?.featuredImage?.node?.sourceUrl && (
+                            <Link href={`/news/${item.slug}`}>
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                className="object-cover w-full h-[293px]"
+                                src={item?.featuredImage?.node?.sourceUrl}
+                                alt="vladimirputin"
+                                width={432}
+                                height={293}
+                              />
                             </Link>
-                            <p className="text-[12px] text-base font-extralight text-gray-800 mb-4">
+                          )}
+                          <p className="text-[12px] font-semibold text-red-800 mt-2 tracking-widest uppercase mb-2">
+                            {item.name}
+                          </p>
+                          <Link href={`/news/${item.slug}`}>
+                            <h5 className="text-[28px] mb-2 text-xl font-semibold text-black-900 dark:text-white hover:text-skyBlue leading-9">
+                              {item.title}
+                            </h5>
+                          </Link>
+                          <p className="text-[12px] text-base font-extralight text-gray-800 mb-4">
+                            <span
+                              className="text-[12px] font-extrabold mr-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              |
+                            </span>
+                            By
+                            <span
+                              className="font-extrabold mx-1"
+                              style={{ color: "#40A6FB" }}
+                            >
+                              {item.author.node.name}
                               <span
-                                className="text-[12px] font-extrabold mr-1"
+                                className="text-[36px] font-extrabold mx-1"
                                 style={{ color: "#40A6FB" }}
                               >
-                                |
+                                .
                               </span>
-                              By
-                              <span
-                                className="font-extrabold mx-1"
-                                style={{ color: "#40A6FB" }}
-                              >
-                                {post.author.node.name}
-                                <span
-                                  className="text-[36px] font-extrabold mx-1"
-                                  style={{ color: "#40A6FB" }}
-                                >
-                                  .
-                                </span>
-                              </span>
-                              {readingTime} MIN READ
-                            </p>
-                          </div>
-                        );
-                      })
-                    )
+                            </span>
+                            {readingTime} MIN READ
+                          </p>
+                        </div>
+                      );
+                    })
                     .slice(0, 4)}
                 </div>
               </div>
