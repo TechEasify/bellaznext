@@ -57,8 +57,6 @@ function Music({ nodeByUri, fetchMore, loading }) {
   const posts = [];
   const [shuffledPost, setShuffledPosts] = useState([]);
 
-  console.log(nodeByUri, "nodeByUri music");
-
   useEffect(() => {
     if (
       nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
@@ -68,12 +66,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
         nodeByUri.nodeByUri.categoryTamplate.musicTemplete.selectCategoryForAllPost.nodes.flatMap(
           (item) => item.posts.nodes
         );
-      console.log(posts, "posts use Music");
       setShuffledPosts(posts);
     }
   }, [nodeByUri]);
-
-  console.log(shuffledPost, "shuffledPost");
 
   nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.musicHeroSection?.selectCategoryForSidebarPosts?.nodes.forEach(
     (item) => {
@@ -320,7 +315,6 @@ function Music({ nodeByUri, fetchMore, loading }) {
             })}
           </div>
           {shuffledPost.slice(0, 1).map((musicpost) => {
-            console.log(musicpost, "musicpostmusicpostmusicpost");
             const contentText = musicpost?.content
               ? musicpost?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
               : ""; // Fallback if content is not available

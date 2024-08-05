@@ -20,7 +20,6 @@ const customLoader = ({ src }) => {
 const Footer = () => {
   const { dataIcon, footerData, loadingFooter, errorFooter } = useHeader();
   const router = useRouter();
-  console.log(dataIcon, "iconDataResult dataNav");
 
   return (
     <>

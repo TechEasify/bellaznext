@@ -16,7 +16,6 @@ import Excusivenews from "../components/Excusivenews";
 import Cardnews from "../components/Cardnews";
 
 export default function Component(props) {
-  console.log(props, "props");
   const { title: siteTitle, description: siteDescription } =
     props.data.generalSettings;
   const menuItems = props.data.primaryMenuItems.nodes;

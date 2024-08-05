@@ -10,7 +10,6 @@ import Insight from "../components/Insight";
 import { CATEGORY_QUERY } from "../lib/ga/queries";
 
 export default function Component(props) {
-  console.log(props, "props");
   // const { title: siteTitle, description: siteDescription } =
   //   props.data.generalSettings;
   // const menuItems = props.data.primaryMenuItems.nodes;
@@ -18,7 +17,6 @@ export default function Component(props) {
   // const htmlTitle = `${archiveType}: ${name} - ${siteTitle}`;
   const { nodeByUri, pages } = props.data;
   const router = useRouter();
-  console.log(router.asPath, "router");
 
   return (
     <>

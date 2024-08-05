@@ -67,7 +67,6 @@ const GET_CARD_SECTION = gql`
 const Cardnews = () => {
   const { openDialog } = useDialog();
   const { loading, error, data } = useQuery(GET_CARD_SECTION);
-  console.log(data, "datadatadata");
   const displayedCategories = new Set();
 
   if (loading) return <p>Loading...</p>;
@@ -77,14 +76,11 @@ const Cardnews = () => {
     return <p>No data available</p>;
   }
 
-  console.log(data, "data card");
-
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl hidden md:block">
       <div className="w-full mx-auto flex flex-wrap justify-center">
         <div className="flex flex-wrap justify-around">
           {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {
-            console.log(item, "item card inside");
             if (displayedCategories.has(item.name)) {
               return null;
             }

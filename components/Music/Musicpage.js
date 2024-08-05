@@ -26,7 +26,6 @@ const customLoader = ({ src }) => {
 };
 
 const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
-  console.log(nodeByUri, "nodeByUri news");
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -38,7 +37,6 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
       setPosts(initialPosts);
       setCursor(nodeByUri.posts.pageInfo.endCursor);
       setHasNextPage(nodeByUri.posts.pageInfo.hasNextPage);
-      console.log("Initial posts set:", initialPosts);
     }
   }, [nodeByUri]);
 
@@ -50,10 +48,8 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
             after: cursor,
           },
         });
-        console.log(data, "data view more");
         if (data && data.nodeByUri.posts.nodes.length > 0) {
           const newPosts = data.nodeByUri.posts.nodes;
-          console.log("New posts fetched:", newPosts);
           setPosts((prevPosts) => [...prevPosts, ...newPosts]);
           setCursor(data.nodeByUri.posts.pageInfo.endCursor);
           setHasNextPage(data.nodeByUri.posts.pageInfo.hasNextPage);
@@ -65,11 +61,6 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
       }
     }
   };
-
-  console.log(
-    nodeByUri?.categoryTamplate?.selectYourTempleteType[0],
-    "nodeByUri?.categoryTamplate"
-  );
 
   return (
     <>

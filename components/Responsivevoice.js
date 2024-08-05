@@ -204,7 +204,6 @@ function Responsivevoice({ nodeByUri, post }) {
         projectId: 45037,
         contentId: nodeByUri.beyondwords.contentId,
       });
-      console.log(nodeByUri.beyondwords, "nodeByUri.content.tts");
     }
   }, [nodeByUri.beyondwords.contentId]);
 

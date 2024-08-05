@@ -45,18 +45,13 @@ function Index() {
   const router = useRouter();
   const { advertiseQuery, advertiseLoading, advertiseError } = useDialog();
   const { seoData } = useHeader();
-  console.log(seoData, "advertise data");
 
   let title;
   let description;
   let canonical;
 
-  console.log(router.asPath, "url contact");
-
   seoData?.pages?.nodes.flatMap((item) => {
-    console.log(item, "item page");
     if (item.title === "Advertise" && router.asPath === `/${item.slug}`) {
-      console.log("if inside", item?.seo?.title);
       title = item?.seo?.title || "Belaaz News";
       description = item?.seo?.metaDesc || "Default Description";
       canonical = item?.seo?.canonical || `${url}${router.asPath}`;

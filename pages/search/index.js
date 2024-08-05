@@ -43,7 +43,6 @@ const SearchPage = () => {
       setPosts(initialPosts);
       setCursor(searchData.categories.pageInfo.endCursor);
       setHasNextPage(searchData.categories.pageInfo.hasNextPage);
-      console.log("Initial posts set:", initialPosts);
     }
   }, [searchData]);
 
@@ -84,13 +83,10 @@ const SearchPage = () => {
           },
         });
 
-        console.log(data, "search data");
-
         if (data && data.categories.nodes.length > 0) {
           const newPosts = data.categories.nodes.flatMap(
             (item) => item.posts.nodes
           );
-          console.log("New posts fetched:", newPosts);
           setPosts((prevPosts) => [...prevPosts, ...newPosts]);
           setCursor(data.categories.pageInfo.endCursor);
           setHasNextPage(data.categories.pageInfo.hasNextPage);
@@ -141,7 +137,6 @@ const SearchPage = () => {
             <div className="w-full max-w-5xl mx-auto">
               {filteredPosts.length > 0 ? (
                 filteredPosts.map((post) => {
-                  console.log(post, "post map");
                   const contentText = post?.content
                     ? post?.content.replace(/(<([^>]+)>)/gi, "")
                     : "";
@@ -179,7 +174,6 @@ const SearchPage = () => {
                         </div>
                         <div className="ml-0 md:ml-5 w-full md:w-3/5">
                           {post?.categories?.nodes?.map((item) => {
-                            console.log(item.name, "item name");
                             return (
                               <p
                                 key={item.id}

@@ -29,12 +29,6 @@ const Excusivenews = () => {
     backgroundImage = backgroundImage.replace(/\s+/g, "");
   }
 
-  console.log(
-    bannerData?.page?.homePage?.ctaBackgroundImage,
-    "bannerDatabannerDatabannerData"
-  );
-  console.log(backgroundImage, "backgroundImage");
-
   return (
     <div
       className="hidden md:block px-1 py-20 mx-auto max-w-[1523px]"

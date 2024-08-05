@@ -10,7 +10,6 @@ import Nav from "../components/Nav";
 import { HeaderProvider, useHeader } from "../components/HeaderContext";
 
 const App = ({ Component, pageProps }) => {
-  console.log(pageProps, "pageProps");
   const router = useRouter();
 
   // Use useEffect for analytics or any other side effects

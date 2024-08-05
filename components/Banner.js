@@ -59,8 +59,6 @@ const Banner = () => {
   const displayedCategories = new Set();
   const [searchTerm, setSearchTerm] = useState("");
 
-  console.log(iconDataResult, "bannerDatabannerDatabannerData");
-
   const kelvinToFahrenheit = (kelvin) =>
     (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
 
@@ -156,8 +154,6 @@ const Banner = () => {
     }
   };
 
-  console.log(weatherData, "weatherData");
-
   if (loading) {
     return <SkeletonLoader />;
   }
@@ -204,7 +200,6 @@ const Banner = () => {
 
     const searchWords = searchTerm.toLowerCase().split(" ");
     localStorage.setItem("searchTerm", searchTerm); // Store the search term
-    console.log(searchWords, "searchWords");
 
     const post = searchData?.categories?.nodes
       .flatMap((item) => item.posts.nodes)
@@ -214,15 +209,10 @@ const Banner = () => {
 
     if (post) {
       router.push(`/search`);
-      console.log(post, "post search");
     } else {
       router.push("/search");
     }
   };
-
-  console.log(sortedPostss, "sortedPostss");
-
-  console.log(sortedPosts, "sortedPosts");
 
   return (
     <>
@@ -231,7 +221,6 @@ const Banner = () => {
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
               {sortedPosts?.slice(0, 1).map((post) => {
-                console.log(post, "postpostpostpostpostpostpost");
                 const contentText = post?.content
                   ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                   : ""; // Fallback if content is not available
@@ -344,7 +333,6 @@ const Banner = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 onKeyDown={(e) => {
-                  console.log(e, "eeeeee");
                   if (e.key === "Enter") {
                     handleSearch(e);
                   }
@@ -609,7 +597,6 @@ const Banner = () => {
                 .sort((a, b) => (a.title < b.title ? 1 : -1))
                 .slice(0, 2)
                 .map((side) => {
-                  console.log(side, "sidesidesidesidesideside");
                   if (displayedCategories.has(side.name)) return null; // Skip if already displayed
                   displayedCategories.add(side.name); // Add category to set
 
@@ -714,7 +701,6 @@ const Banner = () => {
                 .slice(0, 1)
                 .map(
                   (side) => (
-                    console.log(side, "side"),
                     (
                       <div className="flex justify-between mt-5 mb-5">
                         {side.posts.nodes
@@ -723,10 +709,6 @@ const Banner = () => {
                           .slice(0, 1) // Limiting to only one item
                           .map(
                             (itemdata) => (
-                              console.log(
-                                itemdata.featuredImage?.node?.srcSet,
-                                "itemdata"
-                              ),
                               (
                                 <>
                                   <div className="mr-2">
@@ -823,8 +805,6 @@ const Banner = () => {
                 className="text-red-800"
                 style={{ height: "7px", background: "#CE3A42" }}
               />
-
-              {console.log(dataIcon, "dataIcon")}
 
               <div className="flex mt-5 mb-8">
                 <Link href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}>

@@ -8,7 +8,6 @@ const customLoader = ({ src }) => {
 };
 
 const Topheadlines = ({ topheadData, displayedCategories }) => {
-  console.log(topheadData, "topheadDatatopheadDatatopheadDatatopheadData");
   const [displayCount, setDisplayCount] = useState(6);
 
   const sortedTopHeadlines =
@@ -61,10 +60,6 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-8">
             {uniqueCategoryPosts?.map(
               (item) => (
-                console.log(
-                  item,
-                  "itemitemitemitemitemitemitemitemitemitemitem"
-                ),
                 (
                   <>
                     <div key={item.id} className="max-w-md bg-white mb-6">
@@ -130,7 +125,6 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
               )
             )}
           </div>
-          {console.log(displayCount, "displayCount")}
           <div className="w-full max-w-3xl mx-auto mt-5 md:hidden">
             {sortedTopHeadlinesSidebar !== null &&
               sortedTopHeadlinesSidebar?.slice(0, displayCount).map((side) => (

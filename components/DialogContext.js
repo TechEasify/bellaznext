@@ -64,7 +64,6 @@ export const DialogProvider = ({ children }) => {
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
-  console.log(detailUri, "detailUri");
 
   const openDialog = () => {
     setIsDialogOpen(true);
@@ -90,11 +89,6 @@ export const DialogProvider = ({ children }) => {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
-
-  console.log(
-    categoryData,
-    "categoryDatacategoryDatacategoryDatacategoryDatacategoryData"
-  );
 
   const {
     loading: bannerLoading,
@@ -170,10 +164,6 @@ export const DialogProvider = ({ children }) => {
     advertiseLoading,
     advertiseError
   ]);
-
-  console.log(nodeByUri, "nodeByUri");
-
-  console.log(bannerData, "bannerData");
 
   return (
     <DialogContext.Provider

@@ -31,7 +31,6 @@ export const HeaderProvider = ({ children }) => {
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
-  console.log(detailUri, "detailUri");
 
   const openDialog = () => {
     setIsDialogOpen(true);

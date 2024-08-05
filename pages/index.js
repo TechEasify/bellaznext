@@ -55,8 +55,6 @@ const Home = () => {
 
   // const { loading, error, data } = useQuery(GET_HOME_PAGE);
   const { bannerData, bannerLoading, bannerError, seoData } = useHeader();
-  console.log(seoData, "bannerData home page");
-  console.log(url, "urlurlurlurl");
 
   // if (bannerLoading) return <SkeletonLoader />;
   // if (bannerError) return <p>Error loading data: {bannerError.message}</p>;
@@ -66,9 +64,7 @@ const Home = () => {
   let canonical;
 
   seoData?.pages?.nodes.flatMap((item) => {
-    console.log(item, "item page");
     if (item.title === "Home" && router.asPath === "/") {
-      console.log("if inside", item?.seo?.title);
       title = item?.seo?.title || "Belaaz News";
       description = item?.seo?.metaDesc || "Default Description";
       canonical = item?.seo?.canonical || `${url}${router.asPath}`;

@@ -23,7 +23,6 @@ const { name, url } = publicRuntimeConfig.site;
 function Index() { 
   const { aboutQuery, aboutLoading } = useDialog();
   const { seoData } = useHeader();
-  console.log(seoData, "about data");
   const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState(null);
 
@@ -35,12 +34,8 @@ function Index() {
   let description;
   let canonical;
 
-  console.log(router.asPath, "url contact");
-
   seoData?.pages?.nodes.flatMap((item) => {
-    console.log(item, "item page");
     if (item.title === "About" && router.asPath === `/${item.slug}`) {
-      console.log("if inside", item?.seo?.title);
       title = item?.seo?.title || "Belaaz News";
       description = item?.seo?.metaDesc || "Default Description";
       canonical = item?.seo?.canonical || `${url}${router.asPath}`;

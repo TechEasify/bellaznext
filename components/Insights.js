@@ -175,10 +175,8 @@ const Insights = () => {
     musicQuery,
   } = useDialog();
   const [randomPost, setRandomPost] = useState(null);
-  console.log(insightsQuery, "insightsQuery");
 
   const insightsPost = insightsQuery?.page?.homePage?.insightsPost?.nodes;
-  console.log(insightsPost, "insightsPost");
 
   useEffect(() => {
     if (insightsPost && insightsPost.length > 0) {
@@ -193,7 +191,6 @@ const Insights = () => {
 
   const insight = randomPost.posts.nodes;
 
-  console.log(insight, "randomPost");
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">
@@ -407,7 +404,6 @@ const Insights = () => {
           )}
 
           {insight?.slice(2, 3)?.map((item) => {
-            console.log(item, "item insights");
             const contentText = item?.content
               ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
               : ""; // Fallback if content is not available

@@ -10,7 +10,6 @@ const customLoader = ({ src }) => {
 };
 
 const FooterTopAd = ({ data }) => {
-  console.log(data, "datadata footer top ads");
 
   const imageUrl =
     data?.page?.homePage?.footerAdvertisementImage?.node?.sourceUrl;

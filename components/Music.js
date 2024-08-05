@@ -9,7 +9,6 @@ const customLoader = ({ src }) => {
 
 const Music = () => {
   const { openDialog, musicQuery, musicError, musicLoading } = useDialog();
-  console.log(musicQuery, "musicQuerymusicQuerymusicQuery");
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">
@@ -35,7 +34,6 @@ const Music = () => {
           <div>
             {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
               (item) => (
-                console.log(item, "item music"),
                 item.posts?.nodes.slice(1, 2).map((post) => {
                   const contentText = post?.content
                     ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
@@ -168,7 +166,6 @@ const Music = () => {
           <div className="max-w-md bg-white mb-6 mx-auto hidden md:block">
             {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
               (item) => (
-                console.log(item, "item music"),
                 item.posts?.nodes.slice(0, 1).map((post) => {
                   const contentText = post?.content
                     ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
@@ -245,7 +242,6 @@ const Music = () => {
           <div className="max-w-xs bg-white mb-6 mr-4 items-center lg:block xl:block hidden">
             {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
               (item) => (
-                console.log(item, "item music"),
                 item.posts?.nodes.slice(2, 3).map((post) => {
                   const contentText = post?.content
                     ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags

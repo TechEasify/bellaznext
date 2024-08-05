@@ -33,8 +33,6 @@ const Layout = ({ children, ...customMeta }) => {
     ...customMeta,
   };
 
-  console.log(meta, "metametametameta");
-
   return (
     <>
       <Head>

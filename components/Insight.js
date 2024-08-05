@@ -61,7 +61,6 @@ const Insight = () => {
       setPosts(initialPosts);
       setCursor(nodeByUri.nodeByUri.posts.pageInfo.endCursor);
       setHasNextPage(nodeByUri.nodeByUri.posts.pageInfo.hasNextPage);
-      console.log("Initial posts set:", initialPosts);
     }
   }, [nodeByUri]);
 
@@ -76,7 +75,6 @@ const Insight = () => {
 
         if (data && data.posts.nodes.length > 0) {
           const newPosts = data.posts.nodes;
-          console.log("New posts fetched:", newPosts);
           setPosts((prevPosts) => [...prevPosts, ...newPosts]);
           setCursor(data.posts.pageInfo.endCursor);
           setHasNextPage(data.posts.pageInfo.hasNextPage);
@@ -89,11 +87,8 @@ const Insight = () => {
     }
   };
 
-  console.log("Current posts state:", posts);
   if (categoryLoading && posts.length === 0) return <p>Loading...</p>;
   if (categoryError) return <p>Error: {categoryError.message}</p>;
-
-  console.log(nodeByUri, "nodeByUrinodeByUrinodeByUri data");
 
   return (
     <>

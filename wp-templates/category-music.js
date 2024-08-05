@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import Music from "../components/categoryMusic";
 
 export default function Component(props) {
-  console.log(props, "props");
   // const { title: siteTitle, description: siteDescription } =
   //   props.data.generalSettings;
   // const menuItems = props.data.primaryMenuItems.nodes;

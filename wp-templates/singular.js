@@ -4,7 +4,6 @@ import EntryHeader from "../components/entry-header";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 export default function Component(props) {
-  console.log(props, "props");
     // Loading state for previews
     if (props.loading) {
         return <>Loading...</>;

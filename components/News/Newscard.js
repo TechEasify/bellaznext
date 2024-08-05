@@ -59,13 +59,11 @@ const GET_CARD_SECTION = gql`
 `;
 
 const Newscard = ({ nodeByUri }) => {
-  console.log(nodeByUri, "nodeByUri newsCard");
   const { loading, error, data } = useQuery(GET_CARD_SECTION);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  console.log(data, "data new acara a atabv");
   const displayedCategories = new Set();
 
   return (
@@ -146,7 +144,6 @@ const Newscard = ({ nodeByUri }) => {
           ))} */}
           <div className="flex flex-wrap justify-around">
             {data.page.homePage.allCategories.nodes.slice(0, 3).map((item) => {
-              console.log(item, "item card inside category");
               if (displayedCategories.has(item.name)) {
                 return null;
               }

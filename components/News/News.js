@@ -24,11 +24,6 @@ const customLoader = ({ src }) => {
 };
 
 const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
-  console.log(nodeByUri, "nodeByUri");
-  console.log(
-    categoryTamplate?.musicTemplete?.musicAllPostsSidebar?.sidebarAdImage,
-    "categoryTamplatecategoryTamplatecategoryTamplate"
-  );
   const { iconDataResult, dataIcon } = useDialog();
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
@@ -396,11 +391,6 @@ const News = ({ categoryTamplate, nodeByUri, fetchMore, loading, navData }) => {
               </button>
             </div>
           </div>
-          {console.log(
-            categoryTamplate?.musicTemplete?.musicAllPostsSidebar
-              ?.sidebarAdImage,
-            "categoryTamplate?.selectYourTempleteType[0]"
-          )}
           <div className="hidden md:block w-full max-w-4xl mx-auto">
             {categoryTamplate?.selectYourTempleteType[0] === "Simple" ||
             categoryTamplate?.selectYourTempleteType[0] === "Music" ||

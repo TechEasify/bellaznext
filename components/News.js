@@ -180,7 +180,6 @@ function News() {
   const { navData, setNavData, dataNav, dataIcon } = useHeader();
   const router = useRouter();
   const { slug } = router.query;
-  console.log(slug, "router slug");
   const uri = `/${slug}`;
   const [isOpen, setIsOpen] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("");
@@ -193,7 +192,6 @@ function News() {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
-  console.log(newsData, "newsData newsData");
 
   useEffect(() => {
     if (newsData) {
@@ -218,8 +216,6 @@ function News() {
     }
   };
 
-  console.log(currentUrl, "currentUrl");
-
   const toggleShareOptions = () => {
     setIsOpen(!isOpen);
   };
@@ -228,7 +224,6 @@ function News() {
     newsData?.nodeByUri?.categories?.nodes?.flatMap((item) =>
       item.posts?.nodes?.map(
         (post) => (
-          console.log(post, "post postss"),
           {
             ...post,
             categoryName: item.name,
@@ -248,9 +243,6 @@ function News() {
   const wordCount = contentText ? contentText?.split(" ").length : 0;
   const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
 
-  console.log(newsData, "postspostspostsposts");
-  console.log(navData, "dataNav dataNav news");
-  console.log(dataNav, "dataNavdataNavdataNav");
   return (
     <>
       {/* <Nav /> */}
@@ -474,8 +466,6 @@ function News() {
                       style={{ height: "5px", background: "#CE3A42" }}
                     />
                     {posts.map((post, index) => {
-                      console.log(post, "postpostpostpostpostpost");
-
                       if (post.slug !== slug) {
                         return (
                           <div key={index}>
@@ -548,7 +538,6 @@ function News() {
                         .slice(0, 2)
                         .map(
                           (side) => (
-                            console.log(side, "side news"),
                             (
                               <div className="mt-5 mb-5 w-64" key={side.id}>
                                 {side.posts.nodes

@@ -6,7 +6,7 @@ import Vector from "../public/images/Vector.svg";
 import Vector1 from "../public/images/Vector-1.svg";
 import Vector2 from "../public/images/Vector-2.svg";
 import Frame283 from "../public/images/Frame 283.svg";
-import MenuFrame166 from "../public/images/MenuFrame166.svg"
+import MenuFrame166 from "../public/images/MenuFrame166.svg";
 import magnify from "../public/images/magnify.svg";
 import Closeicon from "../public/images/Closeicon.svg";
 import Group from "../public/images/Group.svg";
@@ -160,7 +160,6 @@ const Nav = ({
     searchData,
   } = useHeader();
   const router = useRouter();
-  console.log(router, "router");
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownSearch, setIsDropdownSearch] = useState(false);
   const [isContactHeaderVisible, setContactHeaderVisible] = useState(false);
@@ -169,8 +168,6 @@ const Nav = ({
   const [toggleDropdown1, setToggleDropdown1] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const isMobile = useIsMobile();
-
-  console.log(navData, "navData props");
 
   useEffect(() => {
     setSubscribe(router.pathname);
@@ -185,11 +182,8 @@ const Nav = ({
   }
 
   const handleLinkClick = (link) => {
-    console.log(link, "link");
     setActiveLink(link);
   };
-
-  console.log(uri, "uri uri uri");
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -225,7 +219,6 @@ const Nav = ({
 
     const searchWords = searchTerm.toLowerCase().split(" ");
     localStorage.setItem("searchTerm", searchTerm); // Store the search term
-    console.log(searchWords, "searchWords");
 
     const post = searchData?.categories?.nodes
       .flatMap((item) => item.posts.nodes)
@@ -235,11 +228,10 @@ const Nav = ({
 
     if (post) {
       router.push(`/search`);
-      setIsDropdownSearch(!isDropdownSearch)
-      console.log(post, "post search");
+      setIsDropdownSearch(!isDropdownSearch);
     } else {
       router.push("/search");
-      setIsDropdownSearch(!isDropdownSearch)
+      setIsDropdownSearch(!isDropdownSearch);
     }
   };
 
@@ -399,74 +391,68 @@ const Nav = ({
           </nav>
         </header>
       ) : router.asPath === `/news/${router.query.slug}` ? (
-        (console.log(
-          router.asPath === `/news/${router.query.slug}`,
-          "router.asPath === `/news${uri}`"
-        ),
-        (
-          <header
-            className="bg-black"
-            style={{
-              backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
-            }}
+        <header
+          className="bg-black"
+          style={{
+            backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
+          }}
+        >
+          <nav
+            className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
+            aria-label="Global"
           >
-            <nav
-              className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-6"
-              aria-label="Global"
-            >
-              <div className="flex justify-between lg:justify-start items-center">
-                <Link href="/" className="-m-1.5 p-1.5">
-                  <span className="sr-only">BELAAZ</span>
+            <div className="flex justify-between lg:justify-start items-center">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">BELAAZ</span>
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="h-12 w-auto md:h-14 object-cover mr-9"
+                  src={Primarylogo}
+                  alt="Primarylogo"
+                  width={250}
+                  height={54}
+                />
+              </Link>
+            </div>
+
+            <div className="flex flex-1 justify-end items-center">
+              <button
+                onClick={handleSub}
+                className="hidden lg:inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+                style={{ background: "#CE3A42" }}
+              >
+                Subscribe
+              </button>
+              <button
+                onClick={toggleContactHeader}
+                className="flex text-white font-bold items-center lg:mr-2"
+              >
+                {isContactHeaderVisible ? (
                   <Image
                     priority={true}
                     loader={customLoader}
-                    className="h-12 w-auto md:h-14 object-cover mr-9"
-                    src={Primarylogo}
-                    alt="Primarylogo"
-                    width={250}
-                    height={54}
+                    className="mx-2 object-cover"
+                    src={closewhite}
+                    alt="close Icon"
+                    width={21}
+                    height={18}
                   />
-                </Link>
-              </div>
-
-              <div className="flex flex-1 justify-end items-center">
-                <button
-                  onClick={handleSub}
-                  className="hidden lg:inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
-                  style={{ background: "#CE3A42" }}
-                >
-                  Subscribe
-                </button>
-                <button
-                  onClick={toggleContactHeader}
-                  className="flex text-white font-bold items-center lg:mr-2"
-                >
-                  {isContactHeaderVisible ? (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="mx-2 object-cover"
-                      src={closewhite}
-                      alt="close Icon"
-                      width={21}
-                      height={18}
-                    />
-                  ) : (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="mx-2 object-cover"
-                      src={MenuFrame166}
-                      alt="Contact Toggle Icon"
-                      width={21}
-                      height={18}
-                    />
-                  )}
-                </button>
-              </div>
-            </nav>
-          </header>
-        ))
+                ) : (
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="mx-2 object-cover"
+                    src={MenuFrame166}
+                    alt="Contact Toggle Icon"
+                    width={21}
+                    height={18}
+                  />
+                )}
+              </button>
+            </div>
+          </nav>
+        </header>
       ) : router.asPath === `/subscribe` ? (
         <></>
       ) : (
@@ -831,7 +817,6 @@ const Nav = ({
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               onKeyDown={(e) => {
-                console.log(e, "eeeeee");
                 if (e.key === "Enter") {
                   handleSearch(e);
                 }
@@ -885,7 +870,6 @@ const Nav = ({
           </div>
         </div>
       )}
-      {console.log(uri, "uri uri")}
 
       {router.asPath === `/news/${router.query.slug}` ? (
         <header

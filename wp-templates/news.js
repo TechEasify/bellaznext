@@ -9,11 +9,8 @@ import { CATEGORY_QUERY } from "../lib/ga/queries";
 import Article from "../components/News";
 
 export default function Component(props) {
-  console.log(props, "props");
   const { archiveType, name, posts } = props.data.nodeByUri || {};
   const router = useRouter();
-
-  console.log(router, "wp-templete news");
 
   return (
     <>

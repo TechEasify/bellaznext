@@ -6,7 +6,6 @@ const Ads = ({ className, style, adClient, adSlot }) => {
     const loadAds = () => {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
-        console.log('Ads loaded successfully');
       } catch (e) {
         console.error('Error loading Google Ads:', e);
       }

@@ -26,8 +26,6 @@ const { name, url } = publicRuntimeConfig.site;
 function Index() {
   const { contactQuery } = useDialog();
   const { seoData } = useHeader();
-  console.log(seoData, "contact data");
-  console.log(contactQuery, "datadatadatadata contact");
   const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -53,12 +51,8 @@ function Index() {
   let description;
   let canonical;
 
-  console.log(router.asPath, "url contact");
-
   seoData?.pages?.nodes.flatMap((item) => {
-    console.log(item, "item page");
     if (item.title === "Contact Us" && router.asPath === `/${item.slug}`) {
-      console.log("if inside", item?.seo?.title);
       title = item?.seo?.title || "Belaaz News";
       description = item?.seo?.metaDesc || "Default Description";
       canonical = item?.seo?.canonical || `${url}${router.asPath}`;

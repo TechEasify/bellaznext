@@ -72,7 +72,6 @@ const SkeletonLoader = () => (
 
 const NewsPage = () => {
   const router = useRouter();
-  console.log(router, "routerrouterrouter");
   const { nodeByUri, setNodeByUri } = useDialog();
   const { navData, setNavData} = useHeader();
   const { slug } = router.query;
@@ -82,9 +81,6 @@ const NewsPage = () => {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
-
-  console.log(nodeByUri, "news data");
-  console.log(router.asPath === `/news${uri}`, "router.asPath === `/news/${uri}`");
 
   // useEffect(() => {
   //   if (data) {
