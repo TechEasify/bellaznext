@@ -103,17 +103,14 @@ body {
   }
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .tablet-custom {
     top: 18%;
   }
-}
+} */
 
 @media (max-width: 425px) {
-  .mobile-custom {
-    /* top: 6%;
-    left: 0%;
-    height: auto; */
+  .mobile-custom { 
     height: auto;
     position: relative;
     top: -4%;

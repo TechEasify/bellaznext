@@ -344,14 +344,20 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   </Link>
                 )}
                 {/* absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:max-w-[750px] h-60 tablet-custom mobile-custom */}
-                {Tag !== undefined && Tag.map((item, index) => (
-  item.length > 0 && item.map((tag, tagIndex) => (
-    <span key={`${index}-${tagIndex}`} className="relative bottom-[3%] left-[76.8%] md:bottom-[7%] md:left-[88.2%] z-[999] bg-hotred text-white text-[14px] font-semibold tracking-widest me-2 px-4 md:px-6 py-1.5 md:py-2.5 dark:bg-gray-700 dark:text-red-400 border border-red-400 uppercase">
-      {tag.name}
-    </span>
-  ))
-))}
-                <div className="relative bottom-[8%] mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-64 tablet-custom mobile-custom">
+                {Tag !== undefined &&
+                  Tag.map(
+                    (item, index) =>
+                      item.length > 0 &&
+                      item.map((tag, tagIndex) => (
+                        <span
+                          key={`${index}-${tagIndex}`}
+                          className="relative bottom-[3%] left-[76.8%] md:bottom-[7%] md:left-[88.2%] z-[999] bg-hotred text-white text-[14px] font-semibold tracking-widest me-2 px-4 md:px-6 py-1.5 md:py-2.5 dark:bg-gray-700 dark:text-red-400 border border-red-400 uppercase"
+                        >
+                          {tag.name}
+                        </span>
+                      ))
+                  )}
+                <div className="relative bottom-[8%] mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-auto tablet-custom mobile-custom">
                   <p className="text-[15px] font-semibold text-red-800 uppercase tracking-widest">
                     {nodeByUri?.nodeByUri?.name}
                   </p>
