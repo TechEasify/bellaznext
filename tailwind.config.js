@@ -16,6 +16,7 @@ module.exports = {
         sans: ["Pulp Display", "sans-serif"],
       },
       colors: {
+        hotred: '#ce3a42',
         skyBlue: '#1662D4',
         gray: "#5E5E5E",
         red: {

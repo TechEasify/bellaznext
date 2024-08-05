@@ -712,7 +712,7 @@ const Nav = ({
       )}
 
       {isDropdownOpen && (
-        <div className="bg-white font-medium inline-flex items-center md:ml-28">
+        <div className="bg-white font-medium inline-flex items-center md:ml-80">
           <div className="flex flex-col items-center">
             <Link
               href={
@@ -720,11 +720,11 @@ const Nav = ({
                   ? dataNav?.menu?.header?.subFirstLink?.url
                   : "/"
               }
-              className={`px-4 text-gray-800 ${
+              className={`breaking_news px-4 text-gray-800 hover:bg-gray-100 ${
                 activeLink === dataNav?.menu?.header?.subFirstLink?.url ||
                 router.asPath === dataNav?.menu?.header?.subFirstLink?.url
                   ? "border-b-3 bg-change2"
-                  : "hover:border-b-3 hover:bg-change2"
+                  : ""
               }`}
               onClick={() =>
                 handleLinkClick(dataNav?.menu?.header?.subFirstLink?.url)

@@ -300,7 +300,7 @@ function News() {
                       </button>
                     </div>
                     {isOpen && (
-                      <div className="absolute left-[58%] transform -translate-x-1/2 flex sm:flex-row justify-end mt-2 p-2 bg-white border rounded-lg shadow-lg sm:w-64 md:w-80 lg:w-96 xl:w-[15rem]">
+                      <div className="absolute left-[56%] transform -translate-x-1/2 flex sm:flex-row justify-end mt-2 p-2 bg-white border rounded-lg shadow-lg sm:w-64 md:w-80 lg:w-96 xl:w-[15rem]">
                         <FacebookShareButton url={currentUrl} className="mr-3">
                           <FacebookIcon size={32} round />
                         </FacebookShareButton>

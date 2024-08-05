@@ -40,6 +40,11 @@ export const CATEGORY_BREAKING_QUERY = gql`
               canonical
               focuskw
             }
+            tags {
+              nodes {
+                name
+              }
+            }
           }
           pageInfo {
             endCursor
@@ -131,6 +136,11 @@ export const CATEGORY_BREAKING_QUERY = gql`
                           canonical
                           focuskw
                         }
+                        tags {
+                          nodes {
+                            name
+                          }
+                        }
                       }
                     }
                   }
@@ -200,6 +210,11 @@ export const CATEGORY_BREAKING_QUERY = gql`
                         metaDesc
                         canonical
                         focuskw
+                      }
+                      tags {
+                        nodes {
+                          name
+                        }
                       }
                     }
                   }

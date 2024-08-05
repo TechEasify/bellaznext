@@ -57,6 +57,14 @@ function Music({ nodeByUri, fetchMore, loading }) {
   const posts = [];
   const [shuffledPost, setShuffledPosts] = useState([]);
 
+  console.log(nodeByUri, "nodeByUri music");
+
+  const Tag = nodeByUri?.nodeByUri?.posts?.nodes?.map(
+    (item) => item?.tags?.nodes
+  );
+
+  console.log(Tag, "music Yag");
+
   useEffect(() => {
     if (
       nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete
@@ -336,42 +344,49 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   </Link>
                 )}
                 {/* absolute top-[22%] left-[8%] bg-white p-6 border border-[#25AC7D] shadow max-w-[750px] w-full md:max-w-[750px] h-60 tablet-custom mobile-custom */}
-                  <div className="relative bottom-[8%] mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-64 tablet-custom mobile-custom">
-                    <p className="text-[15px] font-semibold text-red-800 uppercase tracking-widest">
-                      {nodeByUri?.nodeByUri?.name}
-                    </p>
-                    <Link href={`/news/${musicpost.slug}`}>
-                      <h5 className="text-[40px] font-extrabold text-black-900 dark:text-white hover:text-skyBlue mobile-custom-h5">
-                        {musicpost?.title}
-                      </h5>
-                    </Link>
-                    <p className="text-[15px] text-base font-extralight text-gray-800 mb-2">
+                {Tag !== undefined && Tag.map((item, index) => (
+  item.length > 0 && item.map((tag, tagIndex) => (
+    <span key={`${index}-${tagIndex}`} className="relative bottom-[3%] left-[76.8%] md:bottom-[7%] md:left-[88.2%] z-[999] bg-hotred text-white text-[14px] font-semibold tracking-widest me-2 px-4 md:px-6 py-1.5 md:py-2.5 dark:bg-gray-700 dark:text-red-400 border border-red-400 uppercase">
+      {tag.name}
+    </span>
+  ))
+))}
+                <div className="relative bottom-[8%] mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-64 tablet-custom mobile-custom">
+                  <p className="text-[15px] font-semibold text-red-800 uppercase tracking-widest">
+                    {nodeByUri?.nodeByUri?.name}
+                  </p>
+                  <Link href={`/news/${musicpost.slug}`}>
+                    <h5 className="text-[40px] font-extrabold text-black-900 dark:text-white hover:text-skyBlue mobile-custom-h5">
+                      {musicpost?.title}
+                    </h5>
+                  </Link>
+                  <p className="text-[15px] text-base font-extralight text-gray-800 mb-2">
+                    <span
+                      className="text-[18px] font-extrabold mr-1"
+                      style={{ color: "#40A6FB" }}
+                    >
+                      |
+                    </span>
+                    By
+                    <span
+                      className="font-extrabold mx-1"
+                      style={{ color: "#40A6FB" }}
+                    >
+                      {musicpost?.author?.node?.name}
                       <span
-                        className="text-[18px] font-extrabold mr-1"
+                        className="text-[36px] font-extrabold mx-1"
                         style={{ color: "#40A6FB" }}
                       >
-                        |
+                        .
                       </span>
-                      By
-                      <span
-                        className="font-extrabold mx-1"
-                        style={{ color: "#40A6FB" }}
-                      >
-                        {musicpost?.author?.node?.name}
-                        <span
-                          className="text-[36px] font-extrabold mx-1"
-                          style={{ color: "#40A6FB" }}
-                        >
-                          .
-                        </span>
-                      </span>
-                      {readingTime} MIN READ
-                    </p>
-                    <p
-                      className="text-[16px] font-extralight hidden md:block font-normal text-gray-700 dark:text-gray-400"
-                      dangerouslySetInnerHTML={{ __html: musicpost?.excerpt }}
-                    />
-                  </div>
+                    </span>
+                    {readingTime} MIN READ
+                  </p>
+                  <p
+                    className="text-[16px] font-extralight hidden md:block font-normal text-gray-700 dark:text-gray-400"
+                    dangerouslySetInnerHTML={{ __html: musicpost?.excerpt }}
+                  />
+                </div>
 
                 <div className="flex flex-wrap justify-around mt-[-8%]">
                   {nodeByUri?.nodeByUri?.categoryTamplate?.musicTemplete?.selectCategoryForAllPost?.nodes

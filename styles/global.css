@@ -277,6 +277,10 @@ a.politics.px-4.text-gray-800.hover\:bg-gray-100:hover {
   border-bottom: 1px solid #ffa500;
 }
 
+a.breaking_news.px-4.text-gray-800.hover\:bg-gray-100:hover {
+  border-bottom: 1px solid #CE3A42;
+}
+
 a.px-4.text-gray-800.hover\:bg-gray-100:hover {
   border-bottom: 1px solid #40a6fb;
 }
