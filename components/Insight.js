@@ -62,7 +62,7 @@ const Insight = () => {
   }, [nodeByUri]);
 
   console.log(nodeByUri?.nodeByUri, "nodeByUri?.nodeByUri");
-  
+  console.log(posts, "posts nodebyuri");
 
   const handleViewMore = async () => {
     if (hasNextPage && !categoryLoading) {

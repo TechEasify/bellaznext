@@ -19,39 +19,6 @@ const Advertisement = () => {
         <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
-      {/* {data !== undefined &&
-      <>
-        {data.page.homePage.allCategories.nodes.slice(0, 1).map((item) => {
-          console.log(item.posts.nodes, "item");
-          const firstNodeWithImage = item.posts.nodes.find(
-            (node) =>
-              node.featuredImage &&
-              node.featuredImage.node &&
-              node.featuredImage.node.srcSet
-          );
-        
-          return (
-            <React.Fragment key={item.id}>
-              {firstNodeWithImage && (
-                <ExportedImage
-                  style={{
-                    width: "1134px",
-                    height: "245px",
-                    objectFit: "fill",
-                    margin: "0 auto",
-                  }}
-                  priority={true}
-                  src={firstNodeWithImage.featuredImage.node.srcSet}
-                  alt={firstNodeWithImage.featuredImage.node.srcSet}
-                  width={1134}
-                  height={245}
-                />
-              )}
-            </React.Fragment>
-          );
-        })}
-      </>
-      }         */}
       {bannerData?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage
         ?.node?.sourceUrl ? (
         <Link

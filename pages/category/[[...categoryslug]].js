@@ -57,30 +57,30 @@ const CategoryPage = ({
   const router = useRouter();
   const { categoryslug } = router.query;
   const { nodeByUri, uri, loadingCategory, fetchMore } = useDialog();
-  const { seoData: headerSeoData, navData: headerNavData } = useHeader();
+  // const { seoData: headerSeoData, navData: headerNavData } = useHeader();
 
   const [title, setTitle] = useState("Belaaz News");
   const [description, setDescription] = useState("Default Description");
   const [canonical, setCanonical] = useState(`${url}${router.asPath}`);
 
-  useEffect(() => {
-    if (headerSeoData && headerNavData) {
-      headerSeoData.categories?.nodes.flatMap((item) => {
-        if (`/category/${categoryslug}` === `/category/${item.slug}`) {
-          setTitle(item?.seo?.title || "Belaaz News");
-          setDescription(item?.seo?.metaDesc || "Default Description");
-          setCanonical(item?.seo?.canonical || `${url}${router.asPath}`);
-        }
-      });
-    }
-  }, [categoryslug, headerSeoData]);
+  // useEffect(() => {
+  //   if (headerSeoData && headerNavData) {
+  //     headerSeoData.categories?.nodes.flatMap((item) => {
+  //       if (`/category/${categoryslug}` === `/category/${item.slug}`) {
+  //         setTitle(item?.seo?.title || "Belaaz News");
+  //         setDescription(item?.seo?.metaDesc || "Default Description");
+  //         setCanonical(item?.seo?.canonical || `${url}${router.asPath}`);
+  //       }
+  //     });
+  //   }
+  // }, [categoryslug, headerSeoData]);
 
   if (loadingCategory) {
     return <SkeletonLoader />;
   }
 
-  console.log(nodeByUri, "nodeByUri");
-  console.log(nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0], "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType");
+  // console.log(nodeByUri, "nodeByUri");
+  // console.log(nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0], "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType");
   
 
   return (

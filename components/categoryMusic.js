@@ -57,13 +57,9 @@ function Music({ nodeByUri, fetchMore, loading }) {
   const posts = [];
   const [shuffledPost, setShuffledPosts] = useState([]);
 
-  console.log(nodeByUri, "nodeByUri music");
-
   const Tag = nodeByUri?.nodeByUri?.posts?.nodes?.map(
     (item) => item?.tags?.nodes
   );
-
-  console.log(Tag, "music Yag");
 
   useEffect(() => {
     if (

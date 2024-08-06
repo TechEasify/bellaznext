@@ -113,17 +113,17 @@ export default function Component(props) {
 //   }
 // `;
 
-Component.query = gql`
-  ${Nav.fragments.entry}
-  query GetHomePage {
-    primaryMenuItems: menuItems(where: { location: PRIMARY }) {
-      nodes {
-        ...NavFragment
-      }
-    }
-    generalSettings {
-      title
-      description
-    }
-  }
-`;
+// Component.query = gql`
+//   ${Nav.fragments.entry}
+//   query GetHomePage {
+//     primaryMenuItems: menuItems(where: { location: PRIMARY }) {
+//       nodes {
+//         ...NavFragment
+//       }
+//     }
+//     generalSettings {
+//       title
+//       description
+//     }
+//   }
+// `;

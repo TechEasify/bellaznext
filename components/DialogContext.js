@@ -1,41 +1,10 @@
-import React, {
-  createContext,
-  lazy,
-  Suspense,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { gql, useQuery, useLazyQuery } from "@apollo/client";
-import {
-  GET_ABOUT_PAGE,
-  GET_ADVERTISE_PAGE,
-  GET_CONTACT_PAGE,
-  GET_HOME_PAGE,
-  GET_ICON_SECTION,
-  GET_INSIGHTS_SECTION,
-  GET_MENU_SECTION,
-  GET_MUSIC_SECTION,
-  GET_NAV_SECTION,
-  GET_SUBMENU_SECTION,
-  GET_TESTIMONIAL_SECTION,
-  GET_TOPHEADLINE_PAGE,
-  SEARCH_QUERY,
-  SEO_QUERY,
-} from "./queries/Queries";
-import {
-  CATEGORY_BREAKING_QUERY,
-  GET_NEWS_SECTION,
-  INSIGHTS_DATA,
-} from "./queries/categoryQueries";
+import React, { createContext, useContext, useEffect, useState, useMemo } from "react";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { GET_ABOUT_PAGE, GET_ADVERTISE_PAGE, GET_CONTACT_PAGE, GET_HOME_PAGE, GET_INSIGHTS_SECTION, GET_MUSIC_SECTION, GET_TESTIMONIAL_SECTION, SEARCH_QUERY } from "./queries/Queries";
+import { CATEGORY_BREAKING_QUERY, INSIGHTS_DATA } from "./queries/categoryQueries";
 
 const DialogContext = createContext();
-
-// Lazy load components that depend on data fetching
-const LazyComponent = lazy(() =>
-  import("../components/lazyComponent/LazyComponent")
-);
 
 export const useDialog = () => {
   return useContext(DialogContext);
@@ -44,26 +13,21 @@ export const useDialog = () => {
 export const DialogProvider = ({ children }) => {
   const router = useRouter();
   const { categoryslug, slug } = router.query;
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  // const [navData, setNavData] = useState(null);
-  const [nodeByUri, setNodeByUri] = useState(null);
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
-  const [dataNav, setDataNav] = useState(null);
-  const [dataIcon, setDataIcon] = useState(null);
+  const [nodeByUri, setNodeByUri] = useState(null);
   const [bannerData, setBannerData] = useState(null);
   const [insightsQuery, setInsightsQuery] = useState(null);
   const [musicQuery, setMusicQuery] = useState(null);
   const [categoryInsightData, setCategoryInsightData] = useState(null);
   const [testimonialQuery, setTestimonialQuery] = useState(null);
   const [searchData, setSearchData] = useState(null);
-  const [seoData, setSeoData] = useState(null);
   const [contactQuery, setContactQuery] = useState(null);
   const [aboutQuery, setAboutQuery] = useState(null);
-  const [advertiseQuery, setAdvertiseQuery] = useState(null)
+  const [advertiseQuery, setAdvertiseQuery] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const uri = `/category/${categoryslug}`;
-  const detailUri = `/${slug}`;
 
   const openDialog = () => {
     setIsDialogOpen(true);
@@ -160,63 +124,62 @@ export const DialogProvider = ({ children }) => {
     navDataSearch,
     contactData,
     aboutData,
-    advertiseData,
-    advertiseLoading,
-    advertiseError
+    advertiseData
   ]);
+
+  const memoizedPosts = useMemo(() => posts, [posts]);
+  const memoizedCursor = useMemo(() => cursor, [cursor]);
+  const memoizedNodeByUri = useMemo(() => nodeByUri, [nodeByUri]);
+  const memoizedBannerData = useMemo(() => bannerData, [bannerData]);
+  const memoizedInsightsQuery = useMemo(() => insightsQuery, [insightsQuery]);
+  const memoizedMusicQuery = useMemo(() => musicQuery, [musicQuery]);
+  const memoizedCategoryInsightData = useMemo(() => categoryInsightData, [categoryInsightData]);
+  const memoizedTestimonialQuery = useMemo(() => testimonialQuery, [testimonialQuery]);
+  const memoizedSearchData = useMemo(() => searchData, [searchData]);
+  const memoizedContactQuery = useMemo(() => contactQuery, [contactQuery]);
+  const memoizedAboutQuery = useMemo(() => aboutQuery, [aboutQuery]);
+  const memoizedAdvertiseQuery = useMemo(() => advertiseQuery, [advertiseQuery]);
 
   return (
     <DialogContext.Provider
       value={{
-        // setNavData,
-        // navData,
-        // dataNav,
-        posts,
+        posts: memoizedPosts,
         setPosts,
-        cursor,
+        cursor: memoizedCursor,
         setCursor,
         setNodeByUri,
-        nodeByUri,
+        nodeByUri: memoizedNodeByUri,
         isDialogOpen,
         openDialog,
         closeDialog,
-        dataIcon,
-        // loadingNav,
-        // loadingIcon,
         uri,
-        contactQuery,
+        contactQuery: memoizedContactQuery,
         loadingCategory,
         fetchMore,
         insightFetchMore,
-        bannerData,
+        bannerData: memoizedBannerData,
         bannerLoading,
         bannerError,
-        insightsQuery,
+        insightsQuery: memoizedInsightsQuery,
         insightsLoading,
         insightsError,
-        musicQuery,
+        musicQuery: memoizedMusicQuery,
         musicLoading,
         musicError,
-        // iconDataResult,
-        // errorIcon,
-        categoryInsightData,
+        categoryInsightData: memoizedCategoryInsightData,
         categoryLoading,
         categoryError,
-        testimonialQuery,
-        searchData,
+        testimonialQuery: memoizedTestimonialQuery,
+        searchData: memoizedSearchData,
         searchFetch,
         loadingSearch,
         errorSearch,
-        // seoData,
-        aboutQuery,
+        aboutQuery: memoizedAboutQuery,
         aboutLoading,
-        advertiseQuery
+        advertiseQuery: memoizedAdvertiseQuery,
       }}
     >
       {children}
-      {/* <Suspense fallback={<div>Loading Lazy Component...</div>}>
-        <LazyComponent children={children}/>
-      </Suspense> */}
     </DialogContext.Provider>
   );
 };

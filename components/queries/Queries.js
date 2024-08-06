@@ -122,11 +122,97 @@ export const GET_ICON_SECTION = gql`
 export const GET_HOME_PAGE = gql`
   query GetNodeByUriAndHomePage($id: ID = "745") {
     page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        heroSection {
-          heroPostCategory {
+      ... on Page {
+        homePage {
+          heroSection {
+            heroPostCategory {
+              nodes {
+                ... on Category {
+                  posts {
+                    nodes {
+                      slug
+                      categories {
+                        nodes {
+                          name
+                        }
+                      }
+                      title
+                      content
+                      excerpt
+                      author {
+                        node {
+                          name
+                        }
+                      }
+                      featuredImage {
+                        node {
+                          altText
+                          srcSet
+                          slug
+                          sourceUrl
+                        }
+                      }
+                      seo {
+                        title
+                        metaDesc
+                        canonical
+                        focuskw
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          topHeadlinesTitle
+          topHeadlineTitleLineColor
+          topHeadlinesPost {
             nodes {
               ... on Category {
+                name
+                slug
+                posts {
+                  nodes {
+                    slug
+                    featuredImage {
+                      node {
+                        altText
+                        slug
+                        srcSet
+                        sourceUrl
+                      }
+                    }
+                    categories {
+                      nodes {
+                        name
+                      }
+                    }
+                    title
+                    content
+                    author {
+                      node {
+                        name
+                      }
+                    }
+                    seo {
+                      title
+                      metaDesc
+                      canonical
+                      focuskw
+                    }
+                  }
+                }
+              }
+            }
+          }
+          topHeadlineSidebarTitle
+          topHeadlineSidebarTitleLineColor
+          topHeadlineSidebarPosts {
+            nodes {
+              ... on Category {
+                id
+                name
+                slug
                 posts {
                   nodes {
                     slug
@@ -136,13 +222,6 @@ export const GET_HOME_PAGE = gql`
                       }
                     }
                     title
-                    content
-                    excerpt
-                    author {
-                      node {
-                        name
-                      }
-                    }
                     featuredImage {
                       node {
                         altText
@@ -162,168 +241,91 @@ export const GET_HOME_PAGE = gql`
               }
             }
           }
-        }
-        topHeadlinesTitle
-        topHeadlineTitleLineColor
-        topHeadlinesPost {
-          nodes {
-            ... on Category {
-              name
-              slug
-              posts {
-                nodes {
-                  slug
-                  featuredImage {
-                    node {
-                      altText
-                      slug
-                      srcSet
-                      sourceUrl
+          topHeadlineSidebarFirstAd {
+            topHeadlineFirstAd {
+              node {
+                slug
+                altText
+                srcSet
+                sourceUrl
+              }
+            }
+            topHeadlineFirstAdCode
+            topHeadlineFirstAdLink
+          }
+          topHeadlineSidebarSinglePosts {
+            nodes {
+              ... on Category {
+                name
+                slug
+                posts {
+                  nodes {
+                    slug
+                    categories {
+                      nodes {
+                        name
+                      }
                     }
-                  }
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  content
-                  author {
-                    node {
-                      name
-                    }
-                  }
-                  seo {
                     title
-                    metaDesc
-                    canonical
-                    focuskw
+                    featuredImage {
+                      node {
+                        altText
+                        srcSet
+                        slug
+                        sourceUrl
+                      }
+                    }
+                    seo {
+                      title
+                      metaDesc
+                      canonical
+                      focuskw
+                    }
                   }
                 }
               }
             }
           }
-        }
-        topHeadlineSidebarTitle
-        topHeadlineSidebarTitleLineColor
-        topHeadlineSidebarPosts {
-          nodes {
-            ... on Category {
-              id
-              name
-              slug
-              posts {
-                nodes {
-                  slug
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                      sourceUrl
-                    }
-                  }
-                  seo {
-                    title
-                    metaDesc
-                    canonical
-                    focuskw
-                  }
-                }
+          topHeadlineSidebarSecondAd {
+            topHeadlineSecondAdImage {
+              node {
+                altText
+                srcSet
+                slug
+                sourceUrl
               }
             }
+            topHeadlineSecondAdLink
+            topHeadlineSecondAdCode
           }
-        }
-        topHeadlineSidebarFirstAd {
-          topHeadlineFirstAd {
-            node {
-              slug
-              altText
-              srcSet
-              sourceUrl
-            }
-          }
-          topHeadlineFirstAdCode
-          topHeadlineFirstAdLink
-        }
-        topHeadlineSidebarSinglePosts {
-          nodes {
-            ... on Category {
-              name
-              slug
-              posts {
-                nodes {
-                  slug
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                      sourceUrl
-                    }
-                  }
-                  seo {
-                    title
-                    metaDesc
-                    canonical
-                    focuskw
-                  }
-                }
+          topHeadlineBottomAd {
+            topHeadlineBottomAdImage {
+              node {
+                altText
+                srcSet
+                slug
+                sourceUrl
               }
             }
+            topHeadlineBottomAdCode
+            topHeadlineBottomAdLink
           }
-        }
-        topHeadlineSidebarSecondAd {
-          topHeadlineSecondAdImage {
+          twitterEmbedCodes {
+            twitterEmbedCode1
+            twitterEmbedCode2
+            twitterEmbedCode3
+            twitterEmbedCode4
+            twitterEmbedCode5
+            twitterEmbedCode6
+          }
+          ctaTitle
+          ctaDescription
+          ctaBackgroundImage {
             node {
               altText
               srcSet
-              slug
               sourceUrl
             }
-          }
-          topHeadlineSecondAdLink
-          topHeadlineSecondAdCode
-        }
-        topHeadlineBottomAd {
-          topHeadlineBottomAdImage {
-            node {
-              altText
-              srcSet
-              slug
-              sourceUrl
-            }
-          }
-          topHeadlineBottomAdCode
-          topHeadlineBottomAdLink
-        }
-        twitterEmbedCodes {
-          twitterEmbedCode1
-          twitterEmbedCode2
-          twitterEmbedCode3
-          twitterEmbedCode4
-          twitterEmbedCode5
-          twitterEmbedCode6
-        }
-        ctaTitle
-        ctaDescription
-        ctaBackgroundImage {
-          node {
-            altText
-            srcSet
-            sourceUrl
           }
         }
       }
@@ -664,42 +666,35 @@ export const SEARCH_QUERY = gql`
 `;
 
 export const SEO_QUERY = gql`
-  query MyQuery2 {
-    categories {
-      nodes {
+  query NewQuery($uri: String = "") {
+    nodeByUri(uri: $uri) {
+      ... on Category {
+        id
         name
-        slug
         seo {
           canonical
-          focuskw
+          fullHead
           metaDesc
-          metaKeywords
           title
         }
       }
-    }
-    pages {
-      nodes {
+      ... on Page {
+        id
         title
-        slug
         seo {
           canonical
-          focuskw
+          fullHead
           metaDesc
-          metaKeywords
           title
         }
       }
-    }
-    posts {
-      nodes {
+      ... on Post {
+        id
         title
-        slug
         seo {
           canonical
-          focuskw
+          fullHead
           metaDesc
-          metaKeywords
           title
         }
       }

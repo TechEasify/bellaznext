@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useMemo } from "react";
 import { useQuery } from "@apollo/client";
 import {
   GET_FOOTER_PAGE,
@@ -27,7 +27,6 @@ export const HeaderProvider = ({ children }) => {
   const [searchData, setSearchData] = useState(null);
   const [seoData, setSeoData] = useState(null);
   const [footerData, setFooterData] = useState(null);
-  const [nodeByUri, setNodeByUri] = useState(null);
 
   const uri = `/category/${categoryslug}`;
   const detailUri = `/${slug}`;
@@ -69,17 +68,7 @@ export const HeaderProvider = ({ children }) => {
     loading: loadingFooter,
     error: errorFooter,
     data: dataFooter,
-  } = useQuery(GET_FOOTER_PAGE);
-
-  const {
-    data: categoryData,
-    loading: loadingCategory,
-    error: errorCategory,
-    fetchMore,
-  } = useQuery(CATEGORY_BREAKING_QUERY, {
-    variables: { uri },
-    fetchPolicy: "cache-first",
-  });
+  } = useQuery(GET_FOOTER_PAGE, { fetchPolicy: "cache-first" });
 
   useEffect(() => {
     if (navDataResult) setNavData(navDataResult);
@@ -88,27 +77,37 @@ export const HeaderProvider = ({ children }) => {
     if (navDataSearch) setSearchData(navDataSearch);
     if (seoQuery) setSeoData(seoQuery);
     if (dataFooter) setFooterData(dataFooter);
-    if (categoryData) setNodeByUri(categoryData);
-  }, [navDataResult, iconDataResult, navDataSearch, seoQuery, dataFooter, categoryData]);
+  }, [navDataResult, iconDataResult, navDataSearch, seoQuery, dataFooter]);
+
+  const memoizedValue = useMemo(() => ({
+    setNavData,
+    navData,
+    dataIcon,
+    dataNav,
+    searchData,
+    searchFetch,
+    loadingSearch,
+    errorSearch,
+    seoData,
+    footerData,
+    loadingFooter,
+    errorFooter,
+  }), [
+    navData,
+    dataIcon,
+    dataNav,
+    searchData,
+    searchFetch,
+    loadingSearch,
+    errorSearch,
+    seoData,
+    footerData,
+    loadingFooter,
+    errorFooter,
+  ]);
 
   return (
-    <HeaderContext.Provider
-      value={{
-        setNavData,
-        navData,
-        dataIcon,
-        dataNav,
-        searchData,
-        searchFetch,
-        loadingSearch,
-        errorSearch,
-        seoData,
-        footerData,
-        loadingFooter,
-        errorFooter,
-        nodeByUri
-      }}
-    >
+    <HeaderContext.Provider value={memoizedValue}>
       {children}
     </HeaderContext.Provider>
   );

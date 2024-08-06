@@ -1,5 +1,4 @@
 import Document, {
-  DocumentContext,
   Html,
   Head,
   Main,
@@ -20,13 +19,6 @@ class MyDocument extends Document {
         <Head>
           {/* Favicons, Google site verification and other common meta tags across the site. */}
           <link rel="icon" href="/belaazicon.ico" />
-
-          {/* <script
-            async
-            defer
-            src="https://proxy.beyondwords.io/npm/@beyondwords/player@latest/dist/umd.js"
-          ></script> */}
-
           <script
             async
             type="text/javascript"
@@ -37,7 +29,7 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
           />
-          <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+          <script async src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
           {/* text to speech vocie */}
           {/* <script src="https://code.responsivevoice.org/responsivevoice.js?key=ynt9eohG"></script> */}

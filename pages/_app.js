@@ -12,49 +12,16 @@ import { HeaderProvider, useHeader } from "../components/HeaderContext";
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
 
-  // Use useEffect for analytics or any other side effects
-  useEffect(() => {
-    // ga.pageview(window.location);
-  }, []);
-
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      // ga.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
   return (
     <FaustProvider pageProps={pageProps}>
       <HeaderProvider>
-        <NavAndFooterWrapper>
-          <DialogProvider>
-            <Component {...pageProps} key={router.asPath} />
-          </DialogProvider>
-        </NavAndFooterWrapper>
+        <Nav />
+        <DialogProvider>
+          <Component {...pageProps} key={router.asPath} />
+        </DialogProvider>
+        <Footer/>
       </HeaderProvider>
     </FaustProvider>
-  );
-};
-
-const NavAndFooterWrapper = ({ children }) => {
-  const { navData, footerData } = useHeader();
-
-  const MemoizedNav = useMemo(() => <Nav navData={navData} />, [navData]);
-  const MemoizedFooter = useMemo(
-    () => <Footer data={footerData} />,
-    [footerData]
-  );
-
-  return (
-    <>
-      {MemoizedNav}
-      {children}
-      {MemoizedFooter}
-    </>
   );
 };
 
