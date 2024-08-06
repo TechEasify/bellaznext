@@ -2777,8 +2777,8 @@ const Nav = () => {
               backgroundColor: dataNav?.menu?.header?.headerBackgroundColor,
             }}
           >
-            {/* Mobile View */}
-            <div className="block lg:hidden items-center">
+           {/* Mobile View */}
+           <div className="block lg:hidden items-center">
               <div className="flex flex-col">
                 <div className="block lg:hidden flex justify-between">
                   <label htmlFor="simple-search" className="sr-only">
@@ -2822,8 +2822,8 @@ const Nav = () => {
                     onClick={toggleDropdownMobile}
                     className="flex text-white font-bold items-center mb-3"
                   >
-                    {dataNav !== undefined &&
-                      dataNav?.menu?.header?.mainMenuFirst}
+                    {dataNav?.menu?.header?.mainMenuFirst ??
+                      "Default Menu First"}
                     <Image
                       priority={true}
                       loader={customLoader}
@@ -2837,15 +2837,10 @@ const Nav = () => {
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={
-                          dataNav?.menu?.header?.subFirstLink !== null
-                            ? dataNav?.menu?.header?.subFirstLink?.url
-                            : "/"
-                        }
+                        href={dataNav?.menu?.header?.subFirstLink?.url ?? "/"}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav?.menu?.header?.subFirst}
+                        {dataNav?.menu?.header?.subFirst ?? "Sub First"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -2857,15 +2852,10 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={
-                          dataNav?.menu?.header?.subSecondLink !== null
-                            ? dataNav?.menu?.header?.subSecondLink?.url
-                            : "/"
-                        }
+                        href={dataNav?.menu?.header?.subSecondLink?.url ?? "/"}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav?.menu?.header?.subSecond}
+                        {dataNav?.menu?.header?.subSecond ?? "Sub Second"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -2877,15 +2867,10 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={
-                          dataNav?.menu?.header?.subThirdLink !== null
-                            ? dataNav?.menu?.header?.subThirdLink?.url
-                            : "/"
-                        }
+                        href={dataNav?.menu?.header?.subThirdLink?.url ?? "/"}
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav !== undefined &&
-                          dataNav?.menu?.header?.subThird}
+                        {dataNav?.menu?.header?.subThird ?? "Sub Third"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -2900,14 +2885,10 @@ const Nav = () => {
                   )}
                 </div>
                 <Link
-                  href={
-                    dataNav?.menu?.header?.mainMenuSecondLink !== null
-                      ? dataNav?.menu?.header?.mainMenuSecondLink?.url
-                      : "/"
-                  }
+                  href={dataNav?.menu?.header?.mainMenuSecondLink?.url ?? "/"}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined && dataNav.menu.header.mainMenuSecond}
+                  {dataNav?.menu?.header?.mainMenuSecond ?? "Main Menu Second"}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -2919,14 +2900,10 @@ const Nav = () => {
                   />
                 </Link>
                 <Link
-                  href={
-                    dataNav?.menu?.header?.mainMenuThirdLink !== null
-                      ? dataNav?.menu?.header?.mainMenuThirdLink?.url
-                      : "/"
-                  }
+                  href={dataNav?.menu?.header?.mainMenuThirdLink?.url ?? "/"}
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav !== undefined && dataNav.menu.header.mainMenuThird}
+                  {dataNav?.menu?.header?.mainMenuThird ?? "Main Menu Third"}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -2941,138 +2918,134 @@ const Nav = () => {
                 <div className="flex flex-col">
                   <Link
                     href={
-                      dataNav?.menu?.header?.foreSquareFirstLink !== null
-                        ? dataNav?.menu?.header?.foreSquareFirstLink?.url
-                        : "/"
+                      dataNav?.menu?.header?.foreSquareFirstLink?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {dataNav !== undefined &&
-                      dataNav?.menu?.header?.foreSquareFirst}
+                    {dataNav?.menu?.header?.foreSquareFirst ??
+                      "ForeSquare First"}
                   </Link>
                   <Link
                     href={
-                      dataNav?.menu?.header?.foreSquareSecondLink !== null
-                        ? dataNav?.menu?.header?.foreSquareSecondLink?.url
-                        : "/"
+                      dataNav?.menu?.header?.foreSquareSecondLink?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {dataNav !== undefined &&
-                      dataNav?.menu?.header?.foreSquareSecond}
+                    {dataNav?.menu?.header?.foreSquareSecond ??
+                      "ForeSquare Second"}
                   </Link>
                   <Link
                     href={
-                      dataNav?.menu?.header?.foreSquareThirdLink !== null
-                        ? dataNav?.menu?.header?.foreSquareThirdLink?.url
-                        : "/"
+                      dataNav?.menu?.header?.foreSquareThirdLink?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
-                    {dataNav !== undefined &&
-                      dataNav?.menu?.header?.foreSquareThird}
+                    {dataNav?.menu?.header?.foreSquareThird ??
+                      "ForeSquare Third"}
                   </Link>
                 </div>
-              </div>
-              <div className="flex justify-end items-end mt-4">
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                    ?.sourceUrl && (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
-                      src={
-                        dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                          ?.sourceUrl
-                      }
-                      alt="Whatsapp Icon"
-                      width={39.99}
-                      height={40}
-                    />
-                  )}
-                </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  {dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                    ?.sourceUrl && (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
-                      src={
-                        dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                          ?.sourceUrl
-                      }
-                      alt="Facebook Icon"
-                      width={39.99}
-                      height={40}
-                    />
-                  )}
-                </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  {dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                    ?.sourceUrl && (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
-                      src={
-                        dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                          ?.sourceUrl
-                      }
-                      alt="Instagram Icon"
-                      width={39.99}
-                      height={40}
-                    />
-                  )}
-                </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
-                      src={
-                        dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
-                      }
-                      alt="Twitter Icon"
-                      width={39.99}
-                      height={40}
-                    />
-                  )}
-                </Link>
-                <Link
-                  href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
-                  className="px-4 py-2"
-                >
-                  {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                    ?.sourceUrl && (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
-                      src={
-                        dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                          ?.sourceUrl
-                      }
-                      alt="Youtube Icon"
-                      width={39.99}
-                      height={40}
-                    />
-                  )}
-                </Link>
+                <div className="flex justify-end items-end mt-4">
+                  <Link
+                    href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
+                    className="px-4 py-2"
+                  >
+                    {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                      ?.sourceUrl ? (
+                      <Image
+                        priority={true}
+                        loader={customLoader}
+                        className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
+                        src={
+                          dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                            ?.sourceUrl
+                        }
+                        alt="Whatsapp Icon"
+                        width={39.99}
+                        height={40}
+                      />
+                    ) : null}
+                  </Link>
+                  <Link
+                    href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
+                    className="px-4 py-2"
+                  >
+                    {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                      ?.sourceUrl ? (
+                      <Image
+                        priority={true}
+                        loader={customLoader}
+                        className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
+                        src={
+                          dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                            ?.sourceUrl
+                        }
+                        alt="Facebook Icon"
+                        width={39.99}
+                        height={40}
+                      />
+                    ) : null}
+                  </Link>
+                  <Link
+                    href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
+                    className="px-4 py-2"
+                  >
+                    {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                      ?.sourceUrl ? (
+                      <Image
+                        priority={true}
+                        loader={customLoader}
+                        className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
+                        src={
+                          dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                            ?.sourceUrl
+                        }
+                        alt="Instagram Icon"
+                        width={39.99}
+                        height={40}
+                      />
+                    ) : null}
+                  </Link>
+                  <Link
+                    href={dataIcon?.menu?.socialIcons?.twitterLink ?? "/"}
+                    className="px-4 py-2"
+                  >
+                    {dataIcon?.menu?.socialIcons?.twitterIcon?.node
+                      ?.sourceUrl ? (
+                      <Image
+                        priority={true}
+                        loader={customLoader}
+                        className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
+                        src={
+                          dataIcon?.menu?.socialIcons?.twitterIcon?.node
+                            ?.sourceUrl
+                        }
+                        alt="Twitter Icon"
+                        width={39.99}
+                        height={40}
+                      />
+                    ) : null}
+                  </Link>
+                  <Link
+                    href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
+                    className="px-4 py-2"
+                  >
+                    {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                      ?.sourceUrl ? (
+                      <Image
+                        priority={true}
+                        loader={customLoader}
+                        className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
+                        src={
+                          dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                            ?.sourceUrl
+                        }
+                        alt="Youtube Icon"
+                        width={39.99}
+                        height={40}
+                      />
+                    ) : null}
+                  </Link>
+                </div>
               </div>
             </div>
 
@@ -3080,37 +3053,23 @@ const Nav = () => {
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={
-                    dataNav?.menu?.header?.foreSquareFirstLink !== null
-                      ? dataNav?.menu?.header?.foreSquareFirstLink?.url
-                      : "/"
-                  }
+                  href={dataNav?.menu?.header?.foreSquareFirstLink?.url ?? "/"}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav !== undefined &&
-                    dataNav?.menu?.header?.foreSquareFirst}
+                  {dataNav?.menu?.header?.foreSquareFirst ?? "ForeSquare First"}
                 </Link>
                 <Link
-                  href={
-                    dataNav?.menu?.header?.foreSquareSecondLink !== null
-                      ? dataNav?.menu?.header?.foreSquareSecondLink?.url
-                      : "/"
-                  }
+                  href={dataNav?.menu?.header?.foreSquareSecondLink?.url ?? "/"}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav !== undefined &&
-                    dataNav?.menu?.header?.foreSquareSecond}
+                  {dataNav?.menu?.header?.foreSquareSecond ??
+                    "ForeSquare Second"}
                 </Link>
                 <Link
-                  href={
-                    dataNav?.menu?.header?.foreSquareThirdLink !== null
-                      ? dataNav?.menu?.header?.foreSquareThirdLink?.url
-                      : "/"
-                  }
+                  href={dataNav?.menu?.header?.foreSquareThirdLink?.url ?? "/"}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav !== undefined &&
-                    dataNav?.menu?.header?.foreSquareThird}
+                  {dataNav?.menu?.header?.foreSquareThird ?? "ForeSquare Third"}
                 </Link>
               </div>
             </div>
@@ -3122,7 +3081,7 @@ const Nav = () => {
                 href={dataIcon?.menu?.socialIcons?.whatsappLink ?? "/"}
                 className="px-4 py-2"
               >
-                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl && (
+                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node?.sourceUrl ? (
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -3134,13 +3093,13 @@ const Nav = () => {
                     width={39.99}
                     height={40}
                   />
-                )}
+                ) : null}
               </Link>
               <Link
                 href={dataIcon?.menu?.socialIcons?.facebookLink ?? "/"}
                 className="px-4 py-2"
               >
-                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl && (
+                {dataIcon?.menu?.socialIcons?.facebookIcon?.node?.sourceUrl ? (
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -3152,14 +3111,13 @@ const Nav = () => {
                     width={39.99}
                     height={40}
                   />
-                )}
+                ) : null}
               </Link>
               <Link
                 href={dataIcon?.menu?.socialIcons?.instagramLink ?? "/"}
                 className="px-4 py-2"
               >
-                {dataIcon?.menu?.socialIcons?.instagramIcon?.node
-                  ?.sourceUrl && (
+                {dataIcon?.menu?.socialIcons?.instagramIcon?.node?.sourceUrl ? (
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -3172,31 +3130,31 @@ const Nav = () => {
                     width={39.99}
                     height={40}
                   />
-                )}
+                ) : null}
               </Link>
               <Link
-                href={dataIcon?.menu?.socialIcons?.twiterLink ?? "/"}
+                href={dataIcon?.menu?.socialIcons?.twitterLink ?? "/"}
                 className="px-4 py-2"
               >
-                {dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl && (
+                {dataIcon?.menu?.socialIcons?.twitterIcon?.node?.sourceUrl ? (
                   <Image
                     priority={true}
                     loader={customLoader}
                     className="h-8 w-8 mx-1 hover:scale-110 hover:opacity-80"
                     src={
-                      dataIcon?.menu?.socialIcons?.twiterIcon?.node?.sourceUrl
+                      dataIcon?.menu?.socialIcons?.twitterIcon?.node?.sourceUrl
                     }
                     alt="Twitter Icon"
                     width={39.99}
                     height={40}
                   />
-                )}
+                ) : null}
               </Link>
               <Link
                 href={dataIcon?.menu?.socialIcons?.youtubeLink ?? "/"}
                 className="px-4 py-2"
               >
-                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl && (
+                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node?.sourceUrl ? (
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -3208,7 +3166,7 @@ const Nav = () => {
                     width={39.99}
                     height={40}
                   />
-                )}
+                ) : null}
               </Link>
             </div>
           </nav>
