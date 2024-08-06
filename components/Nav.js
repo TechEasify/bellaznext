@@ -579,7 +579,7 @@ const Nav = () => {
                 handleLinkClick(dataNav?.menus?.nodes[0].header?.subThirdLink?.url)
               }
             >
-              {dataNav !== undefined && dataNav.menu.header.subThird}
+              {dataNav !== undefined && dataNav?.menus?.nodes[0].header.subThird}
             </Link>
             {activeLink === dataNav?.menus?.nodes[0].header?.subThirdLink?.url &&
               router.asPath === dataNav?.menus?.nodes[0].header?.subThirdLink?.url && (
