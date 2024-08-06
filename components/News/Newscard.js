@@ -60,10 +60,6 @@ const GET_CARD_SECTION = gql`
 
 const Newscard = ({ nodeByUri }) => {
   const { loading, error, data } = useQuery(GET_CARD_SECTION);
-  console.log(
-    nodeByUri,
-    "nodeByUri card"
-  );
 
   const section1 =
     nodeByUri?.nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section1

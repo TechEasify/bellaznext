@@ -71,8 +71,6 @@ function Music({ nodeByUri, fetchMore, loading }) {
           (item) => item.posts.nodes
         );
 
-      console.log(posts, "postspostsposts");
-
       setShuffledPosts(posts);
     }
   }, [nodeByUri.nodeByUri]);
@@ -86,8 +84,6 @@ function Music({ nodeByUri, fetchMore, loading }) {
   );
 
   const shuffledPosts = shuffle(posts);
-
-  console.log(shuffledPost, "shuffledPost");
 
   // Check if posts have unique identifier (id or slug)
   const hasUniqueId = (post) => post.id || post.slug;
@@ -398,7 +394,6 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 <div className="flex flex-wrap justify-around mt-[-8%]">
                   {nodeByUri?.nodeByUri?.posts?.nodes
                     .map((item) => {
-                      console.log(item, "item music");
                       return (
                         <div
                           key={item.slug}

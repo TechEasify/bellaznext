@@ -83,7 +83,6 @@ const Nav = () => {
   const router = useRouter();
   const { categoryslug, slug } = router.query;
   const uri = `/category/${categoryslug}`;
-  console.log(router, "router");
   
   const {
     data: nodeByUri,
@@ -102,8 +101,6 @@ const Nav = () => {
   const [toggleDropdown1, setToggleDropdown1] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const isMobile = useIsMobile();
-
-  console.log(dataIcon, "dataIcon");
 
   useEffect(() => {
     setSubscribe(router.pathname);
@@ -163,9 +160,6 @@ const Nav = () => {
     }
   };
 
-  console.log(dataNav?.menus?.nodes[0].header, "dataNav");
-  console.log(nodeByUri, "nodeByUri nodeByUri");
-  
   return (
     <>
       <Head>

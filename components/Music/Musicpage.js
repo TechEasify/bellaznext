@@ -64,9 +64,6 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
     }
   };
 
-  console.log(posts, "posts music card");
-  
-
   return (
     <>
       <div className="hidden md:block px-4 py-16 mx-auto max-w-screen-xl">

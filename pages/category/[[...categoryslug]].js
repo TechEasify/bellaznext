@@ -80,7 +80,6 @@ const CategoryPage = ({
   }
 
   // console.log(nodeByUri, "nodeByUri");
-  // console.log(nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0], "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType");
   
 
   return (
@@ -88,8 +87,6 @@ const CategoryPage = ({
       <Layout>
         {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
         "Template-1" ? (
-          console.log("true"),
-          
           <main>
             <Insight
               nodeByUri={nodeByUri}
@@ -100,7 +97,6 @@ const CategoryPage = ({
           </main>
         ) : nodeByUri?.nodeByUri?.categoryTamplate
             ?.selectYourTempleteType[0] === "Template-2" ? (
-              console.log("false"),
           <main>
             <Music
               nodeByUri={nodeByUri}

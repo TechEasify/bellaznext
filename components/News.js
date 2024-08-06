@@ -193,8 +193,6 @@ function News() {
     fetchPolicy: "cache-first",
   });
 
-  console.log(newsData, "newsData");
-
   useEffect(() => {
     if (newsData) {
       setNavData(newsData);
@@ -244,9 +242,6 @@ function News() {
   const sidebarAds = newsData?.nodeByUri?.categories?.nodes?.flatMap(
     (ads) => ads?.posts?.nodes
   );
-
-  console.log(newsData, "newsData newsData");
-  console.log(sidebarAds, "sidebarAds");
 
   return (
     <>
@@ -521,7 +516,6 @@ function News() {
                   style={{ maxWidth: "500px" }}
                 >
                   {sidebarAds.slice(1).map((item) => {
-                    console.log(item, "item sidebar music");
                     return (
                       item?.postDetailsEdit?.sidebarFirstAd?.adImage && (
                         <Image
@@ -542,10 +536,7 @@ function News() {
                   })}
 
                   {newsData?.nodeByUri?.categories?.nodes.slice(0, 1).map((item) => (
-                    console.log(item.posts.nodes, "item data"),
                     item.posts.nodes.slice(0, 1).map((posts) => (
-                      console.log(posts, "posts news"),
-                      
                       <div key={item.id} className="w-full max-w-3xl mx-auto">
                       <p className="text-[22px] font-bold text-black-900 italic">
                       {posts?.postDetailsEdit?.title}
@@ -560,8 +551,6 @@ function News() {
                       {posts?.postDetailsEdit?.moreNewsSelectCategory?.nodes
                           .slice(0, 1)
                           .map((side) => (
-                            console.log(side, "side first"),
-                            
                             <div className="mt-5 mb-5 w-64" key={side.id}>
                               {side.posts.nodes
                                 .slice(0, 1)

@@ -30,6 +30,7 @@ import Ads from "./googleAds/Ads";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useHeader } from "./HeaderContext";
+import SearchIcon from '@mui/icons-material/Search';
 
 const customLoader = ({ src }) => {
   return src;
@@ -314,31 +315,26 @@ const Banner = () => {
             </div>
           </div>
           <div className="hidden md:block w-full max-w-3xl mx-auto">
-            <div className="relative hidden md:block w-full mb-2">
-              <svg
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-black"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zm-5.442 0a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z" />
-              </svg>
-              <input
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full"
-                id="FullName"
-                type="text"
-                placeholder="Zmanim"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    handleSearch(e);
-                  }
-                }}
-              />
-            </div>
+          <div className="relative hidden md:block w-full mb-2">
+      {/* Search Icon */}
+      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <SearchIcon className="text-gray-500" />
+      </div>
+      {/* Input Field */}
+      <input
+        className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full"
+        id="FullName"
+        type="text"
+        placeholder="Zmanim"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            handleSearch(e);
+          }
+        }}
+      />
+    </div>
 
             {/* <div
               className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
