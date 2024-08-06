@@ -13,6 +13,8 @@ export const useDialog = () => {
 export const DialogProvider = ({ children }) => {
   const router = useRouter();
   const { categoryslug, slug } = router.query;
+  console.log(slug, "slug");
+  console.log(categoryslug, "categoryslug");
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [nodeByUri, setNodeByUri] = useState(null);
@@ -143,6 +145,7 @@ export const DialogProvider = ({ children }) => {
   return (
     <DialogContext.Provider
       value={{
+        categoryData,
         posts: memoizedPosts,
         setPosts,
         cursor: memoizedCursor,

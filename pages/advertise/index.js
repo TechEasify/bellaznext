@@ -46,17 +46,17 @@ function Index() {
   const { advertiseQuery, advertiseLoading, advertiseError } = useDialog();
   const { seoData } = useHeader();
 
-  let title;
-  let description;
-  let canonical;
+  // let title;
+  // let description;
+  // let canonical;
 
-  seoData?.pages?.nodes.flatMap((item) => {
-    if (item.title === "Advertise" && router.asPath === `/${item.slug}`) {
-      title = item?.seo?.title || "Belaaz News";
-      description = item?.seo?.metaDesc || "Default Description";
-      canonical = item?.seo?.canonical || `${url}${router.asPath}`;
-    }
-  });
+  // seoData?.pages?.nodes.flatMap((item) => {
+  //   if (item.title === "Advertise" && router.asPath === `/${item.slug}`) {
+  //     title = item?.seo?.title || "Belaaz News";
+  //     description = item?.seo?.metaDesc || "Default Description";
+  //     canonical = item?.seo?.canonical || `${url}${router.asPath}`;
+  //   }
+  // });
 
   if (advertiseLoading) return <SkeletonLoader />;
   if (advertiseError) return <p>Error: {error.message}</p>;
@@ -66,7 +66,7 @@ function Index() {
   return (
     <>
       {/* <Nav /> */}
-      <Layout title={title} description={description} canonical={canonical}>
+      <Layout>
         <div className="px-4 py-8 mx-auto max-w-[821px]">
           <h1 className="text-[24px] md:text-[40px] text-center text-black-900 font-semibold mb-3">
             {advertiseQuery?.page?.advertise?.title}

@@ -30,17 +30,17 @@ function Index() {
     setOpenAccordion((prev) => (prev === section ? null : section));
   };
 
-  let title;
-  let description;
-  let canonical;
+  // let title;
+  // let description;
+  // let canonical;
 
-  seoData?.pages?.nodes.flatMap((item) => {
-    if (item.title === "About" && router.asPath === `/${item.slug}`) {
-      title = item?.seo?.title || "Belaaz News";
-      description = item?.seo?.metaDesc || "Default Description";
-      canonical = item?.seo?.canonical || `${url}${router.asPath}`;
-    }
-  });
+  // seoData?.pages?.nodes.flatMap((item) => {
+  //   if (item.title === "About" && router.asPath === `/${item.slug}`) {
+  //     title = item?.seo?.title || "Belaaz News";
+  //     description = item?.seo?.metaDesc || "Default Description";
+  //     canonical = item?.seo?.canonical || `${url}${router.asPath}`;
+  //   }
+  // });
 
   if (aboutLoading)
     return (
@@ -60,7 +60,7 @@ function Index() {
   return (
     <>
       {/* <Nav /> */}
-      <Layout title={title} description={description} canonical={canonical}>
+      <Layout>
         <div className="px-4 py-20 mx-auto max-w-screen-xl sm:mb-20">
           {aboutQuery && aboutQuery?.page && (
             <div>

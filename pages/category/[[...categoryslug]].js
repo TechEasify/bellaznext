@@ -85,7 +85,7 @@ const CategoryPage = ({
 
   return (
     <>
-      <Layout title={title} description={description} canonical={canonical}>
+      <Layout>
         {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
         "Template-1" ? (
           console.log("true"),

@@ -12,14 +12,17 @@ import { HeaderProvider, useHeader } from "../components/HeaderContext";
 const App = ({ Component, pageProps }) => {
   const router = useRouter();
 
+  const memoizedNav = useMemo(() => <Nav />, []);
+  const memoizedFooter = useMemo(() => <Footer />, []);
+
   return (
     <FaustProvider pageProps={pageProps}>
       <HeaderProvider>
-        <Nav />
+        {memoizedNav}
         <DialogProvider>
           <Component {...pageProps} key={router.asPath} />
         </DialogProvider>
-        <Footer/>
+        {memoizedFooter}
       </HeaderProvider>
     </FaustProvider>
   );

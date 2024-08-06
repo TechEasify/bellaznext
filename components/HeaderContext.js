@@ -8,8 +8,6 @@ import {
   SEO_QUERY,
 } from "./queries/Queries";
 import { useRouter } from "next/router";
-import Footer from "./Footer";
-import { CATEGORY_BREAKING_QUERY } from "./queries/categoryQueries";
 
 const HeaderContext = createContext();
 

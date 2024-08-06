@@ -47,21 +47,21 @@ function Index() {
     setOpenAccordion((prev) => (prev === section ? null : section));
   };
 
-  let title;
-  let description;
-  let canonical;
+  // let title;
+  // let description;
+  // let canonical;
 
-  seoData?.pages?.nodes.flatMap((item) => {
-    if (item.title === "Contact Us" && router.asPath === `/${item.slug}`) {
-      title = item?.seo?.title || "Belaaz News";
-      description = item?.seo?.metaDesc || "Default Description";
-      canonical = item?.seo?.canonical || `${url}${router.asPath}`;
-    }
-  });
+  // seoData?.pages?.nodes.flatMap((item) => {
+  //   if (item.title === "Contact Us" && router.asPath === `/${item.slug}`) {
+  //     title = item?.seo?.title || "Belaaz News";
+  //     description = item?.seo?.metaDesc || "Default Description";
+  //     canonical = item?.seo?.canonical || `${url}${router.asPath}`;
+  //   }
+  // });
 
   return (
     <>
-      <Layout title={title} description={description} canonical={canonical}>
+      <Layout>
         <div className="px-4 py-8 mx-auto max-w-screen-xl">
           <nav className="flex hidden md:block" aria-label="Breadcrumb">
             <ol className="inline-flex items-center mb-3 sm:mb-0">

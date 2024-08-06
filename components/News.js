@@ -244,10 +244,9 @@ function News() {
   const sidebarAds = newsData?.nodeByUri?.categories?.nodes?.flatMap(
     (ads) => ads?.posts?.nodes
   );
-  
+
   console.log(newsData, "newsData newsData");
   console.log(sidebarAds, "sidebarAds");
-  
 
   return (
     <>
@@ -291,7 +290,7 @@ function News() {
             <div className="grid grid-cols-1 md:grid-cols-[1fr_0px] gap-7">
               <div className="flex flex-col md:flex-row justify-center gap-6 px-3 ">
                 <div className="max-w-4xl text-white">
-                  <div className="py-8 px-0 md:px-8 text-left">
+                  <div className="py-8 mx-7 px-0 md:px-8 text-left">
                     <div className="flex w-full justify-between items-center">
                       <p className="text-[15px] uppercase tracking-widest text-base font-semibold text-red-800">
                         {newsData?.nodeByUri?.categories?.nodes[0]?.name}
@@ -542,7 +541,226 @@ function News() {
                     );
                   })}
 
-                  <div className="w-full max-w-3xl mx-auto">
+                  {newsData?.nodeByUri?.categories?.nodes.slice(0, 1).map((item) => (
+                    console.log(item.posts.nodes, "item data"),
+                    item.posts.nodes.slice(0, 1).map((posts) => (
+                      console.log(posts, "posts news"),
+                      
+                      <div key={item.id} className="w-full max-w-3xl mx-auto">
+                      <p className="text-[22px] font-bold text-black-900 italic">
+                      {posts?.postDetailsEdit?.title}
+                      </p>
+                      <hr
+                        className="text-red-800"
+                        style={{
+                          height: "7px",
+                          background: `${data?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
+                        }}
+                      />
+                      {posts?.postDetailsEdit?.moreNewsSelectCategory?.nodes
+                          .slice(0, 1)
+                          .map((side) => (
+                            console.log(side, "side first"),
+                            
+                            <div className="mt-5 mb-5 w-64" key={side.id}>
+                              {side.posts.nodes
+                                .slice(0, 1)
+                                .map((itemdata) => (
+                                  <div key={itemdata.id} className="w-[290px]">
+                                    <div className="flex my-3">
+                                      <div className="mr-2 w-48 mb-2">
+                                        <p className="text-[10px] font-bold text-red-800 uppercase tracking-widest">
+                                          {side?.name}
+                                        </p>
+                                        <Link
+                                          href={`/news/${itemdata?.slug}`}
+                                          passHref
+                                        >
+                                          <p className="text-[13px] font-semibold text-black hover:text-skyBlue">
+                                            {itemdata?.title}
+                                          </p>
+                                        </Link>
+                                      </div>
+                                      {itemdata?.featuredImage?.node
+                                        ?.sourceUrl ? (
+                                        <Image
+                                          priority={true}
+                                          loader={customLoader}
+                                          src={
+                                            itemdata?.featuredImage?.node
+                                              ?.sourceUrl
+                                          }
+                                          alt={itemdata?.title}
+                                          className="object-cover w-[68px] h-[76px] mr-2"
+                                          width={68}
+                                          height={76}
+                                        />
+                                      ) : (
+                                        <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                          No Image
+                                        </div>
+                                      )}
+                                    </div>
+                                    <hr />
+                                  </div>
+                                ))}
+                            </div>
+                          ))}
+                      <p className="text-[15px] font-bold text-black-900 italic mt-10">
+                        FOLLOW US
+                      </p>
+                      <hr
+                        className="text-red-800"
+                        style={{ height: "7px", background: "#CE3A42" }}
+                      />
+                      <div className="flex mt-5 mb-8">
+                        {dataIcon?.menu?.socialIcons?.whatsappLink && (
+                          <Link
+                            href={dataIcon?.menu?.socialIcons?.whatsappLink}
+                          >
+                            {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
+                              ?.sourceUrl && (
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                src={
+                                  dataIcon?.menu?.socialIcons?.whatsappIcon
+                                    ?.node?.sourceUrl
+                                }
+                                alt="WhatsApp"
+                                className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                width={39.99}
+                                height={40}
+                              />
+                            )}
+                          </Link>
+                        )}
+                        {dataIcon?.menu?.socialIcons?.facebookLink && (
+                          <Link
+                            href={dataIcon?.menu?.socialIcons?.facebookLink}
+                          >
+                            {dataIcon?.menu?.socialIcons?.facebookIcon?.node
+                              ?.sourceUrl && (
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                src={
+                                  dataIcon?.menu?.socialIcons?.facebookIcon
+                                    ?.node?.sourceUrl
+                                }
+                                alt="Facebook"
+                                className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                width={39.99}
+                                height={40}
+                              />
+                            )}
+                          </Link>
+                        )}
+                        {dataIcon?.menu?.socialIcons?.instagramLink && (
+                          <Link
+                            href={dataIcon?.menu?.socialIcons?.instagramLink}
+                          >
+                            {dataIcon?.menu?.socialIcons?.instagramIcon?.node
+                              ?.sourceUrl && (
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                src={
+                                  dataIcon?.menu?.socialIcons?.instagramIcon
+                                    ?.node?.sourceUrl
+                                }
+                                alt="Instagram"
+                                className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                width={39.99}
+                                height={40}
+                              />
+                            )}
+                          </Link>
+                        )}
+                        {dataIcon?.menu?.socialIcons?.twitterLink && (
+                          <Link href={dataIcon?.menu?.socialIcons?.twitterLink}>
+                            {dataIcon?.menu?.socialIcons?.twitterIcon?.node
+                              ?.sourceUrl && (
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                src={
+                                  dataIcon?.menu?.socialIcons?.twitterIcon?.node
+                                    ?.sourceUrl
+                                }
+                                alt="Twitter"
+                                className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                width={39.99}
+                                height={40}
+                              />
+                            )}
+                          </Link>
+                        )}
+                        {dataIcon?.menu?.socialIcons?.youtubeLink && (
+                          <Link href={dataIcon?.menu?.socialIcons?.youtubeLink}>
+                            {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                              ?.sourceUrl && (
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                src={
+                                  dataIcon?.menu?.socialIcons?.youtubeIcon?.node
+                                    ?.sourceUrl
+                                }
+                                alt="YouTube"
+                                className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                width={39.99}
+                                height={40}
+                              />
+                            )}
+                          </Link>
+                        )}
+                      </div>
+                      <p className="text-[15px] font-bold text-black-900 italic">
+                        FOLLOW BELAAZ ON WhatsApp
+                      </p>
+                      <hr
+                        className="text-red-800"
+                        style={{ height: "7px", background: "#CE3A42" }}
+                      />
+                      <div className="flex mt-5 mb-8">
+                        <Link
+                          href={
+                            dataIcon?.menu?.followBelaazOnWhatsapp
+                              ?.whatsappStatusLink ?? "/"
+                          }
+                        >
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={Frame208}
+                            alt="WhatsApp Status"
+                            className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                            width={101}
+                            height={32}
+                          />
+                        </Link>
+                        <Link
+                          href={
+                            dataIcon?.menu?.followBelaazOnWhatsapp
+                              ?.whatsappGroupLink ?? "/"
+                          }
+                        >
+                          <Image
+                            priority={true}
+                            loader={customLoader}
+                            src={Frame209}
+                            alt="WhatsApp Group"
+                            className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                            width={101}
+                            height={32}
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                    ))
+                  ))}
+                  {/* <div className="w-full max-w-3xl mx-auto">
                     <p className="text-[22px] font-bold text-black-900 italic">
                       MORE FROM BELAAZ NEWS
                     </p>
@@ -748,7 +966,7 @@ function News() {
                         />
                       </Link>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

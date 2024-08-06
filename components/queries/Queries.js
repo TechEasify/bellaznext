@@ -1,65 +1,67 @@
 import { gql } from "@apollo/client";
 
 export const GET_NAV_SECTION = gql`
-  query ($id: ID = "230") {
-    menu(id: $id, idType: DATABASE_ID) {
-      header {
-        topFirst
-        topFirstLinks {
-          url
-        }
-        topSecond
-        topSecondLinks {
-          url
-        }
-        topThird
-        topThirdLinks {
-          url
-        }
-        topFore
-        topForeLinks {
-          url
-        }
-        foreSquareFirst
-        foreSquareFirstLink {
-          url
-        }
-        foreSquareSecond
-        foreSquareSecondLink {
-          url
-        }
-        foreSquareThird
-        foreSquareThirdLink {
-          url
-        }
-        headerButton {
-          link
-          text
-        }
-        headerBackgroundColor
-        mainMenuFirst
-        mainMenuFirstLink {
-          url
-        }
-        mainMenuSecond
-        mainMenuSecondLink {
-          url
-        }
-        mainMenuThird
-        mainMenuThirdLink {
-          url
-        }
-        subFirst
-        subFirstLink {
-          url
-        }
-        subSecond
-        subSecondLink {
-          url
-        }
-        subThird
-        subThirdLink {
-          url
+  query {
+    menus(where: { location: PRIMARY, id: 230 }) {
+      nodes {
+        header {
+          topFirst
+          topFirstLinks {
+            url
+          }
+          topSecond
+          topSecondLinks {
+            url
+          }
+          topThird
+          topThirdLinks {
+            url
+          }
+          topFore
+          topForeLinks {
+            url
+          }
+          foreSquareFirst
+          foreSquareFirstLink {
+            url
+          }
+          foreSquareSecond
+          foreSquareSecondLink {
+            url
+          }
+          foreSquareThird
+          foreSquareThirdLink {
+            url
+          }
+          headerButton {
+            link
+            text
+          }
+          headerBackgroundColor
+          mainMenuFirst
+          mainMenuFirstLink {
+            url
+          }
+          mainMenuSecond
+          mainMenuSecondLink {
+            url
+          }
+          mainMenuThird
+          mainMenuThirdLink {
+            url
+          }
+          subFirst
+          subFirstLink {
+            url
+          }
+          subSecond
+          subSecondLink {
+            url
+          }
+          subThird
+          subThirdLink {
+            url
+          }
         }
       }
     }
