@@ -5,7 +5,7 @@
   
 [build]
   publish = ".next"
-  command = "npm run build"
+  command = "npm run build and npm run start"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
