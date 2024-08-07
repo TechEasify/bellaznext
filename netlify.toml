@@ -4,8 +4,8 @@
   status = 200
   
 [build]
-  publish = ".next"
-  command = "npm run build && npm run start"
+  publish = "out"
+  command = "npm run export"
 
 [build.environment]
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
