@@ -124,8 +124,7 @@ const Nav = () => {
 
     const removeDataTimeout = setTimeout(() => {
       localStorage.removeItem('dataNav');
-    }, 24 * 60 * 60 * 1000); // Remove data after 24 hours
-
+    }, 24 * 60 * 60 * 1000); 
     return () => clearTimeout(removeDataTimeout);
   }, []);
 
