@@ -493,7 +493,7 @@ const Nav = () => {
                     onClick={toggleDropdown}
                     className="flex text-white font-medium items-center text-[20px]"
                   >
-                    {data?.menus?.nodes[0].header?.mainMenuFirst}
+                    {data?.menus?.nodes[0]?.header?.mainMenuFirst}
                     <Image
                       priority={true}
                       loader={customLoader}
@@ -507,11 +507,11 @@ const Nav = () => {
                 </div>
                 <Link
                   href={
-                    data?.menus?.nodes[0].header?.mainMenuSecondLink?.url ?? "/"
+                    data?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ?? "/"
                   }
                   className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
                 >
-                  {data?.menus?.nodes[0].header?.mainMenuSecond}
+                  {data?.menus?.nodes[0]?.header?.mainMenuSecond}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -524,7 +524,7 @@ const Nav = () => {
                 </Link>
                 <Link
                   href={
-                    data?.menus?.nodes[0].header?.mainMenuThirdLink?.url ?? "/"
+                    data?.menus?.nodes[0]?.header?.mainMenuThirdLink?.url ?? "/"
                   }
                   className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
                 >

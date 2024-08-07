@@ -13,10 +13,11 @@
     "url": "git+https://github.com/earvinpiamonte/nextjs-tailwindcss-template.git"
   },
   "scripts": {
-    "dev": "next dev && faust dev",
-    "build": "next build && faust build",
+    "dev": "next dev",
+    "build": "next build && next export",
     "start": "next start",
-    "generate": "faust generatePossibleTypes"
+    "generate": "faust generatePossibleTypes",
+    "export": "next build && next export && next-image-export-optimizer"
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
