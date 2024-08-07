@@ -32,41 +32,84 @@ const SkeletonLoader = () => (
     />
   </div>
 );
+const parseMetaContent = (metaContent) => {
+  if (metaContent && typeof metaContent === "string") {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(metaContent, "text/html");
+    const metaElements = [];
+
+    Array.from(doc.head.children).forEach((node) => {
+      if (node.tagName === "META" || node.tagName === "TITLE") {
+        const attributes = {};
+        Array.from(node.attributes).forEach((attr) => {
+          attributes[attr.name] = attr.value;
+        });
+        if (node.tagName === "TITLE") {
+          metaElements.push({
+            tag: node.tagName.toLowerCase(),
+            content: node.textContent,
+          });
+        } else {
+          metaElements.push({ tag: node.tagName.toLowerCase(), attributes });
+        }
+      }
+    });
+
+    return metaElements;
+  }
+  return [];
+};
 
 const NewsPage = () => {
   const router = useRouter();
-  const { nodeByUri, setNodeByUri } = useDialog();
-  const { navData, setNavData } = useHeader();
+  const { navData, setNavData, seoData } = useHeader();
+  const [nodeByUri, setNodeByUri] = useState(null)
   const { slug } = router.query;
   const uri = `/${slug}`;
 
-  const { data, loading, error } = useQuery(GET_NEWS_SECTION, {
+  const {
+    data: newsData,
+    loading: newsLoading,
+    error: newsError,
+  } = useQuery(GET_NEWS_SECTION, {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
 
   useEffect(() => {
-    if (data) {
-      setNavData(data);
-      setNodeByUri(data.nodeByUri);
+    if (newsData) {
+      setNavData(newsData);
+      setNodeByUri(newsData.nodeByUri);
     }
-  }, [data]);
+  }, [newsData]);
 
-  if (loading) {
+  // console.log(nodeByUri, "nodeByUri");
+  
+
+  if (newsLoading) {
     return <SkeletonLoader />;
   }
 
-  if (error) {
-    return <p>Article not found</p>;
-  }
+  console.log(nodeByUri, "seoData detail");
+  
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>{data?.nodeByUri?.title} - News</title>
+      </Head> */}
+      <Head>
+        {parseMetaContent(nodeByUri?.seo?.fullHead).map(
+          (element, index) =>
+            element.tag === "title" ? (
+              <title key={index}>{element.content}</title>
+            ) : (
+              <element.tag key={index} {...element.attributes} />
+            )
+        )}
       </Head>
       <main>
-        <News />
+        <News nodeByUri={nodeByUri} newsData={newsData}/>
       </main>
     </>
   );

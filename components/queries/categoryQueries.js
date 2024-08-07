@@ -34,12 +34,6 @@ export const CATEGORY_BREAKING_QUERY = gql`
             link
             slug
             id
-            seo {
-              title
-              metaDesc
-              canonical
-              focuskw
-            }
             tags {
               nodes {
                 name
@@ -163,12 +157,6 @@ export const CATEGORY_BREAKING_QUERY = gql`
                           node {
                             name
                           }
-                        }
-                        seo {
-                          title
-                          metaDesc
-                          canonical
-                          focuskw
                         }
                         tags {
                           nodes {
@@ -314,12 +302,6 @@ export const INSIGHTS_DATA = gql`
           }
           cursor
         }
-        seo {
-          title
-          metaDesc
-          canonical
-          focuskw
-        }
       }
       pageInfo {
         endCursor
@@ -371,6 +353,7 @@ export const GET_NEWS_SECTION = gql`
                       }
                     }
                     adCode
+                    adImageLink
                   }
                   moreNewsSelectCategory {
                     nodes {
@@ -407,12 +390,6 @@ export const GET_NEWS_SECTION = gql`
                 postView {
                   view
                 }
-                seo {
-                  title
-                  metaDesc
-                  canonical
-                  focuskw
-                }
               }
             }
           }
@@ -423,6 +400,12 @@ export const GET_NEWS_SECTION = gql`
         date
         dateGmt
         title
+        seo {
+          canonical
+          fullHead
+          metaDesc
+          title
+        }
       }
     }
   }

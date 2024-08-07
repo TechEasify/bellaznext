@@ -34,7 +34,6 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
-import { GET_NEWS_SECTION } from "./queries/categoryQueries";
 import Image from "next/image";
 import { useHeader } from "./HeaderContext";
 
@@ -42,29 +41,12 @@ const customLoader = ({ src }) => {
   return src;
 };
 
-function News() {
-  const { nodeByUri, setNodeByUri } = useDialog();
-  const { navData, setNavData, dataNav, dataIcon } = useHeader();
+function News({newsData, nodeByUri}) {
+  const { dataNav, dataIcon } = useHeader();
   const router = useRouter();
   const { slug } = router.query;
-  const uri = `/${slug}`;
   const [isOpen, setIsOpen] = useState(false);
-  const [currentUrl, setCurrentUrl] = useState("");
-  const {
-    data: newsData,
-    loading: newsLoading,
-    error: newsError,
-  } = useQuery(GET_NEWS_SECTION, {
-    variables: { uri },
-    fetchPolicy: "cache-first",
-  });
-
-  useEffect(() => {
-    if (newsData) {
-      setNavData(newsData);
-      setNodeByUri(newsData.nodeByUri);
-    }
-  }, [newsData]);
+  const [currentUrl, setCurrentUrl] = useState(""); 
 
   useEffect(() => {
     if (typeof window !== "undefined") {
