@@ -318,7 +318,7 @@ const Banner = () => {
           <div className="relative hidden md:block w-full mb-2">
       {/* Search Icon */}
       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        <SearchIcon className="text-gray-500" />
+        <SearchIcon className="text-black" />
       </div>
       {/* Input Field */}
       <input

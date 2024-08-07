@@ -83,7 +83,7 @@ const Nav = () => {
   const router = useRouter();
   const { categoryslug, slug } = router.query;
   const uri = `/category/${categoryslug}`;
-  
+
   const {
     data: nodeByUri,
     loading: loadingCategory,
@@ -172,10 +172,12 @@ const Nav = () => {
             )
         )}
       </Head>
-      { router.pathname === "/about" || router.pathname === "/contact-us" ? <header
+      {router.pathname === "/about" || router.pathname === "/contact-us" ? (
+        <header
           className="bg-header"
           style={{
-            backgroundColor: dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
+            backgroundColor:
+              dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
           }}
         >
           <nav
@@ -246,171 +248,60 @@ const Nav = () => {
               </button>
             </div>
           </nav>
-        </header> : router.pathname === "/subscribe" ?
-        <></>
-        :
-        <header className="bg-header">
-        {/* Breadcrumb */}
-        {router.pathname === "/" ? (
+        </header>
+      ) : router.asPath === `/news/${router.query.slug}` ? (
+        <header
+          className="bg-header"
+          style={{
+            backgroundColor:
+              dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
+          }}
+        >
           <nav
-            aria-label="Breadcrumb"
-            className="hidden lg:flex justify-center pt-8"
+            className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
+            aria-label="Global"
           >
-            <div className="flex justify-between items-center w-full ml-[30%]">
-              <ol className="inline-flex items-center space-x-2 lg:space-x-4">
-                <li>
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menus?.nodes[0].header?.topFirstLinks?.url &&
-                        router.push(dataNav?.menus?.nodes[0].header?.topFirstLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.topFirst}
-                    </button>
-                  </div>
-                </li>
-                <span className="text-gray-400">|</span>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menus?.nodes[0].header?.topSecondLinks?.url &&
-                        router.push(dataNav?.menus?.nodes[0].header?.topSecondLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined &&
-                        dataNav?.menus?.nodes[0].header?.topSecond}
-                    </button>
-                  </div>
-                </li>
-                <span className="text-gray-400">|</span>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menus?.nodes[0].header?.topThirdLinks?.url &&
-                        router.push(dataNav?.menus?.nodes[0].header.topThirdLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.topThird}
-                    </button>
-                  </div>
-                </li>
-                <span className="text-gray-400">|</span>
-                <li aria-current="page">
-                  <div className="flex items-center">
-                    <button
-                      id="dropdownDatabase"
-                      data-dropdown-toggle="dropdown-database"
-                      className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                      onClick={() =>
-                        dataNav?.menus?.nodes[0].header?.topForeLinks?.url &&
-                        router.push(dataNav?.menus?.nodes[0].header.topForeLinks.url)
-                      }
-                    >
-                      {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.topFore}
-                    </button>
-                  </div>
-                </li>
-              </ol>
-            <div className="w-[37%] text-center">
-              <p className="text-white text-[19px] font-regular">בס״ד</p>
-            </div>
-            </div>
-          </nav>
-        ):
-        (<nav
-          aria-label="Breadcrumb"
-          className="hidden lg:flex justify-center pt-3"
-        >
-          <div className="flex justify-between items-center w-full ml-[30%]">
-            <ol className="inline-flex items-center space-x-2 lg:space-x-4">
-            </ol>
-          <div className="w-[37%] text-center">
-            <p className="text-white text-[19px] font-regular">בס״ד</p>
-          </div>
-          </div>
-        </nav>)}
-        {/* Main Navigation  */}
-        <nav
-          className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
-          aria-label="Global"
-        >
-          <div className="flex justify-between lg:justify-start items-center">
-            <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">BELAAZ</span>
-              <Image
-                priority={true}
-                loader={customLoader}
-                className="h-12 w-auto md:h-14 object-cover mr-9"
-                src={Primarylogo}
-                alt="Primarylogo"
-                width={250}
-                height={54}
-              />
-            </Link>
-            <div className="flex justify-center lg:justify-start items-center">
-              <div className="relative mx-2 md:mx-5 hidden lg:block">
-                <button
-                  onClick={toggleDropdown}
-                  className="flex text-white font-medium items-center text-[20px]"
-                >
-                  {dataNav !== undefined &&
-                    dataNav?.menus?.nodes[0].header?.mainMenuFirst}
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-3 w-3 ml-2"
-                    src={Vector1}
-                    alt="Dropdown Icon"
-                    width={12}
-                    height={6}
-                  />
-                </button>
-              </div>
-              <Link
-                href={dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url ?? "/"}
-                className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
-              >
-                {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.mainMenuSecond}
+            <div className="flex justify-between hidden md:flex items-center">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">BELAAZ</span>
                 <Image
                   priority={true}
                   loader={customLoader}
-                  className="h-3 w-3 mx-2"
-                  src={Vector}
-                  alt="Dropdown Icon"
-                  width={12}
-                  height={6}
+                  className="h-12 w-auto md:h-14 object-cover mr-9"
+                  src={Primarylogo}
+                  alt="Primarylogo"
+                  width={250}
+                  height={54}
                 />
               </Link>
-              <Link
-                href={dataNav?.menus?.nodes[0].header?.mainMenuThirdLink?.url ?? "/"}
-                className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
-              >
-                {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.mainMenuThird}
+            </div>
+
+            <div className="flex justify-between md:hidden items-center">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">BELAAZ</span>
                 <Image
                   priority={true}
                   loader={customLoader}
-                  className="h-3 w-3 mx-2"
-                  src={Vector2}
-                  alt="Dropdown Icon"
-                  width={12}
-                  height={6}
+                  className="h-12 w-auto md:h-14 mr-5"
+                  src={Primarylogo}
+                  alt="Primarylogo"
+                  width={250}
+                  height={54}
                 />
               </Link>
+            </div>
+            <div className="flex lg:flex-1 justify-end">
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
+              <button
+                onClick={handleSub}
+                className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+              >
+                Subscribe
+              </button>
+            </div>
               <button
                 onClick={toggleContactHeader}
-                className="flex mr-2 text-white font-bold items-center ml-2"
+                className="flex mr-2 text-white font-bold items-center"
               >
                 {isContactHeaderVisible ? (
                   <Image
@@ -434,36 +325,247 @@ const Nav = () => {
                   />
                 )}
               </button>
-              <button
-                onClick={toggleDropdownSearch}
-                className="flex mr-2 text-[20px] text-white font-bold items-center hidden lg:flex"
-              >
+            </div>
+          </nav>
+        </header>
+      ) : router.pathname === "/subscribe" ? (
+        <></>
+      ) : (
+        <header className="bg-header">
+          {/* Breadcrumb */}
+          {router.pathname === "/" ? (
+            <nav
+              aria-label="Breadcrumb"
+              className="hidden lg:flex justify-center pt-8"
+            >
+              <div className="flex justify-between items-center w-full ml-[30%]">
+                <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+                  <li>
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menus?.nodes[0].header?.topFirstLinks?.url &&
+                          router.push(
+                            dataNav?.menus?.nodes[0].header?.topFirstLinks.url
+                          )
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menus?.nodes[0].header?.topFirst}
+                      </button>
+                    </div>
+                  </li>
+                  <span className="text-gray-400">|</span>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menus?.nodes[0].header?.topSecondLinks
+                            ?.url &&
+                          router.push(
+                            dataNav?.menus?.nodes[0].header?.topSecondLinks.url
+                          )
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menus?.nodes[0].header?.topSecond}
+                      </button>
+                    </div>
+                  </li>
+                  <span className="text-gray-400">|</span>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menus?.nodes[0].header?.topThirdLinks?.url &&
+                          router.push(
+                            dataNav?.menus?.nodes[0].header.topThirdLinks.url
+                          )
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menus?.nodes[0].header?.topThird}
+                      </button>
+                    </div>
+                  </li>
+                  <span className="text-gray-400">|</span>
+                  <li aria-current="page">
+                    <div className="flex items-center">
+                      <button
+                        id="dropdownDatabase"
+                        data-dropdown-toggle="dropdown-database"
+                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                        onClick={() =>
+                          dataNav?.menus?.nodes[0].header?.topForeLinks?.url &&
+                          router.push(
+                            dataNav?.menus?.nodes[0].header.topForeLinks.url
+                          )
+                        }
+                      >
+                        {dataNav !== undefined &&
+                          dataNav?.menus?.nodes[0].header?.topFore}
+                      </button>
+                    </div>
+                  </li>
+                </ol>
+                <div className="w-[37%] text-center">
+                  <p className="text-white text-[19px] font-regular">בס״ד</p>
+                </div>
+              </div>
+            </nav>
+          ) : (
+            <nav
+              aria-label="Breadcrumb"
+              className="hidden lg:flex justify-center pt-3"
+            >
+              <div className="flex justify-between items-center w-full ml-[30%]">
+                <ol className="inline-flex items-center space-x-2 lg:space-x-4"></ol>
+                <div className="w-[37%] text-center">
+                  <p className="text-white text-[19px] font-regular">בס״ד</p>
+                </div>
+              </div>
+            </nav>
+          )}
+          {/* Main Navigation  */}
+          <nav
+            className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
+            aria-label="Global"
+          >
+            <div className="flex justify-between lg:justify-start items-center">
+              <Link href="/" className="-m-1.5 p-1.5">
+                <span className="sr-only">BELAAZ</span>
                 <Image
                   priority={true}
                   loader={customLoader}
-                  className="h-6 w-6 mx-2"
-                  src={magnify}
-                  alt="Search Icon"
-                  width={30}
-                  height={30}
+                  className="h-12 w-auto md:h-14 object-cover mr-9"
+                  src={Primarylogo}
+                  alt="Primarylogo"
+                  width={250}
+                  height={54}
                 />
+              </Link>
+              <div className="flex justify-center lg:justify-start items-center">
+                <div className="relative mx-2 md:mx-5 hidden lg:block">
+                  <button
+                    onClick={toggleDropdown}
+                    className="flex text-white font-medium items-center text-[20px]"
+                  >
+                    {dataNav !== undefined &&
+                      dataNav?.menus?.nodes[0].header?.mainMenuFirst}
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      className="h-3 w-3 ml-2"
+                      src={Vector1}
+                      alt="Dropdown Icon"
+                      width={12}
+                      height={6}
+                    />
+                  </button>
+                </div>
+                <Link
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url ??
+                    "/"
+                  }
+                  className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
+                >
+                  {dataNav !== undefined &&
+                    dataNav?.menus?.nodes[0].header?.mainMenuSecond}
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-3 w-3 mx-2"
+                    src={Vector}
+                    alt="Dropdown Icon"
+                    width={12}
+                    height={6}
+                  />
+                </Link>
+                <Link
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuThirdLink?.url ??
+                    "/"
+                  }
+                  className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
+                >
+                  {dataNav !== undefined &&
+                    dataNav?.menus?.nodes[0].header?.mainMenuThird}
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-3 w-3 mx-2"
+                    src={Vector2}
+                    alt="Dropdown Icon"
+                    width={12}
+                    height={6}
+                  />
+                </Link>
+                <button
+                  onClick={toggleContactHeader}
+                  className="flex mr-2 text-white font-bold items-center ml-2"
+                >
+                  {isContactHeaderVisible ? (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      className="mx-2 object-cover"
+                      src={closewhite}
+                      alt="close Icon"
+                      width={21}
+                      height={18}
+                    />
+                  ) : (
+                    <Image
+                      priority={true}
+                      loader={customLoader}
+                      className="mx-2 object-cover"
+                      src={MenuFrame166}
+                      alt="Contact Toggle Icon"
+                      width={21}
+                      height={18}
+                    />
+                  )}
+                </button>
+                <button
+                  onClick={toggleDropdownSearch}
+                  className="flex mr-2 text-[20px] text-white font-bold items-center hidden lg:flex"
+                >
+                  <Image
+                    priority={true}
+                    loader={customLoader}
+                    className="h-6 w-6 mx-2"
+                    src={magnify}
+                    alt="Search Icon"
+                    width={30}
+                    height={30}
+                  />
+                </button>
+              </div>
+            </div>
+
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
+              <button
+                onClick={handleSub}
+                className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+              >
+                Subscribe
               </button>
             </div>
-          </div>
+          </nav>
+        </header>
+      )}
 
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
-            <button
-              onClick={handleSub}
-              className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
-            >
-              Subscribe
-            </button>
-          </div>
-        </nav>
-      </header>
-        }
-
-{nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
+      {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===
       "Template-2" ? (
         <div
           className="w-full h-7 inline-flex items-center justify-center"
@@ -515,19 +617,26 @@ const Nav = () => {
                   : "/"
               }
               className={`breaking_news px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === dataNav?.menus?.nodes[0].header?.subFirstLink?.url ||
-                router.asPath === dataNav?.menus?.nodes[0].header?.subFirstLink?.url
+                activeLink ===
+                  dataNav?.menus?.nodes[0].header?.subFirstLink?.url ||
+                router.asPath ===
+                  dataNav?.menus?.nodes[0].header?.subFirstLink?.url
                   ? "border-b-3 bg-change2"
                   : ""
               }`}
               onClick={() =>
-                handleLinkClick(dataNav?.menus?.nodes[0].header?.subFirstLink?.url)
+                handleLinkClick(
+                  dataNav?.menus?.nodes[0].header?.subFirstLink?.url
+                )
               }
             >
-              {dataNav !== undefined && dataNav?.menus?.nodes[0].header.subFirst}
+              {dataNav !== undefined &&
+                dataNav?.menus?.nodes[0].header.subFirst}
             </Link>
-            {activeLink === dataNav?.menus?.nodes[0].header?.subFirstLink?.url &&
-              router.asPath === dataNav?.menus?.nodes[0].header?.subFirstLink?.url && (
+            {activeLink ===
+              dataNav?.menus?.nodes[0].header?.subFirstLink?.url &&
+              router.asPath ===
+                dataNav?.menus?.nodes[0].header?.subFirstLink?.url && (
                 <hr className="w-full bg-change2" />
               )}
           </div>
@@ -540,19 +649,26 @@ const Nav = () => {
                   : "/"
               }
               className={`politics px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === dataNav?.menus?.nodes[0].header?.subSecondLink?.url ||
-                router.asPath === dataNav?.menus?.nodes[0].header?.subSecondLink?.url
+                activeLink ===
+                  dataNav?.menus?.nodes[0].header?.subSecondLink?.url ||
+                router.asPath ===
+                  dataNav?.menus?.nodes[0].header?.subSecondLink?.url
                   ? `border-b-3 bg-change`
                   : ""
               }`}
               onClick={() =>
-                handleLinkClick(dataNav?.menus?.nodes[0].header?.subSecondLink?.url)
+                handleLinkClick(
+                  dataNav?.menus?.nodes[0].header?.subSecondLink?.url
+                )
               }
             >
-              {dataNav !== undefined && dataNav?.menus?.nodes[0].header.subSecond}
+              {dataNav !== undefined &&
+                dataNav?.menus?.nodes[0].header.subSecond}
             </Link>
-            {activeLink === dataNav?.menus?.nodes[0].header?.subSecondLink?.url &&
-              router.asPath === dataNav?.menus?.nodes[0].header?.subSecondLink?.url && (
+            {activeLink ===
+              dataNav?.menus?.nodes[0].header?.subSecondLink?.url &&
+              router.asPath ===
+                dataNav?.menus?.nodes[0].header?.subSecondLink?.url && (
                 <hr className="w-full bg-change" />
               )}
           </div>
@@ -564,19 +680,26 @@ const Nav = () => {
                   : "/"
               }
               className={`px-4 text-gray-800 hover:bg-gray-100 ${
-                activeLink === dataNav?.menus?.nodes[0].header?.subThirdLink?.url ||
-                router.asPath === dataNav?.menus?.nodes[0].header?.subThirdLink?.url
+                activeLink ===
+                  dataNav?.menus?.nodes[0].header?.subThirdLink?.url ||
+                router.asPath ===
+                  dataNav?.menus?.nodes[0].header?.subThirdLink?.url
                   ? "border-b-3 bg-change1"
                   : ""
               }`}
               onClick={() =>
-                handleLinkClick(dataNav?.menus?.nodes[0].header?.subThirdLink?.url)
+                handleLinkClick(
+                  dataNav?.menus?.nodes[0].header?.subThirdLink?.url
+                )
               }
             >
-              {dataNav !== undefined && dataNav?.menus?.nodes[0].header.subThird}
+              {dataNav !== undefined &&
+                dataNav?.menus?.nodes[0].header.subThird}
             </Link>
-            {activeLink === dataNav?.menus?.nodes[0].header?.subThirdLink?.url &&
-              router.asPath === dataNav?.menus?.nodes[0].header?.subThirdLink?.url && (
+            {activeLink ===
+              dataNav?.menus?.nodes[0].header?.subThirdLink?.url &&
+              router.asPath ===
+                dataNav?.menus?.nodes[0].header?.subThirdLink?.url && (
                 <hr className="w-full bg-change1" />
               )}
           </div>
@@ -677,16 +800,14 @@ const Nav = () => {
             zIndex: "9999999999",
             top: "80px",
             left: "0px",
-            backgroundColor: dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
+            backgroundColor:
+              dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
             width: "100%",
           }}
         >
           <nav
             className="mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
-            style={{
-              backgroundColor: dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
-            }}
           >
             {/* Mobile View */}
             <div className="block lg:hidden w-full">
@@ -743,7 +864,9 @@ const Nav = () => {
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subFirstLink?.url}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subFirstLink?.url
+                        }
                         className="flex text-white font-bold items-center mt-2"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
@@ -758,7 +881,9 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subSecondLink?.url}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subSecondLink?.url
+                        }
                         className="flex text-white font-bold items-center mt-2"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
@@ -773,7 +898,9 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subThirdLink?.url}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subThirdLink?.url
+                        }
                         className="flex text-white font-bold items-center mt-2"
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
@@ -791,7 +918,9 @@ const Nav = () => {
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url
+                  }
                   className="flex text-white font-bold items-center mb-3"
                 >
                   {dataNav !== undefined &&
@@ -825,21 +954,27 @@ const Nav = () => {
                 <hr className="my-2" />
                 <div className="flex flex-col">
                   <Link
-                    href={dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url}
+                    href={
+                      dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url
+                    }
                     className="flex text-white font-bold items-center my-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menus?.nodes[0].header?.foreSquareFirst}
                   </Link>
                   <Link
-                    href={dataNav?.menus?.nodes[0].header?.foreSquareSecondLink?.url}
+                    href={
+                      dataNav?.menus?.nodes[0].header?.foreSquareSecondLink?.url
+                    }
                     className="flex text-white font-bold items-center my-2"
                   >
                     {dataNav !== undefined &&
                       dataNav?.menus?.nodes[0].header?.foreSquareSecond}
                   </Link>
                   <Link
-                    href={dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url}
+                    href={
+                      dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url
+                    }
                     className="flex text-white font-bold items-center my-2"
                   >
                     {dataNav !== undefined &&
@@ -955,22 +1090,27 @@ const Nav = () => {
                   href={dataNav?.menus?.nodes[0].header?.subFirstLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.subFirst}
+                  {dataNav !== undefined &&
+                    dataNav?.menus?.nodes[0].header?.subFirst}
                 </Link>
                 <Link
                   href={dataNav?.menus?.nodes[0].header?.subSecondLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.subSecond}
+                  {dataNav !== undefined &&
+                    dataNav?.menus?.nodes[0].header?.subSecond}
                 </Link>
                 <Link
                   href={dataNav?.menus?.nodes[0].header?.subThirdLink?.url}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav !== undefined && dataNav?.menus?.nodes[0].header?.subThird}
+                  {dataNav !== undefined &&
+                    dataNav?.menus?.nodes[0].header?.subThird}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -986,21 +1126,27 @@ const Nav = () => {
               </div>
               <div className="flex flex-col lg:items-center">
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.foreSquareFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.foreSquareSecondLink?.url}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.foreSquareSecondLink?.url
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.foreSquareSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav !== undefined &&
@@ -1120,14 +1266,16 @@ const Nav = () => {
             top: isMobile ? "75px" : "150px",
             left: "0px",
             width: "100%",
-            backgroundColor: dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
+            backgroundColor:
+              dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
           }}
         >
           <nav
             className="bg-header mx-auto flex max-w-7xl items-center justify-around p-4 lg:px-6"
             aria-label="Global"
             style={{
-              backgroundColor: dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
+              backgroundColor:
+                dataNav?.menus?.nodes[0].header?.headerBackgroundColor,
             }}
           >
             {/* Mobile View */}
@@ -1190,10 +1338,14 @@ const Nav = () => {
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subFirstLink?.url ?? "/"}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subFirstLink?.url ??
+                          "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav?.menus?.nodes[0].header?.subFirst ?? "Sub First"}
+                        {dataNav?.menus?.nodes[0].header?.subFirst ??
+                          "Sub First"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -1205,10 +1357,14 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subSecondLink?.url ?? "/"}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subSecondLink?.url ??
+                          "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav?.menus?.nodes[0].header?.subSecond ?? "Sub Second"}
+                        {dataNav?.menus?.nodes[0].header?.subSecond ??
+                          "Sub Second"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -1220,10 +1376,14 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subThirdLink?.url ?? "/"}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subThirdLink?.url ??
+                          "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav?.menus?.nodes[0].header?.subThird ?? "Sub Third"}
+                        {dataNav?.menus?.nodes[0].header?.subThird ??
+                          "Sub Third"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -1238,10 +1398,14 @@ const Nav = () => {
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url ??
+                    "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav?.menus?.nodes[0].header?.mainMenuSecond ?? "Main Menu Second"}
+                  {dataNav?.menus?.nodes[0].header?.mainMenuSecond ??
+                    "Main Menu Second"}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -1253,10 +1417,14 @@ const Nav = () => {
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.mainMenuThirdLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuThirdLink?.url ??
+                    "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav?.menus?.nodes[0].header?.mainMenuThird ?? "Main Menu Third"}
+                  {dataNav?.menus?.nodes[0].header?.mainMenuThird ??
+                    "Main Menu Third"}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -1271,7 +1439,8 @@ const Nav = () => {
                 <div className="flex flex-col">
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0].header?.foreSquareFirstLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
@@ -1280,7 +1449,8 @@ const Nav = () => {
                   </Link>
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0].header?.foreSquareSecondLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0].header?.foreSquareSecondLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
@@ -1289,7 +1459,8 @@ const Nav = () => {
                   </Link>
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0].header?.foreSquareThirdLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
@@ -1406,23 +1577,34 @@ const Nav = () => {
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url ??
+                    "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav?.menus?.nodes[0].header?.foreSquareFirst ?? "ForeSquare First"}
+                  {dataNav?.menus?.nodes[0].header?.foreSquareFirst ??
+                    "ForeSquare First"}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.foreSquareSecondLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.foreSquareSecondLink
+                      ?.url ?? "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav?.menus?.nodes[0].header?.foreSquareSecond ??
                     "ForeSquare Second"}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url ??
+                    "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav?.menus?.nodes[0].header?.foreSquareThird ?? "ForeSquare Third"}
+                  {dataNav?.menus?.nodes[0].header?.foreSquareThird ??
+                    "ForeSquare Third"}
                 </Link>
               </div>
             </div>
@@ -1540,7 +1722,8 @@ const Nav = () => {
             left: "0px",
             width: "100%",
             backgroundColor:
-              dataNav?.menus?.nodes[0].header?.headerBackgroundColor || "defaultColor",
+              dataNav?.menus?.nodes[0].header?.headerBackgroundColor ||
+              "defaultColor",
           }}
         >
           <nav
@@ -1548,7 +1731,8 @@ const Nav = () => {
             aria-label="Global"
             style={{
               backgroundColor:
-                dataNav?.menus?.nodes[0].header?.headerBackgroundColor || "defaultColor",
+                dataNav?.menus?.nodes[0].header?.headerBackgroundColor ||
+                "defaultColor",
             }}
           >
             {/* Mobile View */}
@@ -1611,10 +1795,14 @@ const Nav = () => {
                   {toggleDropdown1 && (
                     <>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subFirstLink?.url ?? "/"}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subFirstLink?.url ??
+                          "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav?.menus?.nodes[0].header?.subFirst ?? "Sub First"}
+                        {dataNav?.menus?.nodes[0].header?.subFirst ??
+                          "Sub First"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -1626,10 +1814,14 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subSecondLink?.url ?? "/"}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subSecondLink?.url ??
+                          "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav?.menus?.nodes[0].header?.subSecond ?? "Sub Second"}
+                        {dataNav?.menus?.nodes[0].header?.subSecond ??
+                          "Sub Second"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -1641,10 +1833,14 @@ const Nav = () => {
                         />
                       </Link>
                       <Link
-                        href={dataNav?.menus?.nodes[0].header?.subThirdLink?.url ?? "/"}
+                        href={
+                          dataNav?.menus?.nodes[0].header?.subThirdLink?.url ??
+                          "/"
+                        }
                         className="flex mr-2 text-white font-bold items-center mb-3"
                       >
-                        {dataNav?.menus?.nodes[0].header?.subThird ?? "Sub Third"}
+                        {dataNav?.menus?.nodes[0].header?.subThird ??
+                          "Sub Third"}
                         <Image
                           priority={true}
                           loader={customLoader}
@@ -1659,10 +1855,14 @@ const Nav = () => {
                   )}
                 </div>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url ??
+                    "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav?.menus?.nodes[0].header?.mainMenuSecond ?? "Main Menu Second"}
+                  {dataNav?.menus?.nodes[0].header?.mainMenuSecond ??
+                    "Main Menu Second"}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -1674,10 +1874,14 @@ const Nav = () => {
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0].header?.mainMenuThirdLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0].header?.mainMenuThirdLink?.url ??
+                    "/"
+                  }
                   className="flex mr-2 text-white font-bold items-center mb-3"
                 >
-                  {dataNav?.menus?.nodes[0].header?.mainMenuThird ?? "Main Menu Third"}
+                  {dataNav?.menus?.nodes[0].header?.mainMenuThird ??
+                    "Main Menu Third"}
                   <Image
                     priority={true}
                     loader={customLoader}
@@ -1692,7 +1896,8 @@ const Nav = () => {
                 <div className="flex flex-col">
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0].header?.foreSquareFirstLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0].header?.foreSquareFirstLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
@@ -1701,7 +1906,8 @@ const Nav = () => {
                   </Link>
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0].header?.foreSquareSecondLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0].header?.foreSquareSecondLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
@@ -1710,7 +1916,8 @@ const Nav = () => {
                   </Link>
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0].header?.foreSquareThirdLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0].header?.foreSquareThirdLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
                   >
@@ -1827,23 +2034,34 @@ const Nav = () => {
             <div className="hidden lg:block items-center">
               <div className="flex flex-col lg:flex-col">
                 <Link
-                  href={dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink
+                      ?.url ?? "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav?.menus?.nodes[0]?.header?.foreSquareFirst ?? "ForeSquare First"}
+                  {dataNav?.menus?.nodes[0]?.header?.foreSquareFirst ??
+                    "ForeSquare First"}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink
+                      ?.url ?? "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
                   {dataNav?.menus?.nodes[0]?.header?.foreSquareSecond ??
                     "ForeSquare Second"}
                 </Link>
                 <Link
-                  href={dataNav?.menu?.nodes[0]?.header?.foreSquareThirdLink?.url ?? "/"}
+                  href={
+                    dataNav?.menu?.nodes[0]?.header?.foreSquareThirdLink?.url ??
+                    "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                 >
-                  {dataNav?.menus?.nodes[0]?.header?.foreSquareThird ?? "ForeSquare Third"}
+                  {dataNav?.menus?.nodes[0]?.header?.foreSquareThird ??
+                    "ForeSquare Third"}
                 </Link>
               </div>
             </div>
