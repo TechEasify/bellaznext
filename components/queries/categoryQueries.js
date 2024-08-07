@@ -353,7 +353,6 @@ export const GET_NEWS_SECTION = gql`
                       }
                     }
                     adCode
-                    adImageLink
                   }
                   moreNewsSelectCategory {
                     nodes {

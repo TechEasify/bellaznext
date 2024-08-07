@@ -8,12 +8,12 @@ import Insight from "../../components/Insight";
 import Music from "../../components/categoryMusic";
 import { useEffect, useState } from "react";
 import News from "../../components/News";
-import { GET_NEWS_SECTION } from "../../components/queries/categoryQueries";
 import { useDialog } from "../../components/DialogContext";
 import ExportedImage from "next-image-export-optimizer";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import Image from "next/image";
 import { useHeader } from "../../components/HeaderContext";
+import { GET_NEWS_SECTION } from "../../components/queries/categoryQueries";
 
 const customLoader = ({ src }) => {
   return src;
@@ -32,6 +32,7 @@ const SkeletonLoader = () => (
     />
   </div>
 );
+
 const parseMetaContent = (metaContent) => {
   if (metaContent && typeof metaContent === "string") {
     const parser = new DOMParser();
@@ -63,41 +64,43 @@ const parseMetaContent = (metaContent) => {
 const NewsPage = () => {
   const router = useRouter();
   const { navData, setNavData, seoData } = useHeader();
-  const [nodeByUri, setNodeByUri] = useState(null)
+  const [nodeByUri, setNodeByUri] = useState(null);
   const { slug } = router.query;
   const uri = `/${slug}`;
+  console.log(uri, "uri slug");
 
   const {
-    data: newsData,
-    loading: newsLoading,
-    error: newsError,
+    data,
+    loading,
+    error,
   } = useQuery(GET_NEWS_SECTION, {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
 
   useEffect(() => {
-    if (newsData) {
-      setNavData(newsData);
-      setNodeByUri(newsData.nodeByUri);
+    if (data) {
+      setNavData(data);
+      setNodeByUri(data.nodeByUri);
     }
-  }, [newsData]);
+  }, [data]);
 
-  // console.log(nodeByUri, "nodeByUri");
-  
-
-  if (newsLoading) {
+  if (loading) {
     return <SkeletonLoader />;
   }
 
-  console.log(nodeByUri, "seoData detail");
-  
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!data || !nodeByUri) {
+    return <div>No data available</div>;
+  }
+
+  console.log(data, "newsData");
 
   return (
     <>
-      {/* <Head>
-        <title>{data?.nodeByUri?.title} - News</title>
-      </Head> */}
       <Head>
         {parseMetaContent(nodeByUri?.seo?.fullHead).map(
           (element, index) =>
@@ -109,7 +112,7 @@ const NewsPage = () => {
         )}
       </Head>
       <main>
-        <News nodeByUri={nodeByUri} newsData={newsData}/>
+        <News nodeByUri={nodeByUri} newsData={data} />
       </main>
     </>
   );
