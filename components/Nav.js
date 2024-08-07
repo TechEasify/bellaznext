@@ -93,6 +93,7 @@ const Nav = () => {
     variables: { uri },
     fetchPolicy: "cache-first",
   });
+  const [data, setData] = useState(null);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isDropdownSearch, setIsDropdownSearch] = useState(false);
   const [isContactHeaderVisible, setContactHeaderVisible] = useState(false);
@@ -101,6 +102,32 @@ const Nav = () => {
   const [toggleDropdown1, setToggleDropdown1] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const isMobile = useIsMobile();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/dataNav.json');
+        const jsonData = await response.json();
+        setData(jsonData);
+        localStorage.setItem('dataNav', JSON.stringify(jsonData));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    const storedData = localStorage.getItem('dataNav');
+    if (storedData) {
+      setData(JSON.parse(storedData));
+    } else {
+      fetchData();
+    }
+
+    const removeDataTimeout = setTimeout(() => {
+      localStorage.removeItem('dataNav');
+    }, 24 * 60 * 60 * 1000); // Remove data after 24 hours
+
+    return () => clearTimeout(removeDataTimeout);
+  }, []);
 
   useEffect(() => {
     setSubscribe(router.pathname);
@@ -159,6 +186,8 @@ const Nav = () => {
       setIsDropdownSearch(!isDropdownSearch);
     }
   };
+
+  console.log(dataNav, "dataNav");
 
   return (
     <>
@@ -343,237 +372,223 @@ const Nav = () => {
         <></>
       ) : (
         <header className="bg-header">
-          {/* Breadcrumb */}
-          {router.pathname === "/" ? (
-            <nav
-              aria-label="Breadcrumb"
-              className="hidden lg:flex justify-center pt-8"
-            >
-              <div className="flex justify-between items-center w-full ml-[30%]">
-                <ol className="inline-flex items-center space-x-2 lg:space-x-4">
-                  <li>
-                    <div className="flex items-center">
-                      <button
-                        id="dropdownDatabase"
-                        data-dropdown-toggle="dropdown-database"
-                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                        onClick={() =>
-                          dataNav?.menus?.nodes[0].header?.topFirstLinks?.url &&
-                          router.push(
-                            dataNav?.menus?.nodes[0].header?.topFirstLinks.url
-                          )
-                        }
-                      >
-                        {dataNav !== undefined &&
-                          dataNav?.menus?.nodes[0].header?.topFirst}
-                      </button>
-                    </div>
-                  </li>
-                  <span className="text-gray-400">|</span>
-                  <li aria-current="page">
-                    <div className="flex items-center">
-                      <button
-                        id="dropdownDatabase"
-                        data-dropdown-toggle="dropdown-database"
-                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                        onClick={() =>
-                          dataNav?.menus?.nodes[0].header?.topSecondLinks
-                            ?.url &&
-                          router.push(
-                            dataNav?.menus?.nodes[0].header?.topSecondLinks.url
-                          )
-                        }
-                      >
-                        {dataNav !== undefined &&
-                          dataNav?.menus?.nodes[0].header?.topSecond}
-                      </button>
-                    </div>
-                  </li>
-                  <span className="text-gray-400">|</span>
-                  <li aria-current="page">
-                    <div className="flex items-center">
-                      <button
-                        id="dropdownDatabase"
-                        data-dropdown-toggle="dropdown-database"
-                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                        onClick={() =>
-                          dataNav?.menus?.nodes[0].header?.topThirdLinks?.url &&
-                          router.push(
-                            dataNav?.menus?.nodes[0].header.topThirdLinks.url
-                          )
-                        }
-                      >
-                        {dataNav !== undefined &&
-                          dataNav?.menus?.nodes[0].header?.topThird}
-                      </button>
-                    </div>
-                  </li>
-                  <span className="text-gray-400">|</span>
-                  <li aria-current="page">
-                    <div className="flex items-center">
-                      <button
-                        id="dropdownDatabase"
-                        data-dropdown-toggle="dropdown-database"
-                        className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
-                        onClick={() =>
-                          dataNav?.menus?.nodes[0].header?.topForeLinks?.url &&
-                          router.push(
-                            dataNav?.menus?.nodes[0].header.topForeLinks.url
-                          )
-                        }
-                      >
-                        {dataNav !== undefined &&
-                          dataNav?.menus?.nodes[0].header?.topFore}
-                      </button>
-                    </div>
-                  </li>
-                </ol>
-                <div className="w-[37%] text-center">
-                  <p className="text-white text-[19px] font-regular">בס״ד</p>
+      {/* Breadcrumb */}
+      {router.pathname === "/" ? (
+        <nav
+          aria-label="Breadcrumb"
+          className="hidden lg:flex justify-center pt-8"
+        >
+          <div className="flex justify-between items-center w-full ml-[30%]">
+            <ol className="inline-flex items-center space-x-2 lg:space-x-4">
+              <li>
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                    onClick={() =>
+                      data?.menus?.nodes[0].header?.topFirstLinks?.url &&
+                      router.push(
+                        data.menus.nodes[0].header.topFirstLinks.url
+                      )
+                    }
+                  >
+                    {data?.menus?.nodes[0].header?.topFirst}
+                  </button>
                 </div>
-              </div>
-            </nav>
-          ) : (
-            <nav
-              aria-label="Breadcrumb"
-              className="hidden lg:flex justify-center pt-3"
-            >
-              <div className="flex justify-between items-center w-full ml-[30%]">
-                <ol className="inline-flex items-center space-x-2 lg:space-x-4"></ol>
-                <div className="w-[37%] text-center">
-                  <p className="text-white text-[19px] font-regular">בס״ד</p>
+              </li>
+              <span className="text-gray-400">|</span>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                    onClick={() =>
+                      data?.menus?.nodes[0].header?.topSecondLinks?.url &&
+                      router.push(
+                        data.menus.nodes[0].header.topSecondLinks.url
+                      )
+                    }
+                  >
+                    {data?.menus?.nodes[0].header?.topSecond}
+                  </button>
                 </div>
-              </div>
-            </nav>
-          )}
-          {/* Main Navigation  */}
-          <nav
-            className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
-            aria-label="Global"
-          >
-            <div className="flex justify-between lg:justify-start items-center">
-              <Link href="/" className="-m-1.5 p-1.5">
-                <span className="sr-only">BELAAZ</span>
+              </li>
+              <span className="text-gray-400">|</span>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                    onClick={() =>
+                      data?.menus?.nodes[0].header?.topThirdLinks?.url &&
+                      router.push(
+                        data.menus.nodes[0].header.topThirdLinks.url
+                      )
+                    }
+                  >
+                    {data?.menus?.nodes[0].header?.topThird}
+                  </button>
+                </div>
+              </li>
+              <span className="text-gray-400">|</span>
+              <li aria-current="page">
+                <div className="flex items-center">
+                  <button
+                    id="dropdownDatabase"
+                    data-dropdown-toggle="dropdown-database"
+                    className="inline-flex items-center px-3 py-2 text-[13px] font-normal text-center text-white"
+                    onClick={() =>
+                      data?.menus?.nodes[0].header?.topForeLinks?.url &&
+                      router.push(
+                        data.menus.nodes[0].header.topForeLinks.url
+                      )
+                    }
+                  >
+                    {data?.menus?.nodes[0].header?.topFore}
+                  </button>
+                </div>
+              </li>
+            </ol>
+            <div className="w-[37%] text-center">
+              <p className="text-white text-[19px] font-regular">בס״ד</p>
+            </div>
+          </div>
+        </nav>
+      ) : (
+        <nav
+          aria-label="Breadcrumb"
+          className="hidden lg:flex justify-center pt-3"
+        >
+          <div className="flex justify-between items-center w-full ml-[30%]">
+            <ol className="inline-flex items-center space-x-2 lg:space-x-4"></ol>
+            <div className="w-[37%] text-center">
+              <p className="text-white text-[19px] font-regular">בס״ד</p>
+            </div>
+          </div>
+        </nav>
+      )}
+      {/* Main Navigation  */}
+      <nav
+        className="mx-auto flex max-w-7xl flex-col lg:flex-row items-center justify-between p-4 lg:px-6"
+        aria-label="Global"
+      >
+        <div className="flex justify-between lg:justify-start items-center">
+          <Link href="/" className="-m-1.5 p-1.5">
+            <span className="sr-only">BELAAZ</span>
+            <Image
+              priority={true}
+              loader={customLoader}
+              className="h-12 w-auto md:h-14 object-cover mr-9"
+              src={Primarylogo}
+              alt="Primarylogo"
+              width={250}
+              height={54}
+            />
+          </Link>
+          <div className="flex justify-center lg:justify-start items-center">
+            <div className="relative mx-2 md:mx-5 hidden lg:block">
+              <button
+                onClick={toggleDropdown}
+                className="flex text-white font-medium items-center text-[20px]"
+              >
+                {data?.menus?.nodes[0].header?.mainMenuFirst}
                 <Image
                   priority={true}
                   loader={customLoader}
-                  className="h-12 w-auto md:h-14 object-cover mr-9"
-                  src={Primarylogo}
-                  alt="Primarylogo"
-                  width={250}
-                  height={54}
+                  className="h-3 w-3 ml-2"
+                  src={Vector1}
+                  alt="Dropdown Icon"
+                  width={12}
+                  height={6}
                 />
-              </Link>
-              <div className="flex justify-center lg:justify-start items-center">
-                <div className="relative mx-2 md:mx-5 hidden lg:block">
-                  <button
-                    onClick={toggleDropdown}
-                    className="flex text-white font-medium items-center text-[20px]"
-                  >
-                    {dataNav !== undefined &&
-                      dataNav?.menus?.nodes[0].header?.mainMenuFirst}
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="h-3 w-3 ml-2"
-                      src={Vector1}
-                      alt="Dropdown Icon"
-                      width={12}
-                      height={6}
-                    />
-                  </button>
-                </div>
-                <Link
-                  href={
-                    dataNav?.menus?.nodes[0].header?.mainMenuSecondLink?.url ??
-                    "/"
-                  }
-                  className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
-                >
-                  {dataNav !== undefined &&
-                    dataNav?.menus?.nodes[0].header?.mainMenuSecond}
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-3 w-3 mx-2"
-                    src={Vector}
-                    alt="Dropdown Icon"
-                    width={12}
-                    height={6}
-                  />
-                </Link>
-                <Link
-                  href={
-                    dataNav?.menus?.nodes[0].header?.mainMenuThirdLink?.url ??
-                    "/"
-                  }
-                  className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
-                >
-                  {dataNav !== undefined &&
-                    dataNav?.menus?.nodes[0].header?.mainMenuThird}
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-3 w-3 mx-2"
-                    src={Vector2}
-                    alt="Dropdown Icon"
-                    width={12}
-                    height={6}
-                  />
-                </Link>
-                <button
-                  onClick={toggleContactHeader}
-                  className="flex mr-2 text-white font-bold items-center ml-2"
-                >
-                  {isContactHeaderVisible ? (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="mx-2 object-cover"
-                      src={closewhite}
-                      alt="close Icon"
-                      width={21}
-                      height={18}
-                    />
-                  ) : (
-                    <Image
-                      priority={true}
-                      loader={customLoader}
-                      className="mx-2 object-cover"
-                      src={MenuFrame166}
-                      alt="Contact Toggle Icon"
-                      width={21}
-                      height={18}
-                    />
-                  )}
-                </button>
-                <button
-                  onClick={toggleDropdownSearch}
-                  className="flex mr-2 text-[20px] text-white font-bold items-center hidden lg:flex"
-                >
-                  <Image
-                    priority={true}
-                    loader={customLoader}
-                    className="h-6 w-6 mx-2"
-                    src={magnify}
-                    alt="Search Icon"
-                    width={30}
-                    height={30}
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
-              <button
-                onClick={handleSub}
-                className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
-              >
-                Subscribe
               </button>
             </div>
-          </nav>
-        </header>
+            <Link
+              href={data?.menus?.nodes[0].header?.mainMenuSecondLink?.url ?? "/"}
+              className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
+            >
+              {data?.menus?.nodes[0].header?.mainMenuSecond}
+              <Image
+                priority={true}
+                loader={customLoader}
+                className="h-3 w-3 mx-2"
+                src={Vector}
+                alt="Dropdown Icon"
+                width={12}
+                height={6}
+              />
+            </Link>
+            <Link
+              href={data?.menus?.nodes[0].header?.mainMenuThirdLink?.url ?? "/"}
+              className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
+            >
+              {data?.menus?.nodes[0].header?.mainMenuThird}
+              <Image
+                priority={true}
+                loader={customLoader}
+                className="h-3 w-3 mx-2"
+                src={Vector2}
+                alt="Dropdown Icon"
+                width={12}
+                height={6}
+              />
+            </Link>
+            <button
+              onClick={toggleContactHeader}
+              className="flex mr-2 text-white font-bold items-center ml-2"
+            >
+              {isContactHeaderVisible ? (
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="mx-2 object-cover"
+                  src={closewhite}
+                  alt="close Icon"
+                  width={21}
+                  height={18}
+                />
+              ) : (
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  className="mx-2 object-cover"
+                  src={MenuFrame166}
+                  alt="Contact Toggle Icon"
+                  width={21}
+                  height={18}
+                />
+              )}
+            </button>
+            <button
+              onClick={toggleDropdownSearch}
+              className="flex mr-2 text-[20px] text-white font-bold items-center hidden lg:flex"
+            >
+              <Image
+                priority={true}
+                loader={customLoader}
+                className="h-6 w-6 mx-2"
+                src={magnify}
+                alt="Search Icon"
+                width={30}
+                height={30}
+              />
+            </button>
+          </div>
+        </div>
+
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end mt-4 lg:mt-0">
+          <button
+            onClick={handleSub}
+            className="inline-flex items-center justify-center w-[120px] h-[38px] px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-gradient-to-r focus:outline-none"
+          >
+            Subscribe
+          </button>
+        </div>
+      </nav>
+    </header>
       )}
 
       {nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] ===

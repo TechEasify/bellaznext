@@ -1,0 +1,68 @@
+{
+    "menus": {
+      "nodes": [
+        {
+          "header": {
+            "foreSquareFirst": "Contact Us",
+            "foreSquareFirstLink": {
+              "url": "https://bellaznews.netlify.app/contact-us"
+            },
+            "foreSquareSecond": "About Us",
+            "foreSquareSecondLink": {
+              "url": "https://bellaznews.netlify.app/about"
+            },
+            "foreSquareThird": "Advertise",
+            "foreSquareThirdLink": {
+              "url": "https://bellaznews.netlify.app/advertise"
+            },
+            "headerBackgroundColor": "#002d73",
+            "headerButton": {
+              "link": null,
+              "text": null
+            },
+            "mainMenuFirst": "News ",
+            "mainMenuFirstLink": {
+              "url": "https://bellaznews.netlify.app/category/news"
+            },
+            "mainMenuSecond": "Insights",
+            "mainMenuSecondLink": {
+              "url": "https://bellaznews.netlify.app/category/insights"
+            },
+            "mainMenuThird": "Music",
+            "mainMenuThirdLink": {
+              "url": "https://bellaznews.netlify.app/category/music"
+            },
+            "subFirst": "Breaking News",
+            "subFirstLink": {
+              "url": "https://bellaznews.netlify.app/category/breaking-news"
+            },
+            "subSecond": "Politics",
+            "subSecondLink": {
+              "url": "https://bellaznews.netlify.app/category/politics"
+            },
+            "subThird": "Jewish News ",
+            "subThirdLink": {
+              "url": "https://bellaznews.netlify.app/category/jewish-news"
+            },
+            "topFirst": "Ukraine & Russia War",
+            "topFirstLinks": {
+              "url": "/category/ukraine-russia-war"
+            },
+            "topFore": "2024 U.S.A Elections",
+            "topForeLinks": {
+              "url": "https://bellaznews.netlify.app/category/election/"
+            },
+            "topSecond": "Manage Your Money",
+            "topSecondLinks": {
+              "url": "https://bellaznews.netlify.app/category/manage-your-money"
+            },
+            "topThird": "Top Stocks",
+            "topThirdLinks": {
+              "url": "https://bellaznews.netlify.app/category/top-stocks"
+            }
+          }
+        }
+      ]
+    }
+  }
+  

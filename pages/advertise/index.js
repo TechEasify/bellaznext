@@ -1,31 +1,20 @@
 import React from "react";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
-import ExportedImage from "next-image-export-optimizer";
 import SocialIconsX from "../../public/images/SocialIconsX.svg";
 import Ademail from "../../public/images/Ademail.svg";
 import SocialIcon from "../../public/images/SocialIcon.svg";
-import Frame193 from "../../public/images/Frame193.svg";
 import SocialIcons3 from "../../public/images/SocialIcons3.svg";
 import PrimaryBlue2 from "../../public/images/PrimaryBlue2.svg";
-import arrowtop_right_thick from "../../public/images/arrowtop_right_thick.svg";
 import Link from "next/link";
-import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import Testimonial from "../../components/Testimonial";
 import Primarylogo from "../../public/images/Primarylogo.svg";
 import Image from "next/image";
 import { useDialog } from "../../components/DialogContext";
-import getConfig from "next/config";
 import Layout from "../../components/Layout";
-import { useHeader } from "../../components/HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
-
-const { publicRuntimeConfig } = getConfig();
-const { name, url } = publicRuntimeConfig.site;
 
 const SkeletonLoader = () => (
   <div className="spinner">
@@ -44,20 +33,7 @@ const SkeletonLoader = () => (
 function Index() {
   const router = useRouter();
   const { advertiseQuery, advertiseLoading, advertiseError } = useDialog();
-  const { seoData } = useHeader();
-
-  // let title;
-  // let description;
-  // let canonical;
-
-  // seoData?.pages?.nodes.flatMap((item) => {
-  //   if (item.title === "Advertise" && router.asPath === `/${item.slug}`) {
-  //     title = item?.seo?.title || "Belaaz News";
-  //     description = item?.seo?.metaDesc || "Default Description";
-  //     canonical = item?.seo?.canonical || `${url}${router.asPath}`;
-  //   }
-  // });
-
+ 
   if (advertiseLoading) return <SkeletonLoader />;
   if (advertiseError) return <p>Error: {error.message}</p>;
 

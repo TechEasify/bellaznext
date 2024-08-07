@@ -1,32 +1,20 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../../components/Nav";
-import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
-import ExportedImage from "next-image-export-optimizer";
 import Frame_209 from "../../public/images/Frame_209.png";
 import Frame_208 from "../../public/images/Frame_208.png";
 import BackFrame93 from "../../public/images/BackFrame93.svg";
-import whatsapp1 from "../../public/images/whatsapp1.svg";
 import Link from "next/link";
-import { gql, useQuery } from "@apollo/client";
-import Primarylogo from "../../public/images/Primarylogo.svg";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import { useDialog } from "../../components/DialogContext";
-import getConfig from "next/config";
 import { useHeader } from "../../components/HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
 
-const { publicRuntimeConfig } = getConfig();
-const { name, url } = publicRuntimeConfig.site;
-
 function Index() {
   const { contactQuery } = useDialog();
-  const { seoData } = useHeader();
-  const router = useRouter();
   const [openAccordion, setOpenAccordion] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -46,18 +34,6 @@ function Index() {
   const toggleAccordion = (section) => {
     setOpenAccordion((prev) => (prev === section ? null : section));
   };
-
-  // let title;
-  // let description;
-  // let canonical;
-
-  // seoData?.pages?.nodes.flatMap((item) => {
-  //   if (item.title === "Contact Us" && router.asPath === `/${item.slug}`) {
-  //     title = item?.seo?.title || "Belaaz News";
-  //     description = item?.seo?.metaDesc || "Default Description";
-  //     canonical = item?.seo?.canonical || `${url}${router.asPath}`;
-  //   }
-  // });
 
   return (
     <>
