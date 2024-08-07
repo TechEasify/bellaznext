@@ -13,7 +13,7 @@ import PersistedQueriesPlugin from "./plugins/persisted-queries";
  **/
 export default setConfig({
   templates,
-  experimentalPlugins: [
+  plugins: [
       new GetRequests(),
       new PersistedQueriesPlugin(),
   ],
