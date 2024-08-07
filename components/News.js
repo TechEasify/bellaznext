@@ -42,139 +42,6 @@ const customLoader = ({ src }) => {
   return src;
 };
 
-const GET_TOPHEADLINE_PAGE = gql`
-  query HomePage($id: ID = "745") {
-    page(id: $id, idType: DATABASE_ID) {
-      homePage {
-        topHeadlinesTitle
-        topHeadlineTitleLineColor
-        topHeadlinesPost {
-          nodes {
-            ... on Category {
-              name
-              slug
-              posts {
-                nodes {
-                  slug
-                  featuredImage {
-                    node {
-                      altText
-                      slug
-                      srcSet
-                      sourceUrl
-                    }
-                  }
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  author {
-                    node {
-                      name
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        topHeadlineSidebarTitle
-        topHeadlineSidebarTitleLineColor
-        topHeadlineSidebarPosts {
-          nodes {
-            ... on Category {
-              id
-              name
-              slug
-              posts {
-                nodes {
-                  slug
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                      sourceUrl
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        topHeadlineSidebarFirstAd {
-          topHeadlineFirstAd {
-            node {
-              slug
-              altText
-              srcSet
-              sourceUrl
-            }
-          }
-          topHeadlineFirstAdCode
-        }
-        topHeadlineSidebarSinglePosts {
-          nodes {
-            ... on Category {
-              name
-              slug
-              posts {
-                nodes {
-                  slug
-                  categories {
-                    nodes {
-                      name
-                    }
-                  }
-                  title
-                  featuredImage {
-                    node {
-                      altText
-                      srcSet
-                      slug
-                      sourceUrl
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        topHeadlineSidebarSecondAd {
-          topHeadlineSecondAdImage {
-            node {
-              altText
-              srcSet
-              slug
-              sourceUrl
-            }
-          }
-          topHeadlineSecondAdCode
-        }
-        topHeadlineBottomAd {
-          topHeadlineBottomAdImage {
-            node {
-              altText
-              srcSet
-              slug
-              sourceUrl
-            }
-          }
-          topHeadlineBottomAdCode
-        }
-      }
-    }
-  }
-`;
-
 function News() {
   const { nodeByUri, setNodeByUri } = useDialog();
   const { navData, setNavData, dataNav, dataIcon } = useHeader();
@@ -183,7 +50,6 @@ function News() {
   const uri = `/${slug}`;
   const [isOpen, setIsOpen] = useState(false);
   const [currentUrl, setCurrentUrl] = useState("");
-  const { data, loading, error } = useQuery(GET_TOPHEADLINE_PAGE);
   const {
     data: newsData,
     loading: newsLoading,
@@ -370,7 +236,6 @@ function News() {
                       height={498}
                     />
                   )}
-                  {/* <Responsivevoice nodeByUri={nodeByUri} /> */}
                   <p
                     className="text-[20px] font-extralight mb-5 w-full md:w-[760px] mx-auto"
                     style={{ color: "#2B2B2B" }}
@@ -385,7 +250,7 @@ function News() {
                         MORE STORIES
                       </p>
                       <Link
-                        href="#"
+                        href="/"
                         className="text-[10px] md:text-[14px] font-bold text-black mr-1 underline"
                       >
                         More
@@ -424,14 +289,14 @@ function News() {
                                     <p className="text-[10px] md:text-[12px] font-semibold tracking-widest text-red-800 uppercase">
                                       {post?.categoryName}
                                     </p>
-                                    <Link href={`/news/${post?.slug}`}>
+                                    <Link href={post?.slug !== undefined ?`/news/${post.slug}` : "/"}>
                                       <p className="text-[13px] md:text-[16px] font-semibold text-black mb-3 hover:text-skyBlue">
                                         {post?.title}
                                       </p>
                                     </Link>
                                   </div>
                                   {post?.featuredImage?.node?.sourceUrl && (
-                                    <Link href={`/news/${post?.slug}`}>
+                                    <Link href={post?.slug !== undefined ?`/news/${post.slug}` : "/"}>
                                       <Image
                                         priority={true}
                                         loader={customLoader}
@@ -483,7 +348,13 @@ function News() {
                                   <p className="text-[10px] md:text-[12px] font-semibold text-red-800 uppercase tracking-widest">
                                     {post?.categoryName}
                                   </p>
-                                  <Link href={`/news/${post?.slug}`}>
+                                  <Link
+                                    href={
+                                      post?.slug !== undefined
+                                        ? `/news/${post.slug}`
+                                        : "/"
+                                    }
+                                  >
                                     <p className="text-[13px] md:text-[16px] font-bold text-black mb-3 hover:text-skyBlue">
                                       {post?.title}
                                     </p>
@@ -538,230 +409,273 @@ function News() {
                   {newsData?.nodeByUri?.categories?.nodes
                     .slice(0, 1)
                     .map((item) =>
-                      item.posts.nodes.slice(0, 1).map((posts) => (
-                        console.log(posts, "posts"),
-                        
-                        <div key={item.id} className="w-full max-w-3xl mx-auto">
-                          <p className="text-[22px] font-bold text-black-900 italic">
-                            {posts?.postDetailsEdit?.title}
-                          </p>
-                          <hr
-                            className="text-red-800"
-                            style={{
-                              height: "7px",
-                              background: `${posts?.postDetailsEdit?.bottomLineColor}`,
-                            }}
-                          />
-                          {posts?.postDetailsEdit?.moreNewsSelectCategory?.nodes.map(
-                            (side) => {
-                              // Get the first post for each category
-                              const firstPost = side.posts.nodes[0];
+                      item.posts.nodes.slice(0, 1).map(
+                        (posts) => (
+                          console.log(posts, "posts"),
+                          (
+                            <div
+                              key={item.id}
+                              className="w-full max-w-3xl mx-auto"
+                            >
+                              <p className="text-[22px] font-bold text-black-900 italic">
+                                {posts?.postDetailsEdit?.title}
+                              </p>
+                              <hr
+                                className="text-red-800"
+                                style={{
+                                  height: "7px",
+                                  background: `${posts?.postDetailsEdit?.bottomLineColor}`,
+                                }}
+                              />
+                              {posts?.postDetailsEdit?.moreNewsSelectCategory?.nodes.map(
+                                (side) => {
+                                  // Get the first post for each category
+                                  const firstPost = side.posts.nodes[0];
 
-                              // Check if the first post exists
-                              if (!firstPost) return null;
+                                  // Check if the first post exists
+                                  if (!firstPost) return null;
 
-                              return (
-                                <div className="mt-5 mb-5 w-64" key={side.id}>
-                                  <div key={firstPost.id} className="w-[251px]">
-                                    <div className="flex my-3">
-                                      <div className="mr-2 w-48 mb-2">
-                                        <p className="text-[10px] font-bold text-red-800 uppercase tracking-widest">
-                                          {side?.name}
-                                        </p>
-                                        <Link
-                                          href={`/news/${firstPost?.slug}`}
-                                          passHref
-                                        >
-                                          <p className="text-[13px] font-semibold text-black hover:text-skyBlue">
-                                            {firstPost?.title}
-                                          </p>
-                                        </Link>
-                                      </div>
-                                      {firstPost?.featuredImage?.node
-                                        ?.sourceUrl ? (
-                                        <Image
-                                          priority={true}
-                                          loader={customLoader}
-                                          src={
-                                            firstPost?.featuredImage?.node
-                                              ?.sourceUrl
-                                          }
-                                          alt={firstPost?.title}
-                                          className="object-cover w-[68px] h-[76px] mr-2"
-                                          width={68}
-                                          height={76}
-                                        />
-                                      ) : (
-                                        <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
-                                          No Image
+                                  return (
+                                    <div
+                                      className="mt-5 mb-5 w-64"
+                                      key={side.id}
+                                    >
+                                      <div
+                                        key={firstPost.id}
+                                        className="w-[251px]"
+                                      >
+                                        <div className="flex my-3">
+                                          <div className="mr-2 w-48 mb-2">
+                                            <p className="text-[10px] font-bold text-red-800 uppercase tracking-widest">
+                                              {side?.name}
+                                            </p>
+                                            <Link
+                                              href={
+                                                firstPost?.slug !== undefined ?
+                                                `/news/${firstPost?.slug}` :
+                                                "/"
+                                              }
+                                              passHref
+                                            >
+                                              <p className="text-[13px] font-semibold text-black hover:text-skyBlue">
+                                                {firstPost?.title}
+                                              </p>
+                                            </Link>
+                                          </div>
+                                          {firstPost?.featuredImage?.node
+                                            ?.sourceUrl ? (
+                                            <Image
+                                              priority={true}
+                                              loader={customLoader}
+                                              src={
+                                                firstPost?.featuredImage?.node
+                                                  ?.sourceUrl
+                                              }
+                                              alt={firstPost?.title}
+                                              className="object-cover w-[68px] h-[76px] mr-2"
+                                              width={68}
+                                              height={76}
+                                            />
+                                          ) : (
+                                            <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center mb-5">
+                                              No Image
+                                            </div>
+                                          )}
                                         </div>
-                                      )}
+                                        <hr />
+                                      </div>
                                     </div>
-                                    <hr />
-                                  </div>
-                                </div>
-                              );
-                            }
-                          )}
-                          <p className="text-[15px] font-bold text-black-900 italic mt-10">
-                            FOLLOW US
-                          </p>
-                          <hr
-                            className="text-red-800"
-                            style={{ height: "7px", background: "#CE3A42" }}
-                          />
-                          <div className="flex mt-5 mb-8">
-                            {dataIcon?.menu?.socialIcons?.whatsappLink && (
-                              <Link
-                                href={dataIcon?.menu?.socialIcons?.whatsappLink}
-                              >
-                                {dataIcon?.menu?.socialIcons?.whatsappIcon?.node
-                                  ?.sourceUrl && (
-                                  <Image
-                                    priority={true}
-                                    loader={customLoader}
-                                    src={
-                                      dataIcon?.menu?.socialIcons?.whatsappIcon
-                                        ?.node?.sourceUrl
-                                    }
-                                    alt="WhatsApp"
-                                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
-                                    width={39.99}
-                                    height={40}
-                                  />
-                                )}
-                              </Link>
-                            )}
-                            {dataIcon?.menu?.socialIcons?.facebookLink && (
-                              <Link
-                                href={dataIcon?.menu?.socialIcons?.facebookLink}
-                              >
-                                {dataIcon?.menu?.socialIcons?.facebookIcon?.node
-                                  ?.sourceUrl && (
-                                  <Image
-                                    priority={true}
-                                    loader={customLoader}
-                                    src={
-                                      dataIcon?.menu?.socialIcons?.facebookIcon
-                                        ?.node?.sourceUrl
-                                    }
-                                    alt="Facebook"
-                                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
-                                    width={39.99}
-                                    height={40}
-                                  />
-                                )}
-                              </Link>
-                            )}
-                            {dataIcon?.menu?.socialIcons?.instagramLink && (
-                              <Link
-                                href={
-                                  dataIcon?.menu?.socialIcons?.instagramLink
+                                  );
                                 }
-                              >
-                                {dataIcon?.menu?.socialIcons?.instagramIcon
-                                  ?.node?.sourceUrl && (
-                                  <Image
-                                    priority={true}
-                                    loader={customLoader}
-                                    src={
-                                      dataIcon?.menu?.socialIcons?.instagramIcon
-                                        ?.node?.sourceUrl
-                                    }
-                                    alt="Instagram"
-                                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
-                                    width={39.99}
-                                    height={40}
-                                  />
-                                )}
-                              </Link>
-                            )}
-                            {dataIcon?.menu?.socialIcons?.twiterLink && (
-                              <Link
-                                href={dataIcon?.menu?.socialIcons?.twiterLink}
-                              >
-                                {dataIcon?.menu?.socialIcons?.twiterIcon?.node
-                                  ?.sourceUrl && (
-                                  <Image
-                                    priority={true}
-                                    loader={customLoader}
-                                    src={
-                                      dataIcon?.menu?.socialIcons?.twiterIcon
-                                        ?.node?.sourceUrl
-                                    }
-                                    alt="Twitter"
-                                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
-                                    width={39.99}
-                                    height={40}
-                                  />
-                                )}
-                              </Link>
-                            )}
-                            {dataIcon?.menu?.socialIcons?.youtubeLink && (
-                              <Link
-                                href={dataIcon?.menu?.socialIcons?.youtubeLink}
-                              >
-                                {dataIcon?.menu?.socialIcons?.youtubeIcon?.node
-                                  ?.sourceUrl && (
-                                  <Image
-                                    priority={true}
-                                    loader={customLoader}
-                                    src={
-                                      dataIcon?.menu?.socialIcons?.youtubeIcon
-                                        ?.node?.sourceUrl
-                                    }
-                                    alt="YouTube"
-                                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
-                                    width={39.99}
-                                    height={40}
-                                  />
-                                )}
-                              </Link>
-                            )}
-                          </div>
-                          <p className="text-[15px] font-bold text-black-900 italic">
-                            FOLLOW BELAAZ ON WhatsApp
-                          </p>
-                          <hr
-                            className="text-red-800"
-                            style={{ height: "7px", background: "#CE3A42" }}
-                          />
-                          <div className="flex mt-5 mb-8">
-                            <Link
-                              href={
-                                dataIcon?.menu?.followBelaazOnWhatsapp
-                                  ?.whatsappStatusLink ?? "/"
-                              }
-                            >
-                              <Image
-                                priority={true}
-                                loader={customLoader}
-                                src={Frame208}
-                                alt="WhatsApp Status"
-                                className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
-                                width={101}
-                                height={32}
+                              )}
+                              <p className="text-[15px] font-bold text-black-900 italic mt-10">
+                                FOLLOW US
+                              </p>
+                              <hr
+                                className="text-red-800"
+                                style={{ height: "7px", background: "#CE3A42" }}
                               />
-                            </Link>
-                            <Link
-                              href={
-                                dataIcon?.menu?.followBelaazOnWhatsapp
-                                  ?.whatsappGroupLink ?? "/"
-                              }
-                            >
-                              <Image
-                                priority={true}
-                                loader={customLoader}
-                                src={Frame209}
-                                alt="WhatsApp Group"
-                                className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
-                                width={101}
-                                height={32}
+                              <div className="flex mt-5 mb-8">
+                                {dataIcon?.menu?.socialIcons?.whatsappLink && (
+                                  <Link
+                                    href={
+                                      dataIcon !== undefined && dataIcon?.menu?.socialIcons
+                                        ?.whatsappLink !== undefined ?
+                                      dataIcon?.menu?.socialIcons
+                                        ?.whatsappLink : "/"
+                                    }
+                                  >
+                                    {dataIcon?.menu?.socialIcons?.whatsappIcon
+                                      ?.node?.sourceUrl && (
+                                      <Image
+                                        priority={true}
+                                        loader={customLoader}
+                                        src={
+                                          dataIcon?.menu?.socialIcons
+                                            ?.whatsappIcon?.node?.sourceUrl
+                                        }
+                                        alt="WhatsApp"
+                                        className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                        width={39.99}
+                                        height={40}
+                                      />
+                                    )}
+                                  </Link>
+                                )}
+                                {dataIcon?.menu?.socialIcons?.facebookLink && (
+                                  <Link
+                                    href={
+                                      dataIcon !== undefined && dataIcon?.menu?.socialIcons
+                                        ?.facebookLink !== undefined ?
+                                      dataIcon?.menu?.socialIcons
+                                        ?.facebookLink : "/"
+                                    }
+                                  >
+                                    {dataIcon?.menu?.socialIcons?.facebookIcon
+                                      ?.node?.sourceUrl && (
+                                      <Image
+                                        priority={true}
+                                        loader={customLoader}
+                                        src={
+                                          dataIcon?.menu?.socialIcons
+                                            ?.facebookIcon?.node?.sourceUrl
+                                        }
+                                        alt="Facebook"
+                                        className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                        width={39.99}
+                                        height={40}
+                                      />
+                                    )}
+                                  </Link>
+                                )}
+                                {dataIcon?.menu?.socialIcons?.instagramLink && (
+                                  <Link
+                                    href={
+                                      dataIcon !== undefined && dataIcon?.menu?.socialIcons
+                                        ?.instagramLink !== undefined ?
+                                      dataIcon?.menu?.socialIcons
+                                        ?.instagramLink : "/"
+                                    }
+                                  >
+                                    {dataIcon?.menu?.socialIcons?.instagramIcon
+                                      ?.node?.sourceUrl && (
+                                      <Image
+                                        priority={true}
+                                        loader={customLoader}
+                                        src={
+                                          dataIcon?.menu?.socialIcons
+                                            ?.instagramIcon?.node?.sourceUrl
+                                        }
+                                        alt="Instagram"
+                                        className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                        width={39.99}
+                                        height={40}
+                                      />
+                                    )}
+                                  </Link>
+                                )}
+                                {dataIcon?.menu?.socialIcons?.twiterLink && (
+                                  <Link
+                                    href={
+                                      dataIcon !== undefined && dataIcon?.menu?.socialIcons
+                                        ?.twiterLink !== undefined ?
+                                      dataIcon?.menu?.socialIcons?.twiterLink :
+                                      "/"
+                                    }
+                                  >
+                                    {dataIcon?.menu?.socialIcons?.twiterIcon
+                                      ?.node?.sourceUrl && (
+                                      <Image
+                                        priority={true}
+                                        loader={customLoader}
+                                        src={
+                                          dataIcon?.menu?.socialIcons
+                                            ?.twiterIcon?.node?.sourceUrl
+                                        }
+                                        alt="Twitter"
+                                        className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                        width={39.99}
+                                        height={40}
+                                      />
+                                    )}
+                                  </Link>
+                                )}
+                                {dataIcon?.menu?.socialIcons?.youtubeLink && (
+                                  <Link
+                                    href={
+                                      dataIcon !== undefined && dataIcon?.menu?.socialIcons
+                                        ?.youtubeLink !== undefined ?
+                                      dataIcon?.menu?.socialIcons
+                                        ?.youtubeLink : "/"
+                                    }
+                                  >
+                                    {dataIcon?.menu?.socialIcons?.youtubeIcon
+                                      ?.node?.sourceUrl && (
+                                      <Image
+                                        priority={true}
+                                        loader={customLoader}
+                                        src={
+                                          dataIcon?.menu?.socialIcons
+                                            ?.youtubeIcon?.node?.sourceUrl
+                                        }
+                                        alt="YouTube"
+                                        className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                        width={39.99}
+                                        height={40}
+                                      />
+                                    )}
+                                  </Link>
+                                )}
+                              </div>
+                              <p className="text-[15px] font-bold text-black-900 italic">
+                                FOLLOW BELAAZ ON WhatsApp
+                              </p>
+                              <hr
+                                className="text-red-800"
+                                style={{ height: "7px", background: "#CE3A42" }}
                               />
-                            </Link>
-                          </div>
-                        </div>
-                      ))
+                              <div className="flex mt-5 mb-8">
+                                <Link
+                                  href={
+                                    dataIcon !== undefined && dataIcon?.menu?.followBelaazOnWhatsapp
+                                        ?.whatsappStatusLink !== undefined ?
+                                    dataIcon?.menu?.followBelaazOnWhatsapp
+                                      ?.whatsappStatusLink : "/"
+                                  }
+                                >
+                                  <Image
+                                    priority={true}
+                                    loader={customLoader}
+                                    src={Frame208}
+                                    alt="WhatsApp Status"
+                                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                    width={101}
+                                    height={32}
+                                  />
+                                </Link>
+                                <Link
+                                  href={
+                                    dataIcon !== undefined && dataIcon?.menu?.followBelaazOnWhatsapp
+                                        ?.whatsappGroupLink !== undefined ?
+                                    dataIcon?.menu?.followBelaazOnWhatsapp
+                                      ?.whatsappGroupLink : "/"
+                                  }
+                                >
+                                  <Image
+                                    priority={true}
+                                    loader={customLoader}
+                                    src={Frame209}
+                                    alt="WhatsApp Group"
+                                    className="h-13 w-13 mx-2 object-cover hover:scale-110 hover:opacity-80"
+                                    width={101}
+                                    height={32}
+                                  />
+                                </Link>
+                              </div>
+                            </div>
+                          )
+                        )
+                      )
                     )}
                 </div>
               </div>

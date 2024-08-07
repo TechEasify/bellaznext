@@ -20,45 +20,8 @@ const customLoader = ({ src }) => {
 };
 
 const SkeletonLoader = () => (
-  // <div className="px-4 py-8 mx-auto max-w-screen-xl bg-gray-800">
-  //   <hr />
-  //   <div className="px-4 mx-auto flex bg-black items-center justify-center">
-  //     <p className="text-base font-normal text-white">Ukraine & Russia War</p>
-  //     <span className="text-white px-2">|</span>
-  //     <p className="text-base font-normal text-white">Manage Your Money</p>
-  //     <span className="text-white px-2">|</span>
-  //     <p className="text-base font-normal text-white">Top Stocks</p>
-  //   </div>
-  //   <hr />
-  //   <div className="px-4 mx-auto max-w-screen-xl">
-  //     <div className="flex flex-wrap justify-center items-center gap-6">
-  //       <div className="flex flex-col max-w-2xl text-white" style={{ width: "800px" }}>
-  //         <div className="bg-black py-8 px-8 animate-pulse">
-  //           <div className="h-6 w-32 bg-red-800 mb-4"></div>
-  //           <div className="h-8 w-3/4 bg-gray-300 mb-4"></div>
-  //           <div className="h-4 w-1/2 bg-gray-300 mb-2"></div>
-  //           <div className="h-4 w-1/4 bg-gray-300 mb-2"></div>
-  //         </div>
-  //         <div className="mb-2">
-  //           <div className="w-full h-64 bg-gray-300 animate-pulse"></div>
-  //         </div>
-  //         <div className="h-4 w-3/4 bg-gray-300 mb-4 animate-pulse"></div>
-  //         <div className="h-4 w-full bg-gray-300 mb-4 animate-pulse"></div>
-  //         <div className="h-4 w-1/2 bg-gray-300 mb-4 animate-pulse"></div>
-  //         <div className="h-4 w-3/4 bg-gray-300 mb-4 animate-pulse"></div>
-  //         <div className="h-4 w-full bg-gray-300 mb-4 animate-pulse"></div>
-  //         <div className="h-4 w-1/2 bg-gray-300 mb-4 animate-pulse"></div>
-  //         <div className="h-4 w-3/4 bg-gray-300 mb-4 animate-pulse"></div>
-  //         <div className="h-4 w-full bg-gray-300 mb-4 animate-pulse"></div>
-  //       </div>
-  //       <div className="flex max-w-2xl">
-  //         <div className="w-full h-64 bg-gray-300 animate-pulse"></div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // </div>
   <div className="spinner">
-        <Image
+    <Image
       priority={true}
       loader={customLoader}
       src={Primarylogo}
@@ -67,13 +30,13 @@ const SkeletonLoader = () => (
       width={250}
       height={54}
     />
-      </div>
+  </div>
 );
 
 const NewsPage = () => {
   const router = useRouter();
   const { nodeByUri, setNodeByUri } = useDialog();
-  const { navData, setNavData} = useHeader();
+  const { navData, setNavData } = useHeader();
   const { slug } = router.query;
   const uri = `/${slug}`;
 
@@ -82,12 +45,12 @@ const NewsPage = () => {
     fetchPolicy: "cache-first",
   });
 
-  // useEffect(() => {
-  //   if (data) {
-  //     setNavData(data);
-  //     setNodeByUri(data.nodeByUri);
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (data) {
+      setNavData(data);
+      setNodeByUri(data.nodeByUri);
+    }
+  }, [data]);
 
   if (loading) {
     return <SkeletonLoader />;
@@ -102,11 +65,9 @@ const NewsPage = () => {
       <Head>
         <title>{data?.nodeByUri?.title} - News</title>
       </Head>
-      {/* <Nav uri={uri} /> */}
       <main>
         <News />
       </main>
-      {/* <Footer /> */}
     </>
   );
 };
