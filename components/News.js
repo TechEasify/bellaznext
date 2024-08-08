@@ -91,6 +91,9 @@ function News({newsData, nodeByUri}) {
     (ads) => ads?.posts?.nodes
   );
 
+  console.log(dataNav, "dataNav");
+  
+
   return (
     <>
       {/* <Nav /> */}
@@ -100,31 +103,31 @@ function News({newsData, nodeByUri}) {
             <p
               className="text-[11px] md:text-[13px] font-normal text-white px-2 cursor-pointer"
               onClick={() =>
-                dataNav?.menu?.header?.topFirstLinks?.url &&
-                router.push(dataNav?.menu?.header?.topFirstLinks?.url)
+                dataNav?.menus?.nodes[0].header?.topFirstLinks?.url &&
+                router.push(dataNav?.menus?.nodes[0].header?.topFirstLinks?.url)
               }
             >
-              {dataNav?.menu?.header?.topFirst || "Ukraine & Russia War"}
+              {dataNav?.menus?.nodes[0].header?.topFirst || "Ukraine & Russia War"}
             </p>
             <span className="text-white px-2">|</span>
             <p
               className="text-[11px] md:text-[13px] font-normal text-white px-2 cursor-pointer"
               onClick={() =>
-                dataNav?.menu?.header?.topSecondLinks?.url &&
-                router.push(dataNav?.menu?.header?.topSecondLinks?.url)
+                dataNav?.menus?.nodes[0].header?.topSecondLinks?.url &&
+                router.push(dataNav?.menus?.nodes[0].header?.topSecondLinks?.url)
               }
             >
-              {dataNav?.menu?.header?.topSecond || "Manage Your Money"}
+              {dataNav?.menus?.nodes[0].header?.topSecond || "Manage Your Money"}
             </p>
             <span className="text-white px-2">|</span>
             <p
               className="text-[11px] md:text-[13px] font-normal text-white px-2 cursor-pointer"
               onClick={() =>
-                dataNav?.menu?.header?.topThirdLinks?.url &&
-                router.push(dataNav?.menu?.header?.topThirdLinks?.url)
+                dataNav?.menus?.nodes[0].header?.topThirdLinks?.url &&
+                router.push(dataNav?.menus?.nodes[0].header?.topThirdLinks?.url)
               }
             >
-              {dataNav?.menu?.header?.topThird || "Top Stocks"}
+              {dataNav?.menus?.nodes[0].header?.topThird || "Top Stocks"}
             </p>
           </div>
 

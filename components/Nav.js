@@ -461,9 +461,12 @@ const Nav = () => {
               aria-label="Breadcrumb"
               className="hidden lg:flex justify-center pt-3"
             >
-              <div className="flex justify-between items-center w-full ml-[30%]">
-                <ol className="inline-flex items-center space-x-2 lg:space-x-4"></ol>
-                <div className="w-[37%] text-center">
+              <div className="grid grid-cols-3 items-center w-full">
+                <ol className="flex justify-center"></ol>
+                <div>
+                  {/* <p className="text-white text-[19px] font-regular">בס״ד</p> */}
+                </div>
+                <div className="text-center">
                   <p className="text-white text-[19px] font-regular">בס״ד</p>
                 </div>
               </div>
