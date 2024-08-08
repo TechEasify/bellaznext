@@ -897,6 +897,7 @@ const Nav = () => {
                           dataNav?.menus?.nodes[0]?.header?.subFirstLink?.url ?? "/"
                         }
                         className="flex text-white font-bold items-center mt-2"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav !== undefined && dataNav.menu.header.subFirst}
                         <Image
@@ -914,6 +915,7 @@ const Nav = () => {
                           dataNav?.menus?.nodes[0]?.header?.subSecondLink?.url ?? "/"
                         }
                         className="flex text-white font-bold items-center mt-2"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav !== undefined && dataNav.menu.header.subSecond}
                         <Image
@@ -931,6 +933,7 @@ const Nav = () => {
                           dataNav?.menus?.nodes[0]?.header?.subThirdLink?.url ?? "/"
                         }
                         className="flex text-white font-bold items-center mt-2"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav !== undefined && dataNav.menu.header.subThird}
                         <Image
@@ -951,6 +954,7 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.mainMenuSecond}
@@ -967,6 +971,7 @@ const Nav = () => {
                 <Link
                   href={dataNav?.menus?.nodes[0]?.header?.mainMenuThirdLink?.url ?? "/"}
                   className="flex text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.mainMenuThird}
@@ -987,6 +992,7 @@ const Nav = () => {
                       dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav !== undefined &&
                       dataNav?.menus?.nodes[0].header?.foreSquareFirst}
@@ -996,6 +1002,7 @@ const Nav = () => {
                       dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav !== undefined &&
                       dataNav?.menus?.nodes[0].header?.foreSquareSecond}
@@ -1005,6 +1012,7 @@ const Nav = () => {
                       dataNav?.menus?.nodes[0]?.header?.foreSquareThirdLink?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav !== undefined &&
                       dataNav?.menus?.nodes[0].header?.foreSquareThird}
@@ -1118,6 +1126,7 @@ const Nav = () => {
                 <Link
                   href={dataNav?.menus?.nodes[0]?.header?.subFirstLink?.url ?? "/"}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.subFirst}
@@ -1125,6 +1134,7 @@ const Nav = () => {
                 <Link
                   href={dataNav?.menus?.nodes[0]?.header?.subSecondLink?.url ?? "/"}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.subSecond}
@@ -1132,6 +1142,7 @@ const Nav = () => {
                 <Link
                   href={dataNav?.menus?.nodes[0]?.header?.subThirdLink?.url ?? "/"}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.subThird}
@@ -1141,6 +1152,7 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.mainMenuSecond}
@@ -1148,6 +1160,7 @@ const Nav = () => {
                 <Link
                   href={dataNav?.menus?.nodes[0]?.header?.mainMenuThirdLink?.url ?? "/"}
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.mainMenuThird}
@@ -1159,6 +1172,7 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.foreSquareFirst}
@@ -1168,6 +1182,7 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.foreSquareSecond}
@@ -1177,6 +1192,7 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0]?.header?.foreSquareThirdLink?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav !== undefined &&
                     dataNav?.menus?.nodes[0].header?.foreSquareThird}
@@ -1372,6 +1388,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subFirst ??
                           "Sub First"}
@@ -1391,6 +1408,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subSecond ??
                           "Sub Second"}
@@ -1410,6 +1428,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subThird ??
                           "Sub Third"}
@@ -1432,6 +1451,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.mainMenuSecond ??
                     "Main Menu Second"}
@@ -1451,6 +1471,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.mainMenuThird ??
                     "Main Menu Third"}
@@ -1472,6 +1493,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareFirst ??
                       "ForeSquare First"}
@@ -1482,6 +1504,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareSecond ??
                       "ForeSquare Second"}
@@ -1492,6 +1515,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareThird ??
                       "ForeSquare Third"}
@@ -1611,6 +1635,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.foreSquareFirst ??
                     "ForeSquare First"}
@@ -1621,6 +1646,7 @@ const Nav = () => {
                       ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.foreSquareSecond ??
                     "ForeSquare Second"}
@@ -1631,6 +1657,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.foreSquareThird ??
                     "ForeSquare Third"}
@@ -1829,6 +1856,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subFirst ??
                           "Sub First"}
@@ -1848,6 +1876,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subSecond ??
                           "Sub Second"}
@@ -1867,6 +1896,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subThird ??
                           "Sub Third"}
@@ -1889,6 +1919,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.mainMenuSecond ??
                     "Main Menu Second"}
@@ -1908,6 +1939,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.mainMenuThird ??
                     "Main Menu Third"}
@@ -1929,6 +1961,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareFirst ??
                       "ForeSquare First"}
@@ -1939,6 +1972,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareSecond ??
                       "ForeSquare Second"}
@@ -1949,6 +1983,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareThird ??
                       "ForeSquare Third"}
@@ -2068,6 +2103,7 @@ const Nav = () => {
                       ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0]?.header?.foreSquareFirst ??
                     "ForeSquare First"}
@@ -2078,6 +2114,7 @@ const Nav = () => {
                       ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0]?.header?.foreSquareSecond ??
                     "ForeSquare Second"}
@@ -2088,6 +2125,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0]?.header?.foreSquareThird ??
                     "ForeSquare Third"}
@@ -2284,6 +2322,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subFirst ??
                           "Sub First"}
@@ -2303,6 +2342,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subSecond ??
                           "Sub Second"}
@@ -2322,6 +2362,7 @@ const Nav = () => {
                           "/"
                         }
                         className="flex mr-2 text-white font-bold items-center mb-3"
+                        onClick={toggleContactHeader}
                       >
                         {dataNav?.menus?.nodes[0].header?.subThird ??
                           "Sub Third"}
@@ -2344,6 +2385,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.mainMenuSecond ??
                     "Main Menu Second"}
@@ -2363,6 +2405,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex mr-2 text-white font-bold items-center mb-3"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0].header?.mainMenuThird ??
                     "Main Menu Third"}
@@ -2384,6 +2427,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareFirst ??
                       "ForeSquare First"}
@@ -2394,6 +2438,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareSecond ??
                       "ForeSquare Second"}
@@ -2404,6 +2449,7 @@ const Nav = () => {
                         ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2 lg:mr-2"
+                    onClick={toggleContactHeader}
                   >
                     {dataNav?.menus?.nodes[0].header?.foreSquareThird ??
                       "ForeSquare Third"}
@@ -2523,6 +2569,7 @@ const Nav = () => {
                       ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0]?.header?.foreSquareFirst ??
                     "ForeSquare First"}
@@ -2533,6 +2580,7 @@ const Nav = () => {
                       ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0]?.header?.foreSquareSecond ??
                     "ForeSquare Second"}
@@ -2543,6 +2591,7 @@ const Nav = () => {
                     "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
+                  onClick={toggleContactHeader}
                 >
                   {dataNav?.menus?.nodes[0]?.header?.foreSquareThird ??
                     "ForeSquare Third"}

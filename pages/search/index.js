@@ -236,7 +236,7 @@ const SearchPage = () => {
                   );
                 })
               ) : (
-                <p className="text-center text-gray-600">No posts available</p>
+                <h5 className="text-center text-gray-600 text-[30px]">No posts available</h5>
               )}
               <div className="flex justify-center">
                 <button
