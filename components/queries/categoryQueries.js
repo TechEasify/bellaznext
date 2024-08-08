@@ -146,6 +146,7 @@ export const CATEGORY_BREAKING_QUERY = gql`
                         link
                         slug
                         title
+                        excerpt
                         featuredImage {
                           node {
                             altText

@@ -186,8 +186,6 @@ const Nav = () => {
     }
   };
 
-  console.log(dataNav, "dataNav");
-
   return (
     <>
       <Head>

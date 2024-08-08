@@ -67,8 +67,6 @@ const NewsPage = () => {
   const [nodeByUri, setNodeByUri] = useState(null);
   const { slug } = router.query;
   const uri = `/${slug}`;
-  console.log(uri, "uri slug");
-
   const {
     data,
     loading,
@@ -96,8 +94,6 @@ const NewsPage = () => {
   if (!data || !nodeByUri) {
     return <div>No data available</div>;
   }
-
-  console.log(data, "newsData");
 
   return (
     <>

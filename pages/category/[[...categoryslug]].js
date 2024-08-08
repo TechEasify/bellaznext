@@ -37,9 +37,6 @@ const CategoryPage = ({
     return <SkeletonLoader />;
   }
 
-  console.log(nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0], "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0]");
-  
-
   return (
     <>
       <Layout>

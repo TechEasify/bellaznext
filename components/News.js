@@ -91,9 +91,6 @@ function News({newsData, nodeByUri}) {
     (ads) => ads?.posts?.nodes
   );
 
-  console.log(dataNav, "dataNav");
-  
-
   return (
     <>
       {/* <Nav /> */}
@@ -396,7 +393,6 @@ function News({newsData, nodeByUri}) {
                     .map((item) =>
                       item.posts.nodes.slice(0, 1).map(
                         (posts) => (
-                          console.log(posts, "posts"),
                           (
                             <div
                               key={item.id}
