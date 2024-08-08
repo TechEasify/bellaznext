@@ -7,6 +7,8 @@ import Primarylogo from "../../public/images/Primarylogo.svg";
 import { useDialog } from "../../components/DialogContext";
 import Image from "next/image";
 import Layout from "../../components/Layout";
+import client from "../../lib/ga/apolloClient";
+import { gql } from "@apollo/client";
 
 const customLoader = ({ src }) => {
   return src;
@@ -34,6 +36,9 @@ const CategoryPage = ({
   if (loadingCategory) {
     return <SkeletonLoader />;
   }
+
+  console.log(nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0], "nodeByUri?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0]");
+  
 
   return (
     <>

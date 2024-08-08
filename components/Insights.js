@@ -326,82 +326,78 @@ const Insights = () => {
             );
           })}
 
-          {insightsPost?.map(
-            (item) =>
-              item.name === "Insights" && (
-                <div
-                  className="max-w-md bg-white mb-6 mx-auto md:block hidden" // Hidden on tablet and desktop, visible on mobile
-                  key={item.name}
-                >
-                  {item.posts.nodes.slice(0, 1).map((node) => {
-                    const contentText = node?.content
-                      ? node?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
-                      : ""; // Fallback if content is not available
+{insightsPost?.map(
+  (item) =>
+    item.name === "Insights" && (
+      <div
+        className="max-w-md bg-white mb-6 mx-auto md:block hidden" // Hidden on tablet and desktop, visible on mobile
+        key={item.name}
+      >
+        {item.posts.nodes.slice(0, 1).map((node) => {
+          const contentText = node?.content
+            ? node?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
+            : ""; // Fallback if content is not available
 
-                    const wordCount = contentText
-                      ? contentText?.split(" ").length
-                      : 0;
-                    const readingTime =
-                      wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
-                    return (
-                      <div key={node.slug}>
-                        <Link href={`/news/${node.slug}`} passHref>
-                          <Image
-                            priority={true}
-                            loader={customLoader}
-                            src={
-                              node.featuredImage.node.sourceUrl !== null &&
-                              node.featuredImage.node.sourceUrl
-                            }
-                            alt={
-                              node.featuredImage.node.sourceUrl !== null &&
-                              node.featuredImage.node.sourceUrl
-                            }
-                            className="object-cover w-[593px] h-[395px]"
-                            width={593}
-                            height={395}
-                          />
-                        </Link>
-                        <p className="text-[12px] font-semibold text-red-800 mt-2 uppercase tracking-widest">
-                          {item.name}
-                        </p>
-                        <Link href={`/news/${node.slug}`} passHref>
-                          <h5 className="mb-2 text-[28px] font-semibold tracking-tight text-black-900 dark:text-white hover:text-skyBlue">
-                            {node.title}
-                          </h5>
-                        </Link>
-                        <p className="text-[12px] text-base font-extralight text-black-800 mb-4">
-                          <span
-                            className="text-[12px] font-extrabold mr-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            |
-                          </span>
-                          By
-                          <span
-                            className="font-extrabold mx-1"
-                            style={{ color: "#40A6FB" }}
-                          >
-                            {node.author.node.name}
-                            <span
-                              className="text-[36px] font-extrabold mx-1"
-                              style={{ color: "#40A6FB" }}
-                            >
-                              .
-                            </span>
-                          </span>
-                          {readingTime} MIN READ
-                        </p>
-                        <p
-                          className="text-[16px] font-extralight text-gray-800 mt-2 export"
-                          dangerouslySetInnerHTML={{ __html: node.content }}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              )
-          )}
+          const wordCount = contentText ? contentText.split(" ").length : 0;
+          const readingTime = wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
+
+          const imageUrl =
+            node?.featuredImage?.node?.sourceUrl || "/path/to/fallback/image.jpg"; // Fallback image URL
+
+          return (
+            <div key={node.slug}>
+              <Link href={`/news/${node.slug}`} passHref>
+                <Image
+                  priority={true}
+                  loader={customLoader}
+                  src={imageUrl}
+                  alt={node?.title || "Default Alt Text"}
+                  className="object-cover w-[593px] h-[395px]"
+                  width={593}
+                  height={395}
+                />
+              </Link>
+              <p className="text-[12px] font-semibold text-red-800 mt-2 uppercase tracking-widest">
+                {item.name}
+              </p>
+              <Link href={`/news/${node.slug}`} passHref>
+                <h5 className="mb-2 text-[28px] font-semibold tracking-tight text-black-900 dark:text-white hover:text-skyBlue">
+                  {node.title}
+                </h5>
+              </Link>
+              <p className="text-[12px] text-base font-extralight text-black-800 mb-4">
+                <span
+                  className="text-[12px] font-extrabold mr-1"
+                  style={{ color: "#40A6FB" }}
+                >
+                  |
+                </span>
+                By
+                <span
+                  className="font-extrabold mx-1"
+                  style={{ color: "#40A6FB" }}
+                >
+                  {node.author.node.name}
+                  <span
+                    className="text-[36px] font-extrabold mx-1"
+                    style={{ color: "#40A6FB" }}
+                  >
+                    .
+                  </span>
+                </span>
+                {readingTime} MIN READ
+              </p>
+              <p
+                className="text-[16px] font-extralight text-gray-800 mt-2 export"
+                dangerouslySetInnerHTML={{ __html: node.content }}
+              />
+            </div>
+          );
+        })}
+      </div>
+    )
+)}
+
 
           {insight?.slice(2, 3)?.map((item) => {
             const contentText = item?.content

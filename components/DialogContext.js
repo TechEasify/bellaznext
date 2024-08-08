@@ -1,8 +1,26 @@
-import React, { createContext, useContext, useEffect, useState, useMemo } from "react";
-import { useQuery } from "@apollo/client";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
+import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { GET_ABOUT_PAGE, GET_ADVERTISE_PAGE, GET_CONTACT_PAGE, GET_HOME_PAGE, GET_INSIGHTS_SECTION, GET_MUSIC_SECTION, GET_TESTIMONIAL_SECTION, SEARCH_QUERY } from "./queries/Queries";
-import { CATEGORY_BREAKING_QUERY, INSIGHTS_DATA } from "./queries/categoryQueries";
+import {
+  GET_ABOUT_PAGE,
+  GET_ADVERTISE_PAGE,
+  GET_CONTACT_PAGE,
+  GET_HOME_PAGE,
+  GET_INSIGHTS_SECTION,
+  GET_MUSIC_SECTION,
+  GET_TESTIMONIAL_SECTION,
+  SEARCH_QUERY,
+} from "./queries/Queries";
+import {
+  CATEGORY_BREAKING_QUERY,
+  INSIGHTS_DATA,
+} from "./queries/categoryQueries";
 
 const DialogContext = createContext();
 
@@ -37,71 +55,75 @@ export const DialogProvider = ({ children }) => {
     setIsDialogOpen(false);
   };
 
-  const {
-    loading: loadingSearch,
-    error: errorSearch,
-    data: navDataSearch,
-    fetchMore: searchFetch,
-  } = useQuery(SEARCH_QUERY, { fetchPolicy: "cache-first" });
+  const [
+    fetchSearch,
+    { loading: loadingSearch, error: errorSearch, data: navDataSearch },
+  ] = useLazyQuery(SEARCH_QUERY, { fetchPolicy: "cache-first" });
+  const [
+    fetchCategory,
+    { data: categoryData, loading: loadingCategory, error: errorCategory },
+  ] = useLazyQuery(CATEGORY_BREAKING_QUERY, { fetchPolicy: "cache-first" });
+  const [
+    fetchHomePage,
+    { loading: bannerLoading, error: bannerError, data: Data },
+  ] = useLazyQuery(GET_HOME_PAGE, { fetchPolicy: "cache-first" });
+  const [
+    fetchInsights,
+    { loading: insightsLoading, error: insightsError, data: insightsData },
+  ] = useLazyQuery(GET_INSIGHTS_SECTION, { fetchPolicy: "cache-first" });
+  const [
+    fetchMusic,
+    { loading: musicLoading, error: musicError, data: musicData },
+  ] = useLazyQuery(GET_MUSIC_SECTION, { fetchPolicy: "cache-first" });
+  const [
+    fetchInsightData,
+    { data: categoryInsight, loading: categoryLoading, error: categoryError },
+  ] = useLazyQuery(INSIGHTS_DATA, { fetchPolicy: "cache-first" });
+  const [
+    fetchTestimonial,
+    {
+      data: testimonialData,
+      loading: testimonialLoading,
+      error: testimonialError,
+    },
+  ] = useLazyQuery(GET_TESTIMONIAL_SECTION, { fetchPolicy: "cache-first" });
+  const [
+    fetchContact,
+    { data: contactData, loading: contactLoading, error: contactError },
+  ] = useLazyQuery(GET_CONTACT_PAGE, { fetchPolicy: "cache-first" });
+  const [
+    fetchAbout,
+    { data: aboutData, loading: aboutLoading, error: aboutError },
+  ] = useLazyQuery(GET_ABOUT_PAGE, { fetchPolicy: "cache-first" });
+  const [
+    fetchAdvertise,
+    { data: advertiseData, loading: advertiseLoading, error: advertiseError },
+  ] = useLazyQuery(GET_ADVERTISE_PAGE, { fetchPolicy: "cache-first" });
 
-  const {
-    data: categoryData,
-    loading: loadingCategory,
-    error: errorCategory,
-    fetchMore,
-  } = useQuery(CATEGORY_BREAKING_QUERY, {
-    variables: { uri },
-    fetchPolicy: "cache-first",
-  });
+  useEffect(() => {
+    if (categoryslug){
+      fetchCategory({ variables: { uri: `/category/${categoryslug}` } });
+      fetchInsightData();
+    }
 
-  const {
-    loading: bannerLoading,
-    error: bannerError,
-    data: Data,
-  } = useQuery(GET_HOME_PAGE, { fetchPolicy: "cache-first" });
+    if (slug) fetchSearch({ variables: { slug } });
+    
+    if (router.pathname === "/") {
+      fetchHomePage();
+      fetchInsights();
+      fetchMusic();
+    }
 
-  const {
-    loading: insightsLoading,
-    error: insightsError,
-    data: insightsData,
-  } = useQuery(GET_INSIGHTS_SECTION, { fetchPolicy: "cache-first" });
+    if (router.pathname === "/about" || router.pathname === "/advertise") {
+      fetchTestimonial();
+      fetchAbout();
+      fetchAdvertise();
+    }
 
-  const {
-    loading: musicLoading,
-    error: musicError,
-    data: musicData,
-  } = useQuery(GET_MUSIC_SECTION, { fetchPolicy: "cache-first" });
-
-  const {
-    data: categoryInsight,
-    loading: categoryLoading,
-    error: categoryError,
-    fetchMore: insightFetchMore,
-  } = useQuery(INSIGHTS_DATA, { fetchPolicy: "cache-first" });
-
-  const {
-    data: testimonialData,
-    loading: testimonialLoading,
-    error: testimonialError,
-  } = useQuery(GET_TESTIMONIAL_SECTION, { fetchPolicy: "cache-first" });
-
-  const {
-    data: contactData,
-    loading: contactLoading,
-    error: contactError,
-  } = useQuery(GET_CONTACT_PAGE, { fetchPolicy: "cache-first" });
-
-  const {
-    data: aboutData,
-    loading: aboutLoading,
-    error: aboutError,
-  } = useQuery(GET_ABOUT_PAGE, { fetchPolicy: "cache-first" });
-
-  const {
-    data: advertiseData,
-    loading: advertiseLoading,
-    error: advertiseError,
-  } = useQuery(GET_ADVERTISE_PAGE, { fetchPolicy: "cache-first" });
+    if (router.pathname === "/contact-us") {
+      fetchContact();
+    }
+  }, [router.pathname, categoryslug, slug]);
 
   useEffect(() => {
     if (categoryData) setNodeByUri(categoryData);
@@ -114,17 +136,17 @@ export const DialogProvider = ({ children }) => {
     if (contactData) setContactQuery(contactData);
     if (aboutData) setAboutQuery(aboutData);
     if (advertiseData) setAdvertiseQuery(advertiseData);
-  }, [ 
+  }, [
     categoryData,
     Data,
     insightsData,
-    testimonialData,
     musicData,
     categoryInsight,
+    testimonialData,
     navDataSearch,
     contactData,
     aboutData,
-    advertiseData
+    advertiseData,
   ]);
 
   const memoizedPosts = useMemo(() => posts, [posts]);
@@ -133,12 +155,21 @@ export const DialogProvider = ({ children }) => {
   const memoizedBannerData = useMemo(() => bannerData, [bannerData]);
   const memoizedInsightsQuery = useMemo(() => insightsQuery, [insightsQuery]);
   const memoizedMusicQuery = useMemo(() => musicQuery, [musicQuery]);
-  const memoizedCategoryInsightData = useMemo(() => categoryInsightData, [categoryInsightData]);
-  const memoizedTestimonialQuery = useMemo(() => testimonialQuery, [testimonialQuery]);
+  const memoizedCategoryInsightData = useMemo(
+    () => categoryInsightData,
+    [categoryInsightData]
+  );
+  const memoizedTestimonialQuery = useMemo(
+    () => testimonialQuery,
+    [testimonialQuery]
+  );
   const memoizedSearchData = useMemo(() => searchData, [searchData]);
   const memoizedContactQuery = useMemo(() => contactQuery, [contactQuery]);
   const memoizedAboutQuery = useMemo(() => aboutQuery, [aboutQuery]);
-  const memoizedAdvertiseQuery = useMemo(() => advertiseQuery, [advertiseQuery]);
+  const memoizedAdvertiseQuery = useMemo(
+    () => advertiseQuery,
+    [advertiseQuery]
+  );
 
   return (
     <DialogContext.Provider
@@ -156,8 +187,8 @@ export const DialogProvider = ({ children }) => {
         uri,
         contactQuery: memoizedContactQuery,
         loadingCategory,
-        fetchMore,
-        insightFetchMore,
+        fetchMore: fetchCategory,
+        insightFetchMore: fetchInsightData,
         bannerData: memoizedBannerData,
         bannerLoading,
         bannerError,
@@ -172,7 +203,7 @@ export const DialogProvider = ({ children }) => {
         categoryError,
         testimonialQuery: memoizedTestimonialQuery,
         searchData: memoizedSearchData,
-        searchFetch,
+        searchFetch: fetchSearch,
         loadingSearch,
         errorSearch,
         aboutQuery: memoizedAboutQuery,
