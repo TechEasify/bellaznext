@@ -507,7 +507,8 @@ const Nav = () => {
                 </div>
                 <Link
                   href={
-                    data?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ?? "/"
+                    data?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ??
+                    "/"
                   }
                   className="flex mr-2 text-[20px] text-white font-medium items-center hidden lg:flex"
                 >
@@ -653,11 +654,12 @@ const Nav = () => {
                   ? "border-b-3 bg-change2"
                   : ""
               }`}
-              onClick={() =>
-                handleLinkClick(
-                  dataNav?.menus?.nodes[0].header?.subFirstLink?.url
-                )
-              }
+              // onClick={() =>
+              //   handleLinkClick(
+              //     dataNav?.menus?.nodes[0].header?.subFirstLink?.url
+              //   )
+              // }
+              onClick={toggleDropdown}
             >
               {dataNav !== undefined &&
                 dataNav?.menus?.nodes[0].header.subFirst}
@@ -685,11 +687,12 @@ const Nav = () => {
                   ? `border-b-3 bg-change`
                   : ""
               }`}
-              onClick={() =>
-                handleLinkClick(
-                  dataNav?.menus?.nodes[0].header?.subSecondLink?.url
-                )
-              }
+              // onClick={() =>
+              //   handleLinkClick(
+              //     dataNav?.menus?.nodes[0].header?.subSecondLink?.url
+              //   )
+              // }
+              onClick={toggleDropdown}
             >
               {dataNav !== undefined &&
                 dataNav?.menus?.nodes[0].header.subSecond}
@@ -716,11 +719,12 @@ const Nav = () => {
                   ? "border-b-3 bg-change1"
                   : ""
               }`}
-              onClick={() =>
-                handleLinkClick(
-                  dataNav?.menus?.nodes[0].header?.subThirdLink?.url
-                )
-              }
+              // onClick={() =>
+              //   handleLinkClick(
+              //     dataNav?.menus?.nodes[0].header?.subThirdLink?.url
+              //   )
+              // }
+              onClick={toggleDropdown}
             >
               {dataNav !== undefined &&
                 dataNav?.menus?.nodes[0].header.subThird}
@@ -894,7 +898,8 @@ const Nav = () => {
                     <>
                       <Link
                         href={
-                          dataNav?.menus?.nodes[0]?.header?.subFirstLink?.url ?? "/"
+                          dataNav?.menus?.nodes[0]?.header?.subFirstLink?.url ??
+                          "/"
                         }
                         className="flex text-white font-bold items-center mt-2"
                         onClick={toggleContactHeader}
@@ -912,7 +917,8 @@ const Nav = () => {
                       </Link>
                       <Link
                         href={
-                          dataNav?.menus?.nodes[0]?.header?.subSecondLink?.url ?? "/"
+                          dataNav?.menus?.nodes[0]?.header?.subSecondLink
+                            ?.url ?? "/"
                         }
                         className="flex text-white font-bold items-center mt-2"
                         onClick={toggleContactHeader}
@@ -930,7 +936,8 @@ const Nav = () => {
                       </Link>
                       <Link
                         href={
-                          dataNav?.menus?.nodes[0]?.header?.subThirdLink?.url ?? "/"
+                          dataNav?.menus?.nodes[0]?.header?.subThirdLink?.url ??
+                          "/"
                         }
                         className="flex text-white font-bold items-center mt-2"
                         onClick={toggleContactHeader}
@@ -951,7 +958,8 @@ const Nav = () => {
                 </div>
                 <Link
                   href={
-                    dataNav?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ?? "/"
+                    dataNav?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ??
+                    "/"
                   }
                   className="flex text-white font-bold items-center mb-3"
                   onClick={toggleContactHeader}
@@ -969,7 +977,10 @@ const Nav = () => {
                   />
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0]?.header?.mainMenuThirdLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0]?.header?.mainMenuThirdLink?.url ??
+                    "/"
+                  }
                   className="flex text-white font-bold items-center mb-3"
                   onClick={toggleContactHeader}
                 >
@@ -989,7 +1000,8 @@ const Nav = () => {
                 <div className="flex flex-col">
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2"
                     onClick={toggleContactHeader}
@@ -999,7 +1011,8 @@ const Nav = () => {
                   </Link>
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2"
                     onClick={toggleContactHeader}
@@ -1009,7 +1022,8 @@ const Nav = () => {
                   </Link>
                   <Link
                     href={
-                      dataNav?.menus?.nodes[0]?.header?.foreSquareThirdLink?.url ?? "/"
+                      dataNav?.menus?.nodes[0]?.header?.foreSquareThirdLink
+                        ?.url ?? "/"
                     }
                     className="flex text-white font-bold items-center my-2"
                     onClick={toggleContactHeader}
@@ -1124,7 +1138,9 @@ const Nav = () => {
             <div className="hidden lg:flex lg:flex-row items-center">
               <div className="flex flex-col mr-5">
                 <Link
-                  href={dataNav?.menus?.nodes[0]?.header?.subFirstLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0]?.header?.subFirstLink?.url ?? "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
                 >
@@ -1132,7 +1148,9 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0].header?.subFirst}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0]?.header?.subSecondLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0]?.header?.subSecondLink?.url ?? "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
                 >
@@ -1140,7 +1158,9 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0].header?.subSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0]?.header?.subThirdLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0]?.header?.subThirdLink?.url ?? "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
                 >
@@ -1149,7 +1169,8 @@ const Nav = () => {
                 </Link>
                 <Link
                   href={
-                    dataNav?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ?? "/"
+                    dataNav?.menus?.nodes[0]?.header?.mainMenuSecondLink?.url ??
+                    "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
@@ -1158,7 +1179,10 @@ const Nav = () => {
                     dataNav?.menus?.nodes[0].header?.mainMenuSecond}
                 </Link>
                 <Link
-                  href={dataNav?.menus?.nodes[0]?.header?.mainMenuThirdLink?.url ?? "/"}
+                  href={
+                    dataNav?.menus?.nodes[0]?.header?.mainMenuThirdLink?.url ??
+                    "/"
+                  }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
                 >
@@ -1169,7 +1193,8 @@ const Nav = () => {
               <div className="flex flex-col lg:items-center">
                 <Link
                   href={
-                    dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink?.url ?? "/"
+                    dataNav?.menus?.nodes[0]?.header?.foreSquareFirstLink
+                      ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
@@ -1179,7 +1204,8 @@ const Nav = () => {
                 </Link>
                 <Link
                   href={
-                    dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink?.url ?? "/"
+                    dataNav?.menus?.nodes[0]?.header?.foreSquareSecondLink
+                      ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
@@ -1189,7 +1215,8 @@ const Nav = () => {
                 </Link>
                 <Link
                   href={
-                    dataNav?.menus?.nodes[0]?.header?.foreSquareThirdLink?.url ?? "/"
+                    dataNav?.menus?.nodes[0]?.header?.foreSquareThirdLink
+                      ?.url ?? "/"
                   }
                   className="flex text-white font-bold items-center my-2 lg:mr-2"
                   onClick={toggleContactHeader}
