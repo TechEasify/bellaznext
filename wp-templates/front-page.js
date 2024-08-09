@@ -30,3 +30,10 @@ export default function Component(props) {
 }
 
 Component.query = GET_NAV_SECTION;
+
+
+Component.variables = (seedQuery, ctx) => {
+  return {
+    uri: seedQuery.uri,
+  };
+};

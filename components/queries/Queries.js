@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_NAV_SECTION = gql`
-query GetMenu($uri: String = "/") {
+query GetMenu($uri: String = "") {
   primaryMenuItems: menuItems(where: {location: PRIMARY}, first: 50) {
     edges {
       node {
