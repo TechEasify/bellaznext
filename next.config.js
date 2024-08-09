@@ -38,6 +38,4 @@ module.exports = {
     removeConsole: true,
   },
   swcMinify: true,
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
 };
