@@ -5,7 +5,6 @@ import aboutPage from "./page-about"
 import contactusPage from "./page-contact-us"
 import advertisePage from "./page-advertise"
 import single from "./single";
-import singular from "./singular";
 
 export default {
   "front-page": frontPage,
@@ -15,5 +14,4 @@ export default {
   "page-advertise" :  advertisePage,
   single,
   page,
-  singular
 };
