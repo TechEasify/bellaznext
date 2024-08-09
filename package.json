@@ -14,10 +14,9 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
-    "start": "next start",
-    "generate": "faust generatePossibleTypes",
-    "export": "next build && next export && next-image-export-optimizer"
+    "build": "next build && faust build",
+    "start": "next start && faust start",
+    "generate": "faust generatePossibleTypes"
   },
   "dependencies": {
     "@apollo/client": "^3.10.4",
