@@ -13,9 +13,9 @@
     "url": "git+https://github.com/earvinpiamonte/nextjs-tailwindcss-template.git"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "faust dev && next dev",
+    "build": "faust generatePossibleTypes && faust build && next build",
+    "start": "faust start",
     "generate": "faust generatePossibleTypes"
   },
   "dependencies": {
