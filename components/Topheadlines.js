@@ -65,12 +65,12 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-8">
             {uniqueCategoryPosts?.map(
-              (item) => (
+              (item, index) => (
                 console.log(item, "uniqueCategoryPosts"),
                 (
                   <>
-                    <div key={item.id} className="max-w-md bg-white mb-6">
-                      {item.posts.nodes.slice(0, 1).map((category) => {
+                    <div key={index} className="max-w-md bg-white mb-6">
+                      {item.posts.nodes.slice(0, 1).map((category, index) => {
                         console.log(category, "posts category");
                         
                         const contentText = item?.content
@@ -83,7 +83,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                         const readingTime =
                           wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
                         return (
-                          <div key={category.id}>
+                          <div key={index}>
                             <Link href={`/news/${category.slug}`}>
                               <Image
                                 priority={true}
@@ -136,8 +136,8 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
           </div>
           <div className="w-full max-w-3xl mx-auto mt-5 md:hidden">
             {sortedTopHeadlinesSidebar !== null &&
-              sortedTopHeadlinesSidebar?.slice(0, displayCount).map((side) => (
-                <div className="mt-5 mb-5 sm:flex" key={side.id}>
+              sortedTopHeadlinesSidebar?.slice(0, displayCount).map((side, index) => (
+                <div className="mt-5 mb-5 sm:flex" key={index}>
                   {side.posts.nodes
                     .slice()
                     .sort((a, b) => (a.title < b.title ? 1 : -1))

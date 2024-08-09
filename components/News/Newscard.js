@@ -80,7 +80,7 @@ const Newscard = ({ nodeByUri }) => {
       <div className="hidden md:block px-4 py-8 mx-auto max-w-screen-xl">
         <div className="w-full mx-auto flex flex-wrap justify-center">
           <div className="flex flex-wrap justify-around">
-            {section1?.map((item) => {
+            {section1?.map((item, index) => {
               if (displayedCategories.has(item.name)) {
                 return null;
               }
@@ -109,7 +109,7 @@ const Newscard = ({ nodeByUri }) => {
 
               return (
                 <div
-                  key={item.id}
+                  key={index}
                   className="max-w-xs bg-white mr-4 items-center"
                 >
                   <div className="mr-2 mb-20">
@@ -166,7 +166,7 @@ const Newscard = ({ nodeByUri }) => {
                 </div>
               );
             })}
-            {section2?.map((item) => {
+            {section2?.map((item, index) => {
               if (displayedCategories.has(item.name)) {
                 return null;
               }
@@ -195,7 +195,7 @@ const Newscard = ({ nodeByUri }) => {
 
               return (
                 <div
-                  key={item.id}
+                  key={index}
                   className="max-w-xs bg-white mr-4 items-center"
                 >
                   <div className="mr-2 mb-20">
@@ -252,7 +252,7 @@ const Newscard = ({ nodeByUri }) => {
                 </div>
               );
             })}
-            {section3?.map((item) => {
+            {section3?.map((item, index) => {
               if (displayedCategories.has(item.name)) {
                 return null;
               }
@@ -281,7 +281,7 @@ const Newscard = ({ nodeByUri }) => {
 
               return (
                 <div
-                  key={item.id}
+                  key={index}
                   className="max-w-xs bg-white mr-4 items-center"
                 >
                   <div className="mr-2 mb-20">

@@ -401,11 +401,11 @@ function News({ nodeByUri }) {
 
                   {nodeByUri?.postDetailsEdit?.moreNewsSelectCategory?.nodes.slice(0, 2).map((item, index) =>
                       item.posts.nodes.slice(0, 4).map(
-                        (posts) => (
+                        (posts, index) => (
                           console.log(posts, "posts detail"),
                           (
                             <div
-                              key={item.id}
+                              key={index}
                               className="w-full max-w-3xl mx-auto"
                             >
                               {

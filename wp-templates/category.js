@@ -8,15 +8,6 @@ import Music from "../components/categoryMusic";
 
 export default function Component(props) {
   console.log(props, "props category");
-  
-  // const { title: siteTitle, description: siteDescription } =
-  //   props.data.generalSettings;
-  // const menuItems = props.data.primaryMenuItems.nodes;
-  const { archiveType, name, posts } = props.data.nodeByUri;
-  // const htmlTitle = `${archiveType}: ${name} - ${siteTitle}`;
-  const { nodeByUri, pages } = props.data;
-  const router = useRouter();
-
   return (
     <>
       <Nav
@@ -28,19 +19,19 @@ export default function Component(props) {
         "Template-1" ? (
           <main>
             <Insight
-              nodeByUri={props.data.nodeByUri}
+              nodeByUri={props?.data?.nodeByUri}
             />
           </main>
         ) : props?.data?.nodeByUri?.categoryTamplate?.selectYourTempleteType[0] === "Template-2" ? (
           <main>
             <Music
-              nodeByUri={props.data.nodeByUri}
+              nodeByUri={props?.data?.nodeByUri}
             />
           </main>
         ) : (
           <ul>
-            {nodeByUri !== null &&
-              nodeByUri?.posts?.nodes.map((post) =>
+            {props?.data?.nodeByUri !== null &&
+              props?.data?.nodeByUri?.posts?.nodes.map((post) =>
                 post.link ? (
                   <li key={post.id}>
                     <Link href={post.link}>{post.title}</Link>

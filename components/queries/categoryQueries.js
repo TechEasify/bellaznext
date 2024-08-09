@@ -399,69 +399,82 @@ export const INSIGHTS_DATA = gql`
 // news detail category
 export const GET_NEWS_SECTION = gql`
   query GetMenu($uri: String = "$uri") {
-  primaryMenuItems: menuItems(
-    where: {location: FOOTER_MENU_LOCATION_1}
-    first: 50
-  ) {
-    edges {
-      node {
-        ...MenuItemFragment
-        childItems {
-          nodes {
-            ...MenuItemFragment
+  primaryMenuItems: menuItems(where: { location: PRIMARY }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
           }
         }
       }
     }
-  }
-  newMenuLocationItems: menuItems(where: {location: TOP_MENU_LOCATION}, first: 50) {
-    edges {
-      node {
-        ...MenuItemFragment
-        childItems {
-          nodes {
-            ...MenuItemFragment
+    newMenuLocationItems: menuItems(
+      where: { location: TOP_MENU_LOCATION }
+      first: 50
+    ) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
           }
         }
       }
     }
-  }
-  footer: menuItems(where: {location: FOOTER_MENU_LOCATION_1}, first: 50) {
-    edges {
-      node {
-        ...MenuItemFragment
-        childItems {
-          nodes {
-            ...MenuItemFragment
+    footer: menuItems(where: { location: FOOTER_MENU_LOCATION_1 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
           }
         }
       }
     }
-  }
-  footer1: menuItems(where: {location: FOOTER_MENU_LOCATION_2}, first: 50) {
-    edges {
-      node {
-        ...MenuItemFragment
-        childItems {
-          nodes {
-            ...MenuItemFragment
+    footer1: menuItems(where: { location: FOOTER_MENU_LOCATION_2 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
           }
         }
       }
     }
-  }
-  footer2: menuItems(where: {location: FOOTER_MENU_LOCATION_3}, first: 50) {
-    edges {
-      node {
-        ...MenuItemFragment
-        childItems {
-          nodes {
-            ...MenuItemFragment
+    footer2: menuItems(where: { location: FOOTER_MENU_LOCATION_3 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
           }
         }
       }
     }
-  }
+    footer3: menuItems(where: { location: FOOTER }, first: 1) {
+      edges {
+        node {
+          menu {
+            node {
+              footer {
+                copyrightText
+              }
+            }
+          }
+        }
+      }
+    }
   nodeByUri(uri: $uri) {
     ... on Post {
       postDetailsEdit {
