@@ -1,116 +1,99 @@
 import { gql } from "@apollo/client";
 
 export const GET_NAV_SECTION = gql`
-  query GetMenu {
-    primaryMenuItems: menuItems(where: { location: PRIMARY }, first: 50) {
-      edges {
-        node {
-          ...MenuItemFragment
-          childItems {
-            nodes {
-              ...MenuItemFragment
+query GetMenu($uri: String = "/") {
+  primaryMenuItems: menuItems(where: {location: PRIMARY}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  newMenuLocationItems: menuItems(where: {location: TOP_MENU_LOCATION}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  footer: menuItems(where: {location: FOOTER_MENU_LOCATION_1}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  footer1: menuItems(where: {location: FOOTER_MENU_LOCATION_2}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  footer2: menuItems(where: {location: FOOTER_MENU_LOCATION_3}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  footer3: menuItems(where: {location: FOOTER}, first: 1) {
+    edges {
+      node {
+        menu {
+          node {
+            footer {
+              copyrightText
             }
           }
         }
       }
     }
-    newMenuLocationItems: menuItems(
-      where: { location: TOP_MENU_LOCATION }
-      first: 50
-    ) {
-      edges {
-        node {
-          ...MenuItemFragment
-          childItems {
-            nodes {
-              ...MenuItemFragment
-            }
-          }
-        }
-      }
-    }
-    footer: menuItems(where: { location: FOOTER_MENU_LOCATION_1 }, first: 50) {
-      edges {
-        node {
-          ...MenuItemFragment
-          childItems {
-            nodes {
-              ...MenuItemFragment
-            }
-          }
-        }
-      }
-    }
-    footer1: menuItems(where: { location: FOOTER_MENU_LOCATION_2 }, first: 50) {
-      edges {
-        node {
-          ...MenuItemFragment
-          childItems {
-            nodes {
-              ...MenuItemFragment
-            }
-          }
-        }
-      }
-    }
-    footer2: menuItems(where: { location: FOOTER_MENU_LOCATION_3 }, first: 50) {
-      edges {
-        node {
-          ...MenuItemFragment
-          childItems {
-            nodes {
-              ...MenuItemFragment
-            }
-          }
-        }
-      }
-    }
-    footer3: menuItems(where: { location: FOOTER }, first: 1) {
-      edges {
-        node {
-          menu {
-            node {
-              footer {
-                copyrightText
-              }
-            }
-          }
-        }
-      }
-    }
-    nodeByUri(uri: "/") {
-      ... on Page {
-        id
-        homePage {
-          allCategories {
-            nodes {
+  }
+  nodeByUri(uri: $uri) {
+    ... on Page {
+      id
+      homePage {
+        allCategories {
+          nodes {
+            name
+            slug
+            ... on Category {
+              id
               name
-              slug
-              ... on Category {
-                id
-                name
-                posts(first: 10) {
-                  ...CategoryToPostConnectionFragment
-                }
+              posts(first: 10) {
+                ...CategoryToPostConnectionFragment
               }
             }
           }
-          heroSection {
-            heroPostCategory {
-              nodes {
-                ... on Category {
-                  id
-                  name
-                  posts {
-                    ...CategoryToPostConnectionFragment
-                  }
-                }
-              }
-            }
-          }
-          topHeadlinesTitle
-          topHeadlineTitleLineColor
-          topHeadlinesPost {
+        }
+        heroSection {
+          heroPostCategory {
             nodes {
               ... on Category {
                 id
@@ -121,182 +104,196 @@ export const GET_NAV_SECTION = gql`
               }
             }
           }
-          topHeadlineSidebarTitle
-          topHeadlineSidebarTitleLineColor
-          topHeadlineSidebarPosts {
-            nodes {
-              ... on Category {
-                id
-                name
-                posts {
-                  ...CategoryToPostConnectionFragment
-                }
+        }
+        topHeadlinesTitle
+        topHeadlineTitleLineColor
+        topHeadlinesPost {
+          nodes {
+            ... on Category {
+              id
+              name
+              posts {
+                ...CategoryToPostConnectionFragment
               }
             }
           }
-          topHeadlineSidebarFirstAd {
-            topHeadlineFirstAd {
-              node {
-                altText
-                sourceUrl
-                srcSet
-              }
-            }
-            topHeadlineFirstAdLink
-            topHeadlineFirstAdCode
-          }
-          topHeadlineSidebarSinglePosts {
-            nodes {
-              ... on Category {
-                id
-                name
-                posts {
-                  ...CategoryToPostConnectionFragment
-                }
+        }
+        topHeadlineSidebarTitle
+        topHeadlineSidebarTitleLineColor
+        topHeadlineSidebarPosts {
+          nodes {
+            ... on Category {
+              id
+              name
+              posts {
+                ...CategoryToPostConnectionFragment
               }
             }
           }
-          topHeadlineSidebarSecondAd {
-            topHeadlineSecondAdImage {
-              node {
-                altText
-                srcSet
-                sourceUrl
-              }
-            }
-            topHeadlineSecondAdLink
-            topHeadlineSecondAdCode
-          }
-          topHeadlineBottomAd {
-            topHeadlineBottomAdImage {
-              node {
-                altText
-                srcSet
-                sourceUrl
-              }
-            }
-            topHeadlineBottomAdLink
-            topHeadlineBottomAdCode
-          }
-          insightsTitle
-          insightsTitleBottomLineColor
-          insightsPost {
-            nodes {
-              ... on Category {
-                id
-                name
-                posts {
-                  ...CategoryToPostConnectionFragment
-                }
-              }
-            }
-          }
-          insightsAd {
-            insightAdImage {
-              node {
-                altText
-                srcSet
-                sourceUrl
-              }
-            }
-            insightAdLink
-            insightsAdCode
-          }
-          musicTitle
-          musicBottomLineColor
-          musicPosts {
-            nodes {
-              ... on Category {
-                id
-                name
-                posts {
-                  ...CategoryToPostConnectionFragment
-                }
-              }
-            }
-          }
-          musicAd {
-            musicAdImage {
-              node {
-                altText
-                srcSet
-                sourceUrl
-              }
-            }
-            musicAdLink
-            musicAdCode
-          }
-          musicBottomAd {
-            musicBottomAdImage {
-              node {
-                altText
-                srcSet
-                sourceUrl
-              }
-            }
-            musicBottomAdLink
-            musicBottomAdCode
-          }
-          ctaTitle
-          ctaDescription
-          ctaBackgroundImage {
+        }
+        topHeadlineSidebarFirstAd {
+          topHeadlineFirstAd {
             node {
               altText
               sourceUrl
               srcSet
             }
           }
-          allCategoryBottomLineColor {
-            block1
-            block2
-            block3
+          topHeadlineFirstAdLink
+          topHeadlineFirstAdCode
+        }
+        topHeadlineSidebarSinglePosts {
+          nodes {
+            ... on Category {
+              id
+              name
+              posts {
+                ...CategoryToPostConnectionFragment
+              }
+            }
           }
-          footerAdvertisementImage {
+        }
+        topHeadlineSidebarSecondAd {
+          topHeadlineSecondAdImage {
             node {
               altText
               srcSet
               sourceUrl
             }
           }
-          footerAdLink
-          footerAdvertisementCode
-          twitterEmbedCodes {
-            twitterEmbedCode1
-            twitterEmbedCode2
-            twitterEmbedCode3
-            twitterEmbedCode4
-            twitterEmbedCode5
-            twitterEmbedCode6
+          topHeadlineSecondAdLink
+          topHeadlineSecondAdCode
+        }
+        topHeadlineBottomAd {
+          topHeadlineBottomAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          topHeadlineBottomAdLink
+          topHeadlineBottomAdCode
+        }
+        insightsTitle
+        insightsTitleBottomLineColor
+        insightsPost {
+          nodes {
+            ... on Category {
+              id
+              name
+              posts {
+                ...CategoryToPostConnectionFragment
+              }
+            }
           }
         }
+        insightsAd {
+          insightAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          insightAdLink
+          insightsAdCode
+        }
+        musicTitle
+        musicBottomLineColor
+        musicPosts {
+          nodes {
+            ... on Category {
+              id
+              name
+              posts {
+                ...CategoryToPostConnectionFragment
+              }
+            }
+          }
+        }
+        musicAd {
+          musicAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          musicAdLink
+          musicAdCode
+        }
+        musicBottomAd {
+          musicBottomAdImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          musicBottomAdLink
+          musicBottomAdCode
+        }
+        ctaTitle
+        ctaDescription
+        ctaBackgroundImage {
+          node {
+            altText
+            sourceUrl
+            srcSet
+          }
+        }
+        allCategoryBottomLineColor {
+          block1
+          block2
+          block3
+        }
+        footerAdvertisementImage {
+          node {
+            altText
+            srcSet
+            sourceUrl
+          }
+        }
+        footerAdLink
+        footerAdvertisementCode
+        twitterEmbedCodes {
+          twitterEmbedCode1
+          twitterEmbedCode2
+          twitterEmbedCode3
+          twitterEmbedCode4
+          twitterEmbedCode5
+          twitterEmbedCode6
+        }
       }
     }
   }
+}
 
-  fragment CategoryToPostConnectionFragment on CategoryToPostConnection {
-    nodes {
-      slug
-      author {
-        node {
-          name
-        }
+fragment CategoryToPostConnectionFragment on CategoryToPostConnection {
+  nodes {
+    slug
+    author {
+      node {
+        name
       }
-      title
-      excerpt
-      featuredImage {
-        node {
-          sourceUrl
-        }
+    }
+    title
+    excerpt
+    featuredImage {
+      node {
+        sourceUrl
       }
     }
   }
+}
 
-  fragment MenuItemFragment on MenuItem {
-    uri
-    label
-    cssClasses
-    parentId
-  }
+fragment MenuItemFragment on MenuItem {
+  uri
+  label
+  cssClasses
+  parentId
+}
 `;
 
 export const GET_ICON_SECTION = gql`
