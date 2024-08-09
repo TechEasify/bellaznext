@@ -14,8 +14,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && faust build",
-    "start": "next start && faust start",
+    "build": "next build",
+    "start": "next start",
     "generate": "faust generatePossibleTypes"
   },
   "dependencies": {
