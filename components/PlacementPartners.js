@@ -4,15 +4,16 @@ import Ads from "./googleAds/Ads";
 import { useDialog } from "./DialogContext";
 import Link from "next/link";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
 
-const PlacementPartners = () => {
-  const { musicQuery } = useDialog();
+const PlacementPartners = ({dataNav}) => {
+  const { musicQuery } = useDialog()
   const imageUrl =
-    musicQuery?.page?.homePage?.musicBottomAd?.musicBottomAdImage?.node
+    dataNav?.nodeByUri?.homePage?.musicBottomAd?.musicBottomAdImage?.node
       ?.sourceUrl;
 
   return (
@@ -25,14 +26,15 @@ const PlacementPartners = () => {
       {imageUrl ? (
         <Link
           href={{
-            pathname: musicQuery?.page?.homePage?.musicBottomAd?.musicBottomAdLink,
+            pathname:
+              dataNav?.nodeByUri?.homePage?.musicBottomAd?.musicBottomAdLink,
           }}
           passHref
           target="_blank"
         >
           <Image
-                        priority={true}
-                        loader={customLoader}
+            priority={true}
+            loader={customLoader}
             style={{
               margin: "0 auto",
             }}

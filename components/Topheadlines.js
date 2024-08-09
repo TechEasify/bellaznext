@@ -8,22 +8,28 @@ const customLoader = ({ src }) => {
 };
 
 const Topheadlines = ({ topheadData, displayedCategories }) => {
+  console.log(topheadData, "topheadData");
+  
   const [displayCount, setDisplayCount] = useState(6);
 
   const sortedTopHeadlines =
-    topheadData?.page?.homePage?.topHeadlinesPost?.nodes
+    topheadData?.nodeByUri?.homePage?.topHeadlinesPost?.nodes
       .slice(0, 6)
-      .flatMap((item) => item?.posts?.nodes)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const usedCategories = new Set();
 
   const uniqueCategoryPosts = sortedTopHeadlines
     ?.filter((item) => {
-      const categories = item.categories.nodes;
+      console.log(item, "item tophead");
+      const categories = item?.posts?.nodes
+      console.log(categories, "categories");
+      
       const uniqueCategory = categories.find(
-        (category) => !usedCategories.has(category.name)
+        (category) => !usedCategories.has(item.name)
       );
+      console.log(uniqueCategory, "uniqueCategory");
+      
       if (uniqueCategory) {
         usedCategories.add(uniqueCategory.name);
         return true;
@@ -33,7 +39,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
     .slice(0, displayCount);
 
   const sortedTopHeadlinesSidebar =
-    topheadData?.page?.homePage?.topHeadlineSidebarSinglePosts?.nodes
+    topheadData?.nodeByUri?.homePage?.topHeadlineSidebarSinglePosts?.nodes
       .slice()
       .sort((a, b) => (a.title < b.title ? 1 : -1));
 
@@ -45,13 +51,13 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
         <div className="w-full max-w-5xl mx-auto md:border-r">
           <div className="flex flex-col justify-center md:mx-0">
             <h1 className="text-[25px] font-bold text-black-900 italic">
-              {topheadData?.page?.homePage?.topHeadlinesTitle}
+              {topheadData?.nodeByUri?.homePage?.topHeadlinesTitle}
             </h1>
             <hr
               className="text-red-800 mr-8"
               style={{
                 height: "7px",
-                background: `${topheadData?.page?.homePage?.topHeadlineTitleLineColor}`,
+                background: `${topheadData?.nodeByUri?.homePage?.topHeadlineTitleLineColor}`,
               }}
             />
             <br />
@@ -60,10 +66,13 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pr-8">
             {uniqueCategoryPosts?.map(
               (item) => (
+                console.log(item, "uniqueCategoryPosts"),
                 (
                   <>
                     <div key={item.id} className="max-w-md bg-white mb-6">
-                      {item.categories.nodes.slice(0, 1).map((category) => {
+                      {item.posts.nodes.slice(0, 1).map((category) => {
+                        console.log(category, "posts category");
+                        
                         const contentText = item?.content
                           ? item.content.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                           : ""; // Fallback if content is not available
@@ -75,23 +84,23 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                           wordCount > 0 ? Math.ceil(wordCount / 250) : 0;
                         return (
                           <div key={category.id}>
-                            <Link href={`/news/${item.slug}`}>
+                            <Link href={`/news/${category.slug}`}>
                               <Image
                                 priority={true}
                                 loader={customLoader}
-                                src={item?.featuredImage?.node?.sourceUrl}
-                                alt={item?.featuredImage?.node?.sourceUrl || ""}
+                                src={category?.featuredImage?.node?.sourceUrl}
+                                alt={category?.featuredImage?.node?.sourceUrl || ""}
                                 width={432}
                                 height={293}
                                 className="object-cover w-[432px] h-[293px]"
                               />
                             </Link>
                             <p className="text-[12px] tracking-widest font-semibold text-red-800 mt-2 uppercase">
-                              {category.name}
+                              {item.name}
                             </p>
-                            <Link href={`/news/${item.slug}`}>
+                            <Link href={`/news/${category.slug}`}>
                               <h5 className="mb-2 text-xl font-semibold tracking-tight text-black-900 dark:text-white hover:text-skyBlue">
-                                {item?.title}
+                                {category?.title}
                               </h5>
                             </Link>
                             <p className="text-[12px] text-base font-extralight text-gray-800 mb-4">
@@ -106,7 +115,7 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                                 className="font-extrabold mx-1"
                                 style={{ color: "#40A6FB" }}
                               >
-                                {item?.author?.node?.name || ""}
+                                {category?.author?.node?.name || ""}
                                 <span
                                   className="text-[36px] font-extrabold mx-1"
                                   style={{ color: "#40A6FB" }}
@@ -139,14 +148,14 @@ const Topheadlines = ({ topheadData, displayedCategories }) => {
                             <p className="text-[12px] font-bold text-red-800">
                               {side.name}
                             </p>
-                            <Link href={`/news/${itemdata.slug}`} passHref>
+                            <Link href={`/news/${side.slug}`} passHref>
                               <p className="text-[15px] font-semibold text-gray-800 mb-3 hover:text-skyBlue">
                                 {itemdata.title}
                               </p>
                             </Link>
                           </div>
                           {itemdata?.featuredImage?.node?.sourceUrl ? (
-                            <Link href={`/news/${itemdata.slug}`} passHref>
+                            <Link href={`/news/${side.slug}`} passHref>
                               <Image
                                 priority={true}
                                 loader={customLoader}

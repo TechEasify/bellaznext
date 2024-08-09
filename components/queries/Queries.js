@@ -1,70 +1,301 @@
 import { gql } from "@apollo/client";
 
 export const GET_NAV_SECTION = gql`
-  query {
-    menus(where: { location: PRIMARY, id: 230 }) {
-      nodes {
-        header {
-          topFirst
-          topFirstLinks {
-            url
-          }
-          topSecond
-          topSecondLinks {
-            url
-          }
-          topThird
-          topThirdLinks {
-            url
-          }
-          topFore
-          topForeLinks {
-            url
-          }
-          foreSquareFirst
-          foreSquareFirstLink {
-            url
-          }
-          foreSquareSecond
-          foreSquareSecondLink {
-            url
-          }
-          foreSquareThird
-          foreSquareThirdLink {
-            url
-          }
-          headerButton {
-            link
-            text
-          }
-          headerBackgroundColor
-          mainMenuFirst
-          mainMenuFirstLink {
-            url
-          }
-          mainMenuSecond
-          mainMenuSecondLink {
-            url
-          }
-          mainMenuThird
-          mainMenuThirdLink {
-            url
-          }
-          subFirst
-          subFirstLink {
-            url
-          }
-          subSecond
-          subSecondLink {
-            url
-          }
-          subThird
-          subThirdLink {
-            url
+  query GetMenu {
+    primaryMenuItems: menuItems(where: { location: PRIMARY }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
           }
         }
       }
     }
+    newMenuLocationItems: menuItems(
+      where: { location: TOP_MENU_LOCATION }
+      first: 50
+    ) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer: menuItems(where: { location: FOOTER_MENU_LOCATION_1 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer1: menuItems(where: { location: FOOTER_MENU_LOCATION_2 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer2: menuItems(where: { location: FOOTER_MENU_LOCATION_3 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer3: menuItems(where: { location: FOOTER }, first: 1) {
+      edges {
+        node {
+          menu {
+            node {
+              footer {
+                copyrightText
+              }
+            }
+          }
+        }
+      }
+    }
+    nodeByUri(uri: "/") {
+      ... on Page {
+        id
+        homePage {
+          allCategories {
+            nodes {
+              name
+              slug
+              ... on Category {
+                id
+                name
+                posts(first: 10) {
+                  ...CategoryToPostConnectionFragment
+                }
+              }
+            }
+          }
+          heroSection {
+            heroPostCategory {
+              nodes {
+                ... on Category {
+                  id
+                  name
+                  posts {
+                    ...CategoryToPostConnectionFragment
+                  }
+                }
+              }
+            }
+          }
+          topHeadlinesTitle
+          topHeadlineTitleLineColor
+          topHeadlinesPost {
+            nodes {
+              ... on Category {
+                id
+                name
+                posts {
+                  ...CategoryToPostConnectionFragment
+                }
+              }
+            }
+          }
+          topHeadlineSidebarTitle
+          topHeadlineSidebarTitleLineColor
+          topHeadlineSidebarPosts {
+            nodes {
+              ... on Category {
+                id
+                name
+                posts {
+                  ...CategoryToPostConnectionFragment
+                }
+              }
+            }
+          }
+          topHeadlineSidebarFirstAd {
+            topHeadlineFirstAd {
+              node {
+                altText
+                sourceUrl
+                srcSet
+              }
+            }
+            topHeadlineFirstAdLink
+            topHeadlineFirstAdCode
+          }
+          topHeadlineSidebarSinglePosts {
+            nodes {
+              ... on Category {
+                id
+                name
+                posts {
+                  ...CategoryToPostConnectionFragment
+                }
+              }
+            }
+          }
+          topHeadlineSidebarSecondAd {
+            topHeadlineSecondAdImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
+            }
+            topHeadlineSecondAdLink
+            topHeadlineSecondAdCode
+          }
+          topHeadlineBottomAd {
+            topHeadlineBottomAdImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
+            }
+            topHeadlineBottomAdLink
+            topHeadlineBottomAdCode
+          }
+          insightsTitle
+          insightsTitleBottomLineColor
+          insightsPost {
+            nodes {
+              ... on Category {
+                id
+                name
+                posts {
+                  ...CategoryToPostConnectionFragment
+                }
+              }
+            }
+          }
+          insightsAd {
+            insightAdImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
+            }
+            insightAdLink
+            insightsAdCode
+          }
+          musicTitle
+          musicBottomLineColor
+          musicPosts {
+            nodes {
+              ... on Category {
+                id
+                name
+                posts {
+                  ...CategoryToPostConnectionFragment
+                }
+              }
+            }
+          }
+          musicAd {
+            musicAdImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
+            }
+            musicAdLink
+            musicAdCode
+          }
+          musicBottomAd {
+            musicBottomAdImage {
+              node {
+                altText
+                srcSet
+                sourceUrl
+              }
+            }
+            musicBottomAdLink
+            musicBottomAdCode
+          }
+          ctaTitle
+          ctaDescription
+          ctaBackgroundImage {
+            node {
+              altText
+              sourceUrl
+              srcSet
+            }
+          }
+          allCategoryBottomLineColor {
+            block1
+            block2
+            block3
+          }
+          footerAdvertisementImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          footerAdLink
+          footerAdvertisementCode
+          twitterEmbedCodes {
+            twitterEmbedCode1
+            twitterEmbedCode2
+            twitterEmbedCode3
+            twitterEmbedCode4
+            twitterEmbedCode5
+            twitterEmbedCode6
+          }
+        }
+      }
+    }
+  }
+
+  fragment CategoryToPostConnectionFragment on CategoryToPostConnection {
+    nodes {
+      slug
+      author {
+        node {
+          name
+        }
+      }
+      title
+      excerpt
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+
+  fragment MenuItemFragment on MenuItem {
+    uri
+    label
+    cssClasses
+    parentId
   }
 `;
 
@@ -118,6 +349,309 @@ export const GET_ICON_SECTION = gql`
         whatsappStatusLink
       }
     }
+  }
+`;
+
+export const GET_ABOUT = gql`
+  query GetMenu {
+    primaryMenuItems: menuItems(where: { location: PRIMARY }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    newMenuLocationItems: menuItems(
+      where: { location: TOP_MENU_LOCATION }
+      first: 50
+    ) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer: menuItems(where: { location: FOOTER_MENU_LOCATION_1 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer1: menuItems(where: { location: FOOTER_MENU_LOCATION_2 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer2: menuItems(where: { location: FOOTER_MENU_LOCATION_3 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer3: menuItems(where: { location: FOOTER }, first: 1) {
+      edges {
+        node {
+          menu {
+            node {
+              footer {
+                copyrightText
+              }
+            }
+          }
+        }
+      }
+    }
+    nodeByUri(uri: "/about") {
+      ... on Page {
+        id
+        about {
+          pageTitle
+          description
+          ourTeamTitle
+          ourTeamMembers {
+            teamA {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+            teamB {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+            teamC {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+            teamD {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+            teamE {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+            teamF {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+            teamG {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+            teamH {
+              image {
+                node {
+                  altText
+                  srcSet
+                }
+              }
+              name
+              designation
+            }
+          }
+          reviews {
+            review1 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review2 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review3 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review4 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review5 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review6 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review7 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review8 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review9 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+            review10 {
+              authorName
+              authorImage {
+                node {
+                  altText
+                  srcSet
+                  sourceUrl
+                }
+              }
+              message
+              rating
+            }
+          }
+          title
+        }
+      }
+    }
+  }
+
+  fragment MenuItemFragment on MenuItem {
+    uri
+    label
+    cssClasses
+    parentId
   }
 `;
 
@@ -705,9 +1239,88 @@ export const SEO_QUERY = gql`
 `;
 
 export const GET_CONTACT_PAGE = gql`
-  query AboutPage($id: ID = "3163") {
-    page(id: $id, idType: DATABASE_ID) {
-      contactUs {
+
+  query GetMenu {
+    primaryMenuItems: menuItems(where: { location: PRIMARY }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    newMenuLocationItems: menuItems(
+      where: { location: TOP_MENU_LOCATION }
+      first: 50
+    ) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer: menuItems(where: { location: FOOTER_MENU_LOCATION_1 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer1: menuItems(where: { location: FOOTER_MENU_LOCATION_2 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer2: menuItems(where: { location: FOOTER_MENU_LOCATION_3 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer3: menuItems(where: { location: FOOTER }, first: 1) {
+      edges {
+        node {
+          menu {
+            node {
+              footer {
+                copyrightText
+              }
+            }
+          }
+        }
+      }
+    }
+    nodeByUri(uri: "/contact-us") {
+      ... on Page {
+        id
+        contactUs {
         advertise {
           advertiseTitle
           description
@@ -730,7 +1343,15 @@ export const GET_CONTACT_PAGE = gql`
           whatsappLink
         }
       }
+      }
     }
+  }
+
+  fragment MenuItemFragment on MenuItem {
+    uri
+    label
+    cssClasses
+    parentId
   }
 `;
 
@@ -738,59 +1359,6 @@ export const GET_FOOTER_PAGE = gql`
   query footer($id: ID = "229") {
     menu(id: $id, idType: DATABASE_ID) {
       footer {
-        companyTitle
-        companyFirst
-        companyFirstLink {
-          url
-        }
-        companySecond
-        companySecondLink {
-          url
-        }
-        companyThird
-        companyThirdLink {
-          url
-        }
-        companyFore
-        companyForeLink {
-          url
-        }
-        companyFive
-        companyFiveLink {
-          url
-        }
-        footerBackgroundColor
-        newsTitle
-        newsFirst
-        newsFirstLinks {
-          url
-        }
-        newsSecond
-        newsSecondLinks {
-          url
-        }
-        newsThird
-        newsThirdLinks {
-          url
-        }
-        newsFore
-        newsForeLinks {
-          url
-        }
-        newsFive
-        newsFiveLinks {
-          url
-        }
-        belaazTwitter
-        belaazTwitterLink
-        belaazFacebook
-        belaazFacebookLink
-        belaazInstagram
-        belaazInstagramLink
-        belaazYoutube
-        belaazYoutubeLink
-        belaazTelegram
-        belaazTelegramLink
         copyrightText
       }
     }
@@ -892,9 +1460,88 @@ export const GET_ABOUT_PAGE = gql`
 `;
 
 export const GET_ADVERTISE_PAGE = gql`
-  query ($id: ID = "3114") {
-    page(id: $id, idType: DATABASE_ID) {
-      advertise {
+
+query GetMenu {
+    primaryMenuItems: menuItems(where: { location: PRIMARY }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    newMenuLocationItems: menuItems(
+      where: { location: TOP_MENU_LOCATION }
+      first: 50
+    ) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer: menuItems(where: { location: FOOTER_MENU_LOCATION_1 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer1: menuItems(where: { location: FOOTER_MENU_LOCATION_2 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer2: menuItems(where: { location: FOOTER_MENU_LOCATION_3 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer3: menuItems(where: { location: FOOTER }, first: 1) {
+      edges {
+        node {
+          menu {
+            node {
+              footer {
+                copyrightText
+              }
+            }
+          }
+        }
+      }
+    }
+    nodeByUri(uri: "/advertise") {
+      ... on Page {
+        id
+        advertise {
         title
         description
         button {
@@ -1035,6 +1682,14 @@ export const GET_ADVERTISE_PAGE = gql`
           }
         }
       }
+      }
     }
+  }
+
+  fragment MenuItemFragment on MenuItem {
+    uri
+    label
+    cssClasses
+    parentId
   }
 `;

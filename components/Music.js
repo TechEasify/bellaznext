@@ -2,27 +2,27 @@ import { useDialog } from "./DialogContext";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
 
-const Music = () => {
-  const { openDialog, musicQuery, musicError, musicLoading } = useDialog();
+const Music = ({dataNav}) => {
   return (
     <div className="px-4 py-8 mx-auto max-w-screen-xl">
       <div className="w-full mx-auto">
         <div className="flex flex-col justify-center mx-auto md:mx-0">
           <h1 className="text-[25px] font-bold text-black-900 italic">
-            {musicQuery?.page?.homePage?.musicTitle}
+            {dataNav?.nodeByUri?.homePage?.musicTitle}
           </h1>
           <hr
             className="text-red-800 mr-5"
             style={{
               height: "7px",
               background: `${
-                musicQuery?.page?.homePage?.musicBottomLineColor
-                  ? musicQuery?.page?.homePage?.musicBottomLineColor
+                dataNav?.nodeByUri?.homePage?.musicBottomLineColor
+                  ? dataNav?.nodeByUri?.homePage?.musicBottomLineColor
                   : "#25AC7D"
               }`,
             }}
@@ -32,7 +32,7 @@ const Music = () => {
 
         <div className="flex justify-around items-stretch md:flex-row flex-col">
           <div>
-            {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
+            {dataNav?.nodeByUri?.homePage?.musicPosts?.nodes.map(
               (item) => (
                 item.posts?.nodes.slice(1, 2).map((post) => {
                   const contentText = post?.content
@@ -65,7 +65,7 @@ const Music = () => {
                             />
                           </Link>
                           <p className="text-[12px] font-semibold text-red-800 tracking-widest uppercase">
-                            {musicQuery?.page?.homePage?.musicTitle}
+                            {dataNav?.nodeByUri?.homePage?.musicTitle}
                           </p>
                           <Link
                             href={{
@@ -105,7 +105,7 @@ const Music = () => {
                       <div className="flex max-w-xs bg-white mr-4 items-center">
                         <div className="mr-2">
                           <p className="text-[12px] font-semibold text-red-800 tracking-widest uppercase">
-                            {musicQuery?.page?.homePage?.musicTitle}
+                            {dataNav?.nodeByUri?.homePage?.musicTitle}
                           </p>
                           <Link
                             href={{
@@ -164,7 +164,7 @@ const Music = () => {
             )}
           </div>
           <div className="max-w-md bg-white mb-6 mx-auto hidden md:block">
-            {musicQuery?.page?.homePage?.musicPosts?.nodes.slice(0, 1).map(
+            {dataNav?.nodeByUri?.homePage?.musicPosts?.nodes.slice(0, 1).map(
               (item) => (
                 item.posts?.nodes.slice(0, 1).map((post) => {
                   const contentText = post?.content
@@ -195,7 +195,7 @@ const Music = () => {
                         />
                       </Link>
                       <p className="text-[12px] tracking-wide font-semibold text-red-800 mt-2 uppercase tracking-widest">
-                        {musicQuery?.page?.homePage?.musicTitle}
+                        {dataNav?.nodeByUri?.homePage?.musicTitle}
                       </p>
                       <Link
                         href={{
@@ -240,7 +240,7 @@ const Music = () => {
             )}
           </div>
           <div className="max-w-xs bg-white mb-6 mr-4 items-center lg:block xl:block hidden">
-            {musicQuery?.page?.homePage?.musicPosts?.nodes.map(
+            {dataNav?.nodeByUri?.homePage?.musicPosts?.nodes.map(
               (item) => (
                 item.posts?.nodes.slice(2, 3).map((post) => {
                   const contentText = post?.content
@@ -265,7 +265,7 @@ const Music = () => {
                           height={194}
                         />
                         <p className="text-[12px] font-semibold text-red-800 uppercase tracking-widest">
-                          {musicQuery?.page?.homePage?.musicTitle}
+                          {dataNav?.nodeByUri?.homePage?.musicTitle}
                         </p>
                         <Link
                           href={{
@@ -301,12 +301,12 @@ const Music = () => {
                         </p>
                       </div>
                       <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
-                        {musicQuery?.page?.homePage?.musicAd?.musicAdImage?.node
+                        {dataNav?.nodeByUri?.homePage?.musicAd?.musicAdImage?.node
                           ?.sourceUrl ? (
                           <Link
                             href={{
                               pathname:
-                                musicQuery?.page?.homePage?.musicAd
+                              dataNav?.nodeByUri?.homePage?.musicAd
                                   ?.musicAdLink,
                             }}
                             passHref
@@ -316,7 +316,7 @@ const Music = () => {
                               priority={true}
                               loader={customLoader}
                               src={
-                                musicQuery.page.homePage.musicAd.musicAdImage
+                                dataNav.nodeByUri.homePage.musicAd.musicAdImage
                                   .node.sourceUrl
                               }
                               alt="Partly Cloudy"

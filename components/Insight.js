@@ -31,7 +31,7 @@ const customLoader = ({ src }) => {
   return src;
 };
 
-const Insight = () => {
+const Insight = ({nodeByUri}) => {
   const {
     setCursor,
     cursor,
@@ -39,7 +39,6 @@ const Insight = () => {
     posts,
     categoryError,
     categoryLoading,
-    nodeByUri,
     insightFetchMore,
   } = useDialog();
 
@@ -51,13 +50,13 @@ const Insight = () => {
 
   useEffect(() => {
     if (
-      nodeByUri?.nodeByUri?.posts?.nodes
+      nodeByUri?.posts?.nodes
     ) {
       const initialPosts =
-      nodeByUri?.nodeByUri?.posts?.nodes
+      nodeByUri?.posts?.nodes
       setPosts(initialPosts);
-      setCursor(nodeByUri.nodeByUri.posts.pageInfo.endCursor);
-      setHasNextPage(nodeByUri.nodeByUri.posts.pageInfo.hasNextPage);
+      setCursor(nodeByUri.posts.pageInfo.endCursor);
+      setHasNextPage(nodeByUri.posts.pageInfo.hasNextPage);
     }
   }, [nodeByUri]);
 
@@ -105,7 +104,7 @@ const Insight = () => {
                 return `${baseWidth + charWidth * text.length}px`;
               };
               const dynamicWidth = calculateWidth(
-                nodeByUri?.nodeByUri?.name || ""
+                nodeByUri?.name || ""
               );
 
               return (
@@ -131,7 +130,7 @@ const Insight = () => {
                         className="text-base font-semibold text-red-800 uppercase tracking-widest"
                         style={{
                           background: `${
-                            nodeByUri?.nodeByUri?.categoryTamplate
+                            nodeByUri?.categoryTamplate
                               ?.simpleTemplete?.simpleTitleBackgroundColor ||
                             "#fff"
                           }`,
@@ -144,7 +143,7 @@ const Insight = () => {
                           letterSpacing: "2px",
                         }}
                       >
-                        {nodeByUri?.nodeByUri?.name}
+                        {nodeByUri?.name}
                       </p>
                       <Link href={`/news/${post.slug}`} passHref>
                         <h5 className="text-[25px] text-black-900 font-bold hover:text-skyBlue">
@@ -260,17 +259,17 @@ const Insight = () => {
           </div>
 
           <div className="w-full max-w-4xl mx-auto hidden md:block">
-            {(nodeByUri?.nodeByUri?.categoryTamplate
+            {(nodeByUri?.categoryTamplate
               ?.selectYourTempleteType[0] === "Template-1" ||
-              nodeByUri?.nodeByUri?.categoryTamplate
+              nodeByUri?.categoryTamplate
                 ?.selectYourTempleteType[0] === "Template-2") &&
-            nodeByUri?.nodeByUri?.categoryTamplate?.template1
+            nodeByUri?.categoryTamplate?.template1
               ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl !==
               null ? (
               <Link
                 href={{
                   pathname:
-                    nodeByUri?.nodeByUri?.categoryTamplate?.template1
+                    nodeByUri?.categoryTamplate?.template1
                       ?.simpleHeroSection?.heroSidebarAdLink,
                 }}
                 passHref
@@ -281,7 +280,7 @@ const Insight = () => {
                   loader={customLoader}
                   className="mb-2 w-full h-auto max-h-96"
                   src={
-                    nodeByUri?.nodeByUri?.categoryTamplate?.template1
+                    nodeByUri?.categoryTamplate?.template1
                       ?.simpleHeroSection?.heroSidebarAdImage?.node?.sourceUrl
                   }
                   alt="Rectangle367"

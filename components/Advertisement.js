@@ -5,13 +5,14 @@ import Ads from "./googleAds/Ads";
 import { useDialog } from "./DialogContext";
 import Link from "next/link";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
 
-const Advertisement = () => {
-  const { bannerData } = useDialog();
+const Advertisement = ({dataNav}) => {
+  // const { dataNav } = useHeader()
   return (
     <div className="hidden md:block px-4 py-16 mx-auto max-w-screen-xl">
       <div className="relative flex items-center mb-3">
@@ -19,12 +20,12 @@ const Advertisement = () => {
         <span className="mx-4 text-gray-500 font-normal">ADVERTISEMENT</span>
         <div className="flex-grow border-t border-gray-300"></div>
       </div>
-      {bannerData?.page?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage
+      {dataNav?.nodeByUri?.homePage?.topHeadlineBottomAd?.topHeadlineBottomAdImage
         ?.node?.sourceUrl ? (
         <Link
           href={{
             pathname:
-              bannerData?.page?.homePage?.topHeadlineBottomAd
+            dataNav?.nodeByUri?.homePage?.topHeadlineBottomAd
                 ?.topHeadlineBottomAdLink,
           }}
           passHref
@@ -37,7 +38,7 @@ const Advertisement = () => {
               margin: "0 auto",
             }}
             src={
-              bannerData.page.homePage.topHeadlineBottomAd
+              dataNav.nodeByUri.homePage.topHeadlineBottomAd
                 .topHeadlineBottomAdImage.node.sourceUrl
             }
             alt="barcode"

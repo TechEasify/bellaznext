@@ -3,8 +3,12 @@ import Head from "next/head";
 import EntryHeader from "../components/entry-header";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
+import { useRouter } from "next/router";
+import About from "../components/About";
 
 export default function Component(props) {
+  console.log(props, "props page");
+  const router = useRouter()
   // Loading state for previews
   if (props.loading) {
     return <>Loading...</>;
@@ -17,10 +21,6 @@ export default function Component(props) {
 
   return (
     <>
-      <Head>
-        <title>{`${title} - ${siteTitle}`}</title>
-      </Head>
-
       <Nav
         siteTitle={siteTitle}
         siteDescription={siteDescription}

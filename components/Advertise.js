@@ -1,16 +1,16 @@
 import React from "react";
-import SocialIconsX from "../../public/images/SocialIconsX.svg";
-import Ademail from "../../public/images/Ademail.svg";
-import SocialIcon from "../../public/images/SocialIcon.svg";
-import SocialIcons3 from "../../public/images/SocialIcons3.svg";
-import PrimaryBlue2 from "../../public/images/PrimaryBlue2.svg";
+import SocialIconsX from "../public/images/SocialIconsX.svg";
+import Ademail from "../public/images/Ademail.svg";
+import SocialIcon from "../public/images/SocialIcon.svg";
+import SocialIcons3 from "../public/images/SocialIcons3.svg";
+import PrimaryBlue2 from "../public/images/PrimaryBlue2.svg";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Testimonial from "../../components/Testimonial";
-import Primarylogo from "../../public/images/Primarylogo.svg";
+import Testimonial from "../components/Testimonial";
+import Primarylogo from "../public/images/Primarylogo.svg";
 import Image from "next/image";
-import { useDialog } from "../../components/DialogContext";
-import Layout from "../../components/Layout";
+import { useDialog } from "../components/DialogContext";
+import Layout from "../components/Layout";
 
 const customLoader = ({ src }) => {
   return src;
@@ -30,13 +30,10 @@ const SkeletonLoader = () => (
   </div>
 );
 
-function Index() {
+function Advertise({advertiseQuery}) {
+    console.log(advertiseQuery, "advertiseQuery");
+    
   const router = useRouter();
-  const { advertiseQuery, advertiseLoading, advertiseError } = useDialog();
- 
-  if (advertiseLoading) return <SkeletonLoader />;
-  if (advertiseError) return <p>Error: {error.message}</p>;
-
   const getImageSrc = (srcSet) => srcSet.split(",")[0].split(" ")[0];
 
   return (
@@ -45,29 +42,29 @@ function Index() {
       <Layout>
         <div className="px-4 py-8 mx-auto max-w-[821px]">
           <h1 className="text-[24px] md:text-[40px] text-center text-black-900 font-semibold mb-3">
-            {advertiseQuery?.page?.advertise?.title}
+            {advertiseQuery?.nodeByUri?.advertise?.title}
           </h1>
           <p
             className="text-[24px] text-center text-base font-light text-gray-600 mb-5"
             dangerouslySetInnerHTML={{
-              __html: advertiseQuery?.page?.advertise?.description,
+              __html: advertiseQuery?.nodeByUri?.advertise?.description,
             }}
           />
           <div className="flex justify-center">
             <button
               className="inline-flex items-center justify-center w-[278px] h-[49px] px-8 font-semibold md:w-auto focus:outline-none tracking-widest uppercase hover:bg-skyBlue"
               style={{
-                color: advertiseQuery?.page?.advertise?.button?.buttonTextColor,
-                border: `1px solid ${advertiseQuery?.page?.advertise?.button?.buttonBorderColor}`,
+                color: advertiseQuery?.nodeByUri?.advertise?.button?.buttonTextColor,
+                border: `1px solid ${advertiseQuery?.nodeByUri?.advertise?.button?.buttonBorderColor}`,
                 backgroundColor:
-                  advertiseQuery?.page?.advertise?.button
+                advertiseQuery?.nodeByUri?.advertise?.button
                     ?.buttonBackgroundColor,
               }}
               onClick={() =>
-                router.push(advertiseQuery?.page?.advertise?.button?.buttonLink)
+                router.push(advertiseQuery?.nodeByUri?.advertise?.button?.buttonLink)
               }
             >
-              {advertiseQuery?.page?.advertise?.button?.advertiseWithUs}
+              {advertiseQuery?.nodeByUri?.advertise?.button?.advertiseWithUs}
             </button>
           </div>
 
@@ -87,7 +84,7 @@ function Index() {
                 alt="Social Icon"
                 onClick={() =>
                   (window.location.href =
-                    advertiseQuery?.page?.advertise?.share?.iconFirst)
+                    advertiseQuery?.nodeByUri?.advertise?.share?.iconFirst)
                 }
               />
               <Image
@@ -99,7 +96,7 @@ function Index() {
                 src={Ademail}
                 alt="Email Icon"
                 onClick={() =>
-                  (window.location.href = `mailto:${advertiseQuery?.page?.advertise?.share?.email}`)
+                  (window.location.href = `mailto:${advertiseQuery?.nodeByUri?.advertise?.share?.email}`)
                 }
               />
             </div>
@@ -117,7 +114,7 @@ function Index() {
                 alt="Facebook Icon"
                 onClick={() =>
                   (window.location.href =
-                    advertiseQuery?.page?.advertise?.follow?.facebookLink)
+                    advertiseQuery?.nodeByUri?.advertise?.follow?.facebookLink)
                 }
               />
               <Image
@@ -130,7 +127,7 @@ function Index() {
                 alt="Twitter Icon"
                 onClick={() =>
                   (window.location.href =
-                    advertiseQuery?.page?.advertise?.follow?.twiterLink)
+                    advertiseQuery?.nodeByUri?.advertise?.follow?.twiterLink)
                 }
               />
               <Image
@@ -143,7 +140,7 @@ function Index() {
                 alt="Instagram Icon"
                 onClick={() =>
                   (window.location.href =
-                    advertiseQuery?.page?.advertise?.follow?.instagramLink)
+                    advertiseQuery?.nodeByUri?.advertise?.follow?.instagramLink)
                 }
               />
             </div>
@@ -177,68 +174,68 @@ function Index() {
         </div>
         <hr className="border-gray-300" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
-          {advertiseQuery?.page?.advertise?.clientImages?.imageA && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageA && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageA?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageA?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageA?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageA?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageB && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageB && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageB?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageB?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageB?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageB?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageC && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageC && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageC?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageC?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageC?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageC?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageD && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageD && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageD?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageD?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageD?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageD?.node
                   ?.altText
               }
               width={150}
@@ -248,68 +245,68 @@ function Index() {
         </div>
         <hr className="border-gray-300 my-10" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
-          {advertiseQuery?.page?.advertise?.clientImages?.imageE && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageE && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageE?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageE?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageE?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageE?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageF && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageF && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageF?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageF?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageF?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageF?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageG && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageG && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageG?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageG?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageG?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageG?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageH && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageH && (
             <Image
               priority={true}
               loader={customLoader}
               className="h-25 mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageH?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageH?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageH?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageH?.node
                   ?.altText
               }
               width={150}
@@ -319,68 +316,68 @@ function Index() {
         </div>
         <hr className="border-gray-300 my-10" />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center mt-3">
-          {advertiseQuery?.page?.advertise?.clientImages?.imageI && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageI && (
             <Image
               priority={true}
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageI?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageI?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageI?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageI?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageJ && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageJ && (
             <Image
               priority={true}
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageJ?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageJ?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageJ?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageJ?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageK && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageK && (
             <Image
               priority={true}
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageK?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageK?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageK?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageK?.node
                   ?.altText
               }
               width={150}
               height={100}
             />
           )}
-          {advertiseQuery?.page?.advertise?.clientImages?.imageL && (
+          {advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageL && (
             <Image
               priority={true}
               loader={customLoader}
               className="object-cover w-[150px] h-[100px] mx-auto"
               src={getImageSrc(
-                advertiseQuery?.page?.advertise?.clientImages?.imageL?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageL?.node
                   ?.srcSet
               )}
               alt={
-                advertiseQuery?.page?.advertise?.clientImages?.imageL?.node
+                advertiseQuery?.nodeByUri?.advertise?.clientImages?.imageL?.node
                   ?.altText
               }
               width={150}
@@ -394,7 +391,7 @@ function Index() {
             className="px-4 py-4 mx-auto max-w-screen-xl"
             style={{
               background:
-                advertiseQuery?.page?.advertise?.cta?.backgroundColor ||
+                advertiseQuery?.nodeByUri?.advertise?.cta?.backgroundColor ||
                 "#40A6FB",
             }}
           >
@@ -403,7 +400,7 @@ function Index() {
                 className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-6 md:mb-0 md:mr-10"
                 style={{ color: "#002D73" }}
               >
-                {advertiseQuery?.page?.advertise?.cta?.leftSideTitle}
+                {advertiseQuery?.nodeByUri?.advertise?.cta?.leftSideTitle}
               </h5>
               <div>
                 <div className="flex flex-col md:flex-row items-center md:items-start">
@@ -411,10 +408,10 @@ function Index() {
                     EMAIL:
                   </span>
                   <Link
-                    href={`mailto:${advertiseQuery?.page?.advertise?.cta?.emailAddress}`}
+                    href={`mailto:${advertiseQuery?.nodeByUri?.advertise?.cta?.emailAddress}`}
                   >
                     <span className="flex flex-col md:flex-row items-center text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
-                      {advertiseQuery?.page?.advertise?.cta?.emailAddress}
+                      {advertiseQuery?.nodeByUri?.advertise?.cta?.emailAddress}
                       {/* <ExportedImage
                       className="h-8 md:h-10 ml-2"
                       priority={true}
@@ -429,10 +426,10 @@ function Index() {
                     CALL:
                   </span>
                   <Link
-                    href={`tel:${advertiseQuery?.page?.advertise?.cta?.phoneNumber}`}
+                    href={`tel:${advertiseQuery?.nodeByUri?.advertise?.cta?.phoneNumber}`}
                   >
                     <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold">
-                      {advertiseQuery?.page?.advertise?.cta?.phoneNumber}
+                      {advertiseQuery?.nodeByUri?.advertise?.cta?.phoneNumber}
                     </span>
                   </Link>
                 </div>
@@ -448,7 +445,7 @@ function Index() {
             className="absolute top-[-143%] md:top-[-40%] left-[5%] w-[90%] px-4 py-4 h-auto mx-auto max-w-screen-xl"
             style={{
               background:
-                advertiseQuery?.page?.advertise?.cta?.backgroundColor ||
+                advertiseQuery?.nodeByUri?.advertise?.cta?.backgroundColor ||
                 "#40A6FB",
             }}
           >
@@ -457,7 +454,7 @@ function Index() {
                 className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-6 md:mb-0 md:mr-10"
                 style={{ color: "#002D73" }}
               >
-                {advertiseQuery?.page?.advertise?.cta?.leftSideTitle}
+                {advertiseQuery?.nodeByUri?.advertise?.cta?.leftSideTitle}
               </h5>
               <div>
                 <div className="flex flex-col md:flex-row items-center md:items-start">
@@ -465,10 +462,10 @@ function Index() {
                     EMAIL:
                   </span>
                   <Link
-                    href={`mailto:${advertiseQuery?.page?.advertise?.cta?.emailAddress}`}
+                    href={`mailto:${advertiseQuery?.nodeByUri?.advertise?.cta?.emailAddress}`}
                   >
                     <span className="flex flex-col md:flex-row items-center text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold underline mb-3 md:mb-0 md:mr-3">
-                      {advertiseQuery?.page?.advertise?.cta?.emailAddress}
+                      {advertiseQuery?.nodeByUri?.advertise?.cta?.emailAddress}
                       {/* <ExportedImage
                       className="h-8 md:h-10 ml-2"
                       priority={true}
@@ -483,10 +480,10 @@ function Index() {
                     CALL:
                   </span>
                   <Link
-                    href={`tel:${advertiseQuery?.page?.advertise?.cta?.phoneNumber}`}
+                    href={`tel:${advertiseQuery?.nodeByUri?.advertise?.cta?.phoneNumber}`}
                   >
                     <span className="text-[18px] md:text-[24px] lg:text-[30px] xl:text-[36px] font-bold">
-                      {advertiseQuery?.page?.advertise?.cta?.phoneNumber}
+                      {advertiseQuery?.nodeByUri?.advertise?.cta?.phoneNumber}
                     </span>
                   </Link>
                 </div>
@@ -500,4 +497,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Advertise;

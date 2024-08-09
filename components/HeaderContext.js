@@ -43,11 +43,14 @@ export const HeaderProvider = ({ children }) => {
     data: navDataResult,
   } = useQuery(GET_NAV_SECTION, { fetchPolicy: "cache-first" });
 
+  console.log(navDataResult, "navDataResult");
+  
+
   const {
     loading: loadingSeo,
     error: errorSeo,
     data: seoQuery,
-  } = useQuery(SEO_QUERY, { fetchPolicy: "cache-first" });
+  } = useQuery(SEO_QUERY, {uri: router.asPath}, { fetchPolicy: "cache-first" });
 
   const {
     loading: loadingIcon,
@@ -76,6 +79,9 @@ export const HeaderProvider = ({ children }) => {
     if (seoQuery) setSeoData(seoQuery);
     if (dataFooter) setFooterData(dataFooter);
   }, [navDataResult, iconDataResult, navDataSearch, seoQuery, dataFooter]);
+
+  console.log(navData, "navData");
+  
 
   const memoizedValue = useMemo(() => ({
     setNavData,

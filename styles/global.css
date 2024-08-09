@@ -20,6 +20,15 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Pulp Display Extra';
+  src: url('/fonts/PulpDisplay-ExtraLight.woff2') format('woff2'),
+      url('/fonts/PulpDisplay-ExtraLight.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: "Pulp Display", sans-serif;
 }
@@ -281,3 +290,65 @@ a.breaking_news.px-4.text-gray-800.hover\:bg-gray-100:hover {
 a.px-4.text-gray-800.hover\:bg-gray-100:hover {
   border-bottom: 1px solid #40a6fb;
 }
+
+/* wordpress-blocks.css */
+
+/* Headings */
+/* wordpress-blocks.css */
+
+/* General Text and Paragraphs */
+.wp-block p {
+  font-size: 20px;
+  font-weight: 200; /* Extra light */
+  line-height: 30px;
+  color: #2B2B2B; /* Text color */
+  margin-top: 1rem;
+  font-family: Pulp Display Extra;
+  margin-bottom: 1.5rem; /* Add some spacing between paragraphs */
+}
+
+/* Adjust headings to match the new text styling */
+
+.wp-block h1, 
+.wp-block h2, 
+.wp-block h3, 
+.wp-block h4, 
+.wp-block h5, 
+.wp-block h6 {
+  line-height: 1.5; /* Adjust line height for headings */
+}
+
+/* Pull Quote */
+.wp-block .wp-block-pullquote {
+  font-family: 'Pulp Display Extra';
+  font-size: 20px;
+  font-weight: 200; /* Extra light */
+  line-height: 30px;
+  color: #5C5C5C;
+  margin: 2rem 0;
+}
+
+.wp-block .wp-block-pullquote cite {
+  font-family: 'Pulp Display Extra';
+  font-size: 20px;
+  font-weight: 200; /* Extra light */
+}
+.wp-block .wp-block-paragraph strong {
+  font-weight: 700; /* Bold text */
+}
+
+.wp-block em {
+  font-style: italic; /* Italic text */
+}
+
+.wp-block a {
+  color: #2B2B2B; /* Default link color */
+  text-decoration: underline; /* Underline links */
+}
+
+.wp-block a:hover {
+  color: #ce3a42; /* Color change on hover */
+  text-decoration: underline; /* Ensure underline on hover */
+}
+
+/* Add more styles as needed */

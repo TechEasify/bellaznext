@@ -34,7 +34,7 @@ export const DialogProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [nodeByUri, setNodeByUri] = useState(null);
-  const [bannerData, setBannerData] = useState(null);
+  // const [bannerData, setBannerData] = useState(null);
   const [insightsQuery, setInsightsQuery] = useState(null);
   const [musicQuery, setMusicQuery] = useState(null);
   const [categoryInsightData, setCategoryInsightData] = useState(null);
@@ -63,10 +63,10 @@ export const DialogProvider = ({ children }) => {
     fetchCategory,
     { data: categoryData, loading: loadingCategory, error: errorCategory },
   ] = useLazyQuery(CATEGORY_BREAKING_QUERY, { fetchPolicy: "cache-first" });
-  const [
-    fetchHomePage,
-    { loading: bannerLoading, error: bannerError, data: Data },
-  ] = useLazyQuery(GET_HOME_PAGE, { fetchPolicy: "cache-first" });
+  // const [
+  //   fetchHomePage,
+  //   { loading: bannerLoading, error: bannerError, data: Data },
+  // ] = useLazyQuery(GET_HOME_PAGE, { fetchPolicy: "cache-first" });
   const [
     fetchInsights,
     { loading: insightsLoading, error: insightsError, data: insightsData },
@@ -108,11 +108,11 @@ export const DialogProvider = ({ children }) => {
 
     if (slug) fetchSearch({ variables: { slug } });
     
-    if (router.pathname === "/") {
-      fetchHomePage();
-      fetchInsights();
-      fetchMusic();
-    }
+    // if (router.pathname === "/") {
+    //   fetchHomePage();
+    //   fetchInsights();
+    //   fetchMusic();
+    // }
 
     if (router.pathname === "/about" || router.pathname === "/advertise") {
       fetchTestimonial();
@@ -127,7 +127,7 @@ export const DialogProvider = ({ children }) => {
 
   useEffect(() => {
     if (categoryData) setNodeByUri(categoryData);
-    if (Data) setBannerData(Data);
+    // if (Data) setBannerData(Data);
     if (insightsData) setInsightsQuery(insightsData);
     if (musicData) setMusicQuery(musicData);
     if (categoryInsight) setCategoryInsightData(categoryInsight);
@@ -138,7 +138,7 @@ export const DialogProvider = ({ children }) => {
     if (advertiseData) setAdvertiseQuery(advertiseData);
   }, [
     categoryData,
-    Data,
+    // Data,
     insightsData,
     musicData,
     categoryInsight,
@@ -152,7 +152,7 @@ export const DialogProvider = ({ children }) => {
   const memoizedPosts = useMemo(() => posts, [posts]);
   const memoizedCursor = useMemo(() => cursor, [cursor]);
   const memoizedNodeByUri = useMemo(() => nodeByUri, [nodeByUri]);
-  const memoizedBannerData = useMemo(() => bannerData, [bannerData]);
+  // const memoizedBannerData = useMemo(() => bannerData, [bannerData]);
   const memoizedInsightsQuery = useMemo(() => insightsQuery, [insightsQuery]);
   const memoizedMusicQuery = useMemo(() => musicQuery, [musicQuery]);
   const memoizedCategoryInsightData = useMemo(
@@ -189,9 +189,9 @@ export const DialogProvider = ({ children }) => {
         loadingCategory,
         fetchMore: fetchCategory,
         insightFetchMore: fetchInsightData,
-        bannerData: memoizedBannerData,
-        bannerLoading,
-        bannerError,
+        // bannerData: memoizedBannerData,
+        // bannerLoading,
+        // bannerError,
         insightsQuery: memoizedInsightsQuery,
         insightsLoading,
         insightsError,

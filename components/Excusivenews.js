@@ -6,9 +6,9 @@ import Frame396 from "../public/images/Frame396.svg";
 import { useDialog } from "./DialogContext";
 import { useRouter } from "next/router";
 import { subscribeToNewsletter } from "../lib/klaviyo";
+import { useHeader } from "./HeaderContext";
 
-const Excusivenews = () => {
-  const { bannerData } = useDialog();
+const Excusivenews = ({dataNav}) => {
   const [email, setEmail] = useState('');
   const router = useRouter();
 
@@ -22,7 +22,7 @@ const Excusivenews = () => {
     }
   };
   let backgroundImage =
-    bannerData?.page?.homePage?.ctaBackgroundImage?.node?.sourceUrl;
+  dataNav?.nodeByUri?.homePage?.ctaBackgroundImage?.node?.sourceUrl;
 
   // Clean up the URL by removing newline characters and trimming spaces
   if (backgroundImage) {
@@ -42,10 +42,10 @@ const Excusivenews = () => {
       <div className="w-full flex flex-col md:flex-row justify-around items-stretch relative">
         <div className="md:mr-20 mb-8 md:mb-0 w-[470px]">
           <h1 className="text-[25px] md:text-[53px] text-white font-semibold mb-2">
-            {bannerData?.page?.homePage?.ctaTitle}
+            {dataNav?.nodeByUri?.homePage?.ctaTitle}
           </h1>
           <p className="text-[14px] md:text-[18px] font-semibold text-white">
-            {bannerData?.page?.homePage?.ctaDescription}
+            {dataNav?.nodeByUri?.homePage?.ctaDescription}
           </p>
         </div>
         <div className="md:mr-20 mb-8 md:mb-0 w-[470px]" style={{ margin: "auto 0" }}>

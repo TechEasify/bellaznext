@@ -1,50 +1,52 @@
 import React from "react";
-import Testimonial from "../../components/Testimonial";
-import Primarylogo from "../../public/images/Primarylogo.svg";
+import Testimonial from "../components/Testimonial";
+import Primarylogo from "../public/images/Primarylogo.svg";
 import Image from "next/image";
-import Layout from "../../components/Layout";
-import { useDialog } from "../../components/DialogContext";
+import Layout from "../components/Layout";
+import { useDialog } from "../components/DialogContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
 
-function Index() { 
-  const { aboutQuery, aboutLoading } = useDialog();
+function About({aboutQuery}) { 
+    console.log(aboutQuery, "aboutQuery");
+    
+//   const { aboutQuery, aboutLoading } = useDialog();
   
-  if (aboutLoading)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <Image
-          priority={true}
-          loader={customLoader}
-          src={Primarylogo}
-          alt="Loading..."
-          className="blinking-image"
-          width={250}
-          height={54}
-        />
-      </div>
-    );
+//   if (aboutLoading)
+//     return (
+//       <div className="flex justify-center items-center h-screen">
+//         <Image
+//           priority={true}
+//           loader={customLoader}
+//           src={Primarylogo}
+//           alt="Loading..."
+//           className="blinking-image"
+//           width={250}
+//           height={54}
+//         />
+//       </div>
+//     );
 
   return (
     <>
       {/* <Nav /> */}
       <Layout>
         <div className="px-4 py-20 mx-auto max-w-screen-xl sm:mb-20">
-          {aboutQuery && aboutQuery?.page && (
+          {aboutQuery && aboutQuery?.nodeByUri?.about && (
             <div>
               <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-8">
                 <div className="w-full md:w-1/3 mb-5 md:mb-0">
                   <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold">
-                    {aboutQuery?.page?.about?.pageTitle}
+                    {aboutQuery?.nodeByUri?.about?.pageTitle}
                   </h5>
                 </div>
                 <div className="w-full md:w-2/3 text-left">
                   <p
                     className="font-normal"
                     dangerouslySetInnerHTML={{
-                      __html: aboutQuery?.page?.about?.description,
+                      __html: aboutQuery?.nodeByUri?.about?.description,
                     }}
                   />
                 </div>
@@ -53,13 +55,13 @@ function Index() {
               <div className="bg-white w-full flex flex-col md:flex-row items-start md:items-center text-left mb-20">
                 <div className="w-full md:w-1/3 mb-5 md:mb-0">
                   <h5 className="text-[24px] md:text-[30px] text-black-900 font-bold">
-                    {aboutQuery?.page?.about?.ourTeamTitle}
+                    {aboutQuery?.nodeByUri?.about?.ourTeamTitle}
                   </h5>
                 </div>
                 <div className="flex flex-wrap w-full md:w-2/3 text-left">
-                  {Object.keys(aboutQuery?.page?.about?.ourTeamMembers).map(
+                  {Object.keys(aboutQuery?.nodeByUri?.about?.ourTeamMembers).map(
                     (teamKey) => {
-                      const member = aboutQuery?.page?.about?.ourTeamMembers[teamKey];
+                      const member = aboutQuery?.nodeByUri?.about?.ourTeamMembers[teamKey];
                       if (!member || !member.name) return null;
 
                       return (
@@ -96,7 +98,7 @@ function Index() {
               </div>
             </div>
           )}
-          <Testimonial />
+          <Testimonial testimonialQuery={aboutQuery}/>
         </div>
         {/* <Footer /> */}
       </Layout>
@@ -104,4 +106,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default About;

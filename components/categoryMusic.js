@@ -53,29 +53,31 @@ function shuffle(array) {
   return array;
 }
 
-function Music({ nodeByUri, fetchMore, loading }) {
+function Music({ nodeByUri }) {
+  console.log(nodeByUri, "nodeByUri");
+  
   const posts = [];
   const [shuffledPost, setShuffledPosts] = useState([]);
 
-  const Tag = nodeByUri?.nodeByUri?.posts?.nodes?.map(
+  const Tag = nodeByUri?.posts?.nodes?.map(
     (item) => item?.tags?.nodes
   );
 
   useEffect(() => {
     if (
-      nodeByUri?.nodeByUri?.categoryTamplate?.template2?.musicHeroSection
+      nodeByUri?.categoryTamplate?.template2?.musicHeroSection
         ?.selectCategoryForSidebarPosts?.nodes
     ) {
       const posts =
-        nodeByUri.nodeByUri.categoryTamplate.template2.musicHeroSection.selectCategoryForSidebarPosts.nodes.flatMap(
+        nodeByUri.categoryTamplate.template2.musicHeroSection.selectCategoryForSidebarPosts.nodes.flatMap(
           (item) => item.posts.nodes
         );
 
       setShuffledPosts(posts);
     }
-  }, [nodeByUri.nodeByUri]);
+  }, [nodeByUri]);
 
-  nodeByUri?.nodeByUri?.categoryTamplate?.template2?.musicHeroSection?.selectCategoryForSidebarPosts?.nodes.forEach(
+  nodeByUri?.categoryTamplate?.template2?.musicHeroSection?.selectCategoryForSidebarPosts?.nodes.forEach(
     (item) => {
       item.posts.nodes.forEach((post) => {
         posts.push({ ...post, categoryName: item.name });
@@ -110,7 +112,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
           <div className="hidden lg:block w-full max-w-3xl mx-auto">
             <p className="text-[22px] font-extrabold text-black-900 italic uppercase">
               {
-                nodeByUri?.nodeByUri?.categoryTamplate?.template2
+                nodeByUri?.categoryTamplate?.template2
                   ?.musicHeroSection?.heroSidebarTitle
               }
             </p>
@@ -119,7 +121,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
               style={{
                 height: "7px",
                 background: `${
-                  nodeByUri?.nodeByUri?.categoryTamplate?.template2
+                  nodeByUri?.categoryTamplate?.template2
                     ?.musicHeroSection?.heroSidebarTitleLineColor || "#000"
                 }`,
               }}
@@ -155,13 +157,13 @@ function Music({ nodeByUri, fetchMore, loading }) {
               </React.Fragment>
             ))}
             <div className="flex mt-5 mb-5">
-              {nodeByUri?.nodeByUri?.categoryTamplate?.template2
+              {nodeByUri?.categoryTamplate?.template2
                 ?.musicHeroSection?.musicHeroSidebarAds?.musicSidebarAdImage
                 ?.node?.sourceUrl ? (
                 <Link
                   href={{
                     pathname:
-                      nodeByUri?.nodeByUri?.categoryTamplate?.template2
+                      nodeByUri?.categoryTamplate?.template2
                         ?.musicHeroSection?.musicHeroSidebarAds
                         ?.musicSidebarAdLink,
                   }}
@@ -172,7 +174,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                     priority={true}
                     loader={customLoader}
                     src={
-                      nodeByUri?.nodeByUri?.categoryTamplate?.template2
+                      nodeByUri?.categoryTamplate?.template2
                         ?.musicHeroSection?.musicHeroSidebarAds
                         ?.musicSidebarAdImage?.node?.sourceUrl
                     }
@@ -356,7 +358,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                   )}
                 <div className="relative bottom-[8%] mx-6 z-50 bg-white p-4 border border-[#25AC7D] shadow h-auto tablet-custom mobile-custom">
                   <p className="text-[15px] font-semibold text-red-800 uppercase tracking-widest">
-                    {nodeByUri?.nodeByUri?.name}
+                    {nodeByUri?.name}
                   </p>
                   <Link href={`/news/${musicpost.slug}`}>
                     <h5 className="text-[40px] font-extrabold text-black-900 dark:text-white hover:text-skyBlue mobile-custom-h5">
@@ -392,7 +394,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
                 </div>
 
                 <div className="flex flex-wrap justify-around mt-[-8%]">
-                  {nodeByUri?.nodeByUri?.posts?.nodes
+                  {nodeByUri?.posts?.nodes
                     .map((item) => {
                       return (
                         <div
@@ -789,9 +791,7 @@ function Music({ nodeByUri, fetchMore, loading }) {
         </div>
       </div> */}
       <Musicpage
-        nodeByUri={nodeByUri?.nodeByUri}
-        fetchMore={fetchMore}
-        loading={loading}
+        nodeByUri={nodeByUri}
       />
       {/* <Footer /> */}
     </>

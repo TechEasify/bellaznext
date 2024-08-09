@@ -9,6 +9,8 @@ import addpost from "../public/images/addpost.svg";
 import { gql, useQuery } from "@apollo/client";
 import Link from "next/link";
 import Image from "next/image";
+import { useHeader } from "./HeaderContext";
+import Ads from "./googleAds/Ads";
 
 const customLoader = ({ src }) => {
   return src;
@@ -166,7 +168,7 @@ const SkeletonLoader = () => (
   </>
 );
 
-const Insights = () => {
+const Insights = ({dataNav}) => {
   const {
     openDialog,
     insightsQuery,
@@ -176,7 +178,10 @@ const Insights = () => {
   } = useDialog();
   const [randomPost, setRandomPost] = useState(null);
 
-  const insightsPost = insightsQuery?.page?.homePage?.insightsPost?.nodes;
+  console.log(dataNav?.nodeByUri, "dataNav insight");
+  
+
+  const insightsPost = dataNav?.nodeByUri?.homePage?.insightsPost?.nodes;
 
   useEffect(() => {
     if (insightsPost && insightsPost.length > 0) {
@@ -196,13 +201,13 @@ const Insights = () => {
       <div className="w-full mx-auto">
         <div className="flex flex-col justify-center mx-auto md:mx-0">
           <h1 className="text-[25px] font-bold text-black-900 italic">
-            {insightsQuery?.page?.homePage?.insightsTitle}
+            {dataNav?.nodeByUri?.homePage?.insightsTitle}
           </h1>
           <hr
             className="text-red-800 mr-5"
             style={{
               height: "7px",
-              background: `${insightsQuery?.page?.homePage?.insightsTitleBottomLineColor}`,
+              background: `${dataNav?.nodeByUri?.homePage?.insightsTitleBottomLineColor}`,
             }}
           />
           <br />
@@ -210,6 +215,8 @@ const Insights = () => {
 
         <div className="flex justify-around items-stretch">
           {insight?.slice(1, 2)?.map((item) => {
+            console.log(item, "insight item");
+            
             const contentText = item?.content
               ? item?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
               : ""; // Fallback if content is not available
@@ -458,12 +465,12 @@ const Insights = () => {
                     </p>
                   </div>
                   <div className="hidden md:block flex max-w-xs bg-white mr-4 items-center">
-                    {insightsQuery?.page?.homePage?.insightsAd?.insightAdImage
+                    {dataNav?.nodeByUri?.homePage?.insightsAd?.insightAdImage
                       ?.node?.sourceUrl ? (
                       <Link
                         href={{
                           pathname:
-                            insightsQuery?.page?.homePage?.insightsAd
+                          dataNav?.nodeByUri?.homePage?.insightsAd
                               ?.insightAdLink,
                         }}
                         passHref
@@ -473,11 +480,11 @@ const Insights = () => {
                           priority={true}
                           loader={customLoader}
                           src={
-                            insightsQuery?.page?.homePage?.insightsAd
+                            dataNav?.nodeByUri?.homePage?.insightsAd
                               ?.insightAdImage?.node?.sourceUrl || ""
                           }
                           alt={
-                            insightsQuery?.page?.homePage?.insightsAd
+                            dataNav?.nodeByUri?.homePage?.insightsAd
                               ?.insightAdImage?.node?.sourceUrl || ""
                           }
                           className="object-cover w-[317px] h-[214px] mr-2"

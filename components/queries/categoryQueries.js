@@ -9,6 +9,82 @@ export const CATEGORY_BREAKING_QUERY = gql`
     $last: Int
     $before: String
   ) {
+    primaryMenuItems: menuItems(where: { location: PRIMARY }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    newMenuLocationItems: menuItems(
+      where: { location: TOP_MENU_LOCATION }
+      first: 50
+    ) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer: menuItems(where: { location: FOOTER_MENU_LOCATION_1 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer1: menuItems(where: { location: FOOTER_MENU_LOCATION_2 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer2: menuItems(where: { location: FOOTER_MENU_LOCATION_3 }, first: 50) {
+      edges {
+        node {
+          ...MenuItemFragment
+          childItems {
+            nodes {
+              ...MenuItemFragment
+            }
+          }
+        }
+      }
+    }
+    footer3: menuItems(where: { location: FOOTER }, first: 1) {
+      edges {
+        node {
+          menu {
+            node {
+              footer {
+                copyrightText
+              }
+            }
+          }
+        }
+      }
+    }
     nodeByUri(uri: $uri) {
       ... on Category {
         name
@@ -278,6 +354,12 @@ export const CATEGORY_BREAKING_QUERY = gql`
       }
     }
   }
+  fragment MenuItemFragment on MenuItem {
+    uri
+    label
+    cssClasses
+    parentId
+  }
 `;
 
 // category insights data
@@ -316,97 +398,137 @@ export const INSIGHTS_DATA = gql`
 
 // news detail category
 export const GET_NEWS_SECTION = gql`
-  query MyQuery2($uri: String!) {
-    nodeByUri(uri: $uri) {
-      id
-      ... on Post {
-        id
-        excerpt
-        slug
-        content
-        featuredImage {
-          node {
-            altText
-            slug
-            sourceUrl
-            srcSet
-            title
-          }
-        }
-        author {
-          node {
-            name
-          }
-        }
-        categories {
+  query GetMenu($uri: String = "$uri") {
+  primaryMenuItems: menuItems(
+    where: {location: FOOTER_MENU_LOCATION_1}
+    first: 50
+  ) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
           nodes {
-            name
-            posts {
-              nodes {
-                title
-                postDetailsEdit {
-                  sidebarFirstAd {
-                    adImage {
-                      node {
-                        altText
-                        srcSet
-                        sourceUrl
-                      }
-                    }
-                    adCode
-                  }
-                  moreNewsSelectCategory {
-                    nodes {
-                      name
-                      ... on Category {
-                        posts {
-                          nodes {
-                            title
-                            featuredImage {
-                              node {
-                                altText
-                                sourceUrl
-                                srcSet
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                  bottomLineColor
-                  title
-                }
-                slug
-                featuredImage {
-                  node {
-                    altText
-                    slug
-                    sourceUrl
-                    srcSet
-                    title
-                  }
-                }
-                postView {
-                  view
-                }
-              }
-            }
+            ...MenuItemFragment
           }
-        }
-        postView {
-          view
-        }
-        date
-        dateGmt
-        title
-        seo {
-          canonical
-          fullHead
-          metaDesc
-          title
         }
       }
     }
   }
+  newMenuLocationItems: menuItems(where: {location: TOP_MENU_LOCATION}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  footer: menuItems(where: {location: FOOTER_MENU_LOCATION_1}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  footer1: menuItems(where: {location: FOOTER_MENU_LOCATION_2}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  footer2: menuItems(where: {location: FOOTER_MENU_LOCATION_3}, first: 50) {
+    edges {
+      node {
+        ...MenuItemFragment
+        childItems {
+          nodes {
+            ...MenuItemFragment
+          }
+        }
+      }
+    }
+  }
+  nodeByUri(uri: $uri) {
+    ... on Post {
+      postDetailsEdit {
+        sidebarFirstAd {
+          adImage {
+            node {
+              altText
+              srcSet
+              sourceUrl
+            }
+          }
+          adCode
+        }
+        moreNewsSelectCategory {
+          nodes {
+            name
+            ... on Category {
+              posts {
+                ...CategoryToPostConnectionFragment
+              }
+            }
+          }
+        }
+        bottomLineColor
+        title
+      }
+      author {
+        node {
+          name
+        }
+      }
+      content
+      featuredImage {
+        node {
+          altText
+          sourceUrl
+          srcSet
+        }
+      }
+      title
+      slug
+    }
+  }
+}
+
+fragment MenuItemFragment on MenuItem {
+  uri
+  label
+  cssClasses
+  parentId
+}
+
+fragment CategoryToPostConnectionFragment on CategoryToPostConnection {
+  nodes {
+    slug
+    author {
+      node {
+        name
+      }
+    }
+    title
+    excerpt
+    featuredImage {
+      node {
+        sourceUrl
+      }
+    }
+  }
+}
 `;

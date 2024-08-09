@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import { useDialog } from "./DialogContext";
 
-function Testimonial() {
-  const { testimonialQuery } = useDialog();
+function Testimonial({testimonialQuery}) {
+  
+  // const { testimonialQuery } = useDialog();
   const [testimonialData, setTestimonialData] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
   const sliderRef = useRef(null);
@@ -11,7 +12,7 @@ function Testimonial() {
   useEffect(() => {
     if (testimonialQuery) {
       const testimonials = Object.values(
-        testimonialQuery?.page?.advertise?.testimonials || {}
+        testimonialQuery?.nodeByUri?.about?.reviews || {}
       ).filter(
         (testimonial) =>
           testimonial.message &&

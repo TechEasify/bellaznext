@@ -1,12 +1,12 @@
 module.exports = {
-  async rewrites() {
-    return [
-      {
-        source: '/:categoryslug',
-        destination: '/category/:categoryslug',
-      }
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/:categoryslug',
+  //       destination: '/category/:categoryslug',
+  //     }
+  //   ];
+  // },
   output: 'standalone',
   images: {
     loader: "custom",
@@ -34,6 +34,9 @@ module.exports = {
           ? "http://localhost:3000"
           : "https://bellaznews.netlify.app/",
     },
+  },
+  compiler: {
+    removeConsole: true,
   },
   swcMinify: true,
   trailingSlash: true,

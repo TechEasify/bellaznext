@@ -25,7 +25,7 @@ const customLoader = ({ src }) => {
   return src;
 };
 
-const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
+const Musicpage = ({ nodeByUri }) => {
   const [posts, setPosts] = useState([]);
   const [cursor, setCursor] = useState(null);
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -132,7 +132,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                 <>
                   <div className="flex flex-col md:flex-row mb-5 items-start">
                     <div className="mr-0 md:mr-5 mb-5 md:mb-0 flex justify-center hidden md:block">
-                      <Link
+                      {/* <Link
                         href={{
                           pathname: `/news/${item.slug}`,
                           query: {
@@ -152,7 +152,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                             height={261}
                           />
                         )}
-                      </Link>
+                      </Link> */}
                     </div>
                     <div className="ml-0 md:ml-5 w-full md:w-3/5 hidden md:block">
                       <p
@@ -171,7 +171,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                       >
                         {nodeByUri.name}
                       </p>
-                      <Link
+                      {/* <Link
                         href={{
                           pathname: `/news/${item.slug}`,
                           query: {
@@ -183,7 +183,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
                         <h5 className="text-[25px] text-black-900 font-bold hover:text-skyBlue">
                           {item.title}
                         </h5>
-                      </Link>
+                      </Link> */}
                       <p className="text-[12px] font-extralight text-gray-800 mb-4">
                         <span
                           className="text-[12px] font-extrabold mr-1"
@@ -246,7 +246,7 @@ const Musicpage = ({ nodeByUri, fetchMore, loading, navData }) => {
               <button
                 className="viewmore w-full py-2 text-center justify-center mt-5 flex mr-2 text-white font-semibold items-center hover:bg-blue-700"
                 onClick={handleViewMore}
-                disabled={!hasNextPage || loading}
+                disabled={!hasNextPage}
               >
                 {hasNextPage ? "VIEW MORE" : "NO MORE POSTS"}
               </button>

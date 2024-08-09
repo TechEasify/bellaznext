@@ -59,22 +59,19 @@ const GET_CARD_SECTION = gql`
 `;
 
 const Newscard = ({ nodeByUri }) => {
-  const { loading, error, data } = useQuery(GET_CARD_SECTION);
-
+  console.log(nodeByUri, "nodeByUri news card");
+  
   const section1 =
-    nodeByUri?.nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section1
+    nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section1
       ?.selectCategory?.nodes;
 
   const section2 =
-    nodeByUri?.nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section2
+    nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section2
       ?.selectCategory?.nodes;
 
   const section3 =
-    nodeByUri?.nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section3
+    nodeByUri?.categoryTamplate?.template1?.relatedCategory?.section3
       ?.selectCategory?.nodes;
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
 
   const displayedCategories = new Set();
 
@@ -92,11 +89,11 @@ const Newscard = ({ nodeByUri }) => {
               const bottomLineColor = (() => {
                 switch (item.name) {
                   case "Insights":
-                    return data.page.homePage.allCategoryBottomLineColor.block1;
+                    return "#1877F2";
                   case "Jewish News":
-                    return data.page.homePage.allCategoryBottomLineColor.block2;
+                    return "#40A6FB";
                   case "music":
-                    return data.page.homePage.allCategoryBottomLineColor.block3;
+                    return "#25AC7D";
                   case "Breaking News":
                     return "rgb(206, 58, 66)";
                   case "ANALYSIS":
@@ -178,11 +175,11 @@ const Newscard = ({ nodeByUri }) => {
               const bottomLineColor = (() => {
                 switch (item.name) {
                   case "Insights":
-                    return data.page.homePage.allCategoryBottomLineColor.block1;
+                    return "#1877F2";
                   case "Jewish News":
-                    return data.page.homePage.allCategoryBottomLineColor.block2;
+                    return "#40A6FB";
                   case "music":
-                    return data.page.homePage.allCategoryBottomLineColor.block3;
+                    return "#25AC7D";
                   case "Breaking News":
                     return "rgb(206, 58, 66)";
                   case "ANALYSIS":
@@ -264,11 +261,11 @@ const Newscard = ({ nodeByUri }) => {
               const bottomLineColor = (() => {
                 switch (item.name) {
                   case "Insights":
-                    return data.page.homePage.allCategoryBottomLineColor.block1;
+                    return "#1877F2";
                   case "Jewish News":
-                    return data.page.homePage.allCategoryBottomLineColor.block2;
+                    return "#40A6FB";
                   case "music":
-                    return data.page.homePage.allCategoryBottomLineColor.block3;
+                    return "#25AC7D";
                   case "Breaking News":
                     return "rgb(206, 58, 66)";
                   case "ANALYSIS":

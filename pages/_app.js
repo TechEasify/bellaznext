@@ -18,11 +18,11 @@ const App = ({ Component, pageProps }) => {
   return (
     <FaustProvider pageProps={pageProps}>
       <HeaderProvider>
-        {memoizedNav}
+        {/* {memoizedNav} */}
         <DialogProvider>
           <Component {...pageProps} key={router.asPath} />
         </DialogProvider>
-        {memoizedFooter}
+        {/* {memoizedFooter} */}
       </HeaderProvider>
     </FaustProvider>
   );

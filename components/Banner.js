@@ -9,20 +9,12 @@ import image_sun from "../public/images/image_sun.svg";
 import image_sun2 from "../public/images/image_sun2.svg";
 import image_sun3 from "../public/images/image_sun3.svg";
 import image_sun4 from "../public/images/image_sun4.svg";
-import Group from "../public/images/Group.svg";
-import Group1 from "../public/images/Group (1).svg";
-import Group2 from "../public/images/Group (2).svg";
-import Group3 from "../public/images/Group (3).svg";
-import Group4 from "../public/images/Group4.svg";
 import Status208 from "../public/images/Status208.svg";
 import Group209 from "../public/images/Group209.svg";
-import mike_von from "../public/images/mike_von.svg";
 import location from "../public/images/location.svg";
 import sun from "../public/images/sun.svg";
-import ExportedImage from "next-image-export-optimizer";
 import Primarylogo from "../public/images/Primarylogo.svg";
 import { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
 import axios from "axios";
 import Link from "next/link";
 import Topheadlines from "./Topheadlines";
@@ -30,7 +22,7 @@ import Ads from "./googleAds/Ads";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useHeader } from "./HeaderContext";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 
 const customLoader = ({ src }) => {
   return src;
@@ -50,9 +42,9 @@ const SkeletonLoader = () => (
   </div>
 );
 
-const Banner = () => {
-  const { bannerData, searchData } = useDialog();
-  const { iconDataResult, dataIcon } = useHeader();
+const Banner = ({ dataNav }) => {
+  const { searchData } = useDialog();
+  const { dataIcon } = useHeader();
   const router = useRouter();
   const [weatherData, setWeatherData] = useState(null);
   const [hourlyForecast, setHourlyForecast] = useState([]);
@@ -177,22 +169,8 @@ const Banner = () => {
 
   const date = formatDate(weatherData.dt);
 
-  const timeSlots = [
-    { time: "2 pm", temp: 72, image: image_sun },
-    { time: "3 pm", temp: 70, image: image_sun1 },
-    { time: "4 pm", temp: 69, image: image_sun2 },
-    { time: "5 pm", temp: 75, image: image_sun3 },
-    { time: "6 pm", temp: 76, image: image_sun4 },
-  ];
-
   const sortedPosts =
-    bannerData?.page?.homePage?.heroSection?.heroPostCategory?.nodes
-      .flatMap((item) => item.posts.nodes)
-      .filter((post) => post.categories.nodes.some((category) => category.name))
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const sortedPostss =
-    bannerData?.page?.homePage?.heroSection?.heroSidebarPosts?.nodes
+    dataNav?.nodeByUri?.homePage?.heroSection?.heroPostCategory?.nodes
       .flatMap((item) => item.posts.nodes)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -215,6 +193,16 @@ const Banner = () => {
     }
   };
 
+  const truncateExcerpt = (excerpt, maxWords) => {
+    const words = excerpt.split(' ');
+  
+    if (words.length > maxWords) {
+      return `${words.slice(0, maxWords).join(' ')}... <span class="text-blue-500">Read More</span>`;
+    }
+  
+    return excerpt;
+  };
+
   return (
     <>
       <div className="px-4 py-8 mx-auto max-w-screen-xl">
@@ -222,6 +210,8 @@ const Banner = () => {
           <div className="w-full max-w-5xl mx-auto">
             <div className="flex flex-col justify-center">
               {sortedPosts?.slice(0, 1).map((post) => {
+                console.log(post, "post banner");
+
                 const contentText = post?.content
                   ? post?.content?.replace(/(<([^>]+)>)/gi, "") // Remove HTML tags
                   : ""; // Fallback if content is not available
@@ -234,8 +224,11 @@ const Banner = () => {
 
                 return (
                   <div key={post.id}>
-                    <p className="text-[15px] text-base font-semibold text-red-800 tracking-widest">
-                      {post.categories.nodes[0]?.name}
+                    <p className="text-[15px] text-base font-semibold text-red-800 tracking-widest uppercase">
+                      {
+                        dataNav?.nodeByUri?.homePage?.heroSection
+                          ?.heroPostCategory?.nodes[0]?.name
+                      }
                     </p>
                     <Link
                       href={{
@@ -255,7 +248,9 @@ const Banner = () => {
                     >
                       <p
                         className="text-[15px] text-base text-gray-800 mb-3 cursor-pointer"
-                        dangerouslySetInnerHTML={{ __html: post.excerpt }}
+                        dangerouslySetInnerHTML={{
+                          __html: truncateExcerpt(post.excerpt, 210),
+                        }}
                       />
                     </Link>
                     <p className="text-[15px] text-base text-gray-800 mb-4 font-extralight">
@@ -309,150 +304,32 @@ const Banner = () => {
               })}
 
               <Topheadlines
-                topheadData={bannerData}
+                topheadData={dataNav}
                 displayedCategories={displayedCategories}
               />
             </div>
           </div>
           <div className="hidden md:block w-full max-w-3xl mx-auto">
-          <div className="relative hidden md:block w-full mb-2">
-      {/* Search Icon */}
-      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-        <SearchIcon className="text-black" />
-      </div>
-      {/* Input Field */}
-      <input
-        className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full"
-        id="FullName"
-        type="text"
-        placeholder="Zmanim"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            handleSearch(e);
-          }
-        }}
-      />
-    </div>
-
-            {/* <div
-              className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-              style={{
-                background:
-                  "linear-gradient(to bottom right, #002D73, #40A6FB)",
-                padding: "10px",
-                borderRadius: "10px",
-              }}
-            >
-              <div className="flex items-center justify-between mb-1">
-                <div>
-                  <p className="text-xs tracking-tight text-white">
-                    Chance of rain {main.humidity}%
-                  </p>
-                  <h5 className="text-xl text-white font-medium">
-                    {description.charAt(0).toUpperCase() + description.slice(1)}
-                  </h5>
-                </div>
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  src={sun}
-                  alt="Partly Cloudy"
-                  className="h-13 w-13 mr-2 object-cover"
-                />
+            <div className="relative hidden md:block w-full mb-2">
+              {/* Search Icon */}
+              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <SearchIcon className="text-black" />
               </div>
-              <div className="flex items-center">
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  src={location}
-                  alt="Location"
-                  className="h-5 w-5 mr-2 object-cover"
-                />
-                <p className="text-normal tracking-tight text-white">
-                  {name}, {sys.country}
-                </p>
-              </div>
-              <div
-                className="flex items-center mt-2"
-                style={{
-                  justifyContent: "space-around",
-                  marginBottom: "20px",
+              {/* Input Field */}
+              <input
+                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full"
+                id="FullName"
+                type="text"
+                placeholder="Zmanim"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch(e);
+                  }
                 }}
-              >
-                <p className="font-bold text-white mr-px text-base">
-                  {tempF}°F
-                </p>
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  src={mdi_weather}
-                  alt="Cloud"
-                  className="h-4 w-4 object-cover"
-                />
-                <p className="font-xs text-white text-sm">{clouds.all}%</p>
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  src={typcn_weather}
-                  alt="Cloud"
-                  className="h-4 w-4 object-cover"
-                />
-                <p className="font-xs text-white text-sm">
-                  {(main.feels_like - 273.15).toFixed(1)}°C
-                </p>
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  src={wind_weather}
-                  alt="Wind"
-                  className="h-4 w-4"
-                />
-                <p className="font-xs text-white text-sm">{wind.speed} mp/h</p>
-              </div>
-              <div
-                className="flex justify-between items-center"
-                style={{ marginBottom: "30px" }}
-              >
-                <p className="text-white mt-4 font-medium">{date}</p>
-                <Image
-                  priority={true}
-                  loader={customLoader}
-                  src={jam_menu}
-                  alt="Toggle"
-                  className="h-6 w-6"
-                />
-              </div>
-              <div className="mt-4">
-                <div className="flex justify-between items-center text-center">
-                  {hourlyForecast.map((slot, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        margin: "0 auto",
-                        display: "flex",
-                        flexDirection: "column",
-                      }}
-                    >
-                      <p className="text-xs text-white mr-2 mb-1">
-                        {slot.time}
-                      </p>
-                      <Image
-                        priority={true}
-                        loader={customLoader}
-                        src={slot.image}
-                        alt="Sun"
-                        style={{ margin: "0 auto" }}
-                        className="h-7 w-7"
-                      />
-                      <p className="text-xs text-white mt-1">{slot.temp}°F</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div> */}
-
+              />
+            </div>
             <div
               className="hidden md:block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               style={{
@@ -578,17 +455,20 @@ const Banner = () => {
 
             <div className="w-full max-w-3xl mx-auto mt-5">
               <p className="text-[22px] font-bold text-black-900 italic">
-                {bannerData?.page?.homePage?.topHeadlineSidebarTitle}
+                {dataNav?.nodeByUri?.homePage?.topHeadlineSidebarTitle}
               </p>
               <hr
                 className="text-red-800"
                 style={{
                   height: "7px",
-                  background: `${bannerData?.page?.homePage?.topHeadlineSidebarTitleLineColor}`,
+                  background: `${
+                    dataNav?.nodeByUri?.homePage
+                      ?.topHeadlineSidebarTitleLineColor || "#CE3A42"
+                  }`,
                 }}
               />
 
-              {bannerData?.page?.homePage?.topHeadlineSidebarPosts?.nodes
+              {dataNav?.nodeByUri?.homePage?.topHeadlineSidebarPosts?.nodes
                 .slice()
                 .sort((a, b) => (a.title < b.title ? 1 : -1))
                 .slice(0, 2)
@@ -650,12 +530,12 @@ const Banner = () => {
                   );
                 })}
               <div className="mt-5">
-                {bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
+                {dataNav?.nodeByUri?.homePage?.topHeadlineSidebarFirstAd
                   ?.topHeadlineFirstAd?.node?.sourceUrl ? (
                   <Link
                     href={{
                       pathname:
-                        bannerData?.page?.homePage?.topHeadlineSidebarFirstAd
+                        dataNav?.nodeByUri?.homePage?.topHeadlineSidebarFirstAd
                           ?.topHeadlineFirstAdLink,
                     }}
                     passHref
@@ -665,7 +545,7 @@ const Banner = () => {
                       priority={true}
                       loader={customLoader}
                       src={
-                        bannerData.page.homePage.topHeadlineSidebarFirstAd
+                        dataNav.nodeByUri.homePage.topHeadlineSidebarFirstAd
                           .topHeadlineFirstAd.node.sourceUrl
                       }
                       alt="Partly Cloudy"
@@ -691,76 +571,66 @@ const Banner = () => {
 
               <hr className="mt-5" />
 
-              {bannerData?.page?.homePage?.topHeadlineSidebarSinglePosts?.nodes
+              {dataNav?.nodeByUri?.homePage?.topHeadlineSidebarSinglePosts?.nodes
                 .slice()
                 .sort((a, b) => (a.title < b.title ? 1 : -1))
                 .slice(0, 1)
-                .map(
-                  (side) => (
-                    (
-                      <div className="flex justify-between mt-5 mb-5">
-                        {side.posts.nodes
-                          .slice()
-                          .sort((a, b) => (a.title < b.title ? 1 : -1)) // Sorting in descending order based on the title (or any other property)
-                          .slice(0, 1) // Limiting to only one item
-                          .map(
-                            (itemdata) => (
-                              (
-                                <>
-                                  <div className="mr-2">
-                                    <p className="tracking-widest text-[12px] font-semibold text-red-800 uppercase">
-                                      {side.name}
-                                    </p>
-                                    <Link
-                                      href={{
-                                        pathname: `/news/${itemdata.slug}`,
-                                      }}
-                                      passHref
-                                    >
-                                      <p className="text-[15px] font-semibold text-black-800 mb-3 hover:text-skyBlue">
-                                        {itemdata.title}
-                                      </p>
-                                    </Link>
-                                  </div>
-                                  {itemdata?.featuredImage?.node?.sourceUrl ? (
-                                    <Link
-                                      href={{
-                                        pathname: `/news/${itemdata.slug}`,
-                                      }}
-                                      passHref
-                                    >
-                                      <Image
-                                        priority={true}
-                                        loader={customLoader}
-                                        src={
-                                          itemdata.featuredImage.node.sourceUrl
-                                        }
-                                        alt={itemdata.title}
-                                        className="object-cover w-[90px] h-[88px] mr-2"
-                                        width={90}
-                                        height={88}
-                                      />
-                                    </Link>
-                                  ) : (
-                                    <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
-                                      No Image
-                                    </div>
-                                  )}
-                                </>
-                              )
-                            )
+                .map((side) => (
+                  <div className="flex justify-between mt-5 mb-5">
+                    {side.posts.nodes
+                      .slice()
+                      .sort((a, b) => (a.title < b.title ? 1 : -1)) // Sorting in descending order based on the title (or any other property)
+                      .slice(0, 1) // Limiting to only one item
+                      .map((itemdata) => (
+                        <>
+                          <div className="mr-2">
+                            <p className="tracking-widest text-[12px] font-semibold text-red-800 uppercase">
+                              {side.name}
+                            </p>
+                            <Link
+                              href={{
+                                pathname: `/news/${itemdata.slug}`,
+                              }}
+                              passHref
+                            >
+                              <p className="text-[15px] font-semibold text-black-800 mb-3 hover:text-skyBlue">
+                                {itemdata.title}
+                              </p>
+                            </Link>
+                          </div>
+                          {itemdata?.featuredImage?.node?.sourceUrl ? (
+                            <Link
+                              href={{
+                                pathname: `/news/${itemdata.slug}`,
+                              }}
+                              passHref
+                            >
+                              <Image
+                                priority={true}
+                                loader={customLoader}
+                                src={itemdata.featuredImage.node.sourceUrl}
+                                alt={itemdata.title}
+                                className="object-cover w-[90px] h-[88px] mr-2"
+                                width={90}
+                                height={88}
+                              />
+                            </Link>
+                          ) : (
+                            <div className="h-13 w-13 mr-2 bg-gray-200 flex items-center justify-center">
+                              No Image
+                            </div>
                           )}
-                      </div>
-                    )
-                  )
-                )}
+                        </>
+                      ))}
+                  </div>
+                ))}
               <div className="flex mb-5 mt-10 justify-center">
-                {bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
+                {dataNav?.nodeByUri?.homePage?.topHeadlineSidebarSecondAd
                   ?.topHeadlineSecondAdImage?.node?.sourceUrl ? (
                   <Link
                     href={{
                       pathname:
-                        bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
+                        dataNav?.nodeByUri?.homePage?.topHeadlineSidebarSecondAd
                           ?.topHeadlineSecondAdLink,
                     }}
                     passHref
@@ -770,7 +640,7 @@ const Banner = () => {
                       priority={true}
                       loader={customLoader}
                       src={
-                        bannerData?.page?.homePage?.topHeadlineSidebarSecondAd
+                        dataNav?.nodeByUri?.homePage?.topHeadlineSidebarSecondAd
                           ?.topHeadlineSecondAdImage?.node?.sourceUrl
                       }
                       alt="Partly Cloudy"

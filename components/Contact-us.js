@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Frame_209 from "../../public/images/Frame_209.png";
-import Frame_208 from "../../public/images/Frame_208.png";
-import BackFrame93 from "../../public/images/BackFrame93.svg";
+import Frame_209 from "../public/images/Frame_209.png";
+import Frame_208 from "../public/images/Frame_208.png";
+import BackFrame93 from "../public/images/BackFrame93.svg";
 import Link from "next/link";
 import Image from "next/image";
-import Layout from "../../components/Layout";
-import { useDialog } from "../../components/DialogContext";
-import { useHeader } from "../../components/HeaderContext";
+import Layout from "../components/Layout";
+import { useDialog } from "../components/DialogContext";
 
 const customLoader = ({ src }) => {
   return src;
 };
 
-function Index() {
-  const { contactQuery } = useDialog();
+function Contactus({contactQuery}) {
+    console.log(contactQuery, "contactQuery");
+    
+//   const { contactQuery } = useDialog();
   const [openAccordion, setOpenAccordion] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -101,7 +101,7 @@ function Index() {
                 onClick={() => toggleAccordion(1)}
               >
                 <span>
-                  {contactQuery?.page?.contactUs?.advertise?.advertiseTitle}
+                  {contactQuery?.nodeByUri?.contactUs?.advertise?.advertiseTitle}
                 </span>
                 <svg
                   className={`w-4 h-4 md:w-5 md:h-5 text-[#40A6FB] transition-transform ${
@@ -129,11 +129,11 @@ function Index() {
               aria-labelledby="accordion-color-heading-1"
             >
               <p className="text-[14px] md:text-[16px] mb-2 font-extralight">
-                {contactQuery?.page?.contactUs?.advertise?.description}
+                {contactQuery?.nodeByUri?.contactUs?.advertise?.description}
               </p>
               <div className="flex flex-row md:flex-row text-gray-500 dark:text-gray-400 mb-3">
                 <Link
-                  href={`mailto:${contactQuery?.page?.contactUs?.advertise?.emailAddress}?subject=Subject&body=Message%20body`}
+                  href={`mailto:${contactQuery?.nodeByUri?.contactUs?.advertise?.emailAddress}?subject=Subject&body=Message%20body`}
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   <Image
@@ -148,7 +148,7 @@ function Index() {
                 </Link>
                 <Link
                   href={
-                    contactQuery?.page?.contactUs?.advertise?.whatsappLink ||
+                    contactQuery?.nodeByUri?.contactUs?.advertise?.whatsappLink ||
                     "/"
                   }
                   className="text-blue-600 dark:text-blue-500 hover:underline"
@@ -188,7 +188,7 @@ function Index() {
               >
                 <span>
                   {
-                    contactQuery?.page?.contactUs?.submitNewsTip
+                    contactQuery?.nodeByUri?.contactUs?.submitNewsTip
                       ?.submitNewsTipTitle
                   }
                 </span>
@@ -218,11 +218,11 @@ function Index() {
               aria-labelledby="accordion-color-heading-2"
             >
               <p className="text-[14px] md:text-[16px] mb-2 font-extralight">
-                {contactQuery?.page?.contactUs?.submitNewsTip?.description}
+                {contactQuery?.nodeByUri?.contactUs?.submitNewsTip?.description}
               </p>
               <div className="flex flex-row md:flex-row text-gray-500 dark:text-gray-400 mb-3">
                 <Link
-                  href={`mailto:${contactQuery?.page?.contactUs?.submitNewsTip?.emailAddress}?subject=Subject&body=Message%20body`}
+                  href={`mailto:${contactQuery?.nodeByUri?.contactUs?.submitNewsTip?.emailAddress}?subject=Subject&body=Message%20body`}
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   <Image
@@ -237,7 +237,7 @@ function Index() {
                 </Link>
                 <Link
                   href={
-                    contactQuery?.page?.contactUs?.submitNewsTip
+                    contactQuery?.nodeByUri?.contactUs?.submitNewsTip
                       ?.whatsappLink || "/"
                   }
                   className="text-blue-600 dark:text-blue-500 hover:underline"
@@ -271,7 +271,7 @@ function Index() {
               >
                 <span>
                   {
-                    contactQuery?.page?.contactUs?.noteToEditor
+                    contactQuery?.nodeByUri?.contactUs?.noteToEditor
                       ?.noteToEditorTitle
                   }
                 </span>
@@ -301,11 +301,11 @@ function Index() {
               aria-labelledby="accordion-color-heading-3"
             >
               <p className="text-[14px] md:text-[16px] mb-2 font-extralight">
-                {contactQuery?.page?.contactUs?.noteToEditor?.description}
+                {contactQuery?.nodeByUri?.contactUs?.noteToEditor?.description}
               </p>
               <div className="flex flex-row md:flex-row text-gray-500 dark:text-gray-400 mb-3">
                 <Link
-                  href={`mailto:${contactQuery?.page?.contactUs?.noteToEditor?.emailAddress}?subject=Subject&body=Message%20body`}
+                  href={`mailto:${contactQuery?.nodeByUri?.contactUs?.noteToEditor?.emailAddress}?subject=Subject&body=Message%20body`}
                   className="text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   <Image
@@ -320,7 +320,7 @@ function Index() {
                 </Link>
                 <Link
                   href={
-                    contactQuery?.page?.contactUs?.noteToEditor?.whatsappLink ||
+                    contactQuery?.nodeByUri?.contactUs?.noteToEditor?.whatsappLink ||
                     "/"
                   }
                   className="text-blue-600 dark:text-blue-500 hover:underline"
@@ -358,4 +358,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Contactus;

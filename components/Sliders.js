@@ -5,10 +5,12 @@ import Group3 from "../public/images/Group (3).svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useHeader } from "./HeaderContext";
 
-const Sliders = () => {
-  const { bannerData } = useDialog();
-  const twitterEmbedCodes = bannerData?.page?.homePage?.twitterEmbedCodes;
+const Sliders = ({dataNav}) => {
+  console.log(dataNav, "dataNav slider");
+  
+  const twitterEmbedCodes = dataNav?.nodeByUri?.homePage?.twitterEmbedCodes;
 
   // Extracting the embed codes into an array and filtering out empty codes
   const carouselData = [
