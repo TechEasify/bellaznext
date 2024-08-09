@@ -232,7 +232,7 @@ const Banner = ({ dataNav }) => {
                     </p>
                     <Link
                       href={{
-                        pathname: `/news/${post.slug}`,
+                        pathname: `/${post.slug}`,
                       }}
                       passHref
                     >
@@ -242,7 +242,7 @@ const Banner = ({ dataNav }) => {
                     </Link>
                     <Link
                       href={{
-                        pathname: `/news/${post.slug}`,
+                        pathname: `/${post.slug}`,
                       }}
                       passHref
                     >
@@ -278,7 +278,7 @@ const Banner = ({ dataNav }) => {
                     {post.featuredImage?.node?.sourceUrl && (
                       <Link
                         href={{
-                          pathname: `/news/${post.slug}`,
+                          pathname: `/${post.slug}`,
                         }}
                         passHref
                       >
@@ -491,7 +491,7 @@ const Banner = ({ dataNav }) => {
                                 </p>
                                 <Link
                                   href={{
-                                    pathname: `/news/${itemdata.slug}`,
+                                    pathname: `/${itemdata.slug}`,
                                   }}
                                   passHref
                                 >
@@ -503,7 +503,7 @@ const Banner = ({ dataNav }) => {
                               {itemdata?.featuredImage?.node?.sourceUrl ? (
                                 <Link
                                   href={{
-                                    pathname: `/news/${itemdata.slug}`,
+                                    pathname: `/${itemdata.slug}`,
                                   }}
                                   passHref
                                 >
@@ -589,7 +589,7 @@ const Banner = ({ dataNav }) => {
                             </p>
                             <Link
                               href={{
-                                pathname: `/news/${itemdata.slug}`,
+                                pathname: `/${itemdata.slug}`,
                               }}
                               passHref
                             >
@@ -601,7 +601,7 @@ const Banner = ({ dataNav }) => {
                           {itemdata?.featuredImage?.node?.sourceUrl ? (
                             <Link
                               href={{
-                                pathname: `/news/${itemdata.slug}`,
+                                pathname: `/${itemdata.slug}`,
                               }}
                               passHref
                             >
