@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "faust dev && next dev",
-    "build": "faust generatePossibleTypes && faust build && next build",
+    "build": "faust build && next build",
     "start": "faust start",
     "generate": "faust generatePossibleTypes"
   },

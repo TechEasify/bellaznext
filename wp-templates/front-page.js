@@ -15,7 +15,7 @@ export default function Component(props) {
 
   return (
     <>
-      <Nav dataNav={props.data} />
+      {/* <Nav dataNav={props.data} />
       <Banner dataNav={props.data} />
       <Advertisement dataNav={props.data} />
       <Insights dataNav={props.data} />
@@ -24,16 +24,16 @@ export default function Component(props) {
       <PlacementPartners dataNav={props.data} />
       <Excusivenews dataNav={props.data} />
       <Cardnews dataNav={props.data} />
-      <Footer dataNav={props.data} />
+      <Footer dataNav={props.data} /> */}
     </>
   );
 }
 
-Component.query = GET_NAV_SECTION;
+// Component.query = GET_NAV_SECTION;
 
 
-Component.variables = (seedQuery, ctx) => {
-  return {
-    uri: seedQuery.uri,
-  };
-};
+// Component.variables = (seedQuery, ctx) => {
+//   return {
+//     uri: seedQuery.uri,
+//   };
+// };
